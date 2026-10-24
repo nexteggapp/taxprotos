@@ -76,7 +76,7 @@ Box and line numbers live in `mapping.textproto` beside each schema, as a
 ```textproto
 # proto-message: nexteggapp.taxprotos.common.v1.FormMapping
 form: "1099-DIV"
-message_name: "nexteggapp.taxprotos.us.federal.v1.Form1099Div"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form1099DIV"
 tax_years: 2025
 
 concepts {

@@ -69,16 +69,16 @@ message Document {
     Paystub paystub = 11;
 
     // A Form 1099-INT from a bank or broker.
-    us.federal.v1.Form1099Int form_1099_int = 12;
+    us.federal.v1.Form1099INT form_1099_int = 12;
 
     // A Form 1099-DIV from a fund or broker.
-    us.federal.v1.Form1099Div form_1099_div = 13;
+    us.federal.v1.Form1099DIV form_1099_div = 13;
 
     // A broker's Form 1099-B, with every sale it reports.
     Form1099BStatement form_1099_b = 14;
 
     // A Form 1099-NEC from a client.
-    us.federal.v1.Form1099Nec form_1099_nec = 15;
+    us.federal.v1.Form1099NEC form_1099_nec = 15;
 
     // A Form 1099-K from a payment network.
     us.federal.v1.Form1099K form_1099_k = 16;
@@ -90,7 +90,7 @@ message Document {
     us.federal.v1.Form1099G form_1099_g = 18;
 
     // A Form SSA-1099 from the Social Security Administration.
-    us.federal.v1.FormSsa1099 form_ssa_1099 = 19;
+    us.federal.v1.FormSSA1099 form_ssa_1099 = 19;
 
     // A Form W-2G from a gambling payer.
     us.federal.v1.FormW2G form_w2g = 20;
@@ -123,7 +123,7 @@ message Document {
     FormW4 form_w4 = 29;
 
     // Form 1099-MISC: rents, royalties, prizes and other miscellaneous income.
-    us.federal.v1.Form1099Misc form_1099_misc = 30;
+    us.federal.v1.Form1099MISC form_1099_misc = 30;
 
     // Form 1098-E: student loan interest paid by the borrower.
     us.federal.v1.Form1098E form_1098_e = 31;
@@ -135,10 +135,10 @@ message Document {
     us.federal.v1.Form5498 form_5498 = 33;
 
     // Form 1099-SA: distributions from an HSA, Archer MSA, or Medicare Advantage MSA.
-    us.federal.v1.Form1099Sa form_1099_sa = 34;
+    us.federal.v1.Form1099SA form_1099_sa = 34;
 
     // Form 5498-SA: contributions to and value of an HSA, Archer MSA, or Medicare Advantage MSA.
-    us.federal.v1.Form5498Sa form_5498_sa = 35;
+    us.federal.v1.Form5498SA form_5498_sa = 35;
 
     // Form 1095-A: health insurance marketplace statement.
     us.federal.v1.Form1095A form_1095_a = 36;

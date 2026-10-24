@@ -17,8 +17,8 @@ import "taxprotos/common/v1/money.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_ssa_1099;formssa1099";
 
-// FormSsa1099 is what a Form SSA-1099 states.
-message FormSsa1099 {
+// FormSSA1099 is what a Form SSA-1099 states.
+message FormSSA1099 {
   option (common.v1.fdx_entity) = "TaxSsa1099";
   option (common.v1.fdx_version) = "5.0";
 

@@ -17,8 +17,8 @@ import "taxprotos/common/v1/party.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1099_div;form1099div";
 
-// Form1099Div is what a Form 1099-DIV states.
-message Form1099Div {
+// Form1099DIV is what a Form 1099-DIV states.
+message Form1099DIV {
   option (common.v1.fdx_entity) = "Tax1099Div";
   option (common.v1.fdx_version) = "5.0";
 

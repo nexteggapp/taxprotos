@@ -20,7 +20,7 @@ message FormMapping {
   string form = 1;
 
   // The fully qualified name of the message this mapping is for, such as
-  // "nexteggapp.taxprotos.us.federal.v1.Form1099Div".
+  // "nexteggapp.taxprotos.us.federal.v1.Form1099DIV".
   string message_name = 2;
 
   // Every tax year this mapping covers. A year absent from this list is

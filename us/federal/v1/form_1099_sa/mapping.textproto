@@ -6,7 +6,7 @@
 # Publication 1220 for Tax Year 2025 (Rev. 5-2026).
 
 form: "1099-SA"
-message_name: "nexteggapp.taxprotos.us.federal.v1.Form1099Sa"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form1099SA"
 tax_years: 2025
 
 concepts {

@@ -12,7 +12,7 @@
 # docs/form-schemas.md. This file is where those live.
 
 form: "1099-NEC"
-message_name: "nexteggapp.taxprotos.us.federal.v1.Form1099Nec"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form1099NEC"
 tax_years: 2025
 
 concepts {
