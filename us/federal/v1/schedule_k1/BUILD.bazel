@@ -1,0 +1,35 @@
+# gazelle:ignore
+
+load("@protobuf//bazel:proto_library.bzl", "proto_library")
+
+proto_library(
+    name = "schedule_k1_proto",
+    import_prefix = "taxprotos",
+    srcs = [
+        "schedule_k1_1041.proto",
+        "schedule_k1_1065.proto",
+        "schedule_k1_1120_s.proto",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//common/v1:common_proto",
+    ],
+)
+
+exports_files([
+    "schedule_k1_1041.proto",
+    "schedule_k1_1065.proto",
+    "schedule_k1_1120_s.proto",
+    "mapping_1041.textproto",
+    "mapping_1065.textproto",
+    "mapping_1120s.textproto",
+])
+
+filegroup(
+    name = "test_oracles",
+    srcs = glob([
+        "mapping*.textproto",
+        "testdata/**",
+    ]),
+    visibility = ["//visibility:public"],
+)

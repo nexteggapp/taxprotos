@@ -1,0 +1,114 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Schedule K-1 (Form 1041) calls each concept, per tax year.
+#
+# Line numbers come from Schedule K-1 (Form 1041).
+
+form: "Schedule K-1 (Form 1041)"
+message_name: "nexteggapp.taxprotos.us.federal.v1.ScheduleK1Form1041"
+tax_years: 2025
+
+concepts {
+  concept: "estate_or_trust_ein"
+  years { tax_year: 2025 irs_box: "A" }
+}
+concepts {
+  concept: "estate_or_trust_name"
+  years { tax_year: 2025 irs_box: "B" }
+}
+concepts {
+  concept: "fiduciary"
+  years { tax_year: 2025 irs_box: "C" }
+}
+concepts {
+  concept: "form_1041_t_filed"
+  years { tax_year: 2025 irs_box: "D" }
+}
+concepts {
+  concept: "form_1041_t_date"
+  years { tax_year: 2025 irs_box: "D" }
+}
+concepts {
+  concept: "final_form_1041"
+  years { tax_year: 2025 irs_box: "E" }
+}
+concepts {
+  concept: "beneficiary_tin"
+  years { tax_year: 2025 irs_box: "F" }
+}
+concepts {
+  concept: "beneficiary"
+  years { tax_year: 2025 irs_box: "G" }
+}
+concepts {
+  concept: "beneficiary_residency"
+  years { tax_year: 2025 irs_box: "H" }
+}
+concepts {
+  concept: "interest_income"
+  years { tax_year: 2025 irs_box: "1" }
+}
+concepts {
+  concept: "ordinary_dividends"
+  years { tax_year: 2025 irs_box: "2a" }
+}
+concepts {
+  concept: "qualified_dividends"
+  years { tax_year: 2025 irs_box: "2b" }
+}
+concepts {
+  concept: "net_short_term_capital_gain"
+  years { tax_year: 2025 irs_box: "3" }
+}
+concepts {
+  concept: "net_long_term_capital_gain"
+  years { tax_year: 2025 irs_box: "4a" }
+}
+concepts {
+  concept: "collectibles_gain"
+  years { tax_year: 2025 irs_box: "4b" }
+}
+concepts {
+  concept: "unrecaptured_section_1250_gain"
+  years { tax_year: 2025 irs_box: "4c" }
+}
+concepts {
+  concept: "other_portfolio_and_nonbusiness_income"
+  years { tax_year: 2025 irs_box: "5" }
+}
+concepts {
+  concept: "ordinary_business_income"
+  years { tax_year: 2025 irs_box: "6" }
+}
+concepts {
+  concept: "net_rental_real_estate_income"
+  years { tax_year: 2025 irs_box: "7" }
+}
+concepts {
+  concept: "other_rental_income"
+  years { tax_year: 2025 irs_box: "8" }
+}
+concepts {
+  concept: "directly_apportioned_deductions"
+  years { tax_year: 2025 irs_box: "9" }
+}
+concepts {
+  concept: "estate_tax_deduction"
+  years { tax_year: 2025 irs_box: "10" }
+}
+concepts {
+  concept: "final_year_deductions"
+  years { tax_year: 2025 irs_box: "11" }
+}
+concepts {
+  concept: "alternative_minimum_tax_adjustment"
+  years { tax_year: 2025 irs_box: "12" }
+}
+concepts {
+  concept: "credits_and_credit_recapture"
+  years { tax_year: 2025 irs_box: "13" }
+}
+concepts {
+  concept: "other_information"
+  years { tax_year: 2025 irs_box: "14" }
+}

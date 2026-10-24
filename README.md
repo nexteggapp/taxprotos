@@ -121,6 +121,9 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [5498-SA](https://www.irs.gov/pub/irs-pdf/f5498sa.pdf) | [`form_5498_sa.proto`](us/federal/v1/form_5498_sa/form_5498_sa.proto) | HSA and MSA contributions |
 | [SSA-1099](https://www.ssa.gov/myaccount/replacement-SSA-1099.html) | [`form_ssa_1099.proto`](us/federal/v1/form_ssa_1099/form_ssa_1099.proto) | Social Security benefits |
 | [W-2G](https://www.irs.gov/pub/irs-pdf/fw2g.pdf) | [`form_w2g.proto`](us/federal/v1/form_w2g/form_w2g.proto) | Gambling winnings |
+| [1065 Schedule K-1](https://www.irs.gov/pub/irs-pdf/f1065sk1.pdf) | [`schedule_k1_1065.proto`](us/federal/v1/schedule_k1/schedule_k1_1065.proto) | Partner's share of income, deductions, credits |
+| [1120-S Schedule K-1](https://www.irs.gov/pub/irs-pdf/f1120ssk.pdf) | [`schedule_k1_1120_s.proto`](us/federal/v1/schedule_k1/schedule_k1_1120_s.proto) | Shareholder's share of income, deductions, credits |
+| [1041 Schedule K-1](https://www.irs.gov/pub/irs-pdf/f1041sk1.pdf) | [`schedule_k1_1041.proto`](us/federal/v1/schedule_k1/schedule_k1_1041.proto) | Beneficiary's share of income, deductions, credits |
 
 ### The return — what a household files
 

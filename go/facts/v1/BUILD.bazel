@@ -29,6 +29,7 @@ go_proto_library(
         "//go/us/federal/v1/form_ssa_1099",
         "//go/us/federal/v1/form_w2",
         "//go/us/federal/v1/form_w2g",
+        "//go/us/federal/v1/schedule_k1",
         "//go/us/state/ca/v1/form_540",
         "//go/us/state/or/v1/form_or40",
     ],
@@ -63,6 +64,9 @@ go_test(
         "//us/federal/v1/form_8889:form_8889.proto",
         "//us/federal/v1/form_ssa_1099:form_ssa_1099.proto",
         "//us/federal/v1/form_w2g:form_w2g.proto",
+        "//us/federal/v1/schedule_k1:schedule_k1_1041.proto",
+        "//us/federal/v1/schedule_k1:schedule_k1_1065.proto",
+        "//us/federal/v1/schedule_k1:schedule_k1_1120_s.proto",
     ],
     deps = [
         ":v1",

@@ -35,6 +35,7 @@ proto_library(
         "//us/federal/v1/form_ssa_1099:form_ssa_1099_proto",
         "//us/federal/v1/form_w2:form_w2_proto",
         "//us/federal/v1/form_w2g:form_w2g_proto",
+        "//us/federal/v1/schedule_k1:schedule_k1_proto",
         "//us/state/ca/v1/form_540:form_540_proto",
         "//us/state/or/v1/form_or40:form_or40_proto",
     ],

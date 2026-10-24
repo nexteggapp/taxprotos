@@ -45,6 +45,9 @@ import "taxprotos/us/federal/v1/form_1099_misc/form_1099_misc.proto";
 import "taxprotos/us/federal/v1/form_1099_sa/form_1099_sa.proto";
 import "taxprotos/us/federal/v1/form_5498/form_5498.proto";
 import "taxprotos/us/federal/v1/form_5498_sa/form_5498_sa.proto";
+import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1041.proto";
+import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1065.proto";
+import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1120_s.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_asc.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/facts/v1;factsv1";
@@ -142,6 +145,15 @@ message Document {
 
     // Form 1095-A: health insurance marketplace statement.
     us.federal.v1.Form1095A form_1095_a = 36;
+
+    // Schedule K-1 (Form 1065): partner's share of income, deductions, credits, etc.
+    us.federal.v1.ScheduleK1Form1065 schedule_k1_1065 = 37;
+
+    // Schedule K-1 (Form 1120-S): shareholder's share of income, deductions, credits, etc.
+    us.federal.v1.ScheduleK1Form1120S schedule_k1_1120_s = 38;
+
+    // Schedule K-1 (Form 1041): beneficiary's share of income, deductions, credits, etc.
+    us.federal.v1.ScheduleK1Form1041 schedule_k1_1041 = 39;
   }
 }
 

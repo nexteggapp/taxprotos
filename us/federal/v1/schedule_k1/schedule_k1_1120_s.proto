@@ -1,0 +1,166 @@
+// Schedule K-1 (Form 1120-S): Shareholder's Share of Income, Deductions, Credits, etc.
+//
+// An S corporation files Schedule K-1 with the IRS and furnishes a copy to each
+// shareholder to report their pro rata share of the corporation's income,
+// deductions, credits, and other items.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+import "taxprotos/common/v1/quantity.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/schedule_k1;schedulek1";
+
+// Schedule K-1 (Form 1120-S) reports a shareholder's share of S corporation items.
+message ScheduleK1Form1120S {
+  option (common.v1.fdx_entity) = "Tax1120SK1";
+  option (common.v1.fdx_version) = "5.0";
+
+  // CodedAmount represents an item identified by an IRS code and an amount.
+  message CodedAmount {
+    // The code as printed on the schedule or statement (e.g. "A", "B", "C").
+    string code = 1 [(common.v1.fdx_field) = "code"];
+
+    // The dollar amount reported for this code.
+    common.v1.Money amount = 2 [(common.v1.fdx_field) = "amount"];
+
+    // Additional description or statement detail, if provided.
+    string description = 3 [(common.v1.fdx_field) = "description"];
+  }
+
+  // The tax year this form reports. Four digits, such as 2025.
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // Final K-1 indicator.
+  bool final_k1 = 2 [(common.v1.fdx_field) = "finalK1"];
+
+  // Amended K-1 indicator.
+  bool amended_k1 = 3 [(common.v1.fdx_field) = "amendedK1"];
+
+  // Fiscal year beginning date, if not calendar year.
+  common.v1.Date fiscal_year_begin = 4 [(common.v1.fdx_field) = "fiscalYearBegin"];
+
+  // Fiscal year ending date, if not calendar year.
+  common.v1.Date fiscal_year_end = 5 [(common.v1.fdx_field) = "fiscalYearEnd"];
+
+  // Corporation's employer identification number (box A).
+  string corporation_ein = 6 [(common.v1.fdx_field) = "corporationTin"];
+
+  // Corporation's name, address, city, state, and ZIP code (box B).
+  common.v1.Party corporation = 7 [
+    (common.v1.fdx_field) = "corporation",
+    (common.v1.fdx_deviation) = "Party message rather than flat fields"
+  ];
+
+  // IRS Center where corporation filed return (box C).
+  string irs_center = 8 [(common.v1.fdx_field) = "irsCenter"];
+
+  // Corporation's total number of shares at beginning of tax year (box D).
+  common.v1.Quantity total_shares_beginning = 9 [(common.v1.fdx_field) = "totalSharesBeginning"];
+
+  // Corporation's total number of shares at end of tax year (box D).
+  common.v1.Quantity total_shares_ending = 10 [(common.v1.fdx_field) = "totalSharesEnding"];
+
+  // Shareholder's identifying number (box E).
+  string shareholder_tin = 11 [(common.v1.fdx_field) = "shareholderTin"];
+
+  // Shareholder's name, address, city, state, and ZIP code (box F1).
+  common.v1.Party shareholder = 12 [
+    (common.v1.fdx_field) = "shareholder",
+    (common.v1.fdx_deviation) = "Party message rather than flat fields"
+  ];
+
+  // Responsible person TIN if shareholder is disregarded entity, trust, estate, or nominee (box F2).
+  string responsible_person_tin = 13 [(common.v1.fdx_field) = "responsiblePersonTin"];
+
+  // Responsible person name if shareholder is disregarded entity, trust, estate, or nominee (box F2).
+  string responsible_person_name = 14 [(common.v1.fdx_field) = "responsiblePersonName"];
+
+  // What type of entity is this shareholder (box F3).
+  string shareholder_entity_type = 15 [(common.v1.fdx_field) = "shareholderEntityType"];
+
+  // Current year allocation percentage (box G).
+  common.v1.Quantity current_year_allocation_percentage = 16 [(common.v1.fdx_field) = "currentYearAllocationPercentage"];
+
+  // Shareholder's number of shares at beginning of tax year (box H).
+  common.v1.Quantity shareholder_shares_beginning = 17 [(common.v1.fdx_field) = "shareholderSharesBeginning"];
+
+  // Shareholder's number of shares at end of tax year (box H).
+  common.v1.Quantity shareholder_shares_ending = 18 [(common.v1.fdx_field) = "shareholderSharesEnding"];
+
+  // Loans from shareholder at beginning of tax year (box I).
+  common.v1.Money loans_from_shareholder_beginning = 19 [(common.v1.fdx_field) = "loansFromShareholderBeginning"];
+
+  // Loans from shareholder at end of tax year (box I).
+  common.v1.Money loans_from_shareholder_ending = 20 [(common.v1.fdx_field) = "loansFromShareholderEnding"];
+
+  // Ordinary business income (loss) (box 1).
+  common.v1.Money ordinary_business_income = 21 [(common.v1.fdx_field) = "ordinaryBusinessIncome"];
+
+  // Net rental real estate income (loss) (box 2).
+  common.v1.Money net_rental_real_estate_income = 22 [(common.v1.fdx_field) = "netRentalRealEstateIncome"];
+
+  // Other net rental income (loss) (box 3).
+  common.v1.Money other_net_rental_income = 23 [(common.v1.fdx_field) = "otherNetRentalIncome"];
+
+  // Interest income (box 4).
+  common.v1.Money interest_income = 24 [(common.v1.fdx_field) = "interestIncome"];
+
+  // Ordinary dividends (box 5a).
+  common.v1.Money ordinary_dividends = 25 [(common.v1.fdx_field) = "ordinaryDividends"];
+
+  // Qualified dividends (box 5b).
+  common.v1.Money qualified_dividends = 26 [(common.v1.fdx_field) = "qualifiedDividends"];
+
+  // Royalties (box 6).
+  common.v1.Money royalties = 27 [(common.v1.fdx_field) = "royalties"];
+
+  // Net short-term capital gain (loss) (box 7).
+  common.v1.Money net_short_term_capital_gain = 28 [(common.v1.fdx_field) = "netShortTermCapitalGain"];
+
+  // Net long-term capital gain (loss) (box 8a).
+  common.v1.Money net_long_term_capital_gain = 29 [(common.v1.fdx_field) = "netLongTermCapitalGain"];
+
+  // Collectibles (28%) gain (loss) (box 8b).
+  common.v1.Money collectibles_gain = 30 [(common.v1.fdx_field) = "collectiblesGain"];
+
+  // Unrecaptured section 1250 gain (box 8c).
+  common.v1.Money unrecaptured_section_1250_gain = 31 [(common.v1.fdx_field) = "unrecapturedSection1250Gain"];
+
+  // Net section 1231 gain (loss) (box 9).
+  common.v1.Money net_section_1231_gain = 32 [(common.v1.fdx_field) = "netSection1231Gain"];
+
+  // Other income (loss) coded items (box 10).
+  repeated CodedAmount other_income = 33 [(common.v1.fdx_field) = "otherIncome"];
+
+  // Section 179 deduction (box 11).
+  common.v1.Money section_179_deduction = 34 [(common.v1.fdx_field) = "section179Deduction"];
+
+  // Other deductions coded items (box 12).
+  repeated CodedAmount other_deductions = 35 [(common.v1.fdx_field) = "otherDeductions"];
+
+  // Credits coded items (box 13).
+  repeated CodedAmount credits = 36 [(common.v1.fdx_field) = "credits"];
+
+  // Schedule K-3 is attached if checked (box 14).
+  bool schedule_k3_attached = 37 [(common.v1.fdx_field) = "scheduleK3Attached"];
+
+  // Alternative minimum tax (AMT) items (box 15).
+  repeated CodedAmount alternative_minimum_tax_items = 38 [(common.v1.fdx_field) = "alternativeMinimumTaxItems"];
+
+  // Items affecting shareholder basis coded items (box 16).
+  repeated CodedAmount items_affecting_shareholder_basis = 39 [(common.v1.fdx_field) = "itemsAffectingShareholderBasis"];
+
+  // Other information coded items (box 17).
+  repeated CodedAmount other_information = 40 [(common.v1.fdx_field) = "otherInformation"];
+
+  // More than one activity for at-risk purposes (box 18).
+  bool more_than_one_activity_for_at_risk_purposes = 41 [(common.v1.fdx_field) = "moreThanOneActivityForAtRiskPurposes"];
+
+  // More than one activity for passive activity purposes (box 19).
+  bool more_than_one_activity_for_passive_activity_purposes = 42 [(common.v1.fdx_field) = "moreThanOneActivityForPassiveActivityPurposes"];
+}

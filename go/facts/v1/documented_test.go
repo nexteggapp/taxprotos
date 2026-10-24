@@ -53,6 +53,9 @@ var checked = []string{
 	"taxprotos/us/federal/v1/form_8889/form_8889.proto",
 	"taxprotos/us/federal/v1/form_ssa_1099/form_ssa_1099.proto",
 	"taxprotos/us/federal/v1/form_w2g/form_w2g.proto",
+	"taxprotos/us/federal/v1/schedule_k1/schedule_k1_1041.proto",
+	"taxprotos/us/federal/v1/schedule_k1/schedule_k1_1065.proto",
+	"taxprotos/us/federal/v1/schedule_k1/schedule_k1_1120_s.proto",
 }
 
 // TestEveryElementIsDocumented fails for each element of a checked file
