@@ -15,7 +15,16 @@ proto_library(
     ],
 )
 
-# mapping.textproto is read by //go/us/federal/v1/pub1220.
 exports_files([
+    "form_1098_e.proto",
     "mapping.textproto",
 ])
+
+filegroup(
+    name = "test_oracles",
+    srcs = glob([
+        "mapping*.textproto",
+        "testdata/**",
+    ]),
+    visibility = ["//visibility:public"],
+)

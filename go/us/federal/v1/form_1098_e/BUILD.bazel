@@ -1,6 +1,6 @@
 # gazelle:ignore
 
-load("@rules_go//go:def.bzl", "go_library")
+load("@rules_go//go:def.bzl", "go_library", "go_test")
 load("@rules_go//proto:def.bzl", "go_proto_library")
 
 go_proto_library(
@@ -18,4 +18,19 @@ go_library(
     embed = [":form_1098_e_go_proto"],
     importpath = "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_1098_e",
     visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "form_1098_e_test",
+    size = "small",
+    srcs = ["coverage_test.go"],
+    data = ["//us/federal/v1/form_1098_e:test_oracles"],
+    deps = [
+        ":form_1098_e",
+        "//go/common/v1",
+        "@org_golang_google_protobuf//encoding/prototext",
+        "@org_golang_google_protobuf//reflect/protoreflect",
+        "@org_golang_google_protobuf//reflect/protoregistry",
+        "@rules_go//go/runfiles",
+    ],
 )
