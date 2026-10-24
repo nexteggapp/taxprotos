@@ -6,7 +6,7 @@
 # Publication 1220 for Tax Year 2025 (Rev. 5-2026).
 
 form: "5498-SA"
-message_name: "nexteggapp.taxprotos.us.federal.v1.Form5498Sa"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form5498SA"
 tax_years: 2025
 
 concepts {

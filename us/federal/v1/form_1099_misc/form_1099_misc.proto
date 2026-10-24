@@ -26,8 +26,8 @@ import "taxprotos/common/v1/party.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1099_misc;form1099misc";
 
-// Form1099Misc is what a Form 1099-MISC states.
-message Form1099Misc {
+// Form1099MISC is what a Form 1099-MISC states.
+message Form1099MISC {
   option (common.v1.fdx_entity) = "Tax1099Misc";
   option (common.v1.fdx_version) = "5.0";
 

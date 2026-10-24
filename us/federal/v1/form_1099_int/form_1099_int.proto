@@ -17,8 +17,8 @@ import "taxprotos/common/v1/party.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1099_int;form1099int";
 
-// Form1099Int is what a Form 1099-INT states.
-message Form1099Int {
+// Form1099INT is what a Form 1099-INT states.
+message Form1099INT {
   option (common.v1.fdx_entity) = "Tax1099Int";
   option (common.v1.fdx_version) = "5.0";
 

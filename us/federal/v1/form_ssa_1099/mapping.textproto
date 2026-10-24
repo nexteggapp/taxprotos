@@ -10,7 +10,7 @@
 # docs/form-schemas.md. This file is where those live.
 
 form: "SSA-1099"
-message_name: "nexteggapp.taxprotos.us.federal.v1.FormSsa1099"
+message_name: "nexteggapp.taxprotos.us.federal.v1.FormSSA1099"
 tax_years: 2025
 
 concepts {

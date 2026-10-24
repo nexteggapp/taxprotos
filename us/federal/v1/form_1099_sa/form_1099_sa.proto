@@ -14,7 +14,7 @@ import "taxprotos/common/v1/party.proto";
 option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1099_sa;form1099sa";
 
 // Form 1099-SA reports distributions from an HSA, Archer MSA, or MA MSA.
-message Form1099Sa {
+message Form1099SA {
   option (common.v1.fdx_entity) = "Tax1099Sa";
   option (common.v1.fdx_version) = "5.0";
 
@@ -93,6 +93,6 @@ message Form1099Sa {
   // Account type checkbox: HSA, Archer MSA, or Medicare Advantage MSA, box 5.
   AccountType account_type = 10 [
     (common.v1.fdx_field) = "hsa",
-    (common.v1.fdx_deviation) = "Form1099Sa uses an enum instead of separate boolean flags for HSA, Archer MSA, and Medicare Advantage MSA"
+    (common.v1.fdx_deviation) = "Form1099SA uses an enum instead of separate boolean flags for HSA, Archer MSA, and Medicare Advantage MSA"
   ];
 }

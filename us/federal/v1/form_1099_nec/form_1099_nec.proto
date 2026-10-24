@@ -16,8 +16,8 @@ import "taxprotos/common/v1/party.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1099_nec;form1099nec";
 
-// Form1099Nec is what a Form 1099-NEC states.
-message Form1099Nec {
+// Form1099NEC is what a Form 1099-NEC states.
+message Form1099NEC {
   option (common.v1.fdx_entity) = "Tax1099Nec";
   option (common.v1.fdx_version) = "5.0";
 

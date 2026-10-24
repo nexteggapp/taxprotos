@@ -15,7 +15,7 @@ option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_5498_sa;
 
 // Form 5498-SA reports contributions to and fair market value of an HSA,
 // Archer MSA, or MA MSA.
-message Form5498Sa {
+message Form5498SA {
   option (common.v1.fdx_entity) = "Tax5498Sa";
   option (common.v1.fdx_version) = "5.0";
 
@@ -73,6 +73,6 @@ message Form5498Sa {
   // Account type checkbox: HSA, Archer MSA, or Medicare Advantage MSA, box 6.
   AccountType account_type = 11 [
     (common.v1.fdx_field) = "hsa",
-    (common.v1.fdx_deviation) = "Form5498Sa uses an enum instead of separate boolean flags for HSA, Archer MSA, and Medicare Advantage MSA"
+    (common.v1.fdx_deviation) = "Form5498SA uses an enum instead of separate boolean flags for HSA, Archer MSA, and Medicare Advantage MSA"
   ];
 }
