@@ -38,6 +38,10 @@ import "taxprotos/us/state/ca/v1/form_540/form_540.proto";
 import "taxprotos/us/state/ca/v1/form_540/schedule_ca.proto";
 import "taxprotos/us/state/or/v1/form_or40/form_or40.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
+import "taxprotos/us/federal/v1/form_1098_e/form_1098_e.proto";
+import "taxprotos/us/federal/v1/form_1098_t/form_1098_t.proto";
+import "taxprotos/us/federal/v1/form_1099_misc/form_1099_misc.proto";
+import "taxprotos/us/federal/v1/form_5498/form_5498.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_asc.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/facts/v1;factsv1";
@@ -114,6 +118,18 @@ message Document {
 
     // An employee's Form W-4.
     FormW4 form_w4 = 29;
+
+    // Form 1099-MISC: rents, royalties, prizes and other miscellaneous income.
+    us.federal.v1.Form1099Misc form_1099_misc = 30;
+
+    // Form 1098-E: student loan interest paid by the borrower.
+    us.federal.v1.Form1098E form_1098_e = 31;
+
+    // Form 1098-T: qualified tuition and related expenses.
+    us.federal.v1.Form1098T form_1098_t = 32;
+
+    // Form 5498: IRA contributions, rollovers, conversions and year-end value.
+    us.federal.v1.Form5498 form_5498 = 33;
   }
 }
 

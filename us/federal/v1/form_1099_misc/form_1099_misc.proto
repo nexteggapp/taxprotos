@@ -93,6 +93,7 @@ message Form1099Misc {
     (common.v1.fdx_field) = "substitutePayments"
   ];
 
+  // Crop insurance proceeds of $600 or more paid to farmers by insurance companies, box 9.
   nexteggapp.taxprotos.common.v1.Money crop_insurance_proceeds = 15 [
     (common.v1.fdx_field) = "cropInsuranceProceeds"
   ];

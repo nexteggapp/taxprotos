@@ -66,6 +66,7 @@ message Form1098T {
     (common.v1.fdx_field) = "scholarshipsOrGrants"
   ];
 
+  // Reductions to scholarships or grants reported for an earlier tax year, box 6.
   nexteggapp.taxprotos.common.v1.Money adjustments_to_scholarships_for_prior_year = 11 [
     (common.v1.fdx_field) = "priorYearScholarshipAdjustments"
   ];

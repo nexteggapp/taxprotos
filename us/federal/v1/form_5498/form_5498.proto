@@ -79,10 +79,16 @@ message Form5498 {
     (common.v1.fdx_field) = "lifeInsuranceCost"
   ];
 
-  // Which kind of account this is. The custodian ticks one of the four.
+  // Traditional IRA account checkbox, box 7.
   bool ira = 13 [(common.v1.fdx_field) = "ira"];
+
+  // Simplified Employee Pension (SEP) IRA account checkbox, box 7.
   bool sep = 14 [(common.v1.fdx_field) = "sep"];
+
+  // Savings Incentive Match Plan for Employees (SIMPLE) IRA account checkbox, box 7.
   bool simple = 15 [(common.v1.fdx_field) = "simple"];
+
+  // Roth IRA account checkbox, box 7.
   bool roth_ira = 16 [(common.v1.fdx_field) = "rothIra"];
 
   // Employer contributions to a simplified employee pension.
@@ -96,6 +102,7 @@ message Form5498 {
     (common.v1.fdx_field) = "simpleContributions"
   ];
 
+  // Roth IRA contributions made in the tax year and through the due date, box 10.
   nexteggapp.taxprotos.common.v1.Money roth_ira_contributions = 19 [
     (common.v1.fdx_field) = "rothIraContributions"
   ];
@@ -106,6 +113,7 @@ message Form5498 {
   // The date by which that distribution must be taken.
   nexteggapp.taxprotos.common.v1.Date required_minimum_distribution_date = 21 [(common.v1.fdx_field) = "rmdDate"];
 
+  // The amount of the required minimum distribution for next year, box 12b.
   nexteggapp.taxprotos.common.v1.Money required_minimum_distribution_amount = 22 [
     (common.v1.fdx_field) = "rmdAmount"
   ];

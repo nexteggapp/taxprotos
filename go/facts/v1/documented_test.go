@@ -42,7 +42,11 @@ const importPrefix = "taxprotos/"
 var checked = []string{
 	"taxprotos/facts/v1/documents.proto",
 	"taxprotos/facts/v1/tax_year_facts.proto",
+	"taxprotos/us/federal/v1/form_1098_e/form_1098_e.proto",
+	"taxprotos/us/federal/v1/form_1098_t/form_1098_t.proto",
 	"taxprotos/us/federal/v1/form_1099_g/form_1099_g.proto",
+	"taxprotos/us/federal/v1/form_1099_misc/form_1099_misc.proto",
+	"taxprotos/us/federal/v1/form_5498/form_5498.proto",
 	"taxprotos/us/federal/v1/form_ssa_1099/form_ssa_1099.proto",
 	"taxprotos/us/federal/v1/form_w2g/form_w2g.proto",
 }
