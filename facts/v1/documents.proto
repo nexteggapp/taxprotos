@@ -38,6 +38,7 @@ import "taxprotos/us/state/ca/v1/form_540/form_540.proto";
 import "taxprotos/us/state/ca/v1/form_540/schedule_ca.proto";
 import "taxprotos/us/state/or/v1/form_or40/form_or40.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
+import "taxprotos/us/federal/v1/form_1095_a/form_1095_a.proto";
 import "taxprotos/us/federal/v1/form_1098_e/form_1098_e.proto";
 import "taxprotos/us/federal/v1/form_1098_t/form_1098_t.proto";
 import "taxprotos/us/federal/v1/form_1099_misc/form_1099_misc.proto";
@@ -138,6 +139,9 @@ message Document {
 
     // Form 5498-SA: contributions to and value of an HSA, Archer MSA, or Medicare Advantage MSA.
     us.federal.v1.Form5498Sa form_5498_sa = 35;
+
+    // Form 1095-A: health insurance marketplace statement.
+    us.federal.v1.Form1095A form_1095_a = 36;
   }
 }
 

@@ -17,6 +17,7 @@ proto_library(
     deps = [
         "//common/v1:common_proto",
         "//us/federal/v1/form_1040:form_1040_proto",
+        "//us/federal/v1/form_1095_a:form_1095_a_proto",
         "//us/federal/v1/form_1098:form_1098_proto",
         "//us/federal/v1/form_1098_e:form_1098_e_proto",
         "//us/federal/v1/form_1098_t:form_1098_t_proto",

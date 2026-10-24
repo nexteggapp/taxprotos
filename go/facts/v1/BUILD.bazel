@@ -11,6 +11,7 @@ go_proto_library(
     deps = [
         "//go/common/v1",
         "//go/us/federal/v1/form_1040",
+        "//go/us/federal/v1/form_1095_a",
         "//go/us/federal/v1/form_1098",
         "//go/us/federal/v1/form_1098_e",
         "//go/us/federal/v1/form_1098_t",
@@ -51,6 +52,7 @@ go_test(
     data = [
         "//facts/v1:documents.proto",
         "//facts/v1:tax_year_facts.proto",
+        "//us/federal/v1/form_1095_a:form_1095_a.proto",
         "//us/federal/v1/form_1098_e:form_1098_e.proto",
         "//us/federal/v1/form_1098_t:form_1098_t.proto",
         "//us/federal/v1/form_1099_g:form_1099_g.proto",
