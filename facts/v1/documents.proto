@@ -41,7 +41,9 @@ import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
 import "taxprotos/us/federal/v1/form_1098_e/form_1098_e.proto";
 import "taxprotos/us/federal/v1/form_1098_t/form_1098_t.proto";
 import "taxprotos/us/federal/v1/form_1099_misc/form_1099_misc.proto";
+import "taxprotos/us/federal/v1/form_1099_sa/form_1099_sa.proto";
 import "taxprotos/us/federal/v1/form_5498/form_5498.proto";
+import "taxprotos/us/federal/v1/form_5498_sa/form_5498_sa.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_asc.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/facts/v1;factsv1";
@@ -130,6 +132,12 @@ message Document {
 
     // Form 5498: IRA contributions, rollovers, conversions and year-end value.
     us.federal.v1.Form5498 form_5498 = 33;
+
+    // Form 1099-SA: distributions from an HSA, Archer MSA, or Medicare Advantage MSA.
+    us.federal.v1.Form1099Sa form_1099_sa = 34;
+
+    // Form 5498-SA: contributions to and value of an HSA, Archer MSA, or Medicare Advantage MSA.
+    us.federal.v1.Form5498Sa form_5498_sa = 35;
   }
 }
 

@@ -1,0 +1,49 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form 1099-SA calls each concept, per tax year.
+#
+# Boxes come from the Form 1099-SA box layout. Amount codes come from IRS
+# Publication 1220 for Tax Year 2025 (Rev. 5-2026).
+
+form: "1099-SA"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form1099Sa"
+tax_years: 2025
+
+concepts {
+  concept: "gross_distribution"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+    amount_code: "1"
+  }
+}
+concepts {
+  concept: "earnings_on_excess_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+    amount_code: "2"
+  }
+}
+concepts {
+  concept: "distribution_code"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+  }
+}
+concepts {
+  concept: "fair_market_value_on_date_of_death"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+    amount_code: "4"
+  }
+}
+concepts {
+  concept: "account_type"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+  }
+}

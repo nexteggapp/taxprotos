@@ -1,0 +1,58 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form 5498-SA calls each concept, per tax year.
+#
+# Boxes come from the Form 5498-SA box layout. Amount codes come from IRS
+# Publication 1220 for Tax Year 2025 (Rev. 5-2026).
+
+form: "5498-SA"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form5498Sa"
+tax_years: 2025
+
+concepts {
+  concept: "archer_msa_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+    amount_code: "1"
+  }
+}
+concepts {
+  concept: "total_contributions_made_in_year"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+    amount_code: "2"
+  }
+}
+concepts {
+  concept: "contributions_made_in_next_year_for_year"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+    amount_code: "3"
+  }
+}
+concepts {
+  concept: "rollover_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+    amount_code: "4"
+  }
+}
+concepts {
+  concept: "fair_market_value"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+    amount_code: "5"
+  }
+}
+concepts {
+  concept: "account_type"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+  }
+}
