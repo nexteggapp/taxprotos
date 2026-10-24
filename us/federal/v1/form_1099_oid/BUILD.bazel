@@ -1,0 +1,27 @@
+# gazelle:ignore
+
+load("@protobuf//bazel:proto_library.bzl", "proto_library")
+
+proto_library(
+    name = "form_1099_oid_proto",
+    import_prefix = "taxprotos",
+    srcs = ["form_1099_oid.proto"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//common/v1:common_proto",
+    ],
+)
+
+exports_files([
+    "form_1099_oid.proto",
+    "mapping.textproto",
+])
+
+filegroup(
+    name = "test_oracles",
+    srcs = glob([
+        "mapping*.textproto",
+        "testdata/**",
+    ]),
+    visibility = ["//visibility:public"],
+)

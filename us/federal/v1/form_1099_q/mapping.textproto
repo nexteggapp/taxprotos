@@ -1,0 +1,63 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form 1099-Q calls each concept, per tax year.
+#
+# Line numbers come from Form 1099-Q. Amount codes come from IRS Publication
+# 1220 for Tax Year 2025.
+
+form: "1099-Q"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form1099Q"
+tax_years: 2025
+
+concepts {
+  concept: "gross_distribution"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+    amount_code: "1"
+  }
+}
+concepts {
+  concept: "earnings"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+    amount_code: "2"
+  }
+}
+concepts {
+  concept: "basis"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+    amount_code: "3"
+  }
+}
+concepts {
+  concept: "transfer_type"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+  }
+}
+concepts {
+  concept: "program_type"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+  }
+}
+concepts {
+  concept: "recipient_not_designated_beneficiary"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+  }
+}
+concepts {
+  concept: "fair_market_value"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}

@@ -1,0 +1,79 @@
+// Schedule B (Form 1040), Interest and Ordinary Dividends.
+//
+// Filed with Form 1040 when a taxpayer has over $1,500 of taxable interest or
+// ordinary dividends, had a foreign account, or was involved with a foreign
+// trust.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// ScheduleB reports interest and ordinary dividends, and foreign account/trust disclosures.
+message ScheduleB {
+  // The tax year the schedule applies to.
+  int32 tax_year = 1;
+
+  // An item of interest from a payer on line 1.
+  message InterestItem {
+    // Name of the payer.
+    string payer_name = 1;
+
+    // Amount of interest received.
+    nexteggapp.taxprotos.common.v1.Money amount = 2;
+
+    // Buyer's Social Security number if seller-financed mortgage interest.
+    string buyer_tin = 3;
+
+    // Buyer's address if seller-financed mortgage interest.
+    string buyer_address = 4;
+  }
+
+  // Part I, line 1: List of payers and interest amounts.
+  repeated InterestItem interest_items = 2;
+
+  // Part I, line 2: Total interest from all payers (sum of line 1 amounts).
+  nexteggapp.taxprotos.common.v1.Money total_interest = 3;
+
+  // Part I, line 3: Excludable interest on series EE and I U.S. savings bonds
+  // issued after 1989 from Form 8815.
+  nexteggapp.taxprotos.common.v1.Money excludable_series_ee_or_i_bond_interest = 4;
+
+  // Part I, line 4: Taxable interest (line 2 minus line 3). Carries to Form
+  // 1040 line 2b.
+  nexteggapp.taxprotos.common.v1.Money taxable_interest = 5;
+
+  // An item of ordinary dividends from a payer on line 5.
+  message DividendItem {
+    // Name of the payer.
+    string payer_name = 1;
+
+    // Amount of ordinary dividends received.
+    nexteggapp.taxprotos.common.v1.Money amount = 2;
+  }
+
+  // Part II, line 5: List of payers and ordinary dividend amounts.
+  repeated DividendItem dividend_items = 6;
+
+  // Part II, line 6: Total ordinary dividends (sum of line 5 amounts). Carries
+  // to Form 1040 line 3b.
+  nexteggapp.taxprotos.common.v1.Money total_ordinary_dividends = 7;
+
+  // Part III, line 7a: Whether the taxpayer had a financial interest in or
+  // signature authority over a foreign financial account.
+  bool foreign_account_interest_or_signature_authority = 8;
+
+  // Part III, line 7a: Whether the taxpayer is required to file FinCEN Form 114
+  // (FBAR) to report that interest or authority.
+  bool required_to_file_fincen_form_114 = 9;
+
+  // Part III, line 7b: Name(s) of foreign country or countries where foreign
+  // accounts are located.
+  repeated string foreign_account_countries = 10;
+
+  // Part III, line 8: Whether during the year the taxpayer received a
+  // distribution from, or was grantor of, or transferor to, a foreign trust.
+  bool foreign_trust_distribution_or_grantor = 11;
+}

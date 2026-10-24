@@ -1,0 +1,290 @@
+// Schedule C (Form 1040), Profit or Loss From Business (Sole Proprietorship).
+//
+// Used to report income or loss from a business you operated or a profession
+// you practiced as a sole proprietor.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// AccountingMethod indicates the accounting method used on Schedule C line F.
+enum AccountingMethod {
+  // Not specified.
+  ACCOUNTING_METHOD_UNSPECIFIED = 0;
+
+  // Cash accounting method.
+  ACCOUNTING_METHOD_CASH = 1;
+
+  // Accrual accounting method.
+  ACCOUNTING_METHOD_ACCRUAL = 2;
+
+  // Other accounting method.
+  ACCOUNTING_METHOD_OTHER = 3;
+}
+
+// InvestmentAtRisk describes the investment risk activity on line 32.
+enum InvestmentAtRisk {
+  // Not specified.
+  INVESTMENT_AT_RISK_UNSPECIFIED = 0;
+
+  // Line 32a: All investment is at risk.
+  INVESTMENT_AT_RISK_ALL_AT_RISK = 1;
+
+  // Line 32b: Some investment is not at risk.
+  INVESTMENT_AT_RISK_SOME_NOT_AT_RISK = 2;
+}
+
+// OtherExpenseItem is one other business expense listed in Part V.
+message OtherExpenseItem {
+  // Description of the expense.
+  string description = 1;
+
+  // Amount of the expense.
+  nexteggapp.taxprotos.common.v1.Money amount = 2;
+}
+
+// ScheduleC reports profit or loss from business as a sole proprietor.
+message ScheduleC {
+  // The tax year the schedule applies to.
+  int32 tax_year = 1;
+
+  // Name of proprietor as shown on Form 1040.
+  string proprietor_name = 2;
+
+  // Social Security number of proprietor.
+  string proprietor_tin = 3;
+
+  // Item A: Principal business or profession, including product or service.
+  string principal_business_or_profession = 4;
+
+  // Item B: Six-digit business code from instructions.
+  string business_code = 5;
+
+  // Item C: Business name. If no separate business name, left blank.
+  string business_name = 6;
+
+  // Item D: Employer identification number (EIN), if required.
+  string employer_id_number = 7;
+
+  // Item E: Business address (including suite or room no., city, state, ZIP).
+  string business_address = 8;
+
+  // Item F: Accounting method used.
+  AccountingMethod accounting_method = 9;
+
+  // Item F: Specification if accounting method is other.
+  string other_accounting_method = 10;
+
+  // Item G: Did you "materially participate" in the operation of this business
+  // during the tax year.
+  bool materially_participated = 11;
+
+  // Item H: If you started or acquired this business during the tax year.
+  bool started_or_acquired_in_year = 12;
+
+  // Item I: Did you make any payments that would require you to file Form(s) 1099.
+  bool made_payments_requiring_1099 = 13;
+
+  // Item J: If "Yes" on Item I, did you or will you file required Form(s) 1099.
+  bool filed_required_1099s = 14;
+
+  // -- Part I: Income -----------------------------------------------------
+
+  // Line 1: Gross receipts or sales.
+  nexteggapp.taxprotos.common.v1.Money gross_receipts_or_sales = 15;
+
+  // Line 1 checkbox: Income was reported on Form W-2 and "Statutory employee"
+  // box was checked.
+  bool statutory_employee = 16;
+
+  // Line 2: Returns and allowances.
+  nexteggapp.taxprotos.common.v1.Money returns_and_allowances = 17;
+
+  // Line 3: Net receipts (line 1 minus line 2).
+  nexteggapp.taxprotos.common.v1.Money net_receipts = 18;
+
+  // Line 4: Cost of goods sold (from line 42).
+  nexteggapp.taxprotos.common.v1.Money cost_of_goods_sold = 19;
+
+  // Line 5: Gross profit (line 3 minus line 4).
+  nexteggapp.taxprotos.common.v1.Money gross_profit = 20;
+
+  // Line 6: Other income, including federal and state gasoline or fuel tax
+  // credit or refund.
+  nexteggapp.taxprotos.common.v1.Money other_income = 21;
+
+  // Line 7: Gross income (sum of lines 5 and 6).
+  nexteggapp.taxprotos.common.v1.Money gross_income = 22;
+
+  // -- Part II: Expenses --------------------------------------------------
+
+  // Line 8: Advertising.
+  nexteggapp.taxprotos.common.v1.Money advertising = 23;
+
+  // Line 9: Car and truck expenses.
+  nexteggapp.taxprotos.common.v1.Money car_and_truck_expenses = 24;
+
+  // Line 10: Commissions and fees.
+  nexteggapp.taxprotos.common.v1.Money commissions_and_fees = 25;
+
+  // Line 11: Contract labor.
+  nexteggapp.taxprotos.common.v1.Money contract_labor = 26;
+
+  // Line 12: Depletion.
+  nexteggapp.taxprotos.common.v1.Money depletion = 27;
+
+  // Line 13: Depreciation and section 179 expense deduction.
+  nexteggapp.taxprotos.common.v1.Money depreciation_and_section_179 = 28;
+
+  // Line 14: Employee benefit programs (other than on line 19).
+  nexteggapp.taxprotos.common.v1.Money employee_benefit_programs = 29;
+
+  // Line 15: Insurance (other than health).
+  nexteggapp.taxprotos.common.v1.Money insurance_other_than_health = 30;
+
+  // Line 16a: Mortgage interest paid to banks, etc.
+  nexteggapp.taxprotos.common.v1.Money mortgage_interest = 31;
+
+  // Line 16b: Other interest.
+  nexteggapp.taxprotos.common.v1.Money other_interest = 32;
+
+  // Line 17: Legal and professional services.
+  nexteggapp.taxprotos.common.v1.Money legal_and_professional_services = 33;
+
+  // Line 18: Office expense.
+  nexteggapp.taxprotos.common.v1.Money office_expense = 34;
+
+  // Line 19: Pension and profit-sharing plans.
+  nexteggapp.taxprotos.common.v1.Money pension_and_profit_sharing_plans = 35;
+
+  // Line 20a: Rent or lease of vehicles, machinery, and equipment.
+  nexteggapp.taxprotos.common.v1.Money rent_or_lease_vehicles = 36;
+
+  // Line 20b: Rent or lease of other business property.
+  nexteggapp.taxprotos.common.v1.Money rent_or_lease_other_business_property = 37;
+
+  // Line 21: Repairs and maintenance.
+  nexteggapp.taxprotos.common.v1.Money repairs_and_maintenance = 38;
+
+  // Line 22: Supplies (not included in Part III).
+  nexteggapp.taxprotos.common.v1.Money supplies = 39;
+
+  // Line 23: Taxes and licenses.
+  nexteggapp.taxprotos.common.v1.Money taxes_and_licenses = 40;
+
+  // Line 24a: Travel.
+  nexteggapp.taxprotos.common.v1.Money travel = 41;
+
+  // Line 24b: Deductible meals.
+  nexteggapp.taxprotos.common.v1.Money deductible_meals = 42;
+
+  // Line 25: Utilities.
+  nexteggapp.taxprotos.common.v1.Money utilities = 43;
+
+  // Line 26: Wages (less employment credits).
+  nexteggapp.taxprotos.common.v1.Money wages = 44;
+
+  // Line 27a: Energy efficient commercial buildings deduction (Form 7205).
+  nexteggapp.taxprotos.common.v1.Money energy_efficient_commercial_buildings_deduction = 45;
+
+  // Line 27b: Other expenses (from line 48).
+  nexteggapp.taxprotos.common.v1.Money other_expenses = 46;
+
+  // Line 28: Total expenses before business use of home (sum of lines 8
+  // through 27b).
+  nexteggapp.taxprotos.common.v1.Money total_expenses_before_home_office = 47;
+
+  // Line 29: Tentative profit or loss (line 7 minus line 28).
+  nexteggapp.taxprotos.common.v1.Money tentative_profit_or_loss = 48;
+
+  // Line 30: Expenses for business use of your home (Form 8829 or simplified
+  // method).
+  nexteggapp.taxprotos.common.v1.Money expenses_for_business_use_of_home = 49;
+
+  // Line 31: Net profit or loss (line 29 minus line 30).
+  nexteggapp.taxprotos.common.v1.Money net_profit_or_loss = 50;
+
+  // Line 32: Investment at risk if line 31 is a loss.
+  InvestmentAtRisk investment_at_risk = 51;
+
+  // -- Part III: Cost of Goods Sold ---------------------------------------
+
+  // Line 33a: Method used to value closing inventory: cost.
+  bool inventory_method_cost = 52;
+
+  // Line 33b: Method used to value closing inventory: lower of cost or market.
+  bool inventory_method_lower_of_cost_or_market = 53;
+
+  // Line 33c: Method used to value closing inventory: other.
+  bool inventory_method_other = 54;
+
+  // Line 33c: Explanation of other inventory valuation method.
+  string inventory_method_other_explanation = 55;
+
+  // Line 34: Was there any change in determining quantities, costs, or
+  // valuations between opening and closing inventory.
+  bool change_in_inventory_valuation = 56;
+
+  // Line 35: Inventory at beginning of year.
+  nexteggapp.taxprotos.common.v1.Money inventory_at_beginning_of_year = 57;
+
+  // Line 36: Purchases less cost of items withdrawn for personal use.
+  nexteggapp.taxprotos.common.v1.Money purchases = 58;
+
+  // Line 37: Cost of labor (excluding amounts paid to yourself).
+  nexteggapp.taxprotos.common.v1.Money cost_of_labor = 59;
+
+  // Line 38: Materials and supplies.
+  nexteggapp.taxprotos.common.v1.Money materials_and_supplies = 60;
+
+  // Line 39: Other costs.
+  nexteggapp.taxprotos.common.v1.Money other_costs = 61;
+
+  // Line 40: Total inventory and costs (sum of lines 35 through 39).
+  nexteggapp.taxprotos.common.v1.Money total_inventory_and_costs = 62;
+
+  // Line 41: Inventory at end of year.
+  nexteggapp.taxprotos.common.v1.Money inventory_at_end_of_year = 63;
+
+  // Line 42: Cost of goods sold (line 40 minus line 41). Carries to line 4.
+  nexteggapp.taxprotos.common.v1.Money cost_of_goods_sold_from_part_iii = 64;
+
+  // -- Part IV: Information on Your Vehicle -------------------------------
+
+  // Line 43: Date vehicle was placed in service for business purposes.
+  nexteggapp.taxprotos.common.v1.Date date_vehicle_placed_in_service = 65;
+
+  // Line 44a: Business miles driven during the year.
+  int32 business_miles = 66;
+
+  // Line 44b: Commuting miles driven during the year.
+  int32 commuting_miles = 67;
+
+  // Line 44c: Other miles driven during the year.
+  int32 other_miles = 68;
+
+  // Line 45: Was the vehicle available for personal use during off-duty hours.
+  bool vehicle_available_for_personal_use = 69;
+
+  // Line 46: Do you (or your spouse) have another vehicle available for
+  // personal use.
+  bool another_vehicle_available = 70;
+
+  // Line 47a: Do you have evidence to support your deduction.
+  bool has_evidence_to_support_deduction = 71;
+
+  // Line 47b: If "Yes" on line 47a, is the evidence written.
+  bool is_evidence_written = 72;
+
+  // -- Part V: Other Expenses ---------------------------------------------
+
+  // List of other business expenses in Part V.
+  repeated OtherExpenseItem other_expenses_items = 73;
+
+  // Line 48: Total other expenses (sum of lines in Part V). Carries to line 27b.
+  nexteggapp.taxprotos.common.v1.Money total_other_expenses = 74;
+}

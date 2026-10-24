@@ -1,0 +1,274 @@
+// Schedule K-1 (Form 1065): Partner's Share of Income, Deductions, Credits, etc.
+//
+// A partnership files Schedule K-1 with the IRS and furnishes a copy to each
+// partner to report their share of the partnership's income, deductions,
+// credits, and other tax items.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+import "taxprotos/common/v1/quantity.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/schedule_k1;schedulek1";
+
+// Schedule K-1 (Form 1065) reports a partner's share of partnership items.
+message ScheduleK1Form1065 {
+  option (common.v1.fdx_entity) = "Tax1065K1";
+  option (common.v1.fdx_version) = "5.0";
+
+  // PartnerType classifies the partner's status in the partnership (box G).
+  enum PartnerType {
+    // Unspecified partner type.
+    PARTNER_TYPE_UNSPECIFIED = 0;
+
+    // General partner or LLC member-manager.
+    PARTNER_TYPE_GENERAL_PARTNER_OR_LLC_MEMBER_MANAGER = 1;
+
+    // Limited partner or other LLC member.
+    PARTNER_TYPE_LIMITED_PARTNER_OR_OTHER_LLC_MEMBER = 2;
+  }
+
+  // PartnerResidency specifies domestic vs foreign partner status (box H1).
+  enum PartnerResidency {
+    // Unspecified partner residency.
+    PARTNER_RESIDENCY_UNSPECIFIED = 0;
+
+    // Domestic partner.
+    PARTNER_RESIDENCY_DOMESTIC = 1;
+
+    // Foreign partner.
+    PARTNER_RESIDENCY_FOREIGN = 2;
+  }
+
+  // CodedAmount represents an item identified by an IRS code and an amount.
+  message CodedAmount {
+    // The code as printed on the schedule or statement (e.g. "A", "B", "C").
+    string code = 1 [(common.v1.fdx_field) = "code"];
+
+    // The dollar amount reported for this code.
+    common.v1.Money amount = 2 [(common.v1.fdx_field) = "amount"];
+
+    // Additional description or statement detail, if provided.
+    string description = 3 [(common.v1.fdx_field) = "description"];
+  }
+
+  // The tax year this form reports. Four digits, such as 2025.
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // Final K-1 indicator.
+  bool final_k1 = 2 [(common.v1.fdx_field) = "finalK1"];
+
+  // Amended K-1 indicator.
+  bool amended_k1 = 3 [(common.v1.fdx_field) = "amendedK1"];
+
+  // Fiscal year beginning date, if not calendar year.
+  common.v1.Date fiscal_year_begin = 4 [(common.v1.fdx_field) = "fiscalYearBegin"];
+
+  // Fiscal year ending date, if not calendar year.
+  common.v1.Date fiscal_year_end = 5 [(common.v1.fdx_field) = "fiscalYearEnd"];
+
+  // Partnership's employer identification number (box A).
+  string partnership_ein = 6 [(common.v1.fdx_field) = "partnershipTin"];
+
+  // Partnership's name, address, city, state, and ZIP code (box B).
+  common.v1.Party partnership = 7 [
+    (common.v1.fdx_field) = "partnership",
+    (common.v1.fdx_deviation) = "Party message rather than flat fields"
+  ];
+
+  // IRS Center where partnership filed return (box C).
+  string irs_center = 8 [(common.v1.fdx_field) = "irsCenter"];
+
+  // Check if this is a publicly traded partnership (PTP) (box D).
+  bool publicly_traded_partnership = 9 [(common.v1.fdx_field) = "publiclyTradedPartnership"];
+
+  // Partner's SSN or TIN (box E).
+  string partner_tin = 10 [(common.v1.fdx_field) = "partnerTin"];
+
+  // Partner's name, address, city, state, and ZIP code (box F).
+  common.v1.Party partner = 11 [
+    (common.v1.fdx_field) = "partner",
+    (common.v1.fdx_deviation) = "Party message rather than flat fields"
+  ];
+
+  // General partner or LLC member-manager vs limited partner (box G).
+  PartnerType partner_type = 12 [(common.v1.fdx_field) = "partnerType"];
+
+  // Domestic vs foreign partner (box H1).
+  PartnerResidency partner_residency = 13 [(common.v1.fdx_field) = "partnerResidency"];
+
+  // Disregarded entity TIN, if partner is a disregarded entity (box H2).
+  string disregarded_entity_tin = 14 [(common.v1.fdx_field) = "disregardedEntityTin"];
+
+  // Disregarded entity name, if partner is a disregarded entity (box H2).
+  string disregarded_entity_name = 15 [(common.v1.fdx_field) = "disregardedEntityName"];
+
+  // Type of entity of the partner (e.g., Individual, Corporation, Trust) (box I1).
+  string partner_entity_type = 16 [(common.v1.fdx_field) = "partnerEntityType"];
+
+  // True if partner is a retirement plan (IRA/SEP/Keogh/etc.) (box I2).
+  bool retirement_plan = 17 [(common.v1.fdx_field) = "retirementPlan"];
+
+  // Partner's beginning profit sharing percentage (box J).
+  common.v1.Quantity profit_share_beginning = 18 [(common.v1.fdx_field) = "profitShareBeginning"];
+
+  // Partner's ending profit sharing percentage (box J).
+  common.v1.Quantity profit_share_ending = 19 [(common.v1.fdx_field) = "profitShareEnding"];
+
+  // Partner's beginning loss sharing percentage (box J).
+  common.v1.Quantity loss_share_beginning = 20 [(common.v1.fdx_field) = "lossShareBeginning"];
+
+  // Partner's ending loss sharing percentage (box J).
+  common.v1.Quantity loss_share_ending = 21 [(common.v1.fdx_field) = "lossShareEnding"];
+
+  // Partner's beginning capital sharing percentage (box J).
+  common.v1.Quantity capital_share_beginning = 22 [(common.v1.fdx_field) = "capitalShareBeginning"];
+
+  // Partner's ending capital sharing percentage (box J).
+  common.v1.Quantity capital_share_ending = 23 [(common.v1.fdx_field) = "capitalShareEnding"];
+
+  // True if decrease in percentage is due to sale or exchange of partnership interest (box J).
+  bool decrease_due_to_sale_or_exchange = 24 [(common.v1.fdx_field) = "decreaseDueToSaleOrExchange"];
+
+  // Partner's share of nonrecourse liabilities at beginning of year (box K1).
+  common.v1.Money nonrecourse_liabilities_beginning = 25 [(common.v1.fdx_field) = "nonrecourseLiabilitiesBeginning"];
+
+  // Partner's share of nonrecourse liabilities at end of year (box K1).
+  common.v1.Money nonrecourse_liabilities_ending = 26 [(common.v1.fdx_field) = "nonrecourseLiabilitiesEnding"];
+
+  // Partner's share of qualified nonrecourse financing at beginning of year (box K1).
+  common.v1.Money qualified_nonrecourse_financing_beginning = 27 [(common.v1.fdx_field) = "qualifiedNonrecourseFinancingBeginning"];
+
+  // Partner's share of qualified nonrecourse financing at end of year (box K1).
+  common.v1.Money qualified_nonrecourse_financing_ending = 28 [(common.v1.fdx_field) = "qualifiedNonrecourseFinancingEnding"];
+
+  // Partner's share of recourse liabilities at beginning of year (box K1).
+  common.v1.Money recourse_liabilities_beginning = 29 [(common.v1.fdx_field) = "recourseLiabilitiesBeginning"];
+
+  // Partner's share of recourse liabilities at end of year (box K1).
+  common.v1.Money recourse_liabilities_ending = 30 [(common.v1.fdx_field) = "recourseLiabilitiesEnding"];
+
+  // True if liability amounts include amounts from lower-tier partnerships (box K2).
+  bool includes_lower_tier_liabilities = 31 [(common.v1.fdx_field) = "includesLowerTierLiabilities"];
+
+  // True if liabilities are subject to partner guarantees or payment obligations (box K3).
+  bool liabilities_subject_to_guarantees = 32 [(common.v1.fdx_field) = "liabilitiesSubjectToGuarantees"];
+
+  // Beginning capital account balance (box L).
+  common.v1.Money beginning_capital_account = 33 [(common.v1.fdx_field) = "beginningCapitalAccount"];
+
+  // Capital contributed during the year (box L).
+  common.v1.Money capital_contributed_during_year = 34 [(common.v1.fdx_field) = "capitalContributedDuringYear"];
+
+  // Current year net income or loss in capital account (box L).
+  common.v1.Money current_year_net_income = 35 [(common.v1.fdx_field) = "currentYearNetIncome"];
+
+  // Other capital increases or decreases (box L).
+  common.v1.Money other_capital_increase_decrease = 36 [(common.v1.fdx_field) = "otherCapitalIncreaseDecrease"];
+
+  // Withdrawals and distributions from capital account (box L).
+  common.v1.Money withdrawals_and_distributions = 37 [(common.v1.fdx_field) = "withdrawalsAndDistributions"];
+
+  // Ending capital account balance (box L).
+  common.v1.Money ending_capital_account = 38 [(common.v1.fdx_field) = "endingCapitalAccount"];
+
+  // Did partner contribute property with built-in gain or loss (box M).
+  bool contributed_property_with_built_in_gain_or_loss = 39 [(common.v1.fdx_field) = "contributedPropertyWithBuiltInGainOrLoss"];
+
+  // Partner's share of net unrecognized Section 704(c) gain or loss at beginning of year (box N).
+  common.v1.Money net_unrecognized_section_704c_gain_loss_beginning = 40 [(common.v1.fdx_field) = "netUnrecognizedSection704cGainLossBeginning"];
+
+  // Partner's share of net unrecognized Section 704(c) gain or loss at end of year (box N).
+  common.v1.Money net_unrecognized_section_704c_gain_loss_ending = 41 [(common.v1.fdx_field) = "netUnrecognizedSection704cGainLossEnding"];
+
+  // Ordinary business income (loss) (box 1).
+  common.v1.Money ordinary_business_income = 42 [(common.v1.fdx_field) = "ordinaryBusinessIncome"];
+
+  // Net rental real estate income (loss) (box 2).
+  common.v1.Money net_rental_real_estate_income = 43 [(common.v1.fdx_field) = "netRentalRealEstateIncome"];
+
+  // Other net rental income (loss) (box 3).
+  common.v1.Money other_net_rental_income = 44 [(common.v1.fdx_field) = "otherNetRentalIncome"];
+
+  // Guaranteed payments for services (box 4a).
+  common.v1.Money guaranteed_payments_for_services = 45 [(common.v1.fdx_field) = "guaranteedPaymentsForServices"];
+
+  // Guaranteed payments for capital (box 4b).
+  common.v1.Money guaranteed_payments_for_capital = 46 [(common.v1.fdx_field) = "guaranteedPaymentsForCapital"];
+
+  // Total guaranteed payments (box 4c).
+  common.v1.Money total_guaranteed_payments = 47 [(common.v1.fdx_field) = "totalGuaranteedPayments"];
+
+  // Interest income (box 5).
+  common.v1.Money interest_income = 48 [(common.v1.fdx_field) = "interestIncome"];
+
+  // Ordinary dividends (box 6a).
+  common.v1.Money ordinary_dividends = 49 [(common.v1.fdx_field) = "ordinaryDividends"];
+
+  // Qualified dividends (box 6b).
+  common.v1.Money qualified_dividends = 50 [(common.v1.fdx_field) = "qualifiedDividends"];
+
+  // Dividend equivalents (box 6c).
+  common.v1.Money dividend_equivalents = 51 [(common.v1.fdx_field) = "dividendEquivalents"];
+
+  // Royalties (box 7).
+  common.v1.Money royalties = 52 [(common.v1.fdx_field) = "royalties"];
+
+  // Net short-term capital gain (loss) (box 8).
+  common.v1.Money net_short_term_capital_gain = 53 [(common.v1.fdx_field) = "netShortTermCapitalGain"];
+
+  // Net long-term capital gain (loss) (box 9a).
+  common.v1.Money net_long_term_capital_gain = 54 [(common.v1.fdx_field) = "netLongTermCapitalGain"];
+
+  // Collectibles (28%) gain (loss) (box 9b).
+  common.v1.Money collectibles_gain = 55 [(common.v1.fdx_field) = "collectiblesGain"];
+
+  // Unrecaptured section 1250 gain (box 9c).
+  common.v1.Money unrecaptured_section_1250_gain = 56 [(common.v1.fdx_field) = "unrecapturedSection1250Gain"];
+
+  // Net section 1231 gain (loss) (box 10).
+  common.v1.Money net_section_1231_gain = 57 [(common.v1.fdx_field) = "netSection1231Gain"];
+
+  // Other income (loss) coded items (box 11).
+  repeated CodedAmount other_income = 58 [(common.v1.fdx_field) = "otherIncome"];
+
+  // Section 179 deduction (box 12).
+  common.v1.Money section_179_deduction = 59 [(common.v1.fdx_field) = "section179Deduction"];
+
+  // Other deductions coded items (box 13).
+  repeated CodedAmount other_deductions = 60 [(common.v1.fdx_field) = "otherDeductions"];
+
+  // Self-employment earnings (loss) coded items (box 14).
+  repeated CodedAmount self_employment_earnings = 61 [(common.v1.fdx_field) = "selfEmploymentEarnings"];
+
+  // Credits coded items (box 15).
+  repeated CodedAmount credits = 62 [(common.v1.fdx_field) = "credits"];
+
+  // Schedule K-3 is attached if checked (box 16).
+  bool schedule_k3_attached = 63 [(common.v1.fdx_field) = "scheduleK3Attached"];
+
+  // Alternative minimum tax (AMT) items (box 17).
+  repeated CodedAmount alternative_minimum_tax_items = 64 [(common.v1.fdx_field) = "alternativeMinimumTaxItems"];
+
+  // Tax-exempt income and nondeductible expenses coded items (box 18).
+  repeated CodedAmount tax_exempt_income_and_nondeductible_expenses = 65 [(common.v1.fdx_field) = "taxExemptIncomeAndNondeductibleExpenses"];
+
+  // Distributions coded items (box 19).
+  repeated CodedAmount distributions = 66 [(common.v1.fdx_field) = "distributions"];
+
+  // Other information coded items (box 20).
+  repeated CodedAmount other_information = 67 [(common.v1.fdx_field) = "otherInformation"];
+
+  // Foreign taxes paid or accrued (box 21).
+  common.v1.Money foreign_taxes_paid_or_accrued = 68 [(common.v1.fdx_field) = "foreignTaxesPaidOrAccrued"];
+
+  // More than one activity for at-risk purposes (box 22).
+  bool more_than_one_activity_for_at_risk_purposes = 69 [(common.v1.fdx_field) = "moreThanOneActivityForAtRiskPurposes"];
+
+  // More than one activity for passive activity purposes (box 23).
+  bool more_than_one_activity_for_passive_activity_purposes = 70 [(common.v1.fdx_field) = "moreThanOneActivityForPassiveActivityPurposes"];
+}

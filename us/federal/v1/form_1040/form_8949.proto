@@ -1,0 +1,153 @@
+// Form 8949, Sales and Other Dispositions of Capital Assets.
+//
+// File with Schedule D to list transactions for lines 1b, 2, 3, 8b, 9, and 10
+// of Schedule D.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// ShortTermReportingCategory corresponds to checkboxes A, B, C, G, H, I on
+// Form 8949 Part I.
+enum ShortTermReportingCategory {
+  // Not specified.
+  SHORT_TERM_REPORTING_CATEGORY_UNSPECIFIED = 0;
+
+  // Box A: Short-term transactions reported on Form(s) 1099-B showing basis was
+  // reported to the IRS.
+  SHORT_TERM_REPORTING_CATEGORY_BOX_A_1099_B_BASIS_REPORTED = 1;
+
+  // Box B: Short-term transactions reported on Form(s) 1099-B showing basis was
+  // not reported to the IRS.
+  SHORT_TERM_REPORTING_CATEGORY_BOX_B_1099_B_BASIS_NOT_REPORTED = 2;
+
+  // Box C: Short-term transactions, other than digital asset transactions, not
+  // reported to you on Form 1099-B or Form 1099-DA.
+  SHORT_TERM_REPORTING_CATEGORY_BOX_C_NOT_REPORTED = 3;
+
+  // Box G: Short-term transactions reported on Form(s) 1099-DA showing basis
+  // was reported to the IRS.
+  SHORT_TERM_REPORTING_CATEGORY_BOX_G_1099_DA_BASIS_REPORTED = 4;
+
+  // Box H: Short-term transactions reported on Form(s) 1099-DA showing basis
+  // was not reported to the IRS.
+  SHORT_TERM_REPORTING_CATEGORY_BOX_H_1099_DA_BASIS_NOT_REPORTED = 5;
+
+  // Box I: Short-term digital asset transactions not reported to you on Form
+  // 1099-DA or Form 1099-B.
+  SHORT_TERM_REPORTING_CATEGORY_BOX_I_DIGITAL_ASSET_NOT_REPORTED = 6;
+}
+
+// LongTermReportingCategory corresponds to checkboxes D, E, F, J, K, L on Form
+// 8949 Part II.
+enum LongTermReportingCategory {
+  // Not specified.
+  LONG_TERM_REPORTING_CATEGORY_UNSPECIFIED = 0;
+
+  // Box D: Long-term transactions reported on Form(s) 1099-B showing basis was
+  // reported to the IRS.
+  LONG_TERM_REPORTING_CATEGORY_BOX_D_1099_B_BASIS_REPORTED = 1;
+
+  // Box E: Long-term transactions reported on Form(s) 1099-B showing basis was
+  // not reported to the IRS.
+  LONG_TERM_REPORTING_CATEGORY_BOX_E_1099_B_BASIS_NOT_REPORTED = 2;
+
+  // Box F: Long-term transactions, other than digital asset transactions, not
+  // reported to you on Form 1099-B or Form 1099-DA.
+  LONG_TERM_REPORTING_CATEGORY_BOX_F_NOT_REPORTED = 3;
+
+  // Box J: Long-term transactions reported on Form(s) 1099-DA showing basis
+  // was reported to the IRS.
+  LONG_TERM_REPORTING_CATEGORY_BOX_J_1099_DA_BASIS_REPORTED = 4;
+
+  // Box K: Long-term transactions reported on Form(s) 1099-DA showing basis
+  // was not reported to the IRS.
+  LONG_TERM_REPORTING_CATEGORY_BOX_K_1099_DA_BASIS_NOT_REPORTED = 5;
+
+  // Box L: Long-term digital asset transactions not reported to you on Form
+  // 1099-DA or Form 1099-B.
+  LONG_TERM_REPORTING_CATEGORY_BOX_L_DIGITAL_ASSET_NOT_REPORTED = 6;
+}
+
+// CapitalAssetTransaction represents one row of capital asset disposition on
+// line 1.
+message CapitalAssetTransaction {
+  // Column (a): Description of property.
+  string property_description = 1;
+
+  // Column (b): Date acquired (month, day, year or text like "VARIOUS").
+  string date_acquired = 2;
+
+  // Column (c): Date sold or disposed of (month, day, year).
+  string date_sold_or_disposed = 3;
+
+  // Column (d): Proceeds (sales price).
+  nexteggapp.taxprotos.common.v1.Money proceeds = 4;
+
+  // Column (e): Cost or other basis.
+  nexteggapp.taxprotos.common.v1.Money cost_or_other_basis = 5;
+
+  // Column (f): Code(s) from instructions for adjustment.
+  string adjustment_codes = 6;
+
+  // Column (g): Amount of adjustment.
+  nexteggapp.taxprotos.common.v1.Money adjustment_amount = 7;
+
+  // Column (h): Gain or loss (proceeds minus cost plus adjustment).
+  nexteggapp.taxprotos.common.v1.Money gain_or_loss = 8;
+}
+
+// Form8949 reports sales and other dispositions of capital assets.
+message Form8949 {
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Social Security number or taxpayer identification number.
+  string filer_tin = 3;
+
+  // -- Part I: Short-Term -------------------------------------------------
+
+  // Checkbox indicating short-term reporting category.
+  ShortTermReportingCategory short_term_reporting_category = 4;
+
+  // Line 1: Short-term transactions.
+  repeated CapitalAssetTransaction short_term_transactions = 5;
+
+  // Line 2 column (d): Total short-term proceeds.
+  nexteggapp.taxprotos.common.v1.Money total_short_term_proceeds = 6;
+
+  // Line 2 column (e): Total short-term cost or other basis.
+  nexteggapp.taxprotos.common.v1.Money total_short_term_cost_or_other_basis = 7;
+
+  // Line 2 column (g): Total short-term adjustment amount.
+  nexteggapp.taxprotos.common.v1.Money total_short_term_adjustments = 8;
+
+  // Line 2 column (h): Total short-term gain or loss.
+  nexteggapp.taxprotos.common.v1.Money total_short_term_gain_or_loss = 9;
+
+  // -- Part II: Long-Term -------------------------------------------------
+
+  // Checkbox indicating long-term reporting category.
+  LongTermReportingCategory long_term_reporting_category = 10;
+
+  // Line 1: Long-term transactions.
+  repeated CapitalAssetTransaction long_term_transactions = 11;
+
+  // Line 2 column (d): Total long-term proceeds.
+  nexteggapp.taxprotos.common.v1.Money total_long_term_proceeds = 12;
+
+  // Line 2 column (e): Total long-term cost or other basis.
+  nexteggapp.taxprotos.common.v1.Money total_long_term_cost_or_other_basis = 13;
+
+  // Line 2 column (g): Total long-term adjustment amount.
+  nexteggapp.taxprotos.common.v1.Money total_long_term_adjustments = 14;
+
+  // Line 2 column (h): Total long-term gain or loss.
+  nexteggapp.taxprotos.common.v1.Money total_long_term_gain_or_loss = 15;
+}

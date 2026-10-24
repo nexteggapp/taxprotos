@@ -16,12 +16,16 @@ import "taxprotos/common/v1/money.proto";
 import "taxprotos/common/v1/party.proto";
 import "taxprotos/common/v1/quantity.proto";
 import "taxprotos/us/federal/v1/form_1040/form_1040.proto";
+import "taxprotos/us/federal/v1/form_1040/form_8949.proto";
 import "taxprotos/us/federal/v1/form_1040/schedule_1.proto";
 import "taxprotos/us/federal/v1/form_1040/schedule_1a.proto";
 import "taxprotos/us/federal/v1/form_1040/schedule_2.proto";
 import "taxprotos/us/federal/v1/form_1040/schedule_3.proto";
 import "taxprotos/us/federal/v1/form_1040/schedule_a.proto";
+import "taxprotos/us/federal/v1/form_1040/schedule_b.proto";
+import "taxprotos/us/federal/v1/form_1040/schedule_c.proto";
 import "taxprotos/us/federal/v1/form_1040/schedule_d.proto";
+import "taxprotos/us/federal/v1/form_1040/schedule_e.proto";
 import "taxprotos/us/federal/v1/form_1040/schedule_se.proto";
 import "taxprotos/us/federal/v1/form_1098/form_1098.proto";
 import "taxprotos/us/federal/v1/form_1099_b/form_1099_b.proto";
@@ -29,8 +33,13 @@ import "taxprotos/us/federal/v1/form_1099_div/form_1099_div.proto";
 import "taxprotos/us/federal/v1/form_1099_g/form_1099_g.proto";
 import "taxprotos/us/federal/v1/form_1099_int/form_1099_int.proto";
 import "taxprotos/us/federal/v1/form_1099_k/form_1099_k.proto";
+import "taxprotos/us/federal/v1/form_1099_c/form_1099_c.proto";
+import "taxprotos/us/federal/v1/form_1099_misc/form_1099_misc.proto";
 import "taxprotos/us/federal/v1/form_1099_nec/form_1099_nec.proto";
+import "taxprotos/us/federal/v1/form_1099_oid/form_1099_oid.proto";
+import "taxprotos/us/federal/v1/form_1099_q/form_1099_q.proto";
 import "taxprotos/us/federal/v1/form_1099_r/form_1099_r.proto";
+import "taxprotos/us/federal/v1/form_1099_s/form_1099_s.proto";
 import "taxprotos/us/federal/v1/form_ssa_1099/form_ssa_1099.proto";
 import "taxprotos/us/federal/v1/form_w2/form_w2.proto";
 import "taxprotos/us/federal/v1/form_w2g/form_w2g.proto";
@@ -41,10 +50,12 @@ import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
 import "taxprotos/us/federal/v1/form_1095_a/form_1095_a.proto";
 import "taxprotos/us/federal/v1/form_1098_e/form_1098_e.proto";
 import "taxprotos/us/federal/v1/form_1098_t/form_1098_t.proto";
-import "taxprotos/us/federal/v1/form_1099_misc/form_1099_misc.proto";
 import "taxprotos/us/federal/v1/form_1099_sa/form_1099_sa.proto";
 import "taxprotos/us/federal/v1/form_5498/form_5498.proto";
 import "taxprotos/us/federal/v1/form_5498_sa/form_5498_sa.proto";
+import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1041.proto";
+import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1065.proto";
+import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1120_s.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_asc.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/facts/v1;factsv1";
@@ -142,6 +153,27 @@ message Document {
 
     // Form 1095-A: health insurance marketplace statement.
     us.federal.v1.Form1095A form_1095_a = 36;
+
+    // Schedule K-1 (Form 1065): partner's share of income, deductions, credits, etc.
+    us.federal.v1.ScheduleK1Form1065 schedule_k1_1065 = 37;
+
+    // Schedule K-1 (Form 1120-S): shareholder's share of income, deductions, credits, etc.
+    us.federal.v1.ScheduleK1Form1120S schedule_k1_1120_s = 38;
+
+    // Schedule K-1 (Form 1041): beneficiary's share of income, deductions, credits, etc.
+    us.federal.v1.ScheduleK1Form1041 schedule_k1_1041 = 39;
+
+    // Form 1099-OID: original issue discount.
+    us.federal.v1.Form1099OID form_1099_oid = 40;
+
+    // Form 1099-S: proceeds from real estate transactions.
+    us.federal.v1.Form1099S form_1099_s = 41;
+
+    // Form 1099-C: cancellation of debt.
+    us.federal.v1.Form1099C form_1099_c = 42;
+
+    // Form 1099-Q: payments from qualified education programs.
+    us.federal.v1.Form1099Q form_1099_q = 43;
   }
 }
 
@@ -426,6 +458,19 @@ message FederalReturn {
 
   // Schedule SE, one per person with self-employment income.
   repeated us.federal.v1.ScheduleSE schedule_se = 8;
+
+  // Schedule B: interest and ordinary dividends.
+  us.federal.v1.ScheduleB schedule_b = 9;
+
+  // Schedule C: profit or loss from business (sole proprietorship).
+  repeated us.federal.v1.ScheduleC schedule_c = 10;
+
+  // Schedule E: supplemental income and loss from rental real estate,
+  // royalties, partnerships, S corporations, estates, trusts, REMICs, etc.
+  us.federal.v1.ScheduleE schedule_e = 11;
+
+  // Form 8949: sales and other dispositions of capital assets.
+  repeated us.federal.v1.Form8949 form_8949 = 12;
 }
 
 // A California resident return: Form 540 and Schedule CA.

@@ -1,0 +1,146 @@
+// Schedule K-1 (Form 1041): Beneficiary's Share of Income, Deductions, Credits, etc.
+//
+// An estate or trust files Schedule K-1 with the IRS and furnishes a copy to each
+// beneficiary to report their share of income, deductions, credits, and other items.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/schedule_k1;schedulek1";
+
+// Schedule K-1 (Form 1041) reports a beneficiary's share of estate or trust items.
+message ScheduleK1Form1041 {
+  option (common.v1.fdx_entity) = "Tax1041K1";
+  option (common.v1.fdx_version) = "5.0";
+
+  // BeneficiaryResidency specifies domestic vs foreign status (box H).
+  enum BeneficiaryResidency {
+    // Unspecified beneficiary residency.
+    BENEFICIARY_RESIDENCY_UNSPECIFIED = 0;
+
+    // Domestic beneficiary.
+    BENEFICIARY_RESIDENCY_DOMESTIC = 1;
+
+    // Foreign beneficiary.
+    BENEFICIARY_RESIDENCY_FOREIGN = 2;
+  }
+
+  // CodedAmount represents an item identified by an IRS code and an amount.
+  message CodedAmount {
+    // The code as printed on the schedule or statement (e.g. "A", "B", "C").
+    string code = 1 [(common.v1.fdx_field) = "code"];
+
+    // The dollar amount reported for this code.
+    common.v1.Money amount = 2 [(common.v1.fdx_field) = "amount"];
+
+    // Additional description or statement detail, if provided.
+    string description = 3 [(common.v1.fdx_field) = "description"];
+  }
+
+  // The tax year this form reports. Four digits, such as 2025.
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // Final K-1 indicator.
+  bool final_k1 = 2 [(common.v1.fdx_field) = "finalK1"];
+
+  // Amended K-1 indicator.
+  bool amended_k1 = 3 [(common.v1.fdx_field) = "amendedK1"];
+
+  // Fiscal year beginning date, if not calendar year.
+  common.v1.Date fiscal_year_begin = 4 [(common.v1.fdx_field) = "fiscalYearBegin"];
+
+  // Fiscal year ending date, if not calendar year.
+  common.v1.Date fiscal_year_end = 5 [(common.v1.fdx_field) = "fiscalYearEnd"];
+
+  // Estate's or trust's employer identification number (box A).
+  string estate_or_trust_ein = 6 [(common.v1.fdx_field) = "estateOrTrustTin"];
+
+  // Estate's or trust's name (box B).
+  string estate_or_trust_name = 7 [(common.v1.fdx_field) = "estateOrTrustName"];
+
+  // Fiduciary's name, address, city, state, and ZIP code (box C).
+  common.v1.Party fiduciary = 8 [
+    (common.v1.fdx_field) = "fiduciary",
+    (common.v1.fdx_deviation) = "Party message rather than flat fields"
+  ];
+
+  // True if Form 1041-T was filed (box D).
+  bool form_1041_t_filed = 9 [(common.v1.fdx_field) = "form1041TFiled"];
+
+  // Date Form 1041-T was filed, if filed (box D).
+  common.v1.Date form_1041_t_date = 10 [(common.v1.fdx_field) = "form1041TDate"];
+
+  // True if this is the final Form 1041 for the estate or trust (box E).
+  bool final_form_1041 = 11 [(common.v1.fdx_field) = "finalForm1041"];
+
+  // Beneficiary's identifying number (box F).
+  string beneficiary_tin = 12 [(common.v1.fdx_field) = "beneficiaryTin"];
+
+  // Beneficiary's name, address, city, state, and ZIP code (box G).
+  common.v1.Party beneficiary = 13 [
+    (common.v1.fdx_field) = "beneficiary",
+    (common.v1.fdx_deviation) = "Party message rather than flat fields"
+  ];
+
+  // Domestic vs foreign beneficiary (box H).
+  BeneficiaryResidency beneficiary_residency = 14 [(common.v1.fdx_field) = "beneficiaryResidency"];
+
+  // Interest income (box 1).
+  common.v1.Money interest_income = 15 [(common.v1.fdx_field) = "interestIncome"];
+
+  // Ordinary dividends (box 2a).
+  common.v1.Money ordinary_dividends = 16 [(common.v1.fdx_field) = "ordinaryDividends"];
+
+  // Qualified dividends (box 2b).
+  common.v1.Money qualified_dividends = 17 [(common.v1.fdx_field) = "qualifiedDividends"];
+
+  // Net short-term capital gain (box 3).
+  common.v1.Money net_short_term_capital_gain = 18 [(common.v1.fdx_field) = "netShortTermCapitalGain"];
+
+  // Net long-term capital gain (box 4a).
+  common.v1.Money net_long_term_capital_gain = 19 [(common.v1.fdx_field) = "netLongTermCapitalGain"];
+
+  // 28% rate gain (box 4b).
+  common.v1.Money collectibles_gain = 20 [
+    (common.v1.fdx_field) = "collectiblesGain",
+    (common.v1.fdx_deviation) = "Printed as 28% rate gain on Form 1041 Schedule K-1"
+  ];
+
+  // Unrecaptured section 1250 gain (box 4c).
+  common.v1.Money unrecaptured_section_1250_gain = 21 [(common.v1.fdx_field) = "unrecapturedSection1250Gain"];
+
+  // Other portfolio and nonbusiness income (box 5).
+  common.v1.Money other_portfolio_and_nonbusiness_income = 22 [(common.v1.fdx_field) = "otherPortfolioAndNonbusinessIncome"];
+
+  // Ordinary business income (box 6).
+  common.v1.Money ordinary_business_income = 23 [(common.v1.fdx_field) = "ordinaryBusinessIncome"];
+
+  // Net rental real estate income (box 7).
+  common.v1.Money net_rental_real_estate_income = 24 [(common.v1.fdx_field) = "netRentalRealEstateIncome"];
+
+  // Other rental income (box 8).
+  common.v1.Money other_rental_income = 25 [(common.v1.fdx_field) = "otherRentalIncome"];
+
+  // Directly apportioned deductions coded items (box 9).
+  repeated CodedAmount directly_apportioned_deductions = 26 [(common.v1.fdx_field) = "directlyApportionedDeductions"];
+
+  // Estate tax deduction (box 10).
+  common.v1.Money estate_tax_deduction = 27 [(common.v1.fdx_field) = "estateTaxDeduction"];
+
+  // Final year deductions coded items (box 11).
+  repeated CodedAmount final_year_deductions = 28 [(common.v1.fdx_field) = "finalYearDeductions"];
+
+  // Alternative minimum tax adjustment coded items (box 12).
+  repeated CodedAmount alternative_minimum_tax_adjustment = 29 [(common.v1.fdx_field) = "alternativeMinimumTaxAdjustment"];
+
+  // Credits and credit recapture coded items (box 13).
+  repeated CodedAmount credits_and_credit_recapture = 30 [(common.v1.fdx_field) = "creditsAndCreditRecapture"];
+
+  // Other information coded items (box 14).
+  repeated CodedAmount other_information = 31 [(common.v1.fdx_field) = "otherInformation"];
+}

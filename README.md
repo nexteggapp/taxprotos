@@ -109,18 +109,25 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [1098-E](https://www.irs.gov/pub/irs-pdf/f1098e.pdf) | [`form_1098_e.proto`](us/federal/v1/form_1098_e/form_1098_e.proto) | Student loan interest |
 | [1098-T](https://www.irs.gov/pub/irs-pdf/f1098t.pdf) | [`form_1098_t.proto`](us/federal/v1/form_1098_t/form_1098_t.proto) | Tuition |
 | [1099-B](https://www.irs.gov/pub/irs-pdf/f1099b.pdf) | [`form_1099_b.proto`](us/federal/v1/form_1099_b/form_1099_b.proto) | Broker proceeds |
+| [1099-C](https://www.irs.gov/pub/irs-pdf/f1099c.pdf) | [`form_1099_c.proto`](us/federal/v1/form_1099_c/form_1099_c.proto) | Cancellation of debt |
 | [1099-DIV](https://www.irs.gov/pub/irs-pdf/f1099div.pdf) | [`form_1099_div.proto`](us/federal/v1/form_1099_div/form_1099_div.proto) | Dividends and distributions |
 | [1099-G](https://www.irs.gov/pub/irs-pdf/f1099g.pdf) | [`form_1099_g.proto`](us/federal/v1/form_1099_g/form_1099_g.proto) | Unemployment compensation and state or local refunds |
 | [1099-INT](https://www.irs.gov/pub/irs-pdf/f1099int.pdf) | [`form_1099_int.proto`](us/federal/v1/form_1099_int/form_1099_int.proto) | Interest income |
 | [1099-K](https://www.irs.gov/pub/irs-pdf/f1099k.pdf) | [`form_1099_k.proto`](us/federal/v1/form_1099_k/form_1099_k.proto) | Payment card and network transactions |
 | [1099-MISC](https://www.irs.gov/pub/irs-pdf/f1099msc.pdf) | [`form_1099_misc.proto`](us/federal/v1/form_1099_misc/form_1099_misc.proto) | Miscellaneous information |
 | [1099-NEC](https://www.irs.gov/pub/irs-pdf/f1099nec.pdf) | [`form_1099_nec.proto`](us/federal/v1/form_1099_nec/form_1099_nec.proto) | Non-employee compensation |
+| [1099-OID](https://www.irs.gov/pub/irs-pdf/f1099oid.pdf) | [`form_1099_oid.proto`](us/federal/v1/form_1099_oid/form_1099_oid.proto) | Original issue discount |
+| [1099-Q](https://www.irs.gov/pub/irs-pdf/f1099q.pdf) | [`form_1099_q.proto`](us/federal/v1/form_1099_q/form_1099_q.proto) | Payments from qualified education programs |
 | [1099-R](https://www.irs.gov/pub/irs-pdf/f1099r.pdf) | [`form_1099_r.proto`](us/federal/v1/form_1099_r/form_1099_r.proto) | Retirement distributions |
+| [1099-S](https://www.irs.gov/pub/irs-pdf/f1099s.pdf) | [`form_1099_s.proto`](us/federal/v1/form_1099_s/form_1099_s.proto) | Proceeds from real estate transactions |
 | [1099-SA](https://www.irs.gov/pub/irs-pdf/f1099sa.pdf) | [`form_1099_sa.proto`](us/federal/v1/form_1099_sa/form_1099_sa.proto) | HSA and MSA distributions |
 | [5498](https://www.irs.gov/pub/irs-pdf/f5498.pdf) | [`form_5498.proto`](us/federal/v1/form_5498/form_5498.proto) | IRA contributions |
 | [5498-SA](https://www.irs.gov/pub/irs-pdf/f5498sa.pdf) | [`form_5498_sa.proto`](us/federal/v1/form_5498_sa/form_5498_sa.proto) | HSA and MSA contributions |
 | [SSA-1099](https://www.ssa.gov/myaccount/replacement-SSA-1099.html) | [`form_ssa_1099.proto`](us/federal/v1/form_ssa_1099/form_ssa_1099.proto) | Social Security benefits |
 | [W-2G](https://www.irs.gov/pub/irs-pdf/fw2g.pdf) | [`form_w2g.proto`](us/federal/v1/form_w2g/form_w2g.proto) | Gambling winnings |
+| [1065 Schedule K-1](https://www.irs.gov/pub/irs-pdf/f1065sk1.pdf) | [`schedule_k1_1065.proto`](us/federal/v1/schedule_k1/schedule_k1_1065.proto) | Partner's share of income, deductions, credits |
+| [1120-S Schedule K-1](https://www.irs.gov/pub/irs-pdf/f1120ssk.pdf) | [`schedule_k1_1120_s.proto`](us/federal/v1/schedule_k1/schedule_k1_1120_s.proto) | Shareholder's share of income, deductions, credits |
+| [1041 Schedule K-1](https://www.irs.gov/pub/irs-pdf/f1041sk1.pdf) | [`schedule_k1_1041.proto`](us/federal/v1/schedule_k1/schedule_k1_1041.proto) | Beneficiary's share of income, deductions, credits |
 
 ### The return — what a household files
 
@@ -132,9 +139,13 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [Schedule 2](https://www.irs.gov/pub/irs-pdf/f1040s2.pdf) | [`schedule_2.proto`](us/federal/v1/form_1040/schedule_2.proto) | Additional taxes, including self-employment tax |
 | [Schedule 3](https://www.irs.gov/pub/irs-pdf/f1040s3.pdf) | [`schedule_3.proto`](us/federal/v1/form_1040/schedule_3.proto) | Additional credits and payments |
 | [Schedule A](https://www.irs.gov/pub/irs-pdf/f1040sa.pdf) | [`schedule_a.proto`](us/federal/v1/form_1040/schedule_a.proto) | Itemized deductions |
+| [Schedule B](https://www.irs.gov/pub/irs-pdf/f1040sb.pdf) | [`schedule_b.proto`](us/federal/v1/form_1040/schedule_b.proto) | Interest and ordinary dividends |
+| [Schedule C](https://www.irs.gov/pub/irs-pdf/f1040sc.pdf) | [`schedule_c.proto`](us/federal/v1/form_1040/schedule_c.proto) | Profit or loss from business (sole proprietorship) |
 | [Schedule D](https://www.irs.gov/pub/irs-pdf/f1040sd.pdf) | [`schedule_d.proto`](us/federal/v1/form_1040/schedule_d.proto) | Capital gains and losses |
+| [Schedule E](https://www.irs.gov/pub/irs-pdf/f1040se.pdf) | [`schedule_e.proto`](us/federal/v1/form_1040/schedule_e.proto) | Supplemental income and loss from rentals, pass-throughs, etc. |
 | [Schedule SE](https://www.irs.gov/pub/irs-pdf/f1040sse.pdf) | [`schedule_se.proto`](us/federal/v1/form_1040/schedule_se.proto) | Self-employment tax |
 | [8889](https://www.irs.gov/pub/irs-pdf/f8889.pdf) | [`form_8889.proto`](us/federal/v1/form_8889/form_8889.proto) | Health savings accounts |
+| [8949](https://www.irs.gov/pub/irs-pdf/f8949.pdf) | [`form_8949.proto`](us/federal/v1/form_1040/form_8949.proto) | Sales and other dispositions of capital assets |
 
 ### State returns — what three states want as well
 

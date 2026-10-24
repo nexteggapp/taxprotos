@@ -1,0 +1,63 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form 1099-C calls each concept, per tax year.
+#
+# Line numbers come from Form 1099-C. Amount codes come from IRS Publication
+# 1220 for Tax Year 2025.
+
+form: "1099-C"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form1099C"
+tax_years: 2025
+
+concepts {
+  concept: "date_of_identifiable_event"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+  }
+}
+concepts {
+  concept: "amount_of_debt_discharged"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+    amount_code: "2"
+  }
+}
+concepts {
+  concept: "interest_included_in_amount_of_debt_discharged"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+    amount_code: "3"
+  }
+}
+concepts {
+  concept: "debt_description"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+  }
+}
+concepts {
+  concept: "debtor_personally_liable"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+  }
+}
+concepts {
+  concept: "identifiable_event_code"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+  }
+}
+concepts {
+  concept: "fair_market_value_of_property"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+    amount_code: "7"
+  }
+}

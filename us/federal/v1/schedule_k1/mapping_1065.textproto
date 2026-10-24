@@ -1,0 +1,270 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Schedule K-1 (Form 1065) calls each concept, per tax year.
+#
+# Line numbers come from Schedule K-1 (Form 1065).
+
+form: "Schedule K-1 (Form 1065)"
+message_name: "nexteggapp.taxprotos.us.federal.v1.ScheduleK1Form1065"
+tax_years: 2025
+
+concepts {
+  concept: "partnership_ein"
+  years { tax_year: 2025 irs_box: "A" }
+}
+concepts {
+  concept: "partnership"
+  years { tax_year: 2025 irs_box: "B" }
+}
+concepts {
+  concept: "irs_center"
+  years { tax_year: 2025 irs_box: "C" }
+}
+concepts {
+  concept: "publicly_traded_partnership"
+  years { tax_year: 2025 irs_box: "D" }
+}
+concepts {
+  concept: "partner_tin"
+  years { tax_year: 2025 irs_box: "E" }
+}
+concepts {
+  concept: "partner"
+  years { tax_year: 2025 irs_box: "F" }
+}
+concepts {
+  concept: "partner_type"
+  years { tax_year: 2025 irs_box: "G" }
+}
+concepts {
+  concept: "partner_residency"
+  years { tax_year: 2025 irs_box: "H1" }
+}
+concepts {
+  concept: "disregarded_entity_tin"
+  years { tax_year: 2025 irs_box: "H2" }
+}
+concepts {
+  concept: "disregarded_entity_name"
+  years { tax_year: 2025 irs_box: "H2" }
+}
+concepts {
+  concept: "partner_entity_type"
+  years { tax_year: 2025 irs_box: "I1" }
+}
+concepts {
+  concept: "retirement_plan"
+  years { tax_year: 2025 irs_box: "I2" }
+}
+concepts {
+  concept: "profit_share_beginning"
+  years { tax_year: 2025 irs_box: "J" }
+}
+concepts {
+  concept: "profit_share_ending"
+  years { tax_year: 2025 irs_box: "J" }
+}
+concepts {
+  concept: "loss_share_beginning"
+  years { tax_year: 2025 irs_box: "J" }
+}
+concepts {
+  concept: "loss_share_ending"
+  years { tax_year: 2025 irs_box: "J" }
+}
+concepts {
+  concept: "capital_share_beginning"
+  years { tax_year: 2025 irs_box: "J" }
+}
+concepts {
+  concept: "capital_share_ending"
+  years { tax_year: 2025 irs_box: "J" }
+}
+concepts {
+  concept: "decrease_due_to_sale_or_exchange"
+  years { tax_year: 2025 irs_box: "J" }
+}
+concepts {
+  concept: "nonrecourse_liabilities_beginning"
+  years { tax_year: 2025 irs_box: "K1" }
+}
+concepts {
+  concept: "nonrecourse_liabilities_ending"
+  years { tax_year: 2025 irs_box: "K1" }
+}
+concepts {
+  concept: "qualified_nonrecourse_financing_beginning"
+  years { tax_year: 2025 irs_box: "K1" }
+}
+concepts {
+  concept: "qualified_nonrecourse_financing_ending"
+  years { tax_year: 2025 irs_box: "K1" }
+}
+concepts {
+  concept: "recourse_liabilities_beginning"
+  years { tax_year: 2025 irs_box: "K1" }
+}
+concepts {
+  concept: "recourse_liabilities_ending"
+  years { tax_year: 2025 irs_box: "K1" }
+}
+concepts {
+  concept: "includes_lower_tier_liabilities"
+  years { tax_year: 2025 irs_box: "K2" }
+}
+concepts {
+  concept: "liabilities_subject_to_guarantees"
+  years { tax_year: 2025 irs_box: "K3" }
+}
+concepts {
+  concept: "beginning_capital_account"
+  years { tax_year: 2025 irs_box: "L" }
+}
+concepts {
+  concept: "capital_contributed_during_year"
+  years { tax_year: 2025 irs_box: "L" }
+}
+concepts {
+  concept: "current_year_net_income"
+  years { tax_year: 2025 irs_box: "L" }
+}
+concepts {
+  concept: "other_capital_increase_decrease"
+  years { tax_year: 2025 irs_box: "L" }
+}
+concepts {
+  concept: "withdrawals_and_distributions"
+  years { tax_year: 2025 irs_box: "L" }
+}
+concepts {
+  concept: "ending_capital_account"
+  years { tax_year: 2025 irs_box: "L" }
+}
+concepts {
+  concept: "contributed_property_with_built_in_gain_or_loss"
+  years { tax_year: 2025 irs_box: "M" }
+}
+concepts {
+  concept: "net_unrecognized_section_704c_gain_loss_beginning"
+  years { tax_year: 2025 irs_box: "N" }
+}
+concepts {
+  concept: "net_unrecognized_section_704c_gain_loss_ending"
+  years { tax_year: 2025 irs_box: "N" }
+}
+concepts {
+  concept: "ordinary_business_income"
+  years { tax_year: 2025 irs_box: "1" }
+}
+concepts {
+  concept: "net_rental_real_estate_income"
+  years { tax_year: 2025 irs_box: "2" }
+}
+concepts {
+  concept: "other_net_rental_income"
+  years { tax_year: 2025 irs_box: "3" }
+}
+concepts {
+  concept: "guaranteed_payments_for_services"
+  years { tax_year: 2025 irs_box: "4a" }
+}
+concepts {
+  concept: "guaranteed_payments_for_capital"
+  years { tax_year: 2025 irs_box: "4b" }
+}
+concepts {
+  concept: "total_guaranteed_payments"
+  years { tax_year: 2025 irs_box: "4c" }
+}
+concepts {
+  concept: "interest_income"
+  years { tax_year: 2025 irs_box: "5" }
+}
+concepts {
+  concept: "ordinary_dividends"
+  years { tax_year: 2025 irs_box: "6a" }
+}
+concepts {
+  concept: "qualified_dividends"
+  years { tax_year: 2025 irs_box: "6b" }
+}
+concepts {
+  concept: "dividend_equivalents"
+  years { tax_year: 2025 irs_box: "6c" }
+}
+concepts {
+  concept: "royalties"
+  years { tax_year: 2025 irs_box: "7" }
+}
+concepts {
+  concept: "net_short_term_capital_gain"
+  years { tax_year: 2025 irs_box: "8" }
+}
+concepts {
+  concept: "net_long_term_capital_gain"
+  years { tax_year: 2025 irs_box: "9a" }
+}
+concepts {
+  concept: "collectibles_gain"
+  years { tax_year: 2025 irs_box: "9b" }
+}
+concepts {
+  concept: "unrecaptured_section_1250_gain"
+  years { tax_year: 2025 irs_box: "9c" }
+}
+concepts {
+  concept: "net_section_1231_gain"
+  years { tax_year: 2025 irs_box: "10" }
+}
+concepts {
+  concept: "other_income"
+  years { tax_year: 2025 irs_box: "11" }
+}
+concepts {
+  concept: "section_179_deduction"
+  years { tax_year: 2025 irs_box: "12" }
+}
+concepts {
+  concept: "other_deductions"
+  years { tax_year: 2025 irs_box: "13" }
+}
+concepts {
+  concept: "self_employment_earnings"
+  years { tax_year: 2025 irs_box: "14" }
+}
+concepts {
+  concept: "credits"
+  years { tax_year: 2025 irs_box: "15" }
+}
+concepts {
+  concept: "schedule_k3_attached"
+  years { tax_year: 2025 irs_box: "16" }
+}
+concepts {
+  concept: "alternative_minimum_tax_items"
+  years { tax_year: 2025 irs_box: "17" }
+}
+concepts {
+  concept: "tax_exempt_income_and_nondeductible_expenses"
+  years { tax_year: 2025 irs_box: "18" }
+}
+concepts {
+  concept: "distributions"
+  years { tax_year: 2025 irs_box: "19" }
+}
+concepts {
+  concept: "other_information"
+  years { tax_year: 2025 irs_box: "20" }
+}
+concepts {
+  concept: "foreign_taxes_paid_or_accrued"
+  years { tax_year: 2025 irs_box: "21" }
+}
+concepts {
+  concept: "more_than_one_activity_for_at_risk_purposes"
+  years { tax_year: 2025 irs_box: "22" }
+}
+concepts {
+  concept: "more_than_one_activity_for_passive_activity_purposes"
+  years { tax_year: 2025 irs_box: "23" }
+}

@@ -1,0 +1,158 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Schedule K-1 (Form 1120-S) calls each concept, per tax year.
+#
+# Line numbers come from Schedule K-1 (Form 1120-S).
+
+form: "Schedule K-1 (Form 1120-S)"
+message_name: "nexteggapp.taxprotos.us.federal.v1.ScheduleK1Form1120S"
+tax_years: 2025
+
+concepts {
+  concept: "corporation_ein"
+  years { tax_year: 2025 irs_box: "A" }
+}
+concepts {
+  concept: "corporation"
+  years { tax_year: 2025 irs_box: "B" }
+}
+concepts {
+  concept: "irs_center"
+  years { tax_year: 2025 irs_box: "C" }
+}
+concepts {
+  concept: "total_shares_beginning"
+  years { tax_year: 2025 irs_box: "D" }
+}
+concepts {
+  concept: "total_shares_ending"
+  years { tax_year: 2025 irs_box: "D" }
+}
+concepts {
+  concept: "shareholder_tin"
+  years { tax_year: 2025 irs_box: "E" }
+}
+concepts {
+  concept: "shareholder"
+  years { tax_year: 2025 irs_box: "F1" }
+}
+concepts {
+  concept: "responsible_person_tin"
+  years { tax_year: 2025 irs_box: "F2" }
+}
+concepts {
+  concept: "responsible_person_name"
+  years { tax_year: 2025 irs_box: "F2" }
+}
+concepts {
+  concept: "shareholder_entity_type"
+  years { tax_year: 2025 irs_box: "F3" }
+}
+concepts {
+  concept: "current_year_allocation_percentage"
+  years { tax_year: 2025 irs_box: "G" }
+}
+concepts {
+  concept: "shareholder_shares_beginning"
+  years { tax_year: 2025 irs_box: "H" }
+}
+concepts {
+  concept: "shareholder_shares_ending"
+  years { tax_year: 2025 irs_box: "H" }
+}
+concepts {
+  concept: "loans_from_shareholder_beginning"
+  years { tax_year: 2025 irs_box: "I" }
+}
+concepts {
+  concept: "loans_from_shareholder_ending"
+  years { tax_year: 2025 irs_box: "I" }
+}
+concepts {
+  concept: "ordinary_business_income"
+  years { tax_year: 2025 irs_box: "1" }
+}
+concepts {
+  concept: "net_rental_real_estate_income"
+  years { tax_year: 2025 irs_box: "2" }
+}
+concepts {
+  concept: "other_net_rental_income"
+  years { tax_year: 2025 irs_box: "3" }
+}
+concepts {
+  concept: "interest_income"
+  years { tax_year: 2025 irs_box: "4" }
+}
+concepts {
+  concept: "ordinary_dividends"
+  years { tax_year: 2025 irs_box: "5a" }
+}
+concepts {
+  concept: "qualified_dividends"
+  years { tax_year: 2025 irs_box: "5b" }
+}
+concepts {
+  concept: "royalties"
+  years { tax_year: 2025 irs_box: "6" }
+}
+concepts {
+  concept: "net_short_term_capital_gain"
+  years { tax_year: 2025 irs_box: "7" }
+}
+concepts {
+  concept: "net_long_term_capital_gain"
+  years { tax_year: 2025 irs_box: "8a" }
+}
+concepts {
+  concept: "collectibles_gain"
+  years { tax_year: 2025 irs_box: "8b" }
+}
+concepts {
+  concept: "unrecaptured_section_1250_gain"
+  years { tax_year: 2025 irs_box: "8c" }
+}
+concepts {
+  concept: "net_section_1231_gain"
+  years { tax_year: 2025 irs_box: "9" }
+}
+concepts {
+  concept: "other_income"
+  years { tax_year: 2025 irs_box: "10" }
+}
+concepts {
+  concept: "section_179_deduction"
+  years { tax_year: 2025 irs_box: "11" }
+}
+concepts {
+  concept: "other_deductions"
+  years { tax_year: 2025 irs_box: "12" }
+}
+concepts {
+  concept: "credits"
+  years { tax_year: 2025 irs_box: "13" }
+}
+concepts {
+  concept: "schedule_k3_attached"
+  years { tax_year: 2025 irs_box: "14" }
+}
+concepts {
+  concept: "alternative_minimum_tax_items"
+  years { tax_year: 2025 irs_box: "15" }
+}
+concepts {
+  concept: "items_affecting_shareholder_basis"
+  years { tax_year: 2025 irs_box: "16" }
+}
+concepts {
+  concept: "other_information"
+  years { tax_year: 2025 irs_box: "17" }
+}
+concepts {
+  concept: "more_than_one_activity_for_at_risk_purposes"
+  years { tax_year: 2025 irs_box: "18" }
+}
+concepts {
+  concept: "more_than_one_activity_for_passive_activity_purposes"
+  years { tax_year: 2025 irs_box: "19" }
+}
