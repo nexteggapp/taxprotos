@@ -1,0 +1,350 @@
+// Schedule E (Form 1040), Supplemental Income and Loss.
+//
+// Used to report income or loss from rental real estate, royalties,
+// partnerships, S corporations, estates, trusts, and residual interests in
+// REMICs.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// ScheduleE reports supplemental income and loss.
+message ScheduleE {
+  // The tax year the schedule applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Social Security number of filer.
+  string filer_tin = 3;
+
+  // Line A: Did you make any payments that would require you to file Form(s) 1099.
+  bool made_payments_requiring_1099 = 4;
+
+  // Line B: If "Yes" on line A, did you or will you file required Form(s) 1099.
+  bool filed_required_1099s = 5;
+
+  // -- Part I: Income or Loss From Rental Real Estate and Royalties --------
+
+  // PropertyType indicates the type of property in Part I line 1b.
+  enum PropertyType {
+    // Not specified.
+    PROPERTY_TYPE_UNSPECIFIED = 0;
+
+    // Single family residence.
+    PROPERTY_TYPE_SINGLE_FAMILY_RESIDENCE = 1;
+
+    // Multi-family residence.
+    PROPERTY_TYPE_MULTI_FAMILY_RESIDENCE = 2;
+
+    // Vacation / short-term rental.
+    PROPERTY_TYPE_VACATION_OR_SHORT_TERM_RENTAL = 3;
+
+    // Commercial property.
+    PROPERTY_TYPE_COMMERCIAL = 4;
+
+    // Land.
+    PROPERTY_TYPE_LAND = 5;
+
+    // Royalties.
+    PROPERTY_TYPE_ROYALTIES = 6;
+
+    // Self-rental.
+    PROPERTY_TYPE_SELF_RENTAL = 7;
+
+    // Other property type.
+    PROPERTY_TYPE_OTHER = 8;
+  }
+
+  // RentalOrRoyaltyProperty is one rental real estate or royalty property in Part I.
+  message RentalOrRoyaltyProperty {
+    // Line 1a: Physical address of each property (street, city, state, ZIP).
+    string physical_address = 1;
+
+    // Line 1b: Type of property.
+    PropertyType property_type = 2;
+
+    // Other property type description if type is OTHER.
+    string other_property_type_description = 3;
+
+    // Line 2: Fair rental days.
+    int32 fair_rental_days = 4;
+
+    // Line 2: Personal use days.
+    int32 personal_use_days = 5;
+
+    // Line 2: Qualified joint venture (QJV) checkbox.
+    bool qualified_joint_venture = 6;
+
+    // Line 3: Rents received.
+    nexteggapp.taxprotos.common.v1.Money rents_received = 7;
+
+    // Line 4: Royalties received.
+    nexteggapp.taxprotos.common.v1.Money royalties_received = 8;
+
+    // Line 5: Advertising.
+    nexteggapp.taxprotos.common.v1.Money advertising = 9;
+
+    // Line 6: Auto and travel.
+    nexteggapp.taxprotos.common.v1.Money auto_and_travel = 10;
+
+    // Line 7: Cleaning and maintenance.
+    nexteggapp.taxprotos.common.v1.Money cleaning_and_maintenance = 11;
+
+    // Line 8: Commissions.
+    nexteggapp.taxprotos.common.v1.Money commissions = 12;
+
+    // Line 9: Insurance.
+    nexteggapp.taxprotos.common.v1.Money insurance = 13;
+
+    // Line 10: Legal and other professional fees.
+    nexteggapp.taxprotos.common.v1.Money legal_and_professional_fees = 14;
+
+    // Line 11: Management fees.
+    nexteggapp.taxprotos.common.v1.Money management_fees = 15;
+
+    // Line 12: Mortgage interest paid to banks, etc.
+    nexteggapp.taxprotos.common.v1.Money mortgage_interest = 16;
+
+    // Line 13: Other interest.
+    nexteggapp.taxprotos.common.v1.Money other_interest = 17;
+
+    // Line 14: Repairs.
+    nexteggapp.taxprotos.common.v1.Money repairs = 18;
+
+    // Line 15: Supplies.
+    nexteggapp.taxprotos.common.v1.Money supplies = 19;
+
+    // Line 16: Taxes.
+    nexteggapp.taxprotos.common.v1.Money taxes = 20;
+
+    // Line 17: Utilities.
+    nexteggapp.taxprotos.common.v1.Money utilities = 21;
+
+    // Line 18: Depreciation expense or depletion.
+    nexteggapp.taxprotos.common.v1.Money depreciation_or_depletion = 22;
+
+    // Line 19: Other expenses.
+    nexteggapp.taxprotos.common.v1.Money other_expenses = 23;
+
+    // Line 19: Description of other expenses.
+    string other_expenses_description = 24;
+
+    // Line 20: Total expenses (sum of lines 5 through 19).
+    nexteggapp.taxprotos.common.v1.Money total_expenses = 25;
+
+    // Line 21: Net income or loss (line 3 and/or 4 minus line 20).
+    nexteggapp.taxprotos.common.v1.Money net_income_or_loss = 26;
+
+    // Line 22: Deductible rental real estate loss after limitation on Form 8582.
+    nexteggapp.taxprotos.common.v1.Money deductible_loss_after_limitation = 27;
+  }
+
+  // Properties reported in Part I lines 1 through 22.
+  repeated RentalOrRoyaltyProperty properties = 6;
+
+  // Line 23a: Total of all amounts reported on line 3 for all rental properties.
+  nexteggapp.taxprotos.common.v1.Money total_rents_received = 7;
+
+  // Line 23b: Total of all amounts reported on line 4 for all royalty properties.
+  nexteggapp.taxprotos.common.v1.Money total_royalties_received = 8;
+
+  // Line 23c: Total of all amounts reported on line 12 for all properties.
+  nexteggapp.taxprotos.common.v1.Money total_mortgage_interest = 9;
+
+  // Line 23d: Total of all amounts reported on line 18 for all properties.
+  nexteggapp.taxprotos.common.v1.Money total_depreciation_or_depletion = 10;
+
+  // Line 23e: Total of all amounts reported on line 20 for all properties.
+  nexteggapp.taxprotos.common.v1.Money total_expenses_all_properties = 11;
+
+  // Line 24: Income: positive amounts from line 21.
+  nexteggapp.taxprotos.common.v1.Money total_positive_rental_and_royalty_income = 12;
+
+  // Line 25: Losses: royalty losses from line 21 and rental real estate losses
+  // from line 22.
+  nexteggapp.taxprotos.common.v1.Money total_rental_real_estate_and_royalty_losses = 13;
+
+  // Line 26: Total rental real estate and royalty income or loss (combine lines
+  // 24 and 25).
+  nexteggapp.taxprotos.common.v1.Money total_rental_real_estate_and_royalty_income_or_loss = 14;
+
+  // -- Part II: Income or Loss From Partnerships and S Corporations --------
+
+  // Line 27: Are you reporting any loss not allowed in a prior year due to
+  // at-risk or basis limitations, prior year unallowed passive loss, or
+  // unreimbursed partnership expenses.
+  bool has_prior_year_unallowed_losses_or_unreimbursed_expenses = 15;
+
+  // EntityClassification identifies partnership or S corporation on line 28 column (b).
+  enum EntityClassification {
+    // Not specified.
+    ENTITY_CLASSIFICATION_UNSPECIFIED = 0;
+
+    // Partnership ('P').
+    ENTITY_CLASSIFICATION_PARTNERSHIP = 1;
+
+    // S corporation ('S').
+    ENTITY_CLASSIFICATION_S_CORPORATION = 2;
+  }
+
+  // PartnershipOrSCorporationItem is one entity in Part II line 28.
+  message PartnershipOrSCorporationItem {
+    // Column (a): Name of entity.
+    string entity_name = 1;
+
+    // Column (b): Partnership or S corporation classification.
+    EntityClassification classification = 2;
+
+    // Column (c): Foreign partnership checkbox.
+    bool foreign_partnership = 3;
+
+    // Column (d): Employer identification number.
+    string employer_identification_number = 4;
+
+    // Column (e): Basis computation is required checkbox.
+    bool basis_computation_required = 5;
+
+    // Column (f): Any amount is not at risk checkbox.
+    bool not_entirely_at_risk = 6;
+
+    // Column (g): Passive loss allowed (Form 8582).
+    nexteggapp.taxprotos.common.v1.Money passive_loss_allowed = 7;
+
+    // Column (h): Passive income from Schedule K-1.
+    nexteggapp.taxprotos.common.v1.Money passive_income = 8;
+
+    // Column (i): Nonpassive loss allowed.
+    nexteggapp.taxprotos.common.v1.Money nonpassive_loss_allowed = 9;
+
+    // Column (j): Section 179 expense deduction from Form 4562.
+    nexteggapp.taxprotos.common.v1.Money section_179_expense = 10;
+
+    // Column (k): Nonpassive income from Schedule K-1.
+    nexteggapp.taxprotos.common.v1.Money nonpassive_income = 11;
+  }
+
+  // Partnerships and S corporations listed on line 28.
+  repeated PartnershipOrSCorporationItem partnership_and_s_corp_items = 16;
+
+  // Line 29a column (h): Total passive income.
+  nexteggapp.taxprotos.common.v1.Money total_passive_income = 17;
+
+  // Line 29a column (k): Total nonpassive income.
+  nexteggapp.taxprotos.common.v1.Money total_nonpassive_income = 18;
+
+  // Line 29b column (g): Total passive loss allowed.
+  nexteggapp.taxprotos.common.v1.Money total_passive_loss_allowed = 19;
+
+  // Line 29b column (i): Total nonpassive loss allowed.
+  nexteggapp.taxprotos.common.v1.Money total_nonpassive_loss_allowed = 20;
+
+  // Line 29b column (j): Total section 179 expense deduction.
+  nexteggapp.taxprotos.common.v1.Money total_section_179_expense = 21;
+
+  // Line 30: Total partnership and S corporation income (add columns (h) and
+  // (k) of line 29a).
+  nexteggapp.taxprotos.common.v1.Money total_partnership_and_s_corp_income = 22;
+
+  // Line 31: Total partnership and S corporation losses (add columns (g), (i),
+  // and (j) of line 29b).
+  nexteggapp.taxprotos.common.v1.Money total_partnership_and_s_corp_losses = 23;
+
+  // Line 32: Total partnership and S corporation income or loss (combine lines
+  // 30 and 31).
+  nexteggapp.taxprotos.common.v1.Money total_partnership_and_s_corp_income_or_loss = 24;
+
+  // -- Part III: Income or Loss From Estates and Trusts --------------------
+
+  // EstateOrTrustItem is one estate or trust in Part III line 33.
+  message EstateOrTrustItem {
+    // Column (a): Name of estate or trust.
+    string entity_name = 1;
+
+    // Column (b): Employer identification number.
+    string employer_identification_number = 2;
+
+    // Column (c): Passive deduction or loss allowed (Form 8582).
+    nexteggapp.taxprotos.common.v1.Money passive_deduction_or_loss_allowed = 3;
+
+    // Column (d): Passive income from Schedule K-1.
+    nexteggapp.taxprotos.common.v1.Money passive_income = 4;
+
+    // Column (e): Deduction or loss from Schedule K-1.
+    nexteggapp.taxprotos.common.v1.Money nonpassive_deduction_or_loss = 5;
+
+    // Column (f): Other income from Schedule K-1.
+    nexteggapp.taxprotos.common.v1.Money nonpassive_other_income = 6;
+  }
+
+  // Estates and trusts listed on line 33.
+  repeated EstateOrTrustItem estate_and_trust_items = 25;
+
+  // Line 34a column (d): Total estate and trust passive income.
+  nexteggapp.taxprotos.common.v1.Money total_estate_and_trust_passive_income = 26;
+
+  // Line 34a column (f): Total estate and trust other income.
+  nexteggapp.taxprotos.common.v1.Money total_estate_and_trust_other_income = 27;
+
+  // Line 34b column (c): Total estate and trust passive deduction or loss
+  // allowed.
+  nexteggapp.taxprotos.common.v1.Money total_estate_and_trust_passive_loss_allowed = 28;
+
+  // Line 34b column (e): Total estate and trust deduction or loss.
+  nexteggapp.taxprotos.common.v1.Money total_estate_and_trust_deduction_or_loss = 29;
+
+  // Line 35: Total estate and trust income (add columns (d) and (f) of line 34a).
+  nexteggapp.taxprotos.common.v1.Money total_estate_and_trust_income = 30;
+
+  // Line 36: Total estate and trust losses (add columns (c) and (e) of line 34b).
+  nexteggapp.taxprotos.common.v1.Money total_estate_and_trust_losses = 31;
+
+  // Line 37: Total estate and trust income or loss (combine lines 35 and 36).
+  nexteggapp.taxprotos.common.v1.Money total_estate_and_trust_income_or_loss = 32;
+
+  // -- Part IV: Income or Loss From REMICs ---------------------------------
+
+  // RemicItem is one residual interest in a REMIC in Part IV line 38.
+  message RemicItem {
+    // Column (a): Name of REMIC.
+    string remic_name = 1;
+
+    // Column (b): Employer identification number.
+    string employer_identification_number = 2;
+
+    // Column (c): Excess inclusion from Schedules Q line 2c.
+    nexteggapp.taxprotos.common.v1.Money excess_inclusion = 3;
+
+    // Column (d): Taxable income (net loss) from Schedules Q line 1b.
+    nexteggapp.taxprotos.common.v1.Money taxable_income_or_loss = 4;
+
+    // Column (e): Income from Schedules Q line 3b.
+    nexteggapp.taxprotos.common.v1.Money income_from_schedules_q = 5;
+  }
+
+  // REMICs listed on line 38.
+  repeated RemicItem remic_items = 33;
+
+  // Line 39: Combine columns (d) and (e) of line 38.
+  nexteggapp.taxprotos.common.v1.Money net_remic_income_or_loss = 34;
+
+  // -- Part V: Summary ----------------------------------------------------
+
+  // Line 40: Net farm rental income or loss from Form 4835.
+  nexteggapp.taxprotos.common.v1.Money net_farm_rental_income_or_loss = 35;
+
+  // Line 41: Total supplemental income or loss (combine lines 26, 32, 37, 39,
+  // and 40). Carries to Schedule 1 line 5.
+  nexteggapp.taxprotos.common.v1.Money total_supplemental_income_or_loss = 36;
+
+  // Line 42: Reconciliation of gross farming and fishing income.
+  nexteggapp.taxprotos.common.v1.Money reconciliation_of_farming_and_fishing_income = 37;
+
+  // Line 43: Reconciliation for real estate professionals net rental real
+  // estate income or loss.
+  nexteggapp.taxprotos.common.v1.Money reconciliation_for_real_estate_professionals = 38;
+}

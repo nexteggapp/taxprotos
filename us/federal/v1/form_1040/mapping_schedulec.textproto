@@ -1,0 +1,369 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for 1040 Schedule C.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "1040 Schedule C"
+message_name: "nexteggapp.taxprotos.us.federal.v1.ScheduleC"
+tax_years: 2025
+
+concepts {
+  concept: "gross_receipts_or_sales"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+  }
+}
+
+concepts {
+  concept: "returns_and_allowances"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+  }
+}
+
+concepts {
+  concept: "net_receipts"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+  }
+}
+
+concepts {
+  concept: "cost_of_goods_sold"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+  }
+}
+
+concepts {
+  concept: "gross_profit"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+  }
+}
+
+concepts {
+  concept: "other_income"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+  }
+}
+
+concepts {
+  concept: "gross_income"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+
+concepts {
+  concept: "advertising"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+  }
+}
+
+concepts {
+  concept: "car_and_truck_expenses"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+  }
+}
+
+concepts {
+  concept: "commissions_and_fees"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+  }
+}
+
+concepts {
+  concept: "contract_labor"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+  }
+}
+
+concepts {
+  concept: "depletion"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+  }
+}
+
+concepts {
+  concept: "depreciation_and_section_179"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+  }
+}
+
+concepts {
+  concept: "employee_benefit_programs"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+  }
+}
+
+concepts {
+  concept: "insurance_other_than_health"
+  years {
+    tax_year: 2025
+    irs_box: "15"
+  }
+}
+
+concepts {
+  concept: "mortgage_interest"
+  years {
+    tax_year: 2025
+    irs_box: "16a"
+  }
+}
+
+concepts {
+  concept: "other_interest"
+  years {
+    tax_year: 2025
+    irs_box: "16b"
+  }
+}
+
+concepts {
+  concept: "legal_and_professional_services"
+  years {
+    tax_year: 2025
+    irs_box: "17"
+  }
+}
+
+concepts {
+  concept: "office_expense"
+  years {
+    tax_year: 2025
+    irs_box: "18"
+  }
+}
+
+concepts {
+  concept: "pension_and_profit_sharing_plans"
+  years {
+    tax_year: 2025
+    irs_box: "19"
+  }
+}
+
+concepts {
+  concept: "rent_or_lease_vehicles"
+  years {
+    tax_year: 2025
+    irs_box: "20a"
+  }
+}
+
+concepts {
+  concept: "rent_or_lease_other_business_property"
+  years {
+    tax_year: 2025
+    irs_box: "20b"
+  }
+}
+
+concepts {
+  concept: "repairs_and_maintenance"
+  years {
+    tax_year: 2025
+    irs_box: "21"
+  }
+}
+
+concepts {
+  concept: "supplies"
+  years {
+    tax_year: 2025
+    irs_box: "22"
+  }
+}
+
+concepts {
+  concept: "taxes_and_licenses"
+  years {
+    tax_year: 2025
+    irs_box: "23"
+  }
+}
+
+concepts {
+  concept: "travel"
+  years {
+    tax_year: 2025
+    irs_box: "24a"
+  }
+}
+
+concepts {
+  concept: "deductible_meals"
+  years {
+    tax_year: 2025
+    irs_box: "24b"
+  }
+}
+
+concepts {
+  concept: "utilities"
+  years {
+    tax_year: 2025
+    irs_box: "25"
+  }
+}
+
+concepts {
+  concept: "wages"
+  years {
+    tax_year: 2025
+    irs_box: "26"
+  }
+}
+
+concepts {
+  concept: "energy_efficient_commercial_buildings_deduction"
+  years {
+    tax_year: 2025
+    irs_box: "27a"
+  }
+}
+
+concepts {
+  concept: "other_expenses"
+  years {
+    tax_year: 2025
+    irs_box: "27b"
+  }
+}
+
+concepts {
+  concept: "total_expenses_before_home_office"
+  years {
+    tax_year: 2025
+    irs_box: "28"
+  }
+}
+
+concepts {
+  concept: "tentative_profit_or_loss"
+  years {
+    tax_year: 2025
+    irs_box: "29"
+  }
+}
+
+concepts {
+  concept: "expenses_for_business_use_of_home"
+  years {
+    tax_year: 2025
+    irs_box: "30"
+  }
+}
+
+concepts {
+  concept: "net_profit_or_loss"
+  years {
+    tax_year: 2025
+    irs_box: "31"
+  }
+}
+
+concepts {
+  concept: "inventory_at_beginning_of_year"
+  years {
+    tax_year: 2025
+    irs_box: "35"
+  }
+}
+
+concepts {
+  concept: "purchases"
+  years {
+    tax_year: 2025
+    irs_box: "36"
+  }
+}
+
+concepts {
+  concept: "cost_of_labor"
+  years {
+    tax_year: 2025
+    irs_box: "37"
+  }
+}
+
+concepts {
+  concept: "materials_and_supplies"
+  years {
+    tax_year: 2025
+    irs_box: "38"
+  }
+}
+
+concepts {
+  concept: "other_costs"
+  years {
+    tax_year: 2025
+    irs_box: "39"
+  }
+}
+
+concepts {
+  concept: "total_inventory_and_costs"
+  years {
+    tax_year: 2025
+    irs_box: "40"
+  }
+}
+
+concepts {
+  concept: "inventory_at_end_of_year"
+  years {
+    tax_year: 2025
+    irs_box: "41"
+  }
+}
+
+concepts {
+  concept: "cost_of_goods_sold_from_part_iii"
+  years {
+    tax_year: 2025
+    irs_box: "42"
+  }
+}
+
+concepts {
+  concept: "total_other_expenses"
+  years {
+    tax_year: 2025
+    irs_box: "48"
+  }
+}

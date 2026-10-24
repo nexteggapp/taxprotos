@@ -11,12 +11,16 @@ proto_library(
     import_prefix = "taxprotos",
     srcs = [
         "form_1040.proto",
+        "form_8949.proto",
         "schedule_1.proto",
         "schedule_1a.proto",
         "schedule_2.proto",
         "schedule_3.proto",
         "schedule_a.proto",
+        "schedule_b.proto",
+        "schedule_c.proto",
         "schedule_d.proto",
+        "schedule_e.proto",
         "schedule_se.proto",
     ],
     visibility = ["//visibility:public"],
@@ -24,6 +28,13 @@ proto_library(
         "//common/v1:common_proto",
     ],
 )
+
+exports_files([
+    "form_8949.proto",
+    "schedule_b.proto",
+    "schedule_c.proto",
+    "schedule_e.proto",
+])
 
 # The mappings and the form extracts they are checked against, for
 # //go/us/federal/v1/form_1040. They stay here rather than beside the test

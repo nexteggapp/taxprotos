@@ -139,9 +139,13 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [Schedule 2](https://www.irs.gov/pub/irs-pdf/f1040s2.pdf) | [`schedule_2.proto`](us/federal/v1/form_1040/schedule_2.proto) | Additional taxes, including self-employment tax |
 | [Schedule 3](https://www.irs.gov/pub/irs-pdf/f1040s3.pdf) | [`schedule_3.proto`](us/federal/v1/form_1040/schedule_3.proto) | Additional credits and payments |
 | [Schedule A](https://www.irs.gov/pub/irs-pdf/f1040sa.pdf) | [`schedule_a.proto`](us/federal/v1/form_1040/schedule_a.proto) | Itemized deductions |
+| [Schedule B](https://www.irs.gov/pub/irs-pdf/f1040sb.pdf) | [`schedule_b.proto`](us/federal/v1/form_1040/schedule_b.proto) | Interest and ordinary dividends |
+| [Schedule C](https://www.irs.gov/pub/irs-pdf/f1040sc.pdf) | [`schedule_c.proto`](us/federal/v1/form_1040/schedule_c.proto) | Profit or loss from business (sole proprietorship) |
 | [Schedule D](https://www.irs.gov/pub/irs-pdf/f1040sd.pdf) | [`schedule_d.proto`](us/federal/v1/form_1040/schedule_d.proto) | Capital gains and losses |
+| [Schedule E](https://www.irs.gov/pub/irs-pdf/f1040se.pdf) | [`schedule_e.proto`](us/federal/v1/form_1040/schedule_e.proto) | Supplemental income and loss from rentals, pass-throughs, etc. |
 | [Schedule SE](https://www.irs.gov/pub/irs-pdf/f1040sse.pdf) | [`schedule_se.proto`](us/federal/v1/form_1040/schedule_se.proto) | Self-employment tax |
 | [8889](https://www.irs.gov/pub/irs-pdf/f8889.pdf) | [`form_8889.proto`](us/federal/v1/form_8889/form_8889.proto) | Health savings accounts |
+| [8949](https://www.irs.gov/pub/irs-pdf/f8949.pdf) | [`form_8949.proto`](us/federal/v1/form_1040/form_8949.proto) | Sales and other dispositions of capital assets |
 
 ### State returns — what three states want as well
 

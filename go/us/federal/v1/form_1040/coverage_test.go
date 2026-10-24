@@ -49,8 +49,12 @@ var forms = []struct {
 	{"mapping_schedule2.textproto", "f1040s2-2025.txt"},
 	{"mapping_schedule3.textproto", "f1040s3-2025.txt"},
 	{"mapping_schedulea.textproto", "f1040sa-2025.txt"},
+	{"mapping_scheduleb.textproto", "f1040sb-2025.txt"},
+	{"mapping_schedulec.textproto", "f1040sc-2025.txt"},
 	{"mapping_scheduled.textproto", "f1040sd-2025.txt"},
+	{"mapping_schedulee.textproto", "f1040se-2025.txt"},
 	{"mapping_schedulese.textproto", "f1040sse-2025.txt"},
+	{"mapping_form8949.textproto", "f8949-2025.txt"},
 }
 
 // TestConceptsResolve checks that every concept a mapping names is a field on

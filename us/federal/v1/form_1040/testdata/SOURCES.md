@@ -16,7 +16,11 @@ each file is the whole form.
 | `f1040s3-2025.txt` | [f1040s3.pdf](https://www.irs.gov/pub/irs-pdf/f1040s3.pdf) | `008cfd3fe3ebd086...` |
 | `f1040sa-2025.txt` | [f1040sa.pdf](https://www.irs.gov/pub/irs-pdf/f1040sa.pdf) | `c14acf3478f4c33f...` |
 | `f1040sd-2025.txt` | [f1040sd.pdf](https://www.irs.gov/pub/irs-pdf/f1040sd.pdf) | `90564c8b7e492803...` |
+| `f1040sb-2025.txt` | [f1040sb.pdf](https://www.irs.gov/pub/irs-pdf/f1040sb.pdf) | `dd1ec3719954532b...` |
+| `f1040sc-2025.txt` | [f1040sc.pdf](https://www.irs.gov/pub/irs-pdf/f1040sc.pdf) | `ddf401dbe060467d...` |
+| `f1040se-2025.txt` | [f1040se.pdf](https://www.irs.gov/pub/irs-pdf/f1040se.pdf) | `c5e2c8fa0ec5ee91...` |
 | `f1040sse-2025.txt` | [f1040sse.pdf](https://www.irs.gov/pub/irs-pdf/f1040sse.pdf) | `05bc2b3e1dfca65d...` |
+| `f8949-2025.txt` | [f8949.pdf](https://www.irs.gov/pub/irs-pdf/f8949.pdf) | `274513891e4e281d...` |
 
 ```bash
 curl -o f1040.pdf https://www.irs.gov/pub/irs-pdf/f1040.pdf

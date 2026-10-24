@@ -1,0 +1,241 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for 1040 Schedule E.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "1040 Schedule E"
+message_name: "nexteggapp.taxprotos.us.federal.v1.ScheduleE"
+tax_years: 2025
+
+concepts {
+  concept: "total_rents_received"
+  years {
+    tax_year: 2025
+    irs_box: "23a"
+  }
+}
+
+concepts {
+  concept: "total_royalties_received"
+  years {
+    tax_year: 2025
+    irs_box: "23b"
+  }
+}
+
+concepts {
+  concept: "total_mortgage_interest"
+  years {
+    tax_year: 2025
+    irs_box: "23c"
+  }
+}
+
+concepts {
+  concept: "total_depreciation_or_depletion"
+  years {
+    tax_year: 2025
+    irs_box: "23d"
+  }
+}
+
+concepts {
+  concept: "total_expenses_all_properties"
+  years {
+    tax_year: 2025
+    irs_box: "23e"
+  }
+}
+
+concepts {
+  concept: "total_positive_rental_and_royalty_income"
+  years {
+    tax_year: 2025
+    irs_box: "24"
+  }
+}
+
+concepts {
+  concept: "total_rental_real_estate_and_royalty_losses"
+  years {
+    tax_year: 2025
+    irs_box: "25"
+  }
+}
+
+concepts {
+  concept: "total_rental_real_estate_and_royalty_income_or_loss"
+  years {
+    tax_year: 2025
+    irs_box: "26"
+  }
+}
+
+concepts {
+  concept: "total_passive_income"
+  years {
+    tax_year: 2025
+    irs_box: "29a"
+  }
+}
+
+concepts {
+  concept: "total_nonpassive_income"
+  years {
+    tax_year: 2025
+    irs_box: "29a"
+  }
+}
+
+concepts {
+  concept: "total_passive_loss_allowed"
+  years {
+    tax_year: 2025
+    irs_box: "29b"
+  }
+}
+
+concepts {
+  concept: "total_nonpassive_loss_allowed"
+  years {
+    tax_year: 2025
+    irs_box: "29b"
+  }
+}
+
+concepts {
+  concept: "total_section_179_expense"
+  years {
+    tax_year: 2025
+    irs_box: "29b"
+  }
+}
+
+concepts {
+  concept: "total_partnership_and_s_corp_income"
+  years {
+    tax_year: 2025
+    irs_box: "30"
+  }
+}
+
+concepts {
+  concept: "total_partnership_and_s_corp_losses"
+  years {
+    tax_year: 2025
+    irs_box: "31"
+  }
+}
+
+concepts {
+  concept: "total_partnership_and_s_corp_income_or_loss"
+  years {
+    tax_year: 2025
+    irs_box: "32"
+  }
+}
+
+concepts {
+  concept: "total_estate_and_trust_passive_income"
+  years {
+    tax_year: 2025
+    irs_box: "34a"
+  }
+}
+
+concepts {
+  concept: "total_estate_and_trust_other_income"
+  years {
+    tax_year: 2025
+    irs_box: "34a"
+  }
+}
+
+concepts {
+  concept: "total_estate_and_trust_passive_loss_allowed"
+  years {
+    tax_year: 2025
+    irs_box: "34b"
+  }
+}
+
+concepts {
+  concept: "total_estate_and_trust_deduction_or_loss"
+  years {
+    tax_year: 2025
+    irs_box: "34b"
+  }
+}
+
+concepts {
+  concept: "total_estate_and_trust_income"
+  years {
+    tax_year: 2025
+    irs_box: "35"
+  }
+}
+
+concepts {
+  concept: "total_estate_and_trust_losses"
+  years {
+    tax_year: 2025
+    irs_box: "36"
+  }
+}
+
+concepts {
+  concept: "total_estate_and_trust_income_or_loss"
+  years {
+    tax_year: 2025
+    irs_box: "37"
+  }
+}
+
+concepts {
+  concept: "net_remic_income_or_loss"
+  years {
+    tax_year: 2025
+    irs_box: "39"
+  }
+}
+
+concepts {
+  concept: "net_farm_rental_income_or_loss"
+  years {
+    tax_year: 2025
+    irs_box: "40"
+  }
+}
+
+concepts {
+  concept: "total_supplemental_income_or_loss"
+  years {
+    tax_year: 2025
+    irs_box: "41"
+  }
+}
+
+concepts {
+  concept: "reconciliation_of_farming_and_fishing_income"
+  years {
+    tax_year: 2025
+    irs_box: "42"
+  }
+}
+
+concepts {
+  concept: "reconciliation_for_real_estate_professionals"
+  years {
+    tax_year: 2025
+    irs_box: "43"
+  }
+}

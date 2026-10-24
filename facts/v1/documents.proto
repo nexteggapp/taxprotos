@@ -16,12 +16,16 @@ import "taxprotos/common/v1/money.proto";
 import "taxprotos/common/v1/party.proto";
 import "taxprotos/common/v1/quantity.proto";
 import "taxprotos/us/federal/v1/form_1040/form_1040.proto";
+import "taxprotos/us/federal/v1/form_1040/form_8949.proto";
 import "taxprotos/us/federal/v1/form_1040/schedule_1.proto";
 import "taxprotos/us/federal/v1/form_1040/schedule_1a.proto";
 import "taxprotos/us/federal/v1/form_1040/schedule_2.proto";
 import "taxprotos/us/federal/v1/form_1040/schedule_3.proto";
 import "taxprotos/us/federal/v1/form_1040/schedule_a.proto";
+import "taxprotos/us/federal/v1/form_1040/schedule_b.proto";
+import "taxprotos/us/federal/v1/form_1040/schedule_c.proto";
 import "taxprotos/us/federal/v1/form_1040/schedule_d.proto";
+import "taxprotos/us/federal/v1/form_1040/schedule_e.proto";
 import "taxprotos/us/federal/v1/form_1040/schedule_se.proto";
 import "taxprotos/us/federal/v1/form_1098/form_1098.proto";
 import "taxprotos/us/federal/v1/form_1099_b/form_1099_b.proto";
@@ -454,6 +458,19 @@ message FederalReturn {
 
   // Schedule SE, one per person with self-employment income.
   repeated us.federal.v1.ScheduleSE schedule_se = 8;
+
+  // Schedule B: interest and ordinary dividends.
+  us.federal.v1.ScheduleB schedule_b = 9;
+
+  // Schedule C: profit or loss from business (sole proprietorship).
+  repeated us.federal.v1.ScheduleC schedule_c = 10;
+
+  // Schedule E: supplemental income and loss from rental real estate,
+  // royalties, partnerships, S corporations, estates, trusts, REMICs, etc.
+  us.federal.v1.ScheduleE schedule_e = 11;
+
+  // Form 8949: sales and other dispositions of capital assets.
+  repeated us.federal.v1.Form8949 form_8949 = 12;
 }
 
 // A California resident return: Form 540 and Schedule CA.

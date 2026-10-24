@@ -75,6 +75,10 @@ go_test(
         "//us/federal/v1/form_1099_oid:form_1099_oid.proto",
         "//us/federal/v1/form_1099_q:form_1099_q.proto",
         "//us/federal/v1/form_1099_s:form_1099_s.proto",
+        "//us/federal/v1/form_1040:form_8949.proto",
+        "//us/federal/v1/form_1040:schedule_b.proto",
+        "//us/federal/v1/form_1040:schedule_c.proto",
+        "//us/federal/v1/form_1040:schedule_e.proto",
     ],
     deps = [
         ":v1",
