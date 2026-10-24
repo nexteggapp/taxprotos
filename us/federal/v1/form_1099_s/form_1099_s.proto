@@ -1,0 +1,59 @@
+// Form 1099-S: Proceeds From Real Estate Transactions.
+//
+// A person responsible for closing a real estate transaction files Form 1099-S
+// to report sale or exchange proceeds from real estate.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1099_s;form1099s";
+
+// Form 1099-S reports proceeds from real estate transactions.
+message Form1099S {
+  option (common.v1.fdx_entity) = "Tax1099S";
+  option (common.v1.fdx_version) = "5.0";
+
+  // The tax year this form reports. Four digits, such as 2025.
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // The form is marked CORRECTED, which means it replaces one already sent.
+  bool corrected = 2 [(common.v1.fdx_field) = "corrected"];
+
+  // The person responsible for closing the transaction, printed as FILER'S.
+  common.v1.Party filer = 3 [
+    (common.v1.fdx_field) = "filer",
+    (common.v1.fdx_deviation) = "Party message rather than flat fields"
+  ];
+
+  // The transferor/seller, printed as TRANSFEROR'S.
+  common.v1.Party transferor = 4 [
+    (common.v1.fdx_field) = "transferor",
+    (common.v1.fdx_deviation) = "Party message rather than flat fields"
+  ];
+
+  // The account number or escrow/closing number the form prints, where it has one.
+  string account_number = 5 [(common.v1.fdx_field) = "accountNumber"];
+
+  // Date of closing, box 1.
+  common.v1.Date date_of_closing = 6 [(common.v1.fdx_field) = "closingDate"];
+
+  // Gross proceeds from the real estate transaction, box 2.
+  common.v1.Money gross_proceeds = 7 [(common.v1.fdx_field) = "grossProceeds"];
+
+  // Address (including city, state, and ZIP code) or legal description of the property, box 3.
+  string address_or_legal_description = 8 [(common.v1.fdx_field) = "propertyDescription"];
+
+  // True if the transferor received or will receive property or services as part of consideration, box 4.
+  bool property_or_services_received = 9 [(common.v1.fdx_field) = "propertyOrServicesReceived"];
+
+  // True if the transferor is a foreign person (nonresident alien, foreign entity), box 5.
+  bool foreign_transferor = 10 [(common.v1.fdx_field) = "foreignTransferor"];
+
+  // Buyer's part of real estate tax paid at closing, box 6.
+  common.v1.Money buyer_part_of_real_estate_tax = 11 [(common.v1.fdx_field) = "realEstateTax"];
+}

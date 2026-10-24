@@ -1,0 +1,79 @@
+// Form 1099-OID: Original Issue Discount.
+//
+// A payer or broker files Form 1099-OID to report original issue discount (OID),
+// other periodic interest, and related items on bonds, notes, or certificates of deposit.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1099_oid;form1099oid";
+
+// Form 1099-OID reports original issue discount and periodic interest.
+message Form1099OID {
+  option (common.v1.fdx_entity) = "Tax1099Oid";
+  option (common.v1.fdx_version) = "5.0";
+
+  // The tax year this form reports. Four digits, such as 2025.
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // The form is marked CORRECTED, which means it replaces one already sent.
+  bool corrected = 2 [(common.v1.fdx_field) = "corrected"];
+
+  // The payer that filed the form, printed as PAYER'S.
+  common.v1.Party payer = 3 [
+    (common.v1.fdx_field) = "payer",
+    (common.v1.fdx_deviation) = "Party message rather than flat fields"
+  ];
+
+  // The recipient who received the income, printed as RECIPIENT'S.
+  common.v1.Party recipient = 4 [
+    (common.v1.fdx_field) = "recipient",
+    (common.v1.fdx_deviation) = "Party message rather than flat fields"
+  ];
+
+  // The account number the form prints, where it has one.
+  string account_number = 5 [(common.v1.fdx_field) = "accountNumber"];
+
+  // The payer files this form to satisfy chapter 4 reporting under FATCA.
+  bool fatca_filing_requirement = 6 [(common.v1.fdx_field) = "foreignAccountTaxCompliance"];
+
+  // Original issue discount for the year on a taxable obligation, box 1.
+  common.v1.Money original_issue_discount = 7 [(common.v1.fdx_field) = "originalIssueDiscount"];
+
+  // Other periodic interest on the obligation for the year, box 2.
+  common.v1.Money other_periodic_interest = 8 [(common.v1.fdx_field) = "otherPeriodicInterest"];
+
+  // Interest forfeited upon early withdrawal, box 3.
+  common.v1.Money early_withdrawal_penalty = 9 [(common.v1.fdx_field) = "earlyWithdrawalPenalty"];
+
+  // Federal income tax withheld, box 4.
+  common.v1.Money federal_income_tax_withheld = 10 [(common.v1.fdx_field) = "federalTaxWithheld"];
+
+  // Market discount accrued on the debt instrument during the year, box 5.
+  common.v1.Money market_discount = 11 [(common.v1.fdx_field) = "marketDiscount"];
+
+  // Acquisition premium amortization for the year, box 6.
+  common.v1.Money acquisition_premium = 12 [(common.v1.fdx_field) = "acquisitionPremium"];
+
+  // Description of the obligation or CUSIP number, box 7.
+  string description = 13 [(common.v1.fdx_field) = "description"];
+
+  // Original issue discount on U.S. Treasury obligations, box 8.
+  common.v1.Money original_issue_discount_on_treasury_obligations = 14 [(common.v1.fdx_field) = "oidOnUstObligations"];
+
+  // Investment expenses of a single-class REMIC, box 9.
+  common.v1.Money investment_expenses = 15 [(common.v1.fdx_field) = "investmentExpenses"];
+
+  // Bond premium amortization allocable to interest payments, box 10.
+  common.v1.Money bond_premium = 16 [(common.v1.fdx_field) = "bondPremium"];
+
+  // Tax-exempt original issue discount, box 11.
+  common.v1.Money tax_exempt_oid = 17 [(common.v1.fdx_field) = "taxExemptOid"];
+
+  // State tax withholding rows, boxes 12-14.
+  repeated common.v1.StateTaxWithholding state_tax_withholding = 18 [(common.v1.fdx_field) = "stateTaxWithholding"];
+}

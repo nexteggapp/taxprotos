@@ -1,0 +1,105 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form 1099-OID calls each concept, per tax year.
+#
+# Line numbers come from Form 1099-OID. Amount codes come from IRS Publication
+# 1220 for Tax Year 2025.
+
+form: "1099-OID"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form1099OID"
+tax_years: 2025
+
+concepts {
+  concept: "original_issue_discount"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+    amount_code: "1"
+  }
+}
+concepts {
+  concept: "other_periodic_interest"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+    amount_code: "2"
+  }
+}
+concepts {
+  concept: "early_withdrawal_penalty"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+    amount_code: "3"
+  }
+}
+concepts {
+  concept: "federal_income_tax_withheld"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+    amount_code: "4"
+  }
+}
+concepts {
+  concept: "market_discount"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+    amount_code: "A"
+  }
+}
+concepts {
+  concept: "acquisition_premium"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+    amount_code: "B"
+  }
+}
+concepts {
+  concept: "description"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+concepts {
+  concept: "original_issue_discount_on_treasury_obligations"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+    amount_code: "6"
+  }
+}
+concepts {
+  concept: "investment_expenses"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+    amount_code: "7"
+  }
+}
+concepts {
+  concept: "bond_premium"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+    amount_code: "5"
+  }
+}
+concepts {
+  concept: "tax_exempt_oid"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+    amount_code: "C"
+  }
+}
+concepts {
+  concept: "state_tax_withholding"
+  years {
+    tax_year: 2025
+    irs_box: "12-14"
+  }
+}

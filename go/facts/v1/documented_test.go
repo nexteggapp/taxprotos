@@ -56,6 +56,10 @@ var checked = []string{
 	"taxprotos/us/federal/v1/schedule_k1/schedule_k1_1041.proto",
 	"taxprotos/us/federal/v1/schedule_k1/schedule_k1_1065.proto",
 	"taxprotos/us/federal/v1/schedule_k1/schedule_k1_1120_s.proto",
+	"taxprotos/us/federal/v1/form_1099_c/form_1099_c.proto",
+	"taxprotos/us/federal/v1/form_1099_oid/form_1099_oid.proto",
+	"taxprotos/us/federal/v1/form_1099_q/form_1099_q.proto",
+	"taxprotos/us/federal/v1/form_1099_s/form_1099_s.proto",
 }
 
 // TestEveryElementIsDocumented fails for each element of a checked file

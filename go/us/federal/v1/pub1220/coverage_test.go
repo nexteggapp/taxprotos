@@ -58,6 +58,10 @@ import (
 	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_ssa_1099"
 	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_w2"
 	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_w2g"
+	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_1099_c"
+	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_1099_oid"
+	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_1099_q"
+	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_1099_s"
 	"google.golang.org/protobuf/encoding/prototext"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"google.golang.org/protobuf/reflect/protoregistry"
@@ -108,6 +112,10 @@ var schemas = []schema{
 	{form: "1099-G", dir: "form_1099_g"},
 	{form: "W-2G", dir: "form_w2g"},
 	{form: "SSA-1099", dir: "form_ssa_1099", issuedBySsa: true},
+	{form: "1099-OID", dir: "form_1099_oid"},
+	{form: "1099-S", dir: "form_1099_s"},
+	{form: "1099-C", dir: "form_1099_c"},
+	{form: "1099-Q", dir: "form_1099_q"},
 }
 
 // TestPub1220Coverage checks every form's mapping against the IRS's own list.

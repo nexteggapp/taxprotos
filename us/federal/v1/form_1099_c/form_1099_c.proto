@@ -1,0 +1,62 @@
+// Form 1099-C: Cancellation of Debt.
+//
+// A creditor files Form 1099-C for each debtor for whom it canceled debt
+// of $600 or more.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1099_c;form1099c";
+
+// Form 1099-C reports cancellation of debt.
+message Form1099C {
+  option (common.v1.fdx_entity) = "Tax1099C";
+  option (common.v1.fdx_version) = "5.0";
+
+  // The tax year this form reports. Four digits, such as 2025.
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // The form is marked CORRECTED, which means it replaces one already sent.
+  bool corrected = 2 [(common.v1.fdx_field) = "corrected"];
+
+  // The creditor that canceled the debt, printed as CREDITOR'S.
+  common.v1.Party creditor = 3 [
+    (common.v1.fdx_field) = "creditor",
+    (common.v1.fdx_deviation) = "Party message rather than flat fields"
+  ];
+
+  // The debtor whose debt was canceled, printed as DEBTOR'S.
+  common.v1.Party debtor = 4 [
+    (common.v1.fdx_field) = "debtor",
+    (common.v1.fdx_deviation) = "Party message rather than flat fields"
+  ];
+
+  // The account number or other loan identifier, where the form prints one.
+  string account_number = 5 [(common.v1.fdx_field) = "accountNumber"];
+
+  // Date of the identifiable event canceling the debt, box 1.
+  common.v1.Date date_of_identifiable_event = 6 [(common.v1.fdx_field) = "dateOfEvent"];
+
+  // Amount of debt discharged or canceled, box 2.
+  common.v1.Money amount_of_debt_discharged = 7 [(common.v1.fdx_field) = "debtAmount"];
+
+  // Amount of interest included in the discharged debt in box 2, box 3.
+  common.v1.Money interest_included_in_amount_of_debt_discharged = 8 [(common.v1.fdx_field) = "interestIncluded"];
+
+  // Description of the debt (e.g., mortgage, credit card), box 4.
+  string debt_description = 9 [(common.v1.fdx_field) = "debtDescription"];
+
+  // True if debtor was personally liable for repayment of the debt, box 5.
+  bool debtor_personally_liable = 10 [(common.v1.fdx_field) = "personallyLiable"];
+
+  // Identifiable event code indicating the cancellation event, box 6.
+  string identifiable_event_code = 11 [(common.v1.fdx_field) = "eventCode"];
+
+  // Fair market value of property in a combined Form 1099-A/1099-C foreclosure, box 7.
+  common.v1.Money fair_market_value_of_property = 12 [(common.v1.fdx_field) = "propertyFmv"];
+}

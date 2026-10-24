@@ -1,0 +1,55 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form 1099-S calls each concept, per tax year.
+#
+# Line numbers come from Form 1099-S. Amount codes come from IRS Publication
+# 1220 for Tax Year 2025.
+
+form: "1099-S"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form1099S"
+tax_years: 2025
+
+concepts {
+  concept: "date_of_closing"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+  }
+}
+concepts {
+  concept: "gross_proceeds"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+    amount_code: "2"
+  }
+}
+concepts {
+  concept: "address_or_legal_description"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+  }
+}
+concepts {
+  concept: "property_or_services_received"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+  }
+}
+concepts {
+  concept: "foreign_transferor"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+  }
+}
+concepts {
+  concept: "buyer_part_of_real_estate_tax"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+    amount_code: "5"
+  }
+}

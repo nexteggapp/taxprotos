@@ -1,0 +1,36 @@
+# gazelle:ignore
+
+load("@rules_go//go:def.bzl", "go_library", "go_test")
+load("@rules_go//proto:def.bzl", "go_proto_library")
+
+go_proto_library(
+    name = "form_1099_oid_go_proto",
+    importpath = "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_1099_oid",
+    proto = "//us/federal/v1/form_1099_oid:form_1099_oid_proto",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//go/common/v1",
+    ],
+)
+
+go_library(
+    name = "form_1099_oid",
+    embed = [":form_1099_oid_go_proto"],
+    importpath = "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_1099_oid",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "form_1099_oid_test",
+    size = "small",
+    srcs = ["coverage_test.go"],
+    data = ["//us/federal/v1/form_1099_oid:test_oracles"],
+    deps = [
+        ":form_1099_oid",
+        "//go/common/v1",
+        "@org_golang_google_protobuf//encoding/prototext",
+        "@org_golang_google_protobuf//reflect/protoreflect",
+        "@org_golang_google_protobuf//reflect/protoregistry",
+        "@rules_go//go/runfiles",
+    ],
+)

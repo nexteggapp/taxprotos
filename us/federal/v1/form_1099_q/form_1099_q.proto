@@ -1,0 +1,94 @@
+// Form 1099-Q: Payments From Qualified Education Programs (Under Sections 529 and 530).
+//
+// An officer or employee of an education program files Form 1099-Q to report
+// distributions made from a Qualified Tuition Program (QTP) or Coverdell ESA.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1099_q;form1099q";
+
+// Form 1099-Q reports distributions from qualified education programs.
+message Form1099Q {
+  option (common.v1.fdx_entity) = "Tax1099Q";
+  option (common.v1.fdx_version) = "5.0";
+
+  // TransferType classifies the transfer made from the account (box 4).
+  enum TransferType {
+    // Unspecified transfer type.
+    TRANSFER_TYPE_UNSPECIFIED = 0;
+
+    // Trustee-to-trustee transfer (box 4a).
+    TRANSFER_TYPE_TRUSTEE_TO_TRUSTEE = 1;
+
+    // QTP to Roth IRA rollover under Section 529(c)(3)(E) (box 4b).
+    TRANSFER_TYPE_QTP_TO_ROTH_IRA = 2;
+  }
+
+  // ProgramType classifies the education program type (box 5).
+  enum ProgramType {
+    // Unspecified program type.
+    PROGRAM_TYPE_UNSPECIFIED = 0;
+
+    // Private qualified tuition program (box 5a).
+    PROGRAM_TYPE_PRIVATE_QTP = 1;
+
+    // State qualified tuition program (box 5b).
+    PROGRAM_TYPE_STATE_QTP = 2;
+
+    // Coverdell education savings account (box 5c).
+    PROGRAM_TYPE_COVERDELL_ESA = 3;
+  }
+
+  // The tax year this form reports. Four digits, such as 2025.
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // The form is marked CORRECTED, which means it replaces one already sent.
+  bool corrected = 2 [(common.v1.fdx_field) = "corrected"];
+
+  // The payer or trustee that filed the form, printed as PAYER'S/TRUSTEE'S.
+  common.v1.Party payer = 3 [
+    (common.v1.fdx_field) = "payer",
+    (common.v1.fdx_deviation) = "Party message rather than flat fields"
+  ];
+
+  // The recipient who received the distribution, printed as RECIPIENT'S.
+  common.v1.Party recipient = 4 [
+    (common.v1.fdx_field) = "recipient",
+    (common.v1.fdx_deviation) = "Party message rather than flat fields"
+  ];
+
+  // The account number the form prints, where it has one.
+  string account_number = 5 [(common.v1.fdx_field) = "accountNumber"];
+
+  // Gross distribution from the education program, box 1.
+  common.v1.Money gross_distribution = 6 [(common.v1.fdx_field) = "grossDistribution"];
+
+  // Earnings part of the gross distribution, box 2.
+  common.v1.Money earnings = 7 [(common.v1.fdx_field) = "earnings"];
+
+  // Basis part of the gross distribution, box 3.
+  common.v1.Money basis = 8 [(common.v1.fdx_field) = "basis"];
+
+  // Type of transfer (trustee-to-trustee or QTP to Roth IRA), box 4.
+  TransferType transfer_type = 9 [
+    (common.v1.fdx_field) = "trusteeToTrustee",
+    (common.v1.fdx_deviation) = "Form1099Q uses an enum for box 4 transfer type rather than a boolean"
+  ];
+
+  // Type of education program (Private QTP, State QTP, Coverdell ESA), box 5.
+  ProgramType program_type = 10 [
+    (common.v1.fdx_field) = "programType",
+    (common.v1.fdx_deviation) = "Form1099Q uses an enum for box 5 program type"
+  ];
+
+  // True if recipient is not the designated beneficiary, box 6.
+  bool recipient_not_designated_beneficiary = 11 [(common.v1.fdx_field) = "recipientIsNotBeneficiary"];
+
+  // Fair market value of the account as shown on Copy B, box 7.
+  common.v1.Money fair_market_value = 12 [(common.v1.fdx_field) = "fairMarketValue"];
+}

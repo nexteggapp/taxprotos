@@ -29,8 +29,13 @@ import "taxprotos/us/federal/v1/form_1099_div/form_1099_div.proto";
 import "taxprotos/us/federal/v1/form_1099_g/form_1099_g.proto";
 import "taxprotos/us/federal/v1/form_1099_int/form_1099_int.proto";
 import "taxprotos/us/federal/v1/form_1099_k/form_1099_k.proto";
+import "taxprotos/us/federal/v1/form_1099_c/form_1099_c.proto";
+import "taxprotos/us/federal/v1/form_1099_misc/form_1099_misc.proto";
 import "taxprotos/us/federal/v1/form_1099_nec/form_1099_nec.proto";
+import "taxprotos/us/federal/v1/form_1099_oid/form_1099_oid.proto";
+import "taxprotos/us/federal/v1/form_1099_q/form_1099_q.proto";
 import "taxprotos/us/federal/v1/form_1099_r/form_1099_r.proto";
+import "taxprotos/us/federal/v1/form_1099_s/form_1099_s.proto";
 import "taxprotos/us/federal/v1/form_ssa_1099/form_ssa_1099.proto";
 import "taxprotos/us/federal/v1/form_w2/form_w2.proto";
 import "taxprotos/us/federal/v1/form_w2g/form_w2g.proto";
@@ -41,7 +46,6 @@ import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
 import "taxprotos/us/federal/v1/form_1095_a/form_1095_a.proto";
 import "taxprotos/us/federal/v1/form_1098_e/form_1098_e.proto";
 import "taxprotos/us/federal/v1/form_1098_t/form_1098_t.proto";
-import "taxprotos/us/federal/v1/form_1099_misc/form_1099_misc.proto";
 import "taxprotos/us/federal/v1/form_1099_sa/form_1099_sa.proto";
 import "taxprotos/us/federal/v1/form_5498/form_5498.proto";
 import "taxprotos/us/federal/v1/form_5498_sa/form_5498_sa.proto";
@@ -154,6 +158,18 @@ message Document {
 
     // Schedule K-1 (Form 1041): beneficiary's share of income, deductions, credits, etc.
     us.federal.v1.ScheduleK1Form1041 schedule_k1_1041 = 39;
+
+    // Form 1099-OID: original issue discount.
+    us.federal.v1.Form1099OID form_1099_oid = 40;
+
+    // Form 1099-S: proceeds from real estate transactions.
+    us.federal.v1.Form1099S form_1099_s = 41;
+
+    // Form 1099-C: cancellation of debt.
+    us.federal.v1.Form1099C form_1099_c = 42;
+
+    // Form 1099-Q: payments from qualified education programs.
+    us.federal.v1.Form1099Q form_1099_q = 43;
   }
 }
 
