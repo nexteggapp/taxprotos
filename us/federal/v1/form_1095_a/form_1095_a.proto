@@ -1,0 +1,111 @@
+// Form 1095-A: Health Insurance Marketplace Statement.
+//
+// Health Insurance Marketplaces report information on enrollments in a qualified
+// health plan on Form 1095-A. Individuals use this form to complete Form 8962
+// to reconcile advance payments of the premium tax credit or to claim the credit.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1095_a;form1095a";
+
+// An individual covered under the marketplace health insurance policy, Part II.
+message CoveredIndividual {
+  // Name of the covered individual, column A.
+  string name = 1 [(common.v1.fdx_field) = "name"];
+
+  // Social security number of the covered individual, column B.
+  string tin = 2 [(common.v1.fdx_field) = "tin"];
+
+  // Date of birth of the covered individual (reported if no SSN), column C.
+  common.v1.Date date_of_birth = 3 [(common.v1.fdx_field) = "dateOfBirth"];
+
+  // Coverage start date, column D.
+  common.v1.Date coverage_start_date = 4 [(common.v1.fdx_field) = "startDate"];
+
+  // Coverage termination date, column E.
+  common.v1.Date coverage_termination_date = 5 [(common.v1.fdx_field) = "endDate"];
+}
+
+// Monthly coverage information for one calendar month, Part III lines 21-32.
+message MonthlyCoverage {
+  // Calendar month (1 for January through 12 for December).
+  int32 month = 1 [(common.v1.fdx_field) = "month"];
+
+  // Monthly enrollment premiums, column A.
+  common.v1.Money enrollment_premiums = 2 [(common.v1.fdx_field) = "monthlyPremiumAmount"];
+
+  // Monthly second lowest cost silver plan (SLCSP) premium, column B.
+  common.v1.Money second_lowest_cost_silver_plan_premium = 3 [(common.v1.fdx_field) = "monthlySlcspAmount"];
+
+  // Monthly advance payment of premium tax credit (APTC), column C.
+  common.v1.Money advance_payment_of_premium_tax_credit = 4 [(common.v1.fdx_field) = "monthlyAptcAmount"];
+}
+
+// Form 1095-A reports health insurance marketplace enrollment and premium tax credit information.
+message Form1095A {
+  option (common.v1.fdx_entity) = "Tax1095A";
+  option (common.v1.fdx_version) = "5.0";
+
+  // The tax year this form reports. Four digits, such as 2025.
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // The form is marked VOID, meaning it was sent in error.
+  bool void_box = 2 [(common.v1.fdx_field) = "void"];
+
+  // The form is marked CORRECTED, which means it replaces one already sent.
+  bool corrected = 3 [(common.v1.fdx_field) = "corrected"];
+
+  // Marketplace identifier (state or federal exchange), line 1.
+  string marketplace_identifier = 4 [(common.v1.fdx_field) = "marketplaceId"];
+
+  // Marketplace-assigned policy number, line 2.
+  string marketplace_assigned_policy_number = 5 [(common.v1.fdx_field) = "marketplacePolicyNumber"];
+
+  // Policy issuer's name, line 3.
+  string policy_issuer_name = 6 [(common.v1.fdx_field) = "policyIssuerName"];
+
+  // The recipient who enrolled in the policy, lines 4, 5, and 12-15.
+  common.v1.Party recipient = 7 [
+    (common.v1.fdx_field) = "recipient",
+    (common.v1.fdx_deviation) = "Party message rather than flat recipient name and address fields"
+  ];
+
+  // Recipient's date of birth (reported if no SSN), line 6.
+  common.v1.Date recipient_date_of_birth = 8 [(common.v1.fdx_field) = "recipientDateOfBirth"];
+
+  // Recipient's spouse's name, line 7.
+  string spouse_name = 9 [(common.v1.fdx_field) = "spouseName"];
+
+  // Recipient's spouse's social security number, line 8.
+  string spouse_tin = 10 [(common.v1.fdx_field) = "spouseTin"];
+
+  // Recipient's spouse's date of birth, line 9.
+  common.v1.Date spouse_date_of_birth = 11 [(common.v1.fdx_field) = "spouseDateOfBirth"];
+
+  // Starting date of the coverage policy, line 10.
+  common.v1.Date policy_start_date = 12 [(common.v1.fdx_field) = "policyStartDate"];
+
+  // Ending date of the coverage policy, line 11.
+  common.v1.Date policy_termination_date = 13 [(common.v1.fdx_field) = "policyTerminationDate"];
+
+  // Individuals covered under the policy, Part II lines 16-20.
+  repeated CoveredIndividual covered_individuals = 14 [(common.v1.fdx_field) = "coveredIndividuals"];
+
+  // Monthly coverage information for months enrolled, Part III lines 21-32.
+  repeated MonthlyCoverage monthly_coverage = 15 [(common.v1.fdx_field) = "monthlyCoverage"];
+
+  // Total annual enrollment premiums, Part III line 33 column A.
+  common.v1.Money total_monthly_enrollment_premiums = 16 [(common.v1.fdx_field) = "totalPremiumAmount"];
+
+  // Total annual second lowest cost silver plan premium, Part III line 33 column B.
+  common.v1.Money total_second_lowest_cost_silver_plan_premium = 17 [(common.v1.fdx_field) = "totalSlcspAmount"];
+
+  // Total annual advance payment of premium tax credit, Part III line 33 column C.
+  common.v1.Money total_advance_payment_of_premium_tax_credit = 18 [(common.v1.fdx_field) = "totalAptcAmount"];
+}

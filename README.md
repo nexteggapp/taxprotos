@@ -104,6 +104,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | Form | Schema | Reports |
 |---|---|---|
 | [W-2](https://www.irs.gov/pub/irs-pdf/fw2.pdf) | [`form_w2.proto`](us/federal/v1/form_w2/form_w2.proto) | Wages and tax withheld |
+| [1095-A](https://www.irs.gov/pub/irs-pdf/f1095a.pdf) | [`form_1095_a.proto`](us/federal/v1/form_1095_a/form_1095_a.proto) | Health insurance marketplace statement |
 | [1098](https://www.irs.gov/pub/irs-pdf/f1098.pdf) | [`form_1098.proto`](us/federal/v1/form_1098/form_1098.proto) | Mortgage interest |
 | [1098-E](https://www.irs.gov/pub/irs-pdf/f1098e.pdf) | [`form_1098_e.proto`](us/federal/v1/form_1098_e/form_1098_e.proto) | Student loan interest |
 | [1098-T](https://www.irs.gov/pub/irs-pdf/f1098t.pdf) | [`form_1098_t.proto`](us/federal/v1/form_1098_t/form_1098_t.proto) | Tuition |
