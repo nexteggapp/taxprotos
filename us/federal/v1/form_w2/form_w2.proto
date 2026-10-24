@@ -1,0 +1,155 @@
+// Form W-2, Wage and Tax Statement.
+//
+// An employer sends it for every employee it paid wages to, and files it with
+// the Social Security Administration rather than the IRS.
+//
+// Boxes are in mapping.textproto beside this file, keyed by tax year, per
+// docs/form-schemas.md. Verified against the 2025 Form W-2
+// box layout and the General Instructions for Forms W-2 and W-3 (2026).
+//
+// # No Amount Codes
+//
+// IRS Publication 1220 specifies electronic filing for the forms the IRS
+// receives, so it has no Amount Code table for this one and the mapping carries
+// no amount codes. See //go/us/federal/v1/pub1220 for what that
+// costs the coverage test.
+//
+// On this form the payer is the employer and the recipient is the employee. The
+// employee's Social Security number is printed in full rather than masked; see
+// [common.v1.Recipient.tin].
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_w2;formw2";
+
+// FormW2 is what a Form W-2 states.
+message FormW2 {
+  option (common.v1.fdx_entity) = "TaxW2";
+  option (common.v1.fdx_version) = "5.0";
+
+  // CodedAmount is one entry from box 12, where the employer reports a figure
+  // under a letter code: "D" for a 401(k) deferral, "DD" for the cost of
+  // employer-sponsored health coverage.
+  //
+  // A repeated pair rather than a field per code, because the codes run to
+  // more than thirty and the form has room for four.
+  message CodedAmount {
+    // The code as printed.
+    string code = 1 [(common.v1.fdx_field) = "code"];
+
+    nexteggapp.taxprotos.common.v1.Money amount = 2 [
+      (common.v1.fdx_field) = "amount"
+    ];
+  }
+
+  // OtherItem is one entry from box 14, where an employer reports anything it
+  // wants the employee to know about under a label it chooses.
+  message OtherItem {
+    // The label as printed, such as "CA SDI".
+    string description = 1 [(common.v1.fdx_field) = "description"];
+
+    nexteggapp.taxprotos.common.v1.Money amount = 2 [
+      (common.v1.fdx_field) = "amount"
+    ];
+  }
+
+  // The calendar year the form reports on, as four digits.
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // The employer that filed the form.
+  nexteggapp.taxprotos.common.v1.Party employer = 2;
+
+  // The employee the form reports on.
+  nexteggapp.taxprotos.common.v1.Party employee = 3;
+
+  // The account number the form prints, where it has one. Text, because it
+  // can carry leading zeroes and letters.
+  string account_number = 4 [(common.v1.fdx_field) = "accountNumber"];
+
+  // The form is marked CORRECTED, which means it replaces one already sent.
+  bool corrected = 5 [(common.v1.fdx_field) = "corrected"];
+
+  // One row per state the form reports withholding for.
+  repeated nexteggapp.taxprotos.common.v1.StateTaxWithholding state_tax_withholding = 6 [(common.v1.fdx_field) = "stateTaxWithholding"];
+
+  // The employer's own reference for this form, where it prints one.
+  string control_number = 7 [(common.v1.fdx_field) = "controlNumber"];
+
+  // Everything the employer paid that is subject to federal income tax.
+  nexteggapp.taxprotos.common.v1.Money wages_tips_other_compensation = 8 [
+    (common.v1.fdx_field) = "wagesTipsOtherCompensation"
+  ];
+
+  nexteggapp.taxprotos.common.v1.Money federal_tax_withheld = 9 [
+    (common.v1.fdx_field) = "federalTaxWithheld"
+  ];
+
+  // Wages subject to Social Security tax, which stop at that year's wage base
+  // and so are often lower than [wages_tips_other_compensation].
+  nexteggapp.taxprotos.common.v1.Money social_security_wages = 10 [
+    (common.v1.fdx_field) = "socialSecurityWages"
+  ];
+
+  nexteggapp.taxprotos.common.v1.Money social_security_tax_withheld = 11 [
+    (common.v1.fdx_field) = "socialSecurityTaxWithheld"
+  ];
+
+  // Wages subject to Medicare tax, which has no wage base.
+  nexteggapp.taxprotos.common.v1.Money medicare_wages_and_tips = 12 [
+    (common.v1.fdx_field) = "medicareWagesAndTips"
+  ];
+
+  nexteggapp.taxprotos.common.v1.Money medicare_tax_withheld = 13 [
+    (common.v1.fdx_field) = "medicareTaxWithheld"
+  ];
+
+  // Tips the employee reported to the employer, already included in
+  // [social_security_wages].
+  nexteggapp.taxprotos.common.v1.Money social_security_tips = 14 [
+    (common.v1.fdx_field) = "socialSecurityTips"
+  ];
+
+  // Tips the employer allocated to the employee because reported tips fell
+  // below the share of receipts the law assumes. Not included in
+  // [wages_tips_other_compensation].
+  nexteggapp.taxprotos.common.v1.Money allocated_tips = 15 [
+    (common.v1.fdx_field) = "allocatedTips"
+  ];
+
+  // What the employer paid or set aside under a dependent care assistance
+  // programme.
+  nexteggapp.taxprotos.common.v1.Money dependent_care_benefits = 16 [
+    (common.v1.fdx_field) = "dependentCareBenefits"
+  ];
+
+  // Distributions from a nonqualified deferred compensation plan, already
+  // included in [wages_tips_other_compensation].
+  nexteggapp.taxprotos.common.v1.Money nonqualified_plans = 17 [
+    (common.v1.fdx_field) = "nonqualifiedPlans"
+  ];
+
+  // Box 12, in the order the form prints them.
+  repeated CodedAmount coded_amounts = 18 [(common.v1.fdx_field) = "box12"];
+
+  // The employee is a statutory employee, whose wages carry Social Security
+  // and Medicare tax but no income tax withholding.
+  bool statutory_employee = 19 [(common.v1.fdx_field) = "statutoryEmployee"];
+
+  // The employee was an active participant in a retirement plan, which limits
+  // what they may deduct for an IRA.
+  bool retirement_plan = 20 [(common.v1.fdx_field) = "retirementPlan"];
+
+  // The wages include sick pay from a third party such as an insurer.
+  bool third_party_sick_pay = 21 [(common.v1.fdx_field) = "thirdPartySickPay"];
+
+  // Box 14, in the order the form prints them.
+  repeated OtherItem other_items = 22 [(common.v1.fdx_field) = "box14"];
+
+  // One row per locality the form reports withholding for.
+  repeated nexteggapp.taxprotos.common.v1.LocalTaxWithholding local_tax_withholding = 23 [(common.v1.fdx_field) = "localTaxWithholding"];
+}

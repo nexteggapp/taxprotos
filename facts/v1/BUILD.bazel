@@ -1,0 +1,41 @@
+# gazelle:ignore
+
+load("@protobuf//bazel:proto_library.bzl", "proto_library")
+
+# TaxYearFacts, one household's own facts for one tax year, and the document
+# messages and refs it and a calculator's models use. See
+# docs/facts.md.
+proto_library(
+    name = "facts_proto",
+    # Imported as taxprotos/..., so consumers import these files by that path.
+    import_prefix = "taxprotos",
+    srcs = [
+        "documents.proto",
+        "tax_year_facts.proto",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//common/v1:common_proto",
+        "//us/federal/v1/form_1040:form_1040_proto",
+        "//us/federal/v1/form_1098:form_1098_proto",
+        "//us/federal/v1/form_1099_b:form_1099_b_proto",
+        "//us/federal/v1/form_1099_div:form_1099_div_proto",
+        "//us/federal/v1/form_1099_g:form_1099_g_proto",
+        "//us/federal/v1/form_1099_int:form_1099_int_proto",
+        "//us/federal/v1/form_1099_k:form_1099_k_proto",
+        "//us/federal/v1/form_1099_nec:form_1099_nec_proto",
+        "//us/federal/v1/form_1099_r:form_1099_r_proto",
+        "//us/federal/v1/form_ssa_1099:form_ssa_1099_proto",
+        "//us/federal/v1/form_w2:form_w2_proto",
+        "//us/federal/v1/form_w2g:form_w2g_proto",
+        "//us/state/ca/v1/form_540:form_540_proto",
+        "//us/state/or/v1/form_or40:form_or40_proto",
+    ],
+)
+
+# The sources, for //go/facts/v1's check that every element has a doc
+# comment, which needs them because compiled descriptors carry no comments.
+exports_files([
+    "documents.proto",
+    "tax_year_facts.proto",
+])

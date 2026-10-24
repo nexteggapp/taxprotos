@@ -1,0 +1,156 @@
+// Form 1099-K, Payment Card and Third Party Network Transactions.
+//
+// A card processor or a marketplace sends it to report what it settled to a
+// seller over the year.
+//
+// Boxes and Amount Codes are in mapping.textproto beside this file, keyed by
+// tax year, per docs/form-schemas.md. Verified against the
+// Form 1099-K (Rev. 3-2024) box layout and the Instructions for Form 1099-K
+// (12/2026).
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1099_k;form1099k";
+
+// Form1099K is what a Form 1099-K states.
+message Form1099K {
+  option (common.v1.fdx_entity) = "Tax1099K";
+  option (common.v1.fdx_version) = "5.0";
+
+  // FilerType is which kind of party filed the form.
+  enum FilerType {
+    FILER_TYPE_UNSPECIFIED = 0;
+
+    // A payment settlement entity, which is the party that pays the seller.
+    FILER_TYPE_PAYMENT_SETTLEMENT_ENTITY = 1;
+
+    // An electronic payment facilitator or other third party filing on a
+    // settlement entity's behalf.
+    FILER_TYPE_ELECTRONIC_PAYMENT_FACILITATOR = 2;
+  }
+
+  // TransactionType is which kind of transactions the form totals.
+  enum TransactionType {
+    TRANSACTION_TYPE_UNSPECIFIED = 0;
+
+    // Credit, debit and stored-value card transactions.
+    TRANSACTION_TYPE_PAYMENT_CARD = 1;
+
+    // Transactions settled through a marketplace or other third party network.
+    TRANSACTION_TYPE_THIRD_PARTY_NETWORK = 2;
+  }
+
+  // MonthlyAmounts is the gross amount settled in each month.
+  //
+  // Twelve fields rather than a repeated pair, because Publication 1220 gives
+  // each month its own Amount Code and the mapping is one concept per code.
+  message MonthlyAmounts {
+    nexteggapp.taxprotos.common.v1.Money january = 1 [
+      (common.v1.fdx_field) = "january"
+    ];
+    nexteggapp.taxprotos.common.v1.Money february = 2 [
+      (common.v1.fdx_field) = "february"
+    ];
+    nexteggapp.taxprotos.common.v1.Money march = 3 [
+      (common.v1.fdx_field) = "march"
+    ];
+    nexteggapp.taxprotos.common.v1.Money april = 4 [
+      (common.v1.fdx_field) = "april"
+    ];
+    nexteggapp.taxprotos.common.v1.Money may = 5 [
+      (common.v1.fdx_field) = "may"
+    ];
+    nexteggapp.taxprotos.common.v1.Money june = 6 [
+      (common.v1.fdx_field) = "june"
+    ];
+    nexteggapp.taxprotos.common.v1.Money july = 7 [
+      (common.v1.fdx_field) = "july"
+    ];
+    nexteggapp.taxprotos.common.v1.Money august = 8 [
+      (common.v1.fdx_field) = "august"
+    ];
+    nexteggapp.taxprotos.common.v1.Money september = 9 [
+      (common.v1.fdx_field) = "september"
+    ];
+    nexteggapp.taxprotos.common.v1.Money october = 10 [
+      (common.v1.fdx_field) = "october"
+    ];
+    nexteggapp.taxprotos.common.v1.Money november = 11 [
+      (common.v1.fdx_field) = "november"
+    ];
+    nexteggapp.taxprotos.common.v1.Money december = 12 [
+      (common.v1.fdx_field) = "december"
+    ];
+  }
+
+  // The calendar year the form reports on, as four digits.
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // The payment settlement entity that filed the form, printed as FILER.
+  nexteggapp.taxprotos.common.v1.Party filer = 2;
+
+  // The payee the form reports on, printed as PAYEE.
+  nexteggapp.taxprotos.common.v1.Party payee = 3;
+
+  // The account number the form prints, where it has one. Text, because it
+  // can carry leading zeroes and letters.
+  string account_number = 4 [(common.v1.fdx_field) = "accountNumber"];
+
+  // The form is marked CORRECTED, which means it replaces one already sent.
+  bool corrected = 5 [(common.v1.fdx_field) = "corrected"];
+
+  // One row per state the form reports withholding for.
+  repeated nexteggapp.taxprotos.common.v1.StateTaxWithholding state_tax_withholding = 6 [(common.v1.fdx_field) = "stateTaxWithholding"];
+
+  FilerType filer_type = 7 [(common.v1.fdx_field) = "filerType"];
+
+  TransactionType transaction_type = 8 [(common.v1.fdx_field) = "transactionType"];
+
+  // The settlement entity's name, printed when the filer is a facilitator
+  // rather than the entity itself.
+  string payment_settlement_entity_name = 9 [(common.v1.fdx_field) = "pseName"];
+
+  string payment_settlement_entity_telephone = 10 [(common.v1.fdx_field) = "psePhone"];
+
+  // Everything settled to the seller over the year, before fees, refunds and
+  // chargebacks are taken off.
+  nexteggapp.taxprotos.common.v1.Money gross_payment_transactions = 11 [
+    (common.v1.fdx_field) = "grossAmount"
+  ];
+
+  // The part of [gross_payment_transactions] where the card was not swiped.
+  nexteggapp.taxprotos.common.v1.Money card_not_present_transactions = 12 [
+    (common.v1.fdx_field) = "cardNotPresent"
+  ];
+
+  // Tips settled through the filer, shown separately from tax year 2026 so the
+  // recipient can claim the deduction for them.
+  nexteggapp.taxprotos.common.v1.Money cash_tips = 13 [
+    (common.v1.fdx_field) = "cashTips"
+  ];
+
+  // Treasury Tipped Occupation Codes as printed, which say which occupation
+  // the tips were earned in.
+  repeated string tipped_occupation_codes = 14 [(common.v1.fdx_field) = "tippedOccupationCodes"];
+
+  // The four-digit code the card networks use for the seller's line of
+  // business.
+  string merchant_category_code = 15 [(common.v1.fdx_field) = "merchantCategoryCode"];
+
+  // How many transactions [gross_payment_transactions] covers.
+  int64 payment_transaction_count = 16 [(common.v1.fdx_field) = "paymentTransactionCount"];
+
+  // Backup withholding the filer sent to the IRS.
+  nexteggapp.taxprotos.common.v1.Money federal_tax_withheld = 17 [
+    (common.v1.fdx_field) = "federalTaxWithheld"
+  ];
+
+  // [gross_payment_transactions] split by month, which is how a seller
+  // reconciles the form against their own records.
+  MonthlyAmounts monthly_amounts = 18 [(common.v1.fdx_deviation) = "FDX carries the twelve months as siblings of the document."];
+}

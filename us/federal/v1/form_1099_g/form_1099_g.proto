@@ -1,0 +1,53 @@
+// Form 1099-G, Certain Government Payments.
+//
+// A federal, state or local government sends it when it paid unemployment
+// compensation, or refunded, credited or offset $10 or more of state or local
+// income tax.
+//
+// The schema holds the fields a household's tax year reads, as
+// docs/facts.md lists them. The form's other boxes are listed as
+// unmapped in mapping.textproto beside this file, which also gives each
+// field's box per tax year, per docs/form-schemas.md.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1099_g;form1099g";
+
+// Form1099G is what a Form 1099-G states.
+message Form1099G {
+  option (common.v1.fdx_entity) = "Tax1099G";
+  option (common.v1.fdx_version) = "5.0";
+
+  // The calendar year the form reports on, as four digits.
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // The government agency that paid or refunded the amounts.
+  nexteggapp.taxprotos.common.v1.Party payer = 2;
+
+  // Unemployment compensation paid in the year, including any federal tax
+  // withheld from it.
+  nexteggapp.taxprotos.common.v1.Money unemployment_compensation = 3 [
+    (common.v1.fdx_field) = "unemploymentCompensation"
+  ];
+
+  // State or local income tax refunded, credited or offset in the year. It
+  // is income only to a household that itemised in [refund_tax_year].
+  nexteggapp.taxprotos.common.v1.Money state_or_local_refund = 4 [
+    (common.v1.fdx_field) = "stateOrLocalTaxRefund"
+  ];
+
+  // The tax year [state_or_local_refund] is for, as four digits. Unset when
+  // it is the year before [tax_year].
+  int32 refund_tax_year = 5 [(common.v1.fdx_field) = "refundTaxYear"];
+
+  // Federal income tax withheld, by backup withholding or at the recipient's
+  // request.
+  nexteggapp.taxprotos.common.v1.Money federal_tax_withheld = 6 [
+    (common.v1.fdx_field) = "federalTaxWithheld"
+  ];
+}

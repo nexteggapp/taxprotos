@@ -1,0 +1,62 @@
+// Which printed form a record was read from.
+//
+// Named FormIdentity rather than USFederalFormIdentity because the package is
+// already nexteggapp.taxprotos.us.federal.v1 — the longer name would repeat the
+// scope the package gives it.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1;federalv1";
+
+// FormIdentity is what the printed page said about itself.
+//
+// Every form message carries a tax year, because the tax year is what decides
+// the law and the box layout, and it is the only thing a calculation needs.
+// This message is for the rest: the markers the IRS prints in the margins,
+// captured where whoever read the document could see them.
+//
+// # Why record more than the year
+//
+// The year is enough to know which layout applies, until it is not. The IRS
+// revises a form after publishing it, and two layouts then circulate for the
+// same year — the 2025 Form 1040 that these schemas were written against is
+// marked "Created 9/5/25", and a later revision exists. When a stored record
+// disagrees with the current schema, the first question is which page it came
+// off, and a record that kept only the year cannot answer.
+//
+// # Every field is advisory
+//
+// Nothing here decides anything. A reader that cannot see a revision marker
+// leaves these unset, which is the common case for a scanned page or a data
+// feed, and the record is no less valid for it. Only tax_year on the form
+// message itself is load-bearing.
+message FormIdentity {
+  // The form as the IRS names it: "1040", "W-2", "1099-DIV", "1040 Schedule
+  // SE". Redundant with the message type, and worth carrying anyway: a record
+  // that has been through JSON or a generic pipeline may have lost its type.
+  string form = 1;
+
+  // The revision marker printed in the margin, as printed. "Rev. 10-2025",
+  // "Created 9/5/25".
+  //
+  // Free text because the IRS does not use one format. Do not parse it to
+  // decide anything; see the note above about every field here being advisory.
+  string revision = 2;
+
+  // The catalog number, as printed: "11320B" for the Form 1040. Stable across
+  // years for a given form, so it identifies the form rather than the edition.
+  string catalog_number = 3;
+
+  // The OMB control number, as printed: "1545-0074".
+  //
+  // Shared across the whole 1040 family rather than unique per form, so it
+  // narrows things and does not pin them.
+  string omb_number = 4;
+
+  // Where this came from, in whatever terms the reader had: a file name, a
+  // document identifier, a URL. Left to the caller, because a schema that
+  // fixed the format would be deciding how documents are stored, which is not
+  // its business.
+  string source = 5;
+}

@@ -1,0 +1,422 @@
+// The documents a household's tax year is read from, and the refs that say
+// where each came from.
+//
+// A document is its form message exactly as printed. Wherever a form sits,
+// in a calculator's model of a source or in TaxYearFacts.unassigned, a
+// DocumentRef sits beside it; a bank or brokerage entry carries a LedgerRef
+// instead. On every form, every tin, account_number, control_number,
+// state_id, routing number and refund account field is left empty, and so
+// are Party.address and Party.telephone. See docs/facts.md.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.facts.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+import "taxprotos/common/v1/quantity.proto";
+import "taxprotos/us/federal/v1/form_1040/form_1040.proto";
+import "taxprotos/us/federal/v1/form_1040/schedule_1.proto";
+import "taxprotos/us/federal/v1/form_1040/schedule_1a.proto";
+import "taxprotos/us/federal/v1/form_1040/schedule_2.proto";
+import "taxprotos/us/federal/v1/form_1040/schedule_3.proto";
+import "taxprotos/us/federal/v1/form_1040/schedule_a.proto";
+import "taxprotos/us/federal/v1/form_1040/schedule_d.proto";
+import "taxprotos/us/federal/v1/form_1040/schedule_se.proto";
+import "taxprotos/us/federal/v1/form_1098/form_1098.proto";
+import "taxprotos/us/federal/v1/form_1099_b/form_1099_b.proto";
+import "taxprotos/us/federal/v1/form_1099_div/form_1099_div.proto";
+import "taxprotos/us/federal/v1/form_1099_g/form_1099_g.proto";
+import "taxprotos/us/federal/v1/form_1099_int/form_1099_int.proto";
+import "taxprotos/us/federal/v1/form_1099_k/form_1099_k.proto";
+import "taxprotos/us/federal/v1/form_1099_nec/form_1099_nec.proto";
+import "taxprotos/us/federal/v1/form_1099_r/form_1099_r.proto";
+import "taxprotos/us/federal/v1/form_ssa_1099/form_ssa_1099.proto";
+import "taxprotos/us/federal/v1/form_w2/form_w2.proto";
+import "taxprotos/us/federal/v1/form_w2g/form_w2g.proto";
+import "taxprotos/us/state/ca/v1/form_540/form_540.proto";
+import "taxprotos/us/state/ca/v1/form_540/schedule_ca.proto";
+import "taxprotos/us/state/or/v1/form_or40/form_or40.proto";
+import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
+import "taxprotos/us/state/or/v1/form_or40/schedule_or_asc.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/facts/v1;factsv1";
+
+// A document read but not yet attached to a model: its form and its ref.
+// Until it is attached, a calculator asks which source it belongs to, and an
+// income form counts under a placeholder source so tax is never understated.
+message Document {
+  // Unique across the record and the models: 1 to 64 letters, digits, ".",
+  // "_" or "-", minted once and kept.
+  string id = 1;
+
+  // Where the document came from.
+  DocumentRef source = 2;
+
+  // The form, exactly as printed. Exactly one case is set.
+  oneof form {
+    // A Form W-2 from an employer.
+    us.federal.v1.FormW2 form_w2 = 10;
+
+    // A paystub from an employer.
+    Paystub paystub = 11;
+
+    // A Form 1099-INT from a bank or broker.
+    us.federal.v1.Form1099Int form_1099_int = 12;
+
+    // A Form 1099-DIV from a fund or broker.
+    us.federal.v1.Form1099Div form_1099_div = 13;
+
+    // A broker's Form 1099-B, with every sale it reports.
+    Form1099BStatement form_1099_b = 14;
+
+    // A Form 1099-NEC from a client.
+    us.federal.v1.Form1099Nec form_1099_nec = 15;
+
+    // A Form 1099-K from a payment network.
+    us.federal.v1.Form1099K form_1099_k = 16;
+
+    // A Form 1099-R from a retirement plan or IRA.
+    us.federal.v1.Form1099R form_1099_r = 17;
+
+    // A Form 1099-G from a government.
+    us.federal.v1.Form1099G form_1099_g = 18;
+
+    // A Form SSA-1099 from the Social Security Administration.
+    us.federal.v1.FormSsa1099 form_ssa_1099 = 19;
+
+    // A Form W-2G from a gambling payer.
+    us.federal.v1.FormW2G form_w2g = 20;
+
+    // A Form 1098 from a mortgage lender.
+    us.federal.v1.Form1098 form_1098 = 21;
+
+    // A monthly mortgage statement.
+    MortgageStatement mortgage_statement = 22;
+
+    // A property tax bill.
+    PropertyTaxBill property_tax_bill = 23;
+
+    // A receipt, such as for a gift or a medical bill.
+    Receipt receipt = 24;
+
+    // A tax authority's confirmation of a payment.
+    PaymentConfirmation payment_confirmation = 25;
+
+    // A filed federal return.
+    FederalReturn federal_return = 26;
+
+    // A filed California return.
+    CaliforniaReturn california_return = 27;
+
+    // A filed Oregon return.
+    OregonReturn oregon_return = 28;
+
+    // An employee's Form W-4.
+    FormW4 form_w4 = 29;
+  }
+}
+
+// Where a document came from, beside its form wherever the form sits.
+message DocumentRef {
+  // The document store's reference, opaque to a calculator. Empty: not stored.
+  string vault_ref = 1;
+
+  // What the household calls it, such as "Aug 31 paystub" or "2025 W-2".
+  string name = 2;
+
+  // The day the household received it.
+  common.v1.Date received = 3;
+
+  // Taken out of this year by the household. It counts for nothing, and the
+  // stored copy isn't offered again.
+  bool removed = 4;
+
+  // Used although its year or payer differs from its model's.
+  bool use_anyway = 5;
+}
+
+// Where a bank or brokerage entry came from.
+message LedgerRef {
+  // The document store's reference to the transaction, opaque to a calculator.
+  string vault_ref = 1;
+
+  // The day the entry posted.
+  common.v1.Date posted = 2;
+}
+
+// One paycheck, or a year-to-date column. Federal taxable wages are gross
+// pay less every pre-tax deduction; designated Roth deferrals stay in them.
+// Social Security wages are gross pay less HSA and other benefits, up to the
+// year's wage base; Medicare wages the same, with no cap. Every line is a
+// Money message, so an unset line differs from $0.
+message PayFigures {
+  // One pre-tax deduction line.
+  message Pretax {
+    // What the deduction is for.
+    PretaxKind kind = 1;
+
+    // The amount deducted.
+    common.v1.Money amount = 2;
+  }
+
+  // Gross pay, before any deduction.
+  common.v1.Money gross = 1;
+
+  // Pre-tax deductions, one line each.
+  repeated Pretax pretax = 2;
+
+  // Federal income tax withheld.
+  common.v1.Money federal_withheld = 3;
+
+  // Social Security tax withheld.
+  common.v1.Money social_security_withheld = 4;
+
+  // Medicare tax withheld, including any Additional Medicare Tax.
+  common.v1.Money medicare_withheld = 5;
+
+  // State wages as state_income, and tax withheld.
+  repeated common.v1.StateTaxWithholding states = 6;
+
+  // Designated Roth 401(k) deferrals, W-2 box 12 code AA.
+  common.v1.Money roth_401k = 7;
+
+  // Designated Roth 403(b) deferrals, W-2 box 12 code BB.
+  common.v1.Money roth_403b = 8;
+
+  // Take-home pay, as printed.
+  common.v1.Money net = 9;
+}
+
+// What a pre-tax deduction on a paycheck is for.
+enum PretaxKind {
+  // Not set. A paystub always says what a deduction is for.
+  PRETAX_KIND_UNSPECIFIED = 0;
+
+  // A pre-tax 401(k) deferral, W-2 box 12 code D.
+  PRETAX_KIND_401K = 1;
+
+  // A pre-tax 403(b) deferral, W-2 box 12 code E.
+  PRETAX_KIND_403B = 2;
+
+  // An HSA contribution through payroll, W-2 box 12 code W.
+  PRETAX_KIND_HSA = 3;
+
+  // Any other pre-tax benefit, such as health insurance premiums, which
+  // also comes out of Social Security and Medicare wages.
+  PRETAX_KIND_OTHER_BENEFITS = 4;
+}
+
+// One paystub, as printed.
+message Paystub {
+  // The employer that issued it.
+  common.v1.Party employer = 1;
+
+  // The day the paycheck was paid.
+  common.v1.Date pay_date = 2;
+
+  // What kind of paycheck it is.
+  PaycheckKind kind = 3;
+
+  // This paycheck's figures.
+  PayFigures this_paycheck = 4;
+
+  // The year-to-date column, through this paycheck.
+  PayFigures year_to_date = 5;
+
+  // The filing status withholding uses, as printed.
+  us.federal.v1.FilingStatus withholding_status = 6;
+}
+
+// What kind of paycheck a paystub is. A bonus or a vest doesn't repeat.
+enum PaycheckKind {
+  // Not set. A paystub always has a kind.
+  PAYCHECK_KIND_UNSPECIFIED = 0;
+
+  // A regular paycheck, which the pay dates after it repeat.
+  PAYCHECK_KIND_REGULAR = 1;
+
+  // A bonus, paid on its own or with a regular paycheck.
+  PAYCHECK_KIND_BONUS = 2;
+
+  // Stock that vested, such as restricted stock units.
+  PAYCHECK_KIND_VEST = 3;
+
+  // The last paycheck of a job.
+  PAYCHECK_KIND_FINAL = 4;
+}
+
+// A broker's Form 1099-B. One Form1099B per sale.
+message Form1099BStatement {
+  // Each sale the statement reports.
+  repeated us.federal.v1.Form1099B transactions = 1;
+}
+
+// A monthly mortgage statement.
+message MortgageStatement {
+  // The lender that issued it.
+  common.v1.Party lender = 1;
+
+  // The statement's date.
+  common.v1.Date date = 2;
+
+  // Interest paid in the month the statement covers.
+  common.v1.Money interest = 3;
+
+  // Principal paid in the month the statement covers.
+  common.v1.Money principal = 4;
+
+  // The balance owed after the month's payment.
+  common.v1.Money balance = 5;
+
+  // The interest rate, as a percentage a year.
+  common.v1.Quantity rate = 6;
+}
+
+// A property tax bill for one property.
+message PropertyTaxBill {
+  // One installment of the bill.
+  message Installment {
+    // The installment as the bill names it, such as "First installment".
+    string description = 1;
+
+    // The day it is due.
+    common.v1.Date due = 2;
+
+    // The amount due.
+    common.v1.Money amount = 3;
+  }
+
+  // The tax collector that issued it.
+  common.v1.Party collector = 1;
+
+  // The period the bill covers, as printed, such as "2026-27".
+  string period = 2;
+
+  // The installments, in the order printed.
+  repeated Installment installments = 3;
+}
+
+// A receipt for one payment, such as a gift or a medical bill.
+message Receipt {
+  // Who was paid, as printed.
+  string payee = 1;
+
+  // The day it was paid.
+  common.v1.Date date = 2;
+
+  // The amount paid.
+  common.v1.Money amount = 3;
+}
+
+// An employee's withholding certificate, as filled in.
+message FormW4 {
+  // The day the employee signed it.
+  common.v1.Date signed = 1;
+
+  // Step 1(c).
+  us.federal.v1.FilingStatus filing_status = 2;
+
+  // Step 2: more than one job, or a spouse who works.
+  bool multiple_jobs = 3;
+
+  // Step 3: the credit for dependents.
+  common.v1.Money dependents = 4;
+
+  // Step 4(a): other income not from jobs.
+  common.v1.Money other_income = 5;
+
+  // Step 4(b): deductions beyond the standard deduction.
+  common.v1.Money deductions = 6;
+
+  // Step 4(c): extra withholding each pay period.
+  common.v1.Money extra_withholding = 7;
+
+  // The 2026 checkbox below Step 4(c): exempt from withholding.
+  bool exempt = 8;
+}
+
+// A tax authority's confirmation of one payment. The confirmation number is
+// not kept.
+message PaymentConfirmation {
+  // What the payment was for, as the confirmation says.
+  enum Type {
+    // Not set. A confirmation always says what it was for.
+    TYPE_UNSPECIFIED = 0;
+
+    // An estimated tax payment.
+    TYPE_ESTIMATED_TAX = 1;
+
+    // A payment of a balance due with a return.
+    TYPE_BALANCE_DUE = 2;
+
+    // A payment made with a request for an extension.
+    TYPE_EXTENSION = 3;
+  }
+
+  // The site the payment was made on, such as "IRS Direct Pay".
+  string site = 1;
+
+  // US or a state's postal code.
+  string jurisdiction = 2;
+
+  // The day it was paid.
+  common.v1.Date paid_on = 3;
+
+  // The amount paid.
+  common.v1.Money amount = 4;
+
+  // The tax year it was paid toward, as four digits.
+  int32 tax_year = 5;
+
+  // What it was for.
+  Type type = 6;
+}
+
+// A federal return: Form 1040 and the schedules filed with it.
+message FederalReturn {
+  // Form 1040.
+  us.federal.v1.Form1040 form_1040 = 1;
+
+  // Schedule 1, additional income and adjustments.
+  us.federal.v1.Schedule1 schedule_1 = 2;
+
+  // Schedule 1-A, the deductions new for 2025.
+  us.federal.v1.Schedule1A schedule_1a = 3;
+
+  // Schedule 2, additional taxes.
+  us.federal.v1.Schedule2 schedule_2 = 4;
+
+  // Schedule 3, additional credits and payments.
+  us.federal.v1.Schedule3 schedule_3 = 5;
+
+  // Schedule A, itemised deductions.
+  us.federal.v1.ScheduleA schedule_a = 6;
+
+  // Schedule D, capital gains and losses.
+  us.federal.v1.ScheduleD schedule_d = 7;
+
+  // Schedule SE, one per person with self-employment income.
+  repeated us.federal.v1.ScheduleSE schedule_se = 8;
+}
+
+// A California resident return: Form 540 and Schedule CA.
+message CaliforniaReturn {
+  // Form 540.
+  us.state.ca.v1.Form540 form_540 = 1;
+
+  // Schedule CA (540), the California adjustments.
+  us.state.ca.v1.ScheduleCA schedule_ca = 2;
+}
+
+// An Oregon resident return: Form OR-40 and its schedules.
+message OregonReturn {
+  // Form OR-40.
+  us.state.or.v1.FormOR40 form_or40 = 1;
+
+  // Schedule OR-A, itemised deductions.
+  us.state.or.v1.ScheduleORA schedule_or_a = 2;
+
+  // Schedule OR-ASC, other additions, subtractions and credits.
+  us.state.or.v1.ScheduleORASC schedule_or_asc = 3;
+}

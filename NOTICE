@@ -1,0 +1,6 @@
+taxprotos
+Copyright 2026 Next Generation Interfaces Inc.
+
+The field names carried as annotations follow the Financial Data Exchange (FDX)
+API specification. The amount-code mappings under us/federal are derived from
+IRS Publication 1220, a work of the United States government.

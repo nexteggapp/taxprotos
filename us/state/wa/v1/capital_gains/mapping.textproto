@@ -1,0 +1,170 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What chapter 82.87 RCW calls each concept.
+#
+# Every other mapping in this tree carries a line number in irs_box. This one
+# leaves it empty, because Washington's return is filed electronically and has
+# no printed line numbers to carry. RCW 82.87.110 requires electronic filing,
+# and what the Department publishes is a walkthrough of the wizard's screens.
+#
+# The identifier here is the statutory subsection, in the note. coverage_test.go
+# checks each one against the text of the chapter, which is checked in beside
+# it. That is a stronger oracle than a page of extracted form text, because a
+# statute enumerates what is taxed and what is deductible rather than merely
+# showing that a box exists.
+#
+# tax_years lists 2025 because that is the first year of the tiered rate. The
+# statutory citations below have not moved since 2021 except for the surcharge,
+# which ESSB 5813 added for 2025.
+
+form: "Washington capital gains excise tax return"
+message_name: "nexteggapp.taxprotos.us.state.wa.v1.CapitalGainsReturn"
+tax_years: 2025
+
+concepts {
+  concept: "filing_status"
+  years {
+    tax_year: 2025
+    note: "RCW 82.87.120. Spouses and domestic partners share one standard deduction whether they file jointly or separately."
+  }
+}
+concepts {
+  concept: "federal_net_long_term_capital_gain"
+  years {
+    tax_year: 2025
+    note: "RCW 82.87.020, which defines federal net long-term capital gain as the figure reportable for federal income tax purposes."
+  }
+}
+concepts {
+  concept: "gain_not_allocated_to_washington"
+  years {
+    tax_year: 2025
+    note: "RCW 82.87.100, which allocates gain on intangible property by the individual's domicile, and RCW 82.87.050, which exempts real estate, retirement accounts, timber and the rest."
+  }
+}
+concepts {
+  concept: "allocated_capital_gain"
+  years {
+    tax_year: 2025
+    note: "RCW 82.87.100. Adjusted capital gain allocated to Washington, before the deductions."
+  }
+}
+concepts {
+  concept: "allocated_items"
+  years {
+    tax_year: 2025
+    note: "RCW 82.87.110, which requires the detail of each allocated sale to be filed with the return."
+  }
+}
+concepts {
+  concept: "standard_deduction"
+  years {
+    tax_year: 2025
+    note: "RCW 82.87.060(1), set at $250,000 by the statute and adjusted for inflation each October under RCW 82.87.150."
+  }
+}
+concepts {
+  concept: "charitable_donations"
+  years {
+    tax_year: 2025
+    note: "RCW 82.87.080. Only gifts to organisations principally directed or managed in Washington qualify."
+  }
+}
+concepts {
+  concept: "charitable_deduction"
+  years {
+    tax_year: 2025
+    note: "RCW 82.87.080(1) allows only the excess over the minimum qualifying amount, and RCW 82.87.080(2) caps what may be deducted."
+  }
+}
+concepts {
+  concept: "family_owned_small_business_deduction"
+  years {
+    tax_year: 2025
+    note: "RCW 82.87.070, deducted in full."
+  }
+}
+concepts {
+  concept: "other_deductions"
+  years {
+    tax_year: 2025
+    note: "RCW 82.87.060(2), amounts the state is constitutionally prohibited from taxing."
+  }
+}
+concepts {
+  concept: "taxable_washington_capital_gains"
+  years {
+    tax_year: 2025
+    note: "RCW 82.87.020 defines Washington capital gains as adjusted capital gain as modified in RCW 82.87.060, so the deductions are inside the defined term and both rates apply to this figure."
+  }
+}
+concepts {
+  concept: "tax_at_base_rate"
+  years {
+    tax_year: 2025
+    note: "RCW 82.87.040(1)(a), seven percent of Washington capital gains."
+  }
+}
+concepts {
+  concept: "tax_at_surcharge_rate"
+  years {
+    tax_year: 2025
+    note: "RCW 82.87.040(1)(b), a further 2.90 percent above $1,000,000, added by ESSB 5813 with effect from 1 January 2025."
+  }
+}
+concepts {
+  concept: "total_tax"
+  years {
+    tax_year: 2025
+    note: "RCW 82.87.040(1)."
+  }
+}
+concepts {
+  concept: "business_and_occupation_tax_credit"
+  years {
+    tax_year: 2025
+    note: "RCW 82.87.160, so that one sale is not taxed twice by Washington."
+  }
+}
+concepts {
+  concept: "other_jurisdiction_credit"
+  years {
+    tax_year: 2025
+    note: "RCW 82.87.100(2), for tax another jurisdiction legally imposed on the same gain."
+  }
+}
+concepts {
+  concept: "total_credits"
+  years {
+    tax_year: 2025
+    note: "RCW 82.87.100(2) and RCW 82.87.160 together."
+  }
+}
+concepts {
+  concept: "net_tax_due"
+  years {
+    tax_year: 2025
+    note: "RCW 82.87.040, after the credits."
+  }
+}
+concepts {
+  concept: "penalty_and_interest"
+  years {
+    tax_year: 2025
+    note: "RCW 82.87.110, which sets the penalties for late filing and for substantial underpayment."
+  }
+}
+concepts {
+  concept: "total_amount_due"
+  years {
+    tax_year: 2025
+    note: "RCW 82.87.115, payment due on the federal return's due date."
+  }
+}
+concepts {
+  concept: "federal_return_attached"
+  years {
+    tax_year: 2025
+    note: "RCW 82.87.110, which requires a copy of the federal return to be filed with this one."
+  }
+}

@@ -1,0 +1,170 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What the Form 1099-MISC calls each concept, per tax year.
+#
+# Boxes come from the Form 1099-MISC (Rev. 4-2025) box layout, with the 2026
+# boxes from the Instructions for Forms 1099-MISC and 1099-NEC (12/2026).
+# Amount codes come from IRS Publication 1220 for Tax Year 2025 (Rev. 5-2026),
+# the same document the coverage test in
+# go/us/federal/v1/pub1220 reads.
+#
+# Field names on the message never carry a box number or an amount code, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "1099-MISC"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form1099Misc"
+tax_years: 2025
+
+concepts {
+  concept: "rents"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+    amount_code: "1"
+  }
+}
+concepts {
+  concept: "royalties"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+    amount_code: "2"
+  }
+}
+concepts {
+  concept: "other_income"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+    amount_code: "3"
+  }
+}
+concepts {
+  concept: "federal_tax_withheld"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+    amount_code: "4"
+  }
+}
+concepts {
+  concept: "fishing_boat_proceeds"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+    amount_code: "5"
+  }
+}
+concepts {
+  concept: "medical_and_health_care_payments"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+    amount_code: "6"
+  }
+}
+concepts {
+  concept: "direct_sales_over_threshold"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+concepts {
+  concept: "substitute_payments_in_lieu_of_dividends_or_interest"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+    amount_code: "8"
+  }
+}
+concepts {
+  concept: "crop_insurance_proceeds"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+    amount_code: "A"
+  }
+}
+concepts {
+  concept: "gross_proceeds_paid_to_attorney"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+    amount_code: "C"
+  }
+}
+concepts {
+  concept: "fish_purchased_for_resale"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+    amount_code: "F"
+  }
+}
+concepts {
+  concept: "section_409a_deferrals"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+    amount_code: "D"
+  }
+}
+concepts {
+  concept: "fatca_filing_requirement"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+  }
+}
+concepts {
+  concept: "cash_tips"
+  years {
+    tax_year: 2025
+    absent: true
+    note: "First reported for tax year 2026, in box 13a."
+  }
+}
+concepts {
+  concept: "tipped_occupation_codes"
+  years {
+    tax_year: 2025
+    absent: true
+    note: "First reported for tax year 2026, in box 13b."
+  }
+}
+concepts {
+  concept: "overtime_compensation"
+  years {
+    tax_year: 2025
+    absent: true
+    note: "First reported for tax year 2026, in box 14. Box 14 is blank on the 2025 form."
+  }
+}
+concepts {
+  concept: "nonqualified_deferred_compensation"
+  years {
+    tax_year: 2025
+    irs_box: "15"
+  }
+}
+concepts {
+  concept: "state_tax_withholding"
+  years {
+    tax_year: 2025
+    irs_box: "16-18"
+    note: "Two state blocks. Box 16 is the tax withheld, 17 the state and its number, 18 the state income."
+  }
+}
+unmapped_amount_codes {
+  tax_year: 2025
+  amount_code: "E"
+  amount_type: "Section 409A income"
+  reason: "Last printed as box 15b on the 2019 form. The current form has no box for it."
+}
+unmapped_amount_codes {
+  tax_year: 2025
+  amount_code: "G"
+  amount_type: "Prior Year Nonemployee Compensation (TY2019 and earlier)"
+  reason: "Nonemployee compensation moved to Form 1099-NEC for tax year 2020."
+}

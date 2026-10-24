@@ -1,0 +1,90 @@
+// Form 1098-T, Tuition Statement.
+//
+// A college sends it for each student it billed or received payment from, so
+// the student can claim an education credit.
+//
+// Boxes and Amount Codes are in mapping.textproto beside this file, keyed by
+// tax year, per docs/form-schemas.md. Verified against the
+// 2025 Form 1098-T box layout and the Instructions for Forms 1098-E and 1098-T
+// (2026).
+//
+// On this form the payer is the college and the recipient is the student.
+// Boxes 2 and 3 are marked reserved on the 2025 form and have no fields.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1098_t;form1098t";
+
+// Form1098T is what a Form 1098-T states.
+message Form1098T {
+  option (common.v1.fdx_entity) = "Tax1098T";
+  option (common.v1.fdx_version) = "5.0";
+
+  // The calendar year the form reports on, as four digits.
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // The school or insurer that filed the form, printed as FILER.
+  nexteggapp.taxprotos.common.v1.Party filer = 2;
+
+  // The student the form reports on. Not necessarily the taxpayer who claims the credit.
+  nexteggapp.taxprotos.common.v1.Party student = 3;
+
+  // The account number the form prints, where it has one. Text, because it
+  // can carry leading zeroes and letters.
+  string account_number = 4 [(common.v1.fdx_field) = "accountNumber"];
+
+  // The form is marked CORRECTED, which means it replaces one already sent.
+  bool corrected = 5 [(common.v1.fdx_field) = "corrected"];
+
+  // One row per state the form reports withholding for.
+  repeated nexteggapp.taxprotos.common.v1.StateTaxWithholding state_tax_withholding = 6 [(common.v1.fdx_field) = "stateTaxWithholding"];
+
+  // The college's own reference for the student, printed where the college
+  // uses a service provider.
+  string service_provider_account_number = 7 [(common.v1.fdx_field) = "serviceProviderAccountNumber"];
+
+  // What the college received over the year for tuition and related expenses,
+  // net of any refunds it made.
+  nexteggapp.taxprotos.common.v1.Money payments_received_for_qualified_tuition = 8 [
+    (common.v1.fdx_field) = "paymentsReceived"
+  ];
+
+  // A reduction to a figure reported for an earlier year, which may mean the
+  // student has to repay a credit they already claimed.
+  nexteggapp.taxprotos.common.v1.Money adjustments_for_prior_year = 9 [
+    (common.v1.fdx_field) = "priorYearAdjustments"
+  ];
+
+  // Aid the college administered and processed, which reduces the expenses the
+  // student may claim.
+  nexteggapp.taxprotos.common.v1.Money scholarships_or_grants = 10 [
+    (common.v1.fdx_field) = "scholarshipsOrGrants"
+  ];
+
+  nexteggapp.taxprotos.common.v1.Money adjustments_to_scholarships_for_prior_year = 11 [
+    (common.v1.fdx_field) = "priorYearScholarshipAdjustments"
+  ];
+
+  // The payments figure includes an academic period starting in the first
+  // three months of the following year.
+  bool includes_next_year_academic_period = 12 [(common.v1.fdx_field) = "includesNextYearAcademicPeriod"];
+
+  // The student carried at least half a full-time load for one academic
+  // period, which is a condition of the American opportunity credit.
+  bool at_least_half_time_student = 13 [(common.v1.fdx_field) = "atLeastHalfTimeStudent"];
+
+  // The student was a graduate student, who cannot claim the American
+  // opportunity credit.
+  bool graduate_student = 14 [(common.v1.fdx_field) = "graduateStudent"];
+
+  // Tuition an insurer refunded or reimbursed, which also reduces the expenses
+  // the student may claim.
+  nexteggapp.taxprotos.common.v1.Money insurance_contract_reimbursements = 15 [
+    (common.v1.fdx_field) = "insuranceContractReimbursement"
+  ];
+}

@@ -1,0 +1,215 @@
+// Form 1040, U.S. Individual Income Tax Return.
+//
+// Every other schema in this tree is a document a household receives. This is
+// the one it produces: what a filer tells the IRS, rather than what somebody
+// told the filer.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form
+// 1040 in testdata, which is pdftotext -layout over the PDF the IRS publishes.
+//
+// # No FDX mapping and no Amount Codes
+//
+// FDX covers tax documents a provider sends a customer, and nobody sends
+// anybody a 1040. Publication 1220 covers the information returns the IRS
+// receives electronically, which is a different list. So the fields here carry
+// no fdx_field annotation and the mapping carries no amount codes, and the
+// oracle is the printed form itself.
+//
+// # Subtotals are recorded, not derived
+//
+// Line 9 is the sum of eight other lines and this message has a field for it,
+// which looks redundant. It is not: this is a document, and the document has a
+// number printed on line 9. A reader checking a return against its source needs
+// what was filed, including where it does not add up. Recomputing instead would
+// silently correct the thing worth finding.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// FilingStatus as the checkbox block at the top of the form divides filers.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+  FILING_STATUS_QUALIFYING_SURVIVING_SPOUSE = 5;
+}
+
+// Dependent is one row of the dependents block.
+message Dependent {
+  string name = 1;
+
+  // Social security number as printed.
+  string tin = 2;
+
+  // Relationship to the filer, as printed: "son", "mother".
+  string relationship = 3;
+
+  // The two checkboxes on the row.
+  bool child_tax_credit = 4;
+  bool credit_for_other_dependents = 5;
+}
+
+// Form1040 is what a Form 1040 states.
+message Form1040 {
+  int32 tax_year = 1;
+
+  FilingStatus filing_status = 2;
+
+  // The filer, and their spouse on a joint return. A 1040 prints the social
+  // security number in full.
+  nexteggapp.taxprotos.common.v1.Party filer = 3;
+  nexteggapp.taxprotos.common.v1.Party spouse = 4;
+
+  repeated Dependent dependents = 5;
+
+  // The digital assets question, which the form requires be answered either
+  // way. Two booleans rather than one, because "answered no" and "not answered"
+  // are different things on a signed return.
+  bool digital_assets_answered = 6;
+  bool digital_assets_yes = 7;
+
+  // -- Income ------------------------------------------------------------
+
+  // Wages, from the several places wages come from. total_wages is the sum the
+  // form prints, not a recomputation of the rest.
+  nexteggapp.taxprotos.common.v1.Money w2_wages = 10;
+  nexteggapp.taxprotos.common.v1.Money household_employee_wages = 11;
+  nexteggapp.taxprotos.common.v1.Money unreported_tip_income = 12;
+  nexteggapp.taxprotos.common.v1.Money medicaid_waiver_payments = 13;
+  nexteggapp.taxprotos.common.v1.Money taxable_dependent_care_benefits = 14;
+  nexteggapp.taxprotos.common.v1.Money employer_provided_adoption_benefits = 15;
+  nexteggapp.taxprotos.common.v1.Money wages_from_form_8919 = 16;
+  nexteggapp.taxprotos.common.v1.Money other_earned_income = 17;
+  nexteggapp.taxprotos.common.v1.Money nontaxable_combat_pay_election = 18;
+  nexteggapp.taxprotos.common.v1.Money total_wages = 19;
+
+  // Interest and dividends. The tax-exempt and qualified figures are reported
+  // but not taxed here; they are printed because other calculations need them.
+  nexteggapp.taxprotos.common.v1.Money tax_exempt_interest = 20;
+  nexteggapp.taxprotos.common.v1.Money taxable_interest = 21;
+  nexteggapp.taxprotos.common.v1.Money qualified_dividends = 22;
+  nexteggapp.taxprotos.common.v1.Money ordinary_dividends = 23;
+
+  // Distributions, each with the gross amount and the part that is taxable.
+  // The two differ whenever basis was recovered or a rollover happened, and the
+  // form prints both.
+  nexteggapp.taxprotos.common.v1.Money ira_distributions = 24;
+  nexteggapp.taxprotos.common.v1.Money ira_distributions_taxable = 25;
+  nexteggapp.taxprotos.common.v1.Money pensions_and_annuities = 26;
+  nexteggapp.taxprotos.common.v1.Money pensions_and_annuities_taxable = 27;
+  nexteggapp.taxprotos.common.v1.Money social_security_benefits = 28;
+  nexteggapp.taxprotos.common.v1.Money social_security_benefits_taxable = 29;
+
+  // Capital gain or loss, which may be negative.
+  nexteggapp.taxprotos.common.v1.Money capital_gain_or_loss = 30;
+
+  // Carried in from Schedule 1. The schedule itself is schedule_1.proto.
+  nexteggapp.taxprotos.common.v1.Money additional_income = 31;
+
+  nexteggapp.taxprotos.common.v1.Money total_income = 32;
+
+  // -- Adjusted gross income --------------------------------------------
+
+  nexteggapp.taxprotos.common.v1.Money adjustments_to_income = 33;
+  nexteggapp.taxprotos.common.v1.Money adjusted_gross_income = 34;
+
+  // -- Deductions and taxable income ------------------------------------
+
+  // The age and blindness checkboxes, which raise the standard deduction under
+  // § 63(f).
+  bool filer_born_before_cutoff = 35;
+  bool filer_blind = 36;
+  bool spouse_born_before_cutoff = 37;
+  bool spouse_blind = 38;
+
+  // Whether someone else can claim the filer or spouse as a dependent, which
+  // caps their standard deduction.
+  bool claimed_as_dependent = 39;
+  bool spouse_claimed_as_dependent = 40;
+
+  // The deduction taken. itemized says which method produced it; the form
+  // prints one figure either way.
+  nexteggapp.taxprotos.common.v1.Money deduction = 41;
+  bool itemized = 42;
+
+  nexteggapp.taxprotos.common.v1.Money qualified_business_income_deduction = 43;
+
+  // Carried in from Schedule 1-A, new for tax year 2025: the tips, overtime,
+  // vehicle loan interest and senior deductions.
+  //
+  // The annotation is machine-readable so a validator can refuse this on a year
+  // that predates the schedule. The comment above says the same thing to a
+  // person, and the two cannot disagree because only one of them is checked.
+  nexteggapp.taxprotos.common.v1.Money additional_deductions = 44
+      [(common.v1.valid_from_tax_year) = 2025];
+
+  nexteggapp.taxprotos.common.v1.Money total_deductions = 45;
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 46;
+
+  // -- Tax and credits ---------------------------------------------------
+
+  nexteggapp.taxprotos.common.v1.Money tax = 47;
+
+  // Carried in from Schedule 2, part I.
+  nexteggapp.taxprotos.common.v1.Money additional_tax_from_schedule_2 = 48;
+
+  nexteggapp.taxprotos.common.v1.Money tax_plus_additional = 49;
+  nexteggapp.taxprotos.common.v1.Money child_tax_credit = 50;
+
+  // Carried in from Schedule 3, part I.
+  nexteggapp.taxprotos.common.v1.Money nonrefundable_credits = 51;
+
+  nexteggapp.taxprotos.common.v1.Money total_credits = 52;
+  nexteggapp.taxprotos.common.v1.Money tax_after_credits = 53;
+
+  // Carried in from Schedule 2, part II. Self-employment tax arrives here.
+  nexteggapp.taxprotos.common.v1.Money other_taxes = 54;
+
+  nexteggapp.taxprotos.common.v1.Money total_tax = 55;
+
+  // -- Payments ----------------------------------------------------------
+
+  nexteggapp.taxprotos.common.v1.Money withheld_from_w2 = 56;
+  nexteggapp.taxprotos.common.v1.Money withheld_from_1099 = 57;
+  nexteggapp.taxprotos.common.v1.Money withheld_from_other_forms = 58;
+  nexteggapp.taxprotos.common.v1.Money total_withheld = 59;
+
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 60;
+  nexteggapp.taxprotos.common.v1.Money earned_income_credit = 61;
+  nexteggapp.taxprotos.common.v1.Money additional_child_tax_credit = 62;
+  nexteggapp.taxprotos.common.v1.Money american_opportunity_credit = 63;
+  nexteggapp.taxprotos.common.v1.Money refundable_adoption_credit = 64;
+
+  // Carried in from Schedule 3, part II.
+  nexteggapp.taxprotos.common.v1.Money other_refundable_credits = 65;
+
+  nexteggapp.taxprotos.common.v1.Money total_other_payments = 66;
+  nexteggapp.taxprotos.common.v1.Money total_payments = 67;
+
+  // -- Refund or amount owed ---------------------------------------------
+  //
+  // A return has one or the other, never both. They are separate fields rather
+  // than one signed figure because the form prints them on separate lines and
+  // this message records what the form says.
+
+  nexteggapp.taxprotos.common.v1.Money overpaid = 68;
+  nexteggapp.taxprotos.common.v1.Money refunded = 69;
+  nexteggapp.taxprotos.common.v1.Money applied_to_next_year = 70;
+  nexteggapp.taxprotos.common.v1.Money amount_owed = 71;
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_penalty = 72;
+
+  // Where a refund goes. The account number is as printed; whatever stores this
+  // is storing bank details.
+  string refund_routing_number = 73;
+  string refund_account_number = 74;
+  bool refund_account_is_savings = 75;
+}

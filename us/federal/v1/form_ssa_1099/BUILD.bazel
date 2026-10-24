@@ -1,0 +1,20 @@
+# gazelle:ignore
+
+load("@protobuf//bazel:proto_library.bzl", "proto_library")
+
+proto_library(
+    name = "form_ssa_1099_proto",
+    # Imported as taxprotos/..., so consumers import these files by that path.
+    import_prefix = "taxprotos",
+    srcs = ["form_ssa_1099.proto"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//common/v1:common_proto",
+    ],
+)
+
+# mapping.textproto is read by //go/us/federal/v1/pub1220.
+exports_files([
+    "form_ssa_1099.proto",
+    "mapping.textproto",
+])

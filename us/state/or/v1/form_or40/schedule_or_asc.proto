@@ -1,0 +1,58 @@
+// Schedule OR-ASC, Oregon Adjustments for Form OR-40 Filers.
+//
+// Six sections, each a list of coded items and a total, and each total
+// transfers to one line of Form OR-40. It is the schedule that carries almost
+// everything Oregon does differently from the federal return.
+//
+// # Only the totals are modelled
+//
+// Each section is a list of numbered codes with an amount beside each — code
+// 316 for scholarship income, 351 for a federal pension, and so on through
+// several hundred. Modelling every code would mean a field per code and a
+// schema that changes whenever the Department adds one.
+//
+// What Form OR-40 consumes is the six totals, and that is what this message
+// holds. A filer who needs to know which code produced a figure reads the
+// schedule; the codes are the Department's own list and this schema does not
+// duplicate it.
+//
+// Line numbers are in mapping_or_asc.textproto beside this file. They are
+// section-and-number, like "B7", because that is how the schedule prints them.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.or.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/or/v1/form_or40;formor40";
+
+// ScheduleORASC is what a Schedule OR-ASC states.
+message ScheduleORASC {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // Section A, codes 100 to 199: income Oregon taxes that the federal return
+  // did not.
+  nexteggapp.taxprotos.common.v1.Money total_additions = 2 [(common.v1.fdx_absent) = true];
+
+  // Section B, codes 300 to 399: income the federal return taxed that Oregon
+  // does not.
+  nexteggapp.taxprotos.common.v1.Money total_subtractions = 3 [(common.v1.fdx_absent) = true];
+
+  // Section C: credits taken in an earlier year and now clawed back.
+  nexteggapp.taxprotos.common.v1.Money total_tax_recaptures = 4 [(common.v1.fdx_absent) = true];
+
+  // Section D, codes 800 to 834: credits that reduce tax to nothing and are
+  // then lost.
+  nexteggapp.taxprotos.common.v1.Money total_standard_credits = 5 [(common.v1.fdx_absent) = true];
+
+  // Section E: credits that survive an unused year, and how much of the
+  // carried amount was used this one.
+  nexteggapp.taxprotos.common.v1.Money carryforward_credits_used = 6 [(common.v1.fdx_absent) = true];
+
+  // Section F: credits paid out even where no tax is due.
+  nexteggapp.taxprotos.common.v1.Money total_refundable_credits = 7 [(common.v1.fdx_absent) = true];
+}

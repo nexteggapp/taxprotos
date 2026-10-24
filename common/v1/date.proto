@@ -1,0 +1,44 @@
+// The calendar date type every US tax form schema in this tree uses.
+//
+// One message in its own file, for the same reason money.proto is: several
+// files here import it, and a reader looking for how a date is encoded should
+// not have to find it inside a file about something else.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.common.v1;
+
+option go_package = "github.com/nexteggapp/taxprotos/common/v1;commonv1";
+
+// Date is a calendar date a tax form prints: an acquisition date, a date sold,
+// a date of payment.
+//
+// Parts can be left out, so a box that says only "2025" is a valid Date. Forms
+// do print partial dates, and a schema that could not hold one would force
+// whoever read the document to invent a day.
+//
+// A Date is not a moment in time. Turning one into a moment needs a time zone,
+// which this message does not carry. For a tax form that question rarely
+// arises: the form prints a date, not an instant, and the date is what is
+// filed.
+//
+// It is embedded in stored records, so its field numbers and names must not
+// change.
+//
+// These schemas define their own Date so that they depend on nothing outside
+// this module.
+//
+// # Date and google.type.Date are the same on the wire
+//
+// The field numbers and types here are identical to google.type.Date's, so
+// bytes written as one decode as the other with no conversion step.
+message Date {
+  // Year, 1 to 9999. Use 0 for a date with no year.
+  int32 year = 1;
+
+  // Month, 1 to 12. Use 0 for a year on its own.
+  int32 month = 2;
+
+  // Day, 1 to 31, and valid for the year and month. Use 0 where the form
+  // printed no day.
+  int32 day = 3;
+}

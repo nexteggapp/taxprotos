@@ -1,0 +1,141 @@
+// Form 1099-DIV, Dividends and Distributions.
+//
+// A fund or broker sends it when it paid a shareholder $10 or more in
+// dividends, or withheld tax on their behalf.
+//
+// Boxes and Amount Codes are in mapping.textproto beside this file, keyed by
+// tax year, per docs/form-schemas.md. Verified against the
+// Form 1099-DIV (Rev. 1-2024) box layout and the Instructions for Form 1099-DIV
+// (01/2024).
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1099_div;form1099div";
+
+// Form1099Div is what a Form 1099-DIV states.
+message Form1099Div {
+  option (common.v1.fdx_entity) = "Tax1099Div";
+  option (common.v1.fdx_version) = "5.0";
+
+  // The calendar year the form reports on, as four digits.
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // The payer that filed the form.
+  nexteggapp.taxprotos.common.v1.Party payer = 2;
+
+  // The recipient the form reports on.
+  nexteggapp.taxprotos.common.v1.Party recipient = 3;
+
+  // The account number the form prints, where it has one. Text, because it
+  // can carry leading zeroes and letters.
+  string account_number = 4 [(common.v1.fdx_field) = "accountNumber"];
+
+  // The form is marked CORRECTED, which means it replaces one already sent.
+  bool corrected = 5 [(common.v1.fdx_field) = "corrected"];
+
+  // One row per state the form reports withholding for.
+  repeated nexteggapp.taxprotos.common.v1.StateTaxWithholding state_tax_withholding = 6 [(common.v1.fdx_field) = "stateTaxWithholding"];
+
+  // Every dividend the payer paid, including the qualified ones.
+  nexteggapp.taxprotos.common.v1.Money ordinary_dividends = 7 [
+    (common.v1.fdx_field) = "ordinaryDividends"
+  ];
+
+  // The part of [ordinary_dividends] taxed at capital gains rates.
+  nexteggapp.taxprotos.common.v1.Money qualified_dividends = 8 [
+    (common.v1.fdx_field) = "qualifiedDividends"
+  ];
+
+  // Total capital gain distributions, including the four that follow.
+  nexteggapp.taxprotos.common.v1.Money total_capital_gain_distribution = 9 [
+    (common.v1.fdx_field) = "totalCapitalGain"
+  ];
+
+  // The part of the capital gain distribution from depreciation recapture on
+  // real property, taxed at up to 25%.
+  nexteggapp.taxprotos.common.v1.Money unrecaptured_section_1250_gain = 10 [
+    (common.v1.fdx_field) = "unrecaptured1250Gain"
+  ];
+
+  // Gain from qualified small business stock.
+  nexteggapp.taxprotos.common.v1.Money section_1202_gain = 11 [
+    (common.v1.fdx_field) = "section1202Gain"
+  ];
+
+  // Gain from collectibles, taxed at up to 28%.
+  nexteggapp.taxprotos.common.v1.Money collectibles_gain = 12 [
+    (common.v1.fdx_field) = "collectiblesGain"
+  ];
+
+  // The part of [ordinary_dividends] a foreign person reports under section
+  // 897 as gain on a US real property interest.
+  nexteggapp.taxprotos.common.v1.Money section_897_ordinary_dividends = 13 [
+    (common.v1.fdx_field) = "section897OrdinaryDividends"
+  ];
+
+  // The part of [total_capital_gain_distribution] reported under section 897.
+  nexteggapp.taxprotos.common.v1.Money section_897_capital_gain = 14 [
+    (common.v1.fdx_field) = "section897CapitalGain"
+  ];
+
+  // A return of the shareholder's own capital, which reduces their basis
+  // rather than being income.
+  nexteggapp.taxprotos.common.v1.Money nondividend_distributions = 15 [
+    (common.v1.fdx_field) = "nonTaxableDistribution"
+  ];
+
+  // Backup withholding the payer sent to the IRS.
+  nexteggapp.taxprotos.common.v1.Money federal_tax_withheld = 16 [
+    (common.v1.fdx_field) = "federalTaxWithheld"
+  ];
+
+  // The part of [ordinary_dividends] eligible for the qualified business
+  // income deduction.
+  nexteggapp.taxprotos.common.v1.Money section_199a_dividends = 17 [
+    (common.v1.fdx_field) = "section199ADividends"
+  ];
+
+  // Expenses a non-publicly-offered regulated investment company charged the
+  // shareholder.
+  nexteggapp.taxprotos.common.v1.Money investment_expenses = 18 [
+    (common.v1.fdx_field) = "investmentExpenses"
+  ];
+
+  // Foreign tax the payer withheld, which the shareholder may claim as a
+  // credit.
+  nexteggapp.taxprotos.common.v1.Money foreign_tax_paid = 19 [
+    (common.v1.fdx_field) = "foreignTaxPaid"
+  ];
+
+  // The country or US possession the foreign tax went to, as printed.
+  string foreign_country = 20 [(common.v1.fdx_field) = "foreignCountry"];
+
+  // Cash paid out in a partial or complete liquidation.
+  nexteggapp.taxprotos.common.v1.Money cash_liquidation_distributions = 21 [
+    (common.v1.fdx_field) = "cashLiquidation"
+  ];
+
+  // Property other than cash paid out in a liquidation, at fair market value.
+  nexteggapp.taxprotos.common.v1.Money noncash_liquidation_distributions = 22 [
+    (common.v1.fdx_field) = "nonCashLiquidation"
+  ];
+
+  // The payer files this form to satisfy chapter 4 reporting under FATCA.
+  bool fatca_filing_requirement = 23 [(common.v1.fdx_field) = "foreignAccountTaxCompliance"];
+
+  // Dividends from tax-exempt obligations, which are not federally taxable.
+  nexteggapp.taxprotos.common.v1.Money exempt_interest_dividends = 24 [
+    (common.v1.fdx_field) = "taxExemptInterestDividend"
+  ];
+
+  // The part of [exempt_interest_dividends] that is a tax preference item for
+  // the alternative minimum tax.
+  nexteggapp.taxprotos.common.v1.Money specified_private_activity_bond_interest_dividends = 25 [
+    (common.v1.fdx_field) = "specifiedPabInterestDividend"
+  ];
+}

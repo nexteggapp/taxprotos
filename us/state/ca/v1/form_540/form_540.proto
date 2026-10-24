@@ -1,0 +1,198 @@
+// Form 540, California Resident Income Tax Return.
+//
+// The return a full-year California resident files with the Franchise Tax
+// Board. A part-year resident or a non-resident files Form 540NR instead, which
+// is not modelled here.
+//
+// Line numbers are in mapping_form540.textproto beside this file, keyed by tax
+// year, per docs/form-schemas.md. Verified against the 2025
+// Form 540 layout; testdata holds the text extracted from the published PDF and
+// coverage_test.go asserts every line a mapping claims appears on it.
+//
+// # It starts from the federal return
+//
+// Line 13 is federal adjusted gross income, taken from Form 1040 unchanged.
+// Everything California does differently arrives through Schedule CA (540) as
+// one subtraction total and one addition total. That is why this schema carries
+// a federal figure it does not itself explain.
+//
+// # Two things California taxes that the federal return does not
+//
+// Capital gain has no separate rate here. It is folded into federal adjusted
+// gross income and taxed by the same schedule as wages, so there is no field for
+// it and no Schedule D total on the face of this form.
+//
+// The Behavioral Health Services Tax on line 62 is a one per cent surcharge on
+// taxable income above a million dollars. It was the Mental Health Services Tax
+// until Proposition 1 renamed it for taxable years beginning on or after
+// 1 January 2025.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.ca.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/ca/v1/form_540;form540";
+
+// FilingStatus is the status the return is filed under, from the boxes on
+// Side 1.
+//
+// California requires this to match the federal return under Rev. & Tax. Code
+// § 18521(b), with one exception the names record: a registered domestic
+// partner files as married for California while remaining unmarried federally.
+// That is why every married status here says "RDP" as the form does.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+
+  // Box 1.
+  FILING_STATUS_SINGLE = 1;
+
+  // Box 2.
+  FILING_STATUS_MARRIED_RDP_FILING_JOINTLY = 2;
+
+  // Box 3.
+  FILING_STATUS_MARRIED_RDP_FILING_SEPARATELY = 3;
+
+  // Box 4.
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+
+  // Box 5.
+  FILING_STATUS_QUALIFYING_SURVIVING_SPOUSE_RDP = 5;
+}
+
+// Form540 is what a Form 540 states.
+message Form540 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  // The calendar year the return reports on, as four digits.
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // The person filing, and their spouse or registered domestic partner on a
+  // joint return.
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // Somebody else can claim this filer as a dependent, which shrinks their
+  // standard deduction and removes their personal exemption credit.
+  bool claimed_as_dependent = 5 [(common.v1.fdx_absent) = true];
+
+  // Counts rather than amounts, because the credit per exemption is reduced by
+  // adjusted gross income and the arithmetic needs to know how many there are.
+  int32 personal_exemptions = 6 [(common.v1.fdx_absent) = true];
+  int32 blind_exemptions = 7 [(common.v1.fdx_absent) = true];
+  int32 senior_exemptions = 8 [(common.v1.fdx_absent) = true];
+  int32 dependent_exemptions = 9 [(common.v1.fdx_absent) = true];
+
+  // The exemption counts priced and totalled.
+  nexteggapp.taxprotos.common.v1.Money exemption_amount = 10 [(common.v1.fdx_absent) = true];
+
+  // Wages from every state, as reported in box 16 of the Forms W-2. Not used in
+  // the tax computation; the Franchise Tax Board collects it to match against
+  // what employers filed.
+  nexteggapp.taxprotos.common.v1.Money state_wages = 11 [(common.v1.fdx_absent) = true];
+
+  // Federal adjusted gross income, from Form 1040. Where the return starts.
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 12 [(common.v1.fdx_absent) = true];
+
+  // The Schedule CA (540) totals: income California does not tax that the
+  // federal return did, and income it taxes that the federal return did not.
+  nexteggapp.taxprotos.common.v1.Money california_subtractions = 13 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money california_additions = 14 [(common.v1.fdx_absent) = true];
+
+  // Federal adjusted gross income less the subtractions, before the additions.
+  nexteggapp.taxprotos.common.v1.Money subtotal = 15 [(common.v1.fdx_absent) = true];
+
+  // California adjusted gross income.
+  nexteggapp.taxprotos.common.v1.Money california_adjusted_gross_income = 16 [(common.v1.fdx_absent) = true];
+
+  // The deduction taken, whether standard or itemised. California's standard
+  // deduction is far smaller than the federal one, so a filer who took the
+  // federal standard deduction may still itemise here.
+  nexteggapp.taxprotos.common.v1.Money deduction = 17 [(common.v1.fdx_absent) = true];
+
+  // The deduction on [deduction] is the itemised total rather than the standard
+  // deduction.
+  bool itemized = 18 [(common.v1.fdx_absent) = true];
+
+  // California taxable income, which the rate schedules and the behavioral
+  // health surcharge are both computed on.
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 19 [(common.v1.fdx_absent) = true];
+
+  // Tax from the rate schedules or the tax table.
+  nexteggapp.taxprotos.common.v1.Money tax_before_exemption_credits = 20 [(common.v1.fdx_absent) = true];
+
+  // The exemption credits actually allowed, which is [exemption_amount] reduced
+  // by the adjusted gross income limitation where it applies.
+  nexteggapp.taxprotos.common.v1.Money exemption_credits = 21 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_after_exemption_credits = 22 [(common.v1.fdx_absent) = true];
+
+  // Tax on a lump-sum distribution or from form FTB 3800 or 3803, where a
+  // child's income is reported on a parent's return.
+  nexteggapp.taxprotos.common.v1.Money additional_tax = 23 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_before_credits = 24 [(common.v1.fdx_absent) = true];
+
+  // The two credits the form prints by name. Everything else arrives through
+  // Schedule P (540) and is not modelled separately.
+  nexteggapp.taxprotos.common.v1.Money child_and_dependent_care_credit = 25 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money renters_credit = 26 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_credits = 27 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax_after_credits = 28 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money alternative_minimum_tax = 29 [(common.v1.fdx_absent) = true];
+
+  // One per cent of taxable income above a million dollars.
+  nexteggapp.taxprotos.common.v1.Money behavioral_health_services_tax = 30 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money other_taxes_and_credit_recapture = 31 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_tax = 32 [(common.v1.fdx_absent) = true];
+
+  // What was already paid, or is refundable.
+  nexteggapp.taxprotos.common.v1.Money california_tax_withheld = 33 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 34 [(common.v1.fdx_absent) = true];
+
+  // Real estate and backup withholding, reported on Form 592-B or Form 593
+  // rather than on a W-2.
+  nexteggapp.taxprotos.common.v1.Money real_estate_and_backup_withholding = 35 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money motion_picture_credit = 36 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money earned_income_tax_credit = 37 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money young_child_tax_credit = 38 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money foster_youth_tax_credit = 39 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_payments = 40 [(common.v1.fdx_absent) = true];
+
+  // Use tax on purchases from out-of-state sellers, collected on the income tax
+  // return because California has nowhere else to collect it from an
+  // individual. The form refuses a blank.
+  nexteggapp.taxprotos.common.v1.Money use_tax = 41 [(common.v1.fdx_absent) = true];
+
+  // The household had health care coverage for the whole year, so no individual
+  // shared responsibility penalty is due.
+  bool full_year_health_care_coverage = 42 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money payments_balance = 43 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money use_tax_balance = 44 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money payments_after_shared_responsibility_penalty = 45 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money shared_responsibility_penalty_balance = 46 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money overpaid_tax = 47 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money applied_to_next_year_estimated_tax = 48 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money overpaid_tax_available = 49 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax_due = 50 [(common.v1.fdx_absent) = true];
+
+  // Voluntary contributions to the funds the form lists by code.
+  nexteggapp.taxprotos.common.v1.Money total_contributions = 51 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money amount_you_owe = 52 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money interest_and_penalties = 53 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money underpayment_of_estimated_tax = 54 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_amount_due = 55 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money refund = 56 [(common.v1.fdx_absent) = true];
+}

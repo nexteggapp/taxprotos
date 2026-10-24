@@ -1,0 +1,147 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What the Form 1099-INT calls each concept, per tax year.
+#
+# Boxes come from the Form 1099-INT (Rev. 1-2024) box layout. Amount codes
+# come from IRS Publication 1220 for Tax Year 2025 (Rev. 5-2026), the same
+# document the coverage test in go/us/federal/v1/pub1220 reads.
+#
+# Field names on the message never carry a box number or an amount code, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "1099-INT"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form1099Int"
+tax_years: 2025
+
+concepts {
+  concept: "payer_routing_number"
+  years {
+    tax_year: 2025
+    note: "Printed above box 1 without a number."
+  }
+}
+concepts {
+  concept: "interest_income"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+    amount_code: "1"
+  }
+}
+concepts {
+  concept: "early_withdrawal_penalty"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+    amount_code: "2"
+  }
+}
+concepts {
+  concept: "savings_bond_and_treasury_interest"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+    amount_code: "3"
+  }
+}
+concepts {
+  concept: "federal_tax_withheld"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+    amount_code: "4"
+  }
+}
+concepts {
+  concept: "investment_expenses"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+    amount_code: "5"
+  }
+}
+concepts {
+  concept: "foreign_tax_paid"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+    amount_code: "6"
+  }
+}
+concepts {
+  concept: "foreign_country"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+concepts {
+  concept: "tax_exempt_interest"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+    amount_code: "8"
+  }
+}
+concepts {
+  concept: "specified_private_activity_bond_interest"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+    amount_code: "9"
+  }
+}
+concepts {
+  concept: "market_discount"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+    amount_code: "A"
+  }
+}
+concepts {
+  concept: "bond_premium"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+    amount_code: "B"
+  }
+}
+concepts {
+  concept: "bond_premium_on_treasury_obligations"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+    amount_code: "E"
+  }
+}
+concepts {
+  concept: "bond_premium_on_tax_exempt_bond"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+    amount_code: "D"
+  }
+}
+concepts {
+  concept: "tax_exempt_bond_cusip"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+  }
+}
+concepts {
+  concept: "fatca_filing_requirement"
+  years {
+    tax_year: 2025
+    note: "Printed in the left column without a number."
+  }
+}
+concepts {
+  concept: "state_tax_withholding"
+  years {
+    tax_year: 2025
+    irs_box: "15-17"
+    note: "Two state blocks. Boxes 15, 16 and 17 make up one row, and the form prints the row twice."
+  }
+}

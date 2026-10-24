@@ -1,0 +1,66 @@
+// Schedule OR-A, Oregon Itemized Deductions.
+//
+// Oregon's itemised deductions are close to the federal ones and not the same,
+// which is why a filer cannot copy Schedule A across.
+//
+// The difference that catches people is line 5: Oregon does not let a filer
+// deduct Oregon income tax on an Oregon return. It also applies no equivalent
+// of the federal cap on state and local taxes, so the two totals can differ in
+// either direction.
+//
+// Line numbers are in mapping_or_a.textproto beside this file.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.or.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/or/v1/form_or40;formor40";
+
+// ScheduleORA is what a Schedule OR-A states.
+message ScheduleORA {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // Medical and dental, deductible only above a share of adjusted gross
+  // income.
+  nexteggapp.taxprotos.common.v1.Money medical_and_dental_expenses = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 3 [(common.v1.fdx_absent) = true];
+
+  // The share of adjusted gross income below which medical expenses do not
+  // count. Oregon states it as a percentage on the form rather than a rate in
+  // statute, so the figure the filer computes is what is held.
+  nexteggapp.taxprotos.common.v1.Money agi_threshold = 4 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money medical_and_dental_deduction = 5 [(common.v1.fdx_absent) = true];
+
+  // Taxes paid. Oregon income tax itself is excluded, which is the single
+  // largest difference from the federal schedule.
+  nexteggapp.taxprotos.common.v1.Money state_and_local_income_taxes = 6 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money real_estate_taxes = 7 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money personal_property_taxes = 8 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_income_and_property_taxes = 9 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money other_taxes = 10 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money taxes_paid_deduction = 11 [(common.v1.fdx_absent) = true];
+
+  // Interest paid.
+  nexteggapp.taxprotos.common.v1.Money mortgage_interest_reported = 12 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money mortgage_interest_not_reported = 13 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money points_not_reported = 14 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money investment_interest = 15 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money interest_paid_deduction = 16 [(common.v1.fdx_absent) = true];
+
+  // Gifts to charity.
+  nexteggapp.taxprotos.common.v1.Money gifts_by_cash_or_check = 17 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money gifts_other_than_cash = 18 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money charitable_carryover = 19 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_gifts_to_charity = 20 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money other_miscellaneous_deductions = 21 [(common.v1.fdx_absent) = true];
+
+  // The total, which transfers to Form OR-40.
+  nexteggapp.taxprotos.common.v1.Money total_itemized_deductions = 22 [(common.v1.fdx_absent) = true];
+}

@@ -1,0 +1,21 @@
+# gazelle:ignore
+
+load("@rules_go//go:def.bzl", "go_library")
+load("@rules_go//proto:def.bzl", "go_proto_library")
+
+go_proto_library(
+    name = "form_1099_r_go_proto",
+    importpath = "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_1099_r",
+    proto = "//us/federal/v1/form_1099_r:form_1099_r_proto",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//go/common/v1",
+    ],
+)
+
+go_library(
+    name = "form_1099_r",
+    embed = [":form_1099_r_go_proto"],
+    importpath = "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_1099_r",
+    visibility = ["//visibility:public"],
+)

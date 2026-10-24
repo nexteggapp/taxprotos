@@ -1,0 +1,173 @@
+// Form OR-40, Oregon Individual Income Tax Return for Full-year Residents.
+//
+// A part-year resident files Form OR-40-P and a non-resident Form OR-40-N. Both
+// prorate the tax by the share of income from Oregon sources and neither is
+// modelled here.
+//
+// Line numbers are in mapping_or40.textproto beside this file, keyed by tax
+// year, per docs/form-schemas.md. Verified against the 2025
+// Form OR-40 layout; testdata holds the text extracted from the published PDF
+// and coverage_test.go asserts every line a mapping claims appears on it.
+//
+// # Oregon subtracts part of the federal tax
+//
+// Line 10 is the filer's federal tax liability, and a capped part of it comes
+// off Oregon income. Few states do this and it is usually the largest
+// subtraction on the return — larger than Oregon's standard deduction, which is
+// under three thousand dollars. That is why this schema carries a federal tax
+// figure as an input rather than an outcome.
+//
+// # The kicker
+//
+// Line 32 is Oregon's surplus refund. When state revenue exceeds the forecast
+// by enough, the excess is returned to filers as a credit in the next
+// odd-numbered filing year. It is a credit on this return rather than a
+// separate payment, and a filer may donate it to the State School Fund instead.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.or.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/or/v1/form_or40;formor40";
+
+// FilingStatus is the status the return is filed under.
+//
+// ORS 316.122(1) requires it to match the federal return.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+  FILING_STATUS_SURVIVING_SPOUSE = 5;
+}
+
+// FormOR40 is what a Form OR-40 states.
+message FormOR40 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // Exemption counts. Oregon prices every exemption the same and then removes
+  // the credit entirely above an income limit, so the counts matter only below
+  // it.
+  int32 exemptions_self = 5 [(common.v1.fdx_absent) = true];
+  int32 exemptions_spouse = 6 [(common.v1.fdx_absent) = true];
+  int32 dependents = 7 [(common.v1.fdx_absent) = true];
+
+  // Dependent children with a qualifying disability, who carry an additional
+  // credit.
+  int32 dependents_with_disability = 8 [(common.v1.fdx_absent) = true];
+
+  int32 total_exemptions = 9 [(common.v1.fdx_absent) = true];
+
+  // Federal adjusted gross income, from Form 1040. Where the return starts, and
+  // also the figure the exemption credit limit is tested against.
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 10 [(common.v1.fdx_absent) = true];
+
+  // Schedule OR-ASC Section A: income Oregon taxes that the federal return did
+  // not.
+  nexteggapp.taxprotos.common.v1.Money total_additions = 11 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money income_after_additions = 12 [(common.v1.fdx_absent) = true];
+
+  // The filer's federal tax liability, which line 10 of the return asks for so
+  // that a capped part of it can be subtracted.
+  nexteggapp.taxprotos.common.v1.Money federal_tax_liability = 13 [(common.v1.fdx_absent) = true];
+
+  // Social security and tier 1 railroad retirement benefits, which Oregon does
+  // not tax at all.
+  nexteggapp.taxprotos.common.v1.Money social_security_benefits = 14 [(common.v1.fdx_absent) = true];
+
+  // An Oregon refund counted as income federally is not income again here.
+  nexteggapp.taxprotos.common.v1.Money oregon_refund_in_federal_income = 15 [(common.v1.fdx_absent) = true];
+
+  // Schedule OR-ASC Section B.
+  nexteggapp.taxprotos.common.v1.Money other_subtractions = 16 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_subtractions = 17 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money income_after_subtractions = 18 [(common.v1.fdx_absent) = true];
+
+  // Schedule OR-A. Oregon itemised deductions differ from the federal ones,
+  // most obviously because Oregon does not allow a deduction for the state
+  // income tax itself.
+  nexteggapp.taxprotos.common.v1.Money itemized_deductions = 19 [(common.v1.fdx_absent) = true];
+
+  // The standard deduction, including any addition for age or blindness. Zero
+  // for a separate filer whose spouse itemised.
+  nexteggapp.taxprotos.common.v1.Money standard_deduction = 20 [(common.v1.fdx_absent) = true];
+
+  // The larger of the two above, which is what reduces income.
+  nexteggapp.taxprotos.common.v1.Money deduction = 21 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 22 [(common.v1.fdx_absent) = true];
+
+  // Tax from the tax tables below $50,000 of taxable income, or from the rate
+  // charts above it.
+  nexteggapp.taxprotos.common.v1.Money tax = 23 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money interest_on_installment_sales = 24 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax_recaptures = 25 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_additions_to_tax = 26 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_tax_before_credits = 27 [(common.v1.fdx_absent) = true];
+
+  // The exemption credit, which is nothing at all above the income limit rather
+  // than being tapered.
+  nexteggapp.taxprotos.common.v1.Money exemption_credit = 28 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money political_contribution_credit = 29 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money other_standard_credits = 30 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_standard_credits = 31 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax_after_standard_credits = 32 [(common.v1.fdx_absent) = true];
+
+  // Credits that may be carried to a later year, unlike the standard ones,
+  // which are lost if unused.
+  nexteggapp.taxprotos.common.v1.Money carryforward_credits_used = 33 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_after_all_credits = 34 [(common.v1.fdx_absent) = true];
+
+  // The Oregon surplus refund credit.
+  nexteggapp.taxprotos.common.v1.Money kicker = 35 [(common.v1.fdx_absent) = true];
+
+  // The filer elects to donate the kicker to the State School Fund, in which
+  // case it is not credited against their tax.
+  bool kicker_donated = 36 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money oregon_tax_withheld = 37 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money prior_year_refund_applied = 38 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 39 [(common.v1.fdx_absent) = true];
+
+  // Estimated payments made on the filer's behalf by a pass-through entity.
+  nexteggapp.taxprotos.common.v1.Money pass_through_entity_payments = 40 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money earned_income_credit = 41 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money oregon_kids_credit = 42 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money other_refundable_credits = 43 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_payments_and_refundable_credits = 44 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money overpayment = 45 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money net_tax = 46 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money penalty_and_interest = 47 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money interest_on_underpayment = 48 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_penalty_and_interest = 49 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money net_tax_including_penalty = 50 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money overpayment_less_penalty = 51 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money applied_to_next_year = 52 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money charitable_checkoff_donations = 53 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money political_party_checkoff = 54 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money education_savings_deposits = 55 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_applied_and_donated = 56 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money net_refund = 57 [(common.v1.fdx_absent) = true];
+}

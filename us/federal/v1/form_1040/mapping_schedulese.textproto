@@ -1,0 +1,121 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for 1040 Schedule SE.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "1040 Schedule SE"
+message_name: "nexteggapp.taxprotos.us.federal.v1.ScheduleSE"
+tax_years: 2025
+
+concepts {
+  concept: "net_farm_profit_or_loss"
+  years {
+    tax_year: 2025
+    irs_box: "1a"
+  }
+}
+
+concepts {
+  concept: "net_business_profit_or_loss"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+  }
+}
+
+concepts {
+  concept: "combined_profit_or_loss"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+  }
+}
+
+concepts {
+  concept: "church_employee_income"
+  years {
+    tax_year: 2025
+    irs_box: "5a"
+  }
+}
+
+concepts {
+  concept: "total_net_earnings"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+  }
+}
+
+concepts {
+  concept: "social_security_wage_base"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+
+concepts {
+  concept: "social_security_wages_and_tips"
+  years {
+    tax_year: 2025
+    irs_box: "8a"
+  }
+}
+
+concepts {
+  concept: "wage_base_remaining"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+  }
+}
+
+concepts {
+  concept: "social_security_tax"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+  }
+}
+
+concepts {
+  concept: "medicare_tax"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+  }
+}
+
+concepts {
+  concept: "self_employment_tax"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+  }
+}
+
+concepts {
+  concept: "one_half_deduction"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+  }
+}
+
+concepts {
+  concept: "net_earnings_after_reduction"
+  years {
+    tax_year: 2025
+    irs_box: "4a"
+  }
+}

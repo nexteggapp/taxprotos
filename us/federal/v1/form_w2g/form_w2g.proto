@@ -1,0 +1,46 @@
+// Form W-2G, Certain Gambling Winnings.
+//
+// A casino, track, lottery or other payer sends it for one payment of
+// winnings above the reporting threshold for that kind of wager.
+//
+// The schema holds the fields a household's tax year reads, as
+// docs/facts.md lists them. The form's other boxes are listed as
+// unmapped in mapping.textproto beside this file, which also gives each
+// field's box per tax year, per docs/form-schemas.md.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_w2g;formw2g";
+
+// FormW2G is what a Form W-2G states. One form reports one payment.
+message FormW2G {
+  option (common.v1.fdx_entity) = "TaxW2G";
+  option (common.v1.fdx_version) = "5.0";
+
+  // The calendar year the form reports on, as four digits.
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // The payer of the winnings.
+  nexteggapp.taxprotos.common.v1.Party payer = 2;
+
+  // The winnings reported, before any tax withheld.
+  nexteggapp.taxprotos.common.v1.Money reportable_winnings = 3 [
+    (common.v1.fdx_field) = "winnings"
+  ];
+
+  // The day the winnings were won.
+  nexteggapp.taxprotos.common.v1.Date date_won = 4 [
+    (common.v1.fdx_field) = "dateWon"
+  ];
+
+  // Federal income tax withheld from the winnings.
+  nexteggapp.taxprotos.common.v1.Money federal_tax_withheld = 5 [
+    (common.v1.fdx_field) = "federalTaxWithheld"
+  ];
+}

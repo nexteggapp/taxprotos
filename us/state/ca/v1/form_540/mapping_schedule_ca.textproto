@@ -1,0 +1,70 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Schedule CA (540) calls each concept, per tax year.
+#
+# Part I prints its lines in three columns — the federal amount, California's
+# subtractions, California's additions — so three concepts share line 27 and are
+# told apart by the note. A line number alone does not identify a figure on this
+# schedule, which is the clearest case in this tree for why the mapping carries
+# prose as well as a number.
+
+form: "Schedule CA (540)"
+message_name: "nexteggapp.taxprotos.us.state.ca.v1.ScheduleCA"
+tax_years: 2025
+
+concepts {
+  concept: "federal_total"
+  years {
+    tax_year: 2025
+    irs_box: "27"
+    note: "Part I, column A. The federal figure, restated so the three columns reconcile."
+  }
+}
+concepts {
+  concept: "total_subtractions"
+  years {
+    tax_year: 2025
+    irs_box: "27"
+    note: "Part I, column B. Transfers to Form 540, line 14."
+  }
+}
+concepts {
+  concept: "total_additions"
+  years {
+    tax_year: 2025
+    irs_box: "27"
+    note: "Part I, column C. Transfers to Form 540, line 16."
+  }
+}
+concepts {
+  concept: "miscellaneous_deductions_over_two_percent"
+  years {
+    tax_year: 2025
+    irs_box: "25"
+    note: "Part II. Job expenses and certain miscellaneous deductions, allowed only above two per cent of federal AGI. Suspended federally, alive in California."
+  }
+}
+concepts {
+  concept: "adjusted_itemized_deductions"
+  years {
+    tax_year: 2025
+    irs_box: "26"
+    note: "Part II. The itemised total before the high-income limitation."
+  }
+}
+concepts {
+  concept: "itemized_deductions_after_limitation"
+  years {
+    tax_year: 2025
+    irs_box: "29"
+    note: "Part II. Reduced above the same AGI thresholds that reduce the exemption credits."
+  }
+}
+concepts {
+  concept: "deduction_transferred"
+  years {
+    tax_year: 2025
+    irs_box: "30"
+    note: "Part II. The larger of the limited itemised total and the California standard deduction. Transfers to Form 540, line 18."
+  }
+}

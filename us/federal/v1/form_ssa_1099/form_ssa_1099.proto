@@ -1,0 +1,49 @@
+// Form SSA-1099, Social Security Benefit Statement.
+//
+// The Social Security Administration sends it to everyone who was paid, or
+// repaid, Social Security benefits in the year.
+//
+// The schema holds the fields a household's tax year reads, as
+// docs/facts.md lists them. mapping.textproto beside this file gives
+// each field's box per tax year, per docs/form-schemas.md. The SSA-1099 is not an
+// information return the IRS specifies in Publication 1220, so no Amount
+// Code table checks it.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_ssa_1099;formssa1099";
+
+// FormSsa1099 is what a Form SSA-1099 states.
+message FormSsa1099 {
+  option (common.v1.fdx_entity) = "TaxSsa1099";
+  option (common.v1.fdx_version) = "5.0";
+
+  // The calendar year the form reports on, as four digits.
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // Benefits paid in the year, including amounts withheld from them.
+  nexteggapp.taxprotos.common.v1.Money benefits_paid = 2 [
+    (common.v1.fdx_field) = "benefitsPaid"
+  ];
+
+  // Benefits the recipient repaid to the Social Security Administration in
+  // the year.
+  nexteggapp.taxprotos.common.v1.Money benefits_repaid = 3 [
+    (common.v1.fdx_field) = "benefitsRepaid"
+  ];
+
+  // [benefits_paid] less [benefits_repaid]. Negative when more was repaid
+  // than paid. Recorded as printed, not derived, per docs/form-schemas.md.
+  nexteggapp.taxprotos.common.v1.Money net_benefits = 4 [
+    (common.v1.fdx_field) = "netBenefits"
+  ];
+
+  // Voluntary federal income tax withheld from the benefits.
+  nexteggapp.taxprotos.common.v1.Money federal_tax_withheld = 5 [
+    (common.v1.fdx_field) = "federalTaxWithheld"
+  ];
+}

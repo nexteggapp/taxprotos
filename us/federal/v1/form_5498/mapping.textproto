@@ -1,0 +1,189 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What the Form 5498 calls each concept, per tax year.
+#
+# Boxes come from the 2025 Form 5498 box layout. Amount codes come from IRS
+# Publication 1220 for Tax Year 2025 (Rev. 5-2026), the same document the
+# coverage test in go/us/federal/v1/pub1220 reads.
+#
+# Field names on the message never carry a box number or an amount code, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "5498"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form5498"
+tax_years: 2025
+
+concepts {
+  concept: "ira_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+    amount_code: "1"
+  }
+}
+concepts {
+  concept: "rollover_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+    amount_code: "2"
+  }
+}
+concepts {
+  concept: "roth_ira_conversion_amount"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+    amount_code: "3"
+  }
+}
+concepts {
+  concept: "recharacterized_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+    amount_code: "4"
+  }
+}
+concepts {
+  concept: "fair_market_value_of_account"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+    amount_code: "5"
+  }
+}
+concepts {
+  concept: "life_insurance_cost"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+    amount_code: "6"
+  }
+}
+concepts {
+  concept: "ira"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+concepts {
+  concept: "sep"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+concepts {
+  concept: "simple"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+concepts {
+  concept: "roth_ira"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+concepts {
+  concept: "sep_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+    amount_code: "8"
+  }
+}
+concepts {
+  concept: "simple_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+    amount_code: "9"
+  }
+}
+concepts {
+  concept: "roth_ira_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+    amount_code: "A"
+  }
+}
+concepts {
+  concept: "required_minimum_distribution_next_year"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+  }
+}
+concepts {
+  concept: "required_minimum_distribution_date"
+  years {
+    tax_year: 2025
+    irs_box: "12a"
+  }
+}
+concepts {
+  concept: "required_minimum_distribution_amount"
+  years {
+    tax_year: 2025
+    irs_box: "12b"
+    amount_code: "B"
+  }
+}
+concepts {
+  concept: "postponed_or_late_contribution"
+  years {
+    tax_year: 2025
+    irs_box: "13a"
+    amount_code: "C"
+  }
+}
+concepts {
+  concept: "postponed_contribution_year"
+  years {
+    tax_year: 2025
+    irs_box: "13b"
+  }
+}
+concepts {
+  concept: "postponed_contribution_code"
+  years {
+    tax_year: 2025
+    irs_box: "13c"
+  }
+}
+concepts {
+  concept: "repayments"
+  years {
+    tax_year: 2025
+    irs_box: "14a"
+    amount_code: "D"
+  }
+}
+concepts {
+  concept: "repayment_code"
+  years {
+    tax_year: 2025
+    irs_box: "14b"
+  }
+}
+concepts {
+  concept: "fair_market_value_of_specified_assets"
+  years {
+    tax_year: 2025
+    irs_box: "15a"
+    amount_code: "7"
+  }
+}
+concepts {
+  concept: "specified_asset_codes"
+  years {
+    tax_year: 2025
+    irs_box: "15b"
+  }
+}

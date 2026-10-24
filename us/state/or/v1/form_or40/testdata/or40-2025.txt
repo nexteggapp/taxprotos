@@ -1,0 +1,565 @@
+                                                                                                                                                               Clear form
+
+
+                 2025 Form OR-40                                                                                             Oregon Department of Revenue
+
+                 Oregon Individual Income Tax Return for Full-year Residents
+
+                 Page 1 of 8     • Use UPPERCASE letters. • Use blue or black ink. • Print actual size (100%). • Don’t submit photocopies or use staples.
+Fiscal filers only: Year-end date (MM/DD/YYYY)                                                              Space for 2-D barcode—do not write in box below
+
+             /             /
+                                                                Extension filed
+
+
+                                                                Form OR-24
+       Amended return.
+       If amending for an NOL tax year (YYYY)                   Form OR-243
+       NOL, tax year the
+       NOL was generated:                                       Federal Form 8379
+
+       Calculated with “as if” federal return                   Federal Form 8886
+
+       Short-year tax election                                  Disaster relief
+
+
+
+
+First name                                                                         Initial         Date of birth (MM/DD/YYYY)
+
+                                                                                                             /           /
+Last name
+
+
+
+
+Social Security number (SSN)
+
+
+                                                                   First time using this SSN (see instructions)                  Applied for ITIN             Deceased
+
+Spouse first name                                                                  Initial         Spouse date of birth (MM/DD/YYYY)
+
+                                                                                                             /           /
+Spouse last name
+
+
+
+
+Spouse SSN
+
+
+                                                                   First time using this SSN (see instructions)                  Applied for ITIN             Deceased
+
+Current mailing address
+
+
+
+
+City                                                                                                             State          ZIP code
+
+
+
+
+Country                                                                                                          Phone
+
+
+
+
+Filing Status (check only one box)
+
+  1.             Single             2.        Married filing jointly          3.             Married filing separately (enter spouse information above)
+
+
+  4.             Head of household (with qualifying dependent)                5.             Qualifying surviving spouse
+
+
+
+
+                 150-101-040
+                 (Rev. 09-18-25, ver. 01)                                                                                       00462501010000
+                 2025 Form OR-40                                                                                                                               Oregon Department of Revenue
+
+
+
+                 Page 2 of 8          • Use UPPERCASE letters. • Use blue or black ink. • Print actual size (100%). • Don’t submit photocopies or use staples.
+
+Last name                                                                                                                                SSN
+
+
+
+
+Note: Reprint page 1 if you make changes to this page.
+
+
+Exemptions
+ 6a. Credits for yourself .........................................................................................................................................................................................6a.
+
+
+        Check boxes that apply:                               Regular                        Severe disability                           Someone else can claim you as a dependent
+
+
+ 6b. Credits for your spouse ..................................................................................................................................................................................6b.
+
+
+        Check boxes that apply:                               Regular                        Severe disability                           Someone else can claim your spouse as a dependent
+
+Dependents
+  List your dependents in order from youngest to oldest. If you have more than three dependents, complete Schedule OR-ADD-DEP. Include the
+  schedule with your return.
+
+
+  Dependent 1: First name                                                          Initial        Dependent 1: Last name
+
+
+
+
+  Dependent 1: Date of birth (MM/DD/YYYY)                           Dependent 1: SSN                                                        Code *
+
+                /                 /                                                                                                                                       Child with a qualifying disability
+
+
+  Dependent 2: First name                                                          Initial        Dependent 2: Last name
+
+
+
+
+  Dependent 2: Date of birth (MM/DD/YYYY)                           Dependent 2: SSN                                                        Code *
+
+                /                 /                                                                                                                                       Child with a qualifying disability
+
+
+  Dependent 3: First name                                                          Initial        Dependent 3: Last name
+
+
+
+
+  Dependent 3: Date of birth (MM/DD/YYYY)                           Dependent 3: SSN                                                        Code *
+
+                /                 /                                                                                                                                       Child with a qualifying disability
+
+
+*Dependent relationship code (see instructions).
+
+
+  6c. Total number of dependents ................................................................................................................................................................ 6c.
+
+
+
+  6d. Total number of dependent children with a qualifying disability (see instructions) ..............................................................................6d.
+
+
+
+  6e. Total exemptions. Add lines 6a through 6d ................................................................................................................................ Total 6e.
+
+
+
+
+                 150-101-040
+                 (Rev. 09-18-25, ver. 01)                                                                                                                         00462501020000
+                 2025 Form OR-40                                                                                                                    Oregon Department of Revenue
+
+
+
+                 Page 3 of 8         • Use UPPERCASE letters. • Use blue or black ink. • Print actual size (100%). • Don’t submit photocopies or use staples.
+
+Last name                                                                                                                              SSN
+
+
+
+
+Note: Reprint page 1 if you make changes to this page.
+
+Taxable income
+  7. Federal adjusted gross income from federal Form 1040, 1040-SR, or
+     1040-NR, line 11a; or 1040-X, line 1C (see instructions)............................................ 7.
+                                                                                                                                                     ,                ,                 0 0
+
+
+  8. Total additions from Schedule OR-ASC, line A5........................................................ 8.
+                                                                                                                                                     ,                ,                 0 0
+
+
+  9. Income after additions. Add lines 7 and 8.................................................................. 9.
+                                                                                                                                                     ,                ,                 0 0
+
+Subtractions
+ 10. 2025 federal tax liability (see instructions) ............................................................ 10.
+                                                                                                                                                     ,                ,                 0 0
+
+
+ 11. Social Security amount on federal Form 1040 or 1040-SR, line 6b ......................... 11.
+                                                                                                                                                     ,                ,                 0 0
+
+
+ 12. Oregon income tax refund included in federal income ............................................ 12.
+                                                                                                                                                     ,                ,                 0 0
+
+
+ 13. Total subtractions from Schedule OR-ASC, line B7 ................................................ 13.
+                                                                                                                                                     ,                ,                 0 0
+
+
+ 14. Total subtractions. Add lines 10 through 13 ............................................................ 14.
+                                                                                                                                                     ,                ,                 0 0
+
+
+ 15. Income after subtractions. Line 9 minus line 14....................................................... 15.
+                                                                                                                                                     ,                ,                 0 0
+
+Deductions
+ 16. Oregon itemized deductions. Enter your Oregon itemized deductions from
+     Schedule OR-A, line 23. If you are not itemizing your deductions, enter 0.............. 16.
+                                                                                                                                                     ,                ,                 0 0
+
+
+ 17. Standard deduction. Enter your standard deduction ............................................. 17.
+                                                                                                                                                     ,                ,                 0 0
+
+        You were:                    17a.              65 or older         17b.              Blind       Your spouse was:                17c.         65 or older   17d.        Blind
+
+           Standard                    Single                Married filing jointly          Married filing separately            Qualifying surviving spouse   Head of household
+          deductions                   $2,835                      $5,670                         $2,835 or $0                              $5,670                   $4,560
+        See instructions if you or your spouse are age 65 or older, blind, or can be claimed as a
+        dependent on someone else’s return, or are married filing separately.
+
+
+ 18. Enter the larger of line 16 or 17 ................................................................................ 18.
+                                                                                                                                                     ,                ,                 0 0
+
+ 19. Oregon taxable income. Line 15 minus line 18. If line 18 is more than
+     line 15, enter 0 .......................................................................................................... 19.
+                                                                                                                                                     ,                ,                 0 0
+
+
+
+                 150-101-040
+                 (Rev. 09-18-25, ver. 01)                                                                                                             00462501030000
+                 2025 Form OR-40                                                                                                                Oregon Department of Revenue
+
+
+
+                 Page 4 of 8         • Use UPPERCASE letters. • Use blue or black ink. • Print actual size (100%). • Don’t submit photocopies or use staples.
+
+Last name                                                                                                                              SSN
+
+
+
+
+Note: Reprint page 1 if you make changes to this page.
+
+
+Oregon tax
+ 20. Tax (see instructions) ................................................................................................ 20.
+                                                                                                                                                 ,             ,               0 0
+
+        Check the appropriate box if you’re using an alternative method to calculate your tax:
+
+
+        20a.             Schedule OR-FIA-40                     20b.             Worksheet FCG                   20c.              Schedule OR-PTE-FY
+
+
+
+ 21. Interest on certain installment sales ......................................................................... 21.
+                                                                                                                                                 ,             ,               0 0
+
+
+ 22. Total tax recaptures from Schedule OR-ASC, line C5 .............................................. 22.
+                                                                                                                                                 ,             ,               0 0
+
+
+ 23. Total additions to tax. Line 21 plus line 22 ............................................................... 23.
+                                                                                                                                                 ,             ,               0 0
+
+
+ 24. Total tax before credits. Add lines 20 and 23 .......................................................... 24.
+                                                                                                                                                 ,             ,               0 0
+
+Standard and carryforward credits
+ 25. Exemption credit. If the amount on line 7 is $100,000 or less, multiply your total
+     exemptions on line 6e by $256. Otherwise, see instructions ................................... 25.
+                                                                                                                                                 ,             ,               0 0
+
+
+ 26. Political contribution credit. See limits in instructions........................................... 26.
+                                                                                                                                                 ,             ,               0 0
+
+
+ 27. Total standard credits from Schedule OR-ASC, line D16 ........................................ 27.
+                                                                                                                                                 ,             ,               0 0
+
+
+ 28. Total standard credits. Add lines 25 through 27 ....................................................... 28.
+                                                                                                                                                 ,             ,               0 0
+
+ 29. Tax minus standard credits. Line 24 minus line 28. If line 28 is more than
+     line 24, enter 0 .......................................................................................................... 29.
+                                                                                                                                                 ,             ,               0 0
+
+ 30. Total carryforward credits used this year from Schedule OR-ASC, line E9.
+     Line 30 can’t be more than line 29 (see Schedule OR-ASC instructions) ................ 30.
+                                                                                                                                                 ,             ,               0 0
+
+
+ 31. Tax after standard and carryforward credits. Line 29 minus line 30......................... 31.
+                                                                                                                                                 ,             ,               0 0
+
+
+
+
+                 150-101-040
+                 (Rev. 09-18-25, ver. 01)                                                                                                         00462501040000
+                2025 Form OR-40                                                                                                                Oregon Department of Revenue
+
+
+
+                Page 5 of 8        • Use UPPERCASE letters. • Use blue or black ink. • Print actual size (100%). • Don’t submit photocopies or use staples.
+
+Last name                                                                                                                         SSN
+
+
+
+
+Note: Reprint page 1 if you make changes to this page.
+Oregon surplus (kicker)
+ 32. Enter your kicker amount (see instructions). If you elect to donate your kicker
+     to the State School Fund, enter 0 and see line 55 ............................................... 32.
+                                                                                                                                                ,             ,               0 0
+
+
+Payments and refundable credits
+ 33. Oregon income tax withheld. Include a copy of your Forms W-2 and 1099 ....... 33.
+                                                                                                                                                ,             ,               0 0
+
+
+ 34. Prior-year refund applied as estimated payment ..................................................... 34.
+                                                                                                                                                ,             ,               0 0
+
+ 35. Estimated tax payments for 2025. Include all estimated payments, including
+     any extension payment, that you made by April 15, 2026 (see instructions).
+     Do not include the amount on line 34 ...................................................................... 35.
+                                                                                                                                                ,             ,               0 0
+
+ 36. Estimated tax payments from Schedule OR-K-1, line 20 (PTE owner payment
+     from Form OR-19—see instructions) ....................................................................... 36.
+                                                                                                                                                ,             ,               0 0
+
+
+ 37. Earned income credit (see instructions) ................................................................... 37.
+                                                                                                                                                ,             ,               0 0
+
+
+ 38. Oregon Kids Credit (see instructions) ....................................................................... 38.
+                                                                                                                                                ,             ,               0 0
+
+
+ 39. Total refundable credits from Schedule OR-ASC, line F7 ........................................ 39.
+                                                                                                                                                ,             ,               0 0
+
+
+ 40. Total payments and refundable credits. Add lines 32 through 39 ........................... 40.
+                                                                                                                                                ,             ,               0 0
+
+Tax to pay or refund
+ 41. Overpayment of tax. If line 31 is less than line 40, you overpaid.
+     Line 40 minus line 31 ................................................................................................ 41.
+                                                                                                                                                ,             ,               0 0
+
+ 42. Net tax. If line 31 is more than line 40, you have tax to pay.
+     Line 31 minus line 40................................................................................................ 42.
+                                                                                                                                                ,             ,               0 0
+
+
+ 43. Penalty and interest for filing or paying late (see instructions) ................................. 43.
+                                                                                                                                                ,             ,               0 0
+
+
+ 44. Interest on underpayment of estimated tax. Include Form OR-10 ......................... 44.
+                                                                                                                                                ,             ,               0 0
+
+
+        Exception number from Form OR-10, line 1                        44a.                   Check box if you annualized:             44b.
+
+
+
+
+                150-101-040
+                (Rev. 09-18-25, ver. 01)                                                                                                        00462501050000
+                2025 Form OR-40                                                                                                            Oregon Department of Revenue
+
+
+
+                Page 6 of 8         • Use UPPERCASE letters. • Use blue or black ink. • Print actual size (100%). • Don’t submit photocopies or use staples.
+
+Last name                                                                                                                            SSN
+
+
+
+
+Note: Reprint page 1 if you make changes to this page.
+
+
+Tax to pay or refund (continued)
+ 45. Total penalty and interest due. Add lines 43 and 44 ................................................ 45.
+                                                                                                                                            ,             ,               0 0
+
+ 46. Net tax including penalty and interest.
+     Line 42 plus line 45 .................................................. This is the amount you owe. 46.
+                                                                                                                                            ,             ,               0 0
+
+ 47. Overpayment less penalty and interest.
+     Line 41 minus line 45 ...............................................................This is your refund. 47.
+                                                                                                                                            ,             ,               0 0
+
+ 48. Amount from line 47 you want to apply as a payment of your 2026*
+     estimated tax (*to a later year if filing after 1/15/2027) ............................................. 48.
+                                                                                                                                            ,             ,               0 0
+
+
+ 49. Charitable checkoff donations from Schedule OR-DONATE, line 30 ....................... 49.
+                                                                                                                                            ,             ,               0 0
+
+
+ 50. Political party $3 checkoff ........................................................................................ 50.
+                                                                                                                                            ,             ,               0 0
+
+
+        Party code:                  50a. You                                      50b. Spouse
+
+
+ 51. Higher education savings plan deposits from Schedule OR-529, line 5 .................. 51.
+                                                                                                                                            ,             ,               0 0
+
+ 52. Total. Add lines 48 through 51. Line 52 can’t be more than your
+     refund on line 47 ....................................................................................................... 52.
+                                                                                                                                            ,             ,               0 0
+
+
+ 53. Net refund. Line 47 minus line 52 .................................... This is your net refund. 53.
+                                                                                                                                            ,             ,               0 0
+
+Direct deposit
+ 54. For direct deposit of your refund, see instructions. Check the box if the final deposit destination is outside the United States:
+
+
+        Type of account:
+                                                      Account information:
+                Checking or                           Routing number                                                  Account number
+
+
+                 Savings
+
+
+
+Kicker donation
+ 55. If you elect to donate your kicker to the State School Fund, check this box. ......... 55a.
+
+
+       Complete the kicker worksheet in the instructions and enter the
+       amount here. ............................................................ This election is irrevocable. 55b.                         ,             ,               0 0
+
+
+
+                150-101-040
+                (Rev. 09-18-25, ver. 01)                                                                                                    00462501060000
+                2025 Form OR-40                                                                                            Oregon Department of Revenue
+
+
+
+                Page 7 of 8     • Use UPPERCASE letters. • Use blue or black ink. • Print actual size (100%). • Don’t submit photocopies or use staples.
+
+Last name                                                                                                 SSN
+
+
+
+
+Note: Reprint page 1 if you make changes to this page.
+Sign here. Under penalty of false swearing, I declare that the information in this return and any attachments is true, correct and complete.
+    Your signature
+
+
+X
+Date (MM/DD/YYYY)
+
+            /             /
+    Spouse signature
+
+
+X
+Date (MM/DD/YYYY)
+
+            /             /
+    Signature of preparer other than taxpayer
+
+
+X
+Date (MM/DD/YYYY)                                     Preparer phone                                                Preparer license number
+
+            /             /
+Preparer first name                                            Initial     Preparer last name
+
+
+
+
+Preparer address
+
+
+
+
+City                                                                                                        State           ZIP code
+
+
+
+
+Signing this return does not grant your preparer the right to represent you or make decisions on your behalf. For more information, see the instructions for
+Form OR-AUTH-REP on our website.
+
+
+Important: Include a copy of your federal Form 1040, 1040-SR, 1040-X, or 1040-NR. We may adjust your return without it.
+
+Make your payment
+• Online: You can make a payment at www.oregon.gov/dor.
+• By mail: Make your check, money order, or cashier’s check payable to the Oregon Department of Revenue. Don’t mail cash. Write “2025 Form OR-40,”
+  your daytime phone, and the last four digits of your SSN or ITIN on the payment. Mailed with Form OR-40: Send the payment in the same envelope with
+  your return. Don’t use a payment voucher. Mailed without Form OR-40: Use a payment voucher. See the instructions for Form OR-40-V.
+
+Mail your return
+• Non-2-D barcode. If the large 2-D barcode box on the first page of this form is blank:
+  — Mail tax-due returns to: Oregon Department of Revenue, PO Box 14555, Salem OR 97309-0940.
+  — Mail refund and no-tax-due returns to: Oregon Department of Revenue, PO Box 14700, Salem OR 97309-0930.
+• 2-D barcode. If the large 2-D barcode box on the first page of this form is filled in:
+  — Mail tax-due returns to: Oregon Department of Revenue, PO Box 14720, Salem OR 97309-0463.
+  — Mail refund and no-tax-due returns to: Oregon Department of Revenue, PO Box 14710, Salem OR 97309-0460.
+
+
+
+
+                150-101-040
+                (Rev. 09-18-25, ver. 01)                                                                                     00462501070000
+            2025 Form OR-40                                                                                           Oregon Department of Revenue
+
+
+
+            Page 8 of 8     • Use UPPERCASE letters. • Use blue or black ink. • Print actual size (100%). • Don’t submit photocopies or use staples.
+
+Last name                                                                                             SSN
+
+
+
+
+Note: Reprint page 1 if you make changes to this page.
+Amended statement. Complete this section only if you’re amending your 2025 return or filing with a new SSN.
+
+If filing an amended return, use this space to explain what you’re changing. Include the return line numbers and the reason for each change. If your
+filing status has changed, explain why. Include all supporting forms and schedules when you file your amended return, even if you haven’t changed
+anything on them.
+
+
+If filing with a new SSN, enter your former identification number.
+
+
+
+
+            150-101-040
+            (Rev. 09-18-25, ver. 01)                                                                                     00462501080000
+

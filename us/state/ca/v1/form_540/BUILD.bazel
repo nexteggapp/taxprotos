@@ -1,0 +1,33 @@
+# gazelle:ignore
+
+load("@protobuf//bazel:proto_library.bzl", "proto_library")
+
+# Form 540 and Schedule CA (540): the return a California resident files, as
+# against the information returns elsewhere in this tree, which are what a
+# household receives.
+proto_library(
+    name = "form_540_proto",
+    # Imported as taxprotos/..., so consumers import these files by that path.
+    import_prefix = "taxprotos",
+    srcs = [
+        "form_540.proto",
+        "schedule_ca.proto",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//common/v1:common_proto",
+    ],
+)
+
+# The mappings and the form extracts they are checked against, for
+# //go/us/state/ca/v1/form_540. They stay here rather than beside the
+# test because the runfiles path a test resolves is the path of the file's own
+# package, and because a mapping belongs with the schema it maps.
+filegroup(
+    name = "test_oracles",
+    srcs = glob([
+        "mapping*.textproto",
+        "testdata/**",
+    ]),
+    visibility = ["//go/us/state/ca/v1/form_540:__pkg__"],
+)

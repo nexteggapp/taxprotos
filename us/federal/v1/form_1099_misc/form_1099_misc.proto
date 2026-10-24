@@ -1,0 +1,141 @@
+// Form 1099-MISC, Miscellaneous Information.
+//
+// A business sends it for payments that are income to the recipient and do not
+// belong on any other information return: rent, royalties, prizes, an
+// attorney's settlement cheque.
+//
+// Boxes and Amount Codes are in mapping.textproto beside this file, keyed by
+// tax year, per docs/form-schemas.md. Verified against the
+// Form 1099-MISC (Rev. 4-2025) box layout and the Instructions for Forms
+// 1099-MISC and 1099-NEC (12/2026).
+//
+// # This form renumbers often
+//
+// Nonemployee compensation was box 7 until 2020, when it moved to a reinstated
+// Form 1099-NEC and box 7 became a checkbox for direct sales. Cash tips,
+// tipped occupation codes and overtime compensation arrived for tax year 2026
+// and pushed nonqualified deferred compensation and the state boxes down
+// again. Every field here is named for its concept for that reason.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1099_misc;form1099misc";
+
+// Form1099Misc is what a Form 1099-MISC states.
+message Form1099Misc {
+  option (common.v1.fdx_entity) = "Tax1099Misc";
+  option (common.v1.fdx_version) = "5.0";
+
+  // The calendar year the form reports on, as four digits.
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // The payer that filed the form.
+  nexteggapp.taxprotos.common.v1.Party payer = 2;
+
+  // The recipient the form reports on.
+  nexteggapp.taxprotos.common.v1.Party recipient = 3;
+
+  // The account number the form prints, where it has one. Text, because it
+  // can carry leading zeroes and letters.
+  string account_number = 4 [(common.v1.fdx_field) = "accountNumber"];
+
+  // The form is marked CORRECTED, which means it replaces one already sent.
+  bool corrected = 5 [(common.v1.fdx_field) = "corrected"];
+
+  // One row per state the form reports withholding for.
+  repeated nexteggapp.taxprotos.common.v1.StateTaxWithholding state_tax_withholding = 6 [(common.v1.fdx_field) = "stateTaxWithholding"];
+
+  // Rent for real estate, machinery or a pasture.
+  nexteggapp.taxprotos.common.v1.Money rents = 7 [
+    (common.v1.fdx_field) = "rents"
+  ];
+
+  // Gross royalties from oil, gas, mineral, copyright or patent interests,
+  // before the payer deducted severance tax.
+  nexteggapp.taxprotos.common.v1.Money royalties = 8 [
+    (common.v1.fdx_field) = "royalties"
+  ];
+
+  // Prizes, awards and other income the form has no more specific box for.
+  nexteggapp.taxprotos.common.v1.Money other_income = 9 [
+    (common.v1.fdx_field) = "otherIncome"
+  ];
+
+  // Backup withholding, or withholding on Indian gaming profits.
+  nexteggapp.taxprotos.common.v1.Money federal_tax_withheld = 10 [
+    (common.v1.fdx_field) = "federalTaxWithheld"
+  ];
+
+  // A crew member's share of the catch, or of the proceeds from selling it.
+  nexteggapp.taxprotos.common.v1.Money fishing_boat_proceeds = 11 [
+    (common.v1.fdx_field) = "fishingBoatProceeds"
+  ];
+
+  // Payments to a physician or other health care provider, which are reported
+  // even when the provider is a corporation.
+  nexteggapp.taxprotos.common.v1.Money medical_and_health_care_payments = 12 [
+    (common.v1.fdx_field) = "medicalHealthPayments"
+  ];
+
+  // The payer sold the recipient $5,000 or more of consumer products for
+  // resale. A checkbox, because the payer reports that it happened and not how
+  // much.
+  bool direct_sales_over_threshold = 13 [(common.v1.fdx_field) = "directSales"];
+
+  // Payments a broker made in place of dividends or tax-exempt interest on
+  // securities it had lent out.
+  nexteggapp.taxprotos.common.v1.Money substitute_payments_in_lieu_of_dividends_or_interest = 14 [
+    (common.v1.fdx_field) = "substitutePayments"
+  ];
+
+  nexteggapp.taxprotos.common.v1.Money crop_insurance_proceeds = 15 [
+    (common.v1.fdx_field) = "cropInsuranceProceeds"
+  ];
+
+  // What a payer sent an attorney in a settlement, before the attorney took
+  // their fee out of it.
+  nexteggapp.taxprotos.common.v1.Money gross_proceeds_paid_to_attorney = 16 [
+    (common.v1.fdx_field) = "grossProceedsAttorney"
+  ];
+
+  // Cash a buyer paid someone engaged in catching fish, for resale.
+  nexteggapp.taxprotos.common.v1.Money fish_purchased_for_resale = 17 [
+    (common.v1.fdx_field) = "fishPurchasedForResale"
+  ];
+
+  // Amounts deferred under a nonqualified deferred compensation plan that
+  // meets section 409A.
+  nexteggapp.taxprotos.common.v1.Money section_409a_deferrals = 18 [
+    (common.v1.fdx_field) = "section409ADeferrals"
+  ];
+
+  // The payer files this form to satisfy chapter 4 reporting under FATCA.
+  bool fatca_filing_requirement = 19 [(common.v1.fdx_field) = "foreignAccountTaxCompliance"];
+
+  // Tips the recipient reported, which the payer must show separately from
+  // tax year 2026 so the recipient can claim the deduction for them.
+  nexteggapp.taxprotos.common.v1.Money cash_tips = 20 [
+    (common.v1.fdx_field) = "cashTips"
+  ];
+
+  // Treasury Tipped Occupation Codes as printed, which say which occupation
+  // the tips were earned in.
+  repeated string tipped_occupation_codes = 21 [(common.v1.fdx_field) = "tippedOccupationCodes"];
+
+  // Overtime pay above the recipient's regular rate, shown separately from tax
+  // year 2026 so the recipient can claim the deduction for it.
+  nexteggapp.taxprotos.common.v1.Money overtime_compensation = 22 [
+    (common.v1.fdx_field) = "overtimeCompensation"
+  ];
+
+  // Income from a nonqualified deferred compensation plan that failed section
+  // 409A.
+  nexteggapp.taxprotos.common.v1.Money nonqualified_deferred_compensation = 23 [
+    (common.v1.fdx_field) = "nonqualifiedDeferredCompensation"
+  ];
+}

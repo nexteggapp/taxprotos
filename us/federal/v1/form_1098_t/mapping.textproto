@@ -1,0 +1,83 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What the Form 1098-T calls each concept, per tax year.
+#
+# Boxes come from the 2025 Form 1098-T box layout. Amount codes come from IRS
+# Publication 1220 for Tax Year 2025 (Rev. 5-2026), the same document the
+# coverage test in go/us/federal/v1/pub1220 reads.
+#
+# Field names on the message never carry a box number or an amount code, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "1098-T"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form1098T"
+tax_years: 2025
+
+concepts {
+  concept: "service_provider_account_number"
+  years {
+    tax_year: 2025
+    note: "Printed bottom left without a number."
+  }
+}
+concepts {
+  concept: "payments_received_for_qualified_tuition"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+    amount_code: "1"
+  }
+}
+concepts {
+  concept: "adjustments_for_prior_year"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+    amount_code: "3"
+  }
+}
+concepts {
+  concept: "scholarships_or_grants"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+    amount_code: "4"
+  }
+}
+concepts {
+  concept: "adjustments_to_scholarships_for_prior_year"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+    amount_code: "5"
+  }
+}
+concepts {
+  concept: "includes_next_year_academic_period"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+concepts {
+  concept: "at_least_half_time_student"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+  }
+}
+concepts {
+  concept: "graduate_student"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+  }
+}
+concepts {
+  concept: "insurance_contract_reimbursements"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+    amount_code: "7"
+  }
+}

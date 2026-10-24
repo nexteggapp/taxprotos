@@ -1,0 +1,80 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What the Form 1099-NEC calls each concept, per tax year.
+#
+# Boxes come from the Form 1099-NEC (Rev. 4-2025) box layout, with the 2026
+# boxes from the Instructions for Forms 1099-MISC and 1099-NEC (12/2026).
+# Amount codes come from IRS Publication 1220 for Tax Year 2025 (Rev. 5-2026),
+# the same document the coverage test in
+# go/us/federal/v1/pub1220 reads.
+#
+# Field names on the message never carry a box number or an amount code, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "1099-NEC"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form1099Nec"
+tax_years: 2025
+
+concepts {
+  concept: "nonemployee_compensation"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+    amount_code: "1"
+    note: "Renumbered 1a for tax year 2026, when boxes 1b to 1d were added."
+  }
+}
+concepts {
+  concept: "cash_tips"
+  years {
+    tax_year: 2025
+    absent: true
+    note: "First reported for tax year 2026, in box 1b."
+  }
+}
+concepts {
+  concept: "tipped_occupation_codes"
+  years {
+    tax_year: 2025
+    absent: true
+    note: "First reported for tax year 2026, in box 1c."
+  }
+}
+concepts {
+  concept: "overtime_compensation"
+  years {
+    tax_year: 2025
+    absent: true
+    note: "First reported for tax year 2026, in box 1d."
+  }
+}
+concepts {
+  concept: "direct_sales_over_threshold"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+  }
+}
+concepts {
+  concept: "excess_golden_parachute_payments"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+  }
+}
+concepts {
+  concept: "federal_tax_withheld"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+    amount_code: "4"
+  }
+}
+concepts {
+  concept: "state_tax_withholding"
+  years {
+    tax_year: 2025
+    irs_box: "5-7"
+    note: "Two state blocks. Box 5 is the tax withheld, 6 the state and its number, 7 the state income."
+  }
+}

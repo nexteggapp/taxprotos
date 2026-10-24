@@ -1,0 +1,51 @@
+// The money type every US tax form schema in this tree uses.
+//
+// One message in its own file, because every other file here imports it and a
+// reader looking for how money is encoded should not have to find it inside a
+// file about something else.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.common.v1;
+
+option go_package = "github.com/nexteggapp/taxprotos/common/v1;commonv1";
+
+// Money is a figure a tax form prints: an integer count of a currency's minor
+// unit, plus that currency.
+//
+// Every money field on every form in this tree is a Money. It is embedded in
+// stored records, so its field numbers and names must not change.
+//
+// # Never a float
+//
+// Binary floating point cannot represent 0.10 exactly. The figures on these
+// forms are added together — box 1 of several 1099-INTs becomes one line of a
+// return — so a representation that is slightly wrong per value is wrong by an
+// accumulating amount by the end. That error is invisible until somebody
+// checks the arithmetic against their paper copy, which is exactly what a
+// taxpayer does.
+//
+// The Financial Data Exchange standard, FDX, does carry money as a JSON
+// number, and these schemas otherwise follow FDX naming closely. This is the
+// one place they deliberately do not. A converter multiplies by the currency's
+// minor-unit factor in both directions.
+//
+// These schemas define their own money type so that they depend on nothing
+// outside this module.
+message Money {
+  // Signed count of minor units: cents for USD, pence for GBP, whole yen for
+  // JPY. Negative is money out.
+  //
+  // Zero and unset are the same value, so a form's box that was left blank and
+  // a box printed as 0.00 are indistinguishable here. Whether a box was printed
+  // at all is a question about how the document was read, and belongs in the
+  // record that wraps this one.
+  int64 minor = 1;
+
+  // ISO 4217 code, uppercase. How many minor units make a major one depends
+  // on this and is not always a hundred.
+  //
+  // Every form under us/federal is filed in USD. The field is
+  // here anyway so that a figure can be moved or compared without a lookup to
+  // find out what currency it was in.
+  string currency = 2;
+}

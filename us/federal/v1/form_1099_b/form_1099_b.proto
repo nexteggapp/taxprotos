@@ -1,0 +1,169 @@
+// Form 1099-B, Proceeds From Broker and Barter Exchange Transactions.
+//
+// A broker sends one for each sale it settled, and a barter exchange sends one
+// for the property and services swapped through it.
+//
+// Boxes and Amount Codes are in mapping.textproto beside this file, keyed by
+// tax year, per docs/form-schemas.md. Verified against the
+// 2025 Form 1099-B box layout and the Instructions for Form 1099-B (2026).
+//
+// # One form, one disposal
+//
+// A broker prints many sales on one statement, but each is a separate Form
+// 1099-B with its own boxes. This message holds one of them.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1099_b;form1099b";
+
+// Form1099B is what a Form 1099-B states about one disposal.
+message Form1099B {
+  option (common.v1.fdx_entity) = "Tax1099B";
+  option (common.v1.fdx_version) = "5.0";
+
+  // HoldingPeriod is how long the recipient held the property, which decides
+  // the rate the gain is taxed at.
+  enum HoldingPeriod {
+    HOLDING_PERIOD_UNSPECIFIED = 0;
+
+    // A year or less.
+    HOLDING_PERIOD_SHORT_TERM = 1;
+
+    // More than a year.
+    HOLDING_PERIOD_LONG_TERM = 2;
+  }
+
+  // ProceedsReported says whether the broker deducted commissions and option
+  // premiums from [proceeds].
+  enum ProceedsReported {
+    PROCEEDS_REPORTED_UNSPECIFIED = 0;
+    PROCEEDS_REPORTED_GROSS = 1;
+    PROCEEDS_REPORTED_NET = 2;
+  }
+
+  // The calendar year the form reports on, as four digits.
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // The payer that filed the form.
+  nexteggapp.taxprotos.common.v1.Party payer = 2;
+
+  // The recipient the form reports on.
+  nexteggapp.taxprotos.common.v1.Party recipient = 3;
+
+  // The account number the form prints, where it has one. Text, because it
+  // can carry leading zeroes and letters.
+  string account_number = 4 [(common.v1.fdx_field) = "accountNumber"];
+
+  // The form is marked CORRECTED, which means it replaces one already sent.
+  bool corrected = 5 [(common.v1.fdx_field) = "corrected"];
+
+  // One row per state the form reports withholding for.
+  repeated nexteggapp.taxprotos.common.v1.StateTaxWithholding state_tax_withholding = 6 [(common.v1.fdx_field) = "stateTaxWithholding"];
+
+  // Which Form 8949 box the recipient reports this on, as printed: "A"
+  // through "F".
+  string form_8949_checkbox = 7 [(common.v1.fdx_field) = "form8949Code"];
+
+  // What was sold, as printed: "100 sh. XYZ Co.".
+  string description_of_property = 8 [(common.v1.fdx_field) = "description"];
+
+  // When the recipient acquired the property. Left unset when the broker
+  // prints "VARIOUS", because that is not a date.
+  nexteggapp.taxprotos.common.v1.Date date_acquired = 9 [(common.v1.fdx_field) = "dateAcquired"];
+
+  nexteggapp.taxprotos.common.v1.Date date_sold_or_disposed = 10 [(common.v1.fdx_field) = "dateSold"];
+
+  // What the sale brought in. [proceeds_reported] says whether commissions are
+  // already deducted.
+  nexteggapp.taxprotos.common.v1.Money proceeds = 11 [
+    (common.v1.fdx_field) = "proceeds"
+  ];
+
+  // What the property cost, where the broker tracks basis. Empty on a
+  // noncovered security.
+  nexteggapp.taxprotos.common.v1.Money cost_or_other_basis = 12 [
+    (common.v1.fdx_field) = "costBasis"
+  ];
+
+  // Discount accrued on a bond bought below its stated redemption price, which
+  // is ordinary income rather than capital gain.
+  nexteggapp.taxprotos.common.v1.Money accrued_market_discount = 13 [
+    (common.v1.fdx_field) = "accruedMarketDiscount"
+  ];
+
+  // Loss the recipient may not deduct, because they bought substantially
+  // identical property within 30 days of the sale.
+  nexteggapp.taxprotos.common.v1.Money wash_sale_loss_disallowed = 14 [
+    (common.v1.fdx_field) = "washSaleLossDisallowed"
+  ];
+
+  HoldingPeriod holding_period = 15 [(common.v1.fdx_field) = "term"];
+
+  // The gain or loss is ordinary rather than capital. Checked alongside a
+  // holding period, not instead of one.
+  bool ordinary = 16 [(common.v1.fdx_field) = "ordinary"];
+
+  bool proceeds_from_collectibles = 17 [(common.v1.fdx_field) = "collectibles"];
+
+  // The proceeds are from a qualified opportunity fund.
+  bool proceeds_from_qof = 18 [(common.v1.fdx_field) = "qualifiedOpportunityFund"];
+
+  // Backup withholding the broker sent to the IRS.
+  nexteggapp.taxprotos.common.v1.Money federal_tax_withheld = 19 [
+    (common.v1.fdx_field) = "federalTaxWithheld"
+  ];
+
+  // The security was bought before brokers were required to track its basis,
+  // so the broker reports no basis for it.
+  bool noncovered_security = 20 [(common.v1.fdx_field) = "noncoveredSecurity"];
+
+  ProceedsReported proceeds_reported = 21 [(common.v1.fdx_field) = "proceedsReported"];
+
+  // The recipient may not claim the loss, because the sale was of an option or
+  // a contract the broker reports gross proceeds for.
+  bool loss_not_allowed = 22 [(common.v1.fdx_field) = "lossNotAllowed"];
+
+  // Profit or loss on regulated futures, foreign currency and section 1256
+  // option contracts closed during the tax year.
+  nexteggapp.taxprotos.common.v1.Money profit_realized_on_closed_contracts = 23 [
+    (common.v1.fdx_field) = "profitOrLossRealized"
+  ];
+
+  // Profit or loss on contracts still open at the end of the previous tax
+  // year. Named for its position in the pair rather than for a year, because
+  // the box prints the year and the field cannot.
+  nexteggapp.taxprotos.common.v1.Money unrealized_profit_on_open_contracts_at_prior_year_end = 24 [
+    (common.v1.fdx_field) = "unrealizedProfitPriorYear"
+  ];
+
+  // Profit or loss on contracts still open at the end of this tax year.
+  nexteggapp.taxprotos.common.v1.Money unrealized_profit_on_open_contracts_at_year_end = 25 [
+    (common.v1.fdx_field) = "unrealizedProfitCurrentYear"
+  ];
+
+  // The three contract figures netted, which is what the recipient carries to
+  // Form 6781.
+  nexteggapp.taxprotos.common.v1.Money aggregate_profit_or_loss = 26 [
+    (common.v1.fdx_field) = "aggregateProfitOrLoss"
+  ];
+
+  bool basis_reported_to_irs = 27 [(common.v1.fdx_field) = "basisReportedToIrs"];
+
+  // The fair market value of property and services received through a barter
+  // exchange.
+  nexteggapp.taxprotos.common.v1.Money bartering = 28 [
+    (common.v1.fdx_field) = "bartering"
+  ];
+
+  // The CUSIP of the security sold, as printed.
+  string cusip = 29 [(common.v1.fdx_field) = "cusip"];
+
+  // The broker files this form to satisfy chapter 4 reporting under FATCA.
+  bool fatca_filing_requirement = 30 [(common.v1.fdx_field) = "foreignAccountTaxCompliance"];
+}

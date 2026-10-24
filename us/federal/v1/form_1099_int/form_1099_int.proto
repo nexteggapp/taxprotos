@@ -1,0 +1,124 @@
+// Form 1099-INT, Interest Income.
+//
+// A bank or broker sends it when it paid a person $10 or more in interest, or
+// withheld tax on their behalf.
+//
+// Boxes and Amount Codes are in mapping.textproto beside this file, keyed by
+// tax year, per docs/form-schemas.md. Verified against the
+// Form 1099-INT (Rev. 1-2024) box layout and the Instructions for Forms
+// 1099-INT and 1099-OID (01/2024).
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1099_int;form1099int";
+
+// Form1099Int is what a Form 1099-INT states.
+message Form1099Int {
+  option (common.v1.fdx_entity) = "Tax1099Int";
+  option (common.v1.fdx_version) = "5.0";
+
+  // The calendar year the form reports on, as four digits.
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // The payer that filed the form.
+  nexteggapp.taxprotos.common.v1.Party payer = 2;
+
+  // The recipient the form reports on.
+  nexteggapp.taxprotos.common.v1.Party recipient = 3;
+
+  // The account number the form prints, where it has one. Text, because it
+  // can carry leading zeroes and letters.
+  string account_number = 4 [(common.v1.fdx_field) = "accountNumber"];
+
+  // The form is marked CORRECTED, which means it replaces one already sent.
+  bool corrected = 5 [(common.v1.fdx_field) = "corrected"];
+
+  // One row per state the form reports withholding for.
+  repeated nexteggapp.taxprotos.common.v1.StateTaxWithholding state_tax_withholding = 6 [(common.v1.fdx_field) = "stateTaxWithholding"];
+
+  // The payer's routing and transit number, which a bank may print and a
+  // broker does not.
+  string payer_routing_number = 7 [(common.v1.fdx_field) = "payerRoutingNumber"];
+
+  // Taxable interest, excluding [savings_bond_and_treasury_interest].
+  nexteggapp.taxprotos.common.v1.Money interest_income = 8 [
+    (common.v1.fdx_field) = "interestIncome"
+  ];
+
+  // Interest the account holder forfeited by withdrawing from a term deposit
+  // early. Deductible, so it is reported as a positive amount and subtracted
+  // elsewhere.
+  nexteggapp.taxprotos.common.v1.Money early_withdrawal_penalty = 9 [
+    (common.v1.fdx_field) = "earlyWithdrawalPenalty"
+  ];
+
+  // Interest on US Savings Bonds, Treasury bills, notes and bonds. Kept apart
+  // from [interest_income] because states do not tax it.
+  nexteggapp.taxprotos.common.v1.Money savings_bond_and_treasury_interest = 10 [
+    (common.v1.fdx_field) = "savingsBondsAndTreasuryInterest"
+  ];
+
+  // Backup withholding the payer sent to the IRS.
+  nexteggapp.taxprotos.common.v1.Money federal_tax_withheld = 11 [
+    (common.v1.fdx_field) = "federalTaxWithheld"
+  ];
+
+  // Expenses charged to the holder of a single-class real estate mortgage
+  // investment conduit.
+  nexteggapp.taxprotos.common.v1.Money investment_expenses = 12 [
+    (common.v1.fdx_field) = "investmentExpenses"
+  ];
+
+  // Foreign tax the payer withheld, which the holder may claim as a credit.
+  nexteggapp.taxprotos.common.v1.Money foreign_tax_paid = 13 [
+    (common.v1.fdx_field) = "foreignTaxPaid"
+  ];
+
+  // The country or US territory the foreign tax went to, as printed.
+  string foreign_country = 14 [(common.v1.fdx_field) = "foreignCountry"];
+
+  // Interest on state and municipal obligations, which is not federally
+  // taxable.
+  nexteggapp.taxprotos.common.v1.Money tax_exempt_interest = 15 [
+    (common.v1.fdx_field) = "taxExemptInterest"
+  ];
+
+  // The part of [tax_exempt_interest] that is a tax preference item for the
+  // alternative minimum tax.
+  nexteggapp.taxprotos.common.v1.Money specified_private_activity_bond_interest = 16 [
+    (common.v1.fdx_field) = "specifiedPabInterest"
+  ];
+
+  // Discount accrued on a bond bought below its stated redemption price.
+  nexteggapp.taxprotos.common.v1.Money market_discount = 17 [
+    (common.v1.fdx_field) = "marketDiscount"
+  ];
+
+  // Premium amortized on a taxable bond bought above par, which reduces the
+  // interest reported.
+  nexteggapp.taxprotos.common.v1.Money bond_premium = 18 [
+    (common.v1.fdx_field) = "bondPremium"
+  ];
+
+  // Premium amortized on a Treasury obligation.
+  nexteggapp.taxprotos.common.v1.Money bond_premium_on_treasury_obligations = 19 [
+    (common.v1.fdx_field) = "bondPremiumTreasuryObligations"
+  ];
+
+  // Premium amortized on a tax-exempt bond.
+  nexteggapp.taxprotos.common.v1.Money bond_premium_on_tax_exempt_bond = 20 [
+    (common.v1.fdx_field) = "bondPremiumTaxExemptBond"
+  ];
+
+  // The CUSIP of the tax-exempt or tax credit bond the interest came from,
+  // where the form reports one bond.
+  string tax_exempt_bond_cusip = 21 [(common.v1.fdx_field) = "cusip"];
+
+  // The payer files this form to satisfy chapter 4 reporting under FATCA.
+  bool fatca_filing_requirement = 22 [(common.v1.fdx_field) = "foreignAccountTaxCompliance"];
+}

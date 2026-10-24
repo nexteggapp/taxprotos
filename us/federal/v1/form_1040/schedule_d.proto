@@ -1,0 +1,84 @@
+// Schedule D, Capital Gains and Losses.
+//
+// Short-term and long-term run as separate ladders and are combined only at the
+// end, because the two are taxed at different rates: short-term at the ordinary
+// rates, long-term at the § 1(h) rates. The result carries to Form 1040
+// capital_gain_or_loss and may be negative.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// TransactionTotals is one row of the Form 8949 summary blocks: proceeds, cost
+// basis, the adjustment column, and the resulting gain or loss.
+//
+// The form has three such rows per holding period, one per basis-reporting
+// category — basis reported to the IRS, basis not reported, and not reported on
+// a 1099-B at all. They are separate because what the broker told the IRS
+// decides how much the filer has to substantiate.
+message TransactionTotals {
+  nexteggapp.taxprotos.common.v1.Money proceeds = 1;
+  nexteggapp.taxprotos.common.v1.Money cost_basis = 2;
+
+  // The Form 8949 column (g) adjustment. Negative for a disallowed wash-sale
+  // loss, which is the common case.
+  nexteggapp.taxprotos.common.v1.Money adjustments = 3;
+
+  nexteggapp.taxprotos.common.v1.Money gain_or_loss = 4;
+}
+
+message ScheduleD {
+  int32 tax_year = 1;
+
+  // -- Part I, short-term: held one year or less --------------------------
+
+  // Transactions where the broker reported basis to the IRS. The form allows
+  // these to be totalled here rather than listed on Form 8949.
+  TransactionTotals short_term_basis_reported = 2;
+
+  TransactionTotals short_term_basis_not_reported = 3;
+  TransactionTotals short_term_not_on_1099b = 4;
+
+  nexteggapp.taxprotos.common.v1.Money short_term_gain_from_form_6252_and_others = 5;
+  nexteggapp.taxprotos.common.v1.Money short_term_from_pass_through_entities = 6;
+
+  // Losses carried forward from a prior year. Entered as a negative.
+  nexteggapp.taxprotos.common.v1.Money short_term_capital_loss_carryover = 7;
+
+  nexteggapp.taxprotos.common.v1.Money net_short_term_gain_or_loss = 8;
+
+  // -- Part II, long-term: held more than one year ------------------------
+
+  TransactionTotals long_term_basis_reported = 9;
+  TransactionTotals long_term_basis_not_reported = 10;
+  TransactionTotals long_term_not_on_1099b = 11;
+
+  nexteggapp.taxprotos.common.v1.Money long_term_gain_from_form_4797_and_others = 12;
+  nexteggapp.taxprotos.common.v1.Money long_term_from_pass_through_entities = 13;
+
+  // Reported on a 1099-DIV. Always long-term whatever the holding period.
+  nexteggapp.taxprotos.common.v1.Money capital_gain_distributions = 14;
+
+  nexteggapp.taxprotos.common.v1.Money long_term_capital_loss_carryover = 15;
+
+  nexteggapp.taxprotos.common.v1.Money net_long_term_gain_or_loss = 16;
+
+  // -- Part III, summary --------------------------------------------------
+
+  // The two combined. This is what reaches the 1040, and a loss is capped there
+  // at $3,000 against ordinary income with the rest carried forward.
+  nexteggapp.taxprotos.common.v1.Money net_gain_or_loss = 17;
+
+  // The two rates the taxcalcs LongTermGainsTax calculator does not model, each
+  // computed on its own worksheet. A caller must not fold either into an
+  // ordinary long-term gain.
+  nexteggapp.taxprotos.common.v1.Money twenty_eight_percent_rate_gain = 18;
+  nexteggapp.taxprotos.common.v1.Money unrecaptured_section_1250_gain = 19;
+
+  // The deductible part of a net loss, capped by § 1211(b). Entered as a
+  // negative.
+  nexteggapp.taxprotos.common.v1.Money allowable_loss = 20;
+}

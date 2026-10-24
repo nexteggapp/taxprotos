@@ -1,0 +1,71 @@
+// Schedule CA (540), California Adjustments — Residents.
+//
+// Where a federal return becomes a California one. It restates the federal
+// income and deduction lines in three columns — the federal amount, what
+// California subtracts, and what California adds — and hands Form 540 three
+// totals.
+//
+// Line numbers are in mapping_schedule_ca.textproto beside this file.
+//
+// # Only the totals are modelled
+//
+// The printed schedule restates around fifty federal lines so a filer can see
+// where a difference arose. Every one of those lines is already on the federal
+// return, and taxprotos models the federal return; carrying a second copy here
+// would mean two fields for one figure and no way to say which was right.
+//
+// What is not on the federal return is what California did to it. That is the
+// column B and column C totals, and the itemised deduction total, which is what
+// this message holds. A filer who wants to know which line the difference came
+// from reads the schedule.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.ca.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/ca/v1/form_540;form540";
+
+// ScheduleCA is what a Schedule CA (540) states.
+message ScheduleCA {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // Part I, the income adjustment schedule.
+
+  // Total federal income and adjustments as the federal return reported them,
+  // column A. Held so that the three columns reconcile without a reader having
+  // to fetch the 1040.
+  nexteggapp.taxprotos.common.v1.Money federal_total = 2 [(common.v1.fdx_absent) = true];
+
+  // Column B: income the federal return taxed that California does not. Social
+  // security benefits are the case most filers meet, because California taxes
+  // none of them.
+  nexteggapp.taxprotos.common.v1.Money total_subtractions = 3 [(common.v1.fdx_absent) = true];
+
+  // Column C: income California taxes that the federal return did not.
+  nexteggapp.taxprotos.common.v1.Money total_additions = 4 [(common.v1.fdx_absent) = true];
+
+  // Part II, adjustments to federal itemised deductions.
+
+  // The federal itemised total after California's adjustments, before the
+  // limitation and before the comparison with the standard deduction.
+  nexteggapp.taxprotos.common.v1.Money adjusted_itemized_deductions = 5 [(common.v1.fdx_absent) = true];
+
+  // Job expenses and certain miscellaneous deductions survive in California
+  // and not federally, where the Tax Cuts and Jobs Act suspended them. They
+  // are allowed only above two per cent of federal adjusted gross income.
+  nexteggapp.taxprotos.common.v1.Money miscellaneous_deductions_over_two_percent = 6 [(common.v1.fdx_absent) = true];
+
+  // The itemised total after the high-income limitation, which reduces
+  // itemised deductions above the same thresholds that reduce the exemption
+  // credits.
+  nexteggapp.taxprotos.common.v1.Money itemized_deductions_after_limitation = 7 [(common.v1.fdx_absent) = true];
+
+  // The larger of the limited itemised total and the California standard
+  // deduction. This is what transfers to Form 540.
+  nexteggapp.taxprotos.common.v1.Money deduction_transferred = 8 [(common.v1.fdx_absent) = true];
+}

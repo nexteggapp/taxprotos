@@ -1,0 +1,123 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Schedule OR-A calls each concept, per tax year.
+#
+# Lines 8 and 15 are printed as reserved on the 2025 schedule and carry no
+# concept, which is why the numbers here skip them.
+
+form: "Schedule OR-A"
+message_name: "nexteggapp.taxprotos.us.state.or.v1.ScheduleORA"
+tax_years: 2025
+
+concepts {
+  concept: "medical_and_dental_expenses"
+  years { tax_year: 2025 irs_box: "1" }
+}
+concepts {
+  concept: "federal_adjusted_gross_income"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+    note: "Form OR-40, line 7. Held here because the medical threshold is a share of it."
+  }
+}
+concepts {
+  concept: "agi_threshold"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+    note: "7.5% of line 2. Medical expenses are deductible only above it."
+  }
+}
+concepts {
+  concept: "medical_and_dental_deduction"
+  years { tax_year: 2025 irs_box: "4" }
+}
+concepts {
+  concept: "state_and_local_income_taxes"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+    note: "Oregon income tax is excluded, which is the largest single difference from the federal Schedule A."
+  }
+}
+concepts {
+  concept: "real_estate_taxes"
+  years { tax_year: 2025 irs_box: "6" }
+}
+concepts {
+  concept: "personal_property_taxes"
+  years { tax_year: 2025 irs_box: "7" }
+}
+concepts {
+  concept: "total_income_and_property_taxes"
+  years { tax_year: 2025 irs_box: "9" }
+}
+concepts {
+  concept: "other_taxes"
+  years { tax_year: 2025 irs_box: "10" }
+}
+concepts {
+  concept: "taxes_paid_deduction"
+  years { tax_year: 2025 irs_box: "11" }
+}
+concepts {
+  concept: "mortgage_interest_reported"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+    note: "Reported on federal Form 1098."
+  }
+}
+concepts {
+  concept: "mortgage_interest_not_reported"
+  years { tax_year: 2025 irs_box: "13" }
+}
+concepts {
+  concept: "points_not_reported"
+  years { tax_year: 2025 irs_box: "14" }
+}
+concepts {
+  concept: "investment_interest"
+  years { tax_year: 2025 irs_box: "16" }
+}
+concepts {
+  concept: "interest_paid_deduction"
+  years { tax_year: 2025 irs_box: "17" }
+}
+concepts {
+  concept: "gifts_by_cash_or_check"
+  years { tax_year: 2025 irs_box: "18" }
+}
+concepts {
+  concept: "gifts_other_than_cash"
+  years { tax_year: 2025 irs_box: "19" }
+}
+concepts {
+  concept: "charitable_carryover"
+  years {
+    tax_year: 2025
+    irs_box: "20"
+    note: "Gifts above the prior year's limit, carried forward."
+  }
+}
+concepts {
+  concept: "total_gifts_to_charity"
+  years { tax_year: 2025 irs_box: "21" }
+}
+concepts {
+  concept: "other_miscellaneous_deductions"
+  years {
+    tax_year: 2025
+    irs_box: "22"
+    note: "Employee business expenses are excluded, which the line says in bold."
+  }
+}
+concepts {
+  concept: "total_itemized_deductions"
+  years {
+    tax_year: 2025
+    irs_box: "23"
+    note: "Transfers to Form OR-40, line 16."
+  }
+}

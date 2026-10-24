@@ -1,0 +1,105 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for 1040 Schedule 1-A.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "1040 Schedule 1-A"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Schedule1A"
+tax_years: 2025
+
+concepts {
+  concept: "modified_adjusted_gross_income"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+  }
+}
+
+concepts {
+  concept: "qualified_tips_as_employee"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+  }
+}
+
+concepts {
+  concept: "qualified_tips_from_trade_or_business"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+  }
+}
+
+concepts {
+  concept: "qualified_tips_deduction"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+  }
+}
+
+concepts {
+  concept: "qualified_overtime_deduction"
+  years {
+    tax_year: 2025
+    irs_box: "21"
+  }
+}
+
+concepts {
+  concept: "passenger_vehicle_loan_interest_deduction"
+  years {
+    tax_year: 2025
+    irs_box: "30"
+  }
+}
+
+concepts {
+  concept: "enhanced_deduction_for_seniors"
+  years {
+    tax_year: 2025
+    irs_box: "37"
+  }
+}
+
+concepts {
+  concept: "total_additional_deductions"
+  years {
+    tax_year: 2025
+    irs_box: "38"
+  }
+}
+
+concepts {
+  concept: "excluded_income_added_back"
+  years {
+    tax_year: 2025
+    irs_box: "2e"
+  }
+}
+
+concepts {
+  concept: "qualified_overtime_compensation"
+  years {
+    tax_year: 2025
+    irs_box: "14c"
+  }
+}
+
+concepts {
+  concept: "passenger_vehicle_loan_interest"
+  years {
+    tax_year: 2025
+    irs_box: "23"
+  }
+}

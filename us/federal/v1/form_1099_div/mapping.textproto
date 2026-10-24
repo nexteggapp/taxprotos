@@ -1,0 +1,173 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What the Form 1099-DIV calls each concept, per tax year.
+#
+# Boxes come from the Form 1099-DIV (Rev. 1-2024) box layout. Amount codes
+# come from IRS Publication 1220 for Tax Year 2025 (Rev. 5-2026), the same
+# document the coverage test in go/us/federal/v1/pub1220 reads.
+#
+# Field names on the message never carry a box number or an amount code, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "1099-DIV"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form1099Div"
+tax_years: 2025
+
+concepts {
+  concept: "ordinary_dividends"
+  years {
+    tax_year: 2025
+    irs_box: "1a"
+    amount_code: "1"
+  }
+}
+concepts {
+  concept: "qualified_dividends"
+  years {
+    tax_year: 2025
+    irs_box: "1b"
+    amount_code: "2"
+  }
+}
+concepts {
+  concept: "total_capital_gain_distribution"
+  years {
+    tax_year: 2025
+    irs_box: "2a"
+    amount_code: "3"
+  }
+}
+concepts {
+  concept: "unrecaptured_section_1250_gain"
+  years {
+    tax_year: 2025
+    irs_box: "2b"
+    amount_code: "6"
+  }
+}
+concepts {
+  concept: "section_1202_gain"
+  years {
+    tax_year: 2025
+    irs_box: "2c"
+    amount_code: "7"
+  }
+}
+concepts {
+  concept: "collectibles_gain"
+  years {
+    tax_year: 2025
+    irs_box: "2d"
+    amount_code: "8"
+  }
+}
+concepts {
+  concept: "section_897_ordinary_dividends"
+  years {
+    tax_year: 2025
+    irs_box: "2e"
+    amount_code: "H"
+  }
+}
+concepts {
+  concept: "section_897_capital_gain"
+  years {
+    tax_year: 2025
+    irs_box: "2f"
+    amount_code: "J"
+  }
+}
+concepts {
+  concept: "nondividend_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+    amount_code: "9"
+  }
+}
+concepts {
+  concept: "federal_tax_withheld"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+    amount_code: "A"
+  }
+}
+concepts {
+  concept: "section_199a_dividends"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+    amount_code: "5"
+  }
+}
+concepts {
+  concept: "investment_expenses"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+    amount_code: "B"
+  }
+}
+concepts {
+  concept: "foreign_tax_paid"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+    amount_code: "C"
+  }
+}
+concepts {
+  concept: "foreign_country"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+  }
+}
+concepts {
+  concept: "cash_liquidation_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+    amount_code: "D"
+  }
+}
+concepts {
+  concept: "noncash_liquidation_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+    amount_code: "E"
+  }
+}
+concepts {
+  concept: "fatca_filing_requirement"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+  }
+}
+concepts {
+  concept: "exempt_interest_dividends"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+    amount_code: "F"
+  }
+}
+concepts {
+  concept: "specified_private_activity_bond_interest_dividends"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+    amount_code: "G"
+  }
+}
+concepts {
+  concept: "state_tax_withholding"
+  years {
+    tax_year: 2025
+    irs_box: "14-16"
+    note: "One state block. Boxes 14, 15 and 16 make up one row."
+  }
+}

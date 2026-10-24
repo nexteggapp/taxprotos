@@ -1,0 +1,33 @@
+# gazelle:ignore
+
+load("@protobuf//bazel:proto_library.bzl", "proto_library")
+
+# The Washington capital gains excise tax return.
+#
+# There is no income tax return in this directory because Washington levies no
+# personal income tax. See capital_gains_return.proto.
+proto_library(
+    name = "capital_gains_proto",
+    # Imported as taxprotos/..., so consumers import these files by that path.
+    import_prefix = "taxprotos",
+    srcs = [
+        "capital_gains_return.proto",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//common/v1:common_proto",
+    ],
+)
+
+# The mappings and the form extracts they are checked against, for
+# //go/us/state/wa/v1/capital_gains. They stay here rather than beside the
+# test because the runfiles path a test resolves is the path of the file's own
+# package, and because a mapping belongs with the schema it maps.
+filegroup(
+    name = "test_oracles",
+    srcs = glob([
+        "mapping*.textproto",
+        "testdata/**",
+    ]),
+    visibility = ["//go/us/state/wa/v1/capital_gains:__pkg__"],
+)

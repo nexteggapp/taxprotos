@@ -1,0 +1,465 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for 1040.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "1040"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form1040"
+tax_years: 2025
+
+concepts {
+  concept: "w2_wages"
+  years {
+    tax_year: 2025
+    irs_box: "1a"
+  }
+}
+
+concepts {
+  concept: "household_employee_wages"
+  years {
+    tax_year: 2025
+    irs_box: "1b"
+  }
+}
+
+concepts {
+  concept: "unreported_tip_income"
+  years {
+    tax_year: 2025
+    irs_box: "1c"
+  }
+}
+
+concepts {
+  concept: "medicaid_waiver_payments"
+  years {
+    tax_year: 2025
+    irs_box: "1d"
+  }
+}
+
+concepts {
+  concept: "taxable_dependent_care_benefits"
+  years {
+    tax_year: 2025
+    irs_box: "1e"
+  }
+}
+
+concepts {
+  concept: "employer_provided_adoption_benefits"
+  years {
+    tax_year: 2025
+    irs_box: "1f"
+  }
+}
+
+concepts {
+  concept: "wages_from_form_8919"
+  years {
+    tax_year: 2025
+    irs_box: "1g"
+  }
+}
+
+concepts {
+  concept: "other_earned_income"
+  years {
+    tax_year: 2025
+    irs_box: "1h"
+  }
+}
+
+concepts {
+  concept: "nontaxable_combat_pay_election"
+  years {
+    tax_year: 2025
+    irs_box: "1i"
+  }
+}
+
+concepts {
+  concept: "total_wages"
+  years {
+    tax_year: 2025
+    irs_box: "1z"
+  }
+}
+
+concepts {
+  concept: "tax_exempt_interest"
+  years {
+    tax_year: 2025
+    irs_box: "2a"
+  }
+}
+
+concepts {
+  concept: "taxable_interest"
+  years {
+    tax_year: 2025
+    irs_box: "2b"
+  }
+}
+
+concepts {
+  concept: "qualified_dividends"
+  years {
+    tax_year: 2025
+    irs_box: "3a"
+  }
+}
+
+concepts {
+  concept: "ordinary_dividends"
+  years {
+    tax_year: 2025
+    irs_box: "3b"
+  }
+}
+
+concepts {
+  concept: "ira_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "4a"
+  }
+}
+
+concepts {
+  concept: "ira_distributions_taxable"
+  years {
+    tax_year: 2025
+    irs_box: "4b"
+  }
+}
+
+concepts {
+  concept: "pensions_and_annuities"
+  years {
+    tax_year: 2025
+    irs_box: "5a"
+  }
+}
+
+concepts {
+  concept: "pensions_and_annuities_taxable"
+  years {
+    tax_year: 2025
+    irs_box: "5b"
+  }
+}
+
+concepts {
+  concept: "social_security_benefits"
+  years {
+    tax_year: 2025
+    irs_box: "6a"
+  }
+}
+
+concepts {
+  concept: "social_security_benefits_taxable"
+  years {
+    tax_year: 2025
+    irs_box: "6b"
+  }
+}
+
+concepts {
+  concept: "capital_gain_or_loss"
+  years {
+    tax_year: 2025
+    irs_box: "7a"
+  }
+}
+
+concepts {
+  concept: "additional_income"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+  }
+}
+
+concepts {
+  concept: "total_income"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+  }
+}
+
+concepts {
+  concept: "adjustments_to_income"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+  }
+}
+
+concepts {
+  concept: "adjusted_gross_income"
+  years {
+    tax_year: 2025
+    irs_box: "11a"
+  }
+}
+
+concepts {
+  concept: "deduction"
+  years {
+    tax_year: 2025
+    irs_box: "12e"
+  }
+}
+
+concepts {
+  concept: "qualified_business_income_deduction"
+  years {
+    tax_year: 2025
+    irs_box: "13a"
+  }
+}
+
+concepts {
+  concept: "additional_deductions"
+  years {
+    tax_year: 2025
+    irs_box: "13b"
+  }
+}
+
+concepts {
+  concept: "total_deductions"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+  }
+}
+
+concepts {
+  concept: "taxable_income"
+  years {
+    tax_year: 2025
+    irs_box: "15"
+  }
+}
+
+concepts {
+  concept: "tax"
+  years {
+    tax_year: 2025
+    irs_box: "16"
+  }
+}
+
+concepts {
+  concept: "additional_tax_from_schedule_2"
+  years {
+    tax_year: 2025
+    irs_box: "17"
+  }
+}
+
+concepts {
+  concept: "tax_plus_additional"
+  years {
+    tax_year: 2025
+    irs_box: "18"
+  }
+}
+
+concepts {
+  concept: "child_tax_credit"
+  years {
+    tax_year: 2025
+    irs_box: "19"
+  }
+}
+
+concepts {
+  concept: "nonrefundable_credits"
+  years {
+    tax_year: 2025
+    irs_box: "20"
+  }
+}
+
+concepts {
+  concept: "total_credits"
+  years {
+    tax_year: 2025
+    irs_box: "21"
+  }
+}
+
+concepts {
+  concept: "tax_after_credits"
+  years {
+    tax_year: 2025
+    irs_box: "22"
+  }
+}
+
+concepts {
+  concept: "other_taxes"
+  years {
+    tax_year: 2025
+    irs_box: "23"
+  }
+}
+
+concepts {
+  concept: "total_tax"
+  years {
+    tax_year: 2025
+    irs_box: "24"
+  }
+}
+
+concepts {
+  concept: "withheld_from_w2"
+  years {
+    tax_year: 2025
+    irs_box: "25a"
+  }
+}
+
+concepts {
+  concept: "withheld_from_1099"
+  years {
+    tax_year: 2025
+    irs_box: "25b"
+  }
+}
+
+concepts {
+  concept: "withheld_from_other_forms"
+  years {
+    tax_year: 2025
+    irs_box: "25c"
+  }
+}
+
+concepts {
+  concept: "total_withheld"
+  years {
+    tax_year: 2025
+    irs_box: "25d"
+  }
+}
+
+concepts {
+  concept: "estimated_tax_payments"
+  years {
+    tax_year: 2025
+    irs_box: "26"
+  }
+}
+
+concepts {
+  concept: "earned_income_credit"
+  years {
+    tax_year: 2025
+    irs_box: "27a"
+  }
+}
+
+concepts {
+  concept: "additional_child_tax_credit"
+  years {
+    tax_year: 2025
+    irs_box: "28"
+  }
+}
+
+concepts {
+  concept: "american_opportunity_credit"
+  years {
+    tax_year: 2025
+    irs_box: "29"
+  }
+}
+
+concepts {
+  concept: "refundable_adoption_credit"
+  years {
+    tax_year: 2025
+    irs_box: "30"
+  }
+}
+
+concepts {
+  concept: "other_refundable_credits"
+  years {
+    tax_year: 2025
+    irs_box: "31"
+  }
+}
+
+concepts {
+  concept: "total_other_payments"
+  years {
+    tax_year: 2025
+    irs_box: "32"
+  }
+}
+
+concepts {
+  concept: "total_payments"
+  years {
+    tax_year: 2025
+    irs_box: "33"
+  }
+}
+
+concepts {
+  concept: "overpaid"
+  years {
+    tax_year: 2025
+    irs_box: "34"
+  }
+}
+
+concepts {
+  concept: "refunded"
+  years {
+    tax_year: 2025
+    irs_box: "35a"
+  }
+}
+
+concepts {
+  concept: "applied_to_next_year"
+  years {
+    tax_year: 2025
+    irs_box: "36"
+  }
+}
+
+concepts {
+  concept: "amount_owed"
+  years {
+    tax_year: 2025
+    irs_box: "37"
+  }
+}
+
+concepts {
+  concept: "estimated_tax_penalty"
+  years {
+    tax_year: 2025
+    irs_box: "38"
+  }
+}

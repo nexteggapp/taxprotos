@@ -1,0 +1,441 @@
+           TAXABLE YEAR                                                                                                                                                                    FORM
+
+
+                      2025                California Resident Income Tax Return                                                                                                        540
+                         Check here if this is an AMENDED return.                                             Fiscal year filers only: Enter month of year end: month________ year 2026.
+   Your first name                                                  Initial Last name                                                   Suffix          Your SSN or ITIN
+                                                                                                                                                                                                    A
+   If joint tax return, spouse’s/RDP’s first name                   Initial Last name                                                   Suffix          Spouse’s/RDP’s SSN or ITIN
+                                                                                                                                                                                                    R
+
+   Additional information (see instructions)                                                                                                                          PBA code
+
+
+
+   Street address (number and street) or PO box                                                                                          Apt. no/ste. no.             PMB/private mailbox          RP
+
+
+   City (If you have a foreign address, see instructions)                                                                                    State     ZIP code
+
+
+
+   Foreign country name                                                                     Foreign province/state/county                                            Foreign postal code
+  Date of
+
+
+
+
+                              Your DOB (mm/dd/yyyy)                                                               Spouse’s/RDP’s DOB (mm/dd/yyyy)
+   Birth
+
+
+
+
+                         •                                                                                    •
+                              Your prior name (see instructions)                                                  Spouse’s/RDP’s prior name (see instructions)
+Name
+Prior
+
+
+
+
+                         •                                                                                    •
+                              Enter your county at time of filing (see instructions)
+Principal Residence
+
+
+
+
+                              If your address above is the same as your principal/physical residence address at the time of filing, check this box . . .
+                              If not, enter below your principal/physical residence address at the time of filing.
+                              Street address (number and street) (If foreign address, see instructions.)                                                    Apt. no/ste. no.
+
+
+
+
+                              City                                                                                                                          State       ZIP code
+
+
+
+
+                               If your California filing status is different from your federal filing status, check the box here . . . . . . . . . . . . . .
+
+                          1            Single                                          4         Head of household (with qualifying person). See instructions.
+Filing Status
+
+
+
+
+                          2            Married/RDP filing jointly (even if             5         Qualifying surviving spouse/RDP. Enter year spouse/RDP died.
+                                       only one spouse/RDP had income).
+                                       See instructions.                                         See instructions.
+
+                          3            Married/RDP filing separately. Enter spouse’s/RDP’s SSN or ITIN above and full name here.
+
+                          6    If someone can claim you (or your spouse/RDP) as a dependent, check the box here. See instr. . . . . . . • 6
+
+                      ▶ For line 7, line 8, line 9, and line 10: Multiply the number you enter in the box by the pre-printed dollar amount for that line.
+                                                                                                                                                                                   Whole dollars only
+                        7 Personal: If you checked box 1, 3, or 4 above, enter 1 in the box. If you checked
+Exemptions
+
+
+
+
+                            box 2 or 5, enter 2 in the box. If you checked the box on line 6, see instructions.       7       X $153 = • $
+                          8 Blind: If you (or your spouse/RDP) are visually impaired, enter 1;
+                            if both are visually impaired, enter 2. See instructions . . . . . . . . . . . . . . . . . . . . .      8      X $153 =            $
+                          9 Senior: If you (or your spouse/RDP) are 65 or older, enter 1;
+                            if both are 65 or older, enter 2. See instructions. . . . . . . . . . . . . . . . . . . . . . . . . . • 9      X $153 =            $
+
+
+
+                                                                                   333               3101253                                                        Form 540 2025 Side 1
+   Your name:                                                                          Your SSN or ITIN:
+                  10 Dependents: Do not include yourself or your spouse/RDP.
+                                                 Dependent 1                                                  Dependent 2                                                      Dependent 3
+                           First Name
+
+
+                           Last Name
+Exemptions
+
+
+
+
+                           SSN. See
+                           instructions.    •                                                            •                                                                 •
+                           Dependent’s
+                           relationship
+                           to you
+
+
+                  Total dependent exemptions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . • 10                         X $475 =                $
+
+                   11    Exemption amount: Add line 7 through line 10. Transfer this amount to line 32 . . . . . . . . . . . . .                                           11 $
+
+                   12    State wages from your federal
+                         Form(s) W-2, box 16 . . . . . . . . . . . . . . . . . . . . . . • 12                                                                  . 00
+
+                   13    Enter federal adjusted gross income (AGI) from federal Form 1040 or 1040-SR, line 11b. . .                                                   13                     . 00
+                   14    California adjustments – subtractions. Enter the amount from Schedule CA (540),
+                         Part I, line 27, column B . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . • 14                            . 00
+                   15    Subtract line 14 from line 13. If less than zero, enter the result in parentheses.
+                         See instructions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15                           . 00
+Taxable Income
+
+
+
+
+                   16    California adjustments – additions. Enter the amount from Schedule CA (540),
+                         Part I, line 27, column C . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . • 16                            . 00
+
+                         California adjusted gross income. Combine line 15 and line 16 . . . . . . . . . . . . . . . . . . . . . . . • 17                                                    . 00
+
+
+
+                                      {                                                                                                                                    {
+                   17
+
+                   18    Enter the         Your California itemized deductions from Schedule CA (540), Part II, line 30; OR
+                         larger of         Your California standard deduction shown below for your filing status:
+                                           • Single or Married/RDP filing separately. . . . . . . . . . . . . . . . . . . . . . . . . . . . . $5,706
+                                           • Married/RDP filing jointly, Head of household, or Qualifying surviving spouse/RDP. $11,412
+                                       If Married/RDP filing separately or the box on line 6 is checked, STOP. See instructions. . • 18                                                      . 00
+                   19    Subtract line 18 from line 17. This is your taxable income.
+                         If less than zero, enter -0- . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19                               . 00
+
+                                                                              Tax Table                          Tax Rate Schedule
+                   31    Tax. Check the box if from:
+                                                               •              FTB 3800            •              FTB 3803 . . . . . . . . . . . . . . . . • 31                               . 00
+                   32    Exemption credits. Enter the amount from line 11. If your federal AGI is more than
+                         $252,203, see instructions. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .              32                     . 00
+Tax
+
+
+
+
+                   33    Subtract line 32 from line 31. If less than zero, enter -0- . . . . . . . . . . . . . . . . . . . . . . . . . . . .                          33                     . 00
+
+                   34    Tax. See instructions. Check the box if from: •                             Schedule G-1          •            FTB 5870A . .          • 34                          . 00
+
+                   35    Add line 33 and line 34 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .          35                     . 00
+Special Credits
+
+
+
+
+                   40    Nonrefundable Child and Dependent Care Expenses Credit. See instructions. . . . . . . . . . . . . • 40                                                              . 00
+
+                   43    Enter credit name                                                                code •                     and amount. . .           • 43                          . 00
+
+                   44    Enter credit name                                                                code •                     and amount. . .           • 44                          . 00
+
+                        Side 2 Form 540 2025                                          333                    3102253
+   Your name:                                                                              Your SSN or ITIN:
+
+                       45   To claim more than two credits, see instructions. Attach Schedule P (540) . . . . . . . . . . . . . . • 45                                                           . 00
+Special Credits
+
+
+
+
+                       46   Nonrefundable Renter’s Credit. See instructions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . • 46                                             . 00
+
+                       47   Add line 40 through line 46. These are your total credits . . . . . . . . . . . . . . . . . . . . . . . . . . . .                        47                          . 00
+
+                       48   Subtract line 47 from line 35. If less than zero, enter -0- . . . . . . . . . . . . . . . . . . . . . . . . . . . .                      48                          . 00
+
+
+                       61   Alternative Minimum Tax. Attach Schedule P (540) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . • 61                                                . 00
+Other Taxes
+
+
+
+
+                       62   Behavioral Health Services Tax. See instructions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . • 62                                            . 00
+
+                       63   Other taxes and credit recapture. See instructions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . • 63                                            . 00
+
+                       64   Add line 48, line 61, line 62, and line 63. This is your total tax. . . . . . . . . . . . . . . . . . . . . . . . • 64                                               . 00
+
+
+                       71   California income tax withheld. See instructions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . • 71                                            . 00
+
+                       72   2025 California estimated tax and other payments. See instructions . . . . . . . . . . . . . . . . . . . • 72                                                        . 00
+
+                       73   Withholding (Form 592-B and/or Form 593). See instructions. . . . . . . . . . . . . . . . . . . . . . . . • 73                                                       . 00
+                       74   Refundable Program 4.0 California Motion Picture and Television Production Credit.
+Payments
+
+
+
+
+                            See instructions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . • 74                          . 00
+
+                       75   Earned Income Tax Credit (EITC). See instructions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . • 75                                               . 00
+
+                       76   Young Child Tax Credit (YCTC). See instructions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . • 76                                             . 00
+
+                       77   Foster Youth Tax Credit (FYTC). See instructions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . • 77                                            . 00
+                       78   Add line 71 through line 77. These are your total payments.
+                            See instructions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   78                          . 00
+
+
+                                                                                                                                          • 91
+Use Tax
+
+
+
+
+                       91   Use Tax. Do not leave blank. See instructions . . . . . . . . . . . . . . . . . . . . . .                                                               . 00
+                            If line 91 is zero, check if:                          No use tax is owed.                                You paid your use tax obligation directly to CDTFA.
+
+                       92   If you and your household had full-year health care coverage, check the box.
+                            See instructions. Medicare Part A or C coverage is qualifying health care coverage. . . . . . . . •
+Penalty
+  ISR
+
+
+
+
+                            If you did not check the box, see instructions.
+
+                            Individual Shared Responsibility (ISR) Penalty. See instructions . . . . . . . . • 92                                                                   . 00
+
+
+                       93   Payments balance. If line 78 is more than line 91, subtract line 91 from line 78 . . . . . . . . . .                                     93                          . 00
+Overpaid Tax/Tax Due
+
+
+
+
+                       94   Use Tax balance. If line 91 is more than line 78, subtract line 78 from line 91 . . . . . . . . . . .                                    94                          . 00
+                       95   Payments after Individual Shared Responsibility Penalty. If line 93 is more than line 92,
+                            subtract line 92 from line 93. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         95                          . 00
+                       96   Individual Shared Responsibility Penalty Balance. If line 92 is more than line 93,
+                            subtract line 93 from line 92. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         96                          . 00
+
+                       97   Overpaid tax. If line 95 is more than line 64, subtract line 64 from line 95. . . . . . . . . . . . . . .                                97                          . 00
+
+                                                                                          333                     3103253                                                 Form 540 2025 Side 3
+ Your name:                                                                  Your SSN or ITIN:
+
+                  98    Amount of line 97 you want applied to your 2026 estimated tax . . . . . . . . . . . . . . . . . . . . . . •             98        . 00
+Tax/Tax Due
+ Overpaid
+
+
+
+
+                  99    Overpaid tax available this year. Subtract line 98 from line 97 . . . . . . . . . . . . . . . . . . . . . . . . •       99        . 00
+
+                  100 Tax due. If line 95 is less than line 64, subtract line 95 from line 64 . . . . . . . . . . . . . . . . . . .           100         . 00
+                                                                                                                                            Code Amount
+
+                        California Seniors Special Fund. See instructions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . • 400       . 00
+
+                        Alzheimer’s Disease and Related Dementia Voluntary Tax Contribution Fund . . . . . . . . . . . . . • 401                          . 00
+
+                        Rare and Endangered Species Preservation Voluntary Tax Contribution Program . . . . . . . . . • 403                               . 00
+
+                        California Breast Cancer Research Voluntary Tax Contribution Fund. . . . . . . . . . . . . . . . . . . . • 405                    . 00
+
+                        California Firefighters’ Memorial Voluntary Tax Contribution Fund . . . . . . . . . . . . . . . . . . . . . • 406                 . 00
+
+                        Emergency Food for Families Voluntary Tax Contribution Fund . . . . . . . . . . . . . . . . . . . . . . . • 407                   . 00
+
+                        California Peace Officer Memorial Foundation Voluntary Tax Contribution Fund. . . . . . . . . . . • 408                           . 00
+
+                        California Cancer Research Voluntary Tax Contribution Fund . . . . . . . . . . . . . . . . . . . . . . . . . • 413                . 00
+
+                        School Supplies for Homeless Children Voluntary Tax Contribution Fund . . . . . . . . . . . . . . . • 422                         . 00
+  Contributions
+
+
+
+
+                        State Parks Protection Fund/Parks Pass Purchase . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . • 423           . 00
+
+                        Protect Our Coast and Oceans Voluntary Tax Contribution Fund. . . . . . . . . . . . . . . . . . . . . . . • 424                   . 00
+
+                        Prevention of Animal Homelessness and Cruelty Voluntary Tax Contribution Fund . . . . . . . . • 431                               . 00
+
+                        California Senior Citizen Advocacy Voluntary Tax Contribution Fund . . . . . . . . . . . . . . . . . . . • 438                    . 00
+
+                        Native California Wildlife Rehabilitation Voluntary Tax Contribution Fund. . . . . . . . . . . . . . . . • 439                    . 00
+
+                        Mental Health Crisis Prevention Voluntary Tax Contribution Fund. . . . . . . . . . . . . . . . . . . . . . • 445                  . 00
+
+                        California ALS Research Network Voluntary Tax Contribution Fund.. . . . . . . . . . . . . . . . . . . . • 447                     . 00
+
+                        California Pediatric Cancer Research Voluntary Tax Contribution Fund. . . . . . . . . . . . . . . . . . • 448                     . 00
+
+                        Parkinson's Disease Research Voluntary Tax Contribution Fund. . . . . . . . . . . . . . . . . . . . . . . • 449                   . 00
+
+                  110 Add amounts in code 400 through code 449. This is your total contribution . . . . . . . . . . . . . • 110                           . 00
+
+
+
+
+                       Side 4 Form 540 2025                                 333                 3104253
+    Your name:                                                                            Your SSN or ITIN:
+                            111 AMOUNT YOU OWE. If you do not have an amount on line 99, add line 94, line 96, line 100, and line 110. See instructions. Do not send cash.
+You Owe
+Amount
+
+
+
+
+                                  Mail to: FRANCHISE TAX BOARD, PO BOX 942867, SACRAMENTO CA 94267-0001. . . . . • 111                                                                                     . 00
+                                  Pay Online – Go to ftb.ca.gov/pay for more information.
+
+                            112 Interest, late return penalties, and late payment penalties . . . . . . . . . . . . . . . . . . . . . . . . . . .              112                                         . 00
+Interest and
+  Penalties
+
+
+
+
+                            113 Underpayment of estimated tax.
+
+                                  Check the box: •                FTB 5805 attached •                     FTB 5805F attached . . . . . . . . . . .        • 113                                            . 00
+
+                            114 Total amount due. See instructions. Enclose, but do not staple, any payment . . . . . . . . . . . .                            114                                         . 00
+                            115 REFUND OR NO AMOUNT DUE. Subtract the sum of line 110, line 112, and line 113 from line 99. See instructions.
+
+                                  Mail to: FRANCHISE TAX BOARD, PO BOX 942840, SACRAMENTO CA 94240-0001. . . . . . . • 115                                                                                 . 00
+                                  Fill in the information to authorize direct deposit of your refund into one or two accounts. Do not attach a voided check or a deposit slip.
+Refund and Direct Deposit
+
+
+
+
+                                  See instructions. Have you verified the routing and account numbers? Use whole dollars only.
+                                  All or the following amount of my refund (line 115) is authorized for direct deposit into the account shown below:
+                                                               • Type
+                                   • Routing number                     Checking       • Account number                                                                • 116 Direct deposit amount
+                                                                                                                                                                                                           . 00
+                                                                        Savings
+
+                                  The remaining amount of my refund (line 115) is authorized for direct deposit into the account shown below:
+                                                               • Type
+                                   • Routing number                     Checking       • Account number                                                                • 117 Direct deposit amount
+                                                                                                                                                                                                           . 00
+                                                                        Savings
+Voter Info.
+
+
+
+
+                                  For voter registration information, check the box and go to sos.ca.gov/elections. See instructions . . . . . . . . . . . . . . . .
+Coverage Info.
+ Health Care
+
+
+
+
+                                  Do you want information on no-cost or low-cost health care coverage?
+                                  By checking the "Yes" box, you authorize the Franchise Tax Board to share limited information from
+                                  your tax return with Covered California. See instructions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         Yes          No
+
+
+                                  By checking the applicable box you authorize written consent for Donate Life California to enroll you in the
+                                  Donate Life California Organ and Tissue Donor Registry, and for the Franchise Tax Board to share limited
+Organ Donor Election
+
+
+
+
+                                  information from your tax return with Donate Life California.
+                                  If your individual information has changed since the last time you filed a tax return, and are already registered                                             Primary
+                                  with Donate Life California, re-checking the box will send your most updated individual information to Donate                                                 taxpayer
+                                  Life California. If you do not check the box, Donate Life California will not enroll you in the registry at this                                              Spouse/RDP (if
+                                  time.                                                                                                                                                         joint tax return)
+                                  To remove your name from the registry contact Donate Life California directly. For more information, see the
+                                  Consent Language in the instructions.
+
+
+
+                                                                                                                                                                                  Sign your tax return on Side 6
+
+
+
+
+                                                                                         333                  3105253                                                        Form 540 2025 Side 5
+Your name:                                                     Your SSN or ITIN:
+
+IMPORTANT: See the instructions to find out if you should attach a copy of your complete federal tax return.
+Our privacy notice can be found in annual tax booklets or online. Go to ftb.ca.gov/privacy to learn about our privacy policy statement, or go to ftb.ca.gov/forms and search for 1131
+to locate FTB 1131 EN-SP, Franchise Tax Board Privacy Notice on Collection. To request this notice by mail, call 800.338.0505 and enter form code 948 when instructed.
+Under penalties of perjury, I declare that I have examined this tax return, including accompanying schedules and statements, and to the best of my knowledge and belief, it
+is true, correct, and complete.
+Your signature                                                                Date                           Spouse’s/RDP’s signature (if a joint tax return, both must sign)
+
+
+
+                        Your email address. Enter only one email address.                                                                           Preferred phone number
+
+
+Sign
+                    • Print paid preparer’s name                                                                                               • Paid preparer’s phone number
+Here
+It is unlawful
+to forge a          Paid preparer’s signature (declaration of preparer is based on all information of which preparer has any knowledge)
+spouse’s/
+RDP’s
+signature.
+                    Firm’s name (or yours, if self-employed)                                                                                               • PTIN
+Joint tax
+return?
+See
+instructions.       Firm’s address                                                                                                                         • Firm’s FEIN
+
+                    Do you want to allow another person to discuss this tax return with us? See instructions . . . . . . .            •          Yes              No
+                    Print Third Party Designee’s Name                                                                                          Telephone Number
+
+
+
+
+          Side 6 Form 540 2025                                 333                3106253
+

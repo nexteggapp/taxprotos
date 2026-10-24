@@ -1,0 +1,13 @@
+# gazelle:ignore
+
+load("@protobuf//bazel:proto_library.bzl", "proto_library")
+
+# Types shared by every US federal form, as against common/v1, which holds
+# types shared by every jurisdiction.
+proto_library(
+    name = "federal_proto",
+    # Imported as taxprotos/..., so consumers import these files by that path.
+    import_prefix = "taxprotos",
+    srcs = ["form_identity.proto"],
+    visibility = ["//visibility:public"],
+)

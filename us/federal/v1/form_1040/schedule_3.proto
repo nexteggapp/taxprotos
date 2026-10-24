@@ -1,0 +1,52 @@
+// Schedule 3, Additional Credits and Payments.
+//
+// Part I is nonrefundable and can only reduce tax to zero; part II is
+// refundable and can pay out beyond it. They carry to Form 1040
+// nonrefundable_credits and other_refundable_credits respectively.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Schedule3Item is one entry from a line that asks for a type and an amount.
+message Schedule3Item {
+  string description = 1;
+  nexteggapp.taxprotos.common.v1.Money amount = 2;
+}
+
+message Schedule3 {
+  int32 tax_year = 1;
+
+  // -- Part I, nonrefundable credits -------------------------------------
+
+  nexteggapp.taxprotos.common.v1.Money foreign_tax_credit = 2;
+  nexteggapp.taxprotos.common.v1.Money child_and_dependent_care_credit = 3;
+  nexteggapp.taxprotos.common.v1.Money education_credits = 4;
+  nexteggapp.taxprotos.common.v1.Money retirement_savings_contributions_credit = 5;
+  nexteggapp.taxprotos.common.v1.Money residential_clean_energy_credit = 6;
+  nexteggapp.taxprotos.common.v1.Money energy_efficient_home_improvement_credit = 7;
+
+  repeated Schedule3Item other_nonrefundable_credits = 8;
+  nexteggapp.taxprotos.common.v1.Money total_other_nonrefundable_credits = 9;
+
+  nexteggapp.taxprotos.common.v1.Money total_nonrefundable_credits = 10;
+
+  // -- Part II, refundable credits and other payments --------------------
+
+  nexteggapp.taxprotos.common.v1.Money net_premium_tax_credit = 11;
+  nexteggapp.taxprotos.common.v1.Money amount_paid_with_extension_request = 12;
+
+  // Withheld by more than one employer beyond the wage base, so the excess is
+  // repaid as a payment rather than corrected by any of them.
+  nexteggapp.taxprotos.common.v1.Money excess_social_security_withheld = 13;
+
+  nexteggapp.taxprotos.common.v1.Money credit_for_federal_tax_on_fuels = 14;
+
+  repeated Schedule3Item other_payments_and_refundable_credits = 15;
+  nexteggapp.taxprotos.common.v1.Money total_other_payments_and_refundable_credits = 16;
+
+  nexteggapp.taxprotos.common.v1.Money total_refundable_credits_and_payments = 17;
+}

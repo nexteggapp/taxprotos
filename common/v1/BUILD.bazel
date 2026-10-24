@@ -1,0 +1,23 @@
+# gazelle:ignore
+
+load("@protobuf//bazel:proto_library.bzl", "proto_library")
+
+proto_library(
+    name = "common_proto",
+    # Imported as taxprotos/..., so consumers import these files by that path.
+    # Without it the path would be the module-root-relative common/v1/... and
+    # would collide with any other module that has a common/v1.
+    import_prefix = "taxprotos",
+    srcs = [
+        "annotations.proto",
+        "date.proto",
+        "mapping.proto",
+        "money.proto",
+        "party.proto",
+        "quantity.proto",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "@protobuf//:descriptor_proto",
+    ],
+)

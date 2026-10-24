@@ -1,0 +1,72 @@
+// Schedule SE, Self-Employment Tax.
+//
+// The § 1401 tax on net earnings from self-employment. Its total carries to
+// Schedule 2 self_employment_tax, and half of it to Schedule 1
+// deductible_part_of_self_employment_tax under § 164(f).
+//
+// The taxcalcs ustaxcalc.SelfEmploymentTax calculator computes this, and its
+// SECA result is the same arithmetic. This message is what a filed schedule
+// says; that result is the working behind it.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+message ScheduleSE {
+  int32 tax_year = 1;
+
+  // Whose earnings these are. On a joint return each spouse files their own
+  // Schedule SE, so a return can carry two.
+  string filer_name = 2;
+  string filer_tin = 3;
+
+  // -- Net earnings -------------------------------------------------------
+
+  // From Schedule F and farm partnerships.
+  nexteggapp.taxprotos.common.v1.Money net_farm_profit_or_loss = 4;
+
+  // From Schedule C and non-farm partnerships.
+  nexteggapp.taxprotos.common.v1.Money net_business_profit_or_loss = 5;
+
+  nexteggapp.taxprotos.common.v1.Money combined_profit_or_loss = 6;
+
+  // The § 1402(a)(12) reduction to 92.35%, which the form prints as a line
+  // rather than leaving implicit.
+  nexteggapp.taxprotos.common.v1.Money net_earnings_after_reduction = 7;
+
+  // Wages a church treats as self-employment income.
+  nexteggapp.taxprotos.common.v1.Money church_employee_income = 8;
+
+  nexteggapp.taxprotos.common.v1.Money total_net_earnings = 9;
+
+  // -- The wage base ------------------------------------------------------
+
+  // The maximum combined wages and self-employment earnings subject to the
+  // social security part, published by the Social Security Administration.
+  nexteggapp.taxprotos.common.v1.Money social_security_wage_base = 10;
+
+  // Wages already reported on Forms W-2, which consume the wage base first. A
+  // filer whose salary already exceeded it owes no social security part on
+  // self-employment earnings at all.
+  nexteggapp.taxprotos.common.v1.Money social_security_wages_and_tips = 11;
+
+  nexteggapp.taxprotos.common.v1.Money wage_base_remaining = 12;
+
+  // -- The tax ------------------------------------------------------------
+
+  nexteggapp.taxprotos.common.v1.Money social_security_tax = 13;
+  nexteggapp.taxprotos.common.v1.Money medicare_tax = 14;
+  nexteggapp.taxprotos.common.v1.Money self_employment_tax = 15;
+
+  // Half the tax, which § 164(f) allows as an adjustment to income. It excludes
+  // the additional medicare part, which § 164(f)(1) does not reach.
+  nexteggapp.taxprotos.common.v1.Money one_half_deduction = 16;
+
+  // Set where the filer used the optional farm or non-farm method, which lets
+  // somebody with low earnings report more of them in order to earn social
+  // security credits.
+  bool used_optional_method = 17;
+}

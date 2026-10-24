@@ -1,0 +1,88 @@
+// Annotations recording how a tax form message corresponds to FDX.
+//
+// FDX is the Financial Data Exchange standard. Its tax profile models 52 US
+// tax documents with field names taken from the concept rather than the box
+// number, which is the convention these schemas follow. See
+// https://taxdataexchange.org/docs/fdx/v5.0/index.html.
+//
+// The correspondence is recorded on the field so that a converter can be
+// generated from the descriptors instead of hand-written, and so that every
+// deviation from FDX can be listed.
+//
+// # Every field carries one of the three
+//
+// A field says either which FDX field it corresponds to, that it deviates from
+// one, or that FDX has no counterpart. An unannotated field is a missing
+// annotation, not a claim that FDX is silent.
+//
+// # Money and rates are encoded differently, everywhere
+//
+// FDX carries money as a JSON number. Every money field here is
+// nexteggapp.taxprotos.common.v1.Money, an integer count of minor units, and
+// every rate is a nexteggapp.taxprotos.common.v1.Quantity of an integer and a
+// scale, for the reasons money.proto and quantity.proto give.
+//
+// Neither carries fdx_deviation. It holds for every field of those types
+// without exception, so a converter derives it from the type rather than
+// reading it off each field, and annotating it 126 times would bury the
+// handful of differences that do need reading.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.common.v1;
+
+import "google/protobuf/descriptor.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/common/v1;commonv1";
+
+extend google.protobuf.MessageOptions {
+  // The FDX entity this message corresponds to, such as "Tax1099Div".
+  string fdx_entity = 50600;
+
+  // The FDX version the correspondence was written against, such as "5.0".
+  //
+  // FDX names were read from a real payload for the 1099-DIV only. Every other
+  // form's names were inferred from that payload's convention, and this field
+  // is what says which version the guess was made against.
+  string fdx_version = 50601;
+}
+
+extend google.protobuf.FieldOptions {
+  // The FDX field this field corresponds to, such as "qualifiedDividends".
+  string fdx_field = 50610;
+
+  // How this field differs from the FDX field it corresponds to.
+  //
+  // Set alongside fdx_field. "minor units" is the money deviation described in
+  // this file's header. A message-typed field whose contents FDX spreads across
+  // siblings carries the deviation and no fdx_field, because there is no single
+  // FDX field to name.
+  string fdx_deviation = 50611;
+
+  // FDX has no counterpart for this field.
+  bool fdx_absent = 50612;
+
+  // The first tax year this field applies to, where it is not every year the
+  // form has existed.
+  //
+  // A form message serves every year of its form, so it accumulates fields that
+  // only some years use: a box the IRS added, a deduction a statute created.
+  // Reading such a field off a year that predates it is a mistake, and without
+  // this nothing can tell.
+  //
+  // Machine-readable on purpose. A comment saying "new for 2025" is for a
+  // person reading the file; this is for a validator, and the two do not
+  // disagree because there is only one of them.
+  //
+  // This is not an identifier. Which box held a concept in a given year lives
+  // in mapping.textproto beside the schema, per
+  // docs/form-schemas.md. A year range is a fact about
+  // whether the concept existed at all, which is a different question.
+  int32 valid_from_tax_year = 50613;
+
+  // The last tax year this field applies to.
+  //
+  // Set when a box is withdrawn or a provision sunsets. The field is not
+  // removed and its number is not reused: records written while it applied are
+  // still out there and still have to read.
+  int32 valid_through_tax_year = 50614;
+}

@@ -1,0 +1,52 @@
+# gazelle:ignore
+
+load("@rules_go//go:def.bzl", "go_test")
+
+# data carries the fifteen mapping.textproto files and the Publication 1220
+# fixture into the runfiles tree. The mappings come from the schema packages
+# rather than from copies here, so the test reads the real mappings rather than
+# fixtures written to fit the shape it is testing.
+go_test(
+    name = "pub1220_test",
+    size = "small",
+    srcs = ["coverage_test.go"],
+    data = glob(["testdata/**"]) + [
+        "//us/federal/v1/form_1098:mapping.textproto",
+        "//us/federal/v1/form_1098_e:mapping.textproto",
+        "//us/federal/v1/form_1098_t:mapping.textproto",
+        "//us/federal/v1/form_1099_b:mapping.textproto",
+        "//us/federal/v1/form_1099_div:mapping.textproto",
+        "//us/federal/v1/form_1099_g:mapping.textproto",
+        "//us/federal/v1/form_1099_int:mapping.textproto",
+        "//us/federal/v1/form_1099_k:mapping.textproto",
+        "//us/federal/v1/form_1099_misc:mapping.textproto",
+        "//us/federal/v1/form_1099_nec:mapping.textproto",
+        "//us/federal/v1/form_1099_r:mapping.textproto",
+        "//us/federal/v1/form_5498:mapping.textproto",
+        "//us/federal/v1/form_ssa_1099:mapping.textproto",
+        "//us/federal/v1/form_w2:mapping.textproto",
+        "//us/federal/v1/form_w2g:mapping.textproto",
+    ],
+    deps = [
+        "//go/common/v1",
+        "//go/us/federal/v1/form_1098",
+        "//go/us/federal/v1/form_1098_e",
+        "//go/us/federal/v1/form_1098_t",
+        "//go/us/federal/v1/form_1099_b",
+        "//go/us/federal/v1/form_1099_div",
+        "//go/us/federal/v1/form_1099_g",
+        "//go/us/federal/v1/form_1099_int",
+        "//go/us/federal/v1/form_1099_k",
+        "//go/us/federal/v1/form_1099_misc",
+        "//go/us/federal/v1/form_1099_nec",
+        "//go/us/federal/v1/form_1099_r",
+        "//go/us/federal/v1/form_5498",
+        "//go/us/federal/v1/form_ssa_1099",
+        "//go/us/federal/v1/form_w2",
+        "//go/us/federal/v1/form_w2g",
+        "@rules_go//go/runfiles",
+        "@org_golang_google_protobuf//encoding/prototext",
+        "@org_golang_google_protobuf//reflect/protoreflect",
+        "@org_golang_google_protobuf//reflect/protoregistry",
+    ],
+)

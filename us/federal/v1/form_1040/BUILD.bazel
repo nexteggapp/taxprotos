@@ -1,0 +1,39 @@
+# gazelle:ignore
+
+load("@protobuf//bazel:proto_library.bzl", "proto_library")
+
+# Form 1040 and its schedules: the return a household files, as against the
+# twelve information returns elsewhere in this tree, which are what a household
+# receives.
+proto_library(
+    name = "form_1040_proto",
+    # Imported as taxprotos/..., so consumers import these files by that path.
+    import_prefix = "taxprotos",
+    srcs = [
+        "form_1040.proto",
+        "schedule_1.proto",
+        "schedule_1a.proto",
+        "schedule_2.proto",
+        "schedule_3.proto",
+        "schedule_a.proto",
+        "schedule_d.proto",
+        "schedule_se.proto",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//common/v1:common_proto",
+    ],
+)
+
+# The mappings and the form extracts they are checked against, for
+# //go/us/federal/v1/form_1040. They stay here rather than beside the test
+# because the runfiles path the test resolves is the path of the file's own
+# package, and because a mapping belongs with the schema it maps.
+filegroup(
+    name = "test_oracles",
+    srcs = glob([
+        "mapping_*.textproto",
+        "testdata/**",
+    ]),
+    visibility = ["//go/us/federal/v1/form_1040:__pkg__"],
+)

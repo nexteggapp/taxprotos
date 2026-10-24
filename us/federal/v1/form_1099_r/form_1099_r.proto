@@ -1,0 +1,138 @@
+// Form 1099-R, Distributions From Pensions, Annuities, Retirement or
+// Profit-Sharing Plans, IRAs, Insurance Contracts, etc.
+//
+// A plan administrator or IRA custodian sends it when it paid $10 or more out
+// of a retirement account.
+//
+// Boxes and Amount Codes are in mapping.textproto beside this file, keyed by
+// tax year, per docs/form-schemas.md. Verified against the
+// 2025 Form 1099-R box layout and the Instructions for Forms 1099-R and 5498
+// (2026).
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+import "taxprotos/common/v1/quantity.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1099_r;form1099r";
+
+// Form1099R is what a Form 1099-R states.
+message Form1099R {
+  option (common.v1.fdx_entity) = "Tax1099R";
+  option (common.v1.fdx_version) = "5.0";
+
+  // The calendar year the form reports on, as four digits.
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // The payer that filed the form.
+  nexteggapp.taxprotos.common.v1.Party payer = 2;
+
+  // The recipient the form reports on.
+  nexteggapp.taxprotos.common.v1.Party recipient = 3;
+
+  // The account number the form prints, where it has one. Text, because it
+  // can carry leading zeroes and letters.
+  string account_number = 4 [(common.v1.fdx_field) = "accountNumber"];
+
+  // The form is marked CORRECTED, which means it replaces one already sent.
+  bool corrected = 5 [(common.v1.fdx_field) = "corrected"];
+
+  // One row per state the form reports withholding for.
+  repeated nexteggapp.taxprotos.common.v1.StateTaxWithholding state_tax_withholding = 6 [(common.v1.fdx_field) = "stateTaxWithholding"];
+
+  // Everything paid out before withholding.
+  nexteggapp.taxprotos.common.v1.Money gross_distribution = 7 [
+    (common.v1.fdx_field) = "grossDistribution"
+  ];
+
+  // The part of [gross_distribution] that is taxable. Left unset when
+  // [taxable_amount_not_determined] is set.
+  nexteggapp.taxprotos.common.v1.Money taxable_amount = 8 [
+    (common.v1.fdx_field) = "taxableAmount"
+  ];
+
+  // The payer could not work out the taxable amount, which happens when it
+  // does not know the recipient's basis.
+  bool taxable_amount_not_determined = 9 [(common.v1.fdx_field) = "taxableAmountNotDetermined"];
+
+  // This distribution closed the account.
+  bool total_distribution = 10 [(common.v1.fdx_field) = "totalDistribution"];
+
+  // The part of [taxable_amount] that is capital gain, which arises on a
+  // lump-sum distribution from a plan the recipient joined before 1974.
+  nexteggapp.taxprotos.common.v1.Money capital_gain = 11 [
+    (common.v1.fdx_field) = "capitalGain"
+  ];
+
+  nexteggapp.taxprotos.common.v1.Money federal_tax_withheld = 12 [
+    (common.v1.fdx_field) = "federalTaxWithheld"
+  ];
+
+  // The part of the distribution that is the recipient's own after-tax
+  // contributions, designated Roth contributions, or insurance premiums.
+  nexteggapp.taxprotos.common.v1.Money employee_contributions = 13 [
+    (common.v1.fdx_field) = "employeeContributions"
+  ];
+
+  // Gain on employer securities distributed in kind, which is not taxed until
+  // the recipient sells them.
+  nexteggapp.taxprotos.common.v1.Money net_unrealized_appreciation = 14 [
+    (common.v1.fdx_field) = "netUnrealizedAppreciation"
+  ];
+
+  // The distribution codes as printed, one per character in the box: "7",
+  // "1B", "G". They say what kind of distribution this was and whether an
+  // early-withdrawal penalty applies.
+  repeated string distribution_codes = 15 [(common.v1.fdx_field) = "distributionCodes"];
+
+  // The account is a traditional IRA, a SEP or a SIMPLE.
+  bool ira_sep_simple = 16 [(common.v1.fdx_field) = "iraSepSimple"];
+
+  // Amounts the box 8 instructions call other: the current actuarial value of
+  // an annuity, or an excess contribution being returned.
+  nexteggapp.taxprotos.common.v1.Money other_amount = 17 [
+    (common.v1.fdx_field) = "otherAmount"
+  ];
+
+  // What share of the total distribution [other_amount] is, as printed, so
+  // 40% is units 40 with scale 0.
+  nexteggapp.taxprotos.common.v1.Quantity other_percentage = 18 [
+    (common.v1.fdx_field) = "otherPercentage"
+  ];
+
+  // The recipient's share of a distribution split between several people, as
+  // printed.
+  nexteggapp.taxprotos.common.v1.Quantity percentage_of_total_distribution = 19 [
+    (common.v1.fdx_field) = "percentageOfTotalDistribution"
+  ];
+
+  // Everything the recipient contributed after tax over the life of the
+  // account, which is what makes part of a later distribution tax-free.
+  nexteggapp.taxprotos.common.v1.Money total_employee_contributions = 20 [
+    (common.v1.fdx_field) = "totalEmployeeContributions"
+  ];
+
+  // The part of the distribution that came from an in-plan Roth rollover made
+  // within the last five years, which is taxed differently.
+  nexteggapp.taxprotos.common.v1.Money amount_allocable_to_irr_within_five_years = 21 [
+    (common.v1.fdx_field) = "amountAllocableToIrrWithin5Years"
+  ];
+
+  // The year the recipient first made a designated Roth contribution, which
+  // starts the five-year clock on tax-free withdrawals.
+  int32 first_year_of_designated_roth_contributions = 22 [(common.v1.fdx_field) = "firstYearOfDesignatedRothContribution"];
+
+  // The payer files this form to satisfy chapter 4 reporting under FATCA.
+  bool fatca_filing_requirement = 23 [(common.v1.fdx_field) = "foreignAccountTaxCompliance"];
+
+  // When the payer made the payment, which reportable death benefits under
+  // section 6050Y require.
+  nexteggapp.taxprotos.common.v1.Date date_of_payment = 24 [(common.v1.fdx_field) = "dateOfPayment"];
+
+  // One row per locality the form reports withholding for.
+  repeated nexteggapp.taxprotos.common.v1.LocalTaxWithholding local_tax_withholding = 25 [(common.v1.fdx_field) = "localTaxWithholding"];
+}

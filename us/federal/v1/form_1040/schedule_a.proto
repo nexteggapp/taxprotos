@@ -1,0 +1,86 @@
+// Schedule A, Itemized Deductions.
+//
+// The alternative to the standard deduction. § 63(e) makes taking it an
+// election rather than an outcome: a filer may itemise a smaller total, and one
+// filing separately must itemise if their spouse does. The total carries to
+// Form 1040 deduction, with itemized set.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+message ScheduleA {
+  int32 tax_year = 1;
+
+  // -- Medical and dental -------------------------------------------------
+
+  nexteggapp.taxprotos.common.v1.Money medical_and_dental_expenses = 2;
+
+  // Only the part above 7.5% of adjusted gross income is deductible, and the
+  // form prints the result of that subtraction.
+  nexteggapp.taxprotos.common.v1.Money deductible_medical_and_dental = 3;
+
+  // -- Taxes paid ---------------------------------------------------------
+
+  // State and local income taxes, or general sales taxes. The form makes these
+  // alternatives rather than both, and records which was chosen.
+  nexteggapp.taxprotos.common.v1.Money state_local_income_or_sales_taxes = 4;
+  bool elected_general_sales_taxes = 5;
+
+  nexteggapp.taxprotos.common.v1.Money state_local_real_estate_taxes = 6;
+  nexteggapp.taxprotos.common.v1.Money state_local_personal_property_taxes = 7;
+  nexteggapp.taxprotos.common.v1.Money total_state_and_local_taxes = 8;
+
+  // The SALT deduction after the cap, which for 2025 is $40,000 and half that
+  // filing separately, itself phased down above a threshold. The cap was
+  // $10,000 through 2024, so this figure and the one above diverge for most
+  // filers who itemise.
+  nexteggapp.taxprotos.common.v1.Money state_and_local_taxes_after_cap = 9;
+
+  nexteggapp.taxprotos.common.v1.Money other_taxes = 10;
+  nexteggapp.taxprotos.common.v1.Money total_taxes_paid = 11;
+
+  // -- Interest paid ------------------------------------------------------
+
+  nexteggapp.taxprotos.common.v1.Money mortgage_interest_reported_on_1098 = 12;
+  nexteggapp.taxprotos.common.v1.Money mortgage_interest_not_reported_on_1098 = 13;
+  nexteggapp.taxprotos.common.v1.Money points_not_reported_on_1098 = 14;
+  nexteggapp.taxprotos.common.v1.Money total_mortgage_interest_and_points = 15;
+
+  // Whether the loan was used for something other than buying, building or
+  // improving the home, which limits the deduction.
+  bool mortgage_not_wholly_for_the_home = 16;
+
+  nexteggapp.taxprotos.common.v1.Money investment_interest = 17;
+  nexteggapp.taxprotos.common.v1.Money total_interest_paid = 18;
+
+  // -- Gifts to charity ---------------------------------------------------
+
+  nexteggapp.taxprotos.common.v1.Money gifts_by_cash_or_check = 19;
+  nexteggapp.taxprotos.common.v1.Money gifts_other_than_cash_or_check = 20;
+  nexteggapp.taxprotos.common.v1.Money charitable_carryover_from_prior_year = 21;
+  nexteggapp.taxprotos.common.v1.Money total_gifts_to_charity = 22;
+
+  // -- Other --------------------------------------------------------------
+
+  // Losses from a federally declared disaster, from Form 4684.
+  nexteggapp.taxprotos.common.v1.Money casualty_and_theft_losses = 23;
+
+  repeated OtherItemizedDeduction other_itemized_deductions = 24;
+
+  nexteggapp.taxprotos.common.v1.Money total_itemized_deductions = 25;
+
+  // Set where the filer itemises despite the standard deduction being larger,
+  // which the form has a checkbox for.
+  bool elected_to_itemize_smaller_total = 26;
+}
+
+// OtherItemizedDeduction is one entry from the block that asks for a type and
+// an amount.
+message OtherItemizedDeduction {
+  string description = 1;
+  nexteggapp.taxprotos.common.v1.Money amount = 2;
+}

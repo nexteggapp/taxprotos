@@ -1,0 +1,451 @@
+// One household's own facts for one tax year. See docs/facts.md.
+//
+// Jurisdictions are US or a state's postal code. Every oneof is required: a
+// message that has one sets exactly one case. Every id is 1 to 64 letters,
+// digits, ".", "_" or "-", unique across the record and the models, minted
+// once and kept.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.facts.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/facts/v1/documents.proto";
+import "taxprotos/us/federal/v1/form_1040/form_1040.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/facts/v1;factsv1";
+
+// TaxYearFacts is one household's own facts for one tax year: who it is,
+// where it lived, and what it chose and answered. Evidence lives in the
+// calculator's model of each source.
+message TaxYearFacts {
+  // The tax year, as four digits.
+  int32 tax_year = 1;
+
+  // Everyone in the household, the person filing included.
+  repeated Person people = 2;
+
+  // Where the household lived, as dated periods. A move is two periods.
+  repeated ResidencePeriod residence = 3;
+
+  // The choices the law gives the taxpayer.
+  repeated Election elections = 4;
+
+  // The answers to tests the law sets about the facts.
+  repeated Position positions = 5;
+
+  // Figures last year's return carries into this year.
+  repeated Carryover carryovers = 6;
+
+  // Last year's returns, one per jurisdiction.
+  repeated PriorYearReturn prior_year = 7;
+
+  // Documents read but not yet attached to a model.
+  repeated Document unassigned = 8;
+
+  // Read-only copies of the adjacent years' payments that can count toward
+  // this one. Never stored; written out for a calculator.
+  repeated AdjacentPayment adjacent_payments = 9;
+}
+
+// One person in the household. What they qualify for is computed every
+// time, never stored.
+message Person {
+  // The person's id, such as "you".
+  string id = 1;
+
+  // What the household calls them.
+  string name = 2;
+
+  // In full.
+  common.v1.Date date_of_birth = 3;
+
+  // How they are related to the person filing. Exactly one person is
+  // RELATIONSHIP_YOU.
+  Relationship relationship = 4;
+
+  // Months of the year they lived with the person filing, 0 to 12.
+  int32 months_lived_with_you = 5;
+
+  // A full-time student for some part of five months of the year.
+  bool full_time_student = 6;
+
+  // Permanently and totally disabled.
+  bool permanently_disabled = 7;
+
+  // Blind at the end of the year.
+  bool blind = 8;
+
+  // Their high-deductible health plan coverage, which sets their HSA limit.
+  HsaCoverage hsa_coverage = 9;
+
+  // Months of the year they had that coverage, 0 to 12.
+  int32 hsa_months = 10;
+}
+
+// How a person is related to the person filing.
+enum Relationship {
+  // Not set. Every person has a relationship.
+  RELATIONSHIP_UNSPECIFIED = 0;
+
+  // The person filing.
+  RELATIONSHIP_YOU = 1;
+
+  // Their spouse.
+  RELATIONSHIP_SPOUSE = 2;
+
+  // A child, stepchild, foster child or descendant of one.
+  RELATIONSHIP_CHILD = 3;
+
+  // A parent or stepparent.
+  RELATIONSHIP_PARENT = 4;
+
+  // A brother, sister, half- or step-sibling.
+  RELATIONSHIP_SIBLING = 5;
+
+  // Any other relative, such as a grandparent, aunt or in-law.
+  RELATIONSHIP_OTHER_RELATIVE = 6;
+
+  // Someone not related, such as a partner who is not a spouse.
+  RELATIONSHIP_NOT_RELATED = 7;
+}
+
+// A person's high-deductible health plan coverage.
+enum HsaCoverage {
+  // Not set.
+  HSA_COVERAGE_UNSPECIFIED = 0;
+
+  // No high-deductible health plan, so no HSA contributions.
+  HSA_COVERAGE_NONE = 1;
+
+  // Self-only coverage.
+  HSA_COVERAGE_SELF_ONLY = 2;
+
+  // Family coverage.
+  HSA_COVERAGE_FAMILY = 3;
+}
+
+// One period the household lived in one state.
+message ResidencePeriod {
+  // The period's id.
+  string id = 1;
+
+  // The state's postal code.
+  string state = 2;
+
+  // The first day lived there.
+  common.v1.Date from = 3;
+
+  // The last day lived there. Unset: still living there. It may be after the
+  // day the record is checked.
+  common.v1.Date to = 4;
+}
+
+// One choice the law gives the taxpayer, within limits the calculator
+// checks. At most one election of each kind for each broker or jurisdiction.
+message Election {
+  // The election's id.
+  string id = 1;
+
+  // What is chosen.
+  oneof choice {
+    // The filing status. It must be open to the household.
+    us.federal.v1.FilingStatus filing_status = 2;
+
+    // Whether to take the standard deduction or itemise.
+    DeductionMethod deduction_method = 3;
+
+    // How one broker's lots are matched to sales.
+    LotMethod lot_method = 4;
+
+    // Whether one jurisdiction's withholding is credited when withheld.
+    WithholdingDates withholding_dates = 5;
+
+    // Whether one jurisdiction's underpayment penalty is asked to be waived.
+    WaiverRequest waiver = 6;
+  }
+}
+
+// Whether to take the standard deduction or itemise.
+enum DeductionMethod {
+  // Not set.
+  DEDUCTION_METHOD_UNSPECIFIED = 0;
+
+  // The standard deduction.
+  DEDUCTION_METHOD_STANDARD = 1;
+
+  // Itemised deductions, on Schedule A.
+  DEDUCTION_METHOD_ITEMISED = 2;
+}
+
+// How one broker's lots are matched to the shares sold.
+message LotMethod {
+  // A way of matching lots to sales.
+  enum Method {
+    // Not set.
+    METHOD_UNSPECIFIED = 0;
+
+    // The earliest-bought shares are sold first.
+    METHOD_FIRST_IN_FIRST_OUT = 1;
+
+    // Each sale names the lots it sells.
+    METHOD_SPECIFIC_LOTS = 2;
+  }
+
+  // The id of the broker's model.
+  string broker = 1;
+
+  // The method chosen.
+  Method method = 2;
+}
+
+// Withholding credited on the dates withheld, rather than evenly through the
+// year, for the estimated-payment rules.
+message WithholdingDates {
+  // US or a state's postal code.
+  string jurisdiction = 1;
+
+  // Credited on the dates withheld. False: credited evenly.
+  bool as_withheld = 2;
+}
+
+// A request that the underpayment penalty be waived.
+message WaiverRequest {
+  // Why a waiver is asked for.
+  enum Reason {
+    // Not set.
+    REASON_UNSPECIFIED = 0;
+
+    // No waiver is asked for.
+    REASON_NONE = 1;
+
+    // A casualty, such as a fire or theft.
+    REASON_CASUALTY = 2;
+
+    // A declared disaster.
+    REASON_DISASTER = 3;
+
+    // Retirement after reaching age 62 in this year or last.
+    REASON_RETIRED = 4;
+
+    // Becoming disabled in this year or last.
+    REASON_DISABLED = 5;
+  }
+
+  // US or a state's postal code.
+  string jurisdiction = 1;
+
+  // Why the waiver is asked for.
+  Reason reason = 2;
+
+  // The day of the casualty, disaster, retirement or disability.
+  common.v1.Date on = 3;
+}
+
+// The answer to one test the law sets about the facts, such as whether the
+// household provided more than half of a parent's support. A missing
+// position is never assumed: the calculator returns it as a question.
+message Position {
+  // The position's id.
+  string id = 1;
+
+  // The question's id in the catalogue, questions.textproto, such as
+  // "dependent.more_than_half_support". An uncatalogued question is refused.
+  string question = 2;
+
+  // The ids of the people or things the question is about, as the catalogue
+  // says; empty for a question about the household.
+  repeated string subjects = 3;
+
+  // The answer, of the kind the catalogue gives the question.
+  oneof answer {
+    // Yes, no or not sure.
+    Reply reply = 4;
+
+    // One of the question's named options.
+    string choice = 5;
+
+    // An amount.
+    common.v1.Money amount = 6;
+  }
+
+  // Why the household answered as it did, in its own words.
+  string basis = 7;
+
+  // The ids of the documents, entries or parts the answer relies on.
+  repeated string relied_on = 8;
+}
+
+// An answer to a yes-or-no question.
+enum Reply {
+  // Not set: the question is unanswered.
+  REPLY_UNSPECIFIED = 0;
+
+  // Yes.
+  REPLY_YES = 1;
+
+  // No.
+  REPLY_NO = 2;
+
+  // Not sure, which is an answer: the calculator applies the question's
+  // stated default and says so.
+  REPLY_NOT_SURE = 3;
+}
+
+// A figure last year's return worked out that the law carries into this
+// year, such as an unused capital loss.
+message Carryover {
+  // The carryover's id.
+  string id = 1;
+
+  // What is carried over.
+  CarryoverKind kind = 2;
+
+  // Positive, though a form may print a loss as negative.
+  common.v1.Money amount = 3;
+
+  // The id of the prior-year return it came from.
+  string prior_year = 4;
+}
+
+// What a carryover is.
+enum CarryoverKind {
+  // Not set.
+  CARRYOVER_KIND_UNSPECIFIED = 0;
+
+  // A short-term capital loss not yet deducted.
+  CARRYOVER_KIND_SHORT_TERM_CAPITAL_LOSS = 1;
+
+  // A long-term capital loss not yet deducted.
+  CARRYOVER_KIND_LONG_TERM_CAPITAL_LOSS = 2;
+
+  // Charitable contributions over last year's limit.
+  CARRYOVER_KIND_CHARITABLE_CONTRIBUTION = 3;
+}
+
+// Last year's return in one jurisdiction: the filed return inline, or entered
+// figures, or an estimate for one not yet filed.
+message PriorYearReturn {
+  // Whether last year's return was filed.
+  enum Status {
+    // Not set.
+    STATUS_UNSPECIFIED = 0;
+
+    // Filed.
+    STATUS_FILED = 1;
+
+    // Due but not filed yet.
+    STATUS_NOT_FILED_YET = 2;
+
+    // No return was filed or due there last year.
+    STATUS_NONE = 3;
+  }
+
+  // Where the figures come from, when the return isn't here.
+  enum FiguresFrom {
+    // Not set. The return is here, or there are no figures.
+    FIGURES_FROM_UNSPECIFIED = 0;
+
+    // Typed from the filed return.
+    FIGURES_FROM_ENTERED = 1;
+
+    // Estimated, for a return not yet filed.
+    FIGURES_FROM_ESTIMATE = 2;
+  }
+
+  // The return's id.
+  string id = 1;
+
+  // US or a state's postal code.
+  string jurisdiction = 2;
+
+  // Whose return: empty for the household's own, the spouse for a separate
+  // return before a first joint one.
+  repeated string people = 3;
+
+  // Whether it was filed.
+  Status status = 4;
+
+  // The return, when there is one here. The figures are then unset.
+  oneof filed {
+    // A federal return.
+    FederalReturn federal = 11;
+
+    // A California return.
+    CaliforniaReturn california = 12;
+
+    // An Oregon return.
+    OregonReturn oregon = 13;
+  }
+
+  // Where the return came from, when it is here.
+  DocumentRef source = 5;
+
+  // The total tax on the return, when the return isn't here.
+  common.v1.Money total_tax = 6;
+
+  // The adjusted gross income on the return, when the return isn't here.
+  common.v1.Money adjusted_gross_income = 7;
+
+  // Where total_tax and adjusted_gross_income come from.
+  FiguresFrom figures_from = 8;
+
+  // Resident there, or federally a citizen or resident, all of last year.
+  optional bool full_year_resident = 9;
+
+  // Federally, whether it itemised, which decides whether a state refund is
+  // income. Unset when the return is here.
+  optional bool itemised = 10;
+
+  // What the return carries into the year after it, by kind, such as an
+  // unused capital loss. The return's own forms have no line for these, so
+  // a return here, filed or entered as figures, states them beside it.
+  repeated CarriedForward carries_forward = 14;
+}
+
+// A figure one return carries into the next year.
+message CarriedForward {
+  // What is carried forward.
+  CarryoverKind kind = 1;
+
+  // Positive, though a form may print a loss as negative.
+  common.v1.Money amount = 2;
+}
+
+// A payment from the year before or after, as that year's latest saved
+// record holds it. A read-only copy, so this year's calculator can count it
+// without the other year's model.
+message AdjacentPayment {
+  // The payment's id in the other year's record.
+  string id = 1;
+
+  // US or a state's postal code.
+  string jurisdiction = 2;
+
+  // The day it was paid.
+  common.v1.Date date = 3;
+
+  // The amount paid.
+  common.v1.Money amount = 4;
+
+  // What it was for. Unset while unanswered.
+  PaymentPurpose purpose = 5;
+}
+
+// What a tax payment was for. Exactly one is set.
+message PaymentPurpose {
+  // The payment isn't tax.
+  message NotTax {}
+
+  // What the payment was for.
+  oneof purpose {
+    // An estimated payment toward that tax year.
+    int32 estimated_for = 1;
+
+    // A balance or extension payment for that year.
+    int32 balance_for = 2;
+
+    // Not a tax payment, such as a transfer that only looked like one.
+    NotTax not_tax = 3;
+  }
+}

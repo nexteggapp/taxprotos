@@ -1,0 +1,76 @@
+// Schedule 1, Additional Income and Adjustments to Income.
+//
+// Two halves that have nothing to do with each other beyond sharing a page:
+// income the 1040 has no line for, and the above-the-line adjustments that turn
+// total income into adjusted gross income. Part I totals into Form 1040
+// additional_income; part II into adjustments_to_income.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Schedule1Item is one entry from a line that asks for a type and an amount.
+message Schedule1Item {
+  // The type as written on the form.
+  string description = 1;
+  nexteggapp.taxprotos.common.v1.Money amount = 2;
+}
+
+message Schedule1 {
+  int32 tax_year = 1;
+
+  // -- Part I, additional income -----------------------------------------
+
+  // Refunds of state and local income tax, taxable only where the filer
+  // deducted them in an earlier year.
+  nexteggapp.taxprotos.common.v1.Money taxable_state_local_refunds = 2;
+
+  nexteggapp.taxprotos.common.v1.Money alimony_received = 3;
+
+  // From Schedule C. May be negative.
+  nexteggapp.taxprotos.common.v1.Money business_income_or_loss = 4;
+
+  nexteggapp.taxprotos.common.v1.Money other_gains_or_losses = 5;
+
+  // From Schedule E: rents, royalties, partnerships, S corporations, trusts.
+  nexteggapp.taxprotos.common.v1.Money rental_royalty_partnership_s_corp_trust = 6;
+
+  // From Schedule F.
+  nexteggapp.taxprotos.common.v1.Money farm_income_or_loss = 7;
+
+  nexteggapp.taxprotos.common.v1.Money unemployment_compensation = 8;
+
+  // Line 8 on the form is a block of lettered rows, each a type and an amount,
+  // totalling to line 9. Repeated rather than a field per row, because the
+  // letters run past the alphabet the form prints.
+  repeated Schedule1Item other_income = 9;
+  nexteggapp.taxprotos.common.v1.Money total_other_income = 10;
+
+  nexteggapp.taxprotos.common.v1.Money total_additional_income = 11;
+
+  // -- Part II, adjustments to income ------------------------------------
+
+  nexteggapp.taxprotos.common.v1.Money educator_expenses = 12;
+  nexteggapp.taxprotos.common.v1.Money reservist_performing_artist_official_expenses = 13;
+  nexteggapp.taxprotos.common.v1.Money health_savings_account_deduction = 14;
+  nexteggapp.taxprotos.common.v1.Money armed_forces_moving_expenses = 15;
+
+  // Half of self-employment tax, from Schedule SE.
+  nexteggapp.taxprotos.common.v1.Money deductible_part_of_self_employment_tax = 16;
+
+  nexteggapp.taxprotos.common.v1.Money self_employed_retirement_plans = 17;
+  nexteggapp.taxprotos.common.v1.Money self_employed_health_insurance = 18;
+  nexteggapp.taxprotos.common.v1.Money early_withdrawal_penalty = 19;
+  nexteggapp.taxprotos.common.v1.Money alimony_paid = 20;
+  nexteggapp.taxprotos.common.v1.Money ira_deduction = 21;
+  nexteggapp.taxprotos.common.v1.Money student_loan_interest_deduction = 22;
+  nexteggapp.taxprotos.common.v1.Money archer_msa_deduction = 23;
+
+  repeated Schedule1Item other_adjustments = 24;
+  nexteggapp.taxprotos.common.v1.Money total_other_adjustments = 25;
+
+  nexteggapp.taxprotos.common.v1.Money total_adjustments = 26;
+}

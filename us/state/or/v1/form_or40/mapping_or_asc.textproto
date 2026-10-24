@@ -1,0 +1,60 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Schedule OR-ASC calls each concept, per tax year.
+#
+# The line numbers here are section-and-number, like "B7", because that is how
+# the schedule prints them. Each is a section total, and each transfers to one
+# line of Form OR-40.
+
+form: "Schedule OR-ASC"
+message_name: "nexteggapp.taxprotos.us.state.or.v1.ScheduleORASC"
+tax_years: 2025
+
+concepts {
+  concept: "total_additions"
+  years {
+    tax_year: 2025
+    irs_box: "A5"
+    note: "Section A, codes 100-199. Transfers to Form OR-40, line 8."
+  }
+}
+concepts {
+  concept: "total_subtractions"
+  years {
+    tax_year: 2025
+    irs_box: "B7"
+    note: "Section B, codes 300-399. Transfers to Form OR-40, line 13."
+  }
+}
+concepts {
+  concept: "total_tax_recaptures"
+  years {
+    tax_year: 2025
+    irs_box: "C5"
+    note: "Section C. Transfers to Form OR-40, line 22."
+  }
+}
+concepts {
+  concept: "total_standard_credits"
+  years {
+    tax_year: 2025
+    irs_box: "D16"
+    note: "Section D, codes 800-834. Transfers to Form OR-40, line 27. Lost if they exceed the tax."
+  }
+}
+concepts {
+  concept: "carryforward_credits_used"
+  years {
+    tax_year: 2025
+    irs_box: "E9"
+    note: "Section E. Transfers to Form OR-40, line 30. Unlike the standard credits, the unused part survives to a later year."
+  }
+}
+concepts {
+  concept: "total_refundable_credits"
+  years {
+    tax_year: 2025
+    irs_box: "F7"
+    note: "Section F. Transfers to Form OR-40, line 39. Paid out even where no tax is due."
+  }
+}

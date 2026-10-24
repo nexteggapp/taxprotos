@@ -1,0 +1,162 @@
+// The Washington capital gains excise tax return, under chapter 82.87 RCW.
+//
+// Washington levies no personal income tax, so there is no income tax return in
+// this directory and there will not be one. What an individual may owe the
+// state on gain is this: an excise tax on the sale or exchange of long-term
+// capital assets.
+//
+// # This return has no line numbers
+//
+// Every other form in taxprotos is mapped by the line number printed beside a
+// box. Washington prints no such box. RCW 82.87.110 requires the return to be
+// filed electronically, and what the Department of Revenue publishes is a
+// walkthrough of the filing wizard's screens rather than a form.
+//
+// So mapping.textproto beside this file cites a subsection of the statute for
+// every concept instead of a line, and coverage_test.go checks those citations
+// against the statute rather than against a form. That is a different oracle
+// and, for once, a stronger one: a statute enumerates what is taxed and what is
+// deductible, where a page of extracted form text only shows that a line
+// exists.
+//
+// The rule that field names are concepts rather than identifiers, in
+// docs/form-schemas.md, is unchanged. It is the identifier
+// that differs — a citation rather than a line number — and it still lives in
+// the mapping.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.wa.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/wa/v1/capital_gains;capitalgains";
+
+// FilingStatus is how the return is filed.
+//
+// Only two, and neither changes a rate. RCW 82.87.120 gives spouses and
+// domestic partners one standard deduction between them whether they file
+// jointly or separately, so the status decides who is liable rather than how
+// much.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_INDIVIDUAL = 1;
+  FILING_STATUS_JOINT = 2;
+  FILING_STATUS_SEPARATE = 3;
+}
+
+// CapitalGainsReturn is what a Washington capital gains excise tax return
+// states.
+message CapitalGainsReturn {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  // AllocatedItem is one sale or exchange whose gain is allocated to
+  // Washington.
+  //
+  // The wizard collects these individually and their total must equal
+  // [washington_capital_gains]. Repeated rather than a total alone because
+  // RCW 82.87.110 requires the detail to be filed.
+  message AllocatedItem {
+    // What was sold, as the filer describes it.
+    string description = 1 [(common.v1.fdx_absent) = true];
+
+    // The gain or loss on this item. Negative for a loss.
+    nexteggapp.taxprotos.common.v1.Money gain = 2 [(common.v1.fdx_absent) = true];
+  }
+
+  // CharitableDonation is one gift to a qualified organisation.
+  //
+  // Only gifts to organisations principally directed or managed in Washington
+  // count, which is a fact about the charity rather than about the gift.
+  message CharitableDonation {
+    string organization = 1 [(common.v1.fdx_absent) = true];
+    nexteggapp.taxprotos.common.v1.Money amount = 2 [(common.v1.fdx_absent) = true];
+  }
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // Net long-term capital gain from the federal return's Schedule D, before any
+  // Washington allocation. Where the return starts.
+  nexteggapp.taxprotos.common.v1.Money federal_net_long_term_capital_gain = 5 [(common.v1.fdx_absent) = true];
+
+  // The part of the federal figure that is not Washington's, whether because
+  // the asset is exempt or because the gain is allocated elsewhere.
+  nexteggapp.taxprotos.common.v1.Money gain_not_allocated_to_washington = 6 [(common.v1.fdx_absent) = true];
+
+  // Adjusted capital gain allocated to Washington, before deductions.
+  nexteggapp.taxprotos.common.v1.Money allocated_capital_gain = 7 [(common.v1.fdx_absent) = true];
+
+  // The sales making up [allocated_capital_gain], in the order entered.
+  repeated AllocatedItem allocated_items = 8 [(common.v1.fdx_absent) = true];
+
+  // The standard deduction, one per individual or per couple, adjusted for
+  // inflation each year.
+  nexteggapp.taxprotos.common.v1.Money standard_deduction = 9 [(common.v1.fdx_absent) = true];
+
+  // The gifts claimed, and what they actually deduct. The two differ: only
+  // gifts above a threshold count at all, and the deduction is capped.
+  repeated CharitableDonation charitable_donations = 10 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money charitable_deduction = 11 [(common.v1.fdx_absent) = true];
+
+  // Gain from the sale of all or substantially all of a qualified family-owned
+  // small business, which is deducted in full.
+  nexteggapp.taxprotos.common.v1.Money family_owned_small_business_deduction = 12 [(common.v1.fdx_absent) = true];
+
+  // Deductions the wizard does not name, which it says will rarely be used.
+  nexteggapp.taxprotos.common.v1.Money other_deductions = 13 [(common.v1.fdx_absent) = true];
+
+  // Washington capital gains after every deduction. Both rates apply to this
+  // figure, not to [allocated_capital_gain]: the statutory term "Washington
+  // capital gains" is defined as adjusted capital gain as modified by the
+  // deductions section, so the deductions sit inside it.
+  nexteggapp.taxprotos.common.v1.Money taxable_washington_capital_gains = 14 [(common.v1.fdx_absent) = true];
+
+  // The 7% tax on all taxable gain.
+  nexteggapp.taxprotos.common.v1.Money tax_at_base_rate = 15 [(common.v1.fdx_absent) = true];
+
+  // The further 2.9% on taxable gain above one million dollars. On top of the
+  // base rate rather than instead of it, so the top of a large gain meets 9.9%.
+  //
+  // ESSB 5813 created it with effect from 1 January 2025. A return for 2022,
+  // 2023 or 2024 has no such figure, which is what valid_from_tax_year says to
+  // a validator rather than only to a reader.
+  nexteggapp.taxprotos.common.v1.Money tax_at_surcharge_rate = 16 [
+    (common.v1.fdx_absent) = true,
+    (common.v1.valid_from_tax_year) = 2025
+  ];
+
+  nexteggapp.taxprotos.common.v1.Money total_tax = 17 [(common.v1.fdx_absent) = true];
+
+  // Credit for business and occupation tax paid on the same sale, so that one
+  // transaction is not taxed twice by the same state.
+  //
+  // RCW 82.87.160 creates this credit against the capital gains tax beginning
+  // in tax year 2025. Before that the relief ran the other way, as a business
+  // and occupation tax credit, which is a different return's figure and not
+  // this field.
+  nexteggapp.taxprotos.common.v1.Money business_and_occupation_tax_credit = 18 [
+    (common.v1.fdx_absent) = true,
+    (common.v1.valid_from_tax_year) = 2025
+  ];
+
+  // Credit for income or excise tax another jurisdiction legally imposed on the
+  // same gain.
+  nexteggapp.taxprotos.common.v1.Money other_jurisdiction_credit = 19 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_credits = 20 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money net_tax_due = 21 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money penalty_and_interest = 22 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_amount_due = 23 [(common.v1.fdx_absent) = true];
+
+  // A copy of the federal return is filed with this one, and the filer may
+  // report being unable to upload it and undertake to post it instead.
+  bool federal_return_attached = 24 [(common.v1.fdx_absent) = true];
+}

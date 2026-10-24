@@ -1,0 +1,106 @@
+// Form 1098, Mortgage Interest Statement.
+//
+// A lender sends it when it received $600 or more of mortgage interest from an
+// individual over the year.
+//
+// Boxes and Amount Codes are in mapping.textproto beside this file, keyed by
+// tax year, per docs/form-schemas.md. Verified against the
+// Form 1098 (Rev. 4-2025) box layout and the Instructions for Form 1098
+// (12/2026).
+//
+// # The parties run the opposite way from a 1099
+//
+// The lender receives the interest and files the form; the borrower pays it. So
+// this form prints the lender as RECIPIENT/LENDER and the borrower as
+// PAYER/BORROWER, which is the reverse of a 1099, where the payer is the
+// institution and the recipient is the taxpayer.
+//
+// The fields are named [lender] and [borrower] for that reason. A shared field
+// called `recipient` would hold the bank here and the taxpayer on a 1099-INT,
+// and nothing would catch it.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1098;form1098";
+
+// Form1098 is what a Form 1098 states.
+message Form1098 {
+  option (common.v1.fdx_entity) = "Tax1098";
+  option (common.v1.fdx_version) = "5.0";
+
+  // The calendar year the form reports on, as four digits.
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // The lender that filed the form. Form 1098 prints this block as RECIPIENT/LENDER.
+  nexteggapp.taxprotos.common.v1.Party lender = 2;
+
+  // The borrower who paid the interest. Form 1098 prints this block as PAYER/BORROWER.
+  nexteggapp.taxprotos.common.v1.Party borrower = 3;
+
+  // The account number the form prints, where it has one. Text, because it
+  // can carry leading zeroes and letters.
+  string account_number = 4 [(common.v1.fdx_field) = "accountNumber"];
+
+  // The form is marked CORRECTED, which means it replaces one already sent.
+  bool corrected = 5 [(common.v1.fdx_field) = "corrected"];
+
+  // One row per state the form reports withholding for.
+  repeated nexteggapp.taxprotos.common.v1.StateTaxWithholding state_tax_withholding = 6 [(common.v1.fdx_field) = "stateTaxWithholding"];
+
+  // Interest the borrower paid over the year, not counting points.
+  nexteggapp.taxprotos.common.v1.Money mortgage_interest_received = 7 [
+    (common.v1.fdx_field) = "mortgageInterest"
+  ];
+
+  // What was still owed at the start of the year, or on the origination date
+  // for a mortgage taken out during it.
+  nexteggapp.taxprotos.common.v1.Money outstanding_mortgage_principal = 8 [
+    (common.v1.fdx_field) = "outstandingPrincipal"
+  ];
+
+  nexteggapp.taxprotos.common.v1.Date mortgage_origination_date = 9 [(common.v1.fdx_field) = "originationDate"];
+
+  // Interest the lender gave back for an earlier year, which the borrower may
+  // have to add back to income.
+  nexteggapp.taxprotos.common.v1.Money refund_of_overpaid_interest = 10 [
+    (common.v1.fdx_field) = "refundOfOverpaidInterest"
+  ];
+
+  // Mortgage insurance premiums, which are reported only for years section
+  // 163(h)(3)(E) treats them as interest.
+  nexteggapp.taxprotos.common.v1.Money mortgage_insurance_premiums = 11 [
+    (common.v1.fdx_field) = "mortgageInsurancePremium"
+  ];
+
+  // Points the borrower paid to buy down the rate on a principal residence,
+  // which are deductible in the year paid.
+  nexteggapp.taxprotos.common.v1.Money points_paid_on_purchase_of_principal_residence = 12 [
+    (common.v1.fdx_field) = "pointsPaid"
+  ];
+
+  // The property securing the mortgage is at the borrower's own address, so
+  // the lender printed no separate address.
+  bool property_address_is_borrower_address = 13 [(common.v1.fdx_field) = "propertyAddressSameAsBorrower"];
+
+  // The address or description of the property securing the mortgage, as
+  // printed.
+  string property_address_or_description = 14 [(common.v1.fdx_field) = "propertyAddress"];
+
+  // How many properties secure this one mortgage. Printed only when there is
+  // more than one.
+  int64 number_of_properties_securing_mortgage = 15 [(common.v1.fdx_field) = "numberOfProperties"];
+
+  // Whatever else the lender chose to report, as printed — real estate taxes,
+  // insurance paid from escrow.
+  string other = 16 [(common.v1.fdx_field) = "other"];
+
+  // When the lender acquired the mortgage, printed when that was during the
+  // year.
+  nexteggapp.taxprotos.common.v1.Date mortgage_acquisition_date = 17 [(common.v1.fdx_field) = "acquisitionDate"];
+}

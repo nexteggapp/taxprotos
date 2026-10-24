@@ -1,0 +1,75 @@
+// Schedule 1-A, Additional Deductions.
+//
+// New for tax year 2025. Four deductions that did not exist before, each phased
+// out against modified adjusted gross income: tips, overtime, interest on a
+// loan against a passenger vehicle, and an enhanced deduction for filers 65 or
+// older. The total carries to Form 1040 additional_deductions.
+//
+// # Only the outcomes are here
+//
+// Most of the schedule's forty lines are the phase-out worked in steps —
+// subtract a threshold, divide by a thousand, multiply by a hundred. Those are
+// arithmetic rather than facts about the filer, and a schema that stored them
+// would be storing a worksheet. The inputs and the four resulting deductions
+// are recorded; the steps between are not.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Every field here is annotated valid_from_tax_year 2025, because the schedule
+// did not exist before then. Annotating each rather than the message keeps the
+// fact where a validator reads it: options on a message say nothing about which
+// of its fields a given year allows.
+message Schedule1A {
+  int32 tax_year = 1;
+
+  // Modified adjusted gross income, which every phase-out below is measured
+  // against. Line 3 of the schedule.
+  nexteggapp.taxprotos.common.v1.Money modified_adjusted_gross_income = 2
+      [(common.v1.valid_from_tax_year) = 2025];
+
+  // Income excluded from Puerto Rico or under the foreign earned income rules,
+  // added back to reach the figure above.
+  nexteggapp.taxprotos.common.v1.Money excluded_income_added_back = 3
+      [(common.v1.valid_from_tax_year) = 2025];
+
+  // -- Tips ---------------------------------------------------------------
+
+  nexteggapp.taxprotos.common.v1.Money qualified_tips_as_employee = 4
+      [(common.v1.valid_from_tax_year) = 2025];
+  nexteggapp.taxprotos.common.v1.Money qualified_tips_from_trade_or_business = 5
+      [(common.v1.valid_from_tax_year) = 2025];
+  nexteggapp.taxprotos.common.v1.Money qualified_tips_deduction = 6
+      [(common.v1.valid_from_tax_year) = 2025];
+
+  // -- Overtime -----------------------------------------------------------
+
+  nexteggapp.taxprotos.common.v1.Money qualified_overtime_compensation = 7
+      [(common.v1.valid_from_tax_year) = 2025];
+  nexteggapp.taxprotos.common.v1.Money qualified_overtime_deduction = 8
+      [(common.v1.valid_from_tax_year) = 2025];
+
+  // -- Passenger vehicle loan interest ------------------------------------
+
+  nexteggapp.taxprotos.common.v1.Money passenger_vehicle_loan_interest = 9
+      [(common.v1.valid_from_tax_year) = 2025];
+  nexteggapp.taxprotos.common.v1.Money passenger_vehicle_loan_interest_deduction = 10
+      [(common.v1.valid_from_tax_year) = 2025];
+
+  // -- Seniors ------------------------------------------------------------
+
+  // Requires a valid social security number, which the form asks about
+  // separately from the amount.
+  bool valid_ssn_for_senior_deduction = 11
+      [(common.v1.valid_from_tax_year) = 2025];
+  nexteggapp.taxprotos.common.v1.Money enhanced_deduction_for_seniors = 12
+      [(common.v1.valid_from_tax_year) = 2025];
+
+  nexteggapp.taxprotos.common.v1.Money total_additional_deductions = 13
+      [(common.v1.valid_from_tax_year) = 2025];
+}

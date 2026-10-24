@@ -1,0 +1,96 @@
+// The parts of a US information return that mean the same thing on every form.
+//
+// A party's name and address are the same shape wherever they appear, and so is
+// a state or local tax row. Those are here.
+//
+// What is deliberately not here is any message combining them into a header. A
+// form names its two parties in its own vocabulary — employer and employee on a
+// W-2, lender and borrower on a 1098, filer and payee on a 1099-K — and the
+// roles are not consistent enough to share a type. Form 1098 prints the lender
+// as RECIPIENT and the borrower as PAYER, which is the reverse of a 1099, so a
+// shared field named `recipient` would hold the bank on one form and the
+// taxpayer on another. Each form declares its own parties, using [Party] for
+// their shape.
+//
+// # Copy A boxes are not modelled
+//
+// A form's Copy A goes to the IRS and carries boxes the recipient's copy does
+// not, such as "2nd TIN not." and "VOID". These schemas hold what a taxpayer
+// received, so those boxes have no fields.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.common.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/common/v1;commonv1";
+
+// Party is one name, address and identifier block as a form prints it.
+//
+// Used for both parties on a form. It carries no role: which party a field
+// holds is said by the field's name on the form's own message.
+//
+// # FDX correspondence
+//
+// No field here carries fdx_field, and that is deliberate twice over.
+//
+// FDX does not group a party at all. It carries payerNameAddress, payerTin and
+// payerPhone as separate siblings of the document, and the same for the
+// recipient, so one field here corresponds to part of one of those. That is a
+// structural difference a converter has to handle, and it is identical for
+// every form, so it is stated once here rather than on twenty-four fields.
+//
+// And which FDX party a given form's party is has only been checked for the
+// 1099-DIV. Whether FDX calls a 1098's lender its payer or its recipient is
+// unverified, and the form prints the lender as RECIPIENT, so guessing would be
+// worse than saying nothing. issue-taxprotos-fdx-round-trip settles it.
+message Party {
+  // The party as printed, such as "Fidelity Brokerage Services LLC".
+  string name = 1;
+
+  // The address as printed, whole.
+  string address = 2;
+
+  // The taxpayer identification number as printed.
+  //
+  // A business prints an employer identification number in full. An individual's
+  // is a Social Security number, which a 1099 filer masks to the last four
+  // digits — "xxx-xx-1234" — and a W-2 employer prints in full. Whatever stores
+  // this must treat it as a Social Security number rather than as a masked one.
+  string tin = 3;
+
+  // The telephone number, where the form prints one. Only the filing party's
+  // block has one.
+  string telephone = 4;
+}
+
+// StateTaxWithholding is one state's row of a form's state tax block.
+message StateTaxWithholding {
+  // The two-letter state abbreviation as printed.
+  string state = 1 [(fdx_field) = "state"];
+
+  // The filing party's registration number with that state, as printed.
+  string state_id = 2 [(fdx_field) = "stateIdNumber"];
+
+  // State income tax withheld.
+  Money tax_withheld = 3 [(fdx_field) = "stateTaxWithheld"];
+
+  // The income the state row reports, where the form prints one — state wages
+  // on a W-2, state income on a 1099-MISC, state distribution on a 1099-R.
+  Money state_income = 4 [(fdx_field) = "stateIncome"];
+}
+
+// LocalTaxWithholding is one locality's row of a form's local tax block. Only
+// the W-2 and the 1099-R print one.
+message LocalTaxWithholding {
+  // The locality as printed.
+  string locality = 1 [(fdx_field) = "locality"];
+
+  // Local income tax withheld.
+  Money tax_withheld = 2 [(fdx_field) = "localTaxWithheld"];
+
+  // The income the local row reports — local wages on a W-2, local distribution
+  // on a 1099-R.
+  Money local_income = 3 [(fdx_field) = "localIncome"];
+}

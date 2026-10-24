@@ -1,0 +1,60 @@
+// Schedule 2, Additional Taxes.
+//
+// Two parts that reach Form 1040 at different lines. Part I is tax computed at
+// the ordinary rates and carries to additional_tax_from_schedule_2, before
+// credits. Part II is everything that is not, and carries to other_taxes, after
+// them — which is why a credit cannot wipe out self-employment tax.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Schedule2Item is one entry from a line that asks for a type and an amount.
+message Schedule2Item {
+  string description = 1;
+  nexteggapp.taxprotos.common.v1.Money amount = 2;
+}
+
+message Schedule2 {
+  int32 tax_year = 1;
+
+  // -- Part I, tax --------------------------------------------------------
+
+  repeated Schedule2Item additions_to_tax = 2;
+  nexteggapp.taxprotos.common.v1.Money alternative_minimum_tax = 3;
+  nexteggapp.taxprotos.common.v1.Money total_part_one = 4;
+
+  // -- Part II, other taxes ----------------------------------------------
+
+  // From Schedule SE.
+  nexteggapp.taxprotos.common.v1.Money self_employment_tax = 5;
+
+  nexteggapp.taxprotos.common.v1.Money social_security_medicare_on_unreported_tips = 6;
+  nexteggapp.taxprotos.common.v1.Money uncollected_social_security_medicare_on_wages = 7;
+  nexteggapp.taxprotos.common.v1.Money total_additional_social_security_medicare = 8;
+
+  nexteggapp.taxprotos.common.v1.Money tax_on_iras_and_tax_favoured_accounts = 9;
+  nexteggapp.taxprotos.common.v1.Money household_employment_taxes = 10;
+
+  // The § 1401(b)(2) extra 0.9%, from Form 8959.
+  nexteggapp.taxprotos.common.v1.Money additional_medicare_tax = 11;
+
+  // The § 1411 tax, from Form 8960. Not modelled by the taxcalcs calculators.
+  nexteggapp.taxprotos.common.v1.Money net_investment_income_tax = 12;
+
+  nexteggapp.taxprotos.common.v1.Money uncollected_social_security_medicare_rrta_on_tips = 13;
+  nexteggapp.taxprotos.common.v1.Money interest_on_installment_sale_tax = 14;
+  nexteggapp.taxprotos.common.v1.Money interest_on_deferred_installment_gain = 15;
+  nexteggapp.taxprotos.common.v1.Money recapture_of_low_income_housing_credit = 16;
+
+  repeated Schedule2Item other_additional_taxes = 17;
+  nexteggapp.taxprotos.common.v1.Money total_other_additional_taxes = 18;
+
+  nexteggapp.taxprotos.common.v1.Money recapture_of_net_epe = 19;
+  nexteggapp.taxprotos.common.v1.Money section_965_installment = 20;
+
+  nexteggapp.taxprotos.common.v1.Money total_part_two = 21;
+}

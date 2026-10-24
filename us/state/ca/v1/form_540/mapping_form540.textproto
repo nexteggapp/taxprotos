@@ -1,0 +1,297 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form 540 calls each concept, per tax year.
+#
+# Lines come from the 2025 Form 540 as the Franchise Tax Board publishes it.
+# There are no amount codes: IRS Publication 1220 covers the information returns
+# the IRS receives electronically, and a state return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live, and
+# they move: California renumbered the mental health surcharge's neighbours more
+# than once, and line 62 is only stable within a year.
+
+form: "540"
+message_name: "nexteggapp.taxprotos.us.state.ca.v1.Form540"
+tax_years: 2025
+
+concepts {
+  concept: "filing_status"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+    note: "Boxes 1 through 5, one checkbox each, in the order of the FilingStatus enum."
+  }
+}
+concepts {
+  concept: "claimed_as_dependent"
+  years { tax_year: 2025 irs_box: "6" }
+}
+concepts {
+  concept: "personal_exemptions"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+    note: "A count. The form multiplies it by a pre-printed dollar amount."
+  }
+}
+concepts {
+  concept: "blind_exemptions"
+  years { tax_year: 2025 irs_box: "8" }
+}
+concepts {
+  concept: "senior_exemptions"
+  years { tax_year: 2025 irs_box: "9" }
+}
+concepts {
+  concept: "dependent_exemptions"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+    note: "Priced far higher than the personal, blind and senior exemptions."
+  }
+}
+concepts {
+  concept: "exemption_amount"
+  years { tax_year: 2025 irs_box: "11" }
+}
+concepts {
+  concept: "state_wages"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+    note: "Box 16 of the Forms W-2, all states. Not used in the computation."
+  }
+}
+concepts {
+  concept: "federal_adjusted_gross_income"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+    note: "Federal Form 1040 line 11b. Where the return starts."
+  }
+}
+concepts {
+  concept: "california_subtractions"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+    note: "Schedule CA (540) Part I, line 27, column B."
+  }
+}
+concepts {
+  concept: "subtotal"
+  years { tax_year: 2025 irs_box: "15" }
+}
+concepts {
+  concept: "california_additions"
+  years {
+    tax_year: 2025
+    irs_box: "16"
+    note: "Schedule CA (540) Part I, line 27, column C."
+  }
+}
+concepts {
+  concept: "california_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "17" }
+}
+concepts {
+  concept: "deduction"
+  years {
+    tax_year: 2025
+    irs_box: "18"
+    note: "Standard or itemised, whichever the filer took. Schedule CA (540) Part II, line 30."
+  }
+}
+concepts {
+  concept: "itemized"
+  years {
+    tax_year: 2025
+    irs_box: "18"
+    note: "Which of the two boxes on line 18 is checked."
+  }
+}
+concepts {
+  concept: "taxable_income"
+  years { tax_year: 2025 irs_box: "19" }
+}
+concepts {
+  concept: "tax_before_exemption_credits"
+  years {
+    tax_year: 2025
+    irs_box: "31"
+    note: "From the tax table below $100,000 of taxable income, or the rate schedules above it."
+  }
+}
+concepts {
+  concept: "exemption_credits"
+  years {
+    tax_year: 2025
+    irs_box: "32"
+    note: "Line 11, reduced by the AGI Limitation Worksheet where federal AGI passes the threshold for the filing status."
+  }
+}
+concepts {
+  concept: "tax_after_exemption_credits"
+  years { tax_year: 2025 irs_box: "33" }
+}
+concepts {
+  concept: "additional_tax"
+  years {
+    tax_year: 2025
+    irs_box: "34"
+    note: "Lump-sum distributions, and forms FTB 3800 and 3803 for a child's income on a parent's return."
+  }
+}
+concepts {
+  concept: "tax_before_credits"
+  years { tax_year: 2025 irs_box: "35" }
+}
+concepts {
+  concept: "child_and_dependent_care_credit"
+  years { tax_year: 2025 irs_box: "40" }
+}
+concepts {
+  concept: "renters_credit"
+  years { tax_year: 2025 irs_box: "46" }
+}
+concepts {
+  concept: "total_credits"
+  years { tax_year: 2025 irs_box: "47" }
+}
+concepts {
+  concept: "tax_after_credits"
+  years { tax_year: 2025 irs_box: "48" }
+}
+concepts {
+  concept: "alternative_minimum_tax"
+  years {
+    tax_year: 2025
+    irs_box: "61"
+    note: "Schedule P (540)."
+  }
+}
+concepts {
+  concept: "behavioral_health_services_tax"
+  years {
+    tax_year: 2025
+    irs_box: "62"
+    note: "Named the Mental Health Services Tax before Proposition 1 renamed it for taxable years beginning on or after 1 January 2025."
+  }
+}
+concepts {
+  concept: "other_taxes_and_credit_recapture"
+  years { tax_year: 2025 irs_box: "63" }
+}
+concepts {
+  concept: "total_tax"
+  years { tax_year: 2025 irs_box: "64" }
+}
+concepts {
+  concept: "california_tax_withheld"
+  years { tax_year: 2025 irs_box: "71" }
+}
+concepts {
+  concept: "estimated_tax_payments"
+  years { tax_year: 2025 irs_box: "72" }
+}
+concepts {
+  concept: "real_estate_and_backup_withholding"
+  years {
+    tax_year: 2025
+    irs_box: "73"
+    note: "Form 592-B or Form 593, rather than a W-2."
+  }
+}
+concepts {
+  concept: "motion_picture_credit"
+  years { tax_year: 2025 irs_box: "74" }
+}
+concepts {
+  concept: "earned_income_tax_credit"
+  years { tax_year: 2025 irs_box: "75" }
+}
+concepts {
+  concept: "young_child_tax_credit"
+  years { tax_year: 2025 irs_box: "76" }
+}
+concepts {
+  concept: "foster_youth_tax_credit"
+  years { tax_year: 2025 irs_box: "77" }
+}
+concepts {
+  concept: "total_payments"
+  years { tax_year: 2025 irs_box: "78" }
+}
+concepts {
+  concept: "use_tax"
+  years {
+    tax_year: 2025
+    irs_box: "91"
+    note: "Purchases from out-of-state sellers. The form refuses a blank."
+  }
+}
+concepts {
+  concept: "full_year_health_care_coverage"
+  years { tax_year: 2025 irs_box: "92" }
+}
+concepts {
+  concept: "payments_balance"
+  years { tax_year: 2025 irs_box: "93" }
+}
+concepts {
+  concept: "use_tax_balance"
+  years { tax_year: 2025 irs_box: "94" }
+}
+concepts {
+  concept: "payments_after_shared_responsibility_penalty"
+  years { tax_year: 2025 irs_box: "95" }
+}
+concepts {
+  concept: "shared_responsibility_penalty_balance"
+  years { tax_year: 2025 irs_box: "96" }
+}
+concepts {
+  concept: "overpaid_tax"
+  years { tax_year: 2025 irs_box: "97" }
+}
+concepts {
+  concept: "applied_to_next_year_estimated_tax"
+  years { tax_year: 2025 irs_box: "98" }
+}
+concepts {
+  concept: "overpaid_tax_available"
+  years { tax_year: 2025 irs_box: "99" }
+}
+concepts {
+  concept: "tax_due"
+  years { tax_year: 2025 irs_box: "100" }
+}
+concepts {
+  concept: "total_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "110"
+    note: "Voluntary contributions, codes 400 through 449."
+  }
+}
+concepts {
+  concept: "amount_you_owe"
+  years { tax_year: 2025 irs_box: "111" }
+}
+concepts {
+  concept: "interest_and_penalties"
+  years { tax_year: 2025 irs_box: "112" }
+}
+concepts {
+  concept: "underpayment_of_estimated_tax"
+  years { tax_year: 2025 irs_box: "113" }
+}
+concepts {
+  concept: "total_amount_due"
+  years { tax_year: 2025 irs_box: "114" }
+}
+concepts {
+  concept: "refund"
+  years { tax_year: 2025 irs_box: "115" }
+}

@@ -1,0 +1,82 @@
+// The per-year identifiers a tax form gives each of its concepts.
+//
+// One concept has at least three identifiers and none is canonical. Qualified
+// dividends is box 1b on the paper 1099-DIV, Amount Code 2 in IRS Publication
+// 1220 for electronic filing, and qualifiedDividends in FDX. The first two move
+// annually, so docs/form-schemas.md keeps them out of field
+// names and puts them here, in a mapping.textproto beside each form's schema.
+//
+// The FDX name is not here. It moves with FDX versions rather than with tax
+// years, so it is an annotation on the field — see annotations.proto.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.common.v1;
+
+option go_package = "github.com/nexteggapp/taxprotos/common/v1;commonv1";
+
+// FormMapping is one form's identifiers, for every tax year the mapping covers.
+message FormMapping {
+  // The form as the IRS names it: "1099-DIV", "W-2".
+  string form = 1;
+
+  // The fully qualified name of the message this mapping is for, such as
+  // "nexteggapp.taxprotos.us.federal.v1.Form1099Div".
+  string message_name = 2;
+
+  // Every tax year this mapping covers. A year absent from this list is
+  // unmapped: nothing here says anything about that year's form.
+  repeated int32 tax_years = 3;
+
+  repeated Concept concepts = 4;
+
+  // Amount codes Publication 1220 lists for this form that no concept claims.
+  repeated UnmappedAmountCode unmapped_amount_codes = 5;
+}
+
+// Concept is one thing a form reports, and what each year's form calls it.
+message Concept {
+  // The field path on the form message, dotted through nested messages:
+  // "qualified_dividends", "monthly_amounts.january".
+  string concept = 1;
+
+  // One entry per tax year in [FormMapping.tax_years]. A year missing from
+  // this list fails the coverage test, so that a gap is reported rather than
+  // read as absence.
+  repeated YearIdentifiers years = 2;
+}
+
+// YearIdentifiers is what one tax year's form calls one concept.
+message YearIdentifiers {
+  int32 tax_year = 1;
+
+  // The box number as printed on that year's form: "1b", "13a", "a".
+  string irs_box = 2;
+
+  // The Publication 1220 Amount Code for that year: "2", "A". Empty when the
+  // box carries no amount, which is true of every checkbox, every code and
+  // every piece of text a form prints.
+  string amount_code = 3;
+
+  // That year's form does not report this concept. Set instead of a box and an
+  // amount code, and distinct from leaving the year out entirely.
+  bool absent = 4;
+
+  // Why the concept is absent, or anything else about that year's box that a
+  // reader needs. Left empty when the box number says it all.
+  string note = 5;
+}
+
+// UnmappedAmountCode is an Amount Code that Publication 1220 lists for a form
+// and that no concept on the message claims.
+message UnmappedAmountCode {
+  int32 tax_year = 1;
+
+  // The Amount Code, such as "G".
+  string amount_code = 2;
+
+  // The Amount Type as Publication 1220 words it.
+  string amount_type = 3;
+
+  // Why nothing maps to it.
+  string reason = 4;
+}

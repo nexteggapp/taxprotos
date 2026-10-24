@@ -1,0 +1,144 @@
+// Form 5498, IRA Contribution Information.
+//
+// An IRA custodian sends it to report what went into an account over the year
+// and what the account was worth at the end of it.
+//
+// Boxes and Amount Codes are in mapping.textproto beside this file, keyed by
+// tax year, per docs/form-schemas.md. Verified against the
+// 2025 Form 5498 box layout and the Instructions for Forms 1099-R and 5498
+// (2026).
+//
+// On this form the payer is the trustee or issuer and the recipient is the
+// participant.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_5498;form5498";
+
+// Form5498 is what a Form 5498 states.
+message Form5498 {
+  option (common.v1.fdx_entity) = "Tax5498";
+  option (common.v1.fdx_version) = "5.0";
+
+  // The calendar year the form reports on, as four digits.
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // The trustee or issuer that filed the form.
+  nexteggapp.taxprotos.common.v1.Party trustee = 2;
+
+  // The participant whose account the form reports on.
+  nexteggapp.taxprotos.common.v1.Party participant = 3;
+
+  // The account number the form prints, where it has one. Text, because it
+  // can carry leading zeroes and letters.
+  string account_number = 4 [(common.v1.fdx_field) = "accountNumber"];
+
+  // The form is marked CORRECTED, which means it replaces one already sent.
+  bool corrected = 5 [(common.v1.fdx_field) = "corrected"];
+
+  // One row per state the form reports withholding for.
+  repeated nexteggapp.taxprotos.common.v1.StateTaxWithholding state_tax_withholding = 6 [(common.v1.fdx_field) = "stateTaxWithholding"];
+
+  // Regular contributions for the tax year, excluding everything reported in
+  // the fields below.
+  nexteggapp.taxprotos.common.v1.Money ira_contributions = 7 [
+    (common.v1.fdx_field) = "iraContributions"
+  ];
+
+  // Money moved in from another retirement account.
+  nexteggapp.taxprotos.common.v1.Money rollover_contributions = 8 [
+    (common.v1.fdx_field) = "rolloverContributions"
+  ];
+
+  // Money converted from a traditional, SEP or SIMPLE IRA to a Roth IRA, which
+  // is taxable in the year of the conversion.
+  nexteggapp.taxprotos.common.v1.Money roth_ira_conversion_amount = 9 [
+    (common.v1.fdx_field) = "rothConversionAmount"
+  ];
+
+  // A contribution the participant asked to be treated as if it had been made
+  // to a different kind of IRA.
+  nexteggapp.taxprotos.common.v1.Money recharacterized_contributions = 10 [
+    (common.v1.fdx_field) = "recharacterizedContributions"
+  ];
+
+  // What the account was worth on 31 December.
+  nexteggapp.taxprotos.common.v1.Money fair_market_value_of_account = 11 [
+    (common.v1.fdx_field) = "fairMarketValue"
+  ];
+
+  // The part of [ira_contributions] that paid for life insurance in an
+  // endowment contract, which is not deductible.
+  nexteggapp.taxprotos.common.v1.Money life_insurance_cost = 12 [
+    (common.v1.fdx_field) = "lifeInsuranceCost"
+  ];
+
+  // Which kind of account this is. The custodian ticks one of the four.
+  bool ira = 13 [(common.v1.fdx_field) = "ira"];
+  bool sep = 14 [(common.v1.fdx_field) = "sep"];
+  bool simple = 15 [(common.v1.fdx_field) = "simple"];
+  bool roth_ira = 16 [(common.v1.fdx_field) = "rothIra"];
+
+  // Employer contributions to a simplified employee pension.
+  nexteggapp.taxprotos.common.v1.Money sep_contributions = 17 [
+    (common.v1.fdx_field) = "sepContributions"
+  ];
+
+  // Contributions to a SIMPLE IRA, from the employer and from salary
+  // reduction.
+  nexteggapp.taxprotos.common.v1.Money simple_contributions = 18 [
+    (common.v1.fdx_field) = "simpleContributions"
+  ];
+
+  nexteggapp.taxprotos.common.v1.Money roth_ira_contributions = 19 [
+    (common.v1.fdx_field) = "rothIraContributions"
+  ];
+
+  // The participant must take a required minimum distribution next year.
+  bool required_minimum_distribution_next_year = 20 [(common.v1.fdx_field) = "rmdRequiredNextYear"];
+
+  // The date by which that distribution must be taken.
+  nexteggapp.taxprotos.common.v1.Date required_minimum_distribution_date = 21 [(common.v1.fdx_field) = "rmdDate"];
+
+  nexteggapp.taxprotos.common.v1.Money required_minimum_distribution_amount = 22 [
+    (common.v1.fdx_field) = "rmdAmount"
+  ];
+
+  // A contribution the participant was allowed to make after the usual
+  // deadline, which happens for military service and federally declared
+  // disasters.
+  nexteggapp.taxprotos.common.v1.Money postponed_or_late_contribution = 23 [
+    (common.v1.fdx_field) = "postponedContribution"
+  ];
+
+  // Which year the postponed contribution counts for.
+  int32 postponed_contribution_year = 24 [(common.v1.fdx_field) = "postponedContributionYear"];
+
+  // The code as printed, which says what allowed the contribution to be late.
+  string postponed_contribution_code = 25 [(common.v1.fdx_field) = "postponedContributionCode"];
+
+  // A qualified reservist, disaster or birth-and-adoption distribution paid
+  // back into the account.
+  nexteggapp.taxprotos.common.v1.Money repayments = 26 [
+    (common.v1.fdx_field) = "repayments"
+  ];
+
+  // The code as printed, which says which kind of distribution was repaid.
+  string repayment_code = 27 [(common.v1.fdx_field) = "repaymentCode"];
+
+  // What the account's hard-to-value holdings were worth, such as real estate
+  // or a closely held business.
+  nexteggapp.taxprotos.common.v1.Money fair_market_value_of_specified_assets = 28 [
+    (common.v1.fdx_field) = "specifiedAssetsFairMarketValue"
+  ];
+
+  // The codes as printed, which say which kinds of specified asset the account
+  // holds.
+  repeated string specified_asset_codes = 29 [(common.v1.fdx_field) = "specifiedAssetCodes"];
+}

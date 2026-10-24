@@ -1,0 +1,79 @@
+// Form 1099-NEC, Nonemployee Compensation.
+//
+// A business sends it when it paid a contractor $600 or more for services.
+//
+// Boxes and Amount Codes are in mapping.textproto beside this file, keyed by
+// tax year, per docs/form-schemas.md. Verified against the
+// Form 1099-NEC (Rev. 4-2025) box layout and the Instructions for Forms
+// 1099-MISC and 1099-NEC (12/2026).
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1099_nec;form1099nec";
+
+// Form1099Nec is what a Form 1099-NEC states.
+message Form1099Nec {
+  option (common.v1.fdx_entity) = "Tax1099Nec";
+  option (common.v1.fdx_version) = "5.0";
+
+  // The calendar year the form reports on, as four digits.
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // The payer that filed the form.
+  nexteggapp.taxprotos.common.v1.Party payer = 2;
+
+  // The recipient the form reports on.
+  nexteggapp.taxprotos.common.v1.Party recipient = 3;
+
+  // The account number the form prints, where it has one. Text, because it
+  // can carry leading zeroes and letters.
+  string account_number = 4 [(common.v1.fdx_field) = "accountNumber"];
+
+  // The form is marked CORRECTED, which means it replaces one already sent.
+  bool corrected = 5 [(common.v1.fdx_field) = "corrected"];
+
+  // One row per state the form reports withholding for.
+  repeated nexteggapp.taxprotos.common.v1.StateTaxWithholding state_tax_withholding = 6 [(common.v1.fdx_field) = "stateTaxWithholding"];
+
+  // Fees, commissions, prizes and awards for services performed by someone who
+  // is not an employee.
+  nexteggapp.taxprotos.common.v1.Money nonemployee_compensation = 7 [
+    (common.v1.fdx_field) = "nonemployeeCompensation"
+  ];
+
+  // Tips included in [nonemployee_compensation], shown separately from tax
+  // year 2026 so the recipient can claim the deduction for them.
+  nexteggapp.taxprotos.common.v1.Money cash_tips = 8 [
+    (common.v1.fdx_field) = "cashTips"
+  ];
+
+  // Treasury Tipped Occupation Codes as printed, which say which occupation
+  // the tips were earned in.
+  repeated string tipped_occupation_codes = 9 [(common.v1.fdx_field) = "tippedOccupationCodes"];
+
+  // Overtime pay included in [nonemployee_compensation], shown separately from
+  // tax year 2026 so the recipient can claim the deduction for it.
+  nexteggapp.taxprotos.common.v1.Money overtime_compensation = 10 [
+    (common.v1.fdx_field) = "overtimeCompensation"
+  ];
+
+  // The payer sold the recipient $5,000 or more of consumer products for
+  // resale.
+  bool direct_sales_over_threshold = 11 [(common.v1.fdx_field) = "directSales"];
+
+  // Payments to a departing executive above the amount section 280G allows,
+  // which carry a 20% excise tax.
+  nexteggapp.taxprotos.common.v1.Money excess_golden_parachute_payments = 12 [
+    (common.v1.fdx_field) = "excessGoldenParachutePayments"
+  ];
+
+  // Backup withholding the payer sent to the IRS.
+  nexteggapp.taxprotos.common.v1.Money federal_tax_withheld = 13 [
+    (common.v1.fdx_field) = "federalTaxWithheld"
+  ];
+}

@@ -1,0 +1,19 @@
+# gazelle:ignore
+
+load("@rules_go//go:def.bzl", "go_test")
+
+# The worked example the README quotes.
+#
+# A test rather than a fenced block in Markdown, so the output in the README is
+# checked on every run and cannot drift from what the schemas do.
+go_test(
+    name = "examples_test",
+    size = "small",
+    srcs = ["example_test.go"],
+    deps = [
+        "//go/common/v1",
+        "//go/us/federal/v1/form_w2",
+        "@org_golang_google_protobuf//encoding/protojson",
+        "@org_golang_google_protobuf//proto",
+    ],
+)

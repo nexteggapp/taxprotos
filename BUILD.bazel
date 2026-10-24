@@ -1,0 +1,4 @@
+# Marks the repository root as a package so //:go.mod resolves as a label for
+# the go_deps extension in MODULE.bazel. It loads nothing.
+
+exports_files(["go.mod"])

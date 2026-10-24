@@ -1,0 +1,37 @@
+// The type used for a figure on a US tax form that is a proportion rather than
+// a sum of money.
+//
+// Separate from money.proto because the two answer different questions. Money
+// carries a currency; a proportion has none.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.common.v1;
+
+option go_package = "github.com/nexteggapp/taxprotos/common/v1;commonv1";
+
+// Quantity is a number that need not be whole: an integer and the power of ten
+// to divide it by.
+//
+// So 40% printed on a form is units 40 with scale 0, and 12.5% is units 125
+// with scale 1. The form's own printing decides the scale, so a value read back
+// prints the way the paper copy did.
+//
+// Only Form 1099-R uses it so far, for the two boxes that print a percentage.
+// It is embedded in stored records, so its field numbers and names must not
+// change.
+//
+// # Never a float
+//
+// The reason is the one money.proto gives. These figures are multiplied by a
+// money figure to work out a share of a distribution, so a representation that
+// is slightly wrong produces a figure that is wrong by an amount nobody can
+// account for.
+//
+// These schemas define their own Quantity for the reason money.proto gives.
+message Quantity {
+  // The figure, without its decimal point.
+  int64 units = 1;
+
+  // How many powers of ten to divide units by. Zero means units is the figure.
+  int32 scale = 2;
+}

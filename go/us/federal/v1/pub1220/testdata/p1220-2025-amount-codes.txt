@@ -1,0 +1,628 @@
+                        Record Name: Issuer “A” Record (continued)
+
+    Field        Field Title     Length                     General Field Description
+   Position
+
+28-45          Amount             18      Required. Enter the appropriate amount code(s) for the
+               Codes                      type of return being reported. In most cases, the box
+                                          numbers on paper information returns correspond with the
+                                          amount codes used to file electronically. However, if
+                                          discrepancies occur, Publication 1220 governs for filing
+                                          electronically. Enter the amount codes in ascending
+                                          sequence; numeric characters followed by alphas. Left
+                                          justify the information and fill unused positions with blanks.
+
+                                          Note: A type of return and an amount code must be
+                                          present in every Issuer “A” Record even if no money
+                                          amounts are being reported. For a detailed explanation of
+                                          the information to be reported in each amount code, refer to
+                                          the appropriate paper instructions for each form.
+
+
+Amount Codes                              For Reporting Payments on Form 1097-BTC:
+                                                Amount Type            Amount Code
+Form 1097-BTC, Bond Tax Credit
+                                          Total Aggregate                     1
+                                          January payments                    2
+                                          February payments                   3
+                                          March payments                      4
+                                          April payments                      5
+                                          May payments                        6
+                                          June payments                       7
+                                          July payments                       8
+                                          August payments                     9
+                                          September payments                  A
+                                          October payments                    B
+                                          November payments                   C
+                                          December payments                   D
+
+
+
+
+                                               57
+                       Record Name: Issuer “A” Record (continued)
+
+    Field         Field Title   Length                    General Field Description
+   Position
+
+Amount Codes                             For Reporting Payments on Form 1098:
+                                                     Amount Type              Amount Code
+Form 1098, Mortgage Interest Statement
+                                         Mortgage interest received from                1
+                                         payer(s)/borrower(s)
+                                         Points paid on the purchase of a               2
+                                         principal residence
+                                         Refund or credit of overpaid interest          3
+                                         Mortgage Insurance Premium                     4
+                                         • If section 163(h)(3)(E) applies for
+                                            2025, enter the total premiums of
+                                            $600 or more paid (received) in
+                                            2025.
+
+                                         •   If section 163(h)(3)(E) does not
+                                             apply for 2025 leave this box
+                                             blank.
+
+                                         Future developments - For the latest
+                                         information about developments
+                                         related to Form 1098 and its
+                                         instructions, such as legislation
+                                         enacted after they were published, go
+                                         to Form 1098.
+
+
+                                         Blank (Filer’s use)                            5
+                                         Outstanding Mortgage Principal                 6
+
+Amount Codes                             For Reporting Payments on Form 1098-C:
+                                                      Amount Type                     Amount
+Form 1098-C, Contributions of Motor                                                    Code
+Vehicles, Boats, and Airplanes
+                                         Gross proceeds from sales                       4
+                                         Value of goods or services in exchange          6
+                                         for a vehicle
+
+                                         Note: If reporting other than “Gross proceeds from sales” or
+                                         “Value of goods or services in exchange for a vehicle,” use
+                                         Type of Return Code “X” in field positions 26-27 and
+                                         Amount Code 4 in field position 28 of the “A” Record. All
+                                         payment amount fields in the Payee “B” record will contain
+                                         zeros.
+
+
+
+
+                                              58
+                        Record Name: Issuer “A” Record (continued)
+
+    Field         Field Title        Length                 General Field Description
+   Position
+
+Amount Code                                   For Reporting Payments on Form 1098-E:
+                                                         Amount Type               Amount Code
+Form 1098-E, Student Loan Interest
+Statement                                     Student loan interest received by         1
+                                              the lender
+
+Amount Codes                                  For Reporting Payments on Form 1098-F:
+                                                         Amount Type               Amount Code
+Form 1098-F, Fines, Penalties and Other
+Amounts                                       Total amount required to be paid          1
+                                              (new paper form box 1)
+                                              Amount to be paid for violation or        2
+                                              potential violation
+                                              Restitution/remediation amount            3
+                                              Compliance amount                         4
+
+Amount Codes                                  For Reporting Payments on Form 1098-Q:
+                                                         Amount Type               Amount Code
+Form 1098-Q, Qualifying Longevity Annuity
+Contract Information                          January payments                          1
+                                              February payments                         2
+                                              March payments                            3
+                                              April payments                            4
+                                              May payments                              5
+                                              June payments                             6
+                                              July payments                             7
+                                              August payments                           8
+                                              September payments                        9
+                                              October payments                          A
+                                              November payments                         B
+                                              December payments                         C
+                                              Total premiums                            D
+                                              Annuity amount on start date              E
+                                              FMV of QLAC                               F
+
+
+
+
+                                              59
+                       Record Name: Issuer “A” Record (continued)
+
+    Field         Field Title    Length                   General Field Description
+   Position
+
+Amount Codes                              For Reporting Payments on Form 1098-T:
+                                                      Amount Type                   Amount Code
+Form 1098-T, Tuition Statement
+                                          Payments received for qualified tuition        1
+                                          and related expenses
+                                          Adjustments made for prior year                3
+                                          Scholarships or grants                         4
+                                          Adjustments to scholarships or grants          5
+                                          for a prior year
+                                          Reimbursements or refunds of                   7
+                                          qualified tuition and related expenses
+                                          from an insurance contract
+                                          Note: Amount Codes 3 and 5 are assumed to be negative.
+                                          It is not necessary to code with an over punch or dash to
+                                          indicate a negative reporting.
+
+Amount Codes                              For Reporting Payments on Form 1099-A:
+                                                      Amount Type                   Amount Code
+Form 1099-A, Acquisition or
+Abandonment of Secured Property           Balance of principal outstanding               2
+                                          Fair market value of the property              4
+
+
+
+
+                                               60
+                       Record Name: Issuer “A” Record (continued)
+
+    Field         Field Title       Length                    General Field Description
+   Position
+
+Amount Codes                                 For Reporting Payments on Form 1099-B:
+                                                          Amount Type                 Amount Code
+Form 1099-B, Proceeds From Broker and
+Barter Exchange Transactions                 Proceeds (For forward contracts, See            2
+                                             Note 1)
+                                             Cost or other basis                             3
+                                             Federal income tax withheld (backup             4
+                                             withholding). Don’t report negative
+                                             amounts.
+                                             Wash Sale Loss Disallowed                       5
+                                             Bartering                                       7
+                                             Profit (or loss) realized in 2025 (See          9
+                                             Note 2)
+                                             Unrealized profit (or loss) on open             A
+                                             contracts 12/31/2024 (See Note 2)
+                                             Unrealized profit (or loss) on open             B
+                                             contracts 12/31/2025 (See Note 2)
+                                             Aggregate profit (or loss)                      C
+                                             Accrued Market Discount                         D
+
+                                             Note 1: The payment amount field associated with Amount
+                                             Code 2 may be used to report a loss from a closing
+                                             transaction on a forward contract. Refer to the “B” Record -
+                                             General Field Descriptions and Record Layouts - Payment
+                                             Amount Fields, for instructions on reporting negative
+                                             amounts.
+
+                                             Note 2: Payment amount fields 9, A, B, and C are used for
+                                             the reporting of regulated futures or foreign currency
+                                             contracts.
+
+Amount Codes                                 For Reporting Payments on Form 1099-C:
+                                                         Amount Type                  Amount Code
+Form 1099-C, Cancellation of Debt
+                                             Amount of debt discharged                      2
+                                             Interest included in Amount Code 2             3
+                                             Fair market value of property. Use             7
+                                             only if a combined Form 1099-A and
+                                             1099-C is being filed.
+
+
+
+
+                                                  61
+                       Record Name: Issuer “A” Record (continued)
+
+    Field         Field Title   Length                      General Field Description
+   Position
+
+Amount Code                              For Reporting Payments on Form 1099-CAP:
+                                                     Amount Type                 Amount Code
+Form 1099-CAP, Changes in Corporate
+Control and Capital Structure            Aggregate amount received                      2
+
+
+Amount Codes                             For Reporting Payments on Form 1099-DIV:
+                                                     Amount Type                Amount Code
+Form 1099-DIV, Dividends and
+Distributions                            Total ordinary dividends                       1
+                                         Qualified dividends                            2
+                                         Total capital gain distribution                3
+                                         Section 199A Dividends                         5
+                                         Unrecaptured Section 1250 gain                 6
+                                         Section 1202 gain                              7
+                                         Collectibles (28%) rate gain                   8
+                                         Non-dividend distributions                     9
+                                         Federal income tax withheld                    A
+                                         Investment expenses                            B
+                                         Foreign tax paid                               C
+                                         Cash liquidation distributions                 D
+                                         Non-cash liquidation distributions             E
+                                         Exempt interest dividends                      F
+                                         Specified private activity bond                G
+                                         interest dividends
+                                         Section 897 Ordinary Dividends                 H
+                                         Section 897 Capital Gains                      J
+
+
+
+
+                                             62
+                        Record Name: Issuer “A” Record (continued)
+
+    Field         Field Title     Length                      General Field Description
+   Position
+
+Amount Codes                               For Reporting Payments on Form 1099-G:
+                                                       Amount Type                  Amount Code
+Form 1099-G, Certain Government
+Payments                                   Unemployment compensation                      1
+                                           State or local income tax refunds,             2
+                                           credits, or offsets
+                                           Federal income tax withheld (backup            4
+                                           withholding or voluntary withholding
+                                           on unemployment compensation of
+                                           Commodity Credit Corporation Loans
+                                           or certain crop disaster payments)
+                                           Reemployment Trade Adjustment                  5
+                                           Assistance (RTAA) programs
+                                           Taxable grants                                 6
+                                           Agriculture payments                           7
+                                           Market gain                                    9
+
+Amount Codes                               For Reporting Payments on Form 1099-INT:
+                                                         Amount Type                Amount Code
+Form 1099-INT, Interest Income
+                                           Interest income not included in Amount         1
+                                           Code 3
+                                           Early withdrawal penalty                       2
+                                           Interest on U.S. Savings Bonds and             3
+                                           Treasury obligations
+                                           Federal income tax withheld (backup            4
+                                           withholding)
+                                           Investment expenses                            5
+                                           Foreign tax paid                               6
+                                           Tax-exempt interest                            8
+                                           Specified private activity bond                9
+                                           Market discount                                A
+                                           Bond premium                                   B
+                                           Bond premium on tax exempt bond                D
+                                           Bond premium on Treasury obligation            E
+
+
+
+
+                                               63
+                         Record Name: Issuer “A” Record (continued)
+
+    Field         Field Title   Length                      General Field Description
+   Position
+
+Amount Codes                              For Reporting Payments on Form 1099-K:
+                                                      Amount Type               Amount Code
+Form 1099-K, Payment Card and Third
+Party Network Transactions                Gross amount of payment card/third            1
+                                          party network transactions
+                                           Card not present transactions                2
+                                           Federal Income tax withheld                  4
+                                           January payments                             5
+                                           February payments                            6
+                                           March payments                               7
+                                           April payments                               8
+                                           May payments                                 9
+                                           June payments                                A
+                                           July payments                                B
+                                           August payments                              C
+                                           September payments                           D
+                                           October payments                             E
+                                           November payments                            F
+                                           December payments                            G
+
+Amount Code                               For Reporting Payments on Form 1099-LS:
+                                                      Amount Type               Amount Code
+Form 1099-LS, Reportable Life Insurance
+Sale                                       Amount paid to payment recipient             1
+
+
+Amount Codes                              For Reporting Payments on Form 1099-LTC:
+                                                      Amount Type               Amount Code
+Form 1099-LTC, Long-Term Care and
+Accelerated Death Benefits                 Gross long-term care benefits paid           1
+                                           Accelerated death benefits paid              2
+
+
+
+
+                                               64
+                            Record Name: Issuer “A” Record (continued)
+
+     Field           Field Title      Length                     General Field Description
+    Position
+
+Amount Codes                                     For Reporting Payments on Form 1099-MISC:
+                                                             Amount Type                 Amount Code
+Form 1099-MISC, Miscellaneous
+Information                                      Rents                                        1
+                                                 Royalties (See Note 2)                       2
+Note 1: If only reporting a direct sales
+indicator (see “B” Record field position 547),   Other income                                 3
+use Type of Return “A” in field positions 26-    Federal income tax withheld (backup          4
+27, and Amount Code 1 in field position 28       withholding or withholding on Indian
+of the Issuer “A” Record. All payment            gaming profits)
+amount fields in the Payee “B” Record will
+contain zeros.                                   Fishing boat proceeds                        5
+                                                 Medical and health care payments             6
+Note 2: Don’t report timber royalties under a
+“pay-as-cut” contract; these must be             Substitute payments in lieu of               8
+reported on Form 1099-S                          dividends or interest
+                                                 Crop insurance proceeds                     A
+                                                 Gross proceeds paid to an attorney in       C
+                                                 connection with legal services
+                                                 Section 409A deferrals                      D
+                                                 Section 409A income                         E
+                                                 Fish Purchased for resale                    F
+                                                 Prior Year Nonemployee                      G
+                                                 Compensation (NEC) (TY2019 and
+                                                 earlier)
+                                                 Note: “T” Record Field Position 6
+                                                 must contain a P
+
+Amount Codes                                     For Reporting Payments on Form 1099-NEC: (Tax Year
+                                                 2020 and future only)
+
+Form 1099-NEC, Nonemployee                                   Amount Type                 Amount Code
+Compensation
+                                                 Nonemployee Compensation                     1
+                                                 Federal Income Tax Withheld                  4
+
+
+
+
+                                                     65
+                        Record Name: Issuer “A” Record (continued)
+
+   Field        Field     Length                        General Field Description
+  Position      Title
+
+Amount Codes                       For Reporting Payments on Form 1099-OID:
+                                                       Amount Type                    Amount
+Form 1099-OID, Original Issue                                                          Code
+Discount
+                                   Original issue discount for 2025                     1
+                                   Other periodic interest                              2
+                                   Early withdrawal penalty                             3
+                                   Federal income tax withheld (backup withholding)     4
+                                   Bond premium                                         5
+                                   Original issue discount on U.S. Treasury             6
+                                   obligations (allows both positive and negative
+                                   amounts to be reported)
+                                   Investment expenses                                  7
+                                   Market discount                                      A
+                                   Acquisition premium                                  B
+                                   Tax-Exempt OID                                       C
+
+Amount Codes                       For Reporting Payments on Form 1099-PATR:
+                                                       Amount Type                    Amount
+Form 1099-PATR, Taxable                                                                Code
+Distributions Received From
+Cooperatives                       Patronage dividends                                  1
+                                   Nonpatronage distributions                           2
+                                   Per-unit retain allocations                          3
+                                   Federal income tax withheld (backup withholding)     4
+                                   Redeemed nonqualified notices                        5
+                                   Section 199A(a) deduction                            6
+                                   Qualified Payments (Sec. 199A(b)(7))                 B
+                                   Section 199A(a) Qualified items                      C
+                                   Section 199A(a) SSTB items                           D
+                                                         Pass-Through Credits
+                                   Investment credit                                    7
+                                   Work opportunity credit                              8
+                                   For filer’s use for pass-through credits and         A
+                                   deduction
+
+
+
+                                               66
+                        Record Name: Issuer “A” Record (continued)
+
+   Field        Field     Length                        General Field Description
+  Position      Title
+
+Amount Codes                       For Reporting Payments on Form 1099-Q:
+                                               Amount Type                 Amount Code
+Form 1099-Q, Payments From
+Qualified Education Programs       Gross distribution                             1
+(Under Sections 529 and 530)       Earnings (or loss)                             2
+                                   Basis                                          3
+
+Amount Codes                       For Reporting Payments on Form 1099-R:
+                                               Amount Type                 Amount Code
+Form 1099-R, Distributions From
+Pensions, Annuities, Retirement    Gross distribution                             1
+or Profit-Sharing Plans, IRAs,     Taxable amount (see Note 1)                    2
+Insurance Contracts, etc.
+                                   Capital gain (included in Amount               3
+                                   Code 2)
+                                   Federal income tax withheld                    4
+                                   Employee contributions/designated              5
+                                   Roth contributions or insurance
+                                   premiums
+                                   Net unrealized appreciation in                 6
+                                   employer’s securities
+                                   Other                                          8
+                                   Total employee contributions                   9
+                                   Traditional IRA/SEP/SIMPLE                     A
+                                   distribution or Roth conversion (see
+                                   Note 2)
+                                   Amount allocable to IRR within 5               B
+                                   years
+
+                                   Note 1: If the taxable amount cannot be determined, enter a “1” in
+                                   position 547 of the “B” Record. Payment Amount 2 must contain
+                                   zeros.
+
+                                   Note 2: For Form 1099-R, report the Roth conversion or total
+                                   amount distributed from an IRA, SEP, or SIMPLE in Payment
+                                   Amount Field A (IRA/SEP/SIMPLE distribution or Roth conversion)
+                                   of the Payee “B” Record, and generally, the same amount in
+                                   Payment Amount Field 1 (Gross Distribution). The
+                                   IRA/SEP/SIMPLE indicator should be set to “1” in field position 548
+                                   of the Payee “B” Record.
+
+
+
+
+                                               67
+                             Record Name: Issuer “A” Record (continued)
+
+  Field        Field Title     Length                        General Field Description
+ Position
+
+Amount Codes                            For Reporting Payments on Form 1099-S:
+                                                        Amount Type               Amount Code
+Form 1099-S, Proceeds From Real
+Estate Transactions                     Gross proceeds                                   2
+                                        Buyer’s part of real estate tax                  5
+
+                                        Note: Include payments of timber royalties made under a “pay-as-
+                                        cut” contract, reportable under IRC Section 6050N. If timber
+                                        royalties are being reported, enter “TIMBER” in the description
+                                        field of the “B” Record. If lump-sum timber payments are being
+                                        reported, enter “LUMP-SUM TIMBER PAYMENT” in the
+                                        description field of the “B” record.
+
+
+Amount Codes                            For Reporting Distributions on Form 1099-SA:
+                                        Amount Type                   Amount Code
+Form 1099-SA, Distributions From
+an HSA, Archer MSA, or Medicare         Gross                              1
+Advantage MSA                           distribution
+                                        Earnings on                        2
+                                        excess
+                                        contributions
+                                        Fair market                        4
+                                        value of the
+                                        account on the
+                                        date of death
+
+Amount Codes                            For Reporting Information on Form 1099-SB:
+                                                        Amount Type               Amount Code
+Form 1099-SB, Seller’s Investment
+in Life Insurance Contract              Investment in contract                           1
+                                        Surrender amount                                 2
+
+Amount Codes                            For Reporting Information on Form 3921:
+                                                        Amount Type               Amount Code
+Form 3921, Exercise of a Qualified
+Incentive Stock Option Under            Exercise price per share                         3
+Section 422(b)                          Fair market value of share on exercise           4
+                                        date
+
+
+
+
+                                                       68
+                        Record Name: Issuer “A” Record (continued)
+
+    Field         Field Title   Length                      General Field Description
+   Position
+
+Amount Codes                              For Reporting Information on Form 3922:
+                                                       Amount Type                   Amount Code
+Form 3922, Transfer of Stock Acquired
+Through an Employee Stock Purchase        Fair market value per share on grant               3
+Plan Under Section 423(c)                 date
+                                          Fair market value on exercise date                 4
+                                          Exercise price per share                           5
+                                          Exercise price per share determined                8
+                                          as if the option was exercised on the
+                                          date the option was granted
+
+Amount Codes                              For Reporting Information on Form 5498:
+                                                       Amount Type                   Amount Code
+Form 5498, IRA Contribution Information
+                                          IRA contributions (other than amounts             1
+                                          in Amount Codes 2, 3, 4, 8, 9, A, C,
+                                          and D.) (See Note 1 and 2)
+                                          Rollover contributions                            2
+                                          Roth conversion amount                            3
+                                          Recharacterized contributions                     4
+                                          Fair market value of account                      5
+                                          Life insurance cost included in                   6
+                                          Amount Code 1
+                                          FMV of certain specified assets                   7
+                                          SEP contributions                                 8
+                                          SIMPLE contributions                              9
+                                          Roth IRA contributions                            A
+                                          RMD amount                                        B
+                                          Postponed Contribution                            C
+                                          Repayments                                        D
+                                          Note 1: If reporting IRA contributions for a participant in a
+                                          military operation, see the Instructions for Forms 1099-R
+                                          and 5498.
+                                          Note 2: Also, include employee contributions to an IRA
+                                          under a SEP plan but not salary reduction contributions.
+                                          Don’t include employer contributions; these are included in
+                                          Amount Code 8.
+
+
+
+                                               69
+                         Record Name: Issuer “A” Record (continued)
+
+      Field       Field Title    Length                     General Field Description
+     Position
+
+Amount Codes                              For Reporting Information on Form 5498-ESA:
+
+Form 5498-ESA, Coverdell ESA                          Amount Type                   Amount Code
+Contribution Information
+                                          Coverdell ESA contributions                       1
+
+                                          Rollover contributions                            2
+
+
+
+
+Amount Codes                              For Reporting Information on Form 5498-SA:
+                                                       Amount Type                    Amount Code
+Form 5498-SA, HSA, Archer MSA or
+Medicare Advantage MSA Information        Employee or self-employed individual’s             1
+                                          Archer MSA contributions made in
+                                          2025 and 2026 for 2025
+                                          Total contributions made in 2025                   2
+                                          Total HSA or Archer MSA contributions              3
+                                          made in 2026 for 2025
+                                          Rollover contributions (see Note)                  4
+                                          Fair market value of HSA, Archer MSA               5
+                                          or Medicare Advantage MSA
+
+                                          Note: This is the amount of any rollover made to this MSA
+                                          in 2025 after a distribution from another MSA. For detailed
+                                          information on reporting, refer to Instructions for Forms
+                                          1099-SA and 5498-SA.
+
+Amount Codes                              For Reporting Payments on Form W-2G:
+                                                       Amount Type                   Amount Code
+Form W-2G, Certain Gambling Winnings
+                                          Reportable winnings                               1
+                                          Federal income tax withheld                       2
+                                          Winnings from identical wagers                    7
+
+46-51           Blank             6       Enter blanks.
+
+52              Foreign Entity    1       Enter “1” if the issuer is a foreign entity and income is paid
+                Indicator                 by the foreign entity to a U.S. resident. Otherwise, enter a
+                                          blank.
+
+
+
+
+                                               70
+

@@ -1,0 +1,317 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form OR-40 calls each concept, per tax year.
+#
+# Lines come from the 2025 Form OR-40 as the Oregon Department of Revenue
+# publishes it. There are no amount codes: IRS Publication 1220 covers the
+# information returns the IRS receives electronically, and a state return is not
+# one of them.
+#
+# Oregon prints its line numbers with a trailing full stop — "7." rather than
+# "7" — which is why the coverage test accepts one. The number is the identifier
+# and the stop is typography.
+
+form: "OR-40"
+message_name: "nexteggapp.taxprotos.us.state.or.v1.FormOR40"
+tax_years: 2025
+
+concepts {
+  concept: "filing_status"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+    note: "Boxes 1 through 5, one checkbox each, in the order of the FilingStatus enum. ORS 316.122(1) requires it to match the federal return."
+  }
+}
+concepts {
+  concept: "exemptions_self"
+  years { tax_year: 2025 irs_box: "6a" }
+}
+concepts {
+  concept: "exemptions_spouse"
+  years { tax_year: 2025 irs_box: "6b" }
+}
+concepts {
+  concept: "dependents"
+  years { tax_year: 2025 irs_box: "6c" }
+}
+concepts {
+  concept: "dependents_with_disability"
+  years {
+    tax_year: 2025
+    irs_box: "6d"
+    note: "Carries an additional credit beyond the ordinary dependent exemption."
+  }
+}
+concepts {
+  concept: "total_exemptions"
+  years { tax_year: 2025 irs_box: "6e" }
+}
+concepts {
+  concept: "federal_adjusted_gross_income"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+    note: "Federal Form 1040 line 11. Also the figure the exemption credit limit is tested against."
+  }
+}
+concepts {
+  concept: "total_additions"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+    note: "Schedule OR-ASC, line A5."
+  }
+}
+concepts {
+  concept: "income_after_additions"
+  years { tax_year: 2025 irs_box: "9" }
+}
+concepts {
+  concept: "federal_tax_liability"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+    note: "The subtraction is capped by Table 4 and phased out entirely by adjusted gross income."
+  }
+}
+concepts {
+  concept: "social_security_benefits"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+    note: "Federal Form 1040 line 6b. Oregon taxes none of it."
+  }
+}
+concepts {
+  concept: "oregon_refund_in_federal_income"
+  years { tax_year: 2025 irs_box: "12" }
+}
+concepts {
+  concept: "other_subtractions"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+    note: "Schedule OR-ASC, line B7."
+  }
+}
+concepts {
+  concept: "total_subtractions"
+  years { tax_year: 2025 irs_box: "14" }
+}
+concepts {
+  concept: "income_after_subtractions"
+  years { tax_year: 2025 irs_box: "15" }
+}
+concepts {
+  concept: "itemized_deductions"
+  years {
+    tax_year: 2025
+    irs_box: "16"
+    note: "Schedule OR-A. Oregon does not allow a deduction for its own income tax, so this differs from the federal total."
+  }
+}
+concepts {
+  concept: "standard_deduction"
+  years {
+    tax_year: 2025
+    irs_box: "17"
+    note: "Including any addition for age or blindness. Zero for a separate filer whose spouse itemised."
+  }
+}
+concepts {
+  concept: "deduction"
+  years { tax_year: 2025 irs_box: "18" }
+}
+concepts {
+  concept: "taxable_income"
+  years { tax_year: 2025 irs_box: "19" }
+}
+concepts {
+  concept: "tax"
+  years {
+    tax_year: 2025
+    irs_box: "20"
+    note: "From the tax tables below $50,000 of taxable income, or the rate charts above it."
+  }
+}
+concepts {
+  concept: "interest_on_installment_sales"
+  years { tax_year: 2025 irs_box: "21" }
+}
+concepts {
+  concept: "tax_recaptures"
+  years {
+    tax_year: 2025
+    irs_box: "22"
+    note: "Schedule OR-ASC, line C5."
+  }
+}
+concepts {
+  concept: "total_additions_to_tax"
+  years { tax_year: 2025 irs_box: "23" }
+}
+concepts {
+  concept: "total_tax_before_credits"
+  years { tax_year: 2025 irs_box: "24" }
+}
+concepts {
+  concept: "exemption_credit"
+  years {
+    tax_year: 2025
+    irs_box: "25"
+    note: "Nothing at all above the income limit rather than tapered, which the line's own wording states."
+  }
+}
+concepts {
+  concept: "political_contribution_credit"
+  years { tax_year: 2025 irs_box: "26" }
+}
+concepts {
+  concept: "other_standard_credits"
+  years {
+    tax_year: 2025
+    irs_box: "27"
+    note: "Schedule OR-ASC, line D16."
+  }
+}
+concepts {
+  concept: "total_standard_credits"
+  years { tax_year: 2025 irs_box: "28" }
+}
+concepts {
+  concept: "tax_after_standard_credits"
+  years { tax_year: 2025 irs_box: "29" }
+}
+concepts {
+  concept: "carryforward_credits_used"
+  years {
+    tax_year: 2025
+    irs_box: "30"
+    note: "Schedule OR-ASC Section E. Unlike the standard credits, these survive an unused year."
+  }
+}
+concepts {
+  concept: "tax_after_all_credits"
+  years { tax_year: 2025 irs_box: "31" }
+}
+concepts {
+  concept: "kicker"
+  years {
+    tax_year: 2025
+    irs_box: "32"
+    note: "The Oregon surplus refund, credited in an odd-numbered filing year when revenue exceeded the forecast."
+  }
+}
+concepts {
+  concept: "oregon_tax_withheld"
+  years { tax_year: 2025 irs_box: "33" }
+}
+concepts {
+  concept: "prior_year_refund_applied"
+  years { tax_year: 2025 irs_box: "34" }
+}
+concepts {
+  concept: "estimated_tax_payments"
+  years { tax_year: 2025 irs_box: "35" }
+}
+concepts {
+  concept: "pass_through_entity_payments"
+  years {
+    tax_year: 2025
+    irs_box: "36"
+    note: "Schedule OR-K-1, line 20."
+  }
+}
+concepts {
+  concept: "earned_income_credit"
+  years { tax_year: 2025 irs_box: "37" }
+}
+concepts {
+  concept: "oregon_kids_credit"
+  years { tax_year: 2025 irs_box: "38" }
+}
+concepts {
+  concept: "other_refundable_credits"
+  years {
+    tax_year: 2025
+    irs_box: "39"
+    note: "Schedule OR-ASC, line F7."
+  }
+}
+concepts {
+  concept: "total_payments_and_refundable_credits"
+  years { tax_year: 2025 irs_box: "40" }
+}
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "41" }
+}
+concepts {
+  concept: "net_tax"
+  years { tax_year: 2025 irs_box: "42" }
+}
+concepts {
+  concept: "penalty_and_interest"
+  years { tax_year: 2025 irs_box: "43" }
+}
+concepts {
+  concept: "interest_on_underpayment"
+  years {
+    tax_year: 2025
+    irs_box: "44"
+    note: "Form OR-10."
+  }
+}
+concepts {
+  concept: "total_penalty_and_interest"
+  years { tax_year: 2025 irs_box: "45" }
+}
+concepts {
+  concept: "net_tax_including_penalty"
+  years { tax_year: 2025 irs_box: "46" }
+}
+concepts {
+  concept: "overpayment_less_penalty"
+  years { tax_year: 2025 irs_box: "47" }
+}
+concepts {
+  concept: "applied_to_next_year"
+  years { tax_year: 2025 irs_box: "48" }
+}
+concepts {
+  concept: "charitable_checkoff_donations"
+  years {
+    tax_year: 2025
+    irs_box: "49"
+    note: "Schedule OR-DONATE, line 30."
+  }
+}
+concepts {
+  concept: "political_party_checkoff"
+  years { tax_year: 2025 irs_box: "50" }
+}
+concepts {
+  concept: "education_savings_deposits"
+  years {
+    tax_year: 2025
+    irs_box: "51"
+    note: "Schedule OR-529."
+  }
+}
+concepts {
+  concept: "total_applied_and_donated"
+  years { tax_year: 2025 irs_box: "52" }
+}
+concepts {
+  concept: "net_refund"
+  years { tax_year: 2025 irs_box: "53" }
+}
+concepts {
+  concept: "kicker_donated"
+  years {
+    tax_year: 2025
+    irs_box: "55"
+    note: "Electing to donate the kicker to the State School Fund, in which case line 32 is not credited."
+  }
+}
