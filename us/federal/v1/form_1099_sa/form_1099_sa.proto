@@ -1,0 +1,98 @@
+// Form 1099-SA: Distributions From an HSA, Archer MSA, or Medicare Advantage MSA.
+//
+// A trustee or payer files Form 1099-SA to report distributions made from a
+// Health Savings Account (HSA), Archer Medical Savings Account (Archer MSA), or
+// Medicare Advantage Medical Savings Account (MA MSA).
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1099_sa;form1099sa";
+
+// Form 1099-SA reports distributions from an HSA, Archer MSA, or MA MSA.
+message Form1099Sa {
+  option (common.v1.fdx_entity) = "Tax1099Sa";
+  option (common.v1.fdx_version) = "5.0";
+
+  // Which kind of health savings account the distribution came from, box 5.
+  enum AccountType {
+    // Unspecified account type.
+    ACCOUNT_TYPE_UNSPECIFIED = 0;
+
+    // Health Savings Account (HSA).
+    ACCOUNT_TYPE_HSA = 1;
+
+    // Archer Medical Savings Account (Archer MSA).
+    ACCOUNT_TYPE_ARCHER_MSA = 2;
+
+    // Medicare Advantage Medical Savings Account (MA MSA).
+    ACCOUNT_TYPE_MEDICARE_ADVANTAGE_MSA = 3;
+  }
+
+  // The IRS distribution code explaining the reason for the distribution, box 3.
+  enum DistributionCode {
+    // Unspecified distribution code.
+    DISTRIBUTION_CODE_UNSPECIFIED = 0;
+
+    // Code 1: Normal distribution.
+    DISTRIBUTION_CODE_NORMAL = 1;
+
+    // Code 2: Excess contributions.
+    DISTRIBUTION_CODE_EXCESS_CONTRIBUTIONS = 2;
+
+    // Code 3: Disability.
+    DISTRIBUTION_CODE_DISABILITY = 3;
+
+    // Code 4: Death distribution other than code 6.
+    DISTRIBUTION_CODE_DEATH_SAME_YEAR = 4;
+
+    // Code 5: Prohibited transaction.
+    DISTRIBUTION_CODE_PROHIBITED_TRANSACTION = 5;
+
+    // Code 6: Death distribution after year of death to a nonspouse beneficiary.
+    DISTRIBUTION_CODE_DEATH_AFTER_YEAR = 6;
+  }
+
+  // The tax year this form reports. Four digits, such as 2025.
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // The form is marked CORRECTED, which means it replaces one already sent.
+  bool corrected = 2 [(common.v1.fdx_field) = "corrected"];
+
+  // The payer or trustee that filed the form, printed as TRUSTEE'S/PAYER'S.
+  common.v1.Party trustee = 3 [
+    (common.v1.fdx_field) = "payer",
+    (common.v1.fdx_deviation) = "Party message rather than flat fields"
+  ];
+
+  // The recipient who received the distribution.
+  common.v1.Party recipient = 4 [
+    (common.v1.fdx_field) = "recipient",
+    (common.v1.fdx_deviation) = "Party message rather than flat fields"
+  ];
+
+  // The account number the form prints, where it has one.
+  string account_number = 5 [(common.v1.fdx_field) = "accountNumber"];
+
+  // Gross distributions made from the account during the tax year, box 1.
+  common.v1.Money gross_distribution = 6 [(common.v1.fdx_field) = "grossDistribution"];
+
+  // Earnings on any excess contributions withdrawn from the account, box 2.
+  common.v1.Money earnings_on_excess_contributions = 7 [(common.v1.fdx_field) = "earnings"];
+
+  // Distribution code indicating the type of distribution made, box 3.
+  DistributionCode distribution_code = 8 [(common.v1.fdx_field) = "distributionCode"];
+
+  // Fair market value of the account on the date of death of the account holder, box 4.
+  common.v1.Money fair_market_value_on_date_of_death = 9 [(common.v1.fdx_field) = "fairMarketValue"];
+
+  // Account type checkbox: HSA, Archer MSA, or Medicare Advantage MSA, box 5.
+  AccountType account_type = 10 [
+    (common.v1.fdx_field) = "hsa",
+    (common.v1.fdx_deviation) = "Form1099Sa uses an enum instead of separate boolean flags for HSA, Archer MSA, and Medicare Advantage MSA"
+  ];
+}

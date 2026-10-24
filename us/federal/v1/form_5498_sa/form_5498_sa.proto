@@ -1,0 +1,78 @@
+// Form 5498-SA: HSA, Archer MSA, or Medicare Advantage MSA Information.
+//
+// A trustee reports contributions to a Health Savings Account (HSA), Archer
+// Medical Savings Account (Archer MSA), or Medicare Advantage Medical Savings
+// Account (MA MSA) on Form 5498-SA.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_5498_sa;form5498sa";
+
+// Form 5498-SA reports contributions to and fair market value of an HSA,
+// Archer MSA, or MA MSA.
+message Form5498Sa {
+  option (common.v1.fdx_entity) = "Tax5498Sa";
+  option (common.v1.fdx_version) = "5.0";
+
+  // Which kind of health savings account this is, box 6.
+  enum AccountType {
+    // Unspecified account type.
+    ACCOUNT_TYPE_UNSPECIFIED = 0;
+
+    // Health Savings Account (HSA).
+    ACCOUNT_TYPE_HSA = 1;
+
+    // Archer Medical Savings Account (Archer MSA).
+    ACCOUNT_TYPE_ARCHER_MSA = 2;
+
+    // Medicare Advantage Medical Savings Account (MA MSA).
+    ACCOUNT_TYPE_MEDICARE_ADVANTAGE_MSA = 3;
+  }
+
+  // The tax year this form reports. Four digits, such as 2025.
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // The form is marked CORRECTED, which means it replaces one already sent.
+  bool corrected = 2 [(common.v1.fdx_field) = "corrected"];
+
+  // The trustee or custodian that filed the form, printed as TRUSTEE'S.
+  common.v1.Party trustee = 3 [
+    (common.v1.fdx_field) = "trustee",
+    (common.v1.fdx_deviation) = "Party message rather than flat fields"
+  ];
+
+  // The participant/account holder.
+  common.v1.Party participant = 4 [
+    (common.v1.fdx_field) = "participant",
+    (common.v1.fdx_deviation) = "Party message rather than flat fields"
+  ];
+
+  // The account number the form prints, where it has one.
+  string account_number = 5 [(common.v1.fdx_field) = "accountNumber"];
+
+  // Employee or self-employed individual's Archer MSA contributions made in the tax year and through the due date, box 1.
+  common.v1.Money archer_msa_contributions = 6 [(common.v1.fdx_field) = "msaContributions"];
+
+  // Total contributions made in the tax year (including employer contributions), box 2.
+  common.v1.Money total_contributions_made_in_year = 7 [(common.v1.fdx_field) = "hsaContributions"];
+
+  // Total HSA or Archer MSA contributions made in the following year for the tax year, box 3.
+  common.v1.Money contributions_made_in_next_year_for_year = 8 [(common.v1.fdx_field) = "totalPostYearEnd"];
+
+  // Rollover contributions received by this account, box 4.
+  common.v1.Money rollover_contributions = 9 [(common.v1.fdx_field) = "rolloverContributions"];
+
+  // Fair market value of the HSA, Archer MSA, or MA MSA, box 5.
+  common.v1.Money fair_market_value = 10 [(common.v1.fdx_field) = "fairMarketValue"];
+
+  // Account type checkbox: HSA, Archer MSA, or Medicare Advantage MSA, box 6.
+  AccountType account_type = 11 [
+    (common.v1.fdx_field) = "hsa",
+    (common.v1.fdx_deviation) = "Form5498Sa uses an enum instead of separate boolean flags for HSA, Archer MSA, and Medicare Advantage MSA"
+  ];
+}

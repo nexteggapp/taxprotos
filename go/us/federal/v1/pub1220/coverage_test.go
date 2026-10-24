@@ -52,7 +52,9 @@ import (
 	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_1099_misc"
 	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_1099_nec"
 	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_1099_r"
+	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_1099_sa"
 	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_5498"
+	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_5498_sa"
 	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_ssa_1099"
 	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_w2"
 	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_w2g"
@@ -100,7 +102,9 @@ var schemas = []schema{
 	{form: "1098", dir: "form_1098"},
 	{form: "1098-E", dir: "form_1098_e"},
 	{form: "1098-T", dir: "form_1098_t"},
+	{form: "1099-SA", dir: "form_1099_sa"},
 	{form: "5498", dir: "form_5498"},
+	{form: "5498-SA", dir: "form_5498_sa"},
 	{form: "1099-G", dir: "form_1099_g"},
 	{form: "W-2G", dir: "form_w2g"},
 	{form: "SSA-1099", dir: "form_ssa_1099", issuedBySsa: true},

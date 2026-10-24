@@ -1,0 +1,108 @@
+// Form 8889: Health Savings Accounts (HSAs).
+//
+// Form 8889 is used to report Health Savings Account (HSA) contributions,
+// compute the HSA deduction, report distributions from HSAs, and compute any
+// additional tax owed when HSA requirements are not met.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_8889;form8889";
+
+// Form 8889 reports HSA contributions, deductions, distributions, and tax.
+message Form8889 {
+  // HDHP coverage type during the tax year, line 1.
+  enum CoverageType {
+    // Unspecified coverage type.
+    COVERAGE_TYPE_UNSPECIFIED = 0;
+
+    // Self-only HDHP coverage.
+    COVERAGE_TYPE_SELF_ONLY = 1;
+
+    // Family HDHP coverage.
+    COVERAGE_TYPE_FAMILY = 2;
+  }
+
+  // The tax year this form reports. Four digits, such as 2025.
+  int32 tax_year = 1;
+
+  // Name(s) shown on Form 1040, 1040-SR, or 1040-NR.
+  string taxpayer_name = 2;
+
+  // Social security number of the HSA beneficiary.
+  string beneficiary_ssn = 3;
+
+  // Coverage type under a high-deductible health plan (HDHP), line 1.
+  CoverageType coverage_type = 4;
+
+  // HSA contributions made by the taxpayer (or on their behalf) for the tax year, line 2.
+  common.v1.Money personal_hsa_contributions = 5;
+
+  // Maximum contribution limitation based on statutory limits or monthly calculations, line 3.
+  common.v1.Money maximum_contribution_limitation = 6;
+
+  // Archer MSA contributions made by the taxpayer or employer, line 4.
+  common.v1.Money archer_msa_contributions = 7;
+
+  // Limitation after subtracting Archer MSA contributions (line 3 minus line 4), line 5.
+  common.v1.Money adjusted_contribution_limitation = 8;
+
+  // Allocated contribution limitation after splitting family coverage between spouses, line 6.
+  common.v1.Money allocated_contribution_limitation = 9;
+
+  // Additional contribution amount for taxpayers age 55 or older, line 7.
+  common.v1.Money additional_contribution_amount = 10;
+
+  // Total contribution limitation (line 6 plus line 7), line 8.
+  common.v1.Money total_contribution_limitation = 11;
+
+  // Employer contributions made to the taxpayer's HSAs (including through cafeteria plan), line 9.
+  common.v1.Money employer_contributions = 12;
+
+  // Qualified HSA funding distributions from an IRA to the HSA, line 10.
+  common.v1.Money qualified_hsa_funding_distributions = 13;
+
+  // Total employer and funding contributions (line 9 plus line 10), line 11.
+  common.v1.Money total_employer_and_funding_contributions = 14;
+
+  // Remaining contribution limitation (line 8 minus line 11), line 12.
+  common.v1.Money remaining_contribution_limitation = 15;
+
+  // HSA deduction: smaller of line 2 or line 12, line 13.
+  common.v1.Money hsa_deduction = 16;
+
+  // Total distributions received during the tax year from all HSAs, line 14a.
+  common.v1.Money total_hsa_distributions = 17;
+
+  // Distributions rolled over to another HSA or withdrawn as excess contributions, line 14b.
+  common.v1.Money rollover_and_excess_contributions_withdrawn = 18;
+
+  // Net HSA distributions (line 14a minus line 14b), line 14c.
+  common.v1.Money net_hsa_distributions = 19;
+
+  // Qualified medical expenses paid using HSA distributions, line 15.
+  common.v1.Money qualified_medical_expenses = 20;
+
+  // Taxable HSA distributions (line 14c minus line 15), line 16.
+  common.v1.Money taxable_hsa_distributions = 21;
+
+  // Checkbox indicating that distributions meet an exception to the additional 20% tax, line 17a.
+  bool meets_exception_to_additional_20_percent_tax = 22;
+
+  // Additional 20% tax on distributions not used for qualified medical expenses, line 17b.
+  common.v1.Money additional_twenty_percent_tax = 23;
+
+  // Income included under the last-month rule failure, line 18.
+  common.v1.Money last_month_rule_failure_income = 24;
+
+  // Income included under qualified HSA funding distribution failure, line 19.
+  common.v1.Money qualified_hsa_funding_distribution_failure_income = 25;
+
+  // Total failure income (line 18 plus line 19), line 20.
+  common.v1.Money total_failure_income = 26;
+
+  // Additional 10% tax on failure income, line 21.
+  common.v1.Money additional_ten_percent_tax = 27;
+}

@@ -46,7 +46,10 @@ var checked = []string{
 	"taxprotos/us/federal/v1/form_1098_t/form_1098_t.proto",
 	"taxprotos/us/federal/v1/form_1099_g/form_1099_g.proto",
 	"taxprotos/us/federal/v1/form_1099_misc/form_1099_misc.proto",
+	"taxprotos/us/federal/v1/form_1099_sa/form_1099_sa.proto",
 	"taxprotos/us/federal/v1/form_5498/form_5498.proto",
+	"taxprotos/us/federal/v1/form_5498_sa/form_5498_sa.proto",
+	"taxprotos/us/federal/v1/form_8889/form_8889.proto",
 	"taxprotos/us/federal/v1/form_ssa_1099/form_ssa_1099.proto",
 	"taxprotos/us/federal/v1/form_w2g/form_w2g.proto",
 }
