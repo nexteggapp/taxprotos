@@ -4,10 +4,8 @@
 // compensation, or refunded, credited or offset $10 or more of state or local
 // income tax.
 //
-// The schema holds the fields a household's tax year reads, as
-// docs/facts.md lists them. The form's other boxes are listed as
-// unmapped in mapping.textproto beside this file, which also gives each
-// field's box per tax year, per docs/form-schemas.md.
+// Boxes and Amount Codes are in mapping.textproto beside this file, keyed by
+// tax year, per docs/form-schemas.md.
 syntax = "proto3";
 
 package nexteggapp.taxprotos.us.federal.v1;
@@ -50,4 +48,33 @@ message Form1099G {
   nexteggapp.taxprotos.common.v1.Money federal_tax_withheld = 6 [
     (common.v1.fdx_field) = "federalTaxWithheld"
   ];
+
+  // The recipient the form reports on.
+  nexteggapp.taxprotos.common.v1.Party recipient = 7;
+
+  // The account number the form prints, where it has one. Text, because it
+  // can carry leading zeroes and letters.
+  string account_number = 8 [(common.v1.fdx_field) = "accountNumber"];
+
+  // The form is marked CORRECTED, which means it replaces one already sent.
+  bool corrected = 9 [(common.v1.fdx_field) = "corrected"];
+
+  // One row per state the form reports withholding for.
+  repeated nexteggapp.taxprotos.common.v1.StateTaxWithholding state_tax_withholding = 10 [(common.v1.fdx_field) = "stateTaxWithholding"];
+
+  // Payments under the Reemployment Trade Adjustment Assistance program.
+  nexteggapp.taxprotos.common.v1.Money rtaa_payments = 11;
+
+  // Taxable grants from a federal, state or local government.
+  nexteggapp.taxprotos.common.v1.Money taxable_grants = 12;
+
+  // Agricultural subsidy payments from the Department of Agriculture.
+  nexteggapp.taxprotos.common.v1.Money agriculture_payments = 13;
+
+  // The refund in [state_or_local_refund] is of a tax that applies only to
+  // income from a trade or business.
+  bool refund_is_trade_or_business_income = 14;
+
+  // Market gain on Commodity Credit Corporation loans repaid in the year.
+  nexteggapp.taxprotos.common.v1.Money market_gain = 15;
 }

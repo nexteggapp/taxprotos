@@ -306,10 +306,38 @@ enum PaycheckKind {
   PAYCHECK_KIND_FINAL = 4;
 }
 
-// A broker's Form 1099-B. One Form1099B per sale.
+// A broker's Form 1099-B. One Form1099B per sale, and the contract figures
+// the broker reports once for the whole account.
 message Form1099BStatement {
+  // Section1256Contracts holds the Form 1099-B boxes for regulated futures,
+  // foreign currency contracts and section 1256 option contracts. The
+  // Instructions for Form 1099-B say these are reported "on an aggregate
+  // basis" for the account, not per sale. Each field is the Form1099B field of
+  // the same name, and the boxes are in that form's mapping.textproto.
+  message Section1256Contracts {
+    // Profit or loss on contracts closed during the tax year.
+    common.v1.Money profit_realized_on_closed_contracts = 1;
+
+    // Unrealized profit or loss on contracts still open at the end of the
+    // previous tax year.
+    common.v1.Money unrealized_profit_on_open_contracts_at_prior_year_end = 2;
+
+    // Unrealized profit or loss on contracts still open at the end of this
+    // tax year.
+    common.v1.Money unrealized_profit_on_open_contracts_at_year_end = 3;
+
+    // The three figures netted, which is what the recipient carries to Form
+    // 6781.
+    common.v1.Money aggregate_profit_or_loss = 4;
+  }
+
   // Each sale the statement reports.
   repeated us.federal.v1.Form1099B transactions = 1;
+
+  // The account's contract figures, recorded once. The same fields on each
+  // entry in [transactions] are left unset, so that adding up the sales never
+  // counts them twice. Unset when the statement prints none.
+  Section1256Contracts section_1256_contracts = 2;
 }
 
 // A monthly mortgage statement.

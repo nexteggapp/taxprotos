@@ -11,6 +11,11 @@
 //
 // A broker prints many sales on one statement, but each is a separate Form
 // 1099-B with its own boxes. This message holds one of them.
+//
+// The four regulated futures and section 1256 contract boxes are the
+// exception: the instructions say they are reported "on an aggregate basis"
+// for the account. facts.v1.Form1099BStatement records them once for the
+// statement, and leaves them unset on each sale.
 syntax = "proto3";
 
 package nexteggapp.taxprotos.us.federal.v1;
