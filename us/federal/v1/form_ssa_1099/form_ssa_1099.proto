@@ -3,47 +3,104 @@
 // The Social Security Administration sends it to everyone who was paid, or
 // repaid, Social Security benefits in the year.
 //
-// The schema holds the fields a household's tax year reads, as
-// docs/facts.md lists them. mapping.textproto beside this file gives
-// each field's box per tax year, per docs/form-schemas.md. The SSA-1099 is not an
-// information return the IRS specifies in Publication 1220, so no Amount
-// Code table checks it.
+// Boxes are in mapping.textproto beside this file, keyed by tax year, per
+// docs/form-schemas.md. Verified against the illustrated Form SSA-1099 and the
+// appendix explaining its items in IRS Publication 915 (2025), Social Security
+// and Equivalent Railroad Retirement Benefits.
+//
+// # No Amount Codes
+//
+// IRS Publication 1220 specifies electronic filing of information returns with
+// the IRS. The SSA issues this form and does not file it under Publication
+// 1220, so there is no Amount Code table for it and the mapping carries no
+// amount codes. Nothing checks this schema's box list against a published
+// field list.
+//
+// # No FDX entity
+//
+// The FDX 5.0 entity index lists no SSA-1099, so every field is marked
+// fdx_absent and the message carries no fdx_entity.
 syntax = "proto3";
 
 package nexteggapp.taxprotos.us.federal.v1;
 
 import "taxprotos/common/v1/annotations.proto";
 import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_ssa_1099;formssa1099";
 
 // FormSSA1099 is what a Form SSA-1099 states.
 message FormSSA1099 {
-  option (common.v1.fdx_entity) = "TaxSsa1099";
-  option (common.v1.fdx_version) = "5.0";
+  // Adjustment is one line of the form's description of box 3 or box 4: an
+  // item the SSA added, subtracted or counted as repaid, under the label it
+  // printed.
+  message Adjustment {
+    // The label as printed, such as "Attorney fees".
+    string description = 1 [(common.v1.fdx_absent) = true];
+
+    // The amount printed beside the label.
+    nexteggapp.taxprotos.common.v1.Money amount = 2 [(common.v1.fdx_absent) = true];
+  }
 
   // The calendar year the form reports on, as four digits.
-  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+  int32 tax_year = 1 [(common.v1.fdx_absent) = true];
 
   // Benefits paid in the year, including amounts withheld from them.
-  nexteggapp.taxprotos.common.v1.Money benefits_paid = 2 [
-    (common.v1.fdx_field) = "benefitsPaid"
-  ];
+  nexteggapp.taxprotos.common.v1.Money benefits_paid = 2 [(common.v1.fdx_absent) = true];
 
   // Benefits the recipient repaid to the Social Security Administration in
   // the year.
-  nexteggapp.taxprotos.common.v1.Money benefits_repaid = 3 [
-    (common.v1.fdx_field) = "benefitsRepaid"
-  ];
+  nexteggapp.taxprotos.common.v1.Money benefits_repaid = 3 [(common.v1.fdx_absent) = true];
 
   // [benefits_paid] less [benefits_repaid]. Negative when more was repaid
   // than paid. Recorded as printed, not derived, per docs/form-schemas.md.
-  nexteggapp.taxprotos.common.v1.Money net_benefits = 4 [
-    (common.v1.fdx_field) = "netBenefits"
-  ];
+  nexteggapp.taxprotos.common.v1.Money net_benefits = 4 [(common.v1.fdx_absent) = true];
 
   // Voluntary federal income tax withheld from the benefits.
-  nexteggapp.taxprotos.common.v1.Money federal_tax_withheld = 5 [
-    (common.v1.fdx_field) = "federalTaxWithheld"
-  ];
+  nexteggapp.taxprotos.common.v1.Money federal_tax_withheld = 5 [(common.v1.fdx_absent) = true];
+
+  // The person the benefits were paid to: the name in box 1, the Social
+  // Security number in box 2 and the address in box 7.
+  nexteggapp.taxprotos.common.v1.Party beneficiary = 6 [(common.v1.fdx_absent) = true];
+
+  // The claim number the SSA asks to be quoted when contacting it. Text,
+  // because it can carry letters.
+  string claim_number = 7 [(common.v1.fdx_absent) = true];
+
+  // The part of [benefits_paid] that was paid in a lump sum for earlier tax
+  // years, from the note under the description of box 3.
+  nexteggapp.taxprotos.common.v1.Money benefits_for_earlier_years = 8 [(common.v1.fdx_absent) = true];
+
+  // What the beneficiary received by check or direct deposit.
+  nexteggapp.taxprotos.common.v1.Money paid_by_check_or_direct_deposit = 9 [(common.v1.fdx_absent) = true];
+
+  // Medicare Part B premiums deducted from the benefits.
+  nexteggapp.taxprotos.common.v1.Money medicare_part_b_premiums = 10 [(common.v1.fdx_absent) = true];
+
+  // Medicare Part C, Medicare Advantage, premiums deducted from the benefits.
+  nexteggapp.taxprotos.common.v1.Money medicare_part_c_premiums = 11 [(common.v1.fdx_absent) = true];
+
+  // Medicare Part D, prescription drug, premiums deducted from the benefits.
+  nexteggapp.taxprotos.common.v1.Money medicare_part_d_premiums = 12 [(common.v1.fdx_absent) = true];
+
+  // Every other amount the description of box 3 adds to what was paid by
+  // check or direct deposit, such as a workers' compensation offset or
+  // attorney fees.
+  repeated Adjustment other_additions = 13 [(common.v1.fdx_absent) = true];
+
+  // What was paid by check or direct deposit plus every addition.
+  nexteggapp.taxprotos.common.v1.Money total_additions = 14 [(common.v1.fdx_absent) = true];
+
+  // Every amount the description of box 3 subtracts from [total_additions],
+  // such as payments for months before December 1983 or a lump-sum death
+  // payment.
+  repeated Adjustment subtractions = 15 [(common.v1.fdx_absent) = true];
+
+  // The sum of [subtractions].
+  nexteggapp.taxprotos.common.v1.Money total_subtractions = 16 [(common.v1.fdx_absent) = true];
+
+  // Every amount the description of box 4 lists as repaid, such as checks
+  // returned to the SSA. Their sum is [benefits_repaid].
+  repeated Adjustment repayments = 17 [(common.v1.fdx_absent) = true];
 }

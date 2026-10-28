@@ -48,30 +48,55 @@ concepts {
   }
 }
 
-unmapped_amount_codes {
-  tax_year: 2025
-  amount_code: "5"
-  amount_type: "Reemployment Trade Adjustment Assistance (RTAA) programs"
-  reason: "Not read by a household's tax year yet, so the schema has no field for it."
+concepts {
+  concept: "rtaa_payments"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+    amount_code: "5"
+  }
 }
 
-unmapped_amount_codes {
-  tax_year: 2025
-  amount_code: "6"
-  amount_type: "Taxable grants"
-  reason: "Not read by a household's tax year yet, so the schema has no field for it."
+concepts {
+  concept: "taxable_grants"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+    amount_code: "6"
+  }
 }
 
-unmapped_amount_codes {
-  tax_year: 2025
-  amount_code: "7"
-  amount_type: "Agriculture payments"
-  reason: "Not read by a household's tax year yet, so the schema has no field for it."
+concepts {
+  concept: "agriculture_payments"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+    amount_code: "7"
+  }
 }
 
-unmapped_amount_codes {
-  tax_year: 2025
-  amount_code: "9"
-  amount_type: "Market gain"
-  reason: "Not read by a household's tax year yet, so the schema has no field for it."
+concepts {
+  concept: "refund_is_trade_or_business_income"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+  }
+}
+
+concepts {
+  concept: "market_gain"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+    amount_code: "9"
+  }
+}
+
+concepts {
+  concept: "state_tax_withholding"
+  years {
+    tax_year: 2025
+    irs_box: "10a-11"
+    note: "Two state blocks. Boxes 10a, 10b and 11 make up one row, and the form prints the row twice."
+  }
 }

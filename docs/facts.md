@@ -54,7 +54,7 @@ messages are used directly. These have messages of their own:
 | Message | Document |
 |---|---|
 | `Paystub`, with `PayFigures` for this paycheck and year to date | A pay statement |
-| `Form1099BStatement` | A broker's 1099-B, one `Form1099B` per sale |
+| `Form1099BStatement` | A broker's 1099-B: one `Form1099B` per sale, and the section 1256 contract boxes once for the account |
 | `MortgageStatement` | A monthly mortgage statement |
 | `PropertyTaxBill` | A property tax bill and its installments |
 | `Receipt` | A receipt |
