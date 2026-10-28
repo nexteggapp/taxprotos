@@ -1,0 +1,96 @@
+// Form 6198, At-Risk Limitations.
+//
+// Used to figure the profit or (loss) from an at-risk activity for the current
+// year (Part I), the amount at risk via the simplified computation (Part II) or
+// detailed computation (Part III), and the deductible loss under IRC Section
+// 465 (Part IV).
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form6198 reports the at-risk limitation for an activity across Parts I through IV.
+message Form6198 {
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Identifying number (SSN or EIN).
+  string filer_tin = 3;
+
+  // Description of activity (including name and EIN of partnership or S corporation if applicable).
+  string activity_description = 4;
+
+  // -- Part I: Current Year Profit (Loss) From the Activity ----------------
+
+  // Line 1: Ordinary income or (loss) from the activity (before at-risk limitation).
+  common.v1.Money ordinary_income_or_loss = 5;
+
+  // Line 2a: Net gain or (loss) from sale or exchange of property used in the activity (short-term).
+  common.v1.Money short_term_gain_or_loss = 6;
+
+  // Line 2b: Net gain or (loss) from sale or exchange of property used in the activity (long-term).
+  common.v1.Money long_term_gain_or_loss = 7;
+
+  // Line 2c: Net gain or (loss) from sale or exchange of property used in the activity (Form 4797).
+  common.v1.Money form_4797_gain_or_loss = 8;
+
+  // Line 3: Other income and gains from the activity from Schedule K-1.
+  common.v1.Money other_income_and_gains = 9;
+
+  // Line 4: Other deductions and losses from the activity, including prior year unallowed at-risk loss.
+  common.v1.Money other_deductions_and_prior_unallowed_losses = 10;
+
+  // Line 5: Current year profit or (loss) from the activity (combine lines 1 through 4).
+  common.v1.Money current_year_profit_or_loss = 11;
+
+  // -- Part II: Simplified Computation of Amount At Risk -------------------
+
+  // Line 6: Adjusted basis in the activity (or in the interest in the partnership or S corporation) on the first day of the tax year.
+  common.v1.Money beginning_adjusted_basis = 12;
+
+  // Line 7: Increases for the tax year (additional cash/property contributed, recourse debt increases).
+  common.v1.Money increases_for_tax_year = 13;
+
+  // Line 8: Add lines 6 and 7.
+  common.v1.Money subtotal_basis_plus_increases = 14;
+
+  // Line 9: Decreases for the tax year (withdrawals, distributions, nonrecourse debt conversions).
+  common.v1.Money decreases_for_tax_year = 15;
+
+  // Line 10b: Amount at risk from simplified computation (subtract line 9 from line 8; if zero or less, enter 0).
+  common.v1.Money simplified_amount_at_risk = 16;
+
+  // -- Part III: Detailed Computation of Amount At Risk --------------------
+
+  // Line 11: Investment in the activity at the effective date.
+  common.v1.Money detailed_effective_date_investment = 17;
+
+  // Line 15: Carryover of amount at risk from prior tax year's Form 6198 line 19b.
+  common.v1.Money detailed_prior_year_amount_at_risk = 18;
+
+  // Line 16: Increases to amount at risk in the current tax year.
+  common.v1.Money detailed_increases_in_year = 19;
+
+  // Line 18: Decreases to amount at risk in the current tax year.
+  common.v1.Money detailed_decreases_in_year = 20;
+
+  // Line 19b: Detailed amount at risk (subtract line 18 from sum of lines 15 and 16; if zero or less, enter 0).
+  common.v1.Money detailed_amount_at_risk = 21;
+
+  // -- Part IV: Deductible Loss --------------------------------------------
+
+  // Line 20: Amount at risk (larger of line 10b or line 19b).
+  common.v1.Money amount_at_risk = 22;
+
+  // Line 21: Deductible loss for the current year (smaller of line 5 loss or line 20). Subject to passive activity loss rules on Form 8582.
+  common.v1.Money deductible_at_risk_loss = 23;
+
+  // Unallowed at-risk loss carried over to next tax year (excess of line 5 loss over line 20).
+  common.v1.Money unallowed_at_risk_loss_carryover = 24;
+}

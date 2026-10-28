@@ -1,0 +1,200 @@
+// Form 8829, Expenses for Business Use of Your Home.
+//
+// Filed with Schedule C (Form 1040) to figure the allowable expenses for
+// business use of a home and any carryover to the next tax year.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/quantity.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form8829 reports expenses for the business use of a home across Parts I through IV.
+message Form8829 {
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) of proprietor(s) shown on Schedule C.
+  string proprietor_name = 2;
+
+  // Social Security number of proprietor.
+  string proprietor_tin = 3;
+
+  // -- Part I: Part of Your Home Used for Business -------------------------
+
+  // Line 1: Area (in square feet) used regularly and exclusively for business, regularly for daycare, or for storage of inventory/product samples.
+  int32 business_area_square_feet = 4;
+
+  // Line 2: Total area (in square feet) of the home.
+  int32 total_home_area_square_feet = 5;
+
+  // Line 3: Divide line 1 by line 2 (enter result as a percentage).
+  common.v1.Quantity raw_business_use_percentage = 6;
+
+  // Line 4: Total hours facility was used for daycare during the year (if daycare facility).
+  int32 daycare_hours_used = 7;
+
+  // Line 5: Total hours available in the year (e.g., 8,760 or 8,784 in a leap year).
+  int32 total_hours_in_year = 8;
+
+  // Line 6: Divide line 4 by line 5 (decimal amount for daycare time fraction).
+  common.v1.Quantity daycare_time_fraction = 9;
+
+  // Line 7: Business percentage (line 3, or line 3 multiplied by line 6 for daycare).
+  common.v1.Quantity business_use_percentage = 10;
+
+  // -- Part II: Figure Your Allowable Deduction ----------------------------
+
+  // Line 8: Tentative profit or (loss) from Schedule C line 29 (plus any net gain/loss from business use of home).
+  common.v1.Money tentative_business_profit_or_loss = 11;
+
+  // Line 9 column (a): Direct casualty losses.
+  common.v1.Money direct_casualty_losses = 12;
+
+  // Line 9 column (b): Indirect casualty losses.
+  common.v1.Money indirect_casualty_losses = 13;
+
+  // Line 10 column (a): Direct deductible mortgage interest.
+  common.v1.Money direct_mortgage_interest = 14;
+
+  // Line 10 column (b): Indirect deductible mortgage interest.
+  common.v1.Money indirect_mortgage_interest = 15;
+
+  // Line 11 column (a): Direct real estate taxes.
+  common.v1.Money direct_real_estate_taxes = 16;
+
+  // Line 11 column (b): Indirect real estate taxes.
+  common.v1.Money indirect_real_estate_taxes = 17;
+
+  // Line 12 column (a): Total direct expenses on lines 9 through 11.
+  common.v1.Money total_direct_otherwise_deductible_expenses = 18;
+
+  // Line 12 column (b): Total indirect expenses on lines 9 through 11.
+  common.v1.Money total_indirect_otherwise_deductible_expenses = 19;
+
+  // Line 13: Multiply line 12 column (b) by line 7 business percentage.
+  common.v1.Money business_portion_indirect_otherwise_deductible = 20;
+
+  // Line 14: Add line 12 column (a) and line 13.
+  common.v1.Money total_otherwise_deductible_business_expenses = 21;
+
+  // Line 15: Subtract line 14 from line 8 (if zero or less, enter 0).
+  common.v1.Money gross_income_limit_for_operating_expenses = 22;
+
+  // Line 16 column (a): Direct excess mortgage interest.
+  common.v1.Money direct_excess_mortgage_interest = 23;
+
+  // Line 16 column (b): Indirect excess mortgage interest.
+  common.v1.Money indirect_excess_mortgage_interest = 24;
+
+  // Line 17 column (a): Direct excess real estate taxes.
+  common.v1.Money direct_excess_real_estate_taxes = 25;
+
+  // Line 17 column (b): Indirect excess real estate taxes.
+  common.v1.Money indirect_excess_real_estate_taxes = 26;
+
+  // Line 18 column (a): Direct insurance.
+  common.v1.Money direct_insurance = 27;
+
+  // Line 18 column (b): Indirect insurance.
+  common.v1.Money indirect_insurance = 28;
+
+  // Line 19 column (a): Direct rent.
+  common.v1.Money direct_rent = 29;
+
+  // Line 19 column (b): Indirect rent.
+  common.v1.Money indirect_rent = 30;
+
+  // Line 20 column (a): Direct repairs and maintenance.
+  common.v1.Money direct_repairs_and_maintenance = 31;
+
+  // Line 20 column (b): Indirect repairs and maintenance.
+  common.v1.Money indirect_repairs_and_maintenance = 32;
+
+  // Line 21 column (a): Direct utilities.
+  common.v1.Money direct_utilities = 33;
+
+  // Line 21 column (b): Indirect utilities.
+  common.v1.Money indirect_utilities = 34;
+
+  // Line 22 column (a): Direct other expenses.
+  common.v1.Money direct_other_expenses = 35;
+
+  // Line 22 column (b): Indirect other expenses.
+  common.v1.Money indirect_other_expenses = 36;
+
+  // Line 23 column (a): Add lines 16 through 22 column (a).
+  common.v1.Money total_direct_operating_expenses = 37;
+
+  // Line 23 column (b): Add lines 16 through 22 column (b).
+  common.v1.Money total_indirect_operating_expenses = 38;
+
+  // Line 24: Multiply line 23 column (b) by line 7.
+  common.v1.Money business_portion_indirect_operating_expenses = 39;
+
+  // Line 25: Carryover of prior year operating expenses.
+  common.v1.Money prior_year_operating_expense_carryover = 40;
+
+  // Line 26: Add line 23 column (a), line 24, and line 25.
+  common.v1.Money total_operating_expenses = 41;
+
+  // Line 27: Allowable operating expenses (smaller of line 15 or line 26).
+  common.v1.Money allowable_operating_expenses = 42;
+
+  // Line 28: Limit on casualty losses and depreciation (subtract line 27 from line 15).
+  common.v1.Money limit_for_casualty_and_depreciation = 43;
+
+  // Line 29: Excess casualty losses.
+  common.v1.Money excess_casualty_losses = 44;
+
+  // Line 30: Depreciation of your home from line 42.
+  common.v1.Money home_depreciation = 45;
+
+  // Line 31: Carryover of prior year excess casualty losses and depreciation.
+  common.v1.Money prior_year_casualty_and_depreciation_carryover = 46;
+
+  // Line 32: Add lines 29 through 31.
+  common.v1.Money total_casualty_and_depreciation = 47;
+
+  // Line 33: Allowable excess casualty losses and depreciation (smaller of line 28 or line 32).
+  common.v1.Money allowable_casualty_and_depreciation = 48;
+
+  // Line 34: Add lines 14, 27, and 33.
+  common.v1.Money total_allowable_expenses = 49;
+
+  // Line 35: Casualty loss portion included in lines 14 and 33.
+  common.v1.Money casualty_loss_portion = 50;
+
+  // Line 36: Allowable expenses for business use of your home (subtract line 35 from line 34). Carries to Schedule C line 30.
+  common.v1.Money allowable_deduction_for_schedule_c = 51;
+
+  // -- Part III: Depreciation of Your Home ---------------------------------
+
+  // Line 37: Smaller of home's adjusted basis or its fair market value on date first used for business.
+  common.v1.Money home_smaller_of_adjusted_basis_or_fmv = 52;
+
+  // Line 38: Value of land included on line 37.
+  common.v1.Money value_of_land = 53;
+
+  // Line 39: Basis of building (subtract line 38 from line 37).
+  common.v1.Money basis_of_building = 54;
+
+  // Line 40: Business basis of building (multiply line 39 by line 7).
+  common.v1.Money business_basis_of_building = 55;
+
+  // Line 41: Depreciation percentage from MACRS tables.
+  common.v1.Quantity depreciation_percentage = 56;
+
+  // Line 42: Depreciation allowable (multiply line 40 by line 41). Carries to line 30.
+  common.v1.Money calculated_home_depreciation = 57;
+
+  // -- Part IV: Carryover of Unallowed Expenses to Next Year ---------------
+
+  // Line 43: Operating expenses carryover to next year (subtract line 27 from line 26).
+  common.v1.Money operating_expenses_carryover_to_next_year = 58;
+
+  // Line 44: Excess casualty losses and depreciation carryover to next year (subtract line 33 from line 32).
+  common.v1.Money casualty_and_depreciation_carryover_to_next_year = 59;
+}

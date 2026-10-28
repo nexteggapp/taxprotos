@@ -1,0 +1,117 @@
+// Form 8801, Credit for Prior Year Minimum Tax—Individuals, Estates, and Trusts.
+//
+// Used to figure the minimum tax credit, if any, for Alternative Minimum Tax
+// (AMT) incurred in prior tax years that was attributable to deferral items
+// (such as incentive stock option exercises), and any credit carryforward.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form8801 reports the Credit for Prior Year Minimum Tax across Parts I, II, and III.
+message Form8801 {
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Social Security number or identifying number.
+  string filer_tin = 3;
+
+  // -- Part I: Net Minimum Tax on Exclusion Items --------------------------
+
+  // Line 1: Combine prior year Form 6251 lines 1, 2a, 2b, and 2c (regular taxable income plus exclusion items).
+  common.v1.Money prior_year_taxable_income_and_salt_adjustments = 4;
+
+  // Line 2: Adjustments and preferences treated as exclusion items (depletion, private activity bonds, QSBS).
+  common.v1.Money prior_year_other_exclusion_items = 5;
+
+  // Line 3: Prior year minimum tax foreign tax credit or NOL adjustment on exclusion items.
+  common.v1.Money prior_year_exclusion_nol_adjustment = 6;
+
+  // Line 4: Combine lines 1, 2, and 3 (AMTI on exclusion items).
+  common.v1.Money prior_year_amti_on_exclusion_items = 7;
+
+  // Line 5: Prior year AMT exemption ceiling based on filing status.
+  common.v1.Money prior_year_exemption_base = 8;
+
+  // Line 6: Prior year AMT exemption phaseout threshold.
+  common.v1.Money prior_year_phaseout_threshold = 9;
+
+  // Line 7: Subtract line 6 from line 4 (if zero or less, enter 0).
+  common.v1.Money prior_year_excess_exclusion_amti = 10;
+
+  // Line 8: Multiply line 7 by 25% (0.25).
+  common.v1.Money prior_year_exemption_phaseout_reduction = 11;
+
+  // Line 9: Subtract line 8 from line 5 (if zero or less, enter 0).
+  common.v1.Money prior_year_exemption_on_exclusion_items = 12;
+
+  // Line 10: Subtract line 9 from line 4 (if zero or less, enter 0).
+  common.v1.Money prior_year_taxable_excess_on_exclusion_items = 13;
+
+  // Line 11: Tentative minimum tax on exclusion items (26%/28% or Part III line 47).
+  common.v1.Money tentative_minimum_tax_on_exclusion_items = 14;
+
+  // Line 12: Minimum tax foreign tax credit on exclusion items.
+  common.v1.Money exclusion_items_amt_foreign_tax_credit = 15;
+
+  // Line 13: Tentative minimum tax on exclusion items after FTC (subtract line 12 from line 11).
+  common.v1.Money net_tentative_minimum_tax_on_exclusion_items = 16;
+
+  // Line 14: Prior year regular tax liability before credits minus foreign tax credit (prior year Form 6251 line 10).
+  common.v1.Money prior_year_regular_tax = 17;
+
+  // Line 15: Net minimum tax on exclusion items (subtract line 14 from line 13; if zero or less, enter 0).
+  common.v1.Money net_minimum_tax_on_exclusion_items = 18;
+
+  // -- Part II: Minimum Tax Credit and Carryforward to Next Year -----------
+
+  // Line 16: Prior year Alternative Minimum Tax (from prior year Form 6251 line 11).
+  common.v1.Money prior_year_alternative_minimum_tax = 19;
+
+  // Line 17: Enter the amount from line 15.
+  common.v1.Money part_ii_net_minimum_tax_on_exclusion_items = 20;
+
+  // Line 18: Subtract line 17 from line 16 (may be negative when prior year regular tax exceeded exclusion TMT).
+  common.v1.Money current_year_net_minimum_tax_on_deferral_items = 21;
+
+  // Line 19: Minimum tax credit carryforward from prior year (prior year Form 8801 line 26).
+  common.v1.Money minimum_tax_credit_carryforward_from_prior_year = 22;
+
+  // Line 20: Prior year unallowed qualified electric vehicle credits or other adjustments.
+  common.v1.Money prior_year_credit_adjustments = 23;
+
+  // Line 21: Combine lines 18, 19, and 20 (if zero or less, enter 0).
+  common.v1.Money total_available_minimum_tax_credit = 24;
+
+  // Line 22: Current year regular tax liability minus allowable credits (before minimum tax credit).
+  common.v1.Money current_year_net_regular_tax = 25;
+
+  // Line 23: Current year tentative minimum tax (current year Form 6251 line 9).
+  common.v1.Money current_year_tentative_minimum_tax = 26;
+
+  // Line 24: Subtract line 23 from line 22 (if zero or less, enter 0).
+  common.v1.Money regular_tax_over_tentative_minimum_tax_limit = 27;
+
+  // Line 25: Minimum tax credit (smaller of line 21 or line 24). Carries to Schedule 3 line 6b.
+  common.v1.Money minimum_tax_credit = 28;
+
+  // Line 26: Minimum tax credit carryforward to next year (subtract line 25 from line 21).
+  common.v1.Money minimum_tax_credit_carryforward_to_next_year = 29;
+
+  // -- Part III: Tax Computation Using Maximum Capital Gains Rates ---------
+
+  // Line 27: Prior year taxable excess on exclusion items from line 10.
+  common.v1.Money part_iii_exclusion_taxable_excess = 30;
+
+  // Line 28: Prior year net capital gain and qualified dividends for exclusion items.
+  common.v1.Money part_iii_exclusion_net_capital_gain = 31;
+
+  // Line 47: Tentative minimum tax on exclusion items using maximum capital gains rates (carries to line 11).
+  common.v1.Money part_iii_tentative_minimum_tax_on_exclusion_items = 32;
+}

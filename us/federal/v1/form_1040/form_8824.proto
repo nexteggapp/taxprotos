@@ -1,0 +1,106 @@
+// Form 8824, Like-Kind Exchanges (and Section 1043 Conflict-of-Interest Sales).
+//
+// Used to report each exchange of business or investment real property for
+// real property of a like kind under IRC Section 1031, including multi-asset
+// exchanges and related-party exchanges.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form8824 reports like-kind exchanges of real property across Parts I, II, and III.
+message Form8824 {
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Identifying number (SSN or EIN).
+  string filer_tin = 3;
+
+  // -- Part I: Information on the Like-Kind Exchange -----------------------
+
+  // Line 1: Description of like-kind property given up (relinquished property), including address/country.
+  string relinquished_property_description = 4;
+
+  // Line 2: Description of like-kind property received (replacement property), including address/country.
+  string replacement_property_description = 5;
+
+  // Line 3: Date like-kind property given up was originally acquired.
+  common.v1.Date date_relinquished_property_acquired = 6;
+
+  // Line 4: Date property was actually transferred (given up) to the other party.
+  common.v1.Date date_relinquished_property_transferred = 7;
+
+  // Line 5: Date like-kind property to be received was identified by written notice (45-day rule).
+  common.v1.Date date_replacement_property_identified = 8;
+
+  // Line 6: Date like-kind property was actually received (180-day rule).
+  common.v1.Date date_replacement_property_received = 9;
+
+  // Line 7: Was the exchange of the property given up or received made with a related party, directly or indirectly.
+  bool exchange_with_related_party = 10;
+
+  // -- Part II: Related Party Exchange Information -------------------------
+
+  // Line 8: Name, relationship, and taxpayer identifying number of related party.
+  string related_party_info = 11;
+
+  // Line 9: During this tax year (and within 2 years of last transfer), did the related party sell or dispose of the like-kind property.
+  bool related_party_disposed_within_two_years = 12;
+
+  // Line 10: During this tax year (and within 2 years of last transfer), did the taxpayer sell or dispose of the replacement property.
+  bool taxpayer_disposed_within_two_years = 13;
+
+  // Line 11: Check if an exception to the 2-year related-party disposition rule applies (death, involuntary conversion, non-tax-avoidance).
+  bool related_party_exception_applies = 14;
+
+  // -- Part III: Realized Gain or (Loss), Recognized Gain, and Basis of Like-Kind Property Received -
+
+  // Line 12: Fair market value of other (non-like-kind) property given up.
+  common.v1.Money fmv_of_other_property_given_up = 15;
+
+  // Line 13: Adjusted basis of other property given up.
+  common.v1.Money adjusted_basis_of_other_property_given_up = 16;
+
+  // Line 14: Gain or (loss) recognized on other property given up (subtract line 13 from line 12).
+  common.v1.Money gain_or_loss_on_other_property_given_up = 17;
+
+  // Line 15: Cash received, FMV of other property received (boot), plus net liabilities assumed by other party, reduced by exchange expenses and cash paid.
+  common.v1.Money net_boot_received = 18;
+
+  // Line 16: Fair market value of like-kind property you received.
+  common.v1.Money fmv_of_like_kind_property_received = 19;
+
+  // Line 17: Add lines 15 and 16 (total amount realized on like-kind property given up).
+  common.v1.Money amount_realized = 20;
+
+  // Line 18: Adjusted basis of like-kind property you gave up, net amounts paid to other party, plus exchange expenses not used on line 15.
+  common.v1.Money adjusted_basis_of_like_kind_property_given_up = 21;
+
+  // Line 19: Realized gain or (loss) (subtract line 18 from line 17).
+  common.v1.Money realized_gain_or_loss = 22;
+
+  // Line 20: Smaller of line 15 or line 19, but not less than zero (recognized gain before recapture).
+  common.v1.Money tentative_recognized_gain = 23;
+
+  // Line 21: Ordinary income under recapture rules (Sections 1245, 1250, 1252, 1254, 1255). Carries to Form 4797 line 15.
+  common.v1.Money ordinary_recapture_gain = 24;
+
+  // Line 22: Subtract line 21 from line 20 (if zero or less, enter 0). Carries to Schedule D or Form 4797 line 5.
+  common.v1.Money recognized_capital_or_section_1231_gain = 25;
+
+  // Line 23: Recognized gain (add lines 21 and 22).
+  common.v1.Money total_recognized_gain = 26;
+
+  // Line 24: Deferred gain or (loss) (subtract line 23 from line 19).
+  common.v1.Money deferred_gain_or_loss = 27;
+
+  // Line 25: Basis of like-kind property received (subtract line 15 from the sum of lines 18 and 23).
+  common.v1.Money basis_of_like_kind_property_received = 28;
+}

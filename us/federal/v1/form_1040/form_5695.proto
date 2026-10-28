@@ -1,0 +1,163 @@
+// Form 5695, Residential Energy Credits.
+//
+// Part I figures the Residential Clean Energy Credit (IRC Section 25D, 30% rate
+// with carryforward), and Part II figures the Energy Efficient Home Improvement
+// Credit (IRC Section 25C, 30% subject to item and annual caps).
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form5695 reports the Residential Clean Energy Credit and Energy Efficient Home Improvement Credit.
+message Form5695 {
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Social Security number of filer.
+  string filer_tin = 3;
+
+  // -- Part I: Residential Clean Energy Credit (Section 25D) ---------------
+
+  // Line 1: Qualified solar electric property costs.
+  common.v1.Money qualified_solar_electric_property_costs = 4;
+
+  // Line 2: Qualified solar water heating property costs.
+  common.v1.Money qualified_solar_water_heating_property_costs = 5;
+
+  // Line 3: Qualified small wind energy property costs.
+  common.v1.Money qualified_small_wind_energy_property_costs = 6;
+
+  // Line 4: Qualified geothermal heat pump property costs.
+  common.v1.Money qualified_geothermal_heat_pump_property_costs = 7;
+
+  // Line 5a: Was the qualified battery storage technology installed in a home in the United States.
+  bool battery_storage_installed_in_us_home = 8;
+
+  // Line 5b: Qualified battery storage technology costs (must have capacity of at least 3 kilowatt hours).
+  common.v1.Money qualified_battery_storage_technology_costs = 9;
+
+  // Line 6a: Total clean energy costs (add lines 1 through 4 and 5b).
+  common.v1.Money total_clean_energy_costs = 10;
+
+  // Line 6b: Multiply line 6a by 30% (0.30).
+  common.v1.Money thirty_percent_of_clean_energy_costs = 11;
+
+  // Line 7a: Was the qualified fuel cell property installed on or in connection with main home in the US.
+  bool fuel_cell_installed_in_us_main_home = 12;
+
+  // Line 7b: Address of main home where fuel cell was installed.
+  string fuel_cell_main_home_address = 13;
+
+  // Line 8: Qualified fuel cell property costs.
+  common.v1.Money qualified_fuel_cell_property_costs = 14;
+
+  // Line 9: Multiply line 8 by 30% (0.30).
+  common.v1.Money thirty_percent_of_fuel_cell_costs = 15;
+
+  // Line 10: Kilowatt capacity of fuel cell property above (in half-kilowatt increments) multiplied by $500.
+  common.v1.Money fuel_cell_capacity_limit = 16;
+
+  // Line 11: Smaller of line 9 or line 10.
+  common.v1.Money allowable_fuel_cell_credit = 17;
+
+  // Line 12: Credit carryforward from prior tax year's Form 5695 line 16.
+  common.v1.Money clean_energy_credit_carryforward_from_prior_year = 18;
+
+  // Line 13: Total tentative Residential Clean Energy Credit (add lines 6b, 11, and 12).
+  common.v1.Money total_tentative_clean_energy_credit = 19;
+
+  // Line 14: Limitation based on tax liability (from Residential Clean Energy Credit Limit Worksheet).
+  common.v1.Money clean_energy_tax_liability_limit = 20;
+
+  // Line 15: Residential Clean Energy Credit (smaller of line 13 or line 14). Carries to Schedule 3 line 5a.
+  common.v1.Money residential_clean_energy_credit = 21;
+
+  // Line 16: Credit carryforward to next tax year (subtract line 15 from line 13).
+  common.v1.Money clean_energy_credit_carryforward_to_next_year = 22;
+
+  // -- Part II: Energy Efficient Home Improvement Credit (Section 25C) -----
+
+  // Line 17a: Were the qualified energy efficiency improvements or residential energy property costs for a home in the US.
+  bool home_improvement_in_us_home = 23;
+
+  // Line 17b: Address of main home where improvements were made.
+  string home_improvement_address = 24;
+
+  // Line 17c: Were any of these improvements related to the construction of this main home.
+  bool related_to_new_construction = 25;
+
+  // Line 18a: Insulation or air sealing material or system costs.
+  common.v1.Money insulation_or_air_sealing_costs = 26;
+
+  // Line 18b: Multiply line 18a by 30% (0.30).
+  common.v1.Money insulation_credit_amount = 27;
+
+  // Line 19a: Exterior doors costs meeting Energy Star requirements.
+  common.v1.Money exterior_doors_costs = 28;
+
+  // Line 19b: Multiply line 19a by 30% (capped at $250 per door, $500 total).
+  common.v1.Money exterior_doors_credit_amount = 29;
+
+  // Line 20a: Windows and skylights costs meeting Energy Star Most Efficient requirements.
+  common.v1.Money windows_and_skylights_costs = 30;
+
+  // Line 20b: Multiply line 20a by 30% (capped at $600).
+  common.v1.Money windows_and_skylights_credit_amount = 31;
+
+  // Line 21a: Home energy audits costs.
+  common.v1.Money home_energy_audit_costs = 32;
+
+  // Line 21b: Multiply line 21a by 30% (capped at $150).
+  common.v1.Money home_energy_audit_credit_amount = 33;
+
+  // Line 22a: Central air conditioners costs.
+  common.v1.Money central_air_conditioner_costs = 34;
+
+  // Line 22b: Multiply line 22a by 30% (capped at $600).
+  common.v1.Money central_air_conditioner_credit_amount = 35;
+
+  // Line 23a: Natural gas, propane, or oil water heaters costs.
+  common.v1.Money gas_propane_oil_water_heater_costs = 36;
+
+  // Line 23b: Multiply line 23a by 30% (capped at $600).
+  common.v1.Money gas_propane_oil_water_heater_credit_amount = 37;
+
+  // Line 24a: Natural gas, propane, or oil furnaces and hot water boilers costs.
+  common.v1.Money furnace_and_boiler_costs = 38;
+
+  // Line 24b: Multiply line 24a by 30% (capped at $600).
+  common.v1.Money furnace_and_boiler_credit_amount = 39;
+
+  // Line 25a: Panelboards, sub-panelboards, branch circuits, or feeders costs.
+  common.v1.Money electrical_panel_upgrade_costs = 40;
+
+  // Line 25b: Multiply line 25a by 30% (capped at $600).
+  common.v1.Money electrical_panel_upgrade_credit_amount = 41;
+
+  // Line 26: Add lines 18b, 19b, 20b, 21b, 22b, 23b, 24b, and 25b.
+  common.v1.Money subtotal_envelope_and_property_credits = 42;
+
+  // Line 27: Smaller of line 26 or $1,200 general annual limit.
+  common.v1.Money capped_general_home_improvement_credit = 43;
+
+  // Line 28a: Electric or natural gas heat pumps, electric or natural gas heat pump water heaters, and biomass stoves/boilers costs.
+  common.v1.Money heat_pump_and_biomass_costs = 44;
+
+  // Line 28b: Multiply line 28a by 30% (capped at $2,000 annual limit).
+  common.v1.Money heat_pump_and_biomass_credit_amount = 45;
+
+  // Line 29: Add lines 27 and 28b.
+  common.v1.Money total_tentative_home_improvement_credit = 46;
+
+  // Line 30: Limitation based on tax liability (from Energy Efficient Home Improvement Credit Limit Worksheet).
+  common.v1.Money home_improvement_tax_liability_limit = 47;
+
+  // Line 31: Energy Efficient Home Improvement Credit (smaller of line 29 or line 30). Carries to Schedule 3 line 5b.
+  common.v1.Money energy_efficient_home_improvement_credit = 48;
+}

@@ -1,0 +1,212 @@
+// Form 4562, Depreciation and Amortization (Including Information on Listed Property).
+//
+// Used to claim deductions for depreciation and amortization, make the election
+// under IRC Section 179 to expense certain property, and provide information on
+// business/investment use of automobiles and other listed property.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/quantity.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form4562 reports depreciation, Section 179 expense, special bonus depreciation, listed property, and amortization.
+message Form4562 {
+  // Section179PropertyItem represents one item of Section 179 property in Part I line 6.
+  message Section179PropertyItem {
+    // Column (a): Description of property.
+    string description = 1;
+
+    // Column (b): Cost (business use only).
+    common.v1.Money cost = 2;
+
+    // Column (c): Elected cost under Section 179.
+    common.v1.Money elected_cost = 3;
+  }
+
+  // MacrsPropertyRow represents one MACRS asset class row in Part III lines 19a through 19i or 20a through 20d.
+  message MacrsPropertyRow {
+    // Column (a): Classification of property (e.g., 3-year, 5-year, 7-year, 15-year, 27.5-year residential rental, 39-year nonresidential).
+    string classification = 1;
+
+    // Column (b): Month and year placed in service.
+    string month_and_year_placed_in_service = 2;
+
+    // Column (c): Basis for depreciation (business/investment use only).
+    common.v1.Money basis_for_depreciation = 3;
+
+    // Column (d): Recovery period in years.
+    string recovery_period = 4;
+
+    // Column (e): Convention (HY, MQ, or MM).
+    string convention = 5;
+
+    // Column (f): Method (200DB, 150DB, or S/L).
+    string method = 6;
+
+    // Column (g): Depreciation deduction for the year.
+    common.v1.Money depreciation_deduction = 7;
+  }
+
+  // ListedPropertyItem represents one item of listed property in Part V line 26 or line 27.
+  message ListedPropertyItem {
+    // Column (a): Type of property (list vehicles first).
+    string property_type = 1;
+
+    // Column (b): Date placed in service.
+    common.v1.Date date_placed_in_service = 2;
+
+    // Column (c): Business/investment use percentage.
+    common.v1.Quantity business_use_percentage = 3;
+
+    // Column (d): Cost or other basis.
+    common.v1.Money cost_or_other_basis = 4;
+
+    // Column (e): Basis for depreciation (business/investment use only).
+    common.v1.Money basis_for_depreciation = 5;
+
+    // Column (f): Recovery period.
+    string recovery_period = 6;
+
+    // Column (g): Method/convention.
+    string method_and_convention = 7;
+
+    // Column (h): Depreciation deduction.
+    common.v1.Money depreciation_deduction = 8;
+
+    // Column (i): Elected Section 179 cost.
+    common.v1.Money elected_section_179_cost = 9;
+  }
+
+  // AmortizationItem represents one amortizable item in Part VI line 42 or line 43.
+  message AmortizationItem {
+    // Column (a): Description of costs.
+    string description_of_costs = 1;
+
+    // Column (b): Date amortization begins.
+    common.v1.Date date_amortization_begins = 2;
+
+    // Column (c): Amortizable amount.
+    common.v1.Money amortizable_amount = 3;
+
+    // Column (d): Code section (e.g., "195", "197", "248").
+    string code_section = 4;
+
+    // Column (e): Amortization period or percentage.
+    string amortization_period_or_percentage = 5;
+
+    // Column (f): Amortization for this year.
+    common.v1.Money amortization_for_year = 6;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Identifying number (SSN or EIN).
+  string filer_tin = 3;
+
+  // Business or activity to which this Form 4562 relates.
+  string business_or_activity_name = 4;
+
+  // -- Part I: Election To Expense Certain Property Under Section 179 ------
+
+  // Line 1: Maximum amount under Section 179 for the tax year.
+  common.v1.Money maximum_section_179_limitation = 5;
+
+  // Line 2: Total cost of Section 179 property placed in service during the tax year.
+  common.v1.Money total_cost_of_section_179_property = 6;
+
+  // Line 3: Threshold cost of Section 179 property before reduction in limitation.
+  common.v1.Money section_179_phaseout_threshold = 7;
+
+  // Line 4: Reduction in limitation (subtract line 3 from line 2; if zero or less, enter 0).
+  common.v1.Money section_179_phaseout_reduction = 8;
+
+  // Line 5: Dollar limitation for tax year (subtract line 4 from line 1; if zero or less, enter 0).
+  common.v1.Money section_179_dollar_limitation = 9;
+
+  // Line 6: Section 179 property items (other than listed property).
+  repeated Section179PropertyItem section_179_items = 10;
+
+  // Line 7: Listed property elected Section 179 cost (from line 29).
+  common.v1.Money listed_property_elected_section_179_cost = 11;
+
+  // Line 8: Total elected cost of Section 179 property (sum of line 6 column (c) and line 7).
+  common.v1.Money total_elected_section_179_cost = 12;
+
+  // Line 9: Tentative deduction (smaller of line 5 or line 8).
+  common.v1.Money tentative_section_179_deduction = 13;
+
+  // Line 10: Carryover of disallowed deduction from prior year.
+  common.v1.Money prior_year_section_179_carryover = 14;
+
+  // Line 11: Business income limitation (smaller of aggregate business taxable income or line 5).
+  common.v1.Money section_179_business_income_limitation = 15;
+
+  // Line 12: Section 179 expense deduction (add lines 9 and 10, but do not enter more than line 11).
+  common.v1.Money section_179_expense_deduction = 16;
+
+  // Line 13: Carryover of disallowed deduction to next year (add lines 9 and 10, less line 12).
+  common.v1.Money section_179_carryover_to_next_year = 17;
+
+  // -- Part II: Special Depreciation Allowance and Other Depreciation ------
+
+  // Line 14: Special depreciation allowance (bonus depreciation under Section 168(k)) for qualified property placed in service during the year.
+  common.v1.Money special_depreciation_allowance = 18;
+
+  // Line 15: Property subject to Section 168(f)(1) election (unit-of-production or other non-MACRS method).
+  common.v1.Money section_168_f_1_depreciation = 19;
+
+  // Line 16: Other depreciation (including ACRS).
+  common.v1.Money other_non_macrs_depreciation = 20;
+
+  // -- Part III: MACRS Depreciation ----------------------------------------
+
+  // Line 17: MACRS deductions for assets placed in service in prior tax years.
+  common.v1.Money prior_year_assets_macrs_depreciation = 21;
+
+  // Line 18: Check if making general asset account election under Section 168(i)(4).
+  bool general_asset_account_election = 22;
+
+  // Lines 19a–19i and 20a–20d: MACRS property placed in service during the current tax year (GDS and ADS).
+  repeated MacrsPropertyRow current_year_macrs_rows = 23;
+
+  // -- Part IV: Summary ----------------------------------------------------
+
+  // Line 21: Listed property depreciation (from line 28).
+  common.v1.Money listed_property_depreciation = 24;
+
+  // Line 22: Total depreciation and Section 179 deduction (add amounts from line 12, lines 14–17, lines 19–20 column (g), and line 21). Carries to Schedule C/E/F.
+  common.v1.Money total_depreciation = 25;
+
+  // Line 23: Portion of basis attributable to Section 263A uniform capitalization costs.
+  common.v1.Money section_263a_capitalized_costs = 26;
+
+  // -- Part V: Listed Property ---------------------------------------------
+
+  // Line 25: Special depreciation allowance for qualified listed property placed in service during the tax year and used more than 50% in a qualified business use.
+  common.v1.Money listed_property_special_depreciation_allowance = 27;
+
+  // Lines 26 and 27: Listed property items.
+  repeated ListedPropertyItem listed_property_items = 28;
+
+  // Line 28: Total listed property depreciation (add line 25 and column (h) of lines 26 and 27). Carries to line 21.
+  common.v1.Money total_listed_property_depreciation = 29;
+
+  // Line 29: Total listed property elected Section 179 cost (sum of column (i) of line 26). Carries to line 7.
+  common.v1.Money total_listed_property_section_179_cost = 30;
+
+  // -- Part VI: Amortization -----------------------------------------------
+
+  // Lines 42 and 43: Amortization of costs that begins during the current tax year or prior years.
+  repeated AmortizationItem amortization_items = 31;
+
+  // Line 44: Total amortization (add column (f) of lines 42 and 43). Carries to Schedule C/E/F Other Expenses.
+  common.v1.Money total_amortization = 32;
+}

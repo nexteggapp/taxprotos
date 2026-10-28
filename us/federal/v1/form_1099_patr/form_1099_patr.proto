@@ -1,0 +1,81 @@
+// Form 1099-PATR: Taxable Distributions Received From Cooperatives.
+//
+// A cooperative files Form 1099-PATR for each person to whom it has paid at
+// least $10 in patronage dividends or other distributions described in IRC
+// Section 6044(b), or from whom it has withheld any federal income tax under
+// backup withholding rules.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1099_patr;form1099patr";
+
+// Form 1099-PATR reports taxable distributions and pass-through deductions/credits received from a cooperative.
+message Form1099PATR {
+  option (common.v1.fdx_entity) = "Tax1099Patr";
+  option (common.v1.fdx_version) = "5.0";
+
+  // The tax year this form reports. Four digits, such as 2025.
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // The form is marked CORRECTED, which means it replaces one already sent.
+  bool corrected = 2 [(common.v1.fdx_field) = "corrected"];
+
+  // The cooperative payer that issued the form, printed as PAYER'S.
+  common.v1.Party payer = 3 [
+    (common.v1.fdx_field) = "payer",
+    (common.v1.fdx_deviation) = "Party message rather than flat fields"
+  ];
+
+  // The patron recipient who received the distributions, printed as RECIPIENT'S.
+  common.v1.Party recipient = 4 [
+    (common.v1.fdx_field) = "recipient",
+    (common.v1.fdx_deviation) = "Party message rather than flat fields"
+  ];
+
+  // The account number the form prints, where it has one.
+  string account_number = 5 [(common.v1.fdx_field) = "accountNumber"];
+
+  // Patronage dividends paid in cash, qualified written notices of allocation, or other property, box 1.
+  common.v1.Money patronage_dividends = 6 [(common.v1.fdx_field) = "patronageDividends"];
+
+  // Nonpatronage distributions paid on a patronage basis by a farmers' cooperative, box 2.
+  common.v1.Money nonpatronage_distributions = 7 [(common.v1.fdx_field) = "nonpatronageDistributions"];
+
+  // Per-unit retain allocations paid in cash, qualified per-unit retain certificates, or other property, box 3.
+  common.v1.Money per_unit_retain_allocations = 8 [(common.v1.fdx_field) = "perUnitRetainAllocations"];
+
+  // Federal income tax withheld (backup withholding), box 4.
+  common.v1.Money federal_income_tax_withheld = 9 [(common.v1.fdx_field) = "federalTaxWithheld"];
+
+  // Redeemed nonqualified notices (redemption of nonqualified written notices of allocation and nonqualified per-unit retain certificates), box 5.
+  common.v1.Money redeemed_nonqualified_notices = 10 [(common.v1.fdx_field) = "redemption"];
+
+  // Section 199A(g) domestic production activities deduction passed through from an agricultural or horticultural cooperative, box 6.
+  common.v1.Money section_199a_g_deduction = 11 [(common.v1.fdx_field) = "section199Deduction"];
+
+  // Qualified payments under Section 199A(b)(7) (patronage dividends and per-unit retains on which the patron must compute the Section 199A(b)(7) patron reduction), box 7.
+  common.v1.Money qualified_payments_section_199a = 12 [(common.v1.fdx_field) = "qualifiedPayments"];
+
+  // Section 199A(a) qualified items of income, gain, deduction, and loss from a non-SSTB cooperative activity, box 8.
+  common.v1.Money section_199a_qualified_items = 13 [(common.v1.fdx_field) = "section199QualifiedItems"];
+
+  // Section 199A(a) Specified Service Trade or Business (SSTB) items, box 9.
+  common.v1.Money section_199a_sstb_items = 14 [(common.v1.fdx_field) = "section199SstbItems"];
+
+  // Investment credit passed through from the cooperative, box 10.
+  common.v1.Money investment_credit = 15 [(common.v1.fdx_field) = "investmentCredit"];
+
+  // Work opportunity credit passed through from the cooperative, box 11.
+  common.v1.Money work_opportunity_credit = 16 [(common.v1.fdx_field) = "workOpportunityCredit"];
+
+  // Other credits and deductions passed through from the cooperative, box 12.
+  common.v1.Money other_credits_and_deductions = 17 [(common.v1.fdx_field) = "otherCreditsAndDeductions"];
+
+  // True if the cooperative is a Specified Agricultural or Horticultural Cooperative, box 13.
+  bool specified_agricultural_or_horticultural_cooperative = 18 [(common.v1.fdx_field) = "specifiedCoop"];
+}

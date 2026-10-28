@@ -1,0 +1,178 @@
+// Form 4797, Sales of Business Property (Also Involuntary Conversions and
+// Recapture Amounts Under Sections 179 and 280F(b)(2)).
+//
+// Used to report sales, exchanges, or involuntary conversions of trade or
+// business property (Section 1231), ordinary gains and losses (Part II),
+// depreciation/cost recovery recapture under Sections 1245, 1250, 1252, 1254,
+// and 1255 (Part III), and recapture under Sections 179 and 280F(b)(2) (Part IV).
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form4797 reports sales and exchanges of business property across Parts I through IV.
+message Form4797 {
+  // PropertyDispositionRow represents one property disposition in Part I (line 2) or Part II (line 10).
+  message PropertyDispositionRow {
+    // Column (a): Description of property.
+    string property_description = 1;
+
+    // Column (b): Date acquired (month, day, year).
+    string date_acquired = 2;
+
+    // Column (c): Date sold (month, day, year).
+    string date_sold = 3;
+
+    // Column (d): Gross sales price.
+    common.v1.Money gross_sales_price = 4;
+
+    // Column (e): Depreciation allowed or allowable since acquisition.
+    common.v1.Money depreciation_allowed_or_allowable = 5;
+
+    // Column (f): Cost or other basis, plus improvements and expense of sale.
+    common.v1.Money cost_or_other_basis = 6;
+
+    // Column (g): Gain or (loss) (column (d) plus column (e) minus column (f)).
+    common.v1.Money gain_or_loss = 7;
+  }
+
+  // RecapturePropertyItem represents one property subject to recapture in Part III (lines 19 through 29).
+  message RecapturePropertyItem {
+    // Line 19a: Description of property.
+    string property_description = 1;
+
+    // Line 19b: Date acquired.
+    string date_acquired = 2;
+
+    // Line 19c: Date sold.
+    string date_sold = 3;
+
+    // Line 20: Gross sales price.
+    common.v1.Money gross_sales_price = 4;
+
+    // Line 21: Cost or other basis plus expense of sale.
+    common.v1.Money cost_or_other_basis = 5;
+
+    // Line 22: Depreciation (or depletion) allowed or allowable.
+    common.v1.Money depreciation_or_depletion_allowed = 6;
+
+    // Line 23: Adjusted basis (subtract line 22 from line 21).
+    common.v1.Money adjusted_basis = 7;
+
+    // Line 24: Total gain (subtract line 23 from line 20).
+    common.v1.Money total_gain = 8;
+
+    // Line 25b: Section 1245 ordinary recapture amount (smaller of line 22 or line 24).
+    common.v1.Money section_1245_ordinary_recapture = 9;
+
+    // Line 26g: Section 1250 ordinary recapture amount (additional depreciation over straight-line).
+    common.v1.Money section_1250_ordinary_recapture = 10;
+
+    // Unrecaptured Section 1250 gain (straight-line depreciation on real property taxed up to 25%).
+    common.v1.Money unrecaptured_section_1250_gain = 11;
+
+    // Section 1231 remaining gain carried to Part I line 6.
+    common.v1.Money section_1231_remaining_gain = 12;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Identifying number (SSN or EIN).
+  string filer_tin = 3;
+
+  // Line 1a: Gross proceeds from Form(s) 1099-B or 1099-S reported here rather than on Schedule D.
+  common.v1.Money gross_proceeds_on_1099_b_or_s = 4;
+
+  // -- Part I: Sales or Exchanges of Property Used in a Trade or Business (Section 1231) -
+
+  // Line 2: Section 1231 property dispositions held more than 1 year.
+  repeated PropertyDispositionRow section_1231_dispositions = 5;
+
+  // Line 3: Gain from Form 4684 line 39.
+  common.v1.Money gain_from_form_4684 = 6;
+
+  // Line 4: Section 1231 gain from installment sales from Form 6252 line 26 or 37.
+  common.v1.Money installment_sale_section_1231_gain = 7;
+
+  // Line 5: Section 1231 gain or (loss) from like-kind exchanges from Form 8824.
+  common.v1.Money like_kind_exchange_section_1231_gain_or_loss = 8;
+
+  // Line 6: Gain from line 32 from other than casualty or theft (Part III excess over ordinary recapture).
+  common.v1.Money gain_from_part_iii_excess_over_recapture = 9;
+
+  // Line 7: Combine lines 2 through 6 (net Section 1231 gain or loss before lookback).
+  common.v1.Money net_section_1231_gain_or_loss = 10;
+
+  // Line 8: Nonrecaptured net Section 1231 losses from prior 5 tax years.
+  common.v1.Money nonrecaptured_prior_section_1231_losses = 11;
+
+  // Line 9: Net Section 1231 gain treated as long-term capital gain (subtract line 8 from line 7). Carries to Schedule D line 11.
+  common.v1.Money net_section_1231_long_term_capital_gain = 12;
+
+  // -- Part II: Ordinary Gains and Losses (Lines 10 through 18b) -----------
+
+  // Line 10: Ordinary gains and losses (property held 1 year or less, or Section 475 mark-to-market).
+  repeated PropertyDispositionRow ordinary_dispositions = 13;
+
+  // Line 11: Loss, if any, from line 7 (or ordinary recapture of prior Section 1231 losses from line 8).
+  common.v1.Money ordinary_loss_or_recaptured_1231_gain_from_part_i = 14;
+
+  // Line 12: Gain from line 31 (total ordinary recapture from Part III).
+  common.v1.Money ordinary_recapture_gain_from_part_iii = 15;
+
+  // Line 13: Net gain or (loss) from Form 4684 lines 31 and 38a.
+  common.v1.Money casualty_or_theft_ordinary_gain_or_loss = 16;
+
+  // Line 14: Ordinary gain from installment sales from Form 6252 line 25 or 36.
+  common.v1.Money installment_sale_ordinary_gain = 17;
+
+  // Line 15: Ordinary gain or (loss) from like-kind exchanges from Form 8824.
+  common.v1.Money like_kind_exchange_ordinary_gain_or_loss = 18;
+
+  // Line 17: Combine lines 10 through 16.
+  common.v1.Money total_ordinary_gain_or_loss = 19;
+
+  // Line 18b: Net ordinary gain or (loss) carried to Schedule 1 line 4.
+  common.v1.Money net_ordinary_gain_or_loss_for_schedule_1 = 20;
+
+  // -- Part III: Gain From Disposition of Property Under Sections 1245, 1250, 1252, 1254, and 1255 -
+
+  // Properties reported in Part III.
+  repeated RecapturePropertyItem recapture_properties = 21;
+
+  // Line 30: Total gains for all properties in Part III (sum of line 24).
+  common.v1.Money part_iii_total_gains = 22;
+
+  // Line 31: Total ordinary recapture gain (sum of lines 25b, 26g, 27c, 28b, and 29b). Carries to line 12.
+  common.v1.Money part_iii_total_ordinary_recapture_gain = 23;
+
+  // Line 32: Remaining Section 1231 gain (subtract line 31 from line 30). Carries to line 6.
+  common.v1.Money part_iii_remaining_section_1231_gain = 24;
+
+  // -- Part IV: Recapture Amounts Under Sections 179 and 280F(b)(2) When Business Use Drops to 50% or Less -
+
+  // Line 33 column (a): Section 179 expense deduction or depreciation allowable in prior years under Section 179.
+  common.v1.Money section_179_prior_deduction = 25;
+
+  // Line 33 column (b): Prior depreciation allowable on listed property under Section 280F(b)(2).
+  common.v1.Money section_280f_prior_depreciation = 26;
+
+  // Line 34 column (a): Depreciation that would have been allowable if Section 179 had not been elected.
+  common.v1.Money section_179_recomputed_depreciation = 27;
+
+  // Line 34 column (b): Recomputed depreciation under straight-line ADS for Section 280F(b)(2).
+  common.v1.Money section_280f_recomputed_depreciation = 28;
+
+  // Line 35 column (a): Section 179 recapture amount (subtract line 34(a) from line 33(a)).
+  common.v1.Money section_179_recapture_amount = 29;
+
+  // Line 35 column (b): Section 280F(b)(2) recapture amount (subtract line 34(b) from line 33(b)).
+  common.v1.Money section_280f_recapture_amount = 30;
+}

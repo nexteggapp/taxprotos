@@ -1,0 +1,70 @@
+// Form 4952, Investment Interest Expense Deduction.
+//
+// Used by individuals, estates, and trusts to figure the amount of investment
+// interest expense that can be deducted for the current tax year on Schedule A
+// (Form 1040) line 9 and the amount of disallowed investment interest expense
+// that can be carried forward to future tax years under IRC Section 163(d).
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form4952 reports total investment interest expense (Part I), net investment income (Part II), and the allowable deduction and carryforward (Part III).
+message Form4952 {
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Identifying number (SSN or EIN).
+  string filer_tin = 3;
+
+  // -- Part I: Total Investment Interest Expense ---------------------------
+
+  // Line 1: Investment interest expense paid or accrued in the current tax year (excluding home mortgage or passive activity interest).
+  common.v1.Money current_year_investment_interest_expense = 4;
+
+  // Line 2: Disallowed investment interest expense from prior tax year's Form 4952 line 7.
+  common.v1.Money prior_year_disallowed_investment_interest = 5;
+
+  // Line 3: Total investment interest expense (add lines 1 and 2).
+  common.v1.Money total_investment_interest_expense = 6;
+
+  // -- Part II: Net Investment Income --------------------------------------
+
+  // Line 4a: Gross income from property held for investment (interest, ordinary dividends, annuities, royalties).
+  common.v1.Money gross_investment_income = 7;
+
+  // Line 4b: Qualified dividends and net long-term capital gain from disposition of property held for investment.
+  common.v1.Money qualified_dividends_and_net_capital_gain = 8;
+
+  // Line 4c: Net gain from the disposition of property held for investment (overall capital gain, or zero if net capital loss).
+  common.v1.Money net_gain_from_investment_property_dispositions = 9;
+
+  // Line 4d: Subtract line 4b from line 4c (short-term net investment gain before election).
+  common.v1.Money non_preferential_investment_gain = 10;
+
+  // Line 4e: Amount of qualified dividends and net capital gain from line 4b that the taxpayer elects to include in investment income (taxed at ordinary rates).
+  common.v1.Money elected_qualified_dividends_and_capital_gain = 11;
+
+  // Line 4f: Investment income (add lines 4a, 4d, and 4e).
+  common.v1.Money total_investment_income = 12;
+
+  // Line 5: Investment expenses directly connected with the production of investment income (other than interest).
+  common.v1.Money deductible_investment_expenses = 13;
+
+  // Line 6: Net investment income (subtract line 5 from line 4f; if zero or less, enter 0).
+  common.v1.Money net_investment_income = 14;
+
+  // -- Part III: Investment Interest Expense Deduction ---------------------
+
+  // Line 7: Disallowed investment interest expense to be carried forward to next tax year (subtract line 6 from line 3; if zero or less, enter 0).
+  common.v1.Money disallowed_investment_interest_carryforward = 15;
+
+  // Line 8: Investment interest expense deduction (smaller of line 3 or line 6). Carries to Schedule A line 9 (or Schedule E if partner/shareholder debt-financed acquisition).
+  common.v1.Money investment_interest_expense_deduction = 16;
+}

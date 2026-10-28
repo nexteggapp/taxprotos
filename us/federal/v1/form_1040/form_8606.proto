@@ -1,0 +1,118 @@
+// Form 8606, Nondeductible IRAs.
+//
+// Filed per individual to report nondeductible contributions to traditional
+// IRAs, distributions from traditional/SEP/SIMPLE IRAs when the taxpayer has
+// basis, conversions to Roth IRAs, and distributions from Roth IRAs.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/quantity.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form8606 reports nondeductible IRA contributions, basis, Roth conversions, and IRA distributions.
+message Form8606 {
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name of the individual filer (one Form 8606 per person).
+  string individual_name = 2;
+
+  // Social Security number of the individual.
+  string individual_tin = 3;
+
+  // -- Part I: Nondeductible Contributions to Traditional IRAs and Distributions -
+
+  // Line 1: Nondeductible contributions to traditional IRAs for the current tax year.
+  common.v1.Money nondeductible_traditional_ira_contributions = 4;
+
+  // Line 2: Total basis in traditional IRAs from prior years' Form 8606.
+  common.v1.Money prior_year_traditional_ira_basis = 5;
+
+  // Line 3: Total basis as of the end of the tax year before distributions (add lines 1 and 2).
+  common.v1.Money total_basis_before_distributions = 6;
+
+  // Line 4: Nondeductible contributions made in the following year (Jan 1 to Apr 15) for the current tax year.
+  common.v1.Money contributions_made_in_subsequent_year = 7;
+
+  // Line 5: Subtract line 4 from line 3.
+  common.v1.Money basis_for_current_year_distributions = 8;
+
+  // Line 6: Value of all traditional, SEP, and SIMPLE IRAs as of December 31 of the tax year, plus outstanding rollovers.
+  common.v1.Money year_end_value_of_all_traditional_sep_simple_iras = 9;
+
+  // Line 7: Distributions from traditional, SEP, and SIMPLE IRAs received during the year (excluding rollovers, conversions, and QCDs).
+  common.v1.Money traditional_sep_simple_ira_distributions = 10;
+
+  // Line 8: Net amount converted from traditional, SEP, and SIMPLE IRAs to Roth IRAs during the year.
+  common.v1.Money net_amount_converted_to_roth_iras = 11;
+
+  // Line 9: Add lines 6, 7, and 8.
+  common.v1.Money total_ira_value_distributions_and_conversions = 12;
+
+  // Line 10: Pro-rata nontaxable fraction (divide line 5 by line 9, up to 1.00000).
+  common.v1.Quantity nontaxable_pro_rata_fraction = 13;
+
+  // Line 11: Nontaxable portion of conversions to Roth IRAs (multiply line 8 by line 10).
+  common.v1.Money nontaxable_portion_of_roth_conversions = 14;
+
+  // Line 12: Nontaxable portion of traditional, SEP, and SIMPLE IRA distributions (multiply line 7 by line 10).
+  common.v1.Money nontaxable_portion_of_traditional_distributions = 15;
+
+  // Line 13: Total basis recovered in the current year (add lines 11 and 12).
+  common.v1.Money total_basis_recovered = 16;
+
+  // Line 14: Total basis in traditional IRAs for the current year and earlier years to carry forward (subtract line 13 from line 3).
+  common.v1.Money remaining_traditional_ira_basis = 17;
+
+  // Line 15a: Subtract line 12 from line 7.
+  common.v1.Money taxable_distributions_before_disaster = 18;
+
+  // Line 15b: Amount on line 15a attributable to qualified disaster distributions.
+  common.v1.Money qualified_disaster_distribution_amount = 19;
+
+  // Line 15c: Taxable amount of traditional, SEP, and SIMPLE IRA distributions (subtract line 15b from line 15a). Carries to Form 1040 line 4b.
+  common.v1.Money taxable_traditional_ira_distributions = 20;
+
+  // -- Part II: Conversions From Traditional, SEP, or SIMPLE IRAs to Roth IRAs -
+
+  // Line 16: Net amount converted from traditional, SEP, and SIMPLE IRAs to Roth IRAs (from line 8 or total conversions).
+  common.v1.Money part_ii_net_roth_conversion_amount = 21;
+
+  // Line 17: Basis in the amount on line 16 (from line 11 or total basis in converted IRAs).
+  common.v1.Money basis_in_roth_conversion_amount = 22;
+
+  // Line 18: Taxable amount of Roth IRA conversions (subtract line 17 from line 16). Carries to Form 1040 line 4b.
+  common.v1.Money taxable_roth_conversion_amount = 23;
+
+  // -- Part III: Distributions From Roth IRAs ------------------------------
+
+  // Line 19: Nonqualified distributions from Roth IRAs during the year (excluding rollovers and return of excess contributions).
+  common.v1.Money nonqualified_roth_ira_distributions = 24;
+
+  // Line 20: Qualified first-time homebuyer expenses (up to $10,000 lifetime).
+  common.v1.Money qualified_first_time_homebuyer_expenses = 25;
+
+  // Line 21: Subtract line 20 from line 19 (if zero or less, enter 0).
+  common.v1.Money roth_distributions_after_homebuyer_exclusion = 26;
+
+  // Line 22: Basis in Roth IRA contributions (regular Roth contributions less prior Roth distributions).
+  common.v1.Money basis_in_roth_ira_contributions = 27;
+
+  // Line 23: Subtract line 22 from line 21 (if zero or less, enter 0).
+  common.v1.Money roth_distributions_exceeding_contribution_basis = 28;
+
+  // Line 24: Basis in conversions to Roth IRAs (net conversions less prior distributions allocated to conversions).
+  common.v1.Money basis_in_roth_ira_conversions = 29;
+
+  // Line 25a: Subtract line 24 from line 23 (if zero or less, enter 0).
+  common.v1.Money taxable_roth_distributions_before_disaster = 30;
+
+  // Line 25b: Amount on line 25a attributable to qualified disaster distributions.
+  common.v1.Money roth_qualified_disaster_distribution_amount = 31;
+
+  // Line 25c: Taxable amount of Roth IRA distributions (subtract line 25b from line 25a). Carries to Form 1040 line 4b.
+  common.v1.Money taxable_roth_ira_distributions = 32;
+}

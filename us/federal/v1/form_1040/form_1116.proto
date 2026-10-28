@@ -1,0 +1,201 @@
+// Form 1116, Foreign Tax Credit (Individual, Estate, or Trust).
+//
+// Filed to claim the foreign tax credit for foreign income taxes paid or
+// accrued during the tax year to a foreign country or U.S. possession, computed
+// per separate limitation category.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/quantity.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form1116 reports foreign source taxable income (Part I), foreign taxes paid or accrued (Part II), limitation computation (Part III), and summary across categories (Part IV).
+message Form1116 {
+  // IncomeCategory identifies the separate limitation basket on Form 1116 checkboxes a through g.
+  enum IncomeCategory {
+    // Unspecified income category.
+    INCOME_CATEGORY_UNSPECIFIED = 0;
+
+    // Checkbox a: Section 951A category income (GILTI).
+    INCOME_CATEGORY_SECTION_951A = 1;
+
+    // Checkbox b: Foreign branch category income.
+    INCOME_CATEGORY_FOREIGN_BRANCH = 2;
+
+    // Checkbox c: Passive category income.
+    INCOME_CATEGORY_PASSIVE = 3;
+
+    // Checkbox d: General category income.
+    INCOME_CATEGORY_GENERAL = 4;
+
+    // Checkbox e: Section 901(j) income.
+    INCOME_CATEGORY_SECTION_901_J = 5;
+
+    // Checkbox f: Certain income re-sourced by treaty.
+    INCOME_CATEGORY_RESOURCED_BY_TREATY = 6;
+
+    // Checkbox g: Lump-sum distributions.
+    INCOME_CATEGORY_LUMP_SUM_DISTRIBUTIONS = 7;
+  }
+
+  // CountryColumn holds per-country foreign income, deductions, and foreign taxes (Columns A, B, C in Parts I and II).
+  message CountryColumn {
+    // Line i: Name of foreign country or U.S. possession (or "RIC" for regulated investment company).
+    string country_or_possession_name = 1;
+
+    // Line 1a: Gross income from sources within the country of the category checked above.
+    common.v1.Money gross_foreign_income = 2;
+
+    // Line 2: Definitely related expenses and deductions (including personal itemizations not definitely related).
+    common.v1.Money definitely_related_and_apportioned_expenses = 3;
+
+    // Line 3g: Pro-rata share of other deductions not definitely related.
+    common.v1.Money ratably_apportioned_deductions = 4;
+
+    // Line 4a: Apportioned home mortgage interest.
+    common.v1.Money apportioned_mortgage_interest = 5;
+
+    // Line 4b: Apportioned other interest expense (including investment interest).
+    common.v1.Money apportioned_other_interest = 6;
+
+    // Line 5: Losses from foreign sources.
+    common.v1.Money foreign_source_losses = 7;
+
+    // Line 6: Total deductions and losses for this country (add lines 2, 3g, 4a, 4b, and 5).
+    common.v1.Money total_deductions_and_losses = 8;
+
+    // Line 7: Net foreign source taxable income or (loss) before adjustments for this country (line 1a minus line 6).
+    common.v1.Money net_foreign_source_income_or_loss = 9;
+
+    // Part II: Date foreign taxes were paid or accrued.
+    string date_paid_or_accrued = 10;
+
+    // Part II: Foreign taxes paid or accrued in U.S. dollars on dividends, rents/royalties, interest, wages, and other income.
+    common.v1.Money foreign_taxes_in_usd = 11;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Identifying number (SSN or EIN).
+  string filer_tin = 3;
+
+  // Separate limitation category of income for this Form 1116.
+  IncomeCategory category = 4;
+
+  // Resident country name as of the end of the tax year.
+  string resident_country = 5;
+
+  // -- Part I: Taxable Income or Loss From Sources Outside the United States -
+
+  // Columns A, B, C: Per-country foreign income and deductions.
+  repeated CountryColumn countries = 6;
+
+  // Line 1a Total: Total gross foreign source income across all countries in this category.
+  common.v1.Money total_gross_foreign_income = 7;
+
+  // Line 6 Total: Total deductions and losses apportioned to foreign source income in this category.
+  common.v1.Money total_foreign_deductions_and_losses = 8;
+
+  // Line 7: Net foreign source taxable income or (loss) before adjustments (line 1a Total minus line 6 Total).
+  common.v1.Money net_foreign_source_taxable_income = 9;
+
+  // -- Part II: Foreign Taxes Paid or Accrued ------------------------------
+
+  // Checkbox: Foreign taxes were paid (false) or accrued (true).
+  bool taxes_accrued_method = 10;
+
+  // Line 8: Total foreign taxes paid or accrued in U.S. dollars for this category.
+  common.v1.Money total_foreign_taxes_paid_or_accrued = 11;
+
+  // -- Part III: Figuring the Credit ---------------------------------------
+
+  // Line 9: Enter the amount from line 8 (foreign taxes paid or accrued for this category).
+  common.v1.Money part_iii_foreign_taxes = 12;
+
+  // Line 10: Carryback or carryover of unused foreign taxes from Schedule B (Form 1116) (not allowed for Section 951A).
+  common.v1.Money foreign_tax_carryback_or_carryover = 13;
+
+  // Line 11: Add lines 9 and 10.
+  common.v1.Money total_foreign_taxes_before_reductions = 14;
+
+  // Line 12: Reduction in foreign taxes (for excluded foreign earned income under Form 2555, mineral income, boycott, etc.).
+  common.v1.Money reduction_in_foreign_taxes = 15;
+
+  // Line 13: Subtract line 12 from line 11.
+  common.v1.Money net_foreign_taxes_available_for_credit = 16;
+
+  // Line 15: Net foreign source taxable income from line 7.
+  common.v1.Money foreign_source_income_before_adjustments = 17;
+
+  // Line 16: Adjustments to line 15 (allocation of foreign losses, overall domestic loss recapture, capital gain rate differential).
+  common.v1.Money foreign_source_income_adjustments = 18;
+
+  // Line 17: Combine lines 15 and 16 (adjusted foreign source taxable income in this category).
+  common.v1.Money adjusted_foreign_source_taxable_income = 19;
+
+  // Line 18: Worldwide taxable income before personal exemptions (Form 1040 line 15, adjusted for capital gain rate differential if applicable).
+  common.v1.Money worldwide_taxable_income = 20;
+
+  // Line 19: Divide line 17 by line 18 (limitation fraction, not to exceed 1.0000).
+  common.v1.Quantity limitation_fraction = 21;
+
+  // Line 20: Regular U.S. income tax against which credit is taken (Form 1040 line 16 plus Schedule 2 line 1a).
+  common.v1.Money regular_us_income_tax = 22;
+
+  // Line 21: Maximum foreign tax credit limitation for this category (multiply line 20 by line 19).
+  common.v1.Money category_foreign_tax_credit_limitation = 23;
+
+  // Line 22: Increase in limitation under Section 960(c).
+  common.v1.Money section_960_c_limitation_increase = 24;
+
+  // Line 23: Add lines 21 and 22.
+  common.v1.Money total_category_limitation = 25;
+
+  // Line 24: Foreign tax credit for this category (smaller of line 14 or line 23).
+  common.v1.Money category_foreign_tax_credit = 26;
+
+  // Unused foreign taxes in this category available for carryback (1 year) or carryforward (10 years).
+  common.v1.Money unused_foreign_tax_carryforward = 27;
+
+  // -- Part IV: Summary of Credits From Separate Parts III -----------------
+
+  // Line 25: Credit for taxes on Section 951A category income.
+  common.v1.Money summary_section_951a_credit = 28;
+
+  // Line 26: Credit for taxes on foreign branch category income.
+  common.v1.Money summary_foreign_branch_credit = 29;
+
+  // Line 27: Credit for taxes on passive category income.
+  common.v1.Money summary_passive_category_credit = 30;
+
+  // Line 28: Credit for taxes on general category income.
+  common.v1.Money summary_general_category_credit = 31;
+
+  // Line 29: Credit for taxes on Section 901(j) income.
+  common.v1.Money summary_section_901_j_credit = 32;
+
+  // Line 30: Credit for taxes on certain income re-sourced by treaty.
+  common.v1.Money summary_treaty_resourced_credit = 33;
+
+  // Line 31: Credit for taxes on lump-sum distributions.
+  common.v1.Money summary_lump_sum_credit = 34;
+
+  // Line 32: Add lines 25 through 31.
+  common.v1.Money total_combined_category_credits = 35;
+
+  // Line 33: Smaller of line 20 (total U.S. tax) or line 32.
+  common.v1.Money capped_combined_foreign_tax_credit = 36;
+
+  // Line 34: Reduction of credit for international boycott operations.
+  common.v1.Money international_boycott_reduction = 37;
+
+  // Line 35: Total foreign tax credit (subtract line 34 from line 33). Carries to Schedule 3 line 1.
+  common.v1.Money foreign_tax_credit = 38;
+}

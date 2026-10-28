@@ -1,0 +1,169 @@
+// Form 2441, Child and Dependent Care Expenses.
+//
+// Attached to Form 1040 to claim the credit for child and dependent care
+// expenses or to figure the taxable or excludable dependent care benefits
+// received from an employer.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/quantity.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form2441 reports child and dependent care expenses and dependent care benefits.
+message Form2441 {
+  // CareProvider represents one person or organization that provided care in Part I line 1.
+  message CareProvider {
+    // Column (a): Care provider's name.
+    string provider_name = 1;
+
+    // Column (b): Care provider's address (number, street, apt. no., city, state, and ZIP code).
+    string provider_address = 2;
+
+    // Column (c): Identifying number (SSN or EIN).
+    string identifying_number = 3;
+
+    // Column (c): Tax-exempt checkbox if provider is a tax-exempt organization.
+    bool is_tax_exempt = 4;
+
+    // Column (d): Was the care provider a household employee.
+    bool is_household_employee = 5;
+
+    // Column (e): Total amount paid to the care provider during the year.
+    common.v1.Money amount_paid = 6;
+  }
+
+  // QualifyingPerson represents one qualifying child or dependent in Part II line 2.
+  message QualifyingPerson {
+    // Column (a): Qualifying person's first and last name.
+    string person_name = 1;
+
+    // Column (b): Qualifying person's Social Security number.
+    string person_ssn = 2;
+
+    // Column (c): Check if the qualifying person was over age 12 and disabled.
+    bool over_age_12_and_disabled = 3;
+
+    // Column (d): Qualified expenses incurred and paid in the tax year for the person.
+    common.v1.Money qualified_expenses = 4;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Social Security number of filer.
+  string filer_tin = 3;
+
+  // Checkbox A: Cannot claim credit if married filing separately and does not meet exception.
+  bool married_filing_separately_exception_applies = 4;
+
+  // -- Part I: Persons or Organizations Who Provided the Care --------------
+
+  // Line 1: Care providers.
+  repeated CareProvider care_providers = 5;
+
+  // -- Part II: Credit for Child and Dependent Care Expenses ---------------
+
+  // Line 2: Qualifying persons and qualified expenses per person.
+  repeated QualifyingPerson qualifying_persons = 6;
+
+  // Line 3: Add the amounts in column (d) of line 2 (capped at $3,000 for one person or $6,000 for two or more, less Part III line 29).
+  common.v1.Money eligible_care_expenses = 7;
+
+  // Line 4: Earned income of the taxpayer.
+  common.v1.Money taxpayer_earned_income = 8;
+
+  // Line 5: Earned income of the spouse (if married filing jointly), or deemed student/disabled income.
+  common.v1.Money spouse_earned_income = 9;
+
+  // Line 6: Smallest of line 3, 4, or 5.
+  common.v1.Money smallest_of_expenses_or_earned_income = 10;
+
+  // Line 7: Adjusted gross income from Form 1040 line 11.
+  common.v1.Money adjusted_gross_income = 11;
+
+  // Line 8: Decimal amount from table based on adjusted gross income (0.20 to 0.35).
+  common.v1.Quantity applicable_credit_rate = 12;
+
+  // Line 9a: Multiply line 6 by the decimal amount on line 8.
+  common.v1.Money tentative_credit = 13;
+
+  // Line 9b: Credit for prior-year expenses paid in the current year.
+  common.v1.Money prior_year_expense_credit = 14;
+
+  // Line 9c: Total tentative credit (add lines 9a and 9b).
+  common.v1.Money total_tentative_credit = 15;
+
+  // Line 10: Tax liability limit from Credit Limit Worksheet.
+  common.v1.Money tax_liability_limit = 16;
+
+  // Line 11: Credit for child and dependent care expenses (smaller of line 9c or line 10). Carries to Schedule 3 line 2.
+  common.v1.Money credit_for_child_and_dependent_care_expenses = 17;
+
+  // -- Part III: Dependent Care Benefits -----------------------------------
+
+  // Line 12: Total amount of dependent care benefits received from employer(s) (W-2 box 10).
+  common.v1.Money dependent_care_benefits_received = 18;
+
+  // Line 13: Carryover of dependent care benefits from prior year used during the grace period.
+  common.v1.Money carryover_from_prior_year = 19;
+
+  // Line 14: Dependent care benefits forfeited or carried forward to next year.
+  common.v1.Money forfeited_or_carried_forward_benefits = 20;
+
+  // Line 15: Combine lines 12 and 13, then subtract line 14.
+  common.v1.Money net_dependent_care_benefits = 21;
+
+  // Line 16: Total qualified expenses incurred during the year for dependent care benefits.
+  common.v1.Money total_qualified_expenses_for_benefits = 22;
+
+  // Line 17: Smaller of line 15 or line 16.
+  common.v1.Money smaller_of_benefits_or_expenses = 23;
+
+  // Line 18: Taxpayer's earned income for Part III.
+  common.v1.Money part_iii_taxpayer_earned_income = 24;
+
+  // Line 19: Spouse's earned income for Part III.
+  common.v1.Money part_iii_spouse_earned_income = 25;
+
+  // Line 20: Smallest of line 17, 18, or 19.
+  common.v1.Money smallest_of_benefits_expenses_or_earned_income = 26;
+
+  // Line 21: Statutory exclusion cap ($5,000 or $2,500 if married filing separately).
+  common.v1.Money statutory_exclusion_limit = 27;
+
+  // Line 22: Amount from sole proprietorship or partnership dependent care assistance program.
+  common.v1.Money self_employed_dependent_care_benefits = 28;
+
+  // Line 23: Subtract line 22 from line 15.
+  common.v1.Money employee_dependent_care_benefits = 29;
+
+  // Line 24: Deductible benefits (smallest of line 17, 18, 19, or 21, capped at line 22).
+  common.v1.Money deductible_self_employed_benefits = 30;
+
+  // Line 25: Excluded benefits (from line 20 and line 21, less line 24).
+  common.v1.Money excluded_dependent_care_benefits = 31;
+
+  // Line 26: Taxable benefits (subtract line 25 from line 23; if zero or less, enter 0). Carries to Schedule 1 line 1e.
+  common.v1.Money taxable_dependent_care_benefits = 32;
+
+  // Line 27: Maximum dollar limit for Part II ($3,000 for one person or $6,000 for two or more).
+  common.v1.Money maximum_expense_limit_before_benefits = 33;
+
+  // Line 28: Add lines 24 and 25.
+  common.v1.Money total_deductible_and_excluded_benefits = 34;
+
+  // Line 29: Subtract line 28 from line 27.
+  common.v1.Money remaining_expense_limit_after_benefits = 35;
+
+  // Line 30: Complete line 2 on page 1, subtracting any benefits on line 28.
+  common.v1.Money net_qualified_expenses_for_credit = 36;
+
+  // Line 31: Smaller of line 29 or line 30. Carries to line 3.
+  common.v1.Money allowable_expenses_carried_to_part_ii = 37;
+}

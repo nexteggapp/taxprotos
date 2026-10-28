@@ -1,0 +1,110 @@
+// Form 8995, Qualified Business Income Deduction Simplified Computation, and
+// Form 8995-A, Qualified Business Income Deduction.
+//
+// Used to figure the Section 199A qualified business income (QBI) deduction.
+// Taxpayers at or below the taxable income threshold without patrons'
+// agricultural/horticultural reductions file Form 8995; taxpayers above the
+// threshold file Form 8995-A.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form8995 reports the Qualified Business Income Deduction (including simplified Form 8995 lines and Form 8995-A summary lines).
+message Form8995 {
+  // TradeOrBusiness represents one trade, business, or aggregation on line 1 (or Form 8995-A Part I/II/III).
+  message TradeOrBusiness {
+    // Line 1 column (a): Trade, business, or aggregation name.
+    string business_name = 1;
+
+    // Line 1 column (b): Taxpayer identification number (EIN or SSN).
+    string taxpayer_identification_number = 2;
+
+    // Line 1 column (c): Qualified business income or (loss).
+    common.v1.Money qualified_business_income_or_loss = 3;
+
+    // Form 8995-A Part I: Check if trade or business is a Specified Service Trade or Business (SSTB).
+    bool is_specified_service_trade_or_business = 4;
+
+    // Form 8995-A Part I: Check if trade or business is an aggregation.
+    bool is_aggregated = 5;
+
+    // Form 8995-A Part II: Allocable share of W-2 wages paid by the trade or business.
+    common.v1.Money allocable_w2_wages = 6;
+
+    // Form 8995-A Part II: Allocable share of unadjusted basis immediately after acquisition (UBIA) of qualified property.
+    common.v1.Money allocable_ubia_of_qualified_property = 7;
+
+    // Form 8995-A Part II: Deductible QBI component for this business after W-2 wage/UBIA and SSTB phase-in limits.
+    common.v1.Money deductible_qbi_component = 8;
+
+    // Form 8995-A Part II: Patron reduction for agricultural or horticultural cooperative payments.
+    common.v1.Money patron_reduction = 9;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Social Security number or taxpayer identification number.
+  string filer_tin = 3;
+
+  // Line 1: Trades, businesses, or aggregations.
+  repeated TradeOrBusiness trades_or_businesses = 4;
+
+  // Line 2: Total qualified business income or (loss) (combine line 1 column (c) for all businesses).
+  common.v1.Money total_qualified_business_income_or_loss = 5;
+
+  // Line 3: Qualified business net (loss) carryforward from the prior year.
+  common.v1.Money prior_year_qbi_loss_carryforward = 6;
+
+  // Line 4: Total qualified business income (combine lines 2 and 3; if zero or less, enter 0).
+  common.v1.Money net_qualified_business_income = 7;
+
+  // Line 5: Qualified business income component (multiply line 4 by 20% (0.20), or sum of Form 8995-A line 26).
+  common.v1.Money qbi_component = 8;
+
+  // Line 6: Qualified REIT dividends and publicly traded partnership (PTP) income or (loss).
+  common.v1.Money qualified_reit_dividends_and_ptp_income = 9;
+
+  // Line 7: Qualified REIT dividends and PTP (loss) carryforward from the prior year.
+  common.v1.Money prior_year_reit_and_ptp_loss_carryforward = 10;
+
+  // Line 8: Total qualified REIT dividends and PTP income (combine lines 6 and 7; if zero or less, enter 0).
+  common.v1.Money net_reit_dividends_and_ptp_income = 11;
+
+  // Line 9: REIT and PTP component (multiply line 8 by 20% (0.20)).
+  common.v1.Money reit_and_ptp_component = 12;
+
+  // Line 10: Qualified business income deduction before the income limitation (add lines 5 and 9).
+  common.v1.Money qbi_deduction_before_income_limit = 13;
+
+  // Line 11: Taxable income before the qualified business income deduction.
+  common.v1.Money taxable_income_before_qbi_deduction = 14;
+
+  // Line 12: Net capital gain (qualified dividends plus net capital gain).
+  common.v1.Money net_capital_gain = 15;
+
+  // Line 13: Subtract line 12 from line 11 (if zero or less, enter 0).
+  common.v1.Money ordinary_taxable_income_limit_base = 16;
+
+  // Line 14: Income limitation (multiply line 13 by 20% (0.20)).
+  common.v1.Money income_limitation = 17;
+
+  // Line 15: Qualified business income deduction before DPAD (smaller of line 10 or line 14, plus any Form 8995-A line 38 cooperative DPAD). Carries to Form 1040 line 13.
+  common.v1.Money qualified_business_income_deduction = 18;
+
+  // Line 16: Total qualified business (loss) carryforward to next year.
+  common.v1.Money qbi_loss_carryforward_to_next_year = 19;
+
+  // Line 17: Total qualified REIT dividends and PTP (loss) carryforward to next year.
+  common.v1.Money reit_and_ptp_loss_carryforward_to_next_year = 20;
+
+  // Form 8995-A line 38: Domestic production activities deduction (Section 199A(g)) allocated from an agricultural or horticultural cooperative.
+  common.v1.Money cooperative_section_199a_g_deduction = 21;
+}

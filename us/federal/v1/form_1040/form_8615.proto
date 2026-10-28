@@ -1,0 +1,92 @@
+// Form 8615, Tax for Certain Children Who Have Unearned Income ("Kiddie Tax").
+//
+// Used to figure the child's tax on unearned income over the annual threshold
+// ($2,700 for 2025) at the parent's marginal tax rates under IRC Section 1(g).
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form8615 reports the Kiddie Tax computation across Parts I, II, and III.
+message Form8615 {
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Child's name shown on return.
+  string child_name = 2;
+
+  // Child's Social Security number.
+  string child_tin = 3;
+
+  // Line A: Parent's name (first and last).
+  string parent_name = 4;
+
+  // Line B: Parent's Social Security number.
+  string parent_tin = 5;
+
+  // Line C: Parent's filing status.
+  string parent_filing_status = 6;
+
+  // -- Part I: Child's Net Unearned Income ---------------------------------
+
+  // Line 1: Child's unearned income (interest, dividends, capital gains, taxable scholarships, etc.).
+  common.v1.Money child_unearned_income = 7;
+
+  // Line 2: Statutory threshold ($2,700 for 2025) or $1,350 plus itemized deductions directly connected with unearned income.
+  common.v1.Money unearned_income_threshold_or_deductions = 8;
+
+  // Line 3: Subtract line 2 from line 1 (if zero or less, do not file Form 8615).
+  common.v1.Money unearned_income_above_threshold = 9;
+
+  // Line 4: Child's taxable income from Form 1040 line 15.
+  common.v1.Money child_taxable_income = 10;
+
+  // Line 5: Net unearned income (smaller of line 3 or line 4).
+  common.v1.Money net_unearned_income = 11;
+
+  // -- Part II: Tentative Tax Based on Parent's Tax Rate -------------------
+
+  // Line 6: Parent's taxable income from parent's Form 1040 line 15.
+  common.v1.Money parent_taxable_income = 12;
+
+  // Line 7: Net unearned income of all other children of the parent filing Form 8615.
+  common.v1.Money other_children_net_unearned_income = 13;
+
+  // Line 8: Add lines 5, 6, and 7 (combined parental and children's net unearned taxable income).
+  common.v1.Money combined_taxable_income = 14;
+
+  // Line 9: Tax on line 8 based on parent's filing status.
+  common.v1.Money tax_on_combined_taxable_income = 15;
+
+  // Line 10: Parent's tax from parent's Form 1040 line 16 (on line 6 alone).
+  common.v1.Money parent_tax_alone = 16;
+
+  // Line 11: Subtract line 10 from line 9 (total parental-rate tax on all children's net unearned income).
+  common.v1.Money total_parental_tax_on_children_unearned_income = 17;
+
+  // Line 12a: Add lines 5 and 7 (total net unearned income of all children).
+  common.v1.Money total_children_net_unearned_income = 18;
+
+  // Line 13: Child's share of parental-rate tax (line 11 multiplied by line 5 divided by line 12a).
+  common.v1.Money child_share_of_parental_tax = 19;
+
+  // -- Part III: Child's Tax -----------------------------------------------
+
+  // Line 14: Subtract line 5 from line 4 (child's taxable income other than net unearned income).
+  common.v1.Money child_non_unearned_taxable_income = 20;
+
+  // Line 15: Tax on the amount on line 14 based on the child's filing status.
+  common.v1.Money tax_on_child_non_unearned_income = 21;
+
+  // Line 16: Add lines 13 and 15 (combined parental-rate tax and child-rate tax).
+  common.v1.Money combined_kiddie_tax = 22;
+
+  // Line 17: Tax on child's total taxable income (line 4) at child's own rates without Form 8615.
+  common.v1.Money regular_tax_on_child_taxable_income = 23;
+
+  // Line 18: Child's tax (larger of line 16 or line 17). Carries to child's Form 1040 line 16.
+  common.v1.Money child_tax = 24;
+}

@@ -2,7 +2,7 @@
 
 load("@rules_go//go:def.bzl", "go_test")
 
-# data carries the fifteen mapping.textproto files and the Publication 1220
+# data carries the mapping.textproto files and the Publication 1220
 # fixture into the runfiles tree. The mappings come from the schema packages
 # rather than from copies here, so the test reads the real mappings rather than
 # fixtures written to fit the shape it is testing.
@@ -30,8 +30,11 @@ go_test(
         "//us/federal/v1/form_w2g:mapping.textproto",
         "//us/federal/v1/form_1099_c:mapping.textproto",
         "//us/federal/v1/form_1099_oid:mapping.textproto",
+        "//us/federal/v1/form_1099_patr:mapping.textproto",
         "//us/federal/v1/form_1099_q:mapping.textproto",
         "//us/federal/v1/form_1099_s:mapping.textproto",
+        "//us/federal/v1/form_3921:mapping.textproto",
+        "//us/federal/v1/form_3922:mapping.textproto",
     ],
     deps = [
         "//go/common/v1",
@@ -54,8 +57,11 @@ go_test(
         "//go/us/federal/v1/form_w2g",
         "//go/us/federal/v1/form_1099_c",
         "//go/us/federal/v1/form_1099_oid",
+        "//go/us/federal/v1/form_1099_patr",
         "//go/us/federal/v1/form_1099_q",
         "//go/us/federal/v1/form_1099_s",
+        "//go/us/federal/v1/form_3921",
+        "//go/us/federal/v1/form_3922",
         "@rules_go//go/runfiles",
         "@org_golang_google_protobuf//encoding/prototext",
         "@org_golang_google_protobuf//reflect/protoreflect",

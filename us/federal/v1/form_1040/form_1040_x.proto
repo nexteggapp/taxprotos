@@ -1,0 +1,129 @@
+// Form 1040-X, Amended U.S. Individual Income Tax Return.
+//
+// Used to correct a previously filed Form 1040, 1040-SR, or 1040-NR by showing
+// Column A (original or previously adjusted amount), Column B (net change),
+// and Column C (correct amount) for income, deductions, tax, credits, and
+// payments, along with Part II explanation of changes.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/us/federal/v1/form_1040/form_1040.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form1040X reports an amended U.S. individual income tax return with three-column comparisons (Original, Net Change, Correct).
+message Form1040X {
+  // ThreeColumnLine holds Column A (Original amount), Column B (Net change), and Column C (Correct amount) for a line on Form 1040-X.
+  message ThreeColumnLine {
+    // Column A: Original amount reported or as previously adjusted by the IRS.
+    common.v1.Money original_amount = 1;
+
+    // Column B: Net change — amount of increase or (decrease).
+    common.v1.Money net_change = 2;
+
+    // Column C: Correct amount.
+    common.v1.Money correct_amount = 3;
+  }
+
+  // The calendar or fiscal tax year being amended (e.g., 2025).
+  int32 amended_tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Social Security number of primary taxpayer.
+  string primary_tin = 3;
+
+  // Social Security number of spouse, if applicable.
+  string spouse_tin = 4;
+
+  // Amended filing status on the return.
+  FilingStatus amended_filing_status = 5;
+
+  // -- Income and Deductions (Lines 1 through 5) ---------------------------
+
+  // Line 1: Adjusted gross income.
+  ThreeColumnLine adjusted_gross_income = 6;
+
+  // Line 2: Itemized deductions or standard deduction.
+  ThreeColumnLine deductions = 7;
+
+  // Line 3: Subtract line 2 from line 1.
+  ThreeColumnLine agi_less_deductions = 8;
+
+  // Line 4a: Reserved / Personal exemptions (for pre-2018 or applicable years).
+  ThreeColumnLine exemptions = 9;
+
+  // Line 4b: Qualified business income deduction (Form 8995 or 8995-A).
+  ThreeColumnLine qualified_business_income_deduction = 10;
+
+  // Line 5: Taxable income.
+  ThreeColumnLine taxable_income = 11;
+
+  // -- Tax Liability (Lines 6 through 11) ----------------------------------
+
+  // Line 6: Tax (including Schedule 2 Part I).
+  ThreeColumnLine tax = 12;
+
+  // Line 7: Nonrefundable credits (Form 1040 line 19 plus Schedule 3 Part I).
+  ThreeColumnLine nonrefundable_credits = 13;
+
+  // Line 8: Subtract line 7 from line 6 (if zero or less, enter 0).
+  ThreeColumnLine tax_less_nonrefundable_credits = 14;
+
+  // Line 9: Reserved.
+  ThreeColumnLine line_9_reserved = 15;
+
+  // Line 10: Other taxes (Schedule 2 Part II, including self-employment tax, Additional Medicare Tax, NIIT, etc.).
+  ThreeColumnLine other_taxes = 16;
+
+  // Line 11: Total tax (add lines 8 and 10).
+  ThreeColumnLine total_tax = 17;
+
+  // -- Payments (Lines 12 through 17) --------------------------------------
+
+  // Line 12: Federal income tax withheld and excess social security/tier 1 RRTA tax withheld.
+  ThreeColumnLine federal_income_tax_withheld = 18;
+
+  // Line 13: Estimated tax payments, including amount applied from prior year's return.
+  ThreeColumnLine estimated_tax_payments = 19;
+
+  // Line 14: Earned income credit (EIC).
+  ThreeColumnLine earned_income_credit = 20;
+
+  // Line 15: Refundable credits (Additional Child Tax Credit, American Opportunity Credit, Net Premium Tax Credit, etc.).
+  ThreeColumnLine refundable_credits = 21;
+
+  // Line 16: Total amount paid with request for extension of time to file, tax paid with original return, and additional tax paid after return was filed.
+  common.v1.Money amount_paid_with_extension_and_original_return = 22;
+
+  // Line 17: Total payments (sum of Column C lines 12 through 15 plus line 16).
+  common.v1.Money total_payments = 23;
+
+  // -- Refund or Amount You Owe (Lines 18 through 23) ----------------------
+
+  // Line 18: Overpayment, if any, as shown on original return or as previously adjusted by the IRS.
+  common.v1.Money prior_overpayment = 24;
+
+  // Line 19: Subtract line 18 from line 17 (net payments remaining).
+  common.v1.Money net_payments_remaining = 25;
+
+  // Line 20: Amount you owe (if line 11 Column C is more than line 19, subtract line 19 from line 11 Column C).
+  common.v1.Money amount_you_owe = 26;
+
+  // Line 21: Overpayment (if line 11 Column C is less than line 19, subtract line 11 Column C from line 19).
+  common.v1.Money overpayment = 27;
+
+  // Line 22: Amount of line 21 you want refunded to you.
+  common.v1.Money amount_to_be_refunded = 28;
+
+  // Line 23: Amount of line 21 you want applied to your next year's estimated tax.
+  common.v1.Money amount_applied_to_estimated_tax = 29;
+
+  // -- Part II: Explanation of Changes -------------------------------------
+
+  // Line 24: Explanation of why you are filing Form 1040-X.
+  string explanation_of_changes = 30;
+}

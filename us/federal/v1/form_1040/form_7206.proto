@@ -1,0 +1,65 @@
+// Form 7206, Self-Employed Health Insurance Deduction.
+//
+// Used to figure the amount of the self-employed health insurance deduction to
+// report on Schedule 1 (Form 1040) line 17.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form7206 reports the Self-Employed Health Insurance Deduction calculation.
+message Form7206 {
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Social Security number of filer.
+  string filer_tin = 3;
+
+  // Line 1: Total amount paid during the year for health insurance coverage (other than long-term care) established under the business.
+  common.v1.Money health_insurance_premiums_paid = 4;
+
+  // Line 2: Qualified long-term care insurance premiums paid, limited by age-based statutory caps.
+  common.v1.Money qualified_long_term_care_premiums = 5;
+
+  // Line 3: Total qualified health and long-term care insurance premiums (add lines 1 and 2).
+  common.v1.Money total_qualified_insurance_premiums = 6;
+
+  // Line 4: Net profit and any other earned income from the trade or business under which the insurance plan is established.
+  common.v1.Money business_net_profit_and_earned_income = 7;
+
+  // Line 5: Total net profit and earned income from all trades or businesses (used to prorate Schedule SE deduction when multiple businesses exist).
+  common.v1.Money total_net_profit_from_all_businesses = 8;
+
+  // Line 6: Ratio of line 4 to line 5, or 100% if only one business.
+  common.v1.Money prorated_self_employment_tax_deduction = 9;
+
+  // Line 7: Deductible part of self-employment tax (Schedule 1 line 15) attributable to this business.
+  common.v1.Money attributable_se_tax_deduction = 10;
+
+  // Line 8: Subtract line 7 from line 4.
+  common.v1.Money net_business_income_after_se_tax_deduction = 11;
+
+  // Line 9: Amount of SEP, SIMPLE, or qualified plan contributions (Schedule 1 line 16) attributable to this business.
+  common.v1.Money attributable_retirement_plan_deduction = 12;
+
+  // Line 10: Subtract line 9 from line 8 (earned income limit for self-employed health insurance deduction).
+  common.v1.Money earned_income_limit = 13;
+
+  // Line 11: Smaller of line 3 or line 10.
+  common.v1.Money tentative_deduction_for_plan = 14;
+
+  // Line 12: Deduction from additional Form(s) 7206 if more than one health insurance plan or business.
+  common.v1.Money additional_plans_deduction = 15;
+
+  // Line 13: Net premium tax credit / Form 8962 iterative adjustment if marketplace coverage is included.
+  common.v1.Money form_8962_premium_tax_credit_adjustment = 16;
+
+  // Line 14: Self-employed health insurance deduction (carries to Schedule 1 line 17).
+  common.v1.Money self_employed_health_insurance_deduction = 17;
+}

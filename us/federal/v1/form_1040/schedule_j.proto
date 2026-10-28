@@ -1,0 +1,91 @@
+// Schedule J (Form 1040), Income Averaging for Farmers and Fishermen.
+//
+// Used by individuals engaged in a farming or fishing business to elect to
+// figure their current-year income tax by averaging, over the previous 3 years
+// (base years), all or part of their current-year taxable income from farming
+// or fishing under IRC Section 1301.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// ScheduleJ reports income averaging calculations for farmers and fishermen.
+message ScheduleJ {
+  // The tax year the schedule applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Social Security number of filer.
+  string filer_tin = 3;
+
+  // Line 1: Taxable income from Form 1040 line 15.
+  common.v1.Money current_year_taxable_income = 4;
+
+  // Line 2a: Elected farm income (not exceeding taxable income).
+  common.v1.Money elected_farm_income = 5;
+
+  // Line 2b: Portion of elected farm income on line 2a that is net capital gain.
+  common.v1.Money elected_farm_net_capital_gain = 6;
+
+  // Line 2c: Portion of elected farm income on line 2b that is unrecaptured Section 1250 gain.
+  common.v1.Money elected_farm_unrecaptured_section_1250_gain = 7;
+
+  // Line 3: Subtract line 2a from line 1 (current-year taxable income excluding elected farm income).
+  common.v1.Money taxable_income_less_elected_farm_income = 8;
+
+  // Line 4: Tax on the amount on line 3 using current-year rates.
+  common.v1.Money tax_on_non_averaged_current_year_income = 9;
+
+  // Line 5: Taxable income from 3rd prior base year (or previous Schedule J line 11).
+  common.v1.Money base_year_minus_3_taxable_income = 10;
+
+  // Line 6: Divide line 2a by 3.0 (one-third of elected farm income allocated to each base year).
+  common.v1.Money one_third_of_elected_farm_income = 11;
+
+  // Line 7: Combine lines 5 and 6 (recomputed taxable income for 3rd prior base year).
+  common.v1.Money base_year_minus_3_recomputed_taxable_income = 12;
+
+  // Line 8: Tax on line 7 using 3rd prior base year tax rates and brackets.
+  common.v1.Money base_year_minus_3_recomputed_tax = 13;
+
+  // Line 9: Taxable income from 2nd prior base year (or previous Schedule J).
+  common.v1.Money base_year_minus_2_taxable_income = 14;
+
+  // Line 11: Combine lines 9 and 10 (recomputed taxable income for 2nd prior base year).
+  common.v1.Money base_year_minus_2_recomputed_taxable_income = 15;
+
+  // Line 12: Tax on line 11 using 2nd prior base year tax rates and brackets.
+  common.v1.Money base_year_minus_2_recomputed_tax = 16;
+
+  // Line 13: Taxable income from 1st prior base year (or previous Schedule J).
+  common.v1.Money base_year_minus_1_taxable_income = 17;
+
+  // Line 15: Combine lines 13 and 14 (recomputed taxable income for 1st prior base year).
+  common.v1.Money base_year_minus_1_recomputed_taxable_income = 18;
+
+  // Line 16: Tax on line 15 using 1st prior base year tax rates and brackets.
+  common.v1.Money base_year_minus_1_recomputed_tax = 19;
+
+  // Line 17: Add lines 4, 8, 12, and 16.
+  common.v1.Money combined_current_and_recomputed_base_year_taxes = 20;
+
+  // Line 19: Tax from 3rd prior base year return before this year's averaging.
+  common.v1.Money base_year_minus_3_prior_tax = 21;
+
+  // Line 20: Tax from 2nd prior base year return before this year's averaging.
+  common.v1.Money base_year_minus_2_prior_tax = 22;
+
+  // Line 21: Tax from 1st prior base year return before this year's averaging.
+  common.v1.Money base_year_minus_1_prior_tax = 23;
+
+  // Line 22: Add lines 19, 20, and 21 (total prior base year taxes).
+  common.v1.Money total_prior_base_year_taxes = 24;
+
+  // Line 23: Income averaging tax (subtract line 22 from line 18). Carries to Form 1040 line 16 (Schedule J box checked).
+  common.v1.Money averaged_income_tax = 25;
+}

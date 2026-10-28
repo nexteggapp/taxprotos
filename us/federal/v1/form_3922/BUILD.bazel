@@ -1,0 +1,18 @@
+# gazelle:ignore
+
+load("@protobuf//bazel:proto_library.bzl", "proto_library")
+
+proto_library(
+    name = "form_3922_proto",
+    import_prefix = "taxprotos",
+    srcs = ["form_3922.proto"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//common/v1:common_proto",
+    ],
+)
+
+exports_files([
+    "form_3922.proto",
+    "mapping.textproto",
+])
