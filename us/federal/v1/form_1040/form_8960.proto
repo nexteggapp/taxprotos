@@ -1,0 +1,108 @@
+// Form 8960, Net Investment Income Tax—Individuals, Estates, and Trusts.
+//
+// Used to figure the 3.8% Net Investment Income Tax (NIIT) under IRC Section
+// 1411 on the lesser of net investment income or the excess of modified
+// adjusted gross income over the statutory threshold.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form8960 reports the Net Investment Income Tax across Parts I, II, and III.
+message Form8960 {
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Social Security number or EIN of filer.
+  string filer_tin = 3;
+
+  // Checkbox: Section 6013(g) or 6013(h) election, or Regulations section 1.1411-10(g) election.
+  bool section_1411_election = 4;
+
+  // -- Part I: Investment Income -------------------------------------------
+
+  // Line 1: Taxable interest (Form 1040 line 2b).
+  common.v1.Money taxable_interest = 5;
+
+  // Line 2: Ordinary dividends (Form 1040 line 3b).
+  common.v1.Money ordinary_dividends = 6;
+
+  // Line 3: Annuities from nonqualified plans.
+  common.v1.Money nonqualified_annuities = 7;
+
+  // Line 4a: Rental real estate, royalties, partnerships, S corporations, trusts, etc. (Schedule E).
+  common.v1.Money rental_royalty_and_passthrough_income = 8;
+
+  // Line 4b: Adjustment for net income or loss derived in the ordinary course of a non-Section 1411 trade or business.
+  common.v1.Money nonpassive_trade_or_business_adjustment = 9;
+
+  // Line 4c: Combine lines 4a and 4b (net passive and trading income/loss).
+  common.v1.Money net_passive_and_rental_income = 10;
+
+  // Line 5a: Net gain or loss from disposition of property from Schedule D and Form 4797.
+  common.v1.Money net_gain_or_loss_from_dispositions = 11;
+
+  // Line 5b: Net gain or loss from disposition of property that is not subject to Net Investment Income Tax.
+  common.v1.Money excluded_active_business_disposition_gain_or_loss = 12;
+
+  // Line 5c: Adjustment from disposition of partnership interest or S corporation stock.
+  common.v1.Money passthrough_interest_disposition_adjustment = 13;
+
+  // Line 5d: Combine lines 5a through 5c.
+  common.v1.Money net_investment_gain_or_loss_from_dispositions = 14;
+
+  // Line 6: Adjustments to investment income for certain CFCs and PFICs.
+  common.v1.Money cfc_and_pfic_adjustments = 15;
+
+  // Line 7: Other modifications to investment income.
+  common.v1.Money other_investment_income_modifications = 16;
+
+  // Line 8: Total investment income (combine lines 1, 2, 3, 4c, 5d, 6, and 7).
+  common.v1.Money total_investment_income = 17;
+
+  // -- Part II: Investment Expenses Allocable to Investment Income ---------
+
+  // Line 9a: Investment interest expense (from Form 4952 line 8).
+  common.v1.Money investment_interest_expense = 18;
+
+  // Line 9b: State, local, and foreign income tax allocable to net investment income.
+  common.v1.Money allocable_state_local_and_foreign_income_tax = 19;
+
+  // Line 9c: Miscellaneous investment expenses.
+  common.v1.Money miscellaneous_investment_expenses = 20;
+
+  // Line 9d: Add lines 9a, 9b, and 9c.
+  common.v1.Money subtotal_investment_expenses = 21;
+
+  // Line 10: Additional modifications to investment expenses (such as early withdrawal penalty or AMT adjustments).
+  common.v1.Money additional_investment_expense_modifications = 22;
+
+  // Line 11: Total deductions and modifications (add lines 9d and 10).
+  common.v1.Money total_investment_deductions_and_modifications = 23;
+
+  // -- Part III: Tax Computation -------------------------------------------
+
+  // Line 12: Net investment income (subtract line 11 from line 8; if zero or less, enter 0).
+  common.v1.Money net_investment_income = 24;
+
+  // Line 13: Modified adjusted gross income for individuals (AGI plus net foreign earned income exclusion adjustment).
+  common.v1.Money modified_adjusted_gross_income = 25;
+
+  // Line 14: Threshold based on filing status ($250,000 MFJ/QSS, $125,000 MFS, $200,000 Single/HOH).
+  common.v1.Money threshold_amount = 26;
+
+  // Line 15: Subtract line 14 from line 13 (if zero or less, enter 0).
+  common.v1.Money magi_above_threshold = 27;
+
+  // Line 16: Smaller of line 12 or line 15 (amount subject to Net Investment Income Tax).
+  common.v1.Money amount_subject_to_niit = 28;
+
+  // Line 17: Net Investment Income Tax for individuals (multiply line 16 by 3.8% (0.038)). Carries to Schedule 2 line 12.
+  common.v1.Money net_investment_income_tax = 29;
+}

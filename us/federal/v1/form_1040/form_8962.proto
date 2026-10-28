@@ -1,0 +1,188 @@
+// Form 8962, Premium Tax Credit (PTC).
+//
+// Used to figure the amount of the Premium Tax Credit (PTC) and reconcile it
+// with any advance payment of the premium tax credit (APTC) reported on Form
+// 1095-A.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/quantity.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form8962 reports the Premium Tax Credit and advance payment reconciliation across Parts I through V.
+message Form8962 {
+  // MonthlyCalculationRow represents one month (lines 12 through 23) in Part II.
+  message MonthlyCalculationRow {
+    // Calendar month (1 for January through 12 for December).
+    int32 month = 1;
+
+    // Column (a): Monthly enrollment premiums (Form 1095-A lines 21-32 column A).
+    common.v1.Money monthly_enrollment_premiums = 2;
+
+    // Column (b): Monthly applicable SLCSP premium (Form 1095-A lines 21-32 column B).
+    common.v1.Money monthly_slcsp_premium = 3;
+
+    // Column (c): Monthly contribution amount (line 8b or alternative monthly calculation).
+    common.v1.Money monthly_contribution_amount = 4;
+
+    // Column (d): Monthly maximum premium assistance (column (b) minus column (c); if zero or less, enter 0).
+    common.v1.Money monthly_maximum_premium_assistance = 5;
+
+    // Column (e): Monthly premium tax credit allowed (smaller of column (a) or column (d)).
+    common.v1.Money monthly_premium_tax_credit_allowed = 6;
+
+    // Column (f): Monthly advance payment of PTC (Form 1095-A lines 21-32 column C).
+    common.v1.Money monthly_advance_ptc = 7;
+  }
+
+  // SharedPolicyAllocation represents one shared policy allocation in Part IV (lines 30 through 33).
+  message SharedPolicyAllocation {
+    // Column (a): Policy number (Form 1095-A line 2).
+    string policy_number = 1;
+
+    // Column (b): SSN of other taxpayer sharing the policy.
+    string other_taxpayer_ssn = 2;
+
+    // Column (c): Allocation start month (1 through 12).
+    int32 start_month = 3;
+
+    // Column (d): Allocation stop month (1 through 12).
+    int32 stop_month = 4;
+
+    // Column (e): Enrollee premium allocation percentage.
+    common.v1.Quantity premium_allocation_percentage = 5;
+
+    // Column (f): SLCSP premium allocation percentage.
+    common.v1.Quantity slcsp_allocation_percentage = 6;
+
+    // Column (g): Advance payment of the PTC allocation percentage.
+    common.v1.Quantity aptc_allocation_percentage = 7;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Social Security number of filer.
+  string filer_tin = 3;
+
+  // -- Part I: Annual and Monthly Contribution Amount ----------------------
+
+  // Line 1: Tax family size (total number of individuals in the tax family).
+  int32 tax_family_size = 4;
+
+  // Line 2a: Modified AGI of taxpayer (and spouse if filing jointly).
+  common.v1.Money taxpayer_modified_agi = 5;
+
+  // Line 2b: Total of all dependents' modified AGI (when required to file).
+  common.v1.Money dependents_modified_agi = 6;
+
+  // Line 3: Household income (add lines 2a and 2b).
+  common.v1.Money household_income = 7;
+
+  // Line 4: Federal poverty line (FPL) amount for tax family size and state of residence.
+  common.v1.Money federal_poverty_line_amount = 8;
+
+  // Line 4 checkbox: Location code for state of residence (50 states/DC, Alaska, or Hawaii).
+  string poverty_line_state_category = 9;
+
+  // Line 5: Household income as a percentage of federal poverty line (whole percent).
+  int32 household_income_fpl_percentage = 10;
+
+  // Line 7: Applicable figure from table based on line 5 percentage.
+  common.v1.Quantity applicable_figure = 11;
+
+  // Line 8a: Annual contribution amount (multiply line 3 by line 7, rounded to nearest whole dollar).
+  common.v1.Money annual_contribution_amount = 12;
+
+  // Line 8b: Monthly contribution amount (divide line 8a by 12, rounded to nearest whole dollar).
+  common.v1.Money monthly_contribution_amount = 13;
+
+  // -- Part II: Premium Tax Credit Claim and Reconciliation of APTC --------
+
+  // Line 9: Are you allocating policy amounts with another taxpayer or using the alternative calculation for year of marriage.
+  bool allocating_policy_or_alternative_marriage_calculation = 14;
+
+  // Line 10: Did all Form(s) 1095-A cover the full 12 months with no changes in monthly amounts.
+  bool full_year_coverage_with_uniform_monthly_amounts = 15;
+
+  // Line 11 column (a): Annual enrollment premiums (Form 1095-A line 33A).
+  common.v1.Money annual_enrollment_premiums = 16;
+
+  // Line 11 column (b): Annual applicable SLCSP premium (Form 1095-A line 33B).
+  common.v1.Money annual_slcsp_premium = 17;
+
+  // Line 11 column (c): Annual contribution amount from line 8a.
+  common.v1.Money annual_contribution_column_c = 18;
+
+  // Line 11 column (d): Annual maximum premium assistance (column (b) minus column (c)).
+  common.v1.Money annual_maximum_premium_assistance = 19;
+
+  // Line 11 column (e): Annual premium tax credit allowed (smaller of column (a) or column (d)).
+  common.v1.Money annual_premium_tax_credit_allowed = 20;
+
+  // Line 11 column (f): Annual advance payment of PTC (Form 1095-A line 33C).
+  common.v1.Money annual_advance_ptc = 21;
+
+  // Lines 12 through 23: Monthly calculation rows when line 10 is "No".
+  repeated MonthlyCalculationRow monthly_rows = 22;
+
+  // Line 24: Total premium tax credit (line 11(e) or sum of lines 12(e) through 23(e)).
+  common.v1.Money total_premium_tax_credit = 23;
+
+  // Line 25: Total advance payment of PTC (line 11(f) or sum of lines 12(f) through 23(f)).
+  common.v1.Money total_advance_ptc = 24;
+
+  // Line 26: Net premium tax credit (if line 24 is greater than line 25, subtract line 25 from line 24). Carries to Schedule 3 line 9.
+  common.v1.Money net_premium_tax_credit = 25;
+
+  // -- Part III: Repayment of Excess Advance Payment of the PTC ------------
+
+  // Line 27: Excess advance payment of PTC (if line 25 is greater than line 24, subtract line 24 from line 25).
+  common.v1.Money excess_advance_ptc = 26;
+
+  // Line 28: Repayment limitation from instructions (if household income is below 400% FPL).
+  common.v1.Money repayment_limitation = 27;
+
+  // Line 29: Excess advance premium tax credit repayment (smaller of line 27 or line 28). Carries to Schedule 2 line 1a.
+  common.v1.Money excess_advance_ptc_repayment = 28;
+
+  // -- Part IV: Allocation of Policy Amounts -------------------------------
+
+  // Lines 30 through 33: Shared policy allocations.
+  repeated SharedPolicyAllocation shared_policy_allocations = 29;
+
+  // Line 34: Have you completed all policy amount allocations on lines 30 through 33.
+  bool completed_shared_policy_allocations = 30;
+
+  // -- Part V: Alternative Calculation for Year of Marriage ----------------
+
+  // Line 35 column (a): Taxpayer's alternative family size prior to marriage.
+  int32 alternative_taxpayer_family_size = 31;
+
+  // Line 35 column (b): Taxpayer's alternative monthly contribution amount.
+  common.v1.Money alternative_taxpayer_monthly_contribution = 32;
+
+  // Line 35 column (c): Alternative start month for taxpayer.
+  int32 alternative_taxpayer_start_month = 33;
+
+  // Line 35 column (d): Alternative stop month for taxpayer.
+  int32 alternative_taxpayer_stop_month = 34;
+
+  // Line 36 column (a): Spouse's alternative family size prior to marriage.
+  int32 alternative_spouse_family_size = 35;
+
+  // Line 36 column (b): Spouse's alternative monthly contribution amount.
+  common.v1.Money alternative_spouse_monthly_contribution = 36;
+
+  // Line 36 column (c): Alternative start month for spouse.
+  int32 alternative_spouse_start_month = 37;
+
+  // Line 36 column (d): Alternative stop month for spouse.
+  int32 alternative_spouse_stop_month = 38;
+}

@@ -1,0 +1,146 @@
+// Form 6251, Alternative Minimum Tax—Individuals.
+//
+// Used to figure the amount, if any, of Alternative Minimum Tax (AMT) an
+// individual owes on Schedule 2 (Form 1040) line 1.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form6251 reports the Alternative Minimum Tax for individuals across Parts I, II, and III.
+message Form6251 {
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on Form 1040.
+  string filer_name = 2;
+
+  // Social Security number of filer.
+  string filer_tin = 3;
+
+  // -- Part I: Alternative Minimum Taxable Income (AMTI) -------------------
+
+  // Line 1: Taxable income from Form 1040 line 15 (or before net operating loss deduction).
+  common.v1.Money regular_taxable_income = 4;
+
+  // Line 2a: Taxes from Schedule A line 7, or standard deduction from Form 1040 line 12.
+  common.v1.Money state_and_local_tax_or_standard_deduction = 5;
+
+  // Line 2b: Tax refund from Schedule 1 line 1 or line 8z.
+  common.v1.Money state_and_local_tax_refund_adjustment = 6;
+
+  // Line 2c: Investment interest expense difference between regular tax and AMT (Form 4952).
+  common.v1.Money investment_interest_expense_adjustment = 7;
+
+  // Line 2d: Depletion difference between regular tax and AMT.
+  common.v1.Money depletion_adjustment = 8;
+
+  // Line 2e: Regular tax net operating loss deduction.
+  common.v1.Money regular_tax_nol_deduction = 9;
+
+  // Line 2f: Alternative tax net operating loss deduction (ATNOLD).
+  common.v1.Money alternative_tax_nol_deduction = 10;
+
+  // Line 2g: Interest from specified private activity bonds exempt from regular tax.
+  common.v1.Money private_activity_bond_interest = 11;
+
+  // Line 2h: Qualified small business stock exclusion under Section 1202 (7% preference for stock acquired before Sep 28, 2010).
+  common.v1.Money qualified_small_business_stock_preference = 12;
+
+  // Line 2i: Exercise of incentive stock options (ISO bargain element under Section 422: FMV on exercise minus exercise price).
+  common.v1.Money incentive_stock_option_exercise_adjustment = 13;
+
+  // Line 2j: Estates and trusts (amount from Schedule K-1 (Form 1041) box 12 code A).
+  common.v1.Money estates_and_trusts_amt_adjustment = 14;
+
+  // Line 2k: Disposition of property (difference between AMT and regular tax gain or loss, including ISO stock sales).
+  common.v1.Money disposition_of_property_adjustment = 15;
+
+  // Line 2l: Depreciation on assets placed in service after 1986 (difference between regular tax and AMT depreciation).
+  common.v1.Money post_1986_depreciation_adjustment = 16;
+
+  // Line 2m: Passive activities (difference between AMT and regular tax income or loss).
+  common.v1.Money passive_activities_adjustment = 17;
+
+  // Line 2n: Loss limitations (difference between AMT and regular tax at-risk/basis limits).
+  common.v1.Money loss_limitations_adjustment = 18;
+
+  // Line 2o: Circulation costs adjustment.
+  common.v1.Money circulation_costs_adjustment = 19;
+
+  // Line 2p: Long-term contracts adjustment.
+  common.v1.Money long_term_contracts_adjustment = 20;
+
+  // Line 2q: Mining costs adjustment.
+  common.v1.Money mining_costs_adjustment = 21;
+
+  // Line 2r: Research and experimental costs adjustment.
+  common.v1.Money research_and_experimental_costs_adjustment = 22;
+
+  // Line 2s: Installment sales of certain property adjustment.
+  common.v1.Money installment_sales_adjustment = 23;
+
+  // Line 2t: Intangible drilling costs preference.
+  common.v1.Money intangible_drilling_costs_preference = 24;
+
+  // Line 3: Other adjustments, including income-based related adjustments.
+  common.v1.Money other_amt_adjustments = 25;
+
+  // Line 4: Alternative minimum taxable income (combine lines 1 through 3).
+  common.v1.Money alternative_minimum_taxable_income = 26;
+
+  // -- Part II: Alternative Minimum Tax (AMT) ------------------------------
+
+  // Line 5: AMT exemption amount after phaseout (from instructions or Exemption Worksheet).
+  common.v1.Money amt_exemption_amount = 27;
+
+  // Line 6: Subtract line 5 from line 4 (if zero or less, enter 0).
+  common.v1.Money taxable_excess_amti = 28;
+
+  // Line 7: Tentative minimum tax before foreign tax credit (26% up to threshold, 28% above, or from Part III line 40).
+  common.v1.Money tentative_minimum_tax_before_ftc = 29;
+
+  // Line 8: Alternative minimum tax foreign tax credit (AMTFTC).
+  common.v1.Money amt_foreign_tax_credit = 30;
+
+  // Line 9: Tentative minimum tax (subtract line 8 from line 7).
+  common.v1.Money tentative_minimum_tax = 31;
+
+  // Line 10: Regular tax liability before credits (Form 1040 line 16 minus excess advance PTC, less foreign tax credit).
+  common.v1.Money regular_tax_for_amt_comparison = 32;
+
+  // Line 11: Alternative minimum tax (subtract line 10 from line 9; if zero or less, enter 0). Carries to Schedule 2 line 1.
+  common.v1.Money alternative_minimum_tax = 33;
+
+  // -- Part III: Tax Computation Using Maximum Capital Gains Rates ---------
+
+  // Line 12: Enter the amount from Form 6251 line 6.
+  common.v1.Money part_iii_taxable_excess_amti = 34;
+
+  // Line 13: Net capital gain and qualified dividends for AMT.
+  common.v1.Money amt_qualified_dividends_and_net_capital_gain = 35;
+
+  // Line 14: Unrecaptured Section 1250 gain for AMT.
+  common.v1.Money amt_unrecaptured_section_1250_gain = 36;
+
+  // Line 15: Add lines 13 and 14 (or smaller of capital gain and AMTI).
+  common.v1.Money total_amt_capital_gain_subject_to_preferential_rates = 37;
+
+  // Line 36: AMT on ordinary AMTI portion (26% / 28% rates).
+  common.v1.Money amt_on_ordinary_amti = 38;
+
+  // Line 37: AMT on capital gains at 0%, 15%, 20%, and 25% rates.
+  common.v1.Money amt_on_capital_gains = 39;
+
+  // Line 38: Add lines 36 and 37.
+  common.v1.Money combined_ordinary_and_capital_gain_amt = 40;
+
+  // Line 39: AMT on total line 12 at ordinary 26%/28% rates without capital gain preferential rates.
+  common.v1.Money full_ordinary_rate_amt = 41;
+
+  // Line 40: Smaller of line 38 or line 39 (carries to line 7).
+  common.v1.Money part_iii_tentative_minimum_tax = 42;
+}

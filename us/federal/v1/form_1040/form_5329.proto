@@ -1,0 +1,147 @@
+// Form 5329, Additional Taxes on Qualified Plans (Including IRAs) and Other
+// Tax-Favored Accounts.
+//
+// Filed per individual to report additional taxes on early distributions (Part I),
+// non-qualified Coverdell ESA/QTP/ABLE distributions (Part II), excess
+// contributions to traditional IRAs (Part III), Roth IRAs (Part IV), Coverdell
+// ESAs (Part V), Archer MSAs (Part VI), HSAs (Part VII), ABLE accounts
+// (Part VIII), and failure to take required minimum distributions (Part IX).
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form5329 reports additional taxes on qualified retirement plans, IRAs, HSAs, 529/Coverdell/ABLE accounts, and RMDs across Parts I through IX.
+message Form5329 {
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name of individual subject to additional tax (one Form 5329 per person).
+  string individual_name = 2;
+
+  // Social Security number of the individual.
+  string individual_tin = 3;
+
+  // -- Part I: Additional Tax on Early Distributions -----------------------
+
+  // Line 1: Early distributions includible in income (other than SIMPLE IRA distributions in first 2 years) that do not have an exception code on Form 1099-R.
+  common.v1.Money early_distributions_includible_in_income = 4;
+
+  // Line 2: Exception code (01 through 23) applicable to early distributions.
+  string early_distribution_exception_code = 5;
+
+  // Line 2: Early distributions not subject to the additional 10% tax due to a statutory exception.
+  common.v1.Money early_distributions_exempt_from_tax = 6;
+
+  // Line 3: Amount subject to 10% additional tax (subtract line 2 from line 1).
+  common.v1.Money early_distributions_subject_to_ten_percent_tax = 7;
+
+  // Line 4: Additional tax on early distributions (10% of line 3, plus 25% of early SIMPLE IRA distributions within first 2 years). Carries to Schedule 2 line 8.
+  common.v1.Money additional_tax_on_early_distributions = 8;
+
+  // -- Part II: Additional Tax on Certain Distributions From Education (529/Coverdell) and ABLE Accounts -
+
+  // Line 5: Distributions included in income from a Coverdell ESA, QTP (529), or ABLE account.
+  common.v1.Money taxable_education_or_able_distributions = 9;
+
+  // Line 6: Distributions on line 5 that are not subject to the additional 10% tax (due to scholarship, death, disability, etc.).
+  common.v1.Money exempt_education_or_able_distributions = 10;
+
+  // Line 7: Amount subject to additional 10% tax (subtract line 6 from line 5).
+  common.v1.Money education_or_able_distributions_subject_to_tax = 11;
+
+  // Line 8: Additional tax (10% of line 7). Carries to Schedule 2 line 8.
+  common.v1.Money additional_tax_on_education_or_able_distributions = 12;
+
+  // -- Part III: Additional Tax on Excess Contributions to Traditional IRAs -
+
+  // Line 9: Excess contributions from prior year's Form 5329 line 16.
+  common.v1.Money prior_year_traditional_ira_excess_contributions = 13;
+
+  // Line 14: Prior year excess contributions still remaining after current-year under-contributions and distributions.
+  common.v1.Money remaining_prior_traditional_ira_excess = 14;
+
+  // Line 15: Current year excess traditional IRA contributions.
+  common.v1.Money current_year_traditional_ira_excess_contributions = 15;
+
+  // Line 16: Total excess traditional IRA contributions (add lines 14 and 15).
+  common.v1.Money total_traditional_ira_excess_contributions = 16;
+
+  // Line 17: Additional tax on excess traditional IRA contributions (6% of the smaller of line 16 or year-end traditional IRA value). Carries to Schedule 2 line 8.
+  common.v1.Money additional_tax_on_traditional_ira_excess = 17;
+
+  // -- Part IV: Additional Tax on Excess Contributions to Roth IRAs --------
+
+  // Line 18: Excess Roth IRA contributions from prior year's Form 5329 line 24.
+  common.v1.Money prior_year_roth_ira_excess_contributions = 18;
+
+  // Line 22: Prior year excess Roth IRA contributions remaining after current-year absorption and withdrawals.
+  common.v1.Money remaining_prior_roth_ira_excess = 19;
+
+  // Line 23: Current year excess Roth IRA contributions.
+  common.v1.Money current_year_roth_ira_excess_contributions = 20;
+
+  // Line 24: Total excess Roth IRA contributions (add lines 22 and 23).
+  common.v1.Money total_roth_ira_excess_contributions = 21;
+
+  // Line 25: Additional tax on excess Roth IRA contributions (6% of the smaller of line 24 or year-end Roth IRA value). Carries to Schedule 2 line 8.
+  common.v1.Money additional_tax_on_roth_ira_excess = 22;
+
+  // -- Part V: Additional Tax on Excess Contributions to Coverdell ESAs ----
+
+  // Line 32: Total excess Coverdell ESA contributions.
+  common.v1.Money total_coverdell_esa_excess_contributions = 23;
+
+  // Line 33: Additional tax on excess Coverdell ESA contributions (6% of smaller of line 32 or year-end value). Carries to Schedule 2 line 8.
+  common.v1.Money additional_tax_on_coverdell_esa_excess = 24;
+
+  // -- Part VI: Additional Tax on Excess Contributions to Archer MSAs ------
+
+  // Line 40: Total excess Archer MSA contributions.
+  common.v1.Money total_archer_msa_excess_contributions = 25;
+
+  // Line 41: Additional tax on excess Archer MSA contributions (6% of smaller of line 40 or year-end value). Carries to Schedule 2 line 8.
+  common.v1.Money additional_tax_on_archer_msa_excess = 26;
+
+  // -- Part VII: Additional Tax on Excess Contributions to Health Savings Accounts (HSAs) -
+
+  // Line 42: Excess HSA contributions from prior year's Form 5329 line 48.
+  common.v1.Money prior_year_hsa_excess_contributions = 27;
+
+  // Line 46: Prior year excess HSA contributions remaining after current-year absorption and withdrawals.
+  common.v1.Money remaining_prior_hsa_excess = 28;
+
+  // Line 47: Current year excess HSA contributions.
+  common.v1.Money current_year_hsa_excess_contributions = 29;
+
+  // Line 48: Total excess HSA contributions (add lines 46 and 47).
+  common.v1.Money total_hsa_excess_contributions = 30;
+
+  // Line 49: Additional tax on excess HSA contributions (6% of smaller of line 48 or year-end HSA value). Carries to Schedule 2 line 8.
+  common.v1.Money additional_tax_on_hsa_excess = 31;
+
+  // -- Part VIII: Additional Tax on Excess Contributions to ABLE Accounts --
+
+  // Line 50: Excess contributions made to your ABLE account in the current tax year.
+  common.v1.Money current_year_able_excess_contributions = 32;
+
+  // Line 51: Additional tax on excess ABLE contributions (6% of smaller of line 50 or year-end ABLE value). Carries to Schedule 2 line 8.
+  common.v1.Money additional_tax_on_able_excess = 33;
+
+  // -- Part IX: Additional Tax on Excess Accumulation in Qualified Retirement Plans (Including IRAs) -
+
+  // Line 52: Minimum required distribution (RMD) for the current tax year.
+  common.v1.Money required_minimum_distribution = 34;
+
+  // Line 53: Amount actually distributed to you in the current tax year.
+  common.v1.Money amount_actually_distributed = 35;
+
+  // Line 54: Subtract line 53 from line 52 (net RMD shortfall after any reasonable-error waiver or reduced 10% correction window).
+  common.v1.Money net_rmd_shortfall_subject_to_tax = 36;
+
+  // Line 55: Additional tax on excess accumulation (25% of shortfall, or 10% if corrected within the statutory correction window under SECURE 2.0). Carries to Schedule 2 line 8.
+  common.v1.Money additional_tax_on_rmd_shortfall = 37;
+}

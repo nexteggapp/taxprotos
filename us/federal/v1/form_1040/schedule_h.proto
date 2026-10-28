@@ -1,0 +1,94 @@
+// Schedule H (Form 1040), Household Employment Taxes.
+//
+// Used by household employers to report social security, Medicare, Additional
+// Medicare, federal income tax withholding, and federal unemployment (FUTA)
+// taxes on cash wages paid to household employees (such as nannies,
+// housekeepers, and caregivers).
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// ScheduleH reports household employment taxes (Social Security, Medicare, withholding, and FUTA) across Parts I, II, and III.
+message ScheduleH {
+  // The tax year the schedule applies to.
+  int32 tax_year = 1;
+
+  // Name of employer shown on return.
+  string employer_name = 2;
+
+  // Social Security number of employer.
+  string employer_tin = 3;
+
+  // Employer identification number (EIN) of household employer.
+  string employer_ein = 4;
+
+  // Question A: Did you pay any one household employee cash wages of the annual threshold ($2,800 for 2025) or more in the tax year.
+  bool paid_cash_wages_above_fica_threshold = 5;
+
+  // Question B: Did you withhold federal income tax during the tax year for any household employee.
+  bool withheld_federal_income_tax = 6;
+
+  // Question C: Did you pay total cash wages of $1,000 or more in any calendar quarter of the current or prior tax year to all household employees.
+  bool paid_quarterly_cash_wages_above_futa_threshold = 7;
+
+  // -- Part I: Social Security, Medicare, and Federal Income Taxes ---------
+
+  // Line 1a: Total cash wages subject to social security tax.
+  common.v1.Money cash_wages_subject_to_social_security = 8;
+
+  // Line 2a: Social security tax (multiply line 1a by 12.4% (0.124)).
+  common.v1.Money social_security_tax = 9;
+
+  // Line 3: Total cash wages subject to Medicare tax.
+  common.v1.Money cash_wages_subject_to_medicare = 10;
+
+  // Line 4: Medicare tax (multiply line 3 by 2.9% (0.029)).
+  common.v1.Money medicare_tax = 11;
+
+  // Line 5: Total cash wages subject to Additional Medicare Tax withholding (wages paid to an employee in excess of $200,000).
+  common.v1.Money cash_wages_subject_to_additional_medicare = 12;
+
+  // Line 6: Additional Medicare Tax withholding (multiply line 5 by 0.9% (0.009)).
+  common.v1.Money additional_medicare_tax_withholding = 13;
+
+  // Line 7: Federal income tax withheld, if any, for household employees.
+  common.v1.Money federal_income_tax_withheld = 14;
+
+  // Line 8a: Total social security, Medicare, and federal income taxes (add lines 2a, 4, 6, and 7).
+  common.v1.Money total_fica_and_withheld_income_taxes = 15;
+
+  // -- Part II: Federal Unemployment (FUTA) Tax ----------------------------
+
+  // Line 10: Did you pay all state unemployment contributions for the tax year by the due date of the return.
+  bool paid_state_unemployment_timely = 16;
+
+  // Line 13: Two-letter postal code of state where state unemployment contributions were paid.
+  string state_postal_code = 17;
+
+  // Line 14: Total cash wages subject to FUTA tax (up to $7,000 per household employee).
+  common.v1.Money cash_wages_subject_to_futa = 18;
+
+  // Line 15: FUTA tax when qualifying for full 5.4% credit reduction (multiply line 14 by 0.6% (0.006)).
+  common.v1.Money net_futa_tax_section_a = 19;
+
+  // Line 16: Gross FUTA tax before state credit when completing Section B (multiply line 14 by 6.0% (0.06)).
+  common.v1.Money gross_futa_tax_section_b = 20;
+
+  // Line 23: Credit for state unemployment contributions paid (up to 5.4% of FUTA wages).
+  common.v1.Money state_unemployment_credit = 21;
+
+  // Line 24: Total FUTA tax (line 15, or line 16 minus line 23 plus any credit reduction state add-back).
+  common.v1.Money total_futa_tax = 22;
+
+  // -- Part III: Total Household Employment Taxes --------------------------
+
+  // Line 25: Enter the amount from line 8a.
+  common.v1.Money part_iii_fica_and_income_taxes = 23;
+
+  // Line 26: Total household employment taxes (add line 24 and line 25). Carries to Schedule 2 line 9.
+  common.v1.Money total_household_employment_taxes = 24;
+}

@@ -1,0 +1,78 @@
+// Form 8880, Credit for Qualified Retirement Savings Contributions.
+//
+// Used to figure the Saver's Credit for qualified contributions to traditional
+// and Roth IRAs, 401(k)/403(b)/457/Thrift Savings Plans, and ABLE accounts.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/quantity.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form8880 reports the Credit for Qualified Retirement Savings Contributions (Saver's Credit).
+message Form8880 {
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Social Security number of filer.
+  string filer_tin = 3;
+
+  // Line 1 column (a): Traditional and Roth IRA contributions, and ABLE account contributions for taxpayer.
+  common.v1.Money taxpayer_ira_and_able_contributions = 4;
+
+  // Line 1 column (b): Traditional and Roth IRA contributions, and ABLE account contributions for spouse.
+  common.v1.Money spouse_ira_and_able_contributions = 5;
+
+  // Line 2 column (a): Elective deferrals to 401(k), 403(b), governmental 457(b), SEP, SIMPLE, or TSP for taxpayer.
+  common.v1.Money taxpayer_elective_deferrals = 6;
+
+  // Line 2 column (b): Elective deferrals to 401(k), 403(b), governmental 457(b), SEP, SIMPLE, or TSP for spouse.
+  common.v1.Money spouse_elective_deferrals = 7;
+
+  // Line 3 column (a): Total contributions for taxpayer (add lines 1(a) and 2(a)).
+  common.v1.Money taxpayer_total_contributions = 8;
+
+  // Line 3 column (b): Total contributions for spouse (add lines 1(b) and 2(b)).
+  common.v1.Money spouse_total_contributions = 9;
+
+  // Line 4 column (a): Certain distributions received during the testing period by taxpayer.
+  common.v1.Money taxpayer_testing_period_distributions = 10;
+
+  // Line 4 column (b): Certain distributions received during the testing period by spouse.
+  common.v1.Money spouse_testing_period_distributions = 11;
+
+  // Line 5 column (a): Net eligible contributions for taxpayer (subtract line 4(a) from line 3(a); if zero or less, enter 0).
+  common.v1.Money taxpayer_net_contributions = 12;
+
+  // Line 5 column (b): Net eligible contributions for spouse (subtract line 4(b) from line 3(b); if zero or less, enter 0).
+  common.v1.Money spouse_net_contributions = 13;
+
+  // Line 6 column (a): Smaller of line 5(a) or $2,000 for taxpayer.
+  common.v1.Money taxpayer_capped_contributions = 14;
+
+  // Line 6 column (b): Smaller of line 5(b) or $2,000 for spouse.
+  common.v1.Money spouse_capped_contributions = 15;
+
+  // Line 7: Total eligible contributions (add lines 6(a) and 6(b)).
+  common.v1.Money total_capped_contributions = 16;
+
+  // Line 8: Adjusted gross income from Form 1040 line 11.
+  common.v1.Money adjusted_gross_income = 17;
+
+  // Line 9: Decimal amount from table based on AGI and filing status (0.5, 0.2, 0.1, or 0.0).
+  common.v1.Quantity applicable_credit_rate = 18;
+
+  // Line 10: Multiply line 7 by the decimal amount on line 9.
+  common.v1.Money tentative_credit = 19;
+
+  // Line 11: Limitation based on tax liability from Credit Limit Worksheet.
+  common.v1.Money tax_liability_limit = 20;
+
+  // Line 12: Credit for qualified retirement savings contributions (smaller of line 10 or line 11). Carries to Schedule 3 line 4.
+  common.v1.Money retirement_savings_contributions_credit = 21;
+}

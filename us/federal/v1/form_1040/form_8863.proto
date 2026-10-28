@@ -1,0 +1,151 @@
+// Form 8863, Education Credits (American Opportunity and Lifetime Learning Credits).
+//
+// Used to figure and claim the American Opportunity Credit (Part I and Part II)
+// and the Lifetime Learning Credit (Part II), plus per-student eligibility and
+// expense details in Part III.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/quantity.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form8863 reports the American Opportunity and Lifetime Learning education credits.
+message Form8863 {
+  // StudentPartIII holds Part III student and educational institution information for one student.
+  message StudentPartIII {
+    // EducationalInstitution holds information for one school attended by the student (line 22).
+    message EducationalInstitution {
+      // Line 22a: Name of educational institution.
+      string institution_name = 1;
+
+      // Line 22b: Street address, city, state, and ZIP code of institution.
+      string institution_address = 2;
+
+      // Line 22c: Did the student receive Form 1098-T from this institution for the current tax year.
+      bool received_form_1098_t_current_year = 3;
+
+      // Line 22d: Did the student receive Form 1098-T from this institution for the prior tax year with box 7 checked.
+      bool received_form_1098_t_prior_year_box_7 = 4;
+
+      // Line 22e: Institution's Employer Identification Number (EIN).
+      string institution_ein = 5;
+    }
+
+    // Line 20: Student's name as shown on page 1 of tax return.
+    string student_name = 1;
+
+    // Line 21: Student's Social Security number.
+    string student_ssn = 2;
+
+    // Line 22: Educational institutions attended by the student.
+    repeated EducationalInstitution institutions = 3;
+
+    // Line 23: Has the Hope Scholarship Credit or American Opportunity Credit been claimed for this student for any 4 prior tax years.
+    bool aoc_claimed_for_four_prior_years = 4;
+
+    // Line 24: Was the student enrolled at least half-time for at least one academic period beginning in the tax year.
+    bool enrolled_at_least_half_time = 5;
+
+    // Line 25: Did the student complete the first 4 years of postsecondary education before the beginning of the tax year.
+    bool completed_first_four_years_before_year = 6;
+
+    // Line 26: Was the student convicted, before the end of the tax year, of a felony for possession or distribution of a controlled substance.
+    bool felony_drug_conviction = 7;
+
+    // Line 27: Adjusted qualified education expenses for the American Opportunity Credit (up to $4,000).
+    common.v1.Money aoc_adjusted_qualified_expenses = 8;
+
+    // Line 28: Subtract $2,000 from line 27 (if zero or less, enter 0).
+    common.v1.Money aoc_expenses_over_two_thousand = 9;
+
+    // Line 29: Multiply line 28 by 25% (0.25).
+    common.v1.Money aoc_twenty_five_percent_portion = 10;
+
+    // Line 30: American Opportunity Credit for this student (if line 28 is zero, enter line 27; otherwise add $2,000 to line 29).
+    common.v1.Money aoc_tentative_credit_for_student = 11;
+
+    // Line 31: Adjusted qualified education expenses for the Lifetime Learning Credit.
+    common.v1.Money llc_adjusted_qualified_expenses = 12;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Social Security number of filer.
+  string filer_tin = 3;
+
+  // -- Part I: Refundable American Opportunity Credit ----------------------
+
+  // Line 1: Total tentative American Opportunity Credit from Part III line 30 for all eligible students.
+  common.v1.Money total_tentative_aoc = 4;
+
+  // Line 2: Phaseout ceiling ($180,000 MFJ or $90,000 single/HOH/QSS).
+  common.v1.Money aoc_phaseout_ceiling = 5;
+
+  // Line 3: Modified adjusted gross income (Form 1040 line 11 plus foreign/possessions exclusions).
+  common.v1.Money aoc_modified_agi = 6;
+
+  // Line 4: Subtract line 3 from line 2 (if zero or less, no AOC allowed).
+  common.v1.Money aoc_remaining_phaseout_range = 7;
+
+  // Line 5: Phaseout denominator ($20,000 MFJ or $10,000 single/HOH/QSS).
+  common.v1.Money aoc_phaseout_denominator = 8;
+
+  // Line 6: Phaseout factor (1.000 if line 4 >= line 5, otherwise line 4 divided by line 5 to 3 decimals).
+  common.v1.Quantity aoc_phaseout_factor = 9;
+
+  // Line 7: Multiply line 1 by line 6.
+  common.v1.Money aoc_after_phaseout = 10;
+
+  // Line 7 checkbox: Check if taxpayer was under age 24 and subject to kiddie tax rules disqualifying refundable AOC.
+  bool ineligible_for_refundable_aoc_under_age_24 = 11;
+
+  // Line 8: Refundable American Opportunity Credit (multiply line 7 by 40% (0.40)). Carries to Form 1040 line 29.
+  common.v1.Money refundable_american_opportunity_credit = 12;
+
+  // -- Part II: Nonrefundable Education Credits ----------------------------
+
+  // Line 9: Subtract line 8 from line 7 (nonrefundable portion of AOC).
+  common.v1.Money nonrefundable_aoc_portion = 13;
+
+  // Line 10: Total qualified expenses for Lifetime Learning Credit from Part III line 31 for all students.
+  common.v1.Money total_llc_qualified_expenses = 14;
+
+  // Line 11: Smaller of line 10 or $10,000.
+  common.v1.Money capped_llc_expenses = 15;
+
+  // Line 12: Multiply line 11 by 20% (0.20).
+  common.v1.Money tentative_lifetime_learning_credit = 16;
+
+  // Line 13: LLC phaseout ceiling ($180,000 MFJ or $90,000 single/HOH/QSS).
+  common.v1.Money llc_phaseout_ceiling = 17;
+
+  // Line 14: Modified adjusted gross income for Lifetime Learning Credit.
+  common.v1.Money llc_modified_agi = 18;
+
+  // Line 15: Subtract line 14 from line 13 (if zero or less, no LLC allowed).
+  common.v1.Money llc_remaining_phaseout_range = 19;
+
+  // Line 16: LLC phaseout denominator ($20,000 MFJ or $10,000 single/HOH/QSS).
+  common.v1.Money llc_phaseout_denominator = 20;
+
+  // Line 17: LLC phaseout factor (1.000 if line 15 >= line 16, otherwise line 15 divided by line 16 to 3 decimals).
+  common.v1.Quantity llc_phaseout_factor = 21;
+
+  // Line 18: Nonrefundable Lifetime Learning Credit after phaseout (multiply line 12 by line 17).
+  common.v1.Money llc_after_phaseout = 22;
+
+  // Line 19: Nonrefundable education credits after Credit Limit Worksheet (smaller of combined credits or tax liability limit). Carries to Schedule 3 line 3.
+  common.v1.Money nonrefundable_education_credits = 23;
+
+  // -- Part III: Student and Educational Institution Information -----------
+
+  // Per-student information and calculations in Part III.
+  repeated StudentPartIII students = 24;
+}

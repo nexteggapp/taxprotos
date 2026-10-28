@@ -1,0 +1,132 @@
+// Form 8936, Clean Vehicle Credits (and Schedule A (Form 8936), Clean Vehicle Credit Amount).
+//
+// Used to figure the credit for new clean vehicles (Section 30D), previously
+// owned clean vehicles (Section 25E), and qualified commercial clean vehicles
+// (Section 45W), as well as reconciling advance credit transfers to dealers.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form8936 reports Clean Vehicle Credits across Parts I through IV and per-vehicle Schedule A details.
+message Form8936 {
+  // VehicleScheduleA holds Schedule A (Form 8936) details for one clean vehicle.
+  message VehicleScheduleA {
+    // Line 1a: Year, make, and model of vehicle.
+    string year_make_model = 1;
+
+    // Line 2: Vehicle identification number (VIN).
+    string vin = 2;
+
+    // Line 3: Date vehicle was placed in service.
+    common.v1.Date date_placed_in_service = 3;
+
+    // Line 4: Was the credit transferred to the dealer at the time of sale.
+    bool credit_transferred_to_dealer = 4;
+
+    // Line 4d: Amount of credit transferred to dealer as payment.
+    common.v1.Money advance_credit_transferred_to_dealer = 5;
+
+    // Part II: Tentative credit for new clean vehicle (up to $7,500: $3,750 critical minerals + $3,750 battery components).
+    common.v1.Money new_clean_vehicle_credit = 6;
+
+    // Part III: Sales price of previously owned clean vehicle (must be $25,000 or less).
+    common.v1.Money previously_owned_vehicle_sales_price = 7;
+
+    // Part III: Tentative credit for previously owned clean vehicle (30% of price, up to $4,000).
+    common.v1.Money previously_owned_clean_vehicle_credit = 8;
+
+    // Part IV: Tentative credit for qualified commercial clean vehicle (Section 45W).
+    common.v1.Money commercial_clean_vehicle_credit = 9;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Social Security number or taxpayer identification number.
+  string filer_tin = 3;
+
+  // -- Part I: Modified Adjusted Gross Income ------------------------------
+
+  // Line 1a: Current year adjusted gross income from Form 1040 line 11.
+  common.v1.Money current_year_agi = 4;
+
+  // Line 1b: Current year foreign and possessions excluded income.
+  common.v1.Money current_year_excluded_income = 5;
+
+  // Line 1c: Current year modified adjusted gross income (add lines 1a and 1b).
+  common.v1.Money current_year_modified_agi = 6;
+
+  // Line 2a: Prior year adjusted gross income.
+  common.v1.Money prior_year_agi = 7;
+
+  // Line 2b: Prior year foreign and possessions excluded income.
+  common.v1.Money prior_year_excluded_income = 8;
+
+  // Line 2c: Prior year modified adjusted gross income (add lines 2a and 2b).
+  common.v1.Money prior_year_modified_agi = 9;
+
+  // Line 3: Smaller of line 1c or line 2c (used for new clean vehicle MAGI threshold test).
+  common.v1.Money applicable_modified_agi_new_vehicle = 10;
+
+  // Line 5: Smaller of current or prior year MAGI used for previously owned clean vehicle threshold test.
+  common.v1.Money applicable_modified_agi_used_vehicle = 11;
+
+  // -- Part II: Credit for Business/Investment Use Part of New Clean Vehicles -
+
+  // Line 6: Total business/investment use part of new clean vehicle credits from Schedule(s) A.
+  common.v1.Money business_new_clean_vehicle_credits_from_schedule_a = 12;
+
+  // Line 7: Clean vehicle credits from partnerships and S corporations.
+  common.v1.Money clean_vehicle_credits_from_passthroughs = 13;
+
+  // Line 8: Total business/investment use clean vehicle credit (add lines 6 and 7). Carries to Form 3800.
+  common.v1.Money total_business_clean_vehicle_credit = 14;
+
+  // -- Part III: Credit for Personal Use Part of New Clean Vehicles --------
+
+  // Line 9: Total personal use part of new clean vehicle credits from Schedule(s) A (not transferred to dealer).
+  common.v1.Money tentative_personal_new_clean_vehicle_credit = 15;
+
+  // Line 10: Tax liability from Form 1040 line 18.
+  common.v1.Money regular_tax_before_credits = 16;
+
+  // Line 11: Personal credits from Form 1040 or Schedule 3 that precede Form 8936.
+  common.v1.Money prior_personal_credits = 17;
+
+  // Line 12: Net tax liability limit for Part III (subtract line 11 from line 10).
+  common.v1.Money personal_new_vehicle_tax_liability_limit = 18;
+
+  // Line 13: Personal use part of new clean vehicle credit (smaller of line 9 or line 12). Carries to Schedule 3 line 6f.
+  common.v1.Money personal_new_clean_vehicle_credit = 19;
+
+  // -- Part IV: Credit for Previously Owned Clean Vehicles -----------------
+
+  // Line 14: Total previously owned clean vehicle credits from Schedule(s) A (not transferred to dealer).
+  common.v1.Money tentative_previously_owned_clean_vehicle_credit = 20;
+
+  // Line 15: Tax liability from Form 1040 line 18 for Part IV.
+  common.v1.Money part_iv_regular_tax_before_credits = 21;
+
+  // Line 16: Personal credits preceding Part IV (including Part III line 13).
+  common.v1.Money part_iv_prior_personal_credits = 22;
+
+  // Line 17: Net tax liability limit for Part IV (subtract line 16 from line 15).
+  common.v1.Money previously_owned_vehicle_tax_liability_limit = 23;
+
+  // Line 18: Previously owned clean vehicle credit (smaller of line 14 or line 17). Carries to Schedule 3 line 6m.
+  common.v1.Money previously_owned_clean_vehicle_credit = 24;
+
+  // Additional tax owed from recaptured advance clean vehicle credit transferred to dealer when MAGI exceeds limit (Schedule 2 line 1b).
+  common.v1.Money recaptured_advance_clean_vehicle_credit_tax = 25;
+
+  // Per-vehicle Schedule A (Form 8936) attachments.
+  repeated VehicleScheduleA vehicles = 26;
+}

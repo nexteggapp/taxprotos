@@ -1,0 +1,71 @@
+// Schedule EIC (Form 1040), Earned Income Credit Qualifying Child Information.
+//
+// Attached to Form 1040 when claiming the Earned Income Credit (EIC) with one
+// or more qualifying children, along with the EIC calculation figures.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// ScheduleEIC reports qualifying children and calculation figures for the Earned Income Credit.
+message ScheduleEIC {
+  // QualifyingChild represents one qualifying child listed on Schedule EIC (up to 3 children).
+  message QualifyingChild {
+    // Line 1: Child's first name and last name.
+    string child_name = 1;
+
+    // Line 2: Child's Social Security number.
+    string child_ssn = 2;
+
+    // Line 3: Child's year of birth (four digits).
+    int32 birth_year = 3;
+
+    // Line 4a: Was the child under age 24 at the end of the year, a student, and younger than the taxpayer (or spouse).
+    bool full_time_student_under_24 = 4;
+
+    // Line 4b: Was the child permanently and totally disabled during any part of the year.
+    bool permanently_and_totally_disabled = 5;
+
+    // Line 5: Child's relationship to the taxpayer (for example, son, daughter, grandchild, stepchild, foster child).
+    string relationship_to_taxpayer = 6;
+
+    // Line 6: Number of months the child lived with the taxpayer in the United States during the year.
+    int32 months_lived_with_taxpayer = 7;
+  }
+
+  // The tax year the schedule applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Social Security number of filer.
+  string filer_tin = 3;
+
+  // Qualifying children listed on Schedule EIC (up to 3 children).
+  repeated QualifyingChild qualifying_children = 4;
+
+  // Earned income used to compute the Earned Income Credit (EIC Worksheet line 1).
+  common.v1.Money earned_income = 5;
+
+  // Nontaxable combat pay elected to be included in earned income (Form 1040 line 1i).
+  common.v1.Money nontaxable_combat_pay_election = 6;
+
+  // Investment income tested against the EIC investment income limit.
+  common.v1.Money investment_income = 7;
+
+  // EIC lookup amount based on earned income (EIC Worksheet line 2).
+  common.v1.Money credit_from_earned_income = 8;
+
+  // Adjusted gross income used for EIC phaseout (EIC Worksheet line 3).
+  common.v1.Money adjusted_gross_income = 9;
+
+  // EIC lookup amount based on adjusted gross income (EIC Worksheet line 5).
+  common.v1.Money credit_from_agi = 10;
+
+  // Earned Income Credit claimed (carried to Form 1040 line 27).
+  common.v1.Money earned_income_credit = 11;
+}

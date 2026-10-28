@@ -1,0 +1,114 @@
+// Form 2210, Underpayment of Estimated Tax by Individuals, Estates, and Trusts.
+//
+// Used to determine whether a taxpayer owes a penalty for underpaying estimated
+// tax and, if so, to figure the amount of the penalty using either the regular
+// method (Part III) or the annualized income installment method (Schedule AI).
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form2210 reports the underpayment of estimated tax computation across Parts I through III and Schedule AI.
+message Form2210 {
+  // InstallmentColumn represents one of the four quarterly payment periods (Apr 15, Jun 15, Sep 15, Jan 15) in Part III and Schedule AI.
+  message InstallmentColumn {
+    // Payment period index (1 for Apr 15, 2 for Jun 15, 3 for Sep 15, 4 for Jan 15).
+    int32 period = 1;
+
+    // Schedule AI line 1: Cumulative adjusted gross income for the annualization period.
+    common.v1.Money cumulative_period_agi = 2;
+
+    // Schedule AI line 3: Annualized income for the period.
+    common.v1.Money annualized_income = 3;
+
+    // Schedule AI line 12: Annualized taxable income for the period.
+    common.v1.Money annualized_taxable_income = 4;
+
+    // Schedule AI line 21: Total annualized tax for the period.
+    common.v1.Money annualized_total_tax = 5;
+
+    // Schedule AI line 27 / Part III line 10: Required installment for the period.
+    common.v1.Money required_installment = 6;
+
+    // Part III line 11: Estimated tax paid and tax withheld for the period.
+    common.v1.Money estimated_tax_paid_and_withheld = 7;
+
+    // Part III line 15: Net timely payments after applying prior-period overpayments/underpayments.
+    common.v1.Money net_timely_payments = 8;
+
+    // Part III line 17: Underpayment for the period (if line 10 exceeds line 15).
+    common.v1.Money period_underpayment = 9;
+
+    // Part III line 18: Overpayment for the period carried to the next period (if line 15 exceeds line 10).
+    common.v1.Money period_overpayment = 10;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Identifying number (SSN or EIN).
+  string filer_tin = 3;
+
+  // -- Part I: Reasons for Filing ------------------------------------------
+
+  // Box A: Requesting a full waiver of the entire penalty.
+  bool box_a_full_waiver = 4;
+
+  // Box B: Requesting a partial waiver of the penalty.
+  bool box_b_partial_waiver = 5;
+
+  // Box C: Income varied during the year and penalty is reduced or eliminated using the annualized income installment method (Schedule AI).
+  bool box_c_annualized_income_method = 6;
+
+  // Box D: Requesting that federal income tax withheld be treated as paid on the actual dates withheld rather than in equal quarterly amounts.
+  bool box_d_actual_withholding_dates = 7;
+
+  // Box E: Filing a joint return for the current year, but filed separate returns for the prior year, and prior-year tax total exceeds $150,000.
+  bool box_e_joint_after_separate_returns = 8;
+
+  // -- Part II: Required Annual Payment ------------------------------------
+
+  // Line 1: Current year tax after credits (Form 1040 line 22).
+  common.v1.Money current_year_tax_after_credits = 9;
+
+  // Line 2: Other taxes, including self-employment tax, Additional Medicare Tax, and Net Investment Income Tax.
+  common.v1.Money other_taxes = 10;
+
+  // Line 3: Refundable credits (EIC, Additional Child Tax Credit, American Opportunity Credit, Premium Tax Credit, etc.).
+  common.v1.Money refundable_credits = 11;
+
+  // Line 4: Current year tax (add lines 1 and 2, then subtract line 3).
+  common.v1.Money total_current_year_tax = 12;
+
+  // Line 5: Multiply line 4 by 90% (0.90) (or 66 2/3% for qualified farmers and fishermen).
+  common.v1.Money ninety_percent_of_current_year_tax = 13;
+
+  // Line 6: Withholding taxes (Form 1040 line 25d and Schedule 3 line 11).
+  common.v1.Money total_tax_withheld = 14;
+
+  // Line 7: Subtract line 6 from line 4 (if less than $1,000, no penalty is owed).
+  common.v1.Money net_tax_after_withholding = 15;
+
+  // Line 8: Maximum required annual payment based on prior year's tax (100% of prior year tax, or 110% if prior year AGI exceeded $150,000 / $75,000 MFS).
+  common.v1.Money prior_year_safe_harbor_tax = 16;
+
+  // Line 9: Required annual payment (smaller of line 5 or line 8).
+  common.v1.Money required_annual_payment = 17;
+
+  // Is line 9 more than line 6 (if No, no penalty is owed unless Box E is checked).
+  bool required_payment_exceeds_withholding = 18;
+
+  // -- Part III: Penalty Computation & Schedule AI -------------------------
+
+  // Quarterly installment columns (periods 1 through 4).
+  repeated InstallmentColumn quarterly_installments = 19;
+
+  // Line 19: Total estimated tax penalty from Worksheet for Form 2210 Part III Section B. Carries to Form 1040 line 38.
+  common.v1.Money estimated_tax_penalty = 20;
+}

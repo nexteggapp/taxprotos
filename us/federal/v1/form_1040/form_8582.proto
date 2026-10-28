@@ -1,0 +1,124 @@
+// Form 8582, Passive Activity Loss Limitations.
+//
+// Used by noncorporate taxpayers to figure the amount of any passive activity
+// loss (PAL) allowed for the current tax year under IRC Section 469, including
+// the $25,000 special allowance for rental real estate with active
+// participation and commercial revitalization deductions.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form8582 reports passive activity loss limitations and allowed passive losses across Parts I through IV.
+message Form8582 {
+  // PassiveActivityDetail holds per-activity income, loss, prior unallowed loss, and allowed loss from Worksheets 1–7.
+  message PassiveActivityDetail {
+    // Name of the passive activity.
+    string activity_name = 1;
+
+    // Whether the activity is rental real estate with active participation.
+    bool rental_real_estate_active_participation = 2;
+
+    // Current year net passive income from the activity.
+    common.v1.Money current_year_net_income = 3;
+
+    // Current year net passive loss from the activity.
+    common.v1.Money current_year_net_loss = 4;
+
+    // Prior years' unallowed passive loss carried into the current year.
+    common.v1.Money prior_year_unallowed_loss = 5;
+
+    // Overall gain or loss for the activity.
+    common.v1.Money overall_gain_or_loss = 6;
+
+    // Allowed passive loss for the current tax year.
+    common.v1.Money allowed_loss = 7;
+
+    // Unallowed passive loss carried forward to the next tax year.
+    common.v1.Money unallowed_loss_carryforward = 8;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Identifying number (SSN or EIN).
+  string filer_tin = 3;
+
+  // -- Part I: Passive Activity Loss ---------------------------------------
+
+  // Line 1a: Rental real estate activities with active participation — current year net income (Worksheet 1 column (a)).
+  common.v1.Money active_rental_current_year_income = 4;
+
+  // Line 1b: Rental real estate activities with active participation — current year net loss (Worksheet 1 column (b)).
+  common.v1.Money active_rental_current_year_loss = 5;
+
+  // Line 1c: Rental real estate activities with active participation — prior years' unallowed losses (Worksheet 1 column (c)).
+  common.v1.Money active_rental_prior_year_unallowed_loss = 6;
+
+  // Line 1d: Combine lines 1a, 1b, and 1c (net income or loss from active participation rental real estate).
+  common.v1.Money active_rental_net_income_or_loss = 7;
+
+  // Line 2a: All other passive activities — current year net income (Worksheet 3 column (a)).
+  common.v1.Money other_passive_current_year_income = 8;
+
+  // Line 2b: All other passive activities — current year net loss (Worksheet 3 column (b)).
+  common.v1.Money other_passive_current_year_loss = 9;
+
+  // Line 2c: All other passive activities — prior years' unallowed losses (Worksheet 3 column (c)).
+  common.v1.Money other_passive_prior_year_unallowed_loss = 10;
+
+  // Line 2d: Combine lines 2a, 2b, and 2c (net income or loss from all other passive activities).
+  common.v1.Money other_passive_net_income_or_loss = 11;
+
+  // Line 3: Combine lines 1d and 2d (total net passive income or loss).
+  common.v1.Money total_net_passive_income_or_loss = 12;
+
+  // -- Part II: Special Allowance for Rental Real Estate Activities With Active Participation -
+
+  // Line 4: Smaller of the loss on line 1d or the loss on line 3 (entered as a positive amount).
+  common.v1.Money loss_eligible_for_special_allowance = 13;
+
+  // Line 5: Maximum special allowance ($25,000, or $12,500 if married filing separately and lived apart all year).
+  common.v1.Money maximum_special_allowance = 14;
+
+  // Line 6: Modified adjusted gross income for passive loss phaseout.
+  common.v1.Money modified_adjusted_gross_income = 15;
+
+  // Line 7: Phaseout threshold ($100,000, or $50,000 if married filing separately and lived apart all year).
+  common.v1.Money special_allowance_phaseout_threshold = 16;
+
+  // Line 8: Subtract line 7 from line 6 (if zero or less, enter 0).
+  common.v1.Money excess_modified_agi = 17;
+
+  // Line 9: Multiply line 8 by 50% (0.50) (do not enter more than line 5).
+  common.v1.Money phaseout_reduction = 18;
+
+  // Line 10: Subtract line 9 from line 5 (remaining special allowance).
+  common.v1.Money remaining_special_allowance = 19;
+
+  // Line 11: Special allowance for rental real estate with active participation (smaller of line 4 or line 10).
+  common.v1.Money special_allowance_rental_real_estate = 20;
+
+  // -- Part III: Total Losses Allowed --------------------------------------
+
+  // Line 12: Total passive income from lines 1a and 2a.
+  common.v1.Money total_passive_income = 21;
+
+  // Line 13: Total special allowances from Part II line 11 (and any Part III commercial revitalization allowance).
+  common.v1.Money total_special_allowances = 22;
+
+  // Line 14: Total losses allowed from all passive activities for the year (add lines 12 and 13, capped at total passive losses).
+  common.v1.Money total_passive_losses_allowed = 23;
+
+  // Total unallowed passive losses carried forward to the next tax year.
+  common.v1.Money total_unallowed_passive_loss_carryforward = 24;
+
+  // Per-activity details from Worksheets 1 through 7.
+  repeated PassiveActivityDetail activities = 25;
+}

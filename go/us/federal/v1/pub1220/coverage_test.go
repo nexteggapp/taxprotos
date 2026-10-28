@@ -53,10 +53,13 @@ import (
 	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_1099_misc"
 	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_1099_nec"
 	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_1099_oid"
+	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_1099_patr"
 	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_1099_q"
 	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_1099_r"
 	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_1099_s"
 	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_1099_sa"
+	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_3921"
+	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_3922"
 	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_5498"
 	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_5498_sa"
 	_ "github.com/nexteggapp/taxprotos/go/us/federal/v1/form_ssa_1099"
@@ -113,9 +116,12 @@ var schemas = []schema{
 	{form: "W-2G", dir: "form_w2g"},
 	{form: "SSA-1099", dir: "form_ssa_1099", issuedBySsa: true},
 	{form: "1099-OID", dir: "form_1099_oid"},
+	{form: "1099-PATR", dir: "form_1099_patr"},
 	{form: "1099-S", dir: "form_1099_s"},
 	{form: "1099-C", dir: "form_1099_c"},
 	{form: "1099-Q", dir: "form_1099_q"},
+	{form: "3921", dir: "form_3921"},
+	{form: "3922", dir: "form_3922"},
 }
 
 // TestPub1220Coverage checks every form's mapping against the IRS's own list.

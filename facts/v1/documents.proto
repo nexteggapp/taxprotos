@@ -16,46 +16,86 @@ import "taxprotos/common/v1/money.proto";
 import "taxprotos/common/v1/party.proto";
 import "taxprotos/common/v1/quantity.proto";
 import "taxprotos/us/federal/v1/form_1040/form_1040.proto";
+import "taxprotos/us/federal/v1/form_1040/form_1040_x.proto";
+import "taxprotos/us/federal/v1/form_1040/form_1116.proto";
+import "taxprotos/us/federal/v1/form_1040/form_2210.proto";
+import "taxprotos/us/federal/v1/form_1040/form_2441.proto";
+import "taxprotos/us/federal/v1/form_1040/form_2555.proto";
+import "taxprotos/us/federal/v1/form_1040/form_4562.proto";
+import "taxprotos/us/federal/v1/form_1040/form_4684.proto";
+import "taxprotos/us/federal/v1/form_1040/form_4797.proto";
+import "taxprotos/us/federal/v1/form_1040/form_4952.proto";
+import "taxprotos/us/federal/v1/form_1040/form_5329.proto";
+import "taxprotos/us/federal/v1/form_1040/form_5695.proto";
+import "taxprotos/us/federal/v1/form_1040/form_6198.proto";
+import "taxprotos/us/federal/v1/form_1040/form_6251.proto";
+import "taxprotos/us/federal/v1/form_1040/form_6252.proto";
+import "taxprotos/us/federal/v1/form_1040/form_7203.proto";
+import "taxprotos/us/federal/v1/form_1040/form_7206.proto";
+import "taxprotos/us/federal/v1/form_1040/form_8582.proto";
+import "taxprotos/us/federal/v1/form_1040/form_8606.proto";
+import "taxprotos/us/federal/v1/form_1040/form_8615.proto";
+import "taxprotos/us/federal/v1/form_1040/form_8801.proto";
+import "taxprotos/us/federal/v1/form_1040/form_8814.proto";
+import "taxprotos/us/federal/v1/form_1040/form_8824.proto";
+import "taxprotos/us/federal/v1/form_1040/form_8829.proto";
+import "taxprotos/us/federal/v1/form_1040/form_8839.proto";
+import "taxprotos/us/federal/v1/form_1040/form_8863.proto";
+import "taxprotos/us/federal/v1/form_1040/form_8880.proto";
+import "taxprotos/us/federal/v1/form_1040/form_8936.proto";
 import "taxprotos/us/federal/v1/form_1040/form_8949.proto";
+import "taxprotos/us/federal/v1/form_1040/form_8959.proto";
+import "taxprotos/us/federal/v1/form_1040/form_8960.proto";
+import "taxprotos/us/federal/v1/form_1040/form_8962.proto";
+import "taxprotos/us/federal/v1/form_1040/form_8995.proto";
 import "taxprotos/us/federal/v1/form_1040/schedule_1.proto";
 import "taxprotos/us/federal/v1/form_1040/schedule_1a.proto";
 import "taxprotos/us/federal/v1/form_1040/schedule_2.proto";
 import "taxprotos/us/federal/v1/form_1040/schedule_3.proto";
+import "taxprotos/us/federal/v1/form_1040/schedule_8812.proto";
 import "taxprotos/us/federal/v1/form_1040/schedule_a.proto";
 import "taxprotos/us/federal/v1/form_1040/schedule_b.proto";
 import "taxprotos/us/federal/v1/form_1040/schedule_c.proto";
 import "taxprotos/us/federal/v1/form_1040/schedule_d.proto";
 import "taxprotos/us/federal/v1/form_1040/schedule_e.proto";
+import "taxprotos/us/federal/v1/form_1040/schedule_eic.proto";
+import "taxprotos/us/federal/v1/form_1040/schedule_f.proto";
+import "taxprotos/us/federal/v1/form_1040/schedule_h.proto";
+import "taxprotos/us/federal/v1/form_1040/schedule_j.proto";
 import "taxprotos/us/federal/v1/form_1040/schedule_se.proto";
+import "taxprotos/us/federal/v1/form_1095_a/form_1095_a.proto";
 import "taxprotos/us/federal/v1/form_1098/form_1098.proto";
+import "taxprotos/us/federal/v1/form_1098_e/form_1098_e.proto";
+import "taxprotos/us/federal/v1/form_1098_t/form_1098_t.proto";
 import "taxprotos/us/federal/v1/form_1099_b/form_1099_b.proto";
+import "taxprotos/us/federal/v1/form_1099_c/form_1099_c.proto";
 import "taxprotos/us/federal/v1/form_1099_div/form_1099_div.proto";
 import "taxprotos/us/federal/v1/form_1099_g/form_1099_g.proto";
 import "taxprotos/us/federal/v1/form_1099_int/form_1099_int.proto";
 import "taxprotos/us/federal/v1/form_1099_k/form_1099_k.proto";
-import "taxprotos/us/federal/v1/form_1099_c/form_1099_c.proto";
 import "taxprotos/us/federal/v1/form_1099_misc/form_1099_misc.proto";
 import "taxprotos/us/federal/v1/form_1099_nec/form_1099_nec.proto";
 import "taxprotos/us/federal/v1/form_1099_oid/form_1099_oid.proto";
+import "taxprotos/us/federal/v1/form_1099_patr/form_1099_patr.proto";
 import "taxprotos/us/federal/v1/form_1099_q/form_1099_q.proto";
 import "taxprotos/us/federal/v1/form_1099_r/form_1099_r.proto";
 import "taxprotos/us/federal/v1/form_1099_s/form_1099_s.proto";
+import "taxprotos/us/federal/v1/form_1099_sa/form_1099_sa.proto";
+import "taxprotos/us/federal/v1/form_3921/form_3921.proto";
+import "taxprotos/us/federal/v1/form_3922/form_3922.proto";
+import "taxprotos/us/federal/v1/form_5498/form_5498.proto";
+import "taxprotos/us/federal/v1/form_5498_sa/form_5498_sa.proto";
+import "taxprotos/us/federal/v1/form_8889/form_8889.proto";
 import "taxprotos/us/federal/v1/form_ssa_1099/form_ssa_1099.proto";
 import "taxprotos/us/federal/v1/form_w2/form_w2.proto";
 import "taxprotos/us/federal/v1/form_w2g/form_w2g.proto";
+import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1041.proto";
+import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1065.proto";
+import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1120_s.proto";
 import "taxprotos/us/state/ca/v1/form_540/form_540.proto";
 import "taxprotos/us/state/ca/v1/form_540/schedule_ca.proto";
 import "taxprotos/us/state/or/v1/form_or40/form_or40.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
-import "taxprotos/us/federal/v1/form_1095_a/form_1095_a.proto";
-import "taxprotos/us/federal/v1/form_1098_e/form_1098_e.proto";
-import "taxprotos/us/federal/v1/form_1098_t/form_1098_t.proto";
-import "taxprotos/us/federal/v1/form_1099_sa/form_1099_sa.proto";
-import "taxprotos/us/federal/v1/form_5498/form_5498.proto";
-import "taxprotos/us/federal/v1/form_5498_sa/form_5498_sa.proto";
-import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1041.proto";
-import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1065.proto";
-import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1120_s.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_asc.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/facts/v1;factsv1";
@@ -174,6 +214,15 @@ message Document {
 
     // Form 1099-Q: payments from qualified education programs.
     us.federal.v1.Form1099Q form_1099_q = 43;
+
+    // Form 3921: exercise of an incentive stock option under Section 422(b).
+    us.federal.v1.Form3921 form_3921 = 44;
+
+    // Form 3922: transfer of stock acquired through an employee stock purchase plan under Section 423(c).
+    us.federal.v1.Form3922 form_3922 = 45;
+
+    // Form 1099-PATR: taxable distributions received from cooperatives.
+    us.federal.v1.Form1099PATR form_1099_patr = 46;
   }
 }
 
@@ -461,7 +510,7 @@ message PaymentConfirmation {
   Type type = 6;
 }
 
-// A federal return: Form 1040 and the schedules filed with it.
+// A federal return: Form 1040 and the schedules and attached forms filed with it.
 message FederalReturn {
   // Form 1040.
   us.federal.v1.Form1040 form_1040 = 1;
@@ -499,6 +548,117 @@ message FederalReturn {
 
   // Form 8949: sales and other dispositions of capital assets.
   repeated us.federal.v1.Form8949 form_8949 = 12;
+
+  // Schedule 8812: credits for qualifying children and other dependents.
+  us.federal.v1.Schedule8812 schedule_8812 = 13;
+
+  // Schedule EIC: earned income credit qualifying child information and calculation.
+  us.federal.v1.ScheduleEIC schedule_eic = 14;
+
+  // Form 2441: child and dependent care expenses.
+  us.federal.v1.Form2441 form_2441 = 15;
+
+  // Form 8863: education credits (American Opportunity and Lifetime Learning credits).
+  us.federal.v1.Form8863 form_8863 = 16;
+
+  // Form 5695: residential clean energy credit and energy efficient home improvement credit.
+  us.federal.v1.Form5695 form_5695 = 17;
+
+  // Form 8936: clean vehicle credits.
+  us.federal.v1.Form8936 form_8936 = 18;
+
+  // Form 8839: qualified adoption expenses.
+  us.federal.v1.Form8839 form_8839 = 19;
+
+  // Form 8880: credit for qualified retirement savings contributions.
+  us.federal.v1.Form8880 form_8880 = 20;
+
+  // Form 8962: premium tax credit (PTC).
+  us.federal.v1.Form8962 form_8962 = 21;
+
+  // Form 8995 / 8995-A: qualified business income deduction.
+  us.federal.v1.Form8995 form_8995 = 22;
+
+  // Form 7206: self-employed health insurance deduction.
+  repeated us.federal.v1.Form7206 form_7206 = 23;
+
+  // Form 8829: expenses for business use of your home.
+  repeated us.federal.v1.Form8829 form_8829 = 24;
+
+  // Form 8606: nondeductible IRAs (one per individual).
+  repeated us.federal.v1.Form8606 form_8606 = 25;
+
+  // Form 6251: alternative minimum tax — individuals.
+  us.federal.v1.Form6251 form_6251 = 26;
+
+  // Form 8801: credit for prior year minimum tax — individuals, estates, and trusts.
+  us.federal.v1.Form8801 form_8801 = 27;
+
+  // Form 8959: Additional Medicare Tax.
+  us.federal.v1.Form8959 form_8959 = 28;
+
+  // Form 8960: Net Investment Income Tax — individuals, estates, and trusts.
+  us.federal.v1.Form8960 form_8960 = 29;
+
+  // Form 4562: depreciation and amortization.
+  repeated us.federal.v1.Form4562 form_4562 = 30;
+
+  // Form 4797: sales of business property.
+  us.federal.v1.Form4797 form_4797 = 31;
+
+  // Form 6252: installment sale income.
+  repeated us.federal.v1.Form6252 form_6252 = 32;
+
+  // Form 8824: like-kind exchanges.
+  repeated us.federal.v1.Form8824 form_8824 = 33;
+
+  // Form 8582: passive activity loss limitations.
+  us.federal.v1.Form8582 form_8582 = 34;
+
+  // Form 6198: at-risk limitations.
+  repeated us.federal.v1.Form6198 form_6198 = 35;
+
+  // Form 7203: S corporation shareholder stock and debt basis limitations.
+  repeated us.federal.v1.Form7203 form_7203 = 36;
+
+  // Form 4952: investment interest expense deduction.
+  us.federal.v1.Form4952 form_4952 = 37;
+
+  // Form 1116: foreign tax credit (one per separate limitation category).
+  repeated us.federal.v1.Form1116 form_1116 = 38;
+
+  // Form 2555: foreign earned income (one per qualifying individual).
+  repeated us.federal.v1.Form2555 form_2555 = 39;
+
+  // Schedule F: profit or loss from farming.
+  repeated us.federal.v1.ScheduleF schedule_f = 40;
+
+  // Schedule H: household employment taxes.
+  us.federal.v1.ScheduleH schedule_h = 41;
+
+  // Schedule J: income averaging for farmers and fishermen.
+  us.federal.v1.ScheduleJ schedule_j = 42;
+
+  // Form 5329: additional taxes on qualified plans (including IRAs) and other tax-favored accounts.
+  repeated us.federal.v1.Form5329 form_5329 = 43;
+
+  // Form 8615: tax for certain children who have unearned income (kiddie tax).
+  us.federal.v1.Form8615 form_8615 = 44;
+
+  // Form 8814: parent's election to report child's interest and dividends.
+  repeated us.federal.v1.Form8814 form_8814 = 45;
+
+  // Form 4684: casualties and thefts.
+  repeated us.federal.v1.Form4684 form_4684 = 46;
+
+  // Form 2210: underpayment of estimated tax by individuals, estates, and trusts.
+  us.federal.v1.Form2210 form_2210 = 47;
+
+  // Form 1040-X: amended U.S. individual income tax return.
+  us.federal.v1.Form1040X form_1040_x = 48;
+
+  // Form 8889: health savings accounts (HSAs).
+  repeated us.federal.v1.Form8889 form_8889 = 49;
 }
 
 // A California resident return: Form 540 and Schedule CA.

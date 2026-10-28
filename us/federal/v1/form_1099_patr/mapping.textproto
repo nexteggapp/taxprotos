@@ -1,0 +1,114 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form 1099-PATR calls each concept, per tax year.
+#
+# Line numbers come from Form 1099-PATR. Amount codes come from IRS Publication
+# 1220 for Tax Year 2025.
+
+form: "1099-PATR"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form1099PATR"
+tax_years: 2025
+
+concepts {
+  concept: "patronage_dividends"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+    amount_code: "1"
+  }
+}
+concepts {
+  concept: "nonpatronage_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+    amount_code: "2"
+  }
+}
+concepts {
+  concept: "per_unit_retain_allocations"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+    amount_code: "3"
+  }
+}
+concepts {
+  concept: "federal_income_tax_withheld"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+    amount_code: "4"
+  }
+}
+concepts {
+  concept: "redeemed_nonqualified_notices"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+    amount_code: "5"
+  }
+}
+concepts {
+  concept: "section_199a_g_deduction"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+    amount_code: "6"
+  }
+}
+concepts {
+  concept: "qualified_payments_section_199a"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+    amount_code: "B"
+  }
+}
+concepts {
+  concept: "section_199a_qualified_items"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+    amount_code: "C"
+  }
+}
+concepts {
+  concept: "section_199a_sstb_items"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+    amount_code: "D"
+  }
+}
+concepts {
+  concept: "investment_credit"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+    amount_code: "7"
+  }
+}
+concepts {
+  concept: "work_opportunity_credit"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+    amount_code: "8"
+  }
+}
+concepts {
+  concept: "other_credits_and_deductions"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+    amount_code: "A"
+  }
+}
+concepts {
+  concept: "specified_agricultural_or_horticultural_cooperative"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+  }
+}

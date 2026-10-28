@@ -117,10 +117,13 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [1099-MISC](https://www.irs.gov/pub/irs-pdf/f1099msc.pdf) | [`form_1099_misc.proto`](us/federal/v1/form_1099_misc/form_1099_misc.proto) | Miscellaneous information |
 | [1099-NEC](https://www.irs.gov/pub/irs-pdf/f1099nec.pdf) | [`form_1099_nec.proto`](us/federal/v1/form_1099_nec/form_1099_nec.proto) | Non-employee compensation |
 | [1099-OID](https://www.irs.gov/pub/irs-pdf/f1099oid.pdf) | [`form_1099_oid.proto`](us/federal/v1/form_1099_oid/form_1099_oid.proto) | Original issue discount |
+| [1099-PATR](https://www.irs.gov/pub/irs-pdf/f1099ptr.pdf) | [`form_1099_patr.proto`](us/federal/v1/form_1099_patr/form_1099_patr.proto) | Taxable distributions received from cooperatives |
 | [1099-Q](https://www.irs.gov/pub/irs-pdf/f1099q.pdf) | [`form_1099_q.proto`](us/federal/v1/form_1099_q/form_1099_q.proto) | Payments from qualified education programs |
 | [1099-R](https://www.irs.gov/pub/irs-pdf/f1099r.pdf) | [`form_1099_r.proto`](us/federal/v1/form_1099_r/form_1099_r.proto) | Retirement distributions |
 | [1099-S](https://www.irs.gov/pub/irs-pdf/f1099s.pdf) | [`form_1099_s.proto`](us/federal/v1/form_1099_s/form_1099_s.proto) | Proceeds from real estate transactions |
 | [1099-SA](https://www.irs.gov/pub/irs-pdf/f1099sa.pdf) | [`form_1099_sa.proto`](us/federal/v1/form_1099_sa/form_1099_sa.proto) | HSA and MSA distributions |
+| [3921](https://www.irs.gov/pub/irs-pdf/f3921.pdf) | [`form_3921.proto`](us/federal/v1/form_3921/form_3921.proto) | Exercise of an incentive stock option under Section 422(b) |
+| [3922](https://www.irs.gov/pub/irs-pdf/f3922.pdf) | [`form_3922.proto`](us/federal/v1/form_3922/form_3922.proto) | Transfer of stock acquired through an ESPP under Section 423(c) |
 | [5498](https://www.irs.gov/pub/irs-pdf/f5498.pdf) | [`form_5498.proto`](us/federal/v1/form_5498/form_5498.proto) | IRA contributions |
 | [5498-SA](https://www.irs.gov/pub/irs-pdf/f5498sa.pdf) | [`form_5498_sa.proto`](us/federal/v1/form_5498_sa/form_5498_sa.proto) | HSA and MSA contributions |
 | [SSA-1099](https://www.ssa.gov/myaccount/replacement-SSA-1099.html) | [`form_ssa_1099.proto`](us/federal/v1/form_ssa_1099/form_ssa_1099.proto) | Social Security benefits |
@@ -134,18 +137,54 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | Form | Schema | Reports |
 |---|---|---|
 | [1040](https://www.irs.gov/pub/irs-pdf/f1040.pdf) | [`form_1040.proto`](us/federal/v1/form_1040/form_1040.proto) | Income, deductions, tax, payments, refund or amount owed |
+| [1040-X](https://www.irs.gov/pub/irs-pdf/f1040x.pdf) | [`form_1040_x.proto`](us/federal/v1/form_1040/form_1040_x.proto) | Amended U.S. individual income tax return |
 | [Schedule 1](https://www.irs.gov/pub/irs-pdf/f1040s1.pdf) | [`schedule_1.proto`](us/federal/v1/form_1040/schedule_1.proto) | Additional income, and adjustments to reach AGI |
 | [Schedule 1-A](https://www.irs.gov/pub/irs-pdf/f1040s1a.pdf) | [`schedule_1a.proto`](us/federal/v1/form_1040/schedule_1a.proto) | Tips, overtime, vehicle loan interest and senior deductions |
 | [Schedule 2](https://www.irs.gov/pub/irs-pdf/f1040s2.pdf) | [`schedule_2.proto`](us/federal/v1/form_1040/schedule_2.proto) | Additional taxes, including self-employment tax |
 | [Schedule 3](https://www.irs.gov/pub/irs-pdf/f1040s3.pdf) | [`schedule_3.proto`](us/federal/v1/form_1040/schedule_3.proto) | Additional credits and payments |
+| [Schedule 8812](https://www.irs.gov/pub/irs-pdf/f1040s8.pdf) | [`schedule_8812.proto`](us/federal/v1/form_1040/schedule_8812.proto) | Credits for qualifying children and other dependents |
 | [Schedule A](https://www.irs.gov/pub/irs-pdf/f1040sa.pdf) | [`schedule_a.proto`](us/federal/v1/form_1040/schedule_a.proto) | Itemized deductions |
 | [Schedule B](https://www.irs.gov/pub/irs-pdf/f1040sb.pdf) | [`schedule_b.proto`](us/federal/v1/form_1040/schedule_b.proto) | Interest and ordinary dividends |
 | [Schedule C](https://www.irs.gov/pub/irs-pdf/f1040sc.pdf) | [`schedule_c.proto`](us/federal/v1/form_1040/schedule_c.proto) | Profit or loss from business (sole proprietorship) |
 | [Schedule D](https://www.irs.gov/pub/irs-pdf/f1040sd.pdf) | [`schedule_d.proto`](us/federal/v1/form_1040/schedule_d.proto) | Capital gains and losses |
 | [Schedule E](https://www.irs.gov/pub/irs-pdf/f1040se.pdf) | [`schedule_e.proto`](us/federal/v1/form_1040/schedule_e.proto) | Supplemental income and loss from rentals, pass-throughs, etc. |
+| [Schedule EIC](https://www.irs.gov/pub/irs-pdf/f1040sei.pdf) | [`schedule_eic.proto`](us/federal/v1/form_1040/schedule_eic.proto) | Earned income credit qualifying child information |
+| [Schedule F](https://www.irs.gov/pub/irs-pdf/f1040sf.pdf) | [`schedule_f.proto`](us/federal/v1/form_1040/schedule_f.proto) | Profit or loss from farming |
+| [Schedule H](https://www.irs.gov/pub/irs-pdf/f1040sh.pdf) | [`schedule_h.proto`](us/federal/v1/form_1040/schedule_h.proto) | Household employment taxes |
+| [Schedule J](https://www.irs.gov/pub/irs-pdf/f1040sj.pdf) | [`schedule_j.proto`](us/federal/v1/form_1040/schedule_j.proto) | Income averaging for farmers and fishermen |
 | [Schedule SE](https://www.irs.gov/pub/irs-pdf/f1040sse.pdf) | [`schedule_se.proto`](us/federal/v1/form_1040/schedule_se.proto) | Self-employment tax |
+| [1116](https://www.irs.gov/pub/irs-pdf/f1116.pdf) | [`form_1116.proto`](us/federal/v1/form_1040/form_1116.proto) | Foreign tax credit |
+| [2210](https://www.irs.gov/pub/irs-pdf/f2210.pdf) | [`form_2210.proto`](us/federal/v1/form_1040/form_2210.proto) | Underpayment of estimated tax |
+| [2441](https://www.irs.gov/pub/irs-pdf/f2441.pdf) | [`form_2441.proto`](us/federal/v1/form_1040/form_2441.proto) | Child and dependent care expenses |
+| [2555](https://www.irs.gov/pub/irs-pdf/f2555.pdf) | [`form_2555.proto`](us/federal/v1/form_1040/form_2555.proto) | Foreign earned income |
+| [4562](https://www.irs.gov/pub/irs-pdf/f4562.pdf) | [`form_4562.proto`](us/federal/v1/form_1040/form_4562.proto) | Depreciation and amortization |
+| [4684](https://www.irs.gov/pub/irs-pdf/f4684.pdf) | [`form_4684.proto`](us/federal/v1/form_1040/form_4684.proto) | Casualties and thefts |
+| [4797](https://www.irs.gov/pub/irs-pdf/f4797.pdf) | [`form_4797.proto`](us/federal/v1/form_1040/form_4797.proto) | Sales of business property |
+| [4952](https://www.irs.gov/pub/irs-pdf/f4952.pdf) | [`form_4952.proto`](us/federal/v1/form_1040/form_4952.proto) | Investment interest expense deduction |
+| [5329](https://www.irs.gov/pub/irs-pdf/f5329.pdf) | [`form_5329.proto`](us/federal/v1/form_1040/form_5329.proto) | Additional taxes on qualified plans (including IRAs) and other tax-favored accounts |
+| [5695](https://www.irs.gov/pub/irs-pdf/f5695.pdf) | [`form_5695.proto`](us/federal/v1/form_1040/form_5695.proto) | Residential energy credits |
+| [6198](https://www.irs.gov/pub/irs-pdf/f6198.pdf) | [`form_6198.proto`](us/federal/v1/form_1040/form_6198.proto) | At-risk limitations |
+| [6251](https://www.irs.gov/pub/irs-pdf/f6251.pdf) | [`form_6251.proto`](us/federal/v1/form_1040/form_6251.proto) | Alternative minimum tax — individuals |
+| [6252](https://www.irs.gov/pub/irs-pdf/f6252.pdf) | [`form_6252.proto`](us/federal/v1/form_1040/form_6252.proto) | Installment sale income |
+| [7203](https://www.irs.gov/pub/irs-pdf/f7203.pdf) | [`form_7203.proto`](us/federal/v1/form_1040/form_7203.proto) | S corporation shareholder stock and debt basis limitations |
+| [7206](https://www.irs.gov/pub/irs-pdf/f7206.pdf) | [`form_7206.proto`](us/federal/v1/form_1040/form_7206.proto) | Self-employed health insurance deduction |
+| [8582](https://www.irs.gov/pub/irs-pdf/f8582.pdf) | [`form_8582.proto`](us/federal/v1/form_1040/form_8582.proto) | Passive activity loss limitations |
+| [8606](https://www.irs.gov/pub/irs-pdf/f8606.pdf) | [`form_8606.proto`](us/federal/v1/form_1040/form_8606.proto) | Nondeductible IRAs |
+| [8615](https://www.irs.gov/pub/irs-pdf/f8615.pdf) | [`form_8615.proto`](us/federal/v1/form_1040/form_8615.proto) | Tax for certain children who have unearned income |
+| [8801](https://www.irs.gov/pub/irs-pdf/f8801.pdf) | [`form_8801.proto`](us/federal/v1/form_1040/form_8801.proto) | Credit for prior year minimum tax |
+| [8814](https://www.irs.gov/pub/irs-pdf/f8814.pdf) | [`form_8814.proto`](us/federal/v1/form_1040/form_8814.proto) | Parent's election to report child's interest and dividends |
+| [8824](https://www.irs.gov/pub/irs-pdf/f8824.pdf) | [`form_8824.proto`](us/federal/v1/form_1040/form_8824.proto) | Like-kind exchanges |
+| [8829](https://www.irs.gov/pub/irs-pdf/f8829.pdf) | [`form_8829.proto`](us/federal/v1/form_1040/form_8829.proto) | Expenses for business use of your home |
+| [8839](https://www.irs.gov/pub/irs-pdf/f8839.pdf) | [`form_8839.proto`](us/federal/v1/form_1040/form_8839.proto) | Qualified adoption expenses |
+| [8863](https://www.irs.gov/pub/irs-pdf/f8863.pdf) | [`form_8863.proto`](us/federal/v1/form_1040/form_8863.proto) | Education credits (American Opportunity and Lifetime Learning credits) |
+| [8880](https://www.irs.gov/pub/irs-pdf/f8880.pdf) | [`form_8880.proto`](us/federal/v1/form_1040/form_8880.proto) | Credit for qualified retirement savings contributions |
 | [8889](https://www.irs.gov/pub/irs-pdf/f8889.pdf) | [`form_8889.proto`](us/federal/v1/form_8889/form_8889.proto) | Health savings accounts |
+| [8936](https://www.irs.gov/pub/irs-pdf/f8936.pdf) | [`form_8936.proto`](us/federal/v1/form_1040/form_8936.proto) | Clean vehicle credits |
 | [8949](https://www.irs.gov/pub/irs-pdf/f8949.pdf) | [`form_8949.proto`](us/federal/v1/form_1040/form_8949.proto) | Sales and other dispositions of capital assets |
+| [8959](https://www.irs.gov/pub/irs-pdf/f8959.pdf) | [`form_8959.proto`](us/federal/v1/form_1040/form_8959.proto) | Additional Medicare Tax |
+| [8960](https://www.irs.gov/pub/irs-pdf/f8960.pdf) | [`form_8960.proto`](us/federal/v1/form_1040/form_8960.proto) | Net Investment Income Tax |
+| [8962](https://www.irs.gov/pub/irs-pdf/f8962.pdf) | [`form_8962.proto`](us/federal/v1/form_1040/form_8962.proto) | Premium tax credit (PTC) |
+| [8995](https://www.irs.gov/pub/irs-pdf/f8995.pdf) | [`form_8995.proto`](us/federal/v1/form_1040/form_8995.proto) | Qualified business income deduction |
 
 ### State returns — what three states want as well
 

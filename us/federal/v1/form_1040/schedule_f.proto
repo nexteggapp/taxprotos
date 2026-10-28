@@ -1,0 +1,196 @@
+// Schedule F (Form 1040), Profit or Loss From Farming.
+//
+// Used to report farm income and expenses for an individual operating a farming
+// business as a sole proprietor, either under the cash method (Parts I and II)
+// or the accrual method (Parts II and III).
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// ScheduleF reports farm income, farm expenses, and net farm profit or loss.
+message ScheduleF {
+  // OtherFarmExpense represents one additional farm expense on line 32 (a through f).
+  message OtherFarmExpense {
+    // Description of the farm expense.
+    string description = 1;
+
+    // Amount of the farm expense.
+    common.v1.Money amount = 2;
+  }
+
+  // The tax year the schedule applies to.
+  int32 tax_year = 1;
+
+  // Name of proprietor shown on return.
+  string proprietor_name = 2;
+
+  // Social Security number of proprietor.
+  string proprietor_tin = 3;
+
+  // Line A: Principal crop or activity.
+  string principal_crop_or_activity = 4;
+
+  // Line B: Six-digit agricultural activity code from instructions.
+  string activity_code = 5;
+
+  // Line C: Accounting method: true for accrual, false for cash.
+  bool accrual_accounting_method = 6;
+
+  // Line D: Employer ID number (EIN), if any.
+  string employer_id_number = 7;
+
+  // Line E: Did you "materially participate" in the operation of this business during the tax year.
+  bool materially_participated = 8;
+
+  // Line F: Did you make any payments that would require you to file Form(s) 1099.
+  bool made_payments_requiring_1099 = 9;
+
+  // Line G: If "Yes" on line F, did you or will you file required Form(s) 1099.
+  bool filed_required_1099s = 10;
+
+  // -- Part I: Farm Income — Cash Method -----------------------------------
+
+  // Line 1a: Sales of livestock and other resale items bought for resale.
+  common.v1.Money sales_of_purchased_livestock_and_resale_items = 11;
+
+  // Line 1b: Cost or other basis of livestock or other items reported on line 1a.
+  common.v1.Money cost_of_purchased_livestock_and_resale_items = 12;
+
+  // Line 1c: Subtract line 1b from line 1a.
+  common.v1.Money net_gain_on_purchased_resale_items = 13;
+
+  // Line 2: Sales of livestock, produce, grains, and other products you raised.
+  common.v1.Money sales_of_raised_livestock_and_produce = 14;
+
+  // Line 3a: Total cooperative distributions (Form(s) 1099-PATR).
+  common.v1.Money total_cooperative_distributions = 15;
+
+  // Line 3b: Taxable amount of cooperative distributions.
+  common.v1.Money taxable_cooperative_distributions = 16;
+
+  // Line 4a: Total agricultural program payments.
+  common.v1.Money total_agricultural_program_payments = 17;
+
+  // Line 4b: Taxable amount of agricultural program payments.
+  common.v1.Money taxable_agricultural_program_payments = 18;
+
+  // Line 5a: Commodity Credit Corporation (CCC) loans reported under election.
+  common.v1.Money ccc_loans_reported_under_election = 19;
+
+  // Line 5b: CCC loans forfeited.
+  common.v1.Money ccc_loans_forfeited = 20;
+
+  // Line 5c: Taxable amount of CCC loans forfeited.
+  common.v1.Money taxable_ccc_loans_forfeited = 21;
+
+  // Line 6a: Crop insurance proceeds and federal crop disaster payments received in current year.
+  common.v1.Money crop_insurance_proceeds_received = 22;
+
+  // Line 6b: Taxable amount of crop insurance proceeds in current year.
+  common.v1.Money taxable_crop_insurance_proceeds = 23;
+
+  // Line 6c: Check if electing to defer crop insurance proceeds to next tax year.
+  bool elect_to_defer_crop_insurance_proceeds = 24;
+
+  // Line 6d: Amount of crop insurance proceeds deferred from prior tax year into current year.
+  common.v1.Money prior_year_deferred_crop_insurance_proceeds = 25;
+
+  // Line 7: Custom hire (machine work) income.
+  common.v1.Money custom_hire_income = 26;
+
+  // Line 8: Other income, including federal and state gasoline or fuel tax credit or refund.
+  common.v1.Money other_farm_income = 27;
+
+  // Line 9: Gross farm income (add amounts in the right column for lines 1c, 2, 3b, 4b, 5a, 5c, 6b, 6d, 7, and 8; or from Part III line 50).
+  common.v1.Money gross_farm_income = 28;
+
+  // -- Part II: Farm Expenses — Cash and Accrual Method --------------------
+
+  // Line 10: Car and truck expenses.
+  common.v1.Money car_and_truck_expenses = 29;
+
+  // Line 11: Chemicals.
+  common.v1.Money chemicals = 30;
+
+  // Line 12: Conservation expenses.
+  common.v1.Money conservation_expenses = 31;
+
+  // Line 13: Custom hire (machine work).
+  common.v1.Money custom_hire_expenses = 32;
+
+  // Line 14: Depreciation and Section 179 expense deduction.
+  common.v1.Money depreciation_and_section_179 = 33;
+
+  // Line 15: Employee benefit programs other than on line 23.
+  common.v1.Money employee_benefit_programs = 34;
+
+  // Line 16: Feed.
+  common.v1.Money feed = 35;
+
+  // Line 17: Fertilizers and lime.
+  common.v1.Money fertilizers_and_lime = 36;
+
+  // Line 18: Freight and trucking.
+  common.v1.Money freight_and_trucking = 37;
+
+  // Line 19: Gasoline, fuel, and oil.
+  common.v1.Money gasoline_fuel_and_oil = 38;
+
+  // Line 20: Insurance (other than health).
+  common.v1.Money insurance_other_than_health = 39;
+
+  // Line 21a: Mortgage interest paid to banks, etc.
+  common.v1.Money mortgage_interest = 40;
+
+  // Line 21b: Other interest.
+  common.v1.Money other_interest = 41;
+
+  // Line 22: Labor hired (less employment credits).
+  common.v1.Money labor_hired = 42;
+
+  // Line 23: Pension and profit-sharing plans.
+  common.v1.Money pension_and_profit_sharing_plans = 43;
+
+  // Line 24a: Rent or lease of vehicles, machinery, and equipment.
+  common.v1.Money rent_or_lease_vehicles_and_equipment = 44;
+
+  // Line 24b: Rent or lease of other (land, animals, etc.).
+  common.v1.Money rent_or_lease_land_and_animals = 45;
+
+  // Line 25: Repairs and maintenance.
+  common.v1.Money repairs_and_maintenance = 46;
+
+  // Line 26: Seeds and plants.
+  common.v1.Money seeds_and_plants = 47;
+
+  // Line 27: Storage and warehousing.
+  common.v1.Money storage_and_warehousing = 48;
+
+  // Line 28: Supplies.
+  common.v1.Money supplies = 49;
+
+  // Line 29: Taxes.
+  common.v1.Money taxes = 50;
+
+  // Line 30: Utilities.
+  common.v1.Money utilities = 51;
+
+  // Line 31: Veterinary, breeding, and medicine.
+  common.v1.Money veterinary_breeding_and_medicine = 52;
+
+  // Line 32: Other expenses (a through f).
+  repeated OtherFarmExpense other_expenses = 53;
+
+  // Line 33: Total expenses (add lines 10 through 32f).
+  common.v1.Money total_farm_expenses = 54;
+
+  // Line 34: Net farm profit or (loss) (subtract line 33 from line 9). Carries to Schedule 1 line 6 and Schedule SE.
+  common.v1.Money net_farm_profit_or_loss = 55;
+
+  // Line 36: Check if some investment is not at risk (requires Form 6198).
+  bool some_investment_not_at_risk = 56;
+}
