@@ -11,39 +11,146 @@ import "taxprotos/common/v1/money.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
 
-// Form2210 reports the underpayment of estimated tax computation across Parts I through III and Schedule AI.
+// Form2210 reports the required annual payment (Part I), the reasons for
+// filing (Part II), the penalty computation (Part III), and Schedule AI.
 message Form2210 {
-  // InstallmentColumn represents one of the four quarterly payment periods (Apr 15, Jun 15, Sep 15, Jan 15) in Part III and Schedule AI.
-  message InstallmentColumn {
-    // Payment period index (1 for Apr 15, 2 for Jun 15, 3 for Sep 15, 4 for Jan 15).
+  // PaymentPeriod is one column of Part III, Section A: one payment due date.
+  message PaymentPeriod {
+    // The column: 1 through 4 for (a) through (d).
     int32 period = 1;
 
-    // Schedule AI line 1: Cumulative adjusted gross income for the annualization period.
-    common.v1.Money cumulative_period_agi = 2;
+    // Line 10: Required installment.
+    common.v1.Money required_installment = 2;
 
-    // Schedule AI line 3: Annualized income for the period.
+    // Line 11: Estimated tax paid and tax withheld.
+    common.v1.Money estimated_tax_paid_and_withheld = 3;
+
+    // Line 12: Overpayment from line 18 of the previous column.
+    common.v1.Money prior_period_overpayment = 4;
+
+    // Line 13: Lines 11 and 12 added.
+    common.v1.Money payments_with_prior_overpayment = 5;
+
+    // Line 14: Lines 16 and 17 of the previous column added.
+    common.v1.Money prior_period_shortfall = 6;
+
+    // Line 15: Line 13 minus line 14, not less than zero. Column (a) holds
+    // line 11.
+    common.v1.Money net_timely_payments = 7;
+
+    // Line 16: Line 14 minus line 13 when line 15 is zero, otherwise zero.
+    common.v1.Money shortfall_carried_forward = 8;
+
+    // Line 17: Underpayment. Line 10 minus line 15 when line 10 is at least
+    // line 15.
+    common.v1.Money underpayment = 9;
+
+    // Line 18: Overpayment. Line 15 minus line 10 when line 15 is more.
+    common.v1.Money overpayment = 10;
+  }
+
+  // AnnualizationPeriod is one column of Schedule AI: one period of the year.
+  // The annualization factors, applicable percentages, and prorated social
+  // security limits the form preprints in each column are not stored.
+  message AnnualizationPeriod {
+    // The column: 1 through 4 for (a) through (d).
+    int32 period = 1;
+
+    // Schedule AI line 1: Adjusted gross income for the period.
+    common.v1.Money adjusted_gross_income = 2;
+
+    // Schedule AI line 3: Annualized income. Line 1 multiplied by line 2.
     common.v1.Money annualized_income = 3;
 
-    // Schedule AI line 12: Annualized taxable income for the period.
-    common.v1.Money annualized_taxable_income = 4;
+    // Schedule AI line 4: Itemized deductions for the period.
+    common.v1.Money itemized_deductions = 4;
 
-    // Schedule AI line 21: Total annualized tax for the period.
-    common.v1.Money annualized_total_tax = 5;
+    // Schedule AI line 6: Line 4 multiplied by line 5.
+    common.v1.Money annualized_itemized_deductions = 5;
 
-    // Schedule AI line 27 / Part III line 10: Required installment for the period.
-    common.v1.Money required_installment = 6;
+    // Schedule AI line 7: Standard deduction.
+    common.v1.Money standard_deduction = 6;
 
-    // Part III line 11: Estimated tax paid and tax withheld for the period.
-    common.v1.Money estimated_tax_paid_and_withheld = 7;
+    // Schedule AI line 8: The larger of line 6 or line 7.
+    common.v1.Money deduction = 7;
 
-    // Part III line 15: Net timely payments after applying prior-period overpayments/underpayments.
-    common.v1.Money net_timely_payments = 8;
+    // Schedule AI line 9: Deduction for qualified business income.
+    common.v1.Money qualified_business_income_deduction = 8;
 
-    // Part III line 17: Underpayment for the period (if line 10 exceeds line 15).
-    common.v1.Money period_underpayment = 9;
+    // Schedule AI line 10: Lines 8 and 9 added.
+    common.v1.Money total_deductions = 9;
 
-    // Part III line 18: Overpayment for the period carried to the next period (if line 15 exceeds line 10).
-    common.v1.Money period_overpayment = 10;
+    // Schedule AI line 11: Line 3 minus line 10.
+    common.v1.Money income_less_deductions = 10;
+
+    // Schedule AI line 12: Zero for Form 1040 filers; an exemption amount for
+    // estates and trusts.
+    common.v1.Money exemption = 11;
+
+    // Schedule AI line 13: Line 11 minus line 12, not less than zero.
+    common.v1.Money annualized_taxable_income = 12;
+
+    // Schedule AI line 14: Tax on line 13.
+    common.v1.Money tax = 13;
+
+    // Schedule AI line 15: Self-employment tax from line 36.
+    common.v1.Money self_employment_tax = 14;
+
+    // Schedule AI line 16: Other taxes for the period.
+    common.v1.Money other_taxes = 15;
+
+    // Schedule AI line 17: Total tax. Lines 14, 15, and 16 added.
+    common.v1.Money total_tax = 16;
+
+    // Schedule AI line 18: Credits of the kinds allowed on Part I lines 1 and
+    // 3.
+    common.v1.Money credits = 17;
+
+    // Schedule AI line 19: Line 17 minus line 18, not less than zero.
+    common.v1.Money tax_after_credits = 18;
+
+    // Schedule AI line 21: Line 19 multiplied by the applicable percentage on
+    // line 20.
+    common.v1.Money applicable_tax = 19;
+
+    // Schedule AI line 22: Line 27 of all previous columns added.
+    common.v1.Money prior_installments = 20;
+
+    // Schedule AI line 23: Line 21 minus line 22, not less than zero.
+    common.v1.Money annualized_installment = 21;
+
+    // Schedule AI line 24: A quarter of Part I line 9.
+    common.v1.Money regular_installment = 22;
+
+    // Schedule AI line 25: Line 26 minus line 27, both of the previous column.
+    common.v1.Money prior_regular_installment_excess = 23;
+
+    // Schedule AI line 26: Lines 24 and 25 added.
+    common.v1.Money available_regular_installment = 24;
+
+    // Schedule AI line 27: The smaller of line 23 or line 26. Carries to Part
+    // III line 10.
+    common.v1.Money required_installment = 25;
+
+    // Schedule AI line 28: Net earnings from self-employment for the period.
+    common.v1.Money net_earnings_from_self_employment = 26;
+
+    // Schedule AI line 30: Wages for the period subject to social security tax
+    // or the tier 1 railroad retirement tax.
+    common.v1.Money wages_subject_to_social_security_tax = 27;
+
+    // Schedule AI line 31: Line 29 minus line 30, not less than zero.
+    common.v1.Money remaining_social_security_limit = 28;
+
+    // Schedule AI line 33: Line 32 multiplied by the smaller of line 28 or line
+    // 31.
+    common.v1.Money annualized_social_security_tax = 29;
+
+    // Schedule AI line 35: Line 28 multiplied by line 34.
+    common.v1.Money annualized_medicare_tax = 30;
+
+    // Schedule AI line 36: Lines 33 and 35 added. Carries to line 15.
+    common.v1.Money annualized_self_employment_tax = 31;
   }
 
   // The tax year the form applies to.
@@ -55,60 +162,70 @@ message Form2210 {
   // Identifying number (SSN or EIN).
   string filer_tin = 3;
 
-  // -- Part I: Reasons for Filing ------------------------------------------
+  // -- Part I: Required Annual Payment -------------------------------------
 
-  // Box A: Requesting a full waiver of the entire penalty.
-  bool box_a_full_waiver = 4;
+  // Line 1: Tax after credits from Form 1040 line 22.
+  common.v1.Money current_year_tax_after_credits = 4;
 
-  // Box B: Requesting a partial waiver of the penalty.
-  bool box_b_partial_waiver = 5;
+  // Line 2: Other taxes, including self-employment tax, Additional Medicare
+  // Tax, and Net Investment Income Tax.
+  common.v1.Money other_taxes = 5;
 
-  // Box C: Income varied during the year and penalty is reduced or eliminated using the annualized income installment method (Schedule AI).
-  bool box_c_annualized_income_method = 6;
+  // Line 3: Other payments and refundable credits. Entered in parentheses.
+  common.v1.Money refundable_credits = 6;
 
-  // Box D: Requesting that federal income tax withheld be treated as paid on the actual dates withheld rather than in equal quarterly amounts.
-  bool box_d_actual_withholding_dates = 7;
+  // Line 4: Current year tax. Lines 1, 2, and 3 combined.
+  common.v1.Money total_current_year_tax = 7;
 
-  // Box E: Filing a joint return for the current year, but filed separate returns for the prior year, and prior-year tax total exceeds $150,000.
-  bool box_e_joint_after_separate_returns = 8;
+  // Line 5: Line 4 multiplied by the current-year safe harbor percentage.
+  common.v1.Money current_year_safe_harbor_tax = 8;
 
-  // -- Part II: Required Annual Payment ------------------------------------
+  // Line 6: Withholding taxes, excluding estimated tax payments.
+  common.v1.Money total_tax_withheld = 9;
 
-  // Line 1: Current year tax after credits (Form 1040 line 22).
-  common.v1.Money current_year_tax_after_credits = 9;
+  // Line 7: Line 4 minus line 6.
+  common.v1.Money net_tax_after_withholding = 10;
 
-  // Line 2: Other taxes, including self-employment tax, Additional Medicare Tax, and Net Investment Income Tax.
-  common.v1.Money other_taxes = 10;
+  // Line 8: Maximum required annual payment based on the prior year's tax.
+  common.v1.Money prior_year_safe_harbor_tax = 11;
 
-  // Line 3: Refundable credits (EIC, Additional Child Tax Credit, American Opportunity Credit, Premium Tax Credit, etc.).
-  common.v1.Money refundable_credits = 11;
+  // Line 9: Required annual payment. The smaller of line 5 or line 8.
+  common.v1.Money required_annual_payment = 12;
 
-  // Line 4: Current year tax (add lines 1 and 2, then subtract line 3).
-  common.v1.Money total_current_year_tax = 12;
+  // Line 9: The answer to "Is line 9 more than line 6?"
+  bool required_payment_exceeds_withholding = 13;
 
-  // Line 5: Multiply line 4 by 90% (0.90) (or 66 2/3% for qualified farmers and fishermen).
-  common.v1.Money ninety_percent_of_current_year_tax = 13;
+  // -- Part II: Reasons for Filing -----------------------------------------
 
-  // Line 6: Withholding taxes (Form 1040 line 25d and Schedule 3 line 11).
-  common.v1.Money total_tax_withheld = 14;
+  // Box A: Requests a waiver of the entire penalty.
+  bool requests_full_waiver = 14;
 
-  // Line 7: Subtract line 6 from line 4 (if less than $1,000, no penalty is owed).
-  common.v1.Money net_tax_after_withholding = 15;
+  // Box B: Requests a waiver of part of the penalty.
+  bool requests_partial_waiver = 15;
 
-  // Line 8: Maximum required annual payment based on prior year's tax (100% of prior year tax, or 110% if prior year AGI exceeded $150,000 / $75,000 MFS).
-  common.v1.Money prior_year_safe_harbor_tax = 16;
+  // Box C: Penalty figured with the annualized income installment method
+  // (Schedule AI).
+  bool uses_annualized_income_method = 16;
 
-  // Line 9: Required annual payment (smaller of line 5 or line 8).
-  common.v1.Money required_annual_payment = 17;
+  // Box D: Penalty figured by treating withholding as paid on the dates it
+  // was actually withheld.
+  bool treats_withholding_as_paid_when_withheld = 17;
 
-  // Is line 9 more than line 6 (if No, no penalty is owed unless Box E is checked).
-  bool required_payment_exceeds_withholding = 18;
+  // Box E: A joint return was filed for the prior year or the current year
+  // but not both, and line 8 is smaller than line 5.
+  bool joint_return_in_only_one_year = 18;
 
-  // -- Part III: Penalty Computation & Schedule AI -------------------------
+  // -- Part III: Penalty Computation ---------------------------------------
 
-  // Quarterly installment columns (periods 1 through 4).
-  repeated InstallmentColumn quarterly_installments = 19;
+  // Section A, lines 10 through 18: One entry per payment due date.
+  repeated PaymentPeriod payment_periods = 19;
 
-  // Line 19: Total estimated tax penalty from Worksheet for Form 2210 Part III Section B. Carries to Form 1040 line 38.
+  // Line 19: Penalty, from the worksheet for Part III, Section B. Carries to
+  // Form 1040 line 38.
   common.v1.Money estimated_tax_penalty = 20;
+
+  // -- Schedule AI: Annualized Income Installment Method -------------------
+
+  // Schedule AI lines 1 through 36: One entry per annualization period.
+  repeated AnnualizationPeriod annualization_periods = 21;
 }

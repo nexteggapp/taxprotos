@@ -10,11 +10,46 @@ package nexteggapp.taxprotos.us.federal.v1;
 
 import "taxprotos/common/v1/date.proto";
 import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/quantity.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
 
 // Form2555 reports the Foreign Earned Income Exclusion and Foreign Housing Exclusion/Deduction across Parts I through IX.
 message Form2555 {
+  // LivingQuarters is the kind of living quarters checked on Part II line 11.
+  enum LivingQuarters {
+    // Not stated.
+    LIVING_QUARTERS_UNSPECIFIED = 0;
+
+    // Box a: Purchased house.
+    LIVING_QUARTERS_PURCHASED_HOUSE = 1;
+
+    // Box b: Rented house or apartment.
+    LIVING_QUARTERS_RENTED_HOUSE_OR_APARTMENT = 2;
+
+    // Box c: Rented room.
+    LIVING_QUARTERS_RENTED_ROOM = 3;
+
+    // Box d: Quarters furnished by employer.
+    LIVING_QUARTERS_FURNISHED_BY_EMPLOYER = 4;
+  }
+
+  // UsPresence is one row of Part II line 14: a period in the United States
+  // or its territories during the tax year.
+  message UsPresence {
+    // Column (a): Date arrived in the U.S.
+    common.v1.Date date_arrived = 1;
+
+    // Column (b): Date left the U.S.
+    common.v1.Date date_left = 2;
+
+    // Column (c): Number of days in the U.S. on business.
+    int32 days_in_us_on_business = 3;
+
+    // Column (d): Income earned in the U.S. on business.
+    common.v1.Money income_earned_in_us_on_business = 4;
+  }
+
   // TravelPeriod represents one travel period during the 12-month physical presence test period (Part III line 18).
   message TravelPeriod {
     // Column (a): Name of country (including the United States) traveled to.
@@ -32,7 +67,7 @@ message Form2555 {
     // Column (e): Number of days in U.S. on business.
     int32 days_in_us_on_business = 5;
 
-    // Column (f): Income earned in U.S. on business (attach statement).
+    // Column (f): Income earned in U.S. on business.
     common.v1.Money income_earned_in_us_on_business = 6;
   }
 
@@ -47,187 +82,273 @@ message Form2555 {
 
   // -- Part I: General Information -----------------------------------------
 
-  // Line 1: Foreign address (including city, province or state, country, and postal code).
+  // Line 1: Foreign address, including country.
   string foreign_address = 4;
 
-  // Line 2: Occupation abroad.
+  // Line 2: Occupation.
   string occupation = 5;
 
   // Line 3: Employer's name.
   string employer_name = 6;
 
-  // Line 4a: Employer's U.S. address, if any.
+  // Line 4a: Employer's U.S. address.
   string employer_us_address = 7;
 
   // Line 4b: Employer's foreign address.
   string employer_foreign_address = 8;
 
-  // Line 6a: Tax year for which the individual last filed Form 2555 or 2555-EZ.
-  int32 prior_form_2555_year = 9;
+  // Line 5a: The employer is a foreign entity.
+  bool employer_is_foreign_entity = 9;
 
-  // Line 6c: Have you ever revoked either of the exclusions.
-  bool ever_revoked_exclusions = 10;
+  // Line 5b: The employer is a U.S. company.
+  bool employer_is_us_company = 10;
 
-  // Line 7: Of what country are you a citizen or national.
-  string country_of_citizenship = 11;
+  // Line 5c: The filer is self-employed.
+  bool employer_is_self = 11;
 
-  // Line 8a: Did you maintain a separate foreign residence for your family because of adverse living conditions at your tax home.
-  bool separate_foreign_residence_adverse_conditions = 12;
+  // Line 5d: The employer is a foreign affiliate of a U.S. company.
+  bool employer_is_foreign_affiliate_of_us_company = 12;
+
+  // Line 5e: Any other kind of employer, as specified.
+  string employer_other_description = 13;
+
+  // Line 6a: The last year Form 2555 or 2555-EZ was filed.
+  int32 prior_form_2555_year = 14;
+
+  // Line 6b: Form 2555 or 2555-EZ was never filed to claim either exclusion.
+  bool never_claimed_exclusions = 15;
+
+  // Line 6c: Whether either exclusion was ever revoked.
+  bool ever_revoked_exclusions = 16;
+
+  // Line 6d: The type of exclusion revoked and the tax year the revocation
+  // took effect.
+  string revocation_details = 17;
+
+  // Line 7: Country of citizenship or nationality.
+  string country_of_citizenship = 18;
+
+  // Line 8a: Whether a separate foreign residence was maintained for family
+  // because of adverse living conditions at the tax home.
+  bool separate_foreign_residence_adverse_conditions = 19;
+
+  // Line 8b: City and country of the separate foreign residence.
+  string second_household_location = 20;
+
+  // Line 8b: Days in the tax year the second household was maintained.
+  int32 second_household_days = 21;
 
   // Line 9: Tax home(s) during the tax year and date(s) established.
-  string tax_homes_and_dates_established = 13;
+  string tax_homes_and_dates_established = 22;
 
   // -- Part II: Taxpayers Qualifying Under Bona Fide Residence Test --------
 
   // Line 10: Date bona fide residence began.
-  common.v1.Date bona_fide_residence_start_date = 14;
+  common.v1.Date bona_fide_residence_start_date = 23;
 
-  // Line 10: Date bona fide residence ended (unset if continues).
-  common.v1.Date bona_fide_residence_end_date = 15;
+  // Line 10: Date bona fide residence ended, unset if it continues.
+  common.v1.Date bona_fide_residence_end_date = 24;
 
-  // Line 11: Kind of living quarters in foreign country (purchased house, rented house/apt, rented room, quarters furnished by employer).
-  string kind_of_living_quarters = 16;
+  // Line 11: Kind of living quarters in the foreign country.
+  LivingQuarters kind_of_living_quarters = 25;
 
-  // Line 12a: Did any of your family live with you abroad during any part of the tax year.
-  bool family_lived_with_taxpayer_abroad = 17;
+  // Line 12a: Whether any family lived with the filer abroad during the tax
+  // year.
+  bool family_lived_with_taxpayer_abroad = 26;
 
-  // Line 13a: Have you submitted a statement to the authorities of the foreign country that you are not a resident of that country.
-  bool submitted_nonresident_statement_to_foreign_country = 18;
+  // Line 12b: Who of the family lived abroad, and for what period.
+  string family_abroad_and_periods = 27;
 
-  // Line 13b: Are you required to pay income tax to the country where you claim bona fide residence.
-  bool required_to_pay_foreign_income_tax = 19;
+  // Line 13a: Whether a statement was submitted to the foreign country's
+  // authorities that the filer is not a resident of it.
+  bool submitted_nonresident_statement_to_foreign_country = 28;
 
-  // Line 15a: Contractual terms or other conditions relating to length of employment abroad.
-  string employment_terms = 20;
+  // Line 13b: Whether the filer must pay income tax to the country of claimed
+  // bona fide residence.
+  bool required_to_pay_foreign_income_tax = 29;
+
+  // Line 14: Periods present in the United States or its territories.
+  repeated UsPresence us_presence = 30;
+
+  // Line 15a: Contractual terms or other conditions relating to the length of
+  // employment abroad.
+  string employment_terms = 31;
+
+  // Line 15b: Type of visa used to enter the foreign country.
+  string visa_type = 32;
+
+  // Line 15c: Whether the visa limited the length of stay or employment.
+  bool visa_limited_stay = 33;
+
+  // Line 15d: Whether a home was maintained in the United States while
+  // living abroad.
+  bool maintained_us_home = 34;
+
+  // Line 15e: Address of the U.S. home, whether it was rented, its occupants,
+  // and their relationship to the filer.
+  string us_home_details = 35;
 
   // -- Part III: Taxpayers Qualifying Under Physical Presence Test ---------
 
   // Line 16: The physical presence test 12-month period begins on this date.
-  common.v1.Date physical_presence_start_date = 21;
+  common.v1.Date physical_presence_start_date = 36;
 
   // Line 16: The physical presence test 12-month period ends on this date.
-  common.v1.Date physical_presence_end_date = 22;
+  common.v1.Date physical_presence_end_date = 37;
 
   // Line 17: Principal country of employment during the tax year.
-  string principal_country_of_employment = 23;
+  string principal_country_of_employment = 38;
 
-  // Line 18: Travel schedule during the 12-month period.
-  repeated TravelPeriod travel_schedule = 24;
+  // Line 18: Travel during the 12-month period.
+  repeated TravelPeriod travel_schedule = 39;
 
-  // -- Part IV: All Taxpayers — Foreign Earned Income ----------------------
+  // -- Part IV: All Taxpayers ----------------------------------------------
 
-  // Line 19: Total wages, salaries, bonuses, commissions, etc. earned in foreign country.
-  common.v1.Money foreign_wages_salaries_bonuses = 25;
+  // Line 19: Total wages, salaries, bonuses, commissions, etc.
+  common.v1.Money foreign_wages_salaries_bonuses = 40;
 
-  // Line 20a: Allocable share of income for personal services performed in a business (including partnerships) or profession.
-  common.v1.Money foreign_business_or_professional_income = 26;
+  // Line 20a: Allowable share of income for personal services performed in a
+  // business or profession.
+  common.v1.Money foreign_business_or_professional_income = 41;
 
-  // Line 21a: Noncash income (market value of home/lodging).
-  common.v1.Money noncash_lodging_income = 27;
+  // Line 20b: Allowable share of income for personal services performed in a
+  // partnership.
+  common.v1.Money foreign_partnership_income = 42;
 
-  // Line 21b: Noncash income (meals).
-  common.v1.Money noncash_meals_income = 28;
+  // Line 21a: Noncash income: home (lodging).
+  common.v1.Money noncash_lodging_income = 43;
 
-  // Line 21c: Noncash income (car).
-  common.v1.Money noncash_car_income = 29;
+  // Line 21b: Noncash income: meals.
+  common.v1.Money noncash_meals_income = 44;
 
-  // Line 21d: Other noncash property or facilities.
-  common.v1.Money noncash_other_property_income = 30;
+  // Line 21c: Noncash income: car.
+  common.v1.Money noncash_car_income = 45;
 
-  // Line 22: Allowances, reimbursements, or expenses paid on your behalf for moving, overseas differential, family, education, home leave, quarters, etc.
-  common.v1.Money allowances_and_reimbursements = 31;
+  // Line 21d: Noncash income: other property or facilities.
+  common.v1.Money noncash_other_property_income = 46;
+
+  // Line 22a: Cost of living and overseas differential allowances.
+  common.v1.Money cost_of_living_allowance = 47;
+
+  // Line 22b: Family allowances.
+  common.v1.Money family_allowance = 48;
+
+  // Line 22c: Education allowances.
+  common.v1.Money education_allowance = 49;
+
+  // Line 22d: Home leave allowances.
+  common.v1.Money home_leave_allowance = 50;
+
+  // Line 22e: Quarters allowances.
+  common.v1.Money quarters_allowance = 51;
+
+  // Line 22f: Allowances for any other purpose.
+  common.v1.Money other_allowances = 52;
+
+  // Line 22g: Lines 22a through 22f added.
+  common.v1.Money allowances_and_reimbursements = 53;
 
   // Line 23: Other foreign earned income.
-  common.v1.Money other_foreign_earned_income = 32;
+  common.v1.Money other_foreign_earned_income = 54;
 
-  // Line 24: Add lines 19 through 23.
-  common.v1.Money subtotal_foreign_earned_income = 33;
+  // Line 24: Lines 19 through 21d, line 22g, and line 23 added.
+  common.v1.Money subtotal_foreign_earned_income = 55;
 
-  // Line 25: Total amount of meals and lodging included on line 24 that is excludable under Section 119 (convenience of employer).
-  common.v1.Money excludable_meals_and_lodging = 34;
+  // Line 25: Meals and lodging included on line 24 that are excludable.
+  common.v1.Money excludable_meals_and_lodging = 56;
 
-  // Line 26: Total foreign earned income (subtract line 25 from line 24).
-  common.v1.Money total_foreign_earned_income = 35;
+  // Line 26: Foreign earned income. Line 24 minus line 25. Carries to line 27.
+  common.v1.Money total_foreign_earned_income = 57;
 
-  // -- Part V: All Taxpayers Summary ---------------------------------------
+  // -- Part V: All Taxpayers -----------------------------------------------
 
-  // Line 27: Enter the amount from line 26.
-  common.v1.Money part_v_foreign_earned_income = 36;
+  // Line 27: The amount from line 26.
+  common.v1.Money part_v_foreign_earned_income = 58;
 
-  // -- Part VI: Taxpayers Claiming the Housing Exclusion AND/OR Deduction --
+  // Part V: Whether the housing exclusion or housing deduction is claimed.
+  bool claims_housing_exclusion_or_deduction = 59;
+
+  // -- Part VI: Taxpayers Claiming the Housing Exclusion and/or Deduction --
 
   // Line 28: Qualified housing expenses for the tax year.
-  common.v1.Money qualified_housing_expenses = 37;
+  common.v1.Money qualified_housing_expenses = 60;
 
-  // Line 29a: Location where housing expenses were incurred (for high-cost locality limit).
-  string housing_location = 38;
+  // Line 29a: Location where the housing expenses were incurred.
+  string housing_location = 61;
 
-  // Line 29b: Limit on housing expenses for the location and qualifying days.
-  common.v1.Money housing_expense_limit = 39;
+  // Line 29b: Limit on housing expenses.
+  common.v1.Money housing_expense_limit = 62;
 
-  // Line 30: Smaller of line 28 or line 29b.
-  common.v1.Money capped_housing_expenses = 40;
+  // Line 30: The smaller of line 28 or line 29b.
+  common.v1.Money capped_housing_expenses = 63;
 
-  // Line 31: Number of days in qualifying period that fall within the current tax year.
-  int32 qualifying_days_in_tax_year = 41;
+  // Line 31: Days of the qualifying period that fall within the tax year.
+  int32 qualifying_days_in_tax_year = 64;
 
-  // Line 32: Base housing amount (16% of maximum foreign earned income exclusion prorated by line 31 days).
-  common.v1.Money base_housing_amount = 42;
+  // Line 32: Base housing amount. The daily base amount multiplied by line 31.
+  common.v1.Money base_housing_amount = 65;
 
-  // Line 33: Subtract line 32 from line 30 (if zero or less, enter 0: total housing exclusion/deduction pool).
-  common.v1.Money housing_expenses_over_base = 43;
+  // Line 33: Line 30 minus line 32.
+  common.v1.Money housing_expenses_over_base = 66;
 
-  // Line 34: Employer-provided amounts (wages, salaries, housing reimbursements) included on line 27.
-  common.v1.Money employer_provided_amounts = 44;
+  // Line 34: Employer-provided amounts.
+  common.v1.Money employer_provided_amounts = 67;
 
-  // Line 35: Divide line 34 by line 27 (up to 1.000).
-  common.v1.Money employer_provided_portion_of_housing = 45;
+  // Line 35: Line 34 divided by line 27, not more than 1.
+  common.v1.Quantity employer_provided_fraction = 68;
 
-  // Line 36: Foreign housing exclusion (smaller of line 34 or employer-provided share of line 33).
-  common.v1.Money foreign_housing_exclusion = 46;
+  // Line 36: Housing exclusion. Line 33 multiplied by line 35, not more than
+  // line 34.
+  common.v1.Money foreign_housing_exclusion = 69;
 
   // -- Part VII: Taxpayers Claiming the Foreign Earned Income Exclusion ----
 
-  // Line 37: Maximum foreign earned income exclusion for the tax year (e.g., $130,000 for 2025).
-  common.v1.Money maximum_foreign_earned_income_exclusion = 47;
+  // Line 37: Maximum foreign earned income exclusion for the tax year.
+  common.v1.Money maximum_foreign_earned_income_exclusion = 70;
 
-  // Line 38: Number of days in qualifying period that fall within the tax year.
-  int32 feie_qualifying_days = 48;
+  // Line 38: Days of the qualifying period that fall within the tax year.
+  int32 feie_qualifying_days = 71;
 
-  // Line 40: Multiply line 37 by the fraction of qualifying days in the year.
-  common.v1.Money prorated_maximum_exclusion = 49;
+  // Line 39: Line 38 divided by the number of days in the tax year.
+  common.v1.Quantity qualifying_days_fraction = 72;
 
-  // Line 41: Subtract line 36 (housing exclusion) from line 27 (total foreign earned income).
-  common.v1.Money foreign_earned_income_less_housing_exclusion = 50;
+  // Line 40: Line 37 multiplied by line 39.
+  common.v1.Money prorated_maximum_exclusion = 73;
 
-  // Line 42: Foreign earned income exclusion (smaller of line 40 or line 41).
-  common.v1.Money foreign_earned_income_exclusion = 51;
+  // Line 41: Line 27 minus line 36.
+  common.v1.Money foreign_earned_income_less_housing_exclusion = 74;
+
+  // Line 42: Foreign earned income exclusion. The smaller of line 40 or line
+  // 41.
+  common.v1.Money foreign_earned_income_exclusion = 75;
 
   // -- Part VIII: Taxpayers Claiming the Housing Exclusion, Foreign Earned Income Exclusion, or Both -
 
-  // Line 43: Add lines 36 and 42.
-  common.v1.Money combined_housing_and_foreign_earned_income_exclusions = 52;
+  // Line 43: Lines 36 and 42 added.
+  common.v1.Money combined_housing_and_foreign_earned_income_exclusions = 76;
 
-  // Line 44: Deductions allowed in figuring AGI (such as Schedule C expenses) allocable to excluded income.
-  common.v1.Money deductions_allocable_to_excluded_income = 53;
+  // Line 44: Deductions allowed in figuring adjusted gross income that are
+  // allocable to the excluded income.
+  common.v1.Money deductions_allocable_to_excluded_income = 77;
 
-  // Line 45: Net foreign earned income and housing exclusion (subtract line 44 from line 43). Carries as negative to Schedule 1 line 8d.
-  common.v1.Money net_exclusion_carried_to_schedule_1 = 54;
+  // Line 45: Line 43 minus line 44. Carries to Schedule 1 line 8d.
+  common.v1.Money net_exclusion_carried_to_schedule_1 = 78;
 
   // -- Part IX: Taxpayers Claiming the Housing Deduction -------------------
 
-  // Line 46: Subtract line 36 from line 33 (unexcluded housing expenses eligible for self-employed housing deduction).
-  common.v1.Money unexcluded_housing_expenses = 55;
+  // Line 46: Line 33 minus line 36.
+  common.v1.Money unexcluded_housing_expenses = 79;
 
-  // Line 47: Subtract line 43 from line 27 (unexcluded foreign earned income).
-  common.v1.Money unexcluded_foreign_earned_income = 56;
+  // Line 47: Line 27 minus line 43.
+  common.v1.Money unexcluded_foreign_earned_income = 80;
 
-  // Line 48: Smaller of line 46 or line 47.
-  common.v1.Money current_year_housing_deduction = 57;
+  // Line 48: The smaller of line 46 or line 47.
+  common.v1.Money current_year_housing_deduction = 81;
 
-  // Line 49: Housing deduction carryover from prior year ( subject to net foreign earned income limit).
-  common.v1.Money prior_year_housing_deduction_carryover_allowed = 58;
+  // Line 49: Housing deduction carried over from the prior year.
+  common.v1.Money prior_year_housing_deduction_carryover_allowed = 82;
 
-  // Line 50: Foreign housing deduction (add lines 48 and 49). Carries to Schedule 1 line 24j.
-  common.v1.Money foreign_housing_deduction = 59;
+  // Line 50: Housing deduction. Lines 48 and 49 added. Carries to Schedule 1
+  // line 24j.
+  common.v1.Money foreign_housing_deduction = 83;
 }

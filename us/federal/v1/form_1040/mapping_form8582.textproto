@@ -1,0 +1,150 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for Form 8582.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+
+form: "8582"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form8582"
+tax_years: 2025
+
+concepts {
+  concept: "active_rental_net_income"
+  years {
+    tax_year: 2025
+    irs_box: "1a"
+  }
+}
+
+concepts {
+  concept: "active_rental_net_loss"
+  years {
+    tax_year: 2025
+    irs_box: "1b"
+  }
+}
+
+concepts {
+  concept: "active_rental_prior_years_unallowed_loss"
+  years {
+    tax_year: 2025
+    irs_box: "1c"
+  }
+}
+
+concepts {
+  concept: "active_rental_net_income_or_loss"
+  years {
+    tax_year: 2025
+    irs_box: "1d"
+  }
+}
+
+concepts {
+  concept: "other_passive_net_income"
+  years {
+    tax_year: 2025
+    irs_box: "2a"
+  }
+}
+
+concepts {
+  concept: "other_passive_net_loss"
+  years {
+    tax_year: 2025
+    irs_box: "2b"
+  }
+}
+
+concepts {
+  concept: "other_passive_prior_years_unallowed_loss"
+  years {
+    tax_year: 2025
+    irs_box: "2c"
+  }
+}
+
+concepts {
+  concept: "other_passive_net_income_or_loss"
+  years {
+    tax_year: 2025
+    irs_box: "2d"
+  }
+}
+
+concepts {
+  concept: "total_net_passive_income_or_loss"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+  }
+}
+
+concepts {
+  concept: "loss_eligible_for_special_allowance"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+  }
+}
+
+concepts {
+  concept: "phaseout_threshold"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+  }
+}
+
+concepts {
+  concept: "modified_adjusted_gross_income"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+  }
+}
+
+concepts {
+  concept: "threshold_less_modified_agi"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+
+concepts {
+  concept: "special_allowance_limit"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+  }
+}
+
+concepts {
+  concept: "special_allowance"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+  }
+}
+
+concepts {
+  concept: "total_passive_income"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+  }
+}
+
+concepts {
+  concept: "total_losses_allowed"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+  }
+}

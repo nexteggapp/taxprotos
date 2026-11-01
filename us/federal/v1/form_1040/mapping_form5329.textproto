@@ -1,0 +1,490 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for Form 5329.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "5329"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form5329"
+tax_years: 2025
+
+concepts {
+  concept: "early_distributions_includible_in_income"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+  }
+}
+
+concepts {
+  concept: "early_distribution_exception_code"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+    note: "The exception number entered on the line."
+  }
+}
+
+concepts {
+  concept: "early_distributions_exempt_from_tax"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+  }
+}
+
+concepts {
+  concept: "early_distributions_subject_to_tax"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+  }
+}
+
+concepts {
+  concept: "additional_tax_on_early_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+  }
+}
+
+concepts {
+  concept: "taxable_education_or_able_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+  }
+}
+
+concepts {
+  concept: "exempt_education_or_able_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+  }
+}
+
+concepts {
+  concept: "education_or_able_distributions_subject_to_tax"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+
+concepts {
+  concept: "additional_tax_on_education_or_able_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+  }
+}
+
+concepts {
+  concept: "prior_year_traditional_ira_excess_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+  }
+}
+
+concepts {
+  concept: "traditional_ira_contribution_shortfall"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+  }
+}
+
+concepts {
+  concept: "traditional_ira_distributions_included_in_income"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+  }
+}
+
+concepts {
+  concept: "traditional_ira_distributions_of_prior_excess"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+  }
+}
+
+concepts {
+  concept: "traditional_ira_prior_excess_reductions"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+  }
+}
+
+concepts {
+  concept: "remaining_prior_traditional_ira_excess"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+  }
+}
+
+concepts {
+  concept: "current_year_traditional_ira_excess_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "15"
+  }
+}
+
+concepts {
+  concept: "total_traditional_ira_excess_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "16"
+  }
+}
+
+concepts {
+  concept: "additional_tax_on_traditional_ira_excess"
+  years {
+    tax_year: 2025
+    irs_box: "17"
+  }
+}
+
+concepts {
+  concept: "prior_year_roth_ira_excess_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "18"
+  }
+}
+
+concepts {
+  concept: "roth_ira_contribution_shortfall"
+  years {
+    tax_year: 2025
+    irs_box: "19"
+  }
+}
+
+concepts {
+  concept: "roth_ira_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "20"
+  }
+}
+
+concepts {
+  concept: "roth_ira_prior_excess_reductions"
+  years {
+    tax_year: 2025
+    irs_box: "21"
+  }
+}
+
+concepts {
+  concept: "remaining_prior_roth_ira_excess"
+  years {
+    tax_year: 2025
+    irs_box: "22"
+  }
+}
+
+concepts {
+  concept: "current_year_roth_ira_excess_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "23"
+  }
+}
+
+concepts {
+  concept: "total_roth_ira_excess_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "24"
+  }
+}
+
+concepts {
+  concept: "additional_tax_on_roth_ira_excess"
+  years {
+    tax_year: 2025
+    irs_box: "25"
+  }
+}
+
+concepts {
+  concept: "prior_year_coverdell_esa_excess_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "26"
+  }
+}
+
+concepts {
+  concept: "coverdell_esa_contribution_shortfall"
+  years {
+    tax_year: 2025
+    irs_box: "27"
+  }
+}
+
+concepts {
+  concept: "coverdell_esa_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "28"
+  }
+}
+
+concepts {
+  concept: "coverdell_esa_prior_excess_reductions"
+  years {
+    tax_year: 2025
+    irs_box: "29"
+  }
+}
+
+concepts {
+  concept: "remaining_prior_coverdell_esa_excess"
+  years {
+    tax_year: 2025
+    irs_box: "30"
+  }
+}
+
+concepts {
+  concept: "current_year_coverdell_esa_excess_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "31"
+  }
+}
+
+concepts {
+  concept: "total_coverdell_esa_excess_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "32"
+  }
+}
+
+concepts {
+  concept: "additional_tax_on_coverdell_esa_excess"
+  years {
+    tax_year: 2025
+    irs_box: "33"
+  }
+}
+
+concepts {
+  concept: "prior_year_archer_msa_excess_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "34"
+  }
+}
+
+concepts {
+  concept: "archer_msa_contribution_shortfall"
+  years {
+    tax_year: 2025
+    irs_box: "35"
+  }
+}
+
+concepts {
+  concept: "archer_msa_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "36"
+  }
+}
+
+concepts {
+  concept: "archer_msa_prior_excess_reductions"
+  years {
+    tax_year: 2025
+    irs_box: "37"
+  }
+}
+
+concepts {
+  concept: "remaining_prior_archer_msa_excess"
+  years {
+    tax_year: 2025
+    irs_box: "38"
+  }
+}
+
+concepts {
+  concept: "current_year_archer_msa_excess_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "39"
+  }
+}
+
+concepts {
+  concept: "total_archer_msa_excess_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "40"
+  }
+}
+
+concepts {
+  concept: "additional_tax_on_archer_msa_excess"
+  years {
+    tax_year: 2025
+    irs_box: "41"
+  }
+}
+
+concepts {
+  concept: "prior_year_hsa_excess_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "42"
+  }
+}
+
+concepts {
+  concept: "hsa_contribution_shortfall"
+  years {
+    tax_year: 2025
+    irs_box: "43"
+  }
+}
+
+concepts {
+  concept: "hsa_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "44"
+  }
+}
+
+concepts {
+  concept: "hsa_prior_excess_reductions"
+  years {
+    tax_year: 2025
+    irs_box: "45"
+  }
+}
+
+concepts {
+  concept: "remaining_prior_hsa_excess"
+  years {
+    tax_year: 2025
+    irs_box: "46"
+  }
+}
+
+concepts {
+  concept: "current_year_hsa_excess_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "47"
+  }
+}
+
+concepts {
+  concept: "total_hsa_excess_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "48"
+  }
+}
+
+concepts {
+  concept: "additional_tax_on_hsa_excess"
+  years {
+    tax_year: 2025
+    irs_box: "49"
+  }
+}
+
+concepts {
+  concept: "current_year_able_excess_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "50"
+  }
+}
+
+concepts {
+  concept: "additional_tax_on_able_excess"
+  years {
+    tax_year: 2025
+    irs_box: "51"
+  }
+}
+
+concepts {
+  concept: "rmd_from_corrected_plans"
+  years {
+    tax_year: 2025
+    irs_box: "52a"
+  }
+}
+
+concepts {
+  concept: "rmd_from_other_plans"
+  years {
+    tax_year: 2025
+    irs_box: "52b"
+  }
+}
+
+concepts {
+  concept: "distributed_from_corrected_plans"
+  years {
+    tax_year: 2025
+    irs_box: "53a"
+  }
+}
+
+concepts {
+  concept: "distributed_from_other_plans"
+  years {
+    tax_year: 2025
+    irs_box: "53b"
+  }
+}
+
+concepts {
+  concept: "tax_on_corrected_rmd_shortfall"
+  years {
+    tax_year: 2025
+    irs_box: "54a"
+  }
+}
+
+concepts {
+  concept: "tax_on_other_rmd_shortfall"
+  years {
+    tax_year: 2025
+    irs_box: "54b"
+  }
+}
+
+concepts {
+  concept: "additional_tax_on_excess_accumulation"
+  years {
+    tax_year: 2025
+    irs_box: "55"
+  }
+}

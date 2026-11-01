@@ -1,0 +1,195 @@
+// Form 8995-A, Qualified Business Income Deduction.
+//
+// Used to figure the section 199A qualified business income (QBI) deduction by
+// a filer whose taxable income before the deduction is above the threshold the
+// form prints, or who is a patron of an agricultural or horticultural
+// cooperative. Filers below the threshold use Form 8995, the Form8995 message.
+//
+// Parts I through IV are modelled. Schedules A through D (Form 8995-A), which
+// feed Part I and line 14, are not.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/quantity.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form8995A reports the qualified business income deduction by the full
+// computation.
+message Form8995A {
+  // TradeOrBusiness is one trade, business, or aggregation: a row of Part I
+  // and a column (A, B, C) of Parts II and III.
+  message TradeOrBusiness {
+    // Part I, line 1 column (a): Trade, business, or aggregation name.
+    string business_name = 1;
+
+    // Part I, line 1 column (b): Whether it is a specified service trade or
+    // business.
+    bool is_specified_service_trade_or_business = 2;
+
+    // Part I, line 1 column (c): Whether it is an aggregation.
+    bool is_aggregation = 3;
+
+    // Part I, line 1 column (d): Taxpayer identification number.
+    string taxpayer_identification_number = 4;
+
+    // Part I, line 1 column (e): Whether the filer is a patron of an
+    // agricultural or horticultural cooperative for it.
+    bool is_patron = 5;
+
+    // Part II, line 2: Qualified business income.
+    common.v1.Money qualified_business_income = 6;
+
+    // Part II, line 3: Line 2 multiplied by the deduction rate the form
+    // prints.
+    common.v1.Money qbi_times_deduction_rate = 7;
+
+    // Part II, line 4: Allocable share of W-2 wages.
+    common.v1.Money allocable_w2_wages = 8;
+
+    // Part II, line 5: Line 4 multiplied by the wage-only rate the form prints.
+    common.v1.Money wage_limit = 9;
+
+    // Part II, line 6: Line 4 multiplied by the wage rate the form prints for
+    // the wage-and-property limit.
+    common.v1.Money wage_part_of_wage_and_property_limit = 10;
+
+    // Part II, line 7: Allocable share of the unadjusted basis immediately
+    // after acquisition (UBIA) of all qualified property.
+    common.v1.Money allocable_ubia_of_qualified_property = 11;
+
+    // Part II, line 8: Line 7 multiplied by the UBIA rate the form prints.
+    common.v1.Money property_part_of_wage_and_property_limit = 12;
+
+    // Part II, line 9: Lines 6 and 8 added.
+    common.v1.Money wage_and_property_limit = 13;
+
+    // Part II, line 10: The greater of lines 5 and 9.
+    common.v1.Money greater_wage_limit = 14;
+
+    // Part II, line 11: W-2 wage and UBIA of qualified property limitation,
+    // the smaller of lines 3 and 10.
+    common.v1.Money wage_and_ubia_limitation = 15;
+
+    // Part II, line 12: Phased-in reduction, from line 26.
+    common.v1.Money phased_in_reduction = 16;
+
+    // Part II, line 13: Qualified business income deduction before patron
+    // reduction, the greater of lines 11 and 12.
+    common.v1.Money qbi_deduction_before_patron_reduction = 17;
+
+    // Part II, line 14: Patron reduction, from Schedule D (Form 8995-A) line 6.
+    common.v1.Money patron_reduction = 18;
+
+    // Part II, line 15: Qualified business income component, line 13 minus
+    // line 14.
+    common.v1.Money qbi_component = 19;
+
+    // Part III, line 17: Amount from line 3.
+    common.v1.Money phase_in_qbi_times_deduction_rate = 20;
+
+    // Part III, line 18: Amount from line 10.
+    common.v1.Money phase_in_greater_wage_limit = 21;
+
+    // Part III, line 19: Line 17 minus line 18.
+    common.v1.Money phase_in_excess = 22;
+
+    // Part III, line 25: Total phase-in reduction, line 19 multiplied by line
+    // 24.
+    common.v1.Money phase_in_reduction = 23;
+
+    // Part III, line 26: Qualified business income after phase-in reduction,
+    // line 17 minus line 25. Carries to line 12.
+    common.v1.Money qbi_after_phase_in_reduction = 24;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Taxpayer identification number of the filer.
+  string filer_tin = 3;
+
+  // Part I line 1 and the columns of Parts II and III, one per trade,
+  // business, or aggregation.
+  repeated TradeOrBusiness trades_or_businesses = 4;
+
+  // Part II, line 16: Total qualified business income component, line 15
+  // added across all trades or businesses.
+  common.v1.Money total_qbi_component = 5;
+
+  // Part III, line 20: Taxable income before the qualified business income
+  // deduction.
+  common.v1.Money phase_in_taxable_income = 6;
+
+  // Part III, line 21: Threshold the form prints for the filing status.
+  common.v1.Money phase_in_threshold = 7;
+
+  // Part III, line 22: Line 20 minus line 21.
+  common.v1.Money taxable_income_above_threshold = 8;
+
+  // Part III, line 23: Phase-in range the form prints for the filing status.
+  common.v1.Money phase_in_range = 9;
+
+  // Part III, line 24: Phase-in percentage, line 22 divided by line 23.
+  common.v1.Quantity phase_in_percentage = 10;
+
+  // Part IV, line 27: Total qualified business income component, from line
+  // 16.
+  common.v1.Money part_iv_total_qbi_component = 11;
+
+  // Part IV, line 28: Qualified REIT dividends and publicly traded partnership
+  // (PTP) income or (loss).
+  common.v1.Money qualified_reit_dividends_and_ptp_income = 12;
+
+  // Part IV, line 29: Qualified REIT dividends and PTP (loss) carryforward
+  // from prior years, entered as a negative amount.
+  common.v1.Money prior_year_reit_and_ptp_loss_carryforward = 13;
+
+  // Part IV, line 30: Total qualified REIT dividends and PTP income, lines 28
+  // and 29 combined, not less than zero.
+  common.v1.Money net_reit_dividends_and_ptp_income = 14;
+
+  // Part IV, line 31: REIT and PTP component, line 30 multiplied by the
+  // deduction rate the form prints.
+  common.v1.Money reit_and_ptp_component = 15;
+
+  // Part IV, line 32: Qualified business income deduction before the income
+  // limitation, lines 27 and 31 added.
+  common.v1.Money qbi_deduction_before_income_limit = 16;
+
+  // Part IV, line 33: Taxable income before the qualified business income
+  // deduction.
+  common.v1.Money taxable_income_before_qbi_deduction = 17;
+
+  // Part IV, line 34: Net capital gain, increased by any qualified dividends.
+  common.v1.Money net_capital_gain = 18;
+
+  // Part IV, line 35: Line 33 minus line 34, not less than zero.
+  common.v1.Money ordinary_taxable_income_limit_base = 19;
+
+  // Part IV, line 36: Income limitation, line 35 multiplied by the deduction
+  // rate the form prints.
+  common.v1.Money income_limitation = 20;
+
+  // Part IV, line 37: Qualified business income deduction before the domestic
+  // production activities deduction (DPAD), the smaller of lines 32 and 36.
+  common.v1.Money qbi_deduction_before_dpad = 21;
+
+  // Part IV, line 38: DPAD under section 199A(g) allocated from an
+  // agricultural or horticultural cooperative, not more than line 33 minus
+  // line 37.
+  common.v1.Money cooperative_section_199a_g_deduction = 22;
+
+  // Part IV, line 39: Total qualified business income deduction, lines 37 and
+  // 38 added. Carries to Form 1040 line 13a.
+  common.v1.Money qualified_business_income_deduction = 23;
+
+  // Part IV, line 40: Total qualified REIT dividends and PTP (loss)
+  // carryforward, lines 28 and 29 combined, or zero if zero or greater.
+  common.v1.Money reit_and_ptp_loss_carryforward_to_next_year = 24;
+}

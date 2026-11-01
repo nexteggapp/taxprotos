@@ -1,0 +1,217 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for 1040 Schedule J.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+
+form: "1040 Schedule J"
+message_name: "nexteggapp.taxprotos.us.federal.v1.ScheduleJ"
+tax_years: 2025
+
+concepts {
+  concept: "current_year_taxable_income"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+  }
+}
+
+concepts {
+  concept: "elected_farm_income"
+  years {
+    tax_year: 2025
+    irs_box: "2a"
+  }
+}
+
+concepts {
+  concept: "elected_farm_net_capital_gain"
+  years {
+    tax_year: 2025
+    irs_box: "2b"
+  }
+}
+
+concepts {
+  concept: "elected_farm_unrecaptured_section_1250_gain"
+  years {
+    tax_year: 2025
+    irs_box: "2c"
+  }
+}
+
+concepts {
+  concept: "taxable_income_less_elected_farm_income"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+  }
+}
+
+concepts {
+  concept: "tax_on_non_averaged_current_year_income"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+  }
+}
+
+concepts {
+  concept: "base_year_minus_3_taxable_income"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+    note: "For 2025 the first base year is 2022."
+  }
+}
+
+concepts {
+  concept: "one_third_of_elected_farm_income"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+  }
+}
+
+concepts {
+  concept: "base_year_minus_3_recomputed_taxable_income"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+
+concepts {
+  concept: "base_year_minus_3_recomputed_tax"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+  }
+}
+
+concepts {
+  concept: "base_year_minus_2_taxable_income"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+    note: "For 2025 the second base year is 2023."
+  }
+}
+
+concepts {
+  concept: "base_year_minus_2_elected_farm_income_share"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+  }
+}
+
+concepts {
+  concept: "base_year_minus_2_recomputed_taxable_income"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+  }
+}
+
+concepts {
+  concept: "base_year_minus_2_recomputed_tax"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+  }
+}
+
+concepts {
+  concept: "base_year_minus_1_taxable_income"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+    note: "For 2025 the third base year is 2024."
+  }
+}
+
+concepts {
+  concept: "base_year_minus_1_elected_farm_income_share"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+  }
+}
+
+concepts {
+  concept: "base_year_minus_1_recomputed_taxable_income"
+  years {
+    tax_year: 2025
+    irs_box: "15"
+  }
+}
+
+concepts {
+  concept: "base_year_minus_1_recomputed_tax"
+  years {
+    tax_year: 2025
+    irs_box: "16"
+  }
+}
+
+concepts {
+  concept: "combined_current_and_recomputed_base_year_taxes"
+  years {
+    tax_year: 2025
+    irs_box: "17"
+  }
+}
+
+concepts {
+  concept: "combined_taxes_carried_to_page_2"
+  years {
+    tax_year: 2025
+    irs_box: "18"
+  }
+}
+
+concepts {
+  concept: "base_year_minus_3_prior_tax"
+  years {
+    tax_year: 2025
+    irs_box: "19"
+  }
+}
+
+concepts {
+  concept: "base_year_minus_2_prior_tax"
+  years {
+    tax_year: 2025
+    irs_box: "20"
+  }
+}
+
+concepts {
+  concept: "base_year_minus_1_prior_tax"
+  years {
+    tax_year: 2025
+    irs_box: "21"
+  }
+}
+
+concepts {
+  concept: "total_prior_base_year_taxes"
+  years {
+    tax_year: 2025
+    irs_box: "22"
+  }
+}
+
+concepts {
+  concept: "averaged_income_tax"
+  years {
+    tax_year: 2025
+    irs_box: "23"
+  }
+}

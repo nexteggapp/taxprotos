@@ -1,0 +1,353 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for 4562.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "4562"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form4562"
+tax_years: 2025
+
+concepts {
+  concept: "maximum_section_179_limitation"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+  }
+}
+
+concepts {
+  concept: "total_cost_of_section_179_property"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+  }
+}
+
+concepts {
+  concept: "section_179_phaseout_threshold"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+  }
+}
+
+concepts {
+  concept: "section_179_phaseout_reduction"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+  }
+}
+
+concepts {
+  concept: "section_179_dollar_limitation"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+  }
+}
+
+concepts {
+  concept: "section_179_items"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+  }
+}
+
+concepts {
+  concept: "listed_property_elected_section_179_cost"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+
+concepts {
+  concept: "total_elected_section_179_cost"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+  }
+}
+
+concepts {
+  concept: "tentative_section_179_deduction"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+  }
+}
+
+concepts {
+  concept: "prior_year_section_179_carryover"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+  }
+}
+
+concepts {
+  concept: "section_179_business_income_limitation"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+  }
+}
+
+concepts {
+  concept: "section_179_expense_deduction"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+  }
+}
+
+concepts {
+  concept: "section_179_carryover_to_next_year"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+  }
+}
+
+concepts {
+  concept: "special_depreciation_allowance"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+  }
+}
+
+concepts {
+  concept: "section_168_f_1_depreciation"
+  years {
+    tax_year: 2025
+    irs_box: "15"
+  }
+}
+
+concepts {
+  concept: "other_non_macrs_depreciation"
+  years {
+    tax_year: 2025
+    irs_box: "16"
+  }
+}
+
+concepts {
+  concept: "prior_year_assets_macrs_depreciation"
+  years {
+    tax_year: 2025
+    irs_box: "17"
+  }
+}
+
+concepts {
+  concept: "general_asset_account_election"
+  years {
+    tax_year: 2025
+    irs_box: "18"
+  }
+}
+
+concepts {
+  concept: "current_year_macrs_rows"
+  years {
+    tax_year: 2025
+    irs_box: "19a"
+    note: "Lines 19a through 19j and 20a through 20e"
+  }
+}
+
+concepts {
+  concept: "listed_property_depreciation"
+  years {
+    tax_year: 2025
+    irs_box: "21"
+  }
+}
+
+concepts {
+  concept: "total_depreciation"
+  years {
+    tax_year: 2025
+    irs_box: "22"
+  }
+}
+
+concepts {
+  concept: "section_263a_capitalized_interest"
+  years {
+    tax_year: 2025
+    irs_box: "23a"
+  }
+}
+
+concepts {
+  concept: "section_263a_capitalized_costs"
+  years {
+    tax_year: 2025
+    irs_box: "b"
+    note: "Line 23b"
+  }
+}
+
+concepts {
+  concept: "has_business_use_evidence"
+  years {
+    tax_year: 2025
+    irs_box: "24a"
+  }
+}
+
+concepts {
+  concept: "business_use_evidence_is_written"
+  years {
+    tax_year: 2025
+    irs_box: "b"
+    note: "Line 24b"
+  }
+}
+
+concepts {
+  concept: "owns_aircraft"
+  years {
+    tax_year: 2025
+    irs_box: "c"
+    note: "Line 24c"
+  }
+}
+
+concepts {
+  concept: "leases_aircraft"
+  years {
+    tax_year: 2025
+    irs_box: "c"
+    note: "Line 24c"
+  }
+}
+
+concepts {
+  concept: "charters_aircraft"
+  years {
+    tax_year: 2025
+    irs_box: "c"
+    note: "Line 24c"
+  }
+}
+
+concepts {
+  concept: "listed_property_special_depreciation_allowance"
+  years {
+    tax_year: 2025
+    irs_box: "25"
+  }
+}
+
+concepts {
+  concept: "listed_property_items"
+  years {
+    tax_year: 2025
+    irs_box: "26"
+    note: "Lines 26 and 27"
+  }
+}
+
+concepts {
+  concept: "total_listed_property_depreciation"
+  years {
+    tax_year: 2025
+    irs_box: "28"
+  }
+}
+
+concepts {
+  concept: "total_listed_property_section_179_cost"
+  years {
+    tax_year: 2025
+    irs_box: "29"
+  }
+}
+
+concepts {
+  concept: "vehicles"
+  years {
+    tax_year: 2025
+    irs_box: "30"
+    note: "Section B, lines 30 through 36"
+  }
+}
+
+concepts {
+  concept: "policy_prohibits_all_personal_use"
+  years {
+    tax_year: 2025
+    irs_box: "37"
+  }
+}
+
+concepts {
+  concept: "policy_prohibits_personal_use_except_commuting"
+  years {
+    tax_year: 2025
+    irs_box: "38"
+  }
+}
+
+concepts {
+  concept: "treats_all_employee_use_as_personal"
+  years {
+    tax_year: 2025
+    irs_box: "39"
+  }
+}
+
+concepts {
+  concept: "provides_more_than_five_vehicles_and_retains_use_information"
+  years {
+    tax_year: 2025
+    irs_box: "40"
+  }
+}
+
+concepts {
+  concept: "meets_demonstration_use_requirements"
+  years {
+    tax_year: 2025
+    irs_box: "41"
+  }
+}
+
+concepts {
+  concept: "amortization_items"
+  years {
+    tax_year: 2025
+    irs_box: "42"
+  }
+}
+
+concepts {
+  concept: "prior_year_amortization"
+  years {
+    tax_year: 2025
+    irs_box: "43"
+  }
+}
+
+concepts {
+  concept: "total_amortization"
+  years {
+    tax_year: 2025
+    irs_box: "44"
+  }
+}

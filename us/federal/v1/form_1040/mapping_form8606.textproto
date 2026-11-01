@@ -1,0 +1,246 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for Form 8606.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+
+form: "8606"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form8606"
+tax_years: 2025
+
+concepts {
+  concept: "nondeductible_traditional_ira_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+  }
+}
+
+concepts {
+  concept: "prior_year_traditional_ira_basis"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+  }
+}
+
+concepts {
+  concept: "total_basis_before_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+  }
+}
+
+concepts {
+  concept: "contributions_made_in_subsequent_year"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+  }
+}
+
+concepts {
+  concept: "basis_for_current_year_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+  }
+}
+
+concepts {
+  concept: "year_end_value_of_traditional_iras"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+  }
+}
+
+concepts {
+  concept: "traditional_ira_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+
+concepts {
+  concept: "net_amount_converted_to_roth_iras"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+  }
+}
+
+concepts {
+  concept: "total_ira_value_distributions_and_conversions"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+  }
+}
+
+concepts {
+  concept: "nontaxable_pro_rata_fraction"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+  }
+}
+
+concepts {
+  concept: "nontaxable_portion_of_roth_conversions"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+  }
+}
+
+concepts {
+  concept: "nontaxable_portion_of_traditional_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+  }
+}
+
+concepts {
+  concept: "total_basis_recovered"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+  }
+}
+
+concepts {
+  concept: "remaining_traditional_ira_basis"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+  }
+}
+
+concepts {
+  concept: "taxable_distributions_before_disaster"
+  years {
+    tax_year: 2025
+    irs_box: "15a"
+  }
+}
+
+concepts {
+  concept: "qualified_disaster_distribution_amount"
+  years {
+    tax_year: 2025
+    irs_box: "15b"
+  }
+}
+
+concepts {
+  concept: "taxable_traditional_ira_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "15c"
+  }
+}
+
+concepts {
+  concept: "net_roth_conversion_amount"
+  years {
+    tax_year: 2025
+    irs_box: "16"
+  }
+}
+
+concepts {
+  concept: "basis_in_roth_conversion_amount"
+  years {
+    tax_year: 2025
+    irs_box: "17"
+  }
+}
+
+concepts {
+  concept: "taxable_roth_conversion_amount"
+  years {
+    tax_year: 2025
+    irs_box: "18"
+  }
+}
+
+concepts {
+  concept: "nonqualified_roth_ira_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "19"
+  }
+}
+
+concepts {
+  concept: "qualified_first_time_homebuyer_expenses"
+  years {
+    tax_year: 2025
+    irs_box: "20"
+  }
+}
+
+concepts {
+  concept: "roth_distributions_after_homebuyer_exclusion"
+  years {
+    tax_year: 2025
+    irs_box: "21"
+  }
+}
+
+concepts {
+  concept: "basis_in_roth_ira_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "22"
+  }
+}
+
+concepts {
+  concept: "roth_distributions_exceeding_contribution_basis"
+  years {
+    tax_year: 2025
+    irs_box: "23"
+  }
+}
+
+concepts {
+  concept: "basis_in_roth_ira_conversions"
+  years {
+    tax_year: 2025
+    irs_box: "24"
+  }
+}
+
+concepts {
+  concept: "taxable_roth_distributions_before_disaster"
+  years {
+    tax_year: 2025
+    irs_box: "25a"
+  }
+}
+
+concepts {
+  concept: "roth_qualified_disaster_distribution_amount"
+  years {
+    tax_year: 2025
+    irs_box: "25b"
+  }
+}
+
+concepts {
+  concept: "taxable_roth_ira_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "25c"
+  }
+}

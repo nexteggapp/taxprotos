@@ -48,6 +48,7 @@ import "taxprotos/us/federal/v1/form_1040/form_8959.proto";
 import "taxprotos/us/federal/v1/form_1040/form_8960.proto";
 import "taxprotos/us/federal/v1/form_1040/form_8962.proto";
 import "taxprotos/us/federal/v1/form_1040/form_8995.proto";
+import "taxprotos/us/federal/v1/form_1040/form_8995_a.proto";
 import "taxprotos/us/federal/v1/form_1040/schedule_1.proto";
 import "taxprotos/us/federal/v1/form_1040/schedule_1a.proto";
 import "taxprotos/us/federal/v1/form_1040/schedule_2.proto";
@@ -223,6 +224,10 @@ message Document {
 
     // Form 1099-PATR: taxable distributions received from cooperatives.
     us.federal.v1.Form1099PATR form_1099_patr = 46;
+
+    // Form 1040-X: an amended federal return. It is a filing of its own, made
+    // after the original, and a year can have more than one.
+    us.federal.v1.Form1040X form_1040_x = 47;
   }
 }
 
@@ -576,7 +581,7 @@ message FederalReturn {
   // Form 8962: premium tax credit (PTC).
   us.federal.v1.Form8962 form_8962 = 21;
 
-  // Form 8995 / 8995-A: qualified business income deduction.
+  // Form 8995: qualified business income deduction, simplified computation.
   us.federal.v1.Form8995 form_8995 = 22;
 
   // Form 7206: self-employed health insurance deduction.
@@ -654,11 +659,12 @@ message FederalReturn {
   // Form 2210: underpayment of estimated tax by individuals, estates, and trusts.
   us.federal.v1.Form2210 form_2210 = 47;
 
-  // Form 1040-X: amended U.S. individual income tax return.
-  us.federal.v1.Form1040X form_1040_x = 48;
-
   // Form 8889: health savings accounts (HSAs).
-  repeated us.federal.v1.Form8889 form_8889 = 49;
+  repeated us.federal.v1.Form8889 form_8889 = 48;
+
+  // Form 8995-A: qualified business income deduction, for filers who cannot
+  // use the simplified Form 8995.
+  us.federal.v1.Form8995A form_8995_a = 49;
 }
 
 // A California resident return: Form 540 and Schedule CA.

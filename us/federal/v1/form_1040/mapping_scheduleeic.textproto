@@ -1,0 +1,26 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for 1040 Schedule EIC.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Schedule EIC prints no amounts. Its lines 1 through 6 are filled once per
+# child, and the comments on ScheduleEIC.QualifyingChild name them.
+
+form: "1040 Schedule EIC"
+message_name: "nexteggapp.taxprotos.us.federal.v1.ScheduleEIC"
+tax_years: 2025
+
+concepts {
+  concept: "qualifying_children"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+    note: "One child per column, lines 1 through 6. Line 1 is the child's name."
+  }
+}

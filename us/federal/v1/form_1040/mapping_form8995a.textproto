@@ -1,0 +1,198 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for Form 8995-A.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Line 1 and the per-business columns of Parts II and III (lines 2-15, 17-19,
+# 25 and 26) are the repeated trades_or_businesses message and are not mapped
+# here. Schedules A through D (Form 8995-A) are not modelled.
+
+form: "8995-A"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form8995A"
+tax_years: 2025
+
+concepts {
+  concept: "total_qbi_component"
+  years {
+    tax_year: 2025
+    irs_box: "16"
+    note: "Part II."
+  }
+}
+
+concepts {
+  concept: "phase_in_taxable_income"
+  years {
+    tax_year: 2025
+    irs_box: "20"
+    note: "Part III."
+  }
+}
+
+concepts {
+  concept: "phase_in_threshold"
+  years {
+    tax_year: 2025
+    irs_box: "21"
+    note: "Part III."
+  }
+}
+
+concepts {
+  concept: "taxable_income_above_threshold"
+  years {
+    tax_year: 2025
+    irs_box: "22"
+    note: "Part III."
+  }
+}
+
+concepts {
+  concept: "phase_in_range"
+  years {
+    tax_year: 2025
+    irs_box: "23"
+    note: "Part III."
+  }
+}
+
+concepts {
+  concept: "phase_in_percentage"
+  years {
+    tax_year: 2025
+    irs_box: "24"
+    note: "Part III."
+  }
+}
+
+concepts {
+  concept: "part_iv_total_qbi_component"
+  years {
+    tax_year: 2025
+    irs_box: "27"
+    note: "Part IV."
+  }
+}
+
+concepts {
+  concept: "qualified_reit_dividends_and_ptp_income"
+  years {
+    tax_year: 2025
+    irs_box: "28"
+    note: "Part IV."
+  }
+}
+
+concepts {
+  concept: "prior_year_reit_and_ptp_loss_carryforward"
+  years {
+    tax_year: 2025
+    irs_box: "29"
+    note: "Part IV."
+  }
+}
+
+concepts {
+  concept: "net_reit_dividends_and_ptp_income"
+  years {
+    tax_year: 2025
+    irs_box: "30"
+    note: "Part IV."
+  }
+}
+
+concepts {
+  concept: "reit_and_ptp_component"
+  years {
+    tax_year: 2025
+    irs_box: "31"
+    note: "Part IV."
+  }
+}
+
+concepts {
+  concept: "qbi_deduction_before_income_limit"
+  years {
+    tax_year: 2025
+    irs_box: "32"
+    note: "Part IV."
+  }
+}
+
+concepts {
+  concept: "taxable_income_before_qbi_deduction"
+  years {
+    tax_year: 2025
+    irs_box: "33"
+    note: "Part IV."
+  }
+}
+
+concepts {
+  concept: "net_capital_gain"
+  years {
+    tax_year: 2025
+    irs_box: "34"
+    note: "Part IV."
+  }
+}
+
+concepts {
+  concept: "ordinary_taxable_income_limit_base"
+  years {
+    tax_year: 2025
+    irs_box: "35"
+    note: "Part IV."
+  }
+}
+
+concepts {
+  concept: "income_limitation"
+  years {
+    tax_year: 2025
+    irs_box: "36"
+    note: "Part IV."
+  }
+}
+
+concepts {
+  concept: "qbi_deduction_before_dpad"
+  years {
+    tax_year: 2025
+    irs_box: "37"
+    note: "Part IV."
+  }
+}
+
+concepts {
+  concept: "cooperative_section_199a_g_deduction"
+  years {
+    tax_year: 2025
+    irs_box: "38"
+    note: "Part IV."
+  }
+}
+
+concepts {
+  concept: "qualified_business_income_deduction"
+  years {
+    tax_year: 2025
+    irs_box: "39"
+    note: "Part IV."
+  }
+}
+
+concepts {
+  concept: "reit_and_ptp_loss_carryforward_to_next_year"
+  years {
+    tax_year: 2025
+    irs_box: "40"
+    note: "Part IV."
+  }
+}

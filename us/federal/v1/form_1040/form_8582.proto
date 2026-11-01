@@ -1,44 +1,133 @@
 // Form 8582, Passive Activity Loss Limitations.
 //
-// Used by noncorporate taxpayers to figure the amount of any passive activity
-// loss (PAL) allowed for the current tax year under IRC Section 469, including
-// the $25,000 special allowance for rental real estate with active
-// participation and commercial revitalization deductions.
+// Used by noncorporate taxpayers to figure the passive activity loss allowed
+// for the year under IRC section 469, including the special allowance for
+// rental real estate with active participation.
 syntax = "proto3";
 
 package nexteggapp.taxprotos.us.federal.v1;
 
 import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/quantity.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
 
-// Form8582 reports passive activity loss limitations and allowed passive losses across Parts I through IV.
+// Form8582 reports the passive activity loss allowed for the year and how the
+// allowed and unallowed losses split across activities.
 message Form8582 {
-  // PassiveActivityDetail holds per-activity income, loss, prior unallowed loss, and allowed loss from Worksheets 1–7.
-  message PassiveActivityDetail {
-    // Name of the passive activity.
+  // PassiveActivity is one row of Part IV or Part V.
+  message PassiveActivity {
+    // Name of the activity.
     string activity_name = 1;
 
-    // Whether the activity is rental real estate with active participation.
-    bool rental_real_estate_active_participation = 2;
+    // Column (a): current year net income.
+    common.v1.Money net_income = 2;
 
-    // Current year net passive income from the activity.
-    common.v1.Money current_year_net_income = 3;
+    // Column (b): current year net loss.
+    common.v1.Money net_loss = 3;
 
-    // Current year net passive loss from the activity.
-    common.v1.Money current_year_net_loss = 4;
+    // Column (c): prior years' unallowed loss.
+    common.v1.Money prior_years_unallowed_loss = 4;
 
-    // Prior years' unallowed passive loss carried into the current year.
-    common.v1.Money prior_year_unallowed_loss = 5;
+    // Column (d): overall gain.
+    common.v1.Money overall_gain = 5;
 
-    // Overall gain or loss for the activity.
-    common.v1.Money overall_gain_or_loss = 6;
+    // Column (e): overall loss.
+    common.v1.Money overall_loss = 6;
+  }
 
-    // Allowed passive loss for the current tax year.
-    common.v1.Money allowed_loss = 7;
+  // SpecialAllowanceAllocation is one row of Part VI, which spreads the line 9
+  // special allowance across the rental activities with a loss.
+  message SpecialAllowanceAllocation {
+    // Name of the activity.
+    string activity_name = 1;
 
-    // Unallowed passive loss carried forward to the next tax year.
-    common.v1.Money unallowed_loss_carryforward = 8;
+    // Form or schedule and line number the loss is reported on.
+    string reported_on = 2;
+
+    // Column (a): loss.
+    common.v1.Money loss = 3;
+
+    // Column (b): ratio of this activity's loss to the total.
+    common.v1.Quantity ratio = 4;
+
+    // Column (c): special allowance.
+    common.v1.Money special_allowance = 5;
+
+    // Column (d): column (c) subtracted from column (a).
+    common.v1.Money loss_less_special_allowance = 6;
+  }
+
+  // UnallowedLossAllocation is one row of Part VII.
+  message UnallowedLossAllocation {
+    // Name of the activity.
+    string activity_name = 1;
+
+    // Form or schedule and line number the loss is reported on.
+    string reported_on = 2;
+
+    // Column (a): loss.
+    common.v1.Money loss = 3;
+
+    // Column (b): ratio of this activity's loss to the total.
+    common.v1.Quantity ratio = 4;
+
+    // Column (c): unallowed loss.
+    common.v1.Money unallowed_loss = 5;
+  }
+
+  // AllowedLoss is one row of Part VIII.
+  message AllowedLoss {
+    // Name of the activity.
+    string activity_name = 1;
+
+    // Form or schedule and line number the loss is reported on.
+    string reported_on = 2;
+
+    // Column (a): loss.
+    common.v1.Money loss = 3;
+
+    // Column (b): unallowed loss.
+    common.v1.Money unallowed_loss = 4;
+
+    // Column (c): allowed loss.
+    common.v1.Money allowed_loss = 5;
+  }
+
+  // MultipleFormActivity is one activity in Part IX, whose losses are reported
+  // on two or more forms or schedules.
+  message MultipleFormActivity {
+    // ReportedOn is one form or schedule the activity's loss is reported on.
+    message ReportedOn {
+      // Form or schedule and line number the loss is reported on.
+      string form_and_line = 1;
+
+      // Line 1a, column (a): net loss plus prior year unallowed loss from the
+      // form or schedule.
+      common.v1.Money net_loss_plus_prior_year_unallowed_loss = 2;
+
+      // Line 1b, column (a): net income from the form or schedule.
+      common.v1.Money net_income = 3;
+
+      // Line 1c, column (b): line 1b subtracted from line 1a, not less than
+      // zero.
+      common.v1.Money net_loss = 4;
+
+      // Column (c): ratio of this form's loss to the activity's total.
+      common.v1.Quantity ratio = 5;
+
+      // Column (d): unallowed loss.
+      common.v1.Money unallowed_loss = 6;
+
+      // Column (e): allowed loss.
+      common.v1.Money allowed_loss = 7;
+    }
+
+    // Name of the activity.
+    string activity_name = 1;
+
+    // Each form or schedule the activity's loss is reported on.
+    repeated ReportedOn reported_on = 2;
   }
 
   // The tax year the form applies to.
@@ -52,73 +141,94 @@ message Form8582 {
 
   // -- Part I: Passive Activity Loss ---------------------------------------
 
-  // Line 1a: Rental real estate activities with active participation — current year net income (Worksheet 1 column (a)).
-  common.v1.Money active_rental_current_year_income = 4;
+  // Line 1a: rental real estate activities with active participation, net
+  // income. The total of Part IV column (a).
+  common.v1.Money active_rental_net_income = 4;
 
-  // Line 1b: Rental real estate activities with active participation — current year net loss (Worksheet 1 column (b)).
-  common.v1.Money active_rental_current_year_loss = 5;
+  // Line 1b: rental real estate activities with active participation, net
+  // loss. The total of Part IV column (b).
+  common.v1.Money active_rental_net_loss = 5;
 
-  // Line 1c: Rental real estate activities with active participation — prior years' unallowed losses (Worksheet 1 column (c)).
-  common.v1.Money active_rental_prior_year_unallowed_loss = 6;
+  // Line 1c: rental real estate activities with active participation, prior
+  // years' unallowed losses. The total of Part IV column (c).
+  common.v1.Money active_rental_prior_years_unallowed_loss = 6;
 
-  // Line 1d: Combine lines 1a, 1b, and 1c (net income or loss from active participation rental real estate).
+  // Line 1d: lines 1a, 1b and 1c combined.
   common.v1.Money active_rental_net_income_or_loss = 7;
 
-  // Line 2a: All other passive activities — current year net income (Worksheet 3 column (a)).
-  common.v1.Money other_passive_current_year_income = 8;
+  // Line 2a: all other passive activities, net income. The total of Part V
+  // column (a).
+  common.v1.Money other_passive_net_income = 8;
 
-  // Line 2b: All other passive activities — current year net loss (Worksheet 3 column (b)).
-  common.v1.Money other_passive_current_year_loss = 9;
+  // Line 2b: all other passive activities, net loss. The total of Part V
+  // column (b).
+  common.v1.Money other_passive_net_loss = 9;
 
-  // Line 2c: All other passive activities — prior years' unallowed losses (Worksheet 3 column (c)).
-  common.v1.Money other_passive_prior_year_unallowed_loss = 10;
+  // Line 2c: all other passive activities, prior years' unallowed losses. The
+  // total of Part V column (c).
+  common.v1.Money other_passive_prior_years_unallowed_loss = 10;
 
-  // Line 2d: Combine lines 2a, 2b, and 2c (net income or loss from all other passive activities).
+  // Line 2d: lines 2a, 2b and 2c combined.
   common.v1.Money other_passive_net_income_or_loss = 11;
 
-  // Line 3: Combine lines 1d and 2d (total net passive income or loss).
+  // Line 3: lines 1d and 2d combined, less any prior year unallowed
+  // commercial revitalization deduction. Zero or more means every loss is
+  // allowed.
   common.v1.Money total_net_passive_income_or_loss = 12;
 
-  // -- Part II: Special Allowance for Rental Real Estate Activities With Active Participation -
+  // -- Part II: Special Allowance for Rental Real Estate With Active Participation
 
-  // Line 4: Smaller of the loss on line 1d or the loss on line 3 (entered as a positive amount).
+  // Line 4: the smaller of the loss on line 1d or the loss on line 3, as a
+  // positive amount.
   common.v1.Money loss_eligible_for_special_allowance = 13;
 
-  // Line 5: Maximum special allowance ($25,000, or $12,500 if married filing separately and lived apart all year).
-  common.v1.Money maximum_special_allowance = 14;
+  // Line 5: the modified AGI threshold at which the special allowance starts
+  // to phase out.
+  common.v1.Money phaseout_threshold = 14;
 
-  // Line 6: Modified adjusted gross income for passive loss phaseout.
+  // Line 6: modified adjusted gross income, not less than zero.
   common.v1.Money modified_adjusted_gross_income = 15;
 
-  // Line 7: Phaseout threshold ($100,000, or $50,000 if married filing separately and lived apart all year).
-  common.v1.Money special_allowance_phaseout_threshold = 16;
+  // Line 7: line 6 subtracted from line 5.
+  common.v1.Money threshold_less_modified_agi = 16;
 
-  // Line 8: Subtract line 7 from line 6 (if zero or less, enter 0).
-  common.v1.Money excess_modified_agi = 17;
+  // Line 8: the phaseout fraction of line 7, capped at the maximum special
+  // allowance.
+  common.v1.Money special_allowance_limit = 17;
 
-  // Line 9: Multiply line 8 by 50% (0.50) (do not enter more than line 5).
-  common.v1.Money phaseout_reduction = 18;
-
-  // Line 10: Subtract line 9 from line 5 (remaining special allowance).
-  common.v1.Money remaining_special_allowance = 19;
-
-  // Line 11: Special allowance for rental real estate with active participation (smaller of line 4 or line 10).
-  common.v1.Money special_allowance_rental_real_estate = 20;
+  // Line 9: the smaller of line 4 or line 8. The special allowance for rental
+  // real estate with active participation.
+  common.v1.Money special_allowance = 18;
 
   // -- Part III: Total Losses Allowed --------------------------------------
 
-  // Line 12: Total passive income from lines 1a and 2a.
-  common.v1.Money total_passive_income = 21;
+  // Line 10: the income on lines 1a and 2a.
+  common.v1.Money total_passive_income = 19;
 
-  // Line 13: Total special allowances from Part II line 11 (and any Part III commercial revitalization allowance).
-  common.v1.Money total_special_allowances = 22;
+  // Line 11: total losses allowed from all passive activities for the year.
+  // Lines 9 and 10 added.
+  common.v1.Money total_losses_allowed = 20;
 
-  // Line 14: Total losses allowed from all passive activities for the year (add lines 12 and 13, capped at total passive losses).
-  common.v1.Money total_passive_losses_allowed = 23;
+  // -- Parts IV through IX -------------------------------------------------
 
-  // Total unallowed passive losses carried forward to the next tax year.
-  common.v1.Money total_unallowed_passive_loss_carryforward = 24;
+  // Part IV: rental real estate activities with active participation. Its
+  // column totals for (a), (b) and (c) are lines 1a, 1b and 1c.
+  repeated PassiveActivity active_rental_activities = 21;
 
-  // Per-activity details from Worksheets 1 through 7.
-  repeated PassiveActivityDetail activities = 25;
+  // Part V: all other passive activities. Its column totals for (a), (b) and
+  // (c) are lines 2a, 2b and 2c.
+  repeated PassiveActivity other_passive_activities = 22;
+
+  // Part VI: allocation of the line 9 special allowance.
+  repeated SpecialAllowanceAllocation special_allowance_allocations = 23;
+
+  // Part VII: allocation of unallowed losses.
+  repeated UnallowedLossAllocation unallowed_loss_allocations = 24;
+
+  // Part VIII: allowed losses.
+  repeated AllowedLoss allowed_losses = 25;
+
+  // Part IX: activities with losses reported on two or more forms or
+  // schedules.
+  repeated MultipleFormActivity multiple_form_activities = 26;
 }

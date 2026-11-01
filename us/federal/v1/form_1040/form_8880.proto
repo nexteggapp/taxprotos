@@ -19,60 +19,72 @@ message Form8880 {
   // Name(s) shown on return.
   string filer_name = 2;
 
-  // Social Security number of filer.
+  // Social security number of the filer.
   string filer_tin = 3;
 
-  // Line 1 column (a): Traditional and Roth IRA contributions, and ABLE account contributions for taxpayer.
+  // Line 1 column (a): Traditional and Roth IRA contributions, and ABLE account
+  // contributions by the designated beneficiary, for the taxpayer. Excludes
+  // rollover contributions.
   common.v1.Money taxpayer_ira_and_able_contributions = 4;
 
-  // Line 1 column (b): Traditional and Roth IRA contributions, and ABLE account contributions for spouse.
+  // Line 1 column (b): The same contributions for the spouse.
   common.v1.Money spouse_ira_and_able_contributions = 5;
 
-  // Line 2 column (a): Elective deferrals to 401(k), 403(b), governmental 457(b), SEP, SIMPLE, or TSP for taxpayer.
+  // Line 2 column (a): Elective deferrals to a 401(k) or other qualified
+  // employer plan, voluntary employee contributions, and 501(c)(18)(D) plan
+  // contributions, for the taxpayer.
   common.v1.Money taxpayer_elective_deferrals = 6;
 
-  // Line 2 column (b): Elective deferrals to 401(k), 403(b), governmental 457(b), SEP, SIMPLE, or TSP for spouse.
+  // Line 2 column (b): The same deferrals and contributions for the spouse.
   common.v1.Money spouse_elective_deferrals = 7;
 
-  // Line 3 column (a): Total contributions for taxpayer (add lines 1(a) and 2(a)).
+  // Line 3 column (a): Lines 1 and 2 added, for the taxpayer.
   common.v1.Money taxpayer_total_contributions = 8;
 
-  // Line 3 column (b): Total contributions for spouse (add lines 1(b) and 2(b)).
+  // Line 3 column (b): Lines 1 and 2 added, for the spouse.
   common.v1.Money spouse_total_contributions = 9;
 
-  // Line 4 column (a): Certain distributions received during the testing period by taxpayer.
+  // Line 4 column (a): Certain distributions received during the testing
+  // period, which runs from the start of the second year before the tax year
+  // to the return's due date. On a joint return both spouses' amounts go in
+  // both columns.
   common.v1.Money taxpayer_testing_period_distributions = 10;
 
-  // Line 4 column (b): Certain distributions received during the testing period by spouse.
+  // Line 4 column (b): The same distributions, for the spouse's column.
   common.v1.Money spouse_testing_period_distributions = 11;
 
-  // Line 5 column (a): Net eligible contributions for taxpayer (subtract line 4(a) from line 3(a); if zero or less, enter 0).
+  // Line 5 column (a): Line 3 minus line 4, not less than zero, for the
+  // taxpayer.
   common.v1.Money taxpayer_net_contributions = 12;
 
-  // Line 5 column (b): Net eligible contributions for spouse (subtract line 4(b) from line 3(b); if zero or less, enter 0).
+  // Line 5 column (b): Line 3 minus line 4, not less than zero, for the spouse.
   common.v1.Money spouse_net_contributions = 13;
 
-  // Line 6 column (a): Smaller of line 5(a) or $2,000 for taxpayer.
+  // Line 6 column (a): The smaller of line 5 and the per-person contribution
+  // limit the form prints, for the taxpayer.
   common.v1.Money taxpayer_capped_contributions = 14;
 
-  // Line 6 column (b): Smaller of line 5(b) or $2,000 for spouse.
+  // Line 6 column (b): The same, for the spouse.
   common.v1.Money spouse_capped_contributions = 15;
 
-  // Line 7: Total eligible contributions (add lines 6(a) and 6(b)).
+  // Line 7: Lines 6(a) and 6(b) added.
   common.v1.Money total_capped_contributions = 16;
 
-  // Line 8: Adjusted gross income from Form 1040 line 11.
+  // Line 8: Adjusted gross income from Form 1040 line 11a.
   common.v1.Money adjusted_gross_income = 17;
 
-  // Line 9: Decimal amount from table based on AGI and filing status (0.5, 0.2, 0.1, or 0.0).
+  // Line 9: The credit rate from the form's table, chosen by line 8 and filing
+  // status.
   common.v1.Quantity applicable_credit_rate = 18;
 
-  // Line 10: Multiply line 7 by the decimal amount on line 9.
+  // Line 10: Line 7 multiplied by line 9.
   common.v1.Money tentative_credit = 19;
 
-  // Line 11: Limitation based on tax liability from Credit Limit Worksheet.
+  // Line 11: Limitation based on tax liability, from the Credit Limit
+  // Worksheet in the instructions.
   common.v1.Money tax_liability_limit = 20;
 
-  // Line 12: Credit for qualified retirement savings contributions (smaller of line 10 or line 11). Carries to Schedule 3 line 4.
+  // Line 12: Credit for qualified retirement savings contributions, the
+  // smaller of lines 10 and 11. Carries to Schedule 3 line 4.
   common.v1.Money retirement_savings_contributions_credit = 21;
 }

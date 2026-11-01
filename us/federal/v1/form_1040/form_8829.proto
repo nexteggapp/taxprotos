@@ -24,30 +24,35 @@ message Form8829 {
 
   // -- Part I: Part of Your Home Used for Business -------------------------
 
-  // Line 1: Area (in square feet) used regularly and exclusively for business, regularly for daycare, or for storage of inventory/product samples.
+  // Line 1: Area in square feet used regularly and exclusively for business,
+  // regularly for daycare, or for storage of inventory or product samples.
   int32 business_area_square_feet = 4;
 
   // Line 2: Total area (in square feet) of the home.
   int32 total_home_area_square_feet = 5;
 
-  // Line 3: Divide line 1 by line 2 (enter result as a percentage).
+  // Line 3: Line 1 divided by line 2, as a percentage.
   common.v1.Quantity raw_business_use_percentage = 6;
 
-  // Line 4: Total hours facility was used for daycare during the year (if daycare facility).
+  // Line 4: Days used for daycare during the year times hours used per day.
+  // Only for a daycare facility not used exclusively for business.
   int32 daycare_hours_used = 7;
 
-  // Line 5: Total hours available in the year (e.g., 8,760 or 8,784 in a leap year).
+  // Line 5: Hours in the year, or fewer when daycare use started or stopped
+  // during the year.
   int32 total_hours_in_year = 8;
 
-  // Line 6: Divide line 4 by line 5 (decimal amount for daycare time fraction).
+  // Line 6: Line 4 divided by line 5, as a decimal.
   common.v1.Quantity daycare_time_fraction = 9;
 
-  // Line 7: Business percentage (line 3, or line 3 multiplied by line 6 for daycare).
+  // Line 7: Business percentage. Line 3, or line 6 times line 3 for a daycare
+  // facility not used exclusively for business.
   common.v1.Quantity business_use_percentage = 10;
 
   // -- Part II: Figure Your Allowable Deduction ----------------------------
 
-  // Line 8: Tentative profit or (loss) from Schedule C line 29 (plus any net gain/loss from business use of home).
+  // Line 8: Schedule C line 29, plus any gain derived from the business use of
+  // the home, minus any loss from the business not derived from that use.
   common.v1.Money tentative_business_profit_or_loss = 11;
 
   // Line 9 column (a): Direct casualty losses.
@@ -68,19 +73,19 @@ message Form8829 {
   // Line 11 column (b): Indirect real estate taxes.
   common.v1.Money indirect_real_estate_taxes = 17;
 
-  // Line 12 column (a): Total direct expenses on lines 9 through 11.
+  // Line 12 column (a): Lines 9, 10 and 11 column (a) added.
   common.v1.Money total_direct_otherwise_deductible_expenses = 18;
 
-  // Line 12 column (b): Total indirect expenses on lines 9 through 11.
+  // Line 12 column (b): Lines 9, 10 and 11 column (b) added.
   common.v1.Money total_indirect_otherwise_deductible_expenses = 19;
 
-  // Line 13: Multiply line 12 column (b) by line 7 business percentage.
+  // Line 13: Line 12 column (b) times line 7.
   common.v1.Money business_portion_indirect_otherwise_deductible = 20;
 
-  // Line 14: Add line 12 column (a) and line 13.
+  // Line 14: Line 12 column (a) and line 13 added.
   common.v1.Money total_otherwise_deductible_business_expenses = 21;
 
-  // Line 15: Subtract line 14 from line 8 (if zero or less, enter 0).
+  // Line 15: Line 14 subtracted from line 8, not less than zero.
   common.v1.Money gross_income_limit_for_operating_expenses = 22;
 
   // Line 16 column (a): Direct excess mortgage interest.
@@ -125,76 +130,83 @@ message Form8829 {
   // Line 22 column (b): Indirect other expenses.
   common.v1.Money indirect_other_expenses = 36;
 
-  // Line 23 column (a): Add lines 16 through 22 column (a).
+  // Line 23 column (a): Lines 16 through 22 column (a) added.
   common.v1.Money total_direct_operating_expenses = 37;
 
-  // Line 23 column (b): Add lines 16 through 22 column (b).
+  // Line 23 column (b): Lines 16 through 22 column (b) added.
   common.v1.Money total_indirect_operating_expenses = 38;
 
-  // Line 24: Multiply line 23 column (b) by line 7.
+  // Line 24: Line 23 column (b) times line 7.
   common.v1.Money business_portion_indirect_operating_expenses = 39;
 
   // Line 25: Carryover of prior year operating expenses.
   common.v1.Money prior_year_operating_expense_carryover = 40;
 
-  // Line 26: Add line 23 column (a), line 24, and line 25.
+  // Line 26: Line 23 column (a), line 24 and line 25 added.
   common.v1.Money total_operating_expenses = 41;
 
-  // Line 27: Allowable operating expenses (smaller of line 15 or line 26).
+  // Line 27: Allowable operating expenses, the smaller of line 15 or line 26.
   common.v1.Money allowable_operating_expenses = 42;
 
-  // Line 28: Limit on casualty losses and depreciation (subtract line 27 from line 15).
+  // Line 28: Limit on excess casualty losses and depreciation. Line 27
+  // subtracted from line 15.
   common.v1.Money limit_for_casualty_and_depreciation = 43;
 
   // Line 29: Excess casualty losses.
   common.v1.Money excess_casualty_losses = 44;
 
-  // Line 30: Depreciation of your home from line 42.
+  // Line 30: Depreciation of the home from line 42.
   common.v1.Money home_depreciation = 45;
 
   // Line 31: Carryover of prior year excess casualty losses and depreciation.
   common.v1.Money prior_year_casualty_and_depreciation_carryover = 46;
 
-  // Line 32: Add lines 29 through 31.
+  // Line 32: Lines 29 through 31 added.
   common.v1.Money total_casualty_and_depreciation = 47;
 
-  // Line 33: Allowable excess casualty losses and depreciation (smaller of line 28 or line 32).
+  // Line 33: Allowable excess casualty losses and depreciation, the smaller of
+  // line 28 or line 32.
   common.v1.Money allowable_casualty_and_depreciation = 48;
 
-  // Line 34: Add lines 14, 27, and 33.
+  // Line 34: Lines 14, 27 and 33 added.
   common.v1.Money total_allowable_expenses = 49;
 
-  // Line 35: Casualty loss portion included in lines 14 and 33.
+  // Line 35: Casualty loss portion of lines 14 and 33. Carries to Form 4684.
   common.v1.Money casualty_loss_portion = 50;
 
-  // Line 36: Allowable expenses for business use of your home (subtract line 35 from line 34). Carries to Schedule C line 30.
+  // Line 36: Allowable expenses for business use of the home. Line 35
+  // subtracted from line 34. Also entered on Schedule C line 30.
   common.v1.Money allowable_deduction_for_schedule_c = 51;
 
   // -- Part III: Depreciation of Your Home ---------------------------------
 
-  // Line 37: Smaller of home's adjusted basis or its fair market value on date first used for business.
+  // Line 37: The smaller of the home's adjusted basis or its fair market
+  // value.
   common.v1.Money home_smaller_of_adjusted_basis_or_fmv = 52;
 
   // Line 38: Value of land included on line 37.
   common.v1.Money value_of_land = 53;
 
-  // Line 39: Basis of building (subtract line 38 from line 37).
+  // Line 39: Basis of building. Line 38 subtracted from line 37.
   common.v1.Money basis_of_building = 54;
 
-  // Line 40: Business basis of building (multiply line 39 by line 7).
+  // Line 40: Business basis of building. Line 39 times line 7.
   common.v1.Money business_basis_of_building = 55;
 
-  // Line 41: Depreciation percentage from MACRS tables.
+  // Line 41: Depreciation percentage.
   common.v1.Quantity depreciation_percentage = 56;
 
-  // Line 42: Depreciation allowable (multiply line 40 by line 41). Carries to line 30.
+  // Line 42: Depreciation allowable. Line 40 times line 41. Also entered on
+  // line 30.
   common.v1.Money calculated_home_depreciation = 57;
 
   // -- Part IV: Carryover of Unallowed Expenses to Next Year ---------------
 
-  // Line 43: Operating expenses carryover to next year (subtract line 27 from line 26).
+  // Line 43: Operating expenses carried to the next year. Line 27 subtracted
+  // from line 26, not less than zero.
   common.v1.Money operating_expenses_carryover_to_next_year = 58;
 
-  // Line 44: Excess casualty losses and depreciation carryover to next year (subtract line 33 from line 32).
+  // Line 44: Excess casualty losses and depreciation carried to the next
+  // year. Line 33 subtracted from line 32, not less than zero.
   common.v1.Money casualty_and_depreciation_carryover_to_next_year = 59;
 }

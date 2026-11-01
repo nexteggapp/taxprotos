@@ -1,0 +1,497 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for Form 6251.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "6251"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form6251"
+tax_years: 2025
+
+concepts {
+  concept: "deductions_excluding_senior_deduction"
+  years {
+    tax_year: 2025
+    irs_box: "1a"
+  }
+}
+
+concepts {
+  concept: "adjusted_gross_income_less_deductions"
+  years {
+    tax_year: 2025
+    irs_box: "1b"
+  }
+}
+
+concepts {
+  concept: "taxes_or_standard_deduction"
+  years {
+    tax_year: 2025
+    irs_box: "2a"
+  }
+}
+
+concepts {
+  concept: "tax_refund_adjustment"
+  years {
+    tax_year: 2025
+    irs_box: "2b"
+  }
+}
+
+concepts {
+  concept: "investment_interest_expense_adjustment"
+  years {
+    tax_year: 2025
+    irs_box: "2c"
+  }
+}
+
+concepts {
+  concept: "depletion_adjustment"
+  years {
+    tax_year: 2025
+    irs_box: "2d"
+  }
+}
+
+concepts {
+  concept: "regular_tax_nol_deduction"
+  years {
+    tax_year: 2025
+    irs_box: "2e"
+  }
+}
+
+concepts {
+  concept: "alternative_tax_nol_deduction"
+  years {
+    tax_year: 2025
+    irs_box: "2f"
+  }
+}
+
+concepts {
+  concept: "private_activity_bond_interest"
+  years {
+    tax_year: 2025
+    irs_box: "2g"
+  }
+}
+
+concepts {
+  concept: "qualified_small_business_stock_preference"
+  years {
+    tax_year: 2025
+    irs_box: "2h"
+  }
+}
+
+concepts {
+  concept: "incentive_stock_option_exercise_adjustment"
+  years {
+    tax_year: 2025
+    irs_box: "2i"
+  }
+}
+
+concepts {
+  concept: "estates_and_trusts_amt_adjustment"
+  years {
+    tax_year: 2025
+    irs_box: "2j"
+  }
+}
+
+concepts {
+  concept: "disposition_of_property_adjustment"
+  years {
+    tax_year: 2025
+    irs_box: "2k"
+  }
+}
+
+concepts {
+  concept: "post_1986_depreciation_adjustment"
+  years {
+    tax_year: 2025
+    irs_box: "2l"
+  }
+}
+
+concepts {
+  concept: "passive_activities_adjustment"
+  years {
+    tax_year: 2025
+    irs_box: "2m"
+  }
+}
+
+concepts {
+  concept: "loss_limitations_adjustment"
+  years {
+    tax_year: 2025
+    irs_box: "2n"
+  }
+}
+
+concepts {
+  concept: "circulation_costs_adjustment"
+  years {
+    tax_year: 2025
+    irs_box: "2o"
+  }
+}
+
+concepts {
+  concept: "long_term_contracts_adjustment"
+  years {
+    tax_year: 2025
+    irs_box: "2p"
+  }
+}
+
+concepts {
+  concept: "mining_costs_adjustment"
+  years {
+    tax_year: 2025
+    irs_box: "2q"
+  }
+}
+
+concepts {
+  concept: "research_and_experimental_costs_adjustment"
+  years {
+    tax_year: 2025
+    irs_box: "2r"
+  }
+}
+
+concepts {
+  concept: "installment_sales_adjustment"
+  years {
+    tax_year: 2025
+    irs_box: "2s"
+  }
+}
+
+concepts {
+  concept: "intangible_drilling_costs_preference"
+  years {
+    tax_year: 2025
+    irs_box: "2t"
+  }
+}
+
+concepts {
+  concept: "other_amt_adjustments"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+  }
+}
+
+concepts {
+  concept: "alternative_minimum_taxable_income"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+  }
+}
+
+concepts {
+  concept: "amt_exemption_amount"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+  }
+}
+
+concepts {
+  concept: "taxable_excess_amti"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+  }
+}
+
+concepts {
+  concept: "tentative_minimum_tax_before_ftc"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+
+concepts {
+  concept: "amt_foreign_tax_credit"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+  }
+}
+
+concepts {
+  concept: "tentative_minimum_tax"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+  }
+}
+
+concepts {
+  concept: "regular_tax_for_amt_comparison"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+  }
+}
+
+concepts {
+  concept: "alternative_minimum_tax"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+  }
+}
+
+concepts {
+  concept: "part_iii_taxable_excess_amti"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+  }
+}
+
+concepts {
+  concept: "amt_qualified_dividends_and_net_capital_gain"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+  }
+}
+
+concepts {
+  concept: "amt_unrecaptured_section_1250_gain"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+  }
+}
+
+concepts {
+  concept: "amt_preferential_rate_gain"
+  years {
+    tax_year: 2025
+    irs_box: "15"
+  }
+}
+
+concepts {
+  concept: "amti_taxed_at_capital_gain_rates"
+  years {
+    tax_year: 2025
+    irs_box: "16"
+  }
+}
+
+concepts {
+  concept: "amti_taxed_at_ordinary_rates"
+  years {
+    tax_year: 2025
+    irs_box: "17"
+  }
+}
+
+concepts {
+  concept: "tax_on_ordinary_amti"
+  years {
+    tax_year: 2025
+    irs_box: "18"
+  }
+}
+
+concepts {
+  concept: "lowest_rate_threshold"
+  years {
+    tax_year: 2025
+    irs_box: "19"
+  }
+}
+
+concepts {
+  concept: "regular_tax_ordinary_income_for_lowest_rate"
+  years {
+    tax_year: 2025
+    irs_box: "20"
+  }
+}
+
+concepts {
+  concept: "lowest_rate_room"
+  years {
+    tax_year: 2025
+    irs_box: "21"
+  }
+}
+
+concepts {
+  concept: "capital_gain_within_amti"
+  years {
+    tax_year: 2025
+    irs_box: "22"
+  }
+}
+
+concepts {
+  concept: "capital_gain_at_lowest_rate"
+  years {
+    tax_year: 2025
+    irs_box: "23"
+  }
+}
+
+concepts {
+  concept: "capital_gain_above_lowest_rate"
+  years {
+    tax_year: 2025
+    irs_box: "24"
+  }
+}
+
+concepts {
+  concept: "middle_rate_threshold"
+  years {
+    tax_year: 2025
+    irs_box: "25"
+  }
+}
+
+concepts {
+  concept: "lowest_rate_room_carried"
+  years {
+    tax_year: 2025
+    irs_box: "26"
+  }
+}
+
+concepts {
+  concept: "regular_tax_ordinary_income_for_middle_rate"
+  years {
+    tax_year: 2025
+    irs_box: "27"
+  }
+}
+
+concepts {
+  concept: "income_below_middle_rate"
+  years {
+    tax_year: 2025
+    irs_box: "28"
+  }
+}
+
+concepts {
+  concept: "middle_rate_room"
+  years {
+    tax_year: 2025
+    irs_box: "29"
+  }
+}
+
+concepts {
+  concept: "capital_gain_at_middle_rate"
+  years {
+    tax_year: 2025
+    irs_box: "30"
+  }
+}
+
+concepts {
+  concept: "tax_at_middle_rate"
+  years {
+    tax_year: 2025
+    irs_box: "31"
+  }
+}
+
+concepts {
+  concept: "capital_gain_at_lowest_and_middle_rates"
+  years {
+    tax_year: 2025
+    irs_box: "32"
+  }
+}
+
+concepts {
+  concept: "capital_gain_at_top_rate"
+  years {
+    tax_year: 2025
+    irs_box: "33"
+  }
+}
+
+concepts {
+  concept: "tax_at_top_rate"
+  years {
+    tax_year: 2025
+    irs_box: "34"
+  }
+}
+
+concepts {
+  concept: "amti_taxed_before_unrecaptured_gain"
+  years {
+    tax_year: 2025
+    irs_box: "35"
+  }
+}
+
+concepts {
+  concept: "unrecaptured_section_1250_gain_taxed"
+  years {
+    tax_year: 2025
+    irs_box: "36"
+  }
+}
+
+concepts {
+  concept: "tax_on_unrecaptured_section_1250_gain"
+  years {
+    tax_year: 2025
+    irs_box: "37"
+  }
+}
+
+concepts {
+  concept: "tax_with_capital_gain_rates"
+  years {
+    tax_year: 2025
+    irs_box: "38"
+  }
+}
+
+concepts {
+  concept: "tax_without_capital_gain_rates"
+  years {
+    tax_year: 2025
+    irs_box: "39"
+  }
+}
+
+concepts {
+  concept: "part_iii_tentative_minimum_tax"
+  years {
+    tax_year: 2025
+    irs_box: "40"
+  }
+}

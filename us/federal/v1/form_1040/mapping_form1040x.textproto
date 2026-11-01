@@ -1,0 +1,252 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for 1040-X.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "1040-X"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form1040X"
+tax_years: 2025
+
+concepts {
+  concept: "adjusted_gross_income"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+  }
+}
+
+concepts {
+  concept: "net_operating_loss_carryback_included"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+  }
+}
+
+concepts {
+  concept: "deductions"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+  }
+}
+
+concepts {
+  concept: "agi_less_deductions"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+  }
+}
+
+concepts {
+  concept: "qualified_business_income_deduction"
+  years {
+    tax_year: 2025
+    irs_box: "4a"
+  }
+}
+
+concepts {
+  concept: "schedule_1a_deductions"
+  years {
+    tax_year: 2025
+    irs_box: "4b"
+  }
+}
+
+concepts {
+  concept: "taxable_income"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+  }
+}
+
+concepts {
+  concept: "tax_computation_method"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+  }
+}
+
+concepts {
+  concept: "tax"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+  }
+}
+
+concepts {
+  concept: "nonrefundable_credits"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+
+concepts {
+  concept: "general_business_credit_carryback_included"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+
+concepts {
+  concept: "tax_less_nonrefundable_credits"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+  }
+}
+
+concepts {
+  concept: "other_taxes"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+  }
+}
+
+concepts {
+  concept: "total_tax"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+  }
+}
+
+concepts {
+  concept: "federal_income_tax_withheld"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+  }
+}
+
+concepts {
+  concept: "estimated_tax_payments"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+  }
+}
+
+concepts {
+  concept: "earned_income_credit"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+  }
+}
+
+concepts {
+  concept: "refundable_credits"
+  years {
+    tax_year: 2025
+    irs_box: "15"
+  }
+}
+
+concepts {
+  concept: "amount_paid_with_extension_and_original_return"
+  years {
+    tax_year: 2025
+    irs_box: "16"
+  }
+}
+
+concepts {
+  concept: "total_payments"
+  years {
+    tax_year: 2025
+    irs_box: "17"
+  }
+}
+
+concepts {
+  concept: "prior_overpayment"
+  years {
+    tax_year: 2025
+    irs_box: "18"
+  }
+}
+
+concepts {
+  concept: "net_payments_remaining"
+  years {
+    tax_year: 2025
+    irs_box: "19"
+  }
+}
+
+concepts {
+  concept: "amount_you_owe"
+  years {
+    tax_year: 2025
+    irs_box: "20"
+  }
+}
+
+concepts {
+  concept: "overpayment"
+  years {
+    tax_year: 2025
+    irs_box: "21"
+  }
+}
+
+concepts {
+  concept: "amount_to_be_refunded"
+  years {
+    tax_year: 2025
+    irs_box: "22"
+  }
+}
+
+concepts {
+  concept: "amount_applied_to_estimated_tax"
+  years {
+    tax_year: 2025
+    irs_box: "23"
+  }
+}
+
+concepts {
+  concept: "dependent_children_living_with_filer"
+  years {
+    tax_year: 2025
+    irs_box: "25"
+    note: "Part I"
+  }
+}
+
+concepts {
+  concept: "other_dependents"
+  years {
+    tax_year: 2025
+    irs_box: "27"
+    note: "Part I"
+  }
+}
+
+concepts {
+  concept: "dependents"
+  years {
+    tax_year: 2025
+    irs_box: "30"
+    note: "Part I"
+  }
+}

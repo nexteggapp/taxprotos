@@ -9,6 +9,7 @@ syntax = "proto3";
 package nexteggapp.taxprotos.us.federal.v1;
 
 import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/quantity.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
 
@@ -29,7 +30,7 @@ message Form8814 {
   // Line B: Child's Social Security number.
   string child_tin = 5;
 
-  // Line C: Check if filing more than one Form 8814.
+  // Line C: More than one Form 8814 is attached.
   bool multiple_forms_8814_filed = 6;
 
   // -- Part I: Child's Interest and Dividends To Report on Your Return -----
@@ -37,47 +38,62 @@ message Form8814 {
   // Line 1a: Child's taxable interest.
   common.v1.Money child_taxable_interest = 7;
 
-  // Line 1b: Child's tax-exempt interest (including specified private activity bond interest).
+  // Line 1b: Child's tax-exempt interest. Not included on line 1a.
   common.v1.Money child_tax_exempt_interest = 8;
 
-  // Line 2a: Child's total ordinary dividends.
+  // Line 2a: Child's ordinary dividends, including any Alaska Permanent Fund
+  // dividends.
   common.v1.Money child_ordinary_dividends = 9;
 
   // Line 2b: Child's qualified dividends included on line 2a.
   common.v1.Money child_qualified_dividends = 10;
 
-  // Line 3: Child's total capital gain distributions (Form 1099-DIV box 2a, excluding 2b/2c/2d).
+  // Line 3: Child's capital gain distributions.
   common.v1.Money child_capital_gain_distributions = 11;
 
-  // Line 4: Add lines 1a, 2a, and 3 (total child's gross income).
+  // Line 4: Lines 1a, 2a and 3 added. At or below the base amount, lines 5
+  // through 12 are skipped; at or above the election ceiling, the form cannot
+  // be filed.
   common.v1.Money total_child_income = 12;
 
-  // Line 5: Base amount ($2,700 for 2025: twice the child standard deduction).
-  common.v1.Money base_exclusion_amount = 13;
+  // Line 5: The base amount the form prints for the year.
+  common.v1.Money base_amount = 13;
 
-  // Line 6: Subtract line 5 from line 4 (if zero or less, enter 0).
+  // Line 6: Line 5 subtracted from line 4.
   common.v1.Money income_above_base_amount = 14;
 
-  // Line 9: Qualified dividends portion of line 6 included on parent's Form 1040 line 3a.
-  common.v1.Money parent_included_qualified_dividends = 15;
+  // Line 7: Line 2b divided by line 4, as a decimal of at least three places.
+  common.v1.Quantity qualified_dividends_fraction = 15;
 
-  // Line 10: Capital gain distributions portion of line 6 included on parent's Schedule D line 13 / Form 1040 line 7.
-  common.v1.Money parent_included_capital_gain_distributions = 16;
+  // Line 8: Line 3 divided by line 4, as a decimal of at least three places.
+  common.v1.Quantity capital_gain_distributions_fraction = 16;
 
-  // Line 11: Add lines 9 and 10.
-  common.v1.Money total_preferential_income_included = 17;
+  // Line 9: Line 6 times line 7. The qualified dividends reported on the
+  // parent's return, where the instructions direct.
+  common.v1.Money parent_included_qualified_dividends = 17;
 
-  // Line 12: Ordinary income portion (subtract line 11 from line 6). Carries to Schedule 1 line 8z.
-  common.v1.Money parent_included_ordinary_income = 18;
+  // Line 10: Line 6 times line 8. The capital gain distributions reported on
+  // the parent's return, where the instructions direct.
+  common.v1.Money parent_included_capital_gain_distributions = 18;
 
-  // -- Part II: Tax on the First $1,350 of Child's Interest and Dividends --
+  // Line 11: Lines 9 and 10 added. Zero when lines 2b and 3 are both zero or
+  // blank.
+  common.v1.Money total_preferential_income_included = 19;
 
-  // Line 13: Standard deduction base ($1,350 for 2025).
-  common.v1.Money child_standard_deduction_base = 19;
+  // Line 12: Line 11 subtracted from line 6. Included in Schedule 1 (Form
+  // 1040) line 8z.
+  common.v1.Money parent_included_ordinary_income = 20;
 
-  // Line 14: Subtract line 13 from line 4 (if zero or less, enter 0).
-  common.v1.Money amount_subject_to_ten_percent_bracket = 20;
+  // -- Part II: Tax on the Child's Income up to the Base Amount ------------
 
-  // Line 15: Tax on first bracket of child's income (10% of line 14, up to $135). Carries to Form 1040 line 16 (Form 8814 checkbox).
-  common.v1.Money child_ten_percent_bracket_tax = 21;
+  // Line 13: The amount not taxed that the form prints for the year.
+  common.v1.Money amount_not_taxed = 21;
+
+  // Line 14: Line 13 subtracted from line 4, not less than zero.
+  common.v1.Money child_income_above_amount_not_taxed = 22;
+
+  // Line 15: Tax on line 14 at the child's rate, capped at the amount the form
+  // prints. Included in the tax on Form 1040 line 16, with box 1 (Form 8814)
+  // checked.
+  common.v1.Money tax_on_child_income = 23;
 }

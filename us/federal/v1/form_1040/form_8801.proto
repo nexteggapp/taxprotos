@@ -1,8 +1,10 @@
 // Form 8801, Credit for Prior Year Minimum Tax—Individuals, Estates, and Trusts.
 //
-// Used to figure the minimum tax credit, if any, for Alternative Minimum Tax
-// (AMT) incurred in prior tax years that was attributable to deferral items
-// (such as incentive stock option exercises), and any credit carryforward.
+// Used to figure the minimum tax credit, if any, for alternative minimum tax
+// incurred in prior tax years that was attributable to deferral items (such as
+// incentive stock option exercises), and any credit carryforward.
+//
+// "Prior year" below means the tax year before the one the form is filed for.
 syntax = "proto3";
 
 package nexteggapp.taxprotos.us.federal.v1;
@@ -24,94 +26,196 @@ message Form8801 {
 
   // -- Part I: Net Minimum Tax on Exclusion Items --------------------------
 
-  // Line 1: Combine prior year Form 6251 lines 1, 2a, 2b, and 2c (regular taxable income plus exclusion items).
-  common.v1.Money prior_year_taxable_income_and_salt_adjustments = 4;
+  // Line 1: Prior year Form 6251 lines 1 and 2e combined.
+  common.v1.Money prior_year_taxable_income_and_tax_deduction_adjustment = 4;
 
-  // Line 2: Adjustments and preferences treated as exclusion items (depletion, private activity bonds, QSBS).
+  // Line 2: Adjustments and preferences treated as exclusion items.
   common.v1.Money prior_year_other_exclusion_items = 5;
 
-  // Line 3: Prior year minimum tax foreign tax credit or NOL adjustment on exclusion items.
-  common.v1.Money prior_year_exclusion_nol_adjustment = 6;
+  // Line 3: Minimum tax credit net operating loss deduction, entered as a
+  // negative amount.
+  common.v1.Money minimum_tax_credit_nol_deduction = 6;
 
-  // Line 4: Combine lines 1, 2, and 3 (AMTI on exclusion items).
+  // Line 4: Lines 1, 2 and 3 combined. The alternative minimum taxable income
+  // on exclusion items.
   common.v1.Money prior_year_amti_on_exclusion_items = 7;
 
-  // Line 5: Prior year AMT exemption ceiling based on filing status.
-  common.v1.Money prior_year_exemption_base = 8;
+  // Line 5: The prior year's AMT exemption amount for the filing status.
+  common.v1.Money prior_year_exemption_amount = 8;
 
-  // Line 6: Prior year AMT exemption phaseout threshold.
+  // Line 6: The prior year's AMT exemption phaseout threshold for the filing
+  // status.
   common.v1.Money prior_year_phaseout_threshold = 9;
 
-  // Line 7: Subtract line 6 from line 4 (if zero or less, enter 0).
-  common.v1.Money prior_year_excess_exclusion_amti = 10;
+  // Line 7: Line 6 subtracted from line 4, not less than zero.
+  common.v1.Money prior_year_amti_over_phaseout_threshold = 10;
 
-  // Line 8: Multiply line 7 by 25% (0.25).
+  // Line 8: The phaseout fraction of line 7.
   common.v1.Money prior_year_exemption_phaseout_reduction = 11;
 
-  // Line 9: Subtract line 8 from line 5 (if zero or less, enter 0).
+  // Line 9: Line 8 subtracted from line 5, not less than zero.
   common.v1.Money prior_year_exemption_on_exclusion_items = 12;
 
-  // Line 10: Subtract line 9 from line 4 (if zero or less, enter 0).
+  // Line 10: Line 9 subtracted from line 4, not less than zero.
   common.v1.Money prior_year_taxable_excess_on_exclusion_items = 13;
 
-  // Line 11: Tentative minimum tax on exclusion items (26%/28% or Part III line 47).
-  common.v1.Money tentative_minimum_tax_on_exclusion_items = 14;
+  // Line 11: Tax on line 10 at the AMT rates, or Part III line 55 when Part
+  // III is required.
+  common.v1.Money tax_on_exclusion_items = 14;
 
   // Line 12: Minimum tax foreign tax credit on exclusion items.
   common.v1.Money exclusion_items_amt_foreign_tax_credit = 15;
 
-  // Line 13: Tentative minimum tax on exclusion items after FTC (subtract line 12 from line 11).
-  common.v1.Money net_tentative_minimum_tax_on_exclusion_items = 16;
+  // Line 13: Tentative minimum tax on exclusion items. Line 12 subtracted
+  // from line 11.
+  common.v1.Money tentative_minimum_tax_on_exclusion_items = 16;
 
-  // Line 14: Prior year regular tax liability before credits minus foreign tax credit (prior year Form 6251 line 10).
+  // Line 14: Prior year Form 6251 line 10, or prior year Schedule I (Form
+  // 1041) line 53.
   common.v1.Money prior_year_regular_tax = 17;
 
-  // Line 15: Net minimum tax on exclusion items (subtract line 14 from line 13; if zero or less, enter 0).
+  // Line 15: Net minimum tax on exclusion items. Line 14 subtracted from line
+  // 13, not less than zero.
   common.v1.Money net_minimum_tax_on_exclusion_items = 18;
 
-  // -- Part II: Minimum Tax Credit and Carryforward to Next Year -----------
+  // -- Part II: Minimum Tax Credit and Carryforward ------------------------
 
-  // Line 16: Prior year Alternative Minimum Tax (from prior year Form 6251 line 11).
+  // Line 16: Prior year Form 6251 line 11, or prior year Schedule I (Form
+  // 1041) line 54. The prior year's alternative minimum tax.
   common.v1.Money prior_year_alternative_minimum_tax = 19;
 
-  // Line 17: Enter the amount from line 15.
-  common.v1.Money part_ii_net_minimum_tax_on_exclusion_items = 20;
+  // Line 17: The amount from line 15.
+  common.v1.Money exclusion_items_minimum_tax = 20;
 
-  // Line 18: Subtract line 17 from line 16 (may be negative when prior year regular tax exceeded exclusion TMT).
-  common.v1.Money current_year_net_minimum_tax_on_deferral_items = 21;
+  // Line 18: Line 17 subtracted from line 16. May be negative.
+  common.v1.Money net_minimum_tax_on_deferral_items = 21;
 
-  // Line 19: Minimum tax credit carryforward from prior year (prior year Form 8801 line 26).
+  // Line 19: Credit carryforward from the prior year's Form 8801 line 26.
   common.v1.Money minimum_tax_credit_carryforward_from_prior_year = 22;
 
-  // Line 20: Prior year unallowed qualified electric vehicle credits or other adjustments.
-  common.v1.Money prior_year_credit_adjustments = 23;
+  // Line 20: The prior year's unallowed qualified electric vehicle credit.
+  common.v1.Money prior_year_unallowed_electric_vehicle_credit = 23;
 
-  // Line 21: Combine lines 18, 19, and 20 (if zero or less, enter 0).
+  // Line 21: Lines 18 through 20 combined.
   common.v1.Money total_available_minimum_tax_credit = 24;
 
-  // Line 22: Current year regular tax liability minus allowable credits (before minimum tax credit).
+  // Line 22: This year's regular income tax liability minus allowable
+  // credits.
   common.v1.Money current_year_net_regular_tax = 25;
 
-  // Line 23: Current year tentative minimum tax (current year Form 6251 line 9).
+  // Line 23: This year's Form 6251 line 9, or Schedule I (Form 1041) line 52.
   common.v1.Money current_year_tentative_minimum_tax = 26;
 
-  // Line 24: Subtract line 23 from line 22 (if zero or less, enter 0).
-  common.v1.Money regular_tax_over_tentative_minimum_tax_limit = 27;
+  // Line 24: Line 23 subtracted from line 22, not less than zero.
+  common.v1.Money regular_tax_over_tentative_minimum_tax = 27;
 
-  // Line 25: Minimum tax credit (smaller of line 21 or line 24). Carries to Schedule 3 line 6b.
+  // Line 25: Minimum tax credit, the smaller of line 21 or line 24. Carries
+  // to Schedule 3 (Form 1040) line 6b, or Form 1041 Schedule G line 2c.
   common.v1.Money minimum_tax_credit = 28;
 
-  // Line 26: Minimum tax credit carryforward to next year (subtract line 25 from line 21).
+  // Line 26: Credit carryforward to the next year. Line 25 subtracted from
+  // line 21.
   common.v1.Money minimum_tax_credit_carryforward_to_next_year = 29;
 
   // -- Part III: Tax Computation Using Maximum Capital Gains Rates ---------
+  //
+  // Refigures line 11 with the prior year's capital gain rates. The worksheet
+  // lines the form names are the prior year's.
 
-  // Line 27: Prior year taxable excess on exclusion items from line 10.
-  common.v1.Money part_iii_exclusion_taxable_excess = 30;
+  // Line 27: The amount from line 10, or line 3 of the Foreign Earned Income
+  // Tax Worksheet for a prior year Form 2555 filer.
+  common.v1.Money capital_gains_taxable_excess = 30;
 
-  // Line 28: Prior year net capital gain and qualified dividends for exclusion items.
-  common.v1.Money part_iii_exclusion_net_capital_gain = 31;
+  // Line 28: Prior year net capital gain and qualified dividends, from the
+  // Qualified Dividends and Capital Gain Tax Worksheet line 4, Schedule D Tax
+  // Worksheet line 13, or Schedule D (Form 1041) line 26, refigured for the
+  // AMT if necessary.
+  common.v1.Money capital_gains_qualified_dividends_and_net_gain = 31;
 
-  // Line 47: Tentative minimum tax on exclusion items using maximum capital gains rates (carries to line 11).
-  common.v1.Money part_iii_tentative_minimum_tax_on_exclusion_items = 32;
+  // Line 29: Prior year Schedule D (Form 1040) line 19 or Schedule D (Form
+  // 1041) line 18b column (2). Unrecaptured section 1250 gain.
+  common.v1.Money capital_gains_unrecaptured_section_1250_gain = 32;
+
+  // Line 30: Lines 28 and 29 added, capped at Schedule D Tax Worksheet line 10.
+  common.v1.Money capital_gains_adjusted_net_gain = 33;
+
+  // Line 31: The smaller of line 27 or line 30.
+  common.v1.Money capital_gains_gain_taxed_at_capital_rates = 34;
+
+  // Line 32: Line 31 subtracted from line 27.
+  common.v1.Money capital_gains_ordinary_portion = 35;
+
+  // Line 33: Tax on line 32 at the AMT rates.
+  common.v1.Money capital_gains_tax_on_ordinary_portion = 36;
+
+  // Line 34: The prior year's maximum zero-rate amount for the filing status.
+  common.v1.Money capital_gains_zero_rate_threshold = 37;
+
+  // Line 35: Prior year taxable income from the Qualified Dividends and
+  // Capital Gain Tax Worksheet line 5, Schedule D Tax Worksheet line 14,
+  // Schedule D (Form 1041) line 27, or the return itself, not less than zero.
+  common.v1.Money capital_gains_prior_year_taxable_income = 38;
+
+  // Line 36: Line 35 subtracted from line 34, not less than zero.
+  common.v1.Money capital_gains_zero_rate_room = 39;
+
+  // Line 37: The smaller of line 27 or line 28.
+  common.v1.Money capital_gains_smaller_of_excess_or_gain = 40;
+
+  // Line 38: The smaller of line 36 or line 37. Gain taxed at zero.
+  common.v1.Money capital_gains_zero_rate_amount = 41;
+
+  // Line 39: Line 38 subtracted from line 37.
+  common.v1.Money capital_gains_after_zero_rate = 42;
+
+  // Line 40: The prior year's maximum middle-rate amount for the filing status.
+  common.v1.Money capital_gains_middle_rate_threshold = 43;
+
+  // Line 41: The amount from line 36.
+  common.v1.Money capital_gains_zero_rate_room_restated = 44;
+
+  // Line 42: Prior year taxable income less net capital gain, from the
+  // worksheet or Schedule D (Form 1041) line the form names.
+  common.v1.Money capital_gains_prior_year_ordinary_income = 45;
+
+  // Line 43: Lines 41 and 42 added.
+  common.v1.Money capital_gains_income_below_middle_rate = 46;
+
+  // Line 44: Line 43 subtracted from line 40, not less than zero.
+  common.v1.Money capital_gains_middle_rate_room = 47;
+
+  // Line 45: The smaller of line 39 or line 44. Gain taxed at the middle rate.
+  common.v1.Money capital_gains_middle_rate_amount = 48;
+
+  // Line 46: Tax on line 45 at the middle capital gains rate.
+  common.v1.Money capital_gains_middle_rate_tax = 49;
+
+  // Line 47: Lines 38 and 45 added.
+  common.v1.Money capital_gains_taxed_at_or_below_middle_rate = 50;
+
+  // Line 48: Line 47 subtracted from line 37. Gain taxed at the top rate.
+  common.v1.Money capital_gains_top_rate_amount = 51;
+
+  // Line 49: Tax on line 48 at the top capital gains rate.
+  common.v1.Money capital_gains_top_rate_tax = 52;
+
+  // Line 50: Lines 32, 47 and 48 added.
+  common.v1.Money capital_gains_total_before_section_1250 = 53;
+
+  // Line 51: Line 50 subtracted from line 27. Unrecaptured section 1250 gain
+  // taxed at its own rate.
+  common.v1.Money capital_gains_section_1250_amount = 54;
+
+  // Line 52: Tax on line 51 at the unrecaptured section 1250 gain rate.
+  common.v1.Money capital_gains_section_1250_tax = 55;
+
+  // Line 53: Lines 33, 46, 49 and 52 added.
+  common.v1.Money capital_gains_total_tax = 56;
+
+  // Line 54: Tax on line 27 at the AMT rates.
+  common.v1.Money capital_gains_tax_without_capital_rates = 57;
+
+  // Line 55: The smaller of line 53 or line 54. Entered on line 11, or on line
+  // 4 of the Foreign Earned Income Tax Worksheet for a Form 2555 filer.
+  common.v1.Money capital_gains_tentative_minimum_tax = 58;
 }

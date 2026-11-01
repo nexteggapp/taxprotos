@@ -1,0 +1,173 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for Form 8880.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Lines 1 through 6 have two columns, (a) for the taxpayer and (b) for the
+# spouse. The column is in each note.
+
+form: "8880"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form8880"
+tax_years: 2025
+
+concepts {
+  concept: "taxpayer_ira_and_able_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+    note: "Column (a), you."
+  }
+}
+
+concepts {
+  concept: "spouse_ira_and_able_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+    note: "Column (b), your spouse."
+  }
+}
+
+concepts {
+  concept: "taxpayer_elective_deferrals"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+    note: "Column (a), you."
+  }
+}
+
+concepts {
+  concept: "spouse_elective_deferrals"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+    note: "Column (b), your spouse."
+  }
+}
+
+concepts {
+  concept: "taxpayer_total_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+    note: "Column (a), you."
+  }
+}
+
+concepts {
+  concept: "spouse_total_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+    note: "Column (b), your spouse."
+  }
+}
+
+concepts {
+  concept: "taxpayer_testing_period_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+    note: "Column (a), you."
+  }
+}
+
+concepts {
+  concept: "spouse_testing_period_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+    note: "Column (b), your spouse."
+  }
+}
+
+concepts {
+  concept: "taxpayer_net_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+    note: "Column (a), you."
+  }
+}
+
+concepts {
+  concept: "spouse_net_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+    note: "Column (b), your spouse."
+  }
+}
+
+concepts {
+  concept: "taxpayer_capped_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+    note: "Column (a), you."
+  }
+}
+
+concepts {
+  concept: "spouse_capped_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+    note: "Column (b), your spouse."
+  }
+}
+
+concepts {
+  concept: "total_capped_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+
+concepts {
+  concept: "adjusted_gross_income"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+  }
+}
+
+concepts {
+  concept: "applicable_credit_rate"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+  }
+}
+
+concepts {
+  concept: "tentative_credit"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+  }
+}
+
+concepts {
+  concept: "tax_liability_limit"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+  }
+}
+
+concepts {
+  concept: "retirement_savings_contributions_credit"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+  }
+}

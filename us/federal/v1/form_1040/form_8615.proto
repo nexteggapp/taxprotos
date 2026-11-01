@@ -1,12 +1,13 @@
 // Form 8615, Tax for Certain Children Who Have Unearned Income ("Kiddie Tax").
 //
-// Used to figure the child's tax on unearned income over the annual threshold
-// ($2,700 for 2025) at the parent's marginal tax rates under IRC Section 1(g).
+// Used to figure the child's tax on unearned income above the annual
+// threshold at the parent's tax rate under IRC section 1(g).
 syntax = "proto3";
 
 package nexteggapp.taxprotos.us.federal.v1;
 
 import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/quantity.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
 
@@ -21,7 +22,7 @@ message Form8615 {
   // Child's Social Security number.
   string child_tin = 3;
 
-  // Line A: Parent's name (first and last).
+  // Line A: Parent's name (first, initial, and last).
   string parent_name = 4;
 
   // Line B: Parent's Social Security number.
@@ -32,61 +33,90 @@ message Form8615 {
 
   // -- Part I: Child's Net Unearned Income ---------------------------------
 
-  // Line 1: Child's unearned income (interest, dividends, capital gains, taxable scholarships, etc.).
+  // Line 1: Child's unearned income.
   common.v1.Money child_unearned_income = 7;
 
-  // Line 2: Statutory threshold ($2,700 for 2025) or $1,350 plus itemized deductions directly connected with unearned income.
+  // Line 2: The standard unearned income threshold when the child did not
+  // itemize, or the instructions' amount when the child did.
   common.v1.Money unearned_income_threshold_or_deductions = 8;
 
-  // Line 3: Subtract line 2 from line 1 (if zero or less, do not file Form 8615).
+  // Line 3: Line 2 subtracted from line 1. Zero or less ends the form, which is
+  // still attached to the child's return.
   common.v1.Money unearned_income_above_threshold = 9;
 
-  // Line 4: Child's taxable income from Form 1040 line 15.
+  // Line 4: Child's taxable income from Form 1040 or 1040-NR line 15.
   common.v1.Money child_taxable_income = 10;
 
-  // Line 5: Net unearned income (smaller of line 3 or line 4).
+  // Line 5: Net unearned income, the smaller of line 3 or line 4.
   common.v1.Money net_unearned_income = 11;
 
-  // -- Part II: Tentative Tax Based on Parent's Tax Rate -------------------
+  // -- Part II: Tentative Tax Based on the Tax Rate of the Parent ----------
 
-  // Line 6: Parent's taxable income from parent's Form 1040 line 15.
+  // Line 6: Parent's taxable income from Form 1040 or 1040-NR line 15, not
+  // less than zero.
   common.v1.Money parent_taxable_income = 12;
 
-  // Line 7: Net unearned income of all other children of the parent filing Form 8615.
+  // Line 7: Total of line 5 from the Forms 8615 of the parent's other
+  // children.
   common.v1.Money other_children_net_unearned_income = 13;
 
-  // Line 8: Add lines 5, 6, and 7 (combined parental and children's net unearned taxable income).
+  // Line 8: Lines 5, 6 and 7 added.
   common.v1.Money combined_taxable_income = 14;
 
-  // Line 9: Tax on line 8 based on parent's filing status.
+  // Line 9: Tax on line 8 at the parent's filing status.
   common.v1.Money tax_on_combined_taxable_income = 15;
 
-  // Line 10: Parent's tax from parent's Form 1040 line 16 (on line 6 alone).
-  common.v1.Money parent_tax_alone = 16;
+  // Line 9 checkbox: the Qualified Dividends and Capital Gain Tax Worksheet,
+  // Schedule D Tax Worksheet or Schedule J figured the line 9 tax.
+  bool combined_tax_used_worksheet_or_schedule_j = 16;
 
-  // Line 11: Subtract line 10 from line 9 (total parental-rate tax on all children's net unearned income).
-  common.v1.Money total_parental_tax_on_children_unearned_income = 17;
+  // Line 10: Parent's tax from Form 1040 or 1040-NR line 16, less any
+  // alternative minimum tax, and excluding tax from Form 4972, Form 8814 and
+  // education credit recapture.
+  common.v1.Money parent_tax = 17;
 
-  // Line 12a: Add lines 5 and 7 (total net unearned income of all children).
-  common.v1.Money total_children_net_unearned_income = 18;
+  // Line 10 checkbox: the Qualified Dividends and Capital Gain Tax Worksheet,
+  // Schedule D Tax Worksheet or Schedule J figured the parent's tax.
+  bool parent_tax_used_worksheet_or_schedule_j = 18;
 
-  // Line 13: Child's share of parental-rate tax (line 11 multiplied by line 5 divided by line 12a).
-  common.v1.Money child_share_of_parental_tax = 19;
+  // Line 11: Line 10 subtracted from line 9. Also entered on line 13 when line
+  // 7 is blank.
+  common.v1.Money total_parental_tax_on_children_unearned_income = 19;
+
+  // Line 12a: Lines 5 and 7 added.
+  common.v1.Money total_children_net_unearned_income = 20;
+
+  // Line 12b: Line 5 divided by line 12a, as a decimal of at least three
+  // places.
+  common.v1.Quantity child_share_of_net_unearned_income = 21;
+
+  // Line 13: Line 11 times line 12b.
+  common.v1.Money child_share_of_parental_tax = 22;
 
   // -- Part III: Child's Tax -----------------------------------------------
 
-  // Line 14: Subtract line 5 from line 4 (child's taxable income other than net unearned income).
-  common.v1.Money child_non_unearned_taxable_income = 20;
+  // Line 14: Line 5 subtracted from line 4.
+  common.v1.Money child_taxable_income_less_net_unearned_income = 23;
 
-  // Line 15: Tax on the amount on line 14 based on the child's filing status.
-  common.v1.Money tax_on_child_non_unearned_income = 21;
+  // Line 15: Tax on line 14 at the child's filing status. Zero when lines 4
+  // and 5 are the same.
+  common.v1.Money tax_on_child_taxable_income_less_net_unearned_income = 24;
 
-  // Line 16: Add lines 13 and 15 (combined parental-rate tax and child-rate tax).
-  common.v1.Money combined_kiddie_tax = 22;
+  // Line 15 checkbox: the Qualified Dividends and Capital Gain Tax Worksheet,
+  // Schedule D Tax Worksheet or Schedule J figured the line 15 tax.
+  bool child_rate_tax_used_worksheet_or_schedule_j = 25;
 
-  // Line 17: Tax on child's total taxable income (line 4) at child's own rates without Form 8615.
-  common.v1.Money regular_tax_on_child_taxable_income = 23;
+  // Line 16: Lines 13 and 15 added.
+  common.v1.Money combined_kiddie_tax = 26;
 
-  // Line 18: Child's tax (larger of line 16 or line 17). Carries to child's Form 1040 line 16.
-  common.v1.Money child_tax = 24;
+  // Line 17: Tax on line 4 at the child's filing status.
+  common.v1.Money regular_tax_on_child_taxable_income = 27;
+
+  // Line 17 checkbox: the Qualified Dividends and Capital Gain Tax Worksheet,
+  // Schedule D Tax Worksheet or Schedule J figured the line 17 tax.
+  bool regular_tax_used_worksheet_or_schedule_j = 28;
+
+  // Line 18: Child's tax, the larger of line 16 or line 17. Carries to the
+  // child's Form 1040 or 1040-NR line 16.
+  common.v1.Money child_tax = 29;
 }

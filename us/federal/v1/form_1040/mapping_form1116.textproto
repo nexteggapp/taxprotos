@@ -1,0 +1,302 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for 1116.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "1116"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form1116"
+tax_years: 2025
+
+concepts {
+  concept: "resident_country"
+  years {
+    tax_year: 2025
+    irs_box: "h"
+  }
+}
+
+concepts {
+  concept: "countries"
+  years {
+    tax_year: 2025
+    irs_box: "i"
+    note: "Part I columns A through C, with Part II lines A through C"
+  }
+}
+
+concepts {
+  concept: "total_gross_foreign_income"
+  years {
+    tax_year: 2025
+    irs_box: "1a"
+    note: "Total column"
+  }
+}
+
+concepts {
+  concept: "total_foreign_deductions_and_losses"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+    note: "Total column"
+  }
+}
+
+concepts {
+  concept: "net_foreign_source_taxable_income"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+
+concepts {
+  concept: "taxes_accrued_method"
+  years {
+    tax_year: 2025
+    irs_box: "(k)"
+    note: "Part II"
+  }
+}
+
+concepts {
+  concept: "total_foreign_taxes_paid_or_accrued"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+  }
+}
+
+concepts {
+  concept: "part_iii_foreign_taxes"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+  }
+}
+
+concepts {
+  concept: "foreign_tax_carryback_or_carryover"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+  }
+}
+
+concepts {
+  concept: "carryover_without_schedule_b"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+    note: "The checkbox on line 10"
+  }
+}
+
+concepts {
+  concept: "total_foreign_taxes_before_reductions"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+  }
+}
+
+concepts {
+  concept: "reduction_in_foreign_taxes"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+  }
+}
+
+concepts {
+  concept: "high_tax_kickout_reclassification"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+  }
+}
+
+concepts {
+  concept: "net_foreign_taxes_available_for_credit"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+  }
+}
+
+concepts {
+  concept: "foreign_source_income_before_adjustments"
+  years {
+    tax_year: 2025
+    irs_box: "15"
+  }
+}
+
+concepts {
+  concept: "foreign_source_income_adjustments"
+  years {
+    tax_year: 2025
+    irs_box: "16"
+  }
+}
+
+concepts {
+  concept: "adjusted_foreign_source_taxable_income"
+  years {
+    tax_year: 2025
+    irs_box: "17"
+  }
+}
+
+concepts {
+  concept: "worldwide_taxable_income"
+  years {
+    tax_year: 2025
+    irs_box: "18"
+  }
+}
+
+concepts {
+  concept: "limitation_fraction"
+  years {
+    tax_year: 2025
+    irs_box: "19"
+  }
+}
+
+concepts {
+  concept: "regular_us_income_tax"
+  years {
+    tax_year: 2025
+    irs_box: "20"
+  }
+}
+
+concepts {
+  concept: "category_foreign_tax_credit_limitation"
+  years {
+    tax_year: 2025
+    irs_box: "21"
+  }
+}
+
+concepts {
+  concept: "section_960_c_limitation_increase"
+  years {
+    tax_year: 2025
+    irs_box: "22"
+  }
+}
+
+concepts {
+  concept: "total_category_limitation"
+  years {
+    tax_year: 2025
+    irs_box: "23"
+  }
+}
+
+concepts {
+  concept: "category_foreign_tax_credit"
+  years {
+    tax_year: 2025
+    irs_box: "24"
+  }
+}
+
+concepts {
+  concept: "summary_section_951a_credit"
+  years {
+    tax_year: 2025
+    irs_box: "25"
+  }
+}
+
+concepts {
+  concept: "summary_foreign_branch_credit"
+  years {
+    tax_year: 2025
+    irs_box: "26"
+  }
+}
+
+concepts {
+  concept: "summary_passive_category_credit"
+  years {
+    tax_year: 2025
+    irs_box: "27"
+  }
+}
+
+concepts {
+  concept: "summary_general_category_credit"
+  years {
+    tax_year: 2025
+    irs_box: "28"
+  }
+}
+
+concepts {
+  concept: "summary_section_901_j_credit"
+  years {
+    tax_year: 2025
+    irs_box: "29"
+  }
+}
+
+concepts {
+  concept: "summary_treaty_resourced_credit"
+  years {
+    tax_year: 2025
+    irs_box: "30"
+  }
+}
+
+concepts {
+  concept: "summary_lump_sum_credit"
+  years {
+    tax_year: 2025
+    irs_box: "31"
+  }
+}
+
+concepts {
+  concept: "total_combined_category_credits"
+  years {
+    tax_year: 2025
+    irs_box: "32"
+  }
+}
+
+concepts {
+  concept: "capped_combined_foreign_tax_credit"
+  years {
+    tax_year: 2025
+    irs_box: "33"
+  }
+}
+
+concepts {
+  concept: "international_boycott_reduction"
+  years {
+    tax_year: 2025
+    irs_box: "34"
+  }
+}
+
+concepts {
+  concept: "foreign_tax_credit"
+  years {
+    tax_year: 2025
+    irs_box: "35"
+  }
+}

@@ -20,15 +20,60 @@ message Form1040X {
     // Column A: Original amount reported or as previously adjusted by the IRS.
     common.v1.Money original_amount = 1;
 
-    // Column B: Net change — amount of increase or (decrease).
+    // Column B: Net change, the amount of increase or (decrease).
     common.v1.Money net_change = 2;
 
     // Column C: Correct amount.
     common.v1.Money correct_amount = 3;
   }
 
-  // The calendar or fiscal tax year being amended (e.g., 2025).
-  int32 amended_tax_year = 1;
+  // ThreeColumnCount holds the three columns of a Part I dependent count.
+  message ThreeColumnCount {
+    // Column A: Original number reported or as previously adjusted.
+    int32 original_number = 1;
+
+    // Column B: Net change, the number of increase or (decrease).
+    int32 net_change = 2;
+
+    // Column C: Correct number.
+    int32 correct_number = 3;
+  }
+
+  // Dependent is one column of the Part I, line 30 dependents table.
+  message Dependent {
+    // Row (1): First name.
+    string first_name = 1;
+
+    // Row (2): Last name.
+    string last_name = 2;
+
+    // Row (3): Social security number as printed.
+    string tin = 3;
+
+    // Row (4): Relationship to the filer, as printed.
+    string relationship = 4;
+
+    // Row (5)(a): Lived with the filer more than half of the return year.
+    bool lived_with_filer_over_half_year = 5;
+
+    // Row (5)(b): And lived in the United States.
+    bool lived_in_united_states = 6;
+
+    // Row (6): Full-time student.
+    bool full_time_student = 7;
+
+    // Row (6): Permanently and totally disabled.
+    bool permanently_and_totally_disabled = 8;
+
+    // Row (7): Claimed for the child tax credit.
+    bool child_tax_credit = 9;
+
+    // Row (7): Claimed for the credit for other dependents.
+    bool credit_for_other_dependents = 10;
+  }
+
+  // The tax year of the return being amended. Four digits, such as 2025.
+  int32 tax_year = 1;
 
   // Name(s) shown on return.
   string filer_name = 2;
@@ -47,83 +92,109 @@ message Form1040X {
   // Line 1: Adjusted gross income.
   ThreeColumnLine adjusted_gross_income = 6;
 
+  // Line 1: Whether a net operating loss (NOL) carryback is included.
+  bool net_operating_loss_carryback_included = 7;
+
   // Line 2: Itemized deductions or standard deduction.
-  ThreeColumnLine deductions = 7;
+  ThreeColumnLine deductions = 8;
 
-  // Line 3: Subtract line 2 from line 1.
-  ThreeColumnLine agi_less_deductions = 8;
+  // Line 3: Line 1 minus line 2.
+  ThreeColumnLine agi_less_deductions = 9;
 
-  // Line 4a: Reserved / Personal exemptions (for pre-2018 or applicable years).
-  ThreeColumnLine exemptions = 9;
-
-  // Line 4b: Qualified business income deduction (Form 8995 or 8995-A).
+  // Line 4a: Qualified business income deduction.
   ThreeColumnLine qualified_business_income_deduction = 10;
 
-  // Line 5: Taxable income.
-  ThreeColumnLine taxable_income = 11;
+  // Line 4b: Deductions for tips, overtime, car loan interest, and seniors
+  // from Schedule 1-A.
+  ThreeColumnLine schedule_1a_deductions = 11;
+
+  // Line 5: Taxable income. Line 3 minus the total of lines 4a and 4b.
+  ThreeColumnLine taxable_income = 12;
 
   // -- Tax Liability (Lines 6 through 11) ----------------------------------
 
-  // Line 6: Tax (including Schedule 2 Part I).
-  ThreeColumnLine tax = 12;
+  // Line 6: The method(s) used to figure tax, as entered.
+  string tax_computation_method = 13;
 
-  // Line 7: Nonrefundable credits (Form 1040 line 19 plus Schedule 3 Part I).
-  ThreeColumnLine nonrefundable_credits = 13;
+  // Line 6: Tax.
+  ThreeColumnLine tax = 14;
 
-  // Line 8: Subtract line 7 from line 6 (if zero or less, enter 0).
-  ThreeColumnLine tax_less_nonrefundable_credits = 14;
+  // Line 7: Nonrefundable credits.
+  ThreeColumnLine nonrefundable_credits = 15;
 
-  // Line 9: Reserved.
-  ThreeColumnLine line_9_reserved = 15;
+  // Line 7: Whether a general business credit carryback is included.
+  bool general_business_credit_carryback_included = 16;
 
-  // Line 10: Other taxes (Schedule 2 Part II, including self-employment tax, Additional Medicare Tax, NIIT, etc.).
-  ThreeColumnLine other_taxes = 16;
+  // Line 8: Line 6 minus line 7, not less than zero.
+  ThreeColumnLine tax_less_nonrefundable_credits = 17;
 
-  // Line 11: Total tax (add lines 8 and 10).
-  ThreeColumnLine total_tax = 17;
+  // Line 10: Other taxes.
+  ThreeColumnLine other_taxes = 18;
+
+  // Line 11: Total tax. Lines 8 and 10 added.
+  ThreeColumnLine total_tax = 19;
 
   // -- Payments (Lines 12 through 17) --------------------------------------
 
-  // Line 12: Federal income tax withheld and excess social security/tier 1 RRTA tax withheld.
-  ThreeColumnLine federal_income_tax_withheld = 18;
+  // Line 12: Federal income tax withheld and excess social security and tier 1
+  // RRTA tax withheld.
+  ThreeColumnLine federal_income_tax_withheld = 20;
 
-  // Line 13: Estimated tax payments, including amount applied from prior year's return.
-  ThreeColumnLine estimated_tax_payments = 19;
+  // Line 13: Estimated tax payments, including the amount applied from the
+  // prior year's return.
+  ThreeColumnLine estimated_tax_payments = 21;
 
   // Line 14: Earned income credit (EIC).
-  ThreeColumnLine earned_income_credit = 20;
+  ThreeColumnLine earned_income_credit = 22;
 
-  // Line 15: Refundable credits (Additional Child Tax Credit, American Opportunity Credit, Net Premium Tax Credit, etc.).
-  ThreeColumnLine refundable_credits = 21;
+  // Line 15: Refundable credits from Schedule 8812, Forms 2439, 4136, 8863,
+  // 8885, 8962, or other.
+  ThreeColumnLine refundable_credits = 23;
 
-  // Line 16: Total amount paid with request for extension of time to file, tax paid with original return, and additional tax paid after return was filed.
-  common.v1.Money amount_paid_with_extension_and_original_return = 22;
+  // Line 16: Total amount paid with a request for extension of time to file,
+  // tax paid with the original return, and additional tax paid after the
+  // return was filed.
+  common.v1.Money amount_paid_with_extension_and_original_return = 24;
 
-  // Line 17: Total payments (sum of Column C lines 12 through 15 plus line 16).
-  common.v1.Money total_payments = 23;
+  // Line 17: Total payments. Lines 12 through 15, column C, plus line 16.
+  common.v1.Money total_payments = 25;
 
   // -- Refund or Amount You Owe (Lines 18 through 23) ----------------------
 
-  // Line 18: Overpayment, if any, as shown on original return or as previously adjusted by the IRS.
-  common.v1.Money prior_overpayment = 24;
+  // Line 18: Overpayment, if any, as shown on the original return or as
+  // previously adjusted by the IRS.
+  common.v1.Money prior_overpayment = 26;
 
-  // Line 19: Subtract line 18 from line 17 (net payments remaining).
-  common.v1.Money net_payments_remaining = 25;
+  // Line 19: Line 17 minus line 18.
+  common.v1.Money net_payments_remaining = 27;
 
-  // Line 20: Amount you owe (if line 11 Column C is more than line 19, subtract line 19 from line 11 Column C).
-  common.v1.Money amount_you_owe = 26;
+  // Line 20: Amount you owe. The excess of line 11, column C, over line 19.
+  common.v1.Money amount_you_owe = 28;
 
-  // Line 21: Overpayment (if line 11 Column C is less than line 19, subtract line 11 Column C from line 19).
-  common.v1.Money overpayment = 27;
+  // Line 21: Amount overpaid on this return. The excess of line 19 over line
+  // 11, column C.
+  common.v1.Money overpayment = 29;
 
-  // Line 22: Amount of line 21 you want refunded to you.
-  common.v1.Money amount_to_be_refunded = 28;
+  // Line 22: Amount of line 21 to be refunded.
+  common.v1.Money amount_to_be_refunded = 30;
 
-  // Line 23: Amount of line 21 you want applied to your next year's estimated tax.
-  common.v1.Money amount_applied_to_estimated_tax = 29;
+  // Line 23: Amount of line 21 to be applied to the next year's estimated tax.
+  common.v1.Money amount_applied_to_estimated_tax = 31;
+
+  // -- Part I: Dependents (Lines 24 through 30) ----------------------------
+
+  // Part I, line 25: Dependent children who lived with the filer more than
+  // half of the year.
+  ThreeColumnCount dependent_children_living_with_filer = 32;
+
+  // Part I, line 27: Other dependents.
+  ThreeColumnCount other_dependents = 33;
+
+  // Part I, line 30: Every dependent claimed on the amended return.
+  repeated Dependent dependents = 34;
 
   // -- Part II: Explanation of Changes -------------------------------------
 
-  // Line 24: Explanation of why you are filing Form 1040-X.
-  string explanation_of_changes = 30;
+  // Part II: Explanation of why Form 1040-X is being filed.
+  string explanation_of_changes = 35;
 }

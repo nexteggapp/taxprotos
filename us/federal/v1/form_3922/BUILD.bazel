@@ -16,3 +16,12 @@ exports_files([
     "form_3922.proto",
     "mapping.textproto",
 ])
+
+filegroup(
+    name = "test_oracles",
+    srcs = glob([
+        "mapping*.textproto",
+        "testdata/**",
+    ]),
+    visibility = ["//visibility:public"],
+)

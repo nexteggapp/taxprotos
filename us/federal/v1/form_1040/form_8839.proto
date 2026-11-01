@@ -1,7 +1,8 @@
 // Form 8839, Qualified Adoption Expenses.
 //
-// Used to figure the adoption credit (Part II) and any employer-provided
-// adoption benefits exclusion or taxable amount (Part III).
+// Used to figure the adoption credit (Part II), split into a refundable and a
+// nonrefundable part, and the exclusion for employer-provided adoption benefits
+// (Part III).
 syntax = "proto3";
 
 package nexteggapp.taxprotos.us.federal.v1;
@@ -13,61 +14,82 @@ option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;for
 
 // Form8839 reports qualified adoption expenses, the adoption credit, and employer-provided adoption benefits.
 message Form8839 {
-  // EligibleChild holds Part I information and per-child calculations in Parts II and III.
+  // EligibleChild is one child's row in Part I and column in Parts II and III.
   message EligibleChild {
-    // Line 1 column (a): Child's first and last name.
-    string child_name = 1;
+    // Line 1 column (a): Child's first name.
+    string first_name = 1;
+
+    // Line 1 column (a): Child's last name.
+    string last_name = 2;
 
     // Line 1 column (b): Child's year of birth.
-    int32 birth_year = 2;
+    int32 birth_year = 3;
 
-    // Line 1 column (c): Check if child was born before age 18 and disabled.
-    bool disabled = 3;
+    // Line 1 column (c): The child was born before the year the form names and
+    // is disabled.
+    bool older_and_disabled = 4;
 
-    // Line 1 column (d): Check if child had special needs.
-    bool special_needs = 4;
+    // Line 1 column (d): The child is a child with special needs.
+    bool special_needs = 5;
 
-    // Line 1 column (e): Check if child was a foreign child.
-    bool foreign_child = 5;
+    // Line 1 column (e): The child is a foreign child.
+    bool foreign_child = 6;
 
-    // Line 1 column (f): Child's identifying number (SSN, ATIN, or ITIN).
-    string child_tin = 6;
+    // Line 1 column (f): Child's identifying number.
+    string child_tin = 7;
 
-    // Line 1 column (g): Check if adoption became final in the tax year or earlier.
-    bool adoption_finalized = 7;
+    // Line 1 column (g): The adoption became final in the tax year or earlier.
+    bool adoption_final = 8;
 
-    // Part II line 2: Maximum adoption credit per child for the tax year.
-    common.v1.Money maximum_credit_per_child = 8;
+    // Line 2: Maximum adoption credit per child, as the form prints it for the
+    // year.
+    common.v1.Money maximum_credit = 9;
 
-    // Part II line 3: Qualified adoption expenses paid in prior years for this child.
-    common.v1.Money prior_year_qualified_expenses = 9;
+    // Line 3: For a child on a prior year's Form 8839, the amount the
+    // instructions give; otherwise zero.
+    common.v1.Money prior_year_credit_amount = 10;
 
-    // Part II line 4: Subtract line 3 from line 2.
-    common.v1.Money remaining_credit_limit_for_child = 10;
+    // Line 4: Line 3 subtracted from line 2.
+    common.v1.Money remaining_credit_limit = 11;
 
-    // Part II line 5: Qualified adoption expenses paid in current year (or full limit for finalized special-needs adoption).
-    common.v1.Money current_year_qualified_expenses = 11;
+    // Line 5: Qualified adoption expenses.
+    common.v1.Money qualified_adoption_expenses = 12;
 
-    // Part II line 6: Smaller of line 4 or line 5.
-    common.v1.Money tentative_credit_for_child = 12;
+    // Line 6: The smaller of line 4 or line 5.
+    common.v1.Money tentative_credit = 13;
 
-    // Part II line 9: Phaseout reduction for this child.
-    common.v1.Money credit_phaseout_reduction_for_child = 13;
+    // Line 10: Line 6 times line 9. The phaseout reduction.
+    common.v1.Money credit_phaseout_reduction = 14;
 
-    // Part II line 10: Credit after phaseout for this child (line 6 minus line 9).
-    common.v1.Money credit_after_phaseout_for_child = 14;
+    // Line 11a: Line 10 subtracted from line 6. The credit after phaseout.
+    common.v1.Money credit_after_phaseout = 15;
 
-    // Part III line 18: Maximum employer exclusion per child.
-    common.v1.Money maximum_exclusion_per_child = 15;
+    // Line 11b: The smaller of line 11a or the refundable cap the form prints.
+    common.v1.Money refundable_credit = 16;
 
-    // Part III line 19: Employer adoption benefits excluded in prior years for this child.
-    common.v1.Money prior_year_excluded_benefits = 16;
+    // Line 19: Maximum exclusion per child, as the form prints it for the year.
+    common.v1.Money maximum_exclusion = 17;
 
-    // Part III line 20: Subtract line 19 from line 18.
-    common.v1.Money remaining_exclusion_limit_for_child = 17;
+    // Line 20: For a child with employer-provided adoption benefits in a prior
+    // year, the amount the instructions give; otherwise zero.
+    common.v1.Money prior_year_benefits_amount = 18;
 
-    // Part III line 21: Employer-provided adoption benefits received in current year for this child.
-    common.v1.Money employer_adoption_benefits_received = 18;
+    // Line 21: Line 20 subtracted from line 19.
+    common.v1.Money remaining_exclusion_limit = 19;
+
+    // Line 22: Employer-provided adoption benefits received in the year, shown
+    // in Form W-2 box 12 with code T.
+    common.v1.Money employer_adoption_benefits = 20;
+
+    // Line 24: The smaller of line 21 or line 22, or line 21 for a child with
+    // special needs whose adoption became final in the year.
+    common.v1.Money tentative_exclusion = 21;
+
+    // Line 28: Line 24 times line 27. The phaseout reduction.
+    common.v1.Money exclusion_phaseout_reduction = 22;
+
+    // Line 29: Excluded benefits. Line 28 subtracted from line 24.
+    common.v1.Money excluded_benefits = 23;
   }
 
   // The tax year the form applies to.
@@ -81,61 +103,71 @@ message Form8839 {
 
   // -- Part I: Information About Your Eligible Child or Children -----------
 
-  // Line 1: Eligible children for whom adoption credit or exclusion is claimed.
+  // Line 1: Each eligible child, with that child's amounts on the per-child
+  // lines of Parts II and III.
   repeated EligibleChild children = 4;
 
   // -- Part II: Adoption Credit --------------------------------------------
 
-  // Line 7: Modified adjusted gross income for the adoption credit.
+  // Line 7: Modified adjusted gross income.
   common.v1.Money modified_adjusted_gross_income = 5;
 
-  // Line 8: Excess of line 7 over the adoption credit phaseout threshold.
-  common.v1.Money excess_modified_agi_over_threshold = 6;
+  // Line 8: Line 7 less the phaseout threshold the form prints, when line 7
+  // is more than it.
+  common.v1.Money modified_agi_over_threshold = 6;
 
-  // Line 8 ratio: Phaseout ratio (line 8 divided by $40,000, up to 1.000).
+  // Line 9: Line 8 divided by the phaseout range the form prints, as a
+  // decimal of at least three places and no more than 1.000.
   common.v1.Quantity phaseout_ratio = 7;
 
-  // Line 11: Sum of line 10 amounts for all children (current-year adoption credit after phaseout).
-  common.v1.Money total_current_year_credit_after_phaseout = 8;
+  // Line 11c: The line 11b amounts added.
+  common.v1.Money total_refundable_credit = 8;
 
-  // Line 12: Credit carryforward from prior years.
-  common.v1.Money credit_carryforward_from_prior_years = 9;
+  // Line 12: The line 11a amounts added.
+  common.v1.Money total_credit_after_phaseout = 9;
 
-  // Line 13: Total available adoption credit (add lines 11 and 12).
-  common.v1.Money total_available_adoption_credit = 10;
+  // Line 13: Refundable adoption credit, the amount from line 11c. Also
+  // entered on Form 1040 line 30.
+  common.v1.Money refundable_adoption_credit = 10;
 
-  // Line 14: Tax liability limit from Credit Limit Worksheet.
-  common.v1.Money tax_liability_limit = 11;
+  // Line 14: Line 13 subtracted from line 12, not less than zero.
+  common.v1.Money nonrefundable_credit_before_carryforward = 11;
 
-  // Line 15: Adoption credit (smaller of line 13 or line 14). Carries to Schedule 3 line 6c.
-  common.v1.Money adoption_credit = 12;
+  // Line 15: Credit carryforward from prior years.
+  common.v1.Money credit_carryforward_from_prior_years = 12;
 
-  // Line 16: Adoption credit carryforward to next tax year.
-  common.v1.Money credit_carryforward_to_next_year = 13;
+  // Line 16: Lines 14 and 15 added.
+  common.v1.Money total_nonrefundable_credit_available = 13;
+
+  // Line 17: Line 5 of the Credit Limit Worksheet in the instructions.
+  common.v1.Money credit_limit = 14;
+
+  // Line 18: Nonrefundable adoption credit, the smaller of line 16 or line 17.
+  // Also entered on Schedule 3 (Form 1040) line 6c.
+  common.v1.Money nonrefundable_adoption_credit = 15;
 
   // -- Part III: Employer-Provided Adoption Benefits -----------------------
 
-  // Line 22: Total employer-provided adoption benefits received (W-2 box 12 code T).
-  common.v1.Money total_employer_adoption_benefits = 14;
+  // Line 23: The line 22 amounts added.
+  common.v1.Money total_employer_adoption_benefits = 16;
 
-  // Line 23: Aggregate smaller of remaining limit or benefits across all children.
-  common.v1.Money tentative_excluded_benefits = 15;
+  // Line 25: Modified adjusted gross income, from the worksheet in the
+  // instructions.
+  common.v1.Money exclusion_modified_agi = 17;
 
-  // Line 24: Modified adjusted gross income for employer adoption benefits exclusion (before exclusion).
-  common.v1.Money exclusion_modified_agi = 16;
+  // Line 26: Line 25 less the phaseout threshold the form prints, when line 25
+  // is more than it.
+  common.v1.Money exclusion_modified_agi_over_threshold = 18;
 
-  // Line 25: Excess of line 24 over phaseout threshold.
-  common.v1.Money exclusion_excess_modified_agi = 17;
+  // Line 27: Line 26 divided by the phaseout range the form prints, as a
+  // decimal of at least three places and no more than 1.000.
+  common.v1.Quantity exclusion_phaseout_ratio = 19;
 
-  // Line 26: Total phaseout reduction for employer adoption benefits.
-  common.v1.Money total_exclusion_phaseout_reduction = 18;
+  // Line 30: The line 29 amounts added.
+  common.v1.Money total_excluded_benefits = 20;
 
-  // Line 27: Excluded benefits after phaseout (subtract line 26 from line 23).
-  common.v1.Money excluded_employer_adoption_benefits = 19;
-
-  // Line 28: Qualified adoption expenses paid for employer benefits (or deemed amount for special-needs).
-  common.v1.Money qualified_expenses_for_employer_benefits = 20;
-
-  // Line 29: Excluded benefits (smaller of line 27 or line 28) or taxable benefits (line 22 minus smaller of line 27 or 28). Carries to Schedule 1 line 1f.
+  // Line 31: Taxable benefits. Line 30 subtracted from line 23, or, when line
+  // 30 is more, line 23 subtracted from line 30 as a negative number. Entered
+  // on Form 1040 line 1f.
   common.v1.Money taxable_employer_adoption_benefits = 21;
 }

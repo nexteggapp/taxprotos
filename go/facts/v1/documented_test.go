@@ -95,6 +95,7 @@ var checked = []string{
 	"taxprotos/us/federal/v1/form_1040/form_8960.proto",
 	"taxprotos/us/federal/v1/form_1040/form_8962.proto",
 	"taxprotos/us/federal/v1/form_1040/form_8995.proto",
+	"taxprotos/us/federal/v1/form_1040/form_8995_a.proto",
 	"taxprotos/us/federal/v1/form_1040/schedule_8812.proto",
 	"taxprotos/us/federal/v1/form_1040/schedule_b.proto",
 	"taxprotos/us/federal/v1/form_1040/schedule_c.proto",

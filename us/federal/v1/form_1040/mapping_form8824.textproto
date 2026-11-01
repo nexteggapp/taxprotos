@@ -1,0 +1,403 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for Form 8824.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+
+form: "8824"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form8824"
+tax_years: 2025
+
+concepts {
+  concept: "relinquished_property_description"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+  }
+}
+
+concepts {
+  concept: "replacement_property_description"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+  }
+}
+
+concepts {
+  concept: "date_relinquished_property_acquired"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+  }
+}
+
+concepts {
+  concept: "date_relinquished_property_transferred"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+  }
+}
+
+concepts {
+  concept: "date_replacement_property_identified"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+  }
+}
+
+concepts {
+  concept: "date_replacement_property_received"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+  }
+}
+
+concepts {
+  concept: "exchange_with_related_party"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+
+concepts {
+  concept: "related_party_name"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+  }
+}
+
+concepts {
+  concept: "related_party_relationship"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+  }
+}
+
+concepts {
+  concept: "related_party_tin"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+  }
+}
+
+concepts {
+  concept: "related_party_address"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+  }
+}
+
+concepts {
+  concept: "related_party_disposed_of_property"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+  }
+}
+
+concepts {
+  concept: "taxpayer_disposed_of_property"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+  }
+}
+
+concepts {
+  concept: "exception_disposition_after_death"
+  years {
+    tax_year: 2025
+    irs_box: "a"
+    note: "Line 11a."
+  }
+}
+
+concepts {
+  concept: "exception_involuntary_conversion"
+  years {
+    tax_year: 2025
+    irs_box: "b"
+    note: "Line 11b."
+  }
+}
+
+concepts {
+  concept: "exception_no_tax_avoidance_purpose"
+  years {
+    tax_year: 2025
+    irs_box: "c"
+    note: "Line 11c."
+  }
+}
+
+concepts {
+  concept: "fmv_of_other_property_given_up"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+  }
+}
+
+concepts {
+  concept: "other_property_given_up_description"
+  years {
+    tax_year: 2025
+    irs_box: "a"
+    note: "Line 12a."
+  }
+}
+
+concepts {
+  concept: "adjusted_basis_of_other_property_given_up"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+  }
+}
+
+concepts {
+  concept: "gain_or_loss_on_other_property_given_up"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+  }
+}
+
+concepts {
+  concept: "net_boot_received"
+  years {
+    tax_year: 2025
+    irs_box: "15"
+  }
+}
+
+concepts {
+  concept: "other_property_received_description"
+  years {
+    tax_year: 2025
+    irs_box: "a"
+    note: "Line 15a."
+  }
+}
+
+concepts {
+  concept: "fmv_of_like_kind_property_received"
+  years {
+    tax_year: 2025
+    irs_box: "16"
+  }
+}
+
+concepts {
+  concept: "amount_realized"
+  years {
+    tax_year: 2025
+    irs_box: "17"
+  }
+}
+
+concepts {
+  concept: "adjusted_basis_of_like_kind_property_given_up"
+  years {
+    tax_year: 2025
+    irs_box: "18"
+  }
+}
+
+concepts {
+  concept: "realized_gain_or_loss"
+  years {
+    tax_year: 2025
+    irs_box: "19"
+  }
+}
+
+concepts {
+  concept: "tentative_recognized_gain"
+  years {
+    tax_year: 2025
+    irs_box: "20"
+  }
+}
+
+concepts {
+  concept: "ordinary_recapture_gain"
+  years {
+    tax_year: 2025
+    irs_box: "21"
+  }
+}
+
+concepts {
+  concept: "recognized_capital_or_section_1231_gain"
+  years {
+    tax_year: 2025
+    irs_box: "22"
+  }
+}
+
+concepts {
+  concept: "total_recognized_gain"
+  years {
+    tax_year: 2025
+    irs_box: "23"
+  }
+}
+
+concepts {
+  concept: "deferred_gain_or_loss"
+  years {
+    tax_year: 2025
+    irs_box: "24"
+  }
+}
+
+concepts {
+  concept: "basis_of_like_kind_property_received"
+  years {
+    tax_year: 2025
+    irs_box: "25"
+  }
+}
+
+concepts {
+  concept: "basis_of_section_1250_property_received"
+  years {
+    tax_year: 2025
+    irs_box: "25a"
+  }
+}
+
+concepts {
+  concept: "basis_of_section_1245_type_property_received"
+  years {
+    tax_year: 2025
+    irs_box: "25b"
+  }
+}
+
+concepts {
+  concept: "basis_of_intangible_property_received"
+  years {
+    tax_year: 2025
+    irs_box: "25c"
+  }
+}
+
+concepts {
+  concept: "certificate_of_divestiture_number"
+  years {
+    tax_year: 2025
+    irs_box: "26"
+  }
+}
+
+concepts {
+  concept: "divested_property_description"
+  years {
+    tax_year: 2025
+    irs_box: "27"
+  }
+}
+
+concepts {
+  concept: "divestiture_replacement_property_description"
+  years {
+    tax_year: 2025
+    irs_box: "28"
+  }
+}
+
+concepts {
+  concept: "date_divested_property_sold"
+  years {
+    tax_year: 2025
+    irs_box: "29"
+  }
+}
+
+concepts {
+  concept: "divested_property_sales_price"
+  years {
+    tax_year: 2025
+    irs_box: "30"
+  }
+}
+
+concepts {
+  concept: "divested_property_basis"
+  years {
+    tax_year: 2025
+    irs_box: "31"
+  }
+}
+
+concepts {
+  concept: "divestiture_realized_gain"
+  years {
+    tax_year: 2025
+    irs_box: "32"
+  }
+}
+
+concepts {
+  concept: "divestiture_replacement_property_cost"
+  years {
+    tax_year: 2025
+    irs_box: "33"
+  }
+}
+
+concepts {
+  concept: "divestiture_sales_price_over_replacement_cost"
+  years {
+    tax_year: 2025
+    irs_box: "34"
+  }
+}
+
+concepts {
+  concept: "divestiture_ordinary_recapture_gain"
+  years {
+    tax_year: 2025
+    irs_box: "35"
+  }
+}
+
+concepts {
+  concept: "divestiture_recognized_capital_or_section_1231_gain"
+  years {
+    tax_year: 2025
+    irs_box: "36"
+  }
+}
+
+concepts {
+  concept: "divestiture_deferred_gain"
+  years {
+    tax_year: 2025
+    irs_box: "37"
+  }
+}
+
+concepts {
+  concept: "divestiture_replacement_property_basis"
+  years {
+    tax_year: 2025
+    irs_box: "38"
+  }
+}

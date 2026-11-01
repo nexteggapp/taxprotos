@@ -2,7 +2,8 @@
 //
 // Used to report income from casual sales of real or personal property (other
 // than inventory) under the installment method where at least one payment is
-// received after the close of the tax year in which the sale occurs.
+// received after the close of the tax year in which the sale occurs. One form
+// per sale.
 syntax = "proto3";
 
 package nexteggapp.taxprotos.us.federal.v1;
@@ -15,6 +16,28 @@ option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;for
 
 // Form6252 reports installment sale gross profit, contract price, and current-year installment income.
 message Form6252 {
+  // SecondDispositionException is the line 29 condition under which a related
+  // party's second disposition does not trigger lines 30 through 37.
+  enum SecondDispositionException {
+    // No box checked.
+    SECOND_DISPOSITION_EXCEPTION_UNSPECIFIED = 0;
+
+    // Box a: the second disposition came long enough after the first, as the form states.
+    SECOND_DISPOSITION_EXCEPTION_LATE_SECOND_DISPOSITION = 1;
+
+    // Box b: the first disposition was a sale or exchange of stock to the issuing corporation.
+    SECOND_DISPOSITION_EXCEPTION_STOCK_TO_ISSUER = 2;
+
+    // Box c: the second disposition was an involuntary conversion threatened after the first disposition.
+    SECOND_DISPOSITION_EXCEPTION_INVOLUNTARY_CONVERSION = 3;
+
+    // Box d: the second disposition occurred after the death of the original seller or buyer.
+    SECOND_DISPOSITION_EXCEPTION_AFTER_DEATH = 4;
+
+    // Box e: tax avoidance was not a principal purpose of either disposition.
+    SECOND_DISPOSITION_EXCEPTION_NO_TAX_AVOIDANCE = 5;
+  }
+
   // The tax year the form applies to.
   int32 tax_year = 1;
 
@@ -27,27 +50,27 @@ message Form6252 {
   // Line 1: Description of property.
   string property_description = 4;
 
-  // Line 2a: Date acquired (month, day, year).
+  // Line 2a: Date acquired.
   common.v1.Date date_acquired = 5;
 
-  // Line 2b: Date sold (month, day, year).
+  // Line 2b: Date sold.
   common.v1.Date date_sold = 6;
 
-  // Line 3: Was the property sold to a related party after May 14, 1980.
+  // Line 3: Whether the property was sold to a related party.
   bool sold_to_related_party = 7;
 
-  // Line 4: Was the property marketable securities sold to a related party.
-  bool marketable_securities_sold_to_related_party = 8;
+  // Line 4: Whether the total selling price can be determined by the close of the tax year of the sale.
+  bool selling_price_determinable = 8;
 
-  // -- Part I: Gross Profit and Contract Price (Completed for Year of Sale) -
+  // -- Part I: Gross Profit and Contract Price -----------------------------
 
-  // Line 5: Selling price including mortgages and other debts.
+  // Line 5: Selling price including mortgages and other debts, excluding interest.
   common.v1.Money selling_price = 9;
 
-  // Line 6: Mortgages and other debts the buyer assumed or took the property subject to.
+  // Line 6: Mortgages, debts, and other liabilities the buyer assumed or took the property subject to.
   common.v1.Money mortgages_and_debts_assumed = 10;
 
-  // Line 7: Subtract line 6 from line 5.
+  // Line 7: Line 5 minus line 6.
   common.v1.Money net_selling_price = 11;
 
   // Line 8: Cost or other basis of property sold.
@@ -56,76 +79,94 @@ message Form6252 {
   // Line 9: Depreciation allowed or allowable.
   common.v1.Money depreciation_allowed_or_allowable = 13;
 
-  // Line 10: Adjusted basis (subtract line 9 from line 8).
+  // Line 10: Adjusted basis (line 8 minus line 9).
   common.v1.Money adjusted_basis = 14;
 
   // Line 11: Commissions and other expenses of sale.
   common.v1.Money commissions_and_expenses_of_sale = 15;
 
-  // Line 12: Income recapture from Form 4797 Part III (Sections 1245 and 1250).
+  // Line 12: Income recapture from Form 4797 Part III.
   common.v1.Money depreciation_recapture_income = 16;
 
-  // Line 13: Add lines 10, 11, and 12.
+  // Line 13: Lines 10, 11, and 12.
   common.v1.Money total_basis_expenses_and_recapture = 17;
 
-  // Line 14: Subtract line 13 from line 5 (if zero or less, no installment gain).
-  common.v1.Money gross_profit = 18;
+  // Line 14: Line 5 minus line 13.
+  common.v1.Money profit_before_home_exclusion = 18;
 
-  // Line 15: If the property was main home, excluded gain under Section 121.
+  // Line 15: Excluded gain, if the property was the main home.
   common.v1.Money excluded_main_home_gain = 19;
 
-  // Line 16: Gross profit after exclusion (subtract line 15 from line 14).
-  common.v1.Money net_gross_profit = 20;
+  // Line 16: Gross profit (line 14 minus line 15).
+  common.v1.Money gross_profit = 20;
 
-  // Line 17: Subtract line 13 from line 6 (if zero or less, enter 0: mortgage in excess of basis).
+  // Line 17: Line 6 minus line 13, not less than zero.
   common.v1.Money excess_mortgage_over_basis = 21;
 
-  // Line 18: Total contract price (add lines 7 and 17).
+  // Line 18: Contract price (lines 7 and 17).
   common.v1.Money contract_price = 22;
 
   // -- Part II: Installment Sale Income ------------------------------------
 
-  // Line 19: Gross profit percentage (divide line 16 by line 18, as a decimal to at least 4 places).
+  // Line 19: Gross profit percentage, as a decimal (line 16 divided by line 18 in the year of sale).
   common.v1.Quantity gross_profit_percentage = 23;
 
-  // Line 20: For year of sale only, enter amount from line 17 (excess mortgage over basis).
+  // Line 20: Amount from line 17 in the year of sale, otherwise zero.
   common.v1.Money year_of_sale_excess_mortgage = 24;
 
-  // Line 21: Payments received during current tax year (excluding stated or unstated interest).
-  common.v1.Money principal_payments_received_in_year = 25;
+  // Line 21: Payments received during the year, excluding interest.
+  common.v1.Money payments_received_in_year = 25;
 
-  // Line 22: Add lines 20 and 21.
+  // Line 22: Lines 20 and 21.
   common.v1.Money total_current_year_payments = 26;
 
-  // Line 23: Payments received in prior years (excluding interest).
+  // Line 23: Payments received in prior years, excluding interest.
   common.v1.Money prior_years_payments_received = 27;
 
-  // Line 24: Installment sale income (multiply line 22 by line 19).
+  // Line 24: Installment sale income (line 22 times line 19), not less than zero.
   common.v1.Money installment_sale_income = 28;
 
-  // Line 25: Part of line 24 that is ordinary income under recapture rules (carries to Form 4797 line 14).
+  // Line 25: Part of line 24 that is ordinary income under the recapture rules.
   common.v1.Money ordinary_recapture_portion = 29;
 
-  // Line 26: Subtract line 25 from line 24 (carries to Schedule D or Form 4797 line 4).
+  // Line 26: Line 24 minus line 25. Carries to Schedule D or Form 4797.
   common.v1.Money capital_or_section_1231_gain_portion = 30;
-
-  // Unrecaptured Section 1250 gain portion of line 26 (allocated first as payments are received).
-  common.v1.Money unrecaptured_section_1250_gain_portion = 31;
 
   // -- Part III: Related Party Installment Sale Income ---------------------
 
-  // Line 27: Name, address, and taxpayer identifying number of related party buyer.
-  string related_party_name_address_and_tin = 32;
+  // Line 27: Name, address, and taxpayer identifying number of the related party.
+  string related_party_name_address_and_tin = 31;
 
-  // Line 28: Did the related party resell or dispose of the property during this tax year.
-  bool related_party_disposed_in_year = 33;
+  // Line 28: Whether the related party resold or disposed of the property during this tax year.
+  bool related_party_disposed_in_year = 32;
 
-  // Line 30: Selling price of property sold by related party (or FMV if disposed other than by sale).
-  common.v1.Money related_party_second_disposition_price = 34;
+  // Line 29: Which exception box is checked, if any.
+  SecondDispositionException second_disposition_exception = 33;
 
-  // Line 35: Deemed payment from related party second disposition.
-  common.v1.Money related_party_deemed_payment = 35;
+  // Line 29a: Date of the second disposition, when box a is checked.
+  common.v1.Date second_disposition_date = 34;
 
-  // Line 36: Installment sale income from related party disposition (multiply line 35 by line 19).
-  common.v1.Money related_party_installment_income = 36;
+  // Line 30: Selling price of property sold by the related party.
+  common.v1.Money related_party_selling_price = 35;
+
+  // Line 31: Contract price from line 18 for the year of the first sale.
+  common.v1.Money first_sale_contract_price = 36;
+
+  // Line 32: Smaller of line 30 or line 31.
+  common.v1.Money related_party_amount_realized_limited = 37;
+
+  // Line 33: Total payments received by the end of this tax year.
+  common.v1.Money total_payments_received_to_date = 38;
+
+  // Line 34: Line 32 minus line 33, not less than zero.
+  common.v1.Money related_party_deemed_payment = 39;
+
+  // Line 35: Line 34 times the gross profit percentage on line 19 for the year of the first sale.
+  common.v1.Money related_party_installment_income = 40;
+
+  // Line 36: Part of line 35 that is ordinary income under the recapture rules.
+  common.v1.Money related_party_ordinary_recapture_portion = 41;
+
+  // Line 37: Line 35 minus line 36. Carries to Schedule D or Form 4797.
+  common.v1.Money related_party_capital_or_section_1231_gain_portion = 42;
 }
