@@ -1,0 +1,500 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for Form 7203.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# Form 7203 is not revised every year. The December 2022 revision is the one
+# in use for tax year 2025, and it is the extract in testdata/.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "7203"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form7203"
+tax_years: 2025
+
+concepts {
+  concept: "s_corporation_name"
+  years {
+    tax_year: 2025
+    irs_box: "A"
+  }
+}
+
+concepts {
+  concept: "s_corporation_ein"
+  years {
+    tax_year: 2025
+    irs_box: "B"
+  }
+}
+
+concepts {
+  concept: "stock_block"
+  years {
+    tax_year: 2025
+    irs_box: "C"
+  }
+}
+
+concepts {
+  concept: "other_acquisition_description"
+  years {
+    tax_year: 2025
+    irs_box: "D"
+    note: "Item D(5)."
+  }
+}
+
+concepts {
+  concept: "section_1367_1g_election"
+  years {
+    tax_year: 2025
+    irs_box: "E"
+  }
+}
+
+concepts {
+  concept: "beginning_stock_basis"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+  }
+}
+
+concepts {
+  concept: "capital_contributions_and_additional_stock"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+  }
+}
+
+concepts {
+  concept: "ordinary_business_income"
+  years {
+    tax_year: 2025
+    irs_box: "3a"
+  }
+}
+
+concepts {
+  concept: "net_rental_real_estate_income"
+  years {
+    tax_year: 2025
+    irs_box: "3b"
+  }
+}
+
+concepts {
+  concept: "other_net_rental_income"
+  years {
+    tax_year: 2025
+    irs_box: "3c"
+  }
+}
+
+concepts {
+  concept: "interest_income"
+  years {
+    tax_year: 2025
+    irs_box: "3d"
+  }
+}
+
+concepts {
+  concept: "ordinary_dividends"
+  years {
+    tax_year: 2025
+    irs_box: "3e"
+  }
+}
+
+concepts {
+  concept: "royalties"
+  years {
+    tax_year: 2025
+    irs_box: "3f"
+  }
+}
+
+concepts {
+  concept: "net_capital_gains"
+  years {
+    tax_year: 2025
+    irs_box: "3g"
+  }
+}
+
+concepts {
+  concept: "net_section_1231_gain"
+  years {
+    tax_year: 2025
+    irs_box: "3h"
+  }
+}
+
+concepts {
+  concept: "other_income"
+  years {
+    tax_year: 2025
+    irs_box: "3i"
+  }
+}
+
+concepts {
+  concept: "excess_depletion_adjustment"
+  years {
+    tax_year: 2025
+    irs_box: "3j"
+  }
+}
+
+concepts {
+  concept: "tax_exempt_income"
+  years {
+    tax_year: 2025
+    irs_box: "3k"
+  }
+}
+
+concepts {
+  concept: "recapture_of_business_credits"
+  years {
+    tax_year: 2025
+    irs_box: "3l"
+  }
+}
+
+concepts {
+  concept: "other_stock_basis_increases"
+  years {
+    tax_year: 2025
+    irs_box: "3m"
+  }
+}
+
+concepts {
+  concept: "total_income_and_gain_basis_increases"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+  }
+}
+
+concepts {
+  concept: "stock_basis_before_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+  }
+}
+
+concepts {
+  concept: "non_dividend_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+  }
+}
+
+concepts {
+  concept: "stock_basis_after_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+
+concepts {
+  concept: "nondeductible_expenses"
+  years {
+    tax_year: 2025
+    irs_box: "8a"
+  }
+}
+
+concepts {
+  concept: "oil_and_gas_depletion"
+  years {
+    tax_year: 2025
+    irs_box: "8b"
+  }
+}
+
+concepts {
+  concept: "business_credit_basis_reduction"
+  years {
+    tax_year: 2025
+    irs_box: "8c"
+  }
+}
+
+concepts {
+  concept: "total_nondeductible_reductions"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+  }
+}
+
+concepts {
+  concept: "stock_basis_before_loss_and_deduction_items"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+  }
+}
+
+concepts {
+  concept: "allowed_losses_from_stock_basis"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+  }
+}
+
+concepts {
+  concept: "debt_basis_restoration"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+  }
+}
+
+concepts {
+  concept: "other_stock_basis_decreases"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+  }
+}
+
+concepts {
+  concept: "total_stock_basis_decreases"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+  }
+}
+
+concepts {
+  concept: "ending_stock_basis"
+  years {
+    tax_year: 2025
+    irs_box: "15"
+  }
+}
+
+concepts {
+  concept: "total_beginning_loan_balance"
+  years {
+    tax_year: 2025
+    irs_box: "16"
+    note: "Column (d), the total of all debts."
+  }
+}
+
+concepts {
+  concept: "total_additional_loans"
+  years {
+    tax_year: 2025
+    irs_box: "17"
+    note: "Column (d), the total of all debts."
+  }
+}
+
+concepts {
+  concept: "total_loan_balance_before_repayment"
+  years {
+    tax_year: 2025
+    irs_box: "18"
+    note: "Column (d), the total of all debts."
+  }
+}
+
+concepts {
+  concept: "total_principal_repayment"
+  years {
+    tax_year: 2025
+    irs_box: "19"
+    note: "Column (d), the total of all debts."
+  }
+}
+
+concepts {
+  concept: "total_ending_loan_balance"
+  years {
+    tax_year: 2025
+    irs_box: "20"
+    note: "Column (d), the total of all debts."
+  }
+}
+
+concepts {
+  concept: "total_beginning_debt_basis"
+  years {
+    tax_year: 2025
+    irs_box: "21"
+    note: "Column (d), the total of all debts."
+  }
+}
+
+concepts {
+  concept: "total_additional_loans_basis"
+  years {
+    tax_year: 2025
+    irs_box: "22"
+    note: "Column (d), the total of all debts."
+  }
+}
+
+concepts {
+  concept: "total_debt_basis_restoration"
+  years {
+    tax_year: 2025
+    irs_box: "23"
+    note: "Column (d), the total of all debts."
+  }
+}
+
+concepts {
+  concept: "total_debt_basis_before_repayment"
+  years {
+    tax_year: 2025
+    irs_box: "24"
+    note: "Column (d), the total of all debts."
+  }
+}
+
+concepts {
+  concept: "total_nontaxable_repayment"
+  years {
+    tax_year: 2025
+    irs_box: "26"
+    note: "Column (d), the total of all debts."
+  }
+}
+
+concepts {
+  concept: "total_debt_basis_before_nondeductibles"
+  years {
+    tax_year: 2025
+    irs_box: "27"
+    note: "Column (d), the total of all debts."
+  }
+}
+
+concepts {
+  concept: "total_nondeductibles_in_excess_of_stock_basis"
+  years {
+    tax_year: 2025
+    irs_box: "28"
+    note: "Column (d), the total of all debts."
+  }
+}
+
+concepts {
+  concept: "total_debt_basis_before_losses"
+  years {
+    tax_year: 2025
+    irs_box: "29"
+    note: "Column (d), the total of all debts."
+  }
+}
+
+concepts {
+  concept: "total_allowed_losses_from_debt_basis"
+  years {
+    tax_year: 2025
+    irs_box: "30"
+    note: "Column (d), the total of all debts."
+  }
+}
+
+concepts {
+  concept: "total_ending_debt_basis"
+  years {
+    tax_year: 2025
+    irs_box: "31"
+    note: "Column (d), the total of all debts."
+  }
+}
+
+concepts {
+  concept: "total_repayment"
+  years {
+    tax_year: 2025
+    irs_box: "32"
+    note: "Column (d), the total of all debts."
+  }
+}
+
+concepts {
+  concept: "total_nontaxable_repayments"
+  years {
+    tax_year: 2025
+    irs_box: "33"
+    note: "Column (d), the total of all debts."
+  }
+}
+
+concepts {
+  concept: "total_reportable_gain_on_repayment"
+  years {
+    tax_year: 2025
+    irs_box: "34"
+    note: "Column (d), the total of all debts."
+  }
+}
+
+concepts {
+  concept: "total_current_year_losses_and_deductions"
+  years {
+    tax_year: 2025
+    irs_box: "47"
+    note: "Column (a), the total of all debts."
+  }
+}
+
+concepts {
+  concept: "total_prior_year_disallowed_carryover"
+  years {
+    tax_year: 2025
+    irs_box: "47"
+    note: "Column (b), the total of all debts."
+  }
+}
+
+concepts {
+  concept: "total_allowed_from_stock_basis"
+  years {
+    tax_year: 2025
+    irs_box: "47"
+    note: "Column (c), the total of all debts."
+  }
+}
+
+concepts {
+  concept: "total_allowed_from_debt_basis"
+  years {
+    tax_year: 2025
+    irs_box: "47"
+    note: "Column (d), the total of all debts."
+  }
+}
+
+concepts {
+  concept: "total_disallowed_carryover_to_next_year"
+  years {
+    tax_year: 2025
+    irs_box: "47"
+    note: "Column (e), the total of all debts."
+  }
+}

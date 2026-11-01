@@ -1,0 +1,311 @@
+// Form 4562, Depreciation and Amortization (Including Information on Listed Property).
+//
+// Used to claim deductions for depreciation and amortization, make the election
+// under IRC Section 179 to expense certain property, and provide information on
+// business/investment use of automobiles and other listed property.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/quantity.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form4562 reports depreciation, Section 179 expense, special bonus depreciation, listed property, and amortization.
+message Form4562 {
+  // Section179PropertyItem is one row of Part I line 6.
+  message Section179PropertyItem {
+    // Column (a): Description of property.
+    string description = 1;
+
+    // Column (b): Cost (business use only).
+    common.v1.Money cost = 2;
+
+    // Column (c): Elected cost.
+    common.v1.Money elected_cost = 3;
+  }
+
+  // MacrsPropertyRow is one row of Part III, Section B (lines 19a through
+  // 19j) or Section C (lines 20a through 20e).
+  message MacrsPropertyRow {
+    // Column (a): Classification of property, as the row prints it: "5-year
+    // property", "Residential rental property", "Class life".
+    string classification = 1;
+
+    // Column (b): Month and year placed in service.
+    string month_and_year_placed_in_service = 2;
+
+    // Column (c): Basis for depreciation (business/investment use only).
+    common.v1.Money basis_for_depreciation = 3;
+
+    // Column (d): Recovery period.
+    string recovery_period = 4;
+
+    // Column (e): Convention.
+    string convention = 5;
+
+    // Column (f): Method.
+    string method = 6;
+
+    // Column (g): Depreciation deduction.
+    common.v1.Money depreciation_deduction = 7;
+
+    // Whether the row is in Section C, the Alternative Depreciation System;
+    // false means Section B, the General Depreciation System.
+    bool alternative_depreciation_system = 8;
+  }
+
+  // ListedPropertyItem is one row of Part V, Section A, line 26 or line 27.
+  message ListedPropertyItem {
+    // Column (a): Type of property, vehicles first.
+    string property_type = 1;
+
+    // Column (b): Date placed in service.
+    common.v1.Date date_placed_in_service = 2;
+
+    // Column (c): Business/investment use percentage.
+    common.v1.Quantity business_use_percentage = 3;
+
+    // Column (d): Cost or other basis.
+    common.v1.Money cost_or_other_basis = 4;
+
+    // Column (e): Basis for depreciation (business/investment use only).
+    common.v1.Money basis_for_depreciation = 5;
+
+    // Column (f): Recovery period.
+    string recovery_period = 6;
+
+    // Column (g): Method/convention.
+    string method_and_convention = 7;
+
+    // Column (h): Depreciation deduction.
+    common.v1.Money depreciation_deduction = 8;
+
+    // Column (i): Elected section 179 cost. Line 26 only.
+    common.v1.Money elected_section_179_cost = 9;
+
+    // Whether the row is on line 26, property used more than half in a
+    // qualified business use; false means line 27.
+    bool used_more_than_half_in_qualified_business_use = 10;
+  }
+
+  // VehicleUse is one column, (a) through (f), of Part V, Section B.
+  message VehicleUse {
+    // Line 30: Total business/investment miles driven during the year,
+    // excluding commuting.
+    int64 business_miles = 1;
+
+    // Line 31: Total commuting miles driven during the year.
+    int64 commuting_miles = 2;
+
+    // Line 32: Total other personal (noncommuting) miles driven.
+    int64 other_personal_miles = 3;
+
+    // Line 33: Total miles driven during the year. Lines 30 through 32 added.
+    int64 total_miles = 4;
+
+    // Line 34: Whether the vehicle was available for personal use during
+    // off-duty hours.
+    bool available_for_off_duty_personal_use = 5;
+
+    // Line 35: Whether the vehicle was used primarily by a more than 5% owner
+    // or related person.
+    bool used_primarily_by_owner_or_related_person = 6;
+
+    // Line 36: Whether another vehicle is available for personal use.
+    bool another_vehicle_available_for_personal_use = 7;
+  }
+
+  // AmortizationItem is one row of Part VI line 42: costs whose amortization
+  // begins during the tax year.
+  message AmortizationItem {
+    // Column (a): Description of costs.
+    string description_of_costs = 1;
+
+    // Column (b): Date amortization begins.
+    common.v1.Date date_amortization_begins = 2;
+
+    // Column (c): Amortizable amount.
+    common.v1.Money amortizable_amount = 3;
+
+    // Column (d): Code section.
+    string code_section = 4;
+
+    // Column (e): Amortization period or percentage.
+    string amortization_period_or_percentage = 5;
+
+    // Column (f): Amortization for this year.
+    common.v1.Money amortization_for_year = 6;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Identifying number (SSN or EIN).
+  string filer_tin = 3;
+
+  // Business or activity to which this Form 4562 relates.
+  string business_or_activity_name = 4;
+
+  // -- Part I: Election To Expense Certain Property Under Section 179 ------
+
+  // Line 1: Maximum amount under section 179 for the tax year.
+  common.v1.Money maximum_section_179_limitation = 5;
+
+  // Line 2: Total cost of section 179 property placed in service.
+  common.v1.Money total_cost_of_section_179_property = 6;
+
+  // Line 3: Threshold cost of section 179 property before reduction in
+  // limitation.
+  common.v1.Money section_179_phaseout_threshold = 7;
+
+  // Line 4: Reduction in limitation. Line 2 minus line 3, not less than zero.
+  common.v1.Money section_179_phaseout_reduction = 8;
+
+  // Line 5: Dollar limitation for the tax year. Line 1 minus line 4, not less
+  // than zero.
+  common.v1.Money section_179_dollar_limitation = 9;
+
+  // Line 6: Section 179 property other than listed property.
+  repeated Section179PropertyItem section_179_items = 10;
+
+  // Line 7: Listed property elected section 179 cost, from line 29.
+  common.v1.Money listed_property_elected_section_179_cost = 11;
+
+  // Line 8: Total elected cost of section 179 property. Column (c) of lines 6
+  // and 7 added.
+  common.v1.Money total_elected_section_179_cost = 12;
+
+  // Line 9: Tentative deduction. The smaller of line 5 or line 8.
+  common.v1.Money tentative_section_179_deduction = 13;
+
+  // Line 10: Carryover of disallowed deduction from line 13 of the prior
+  // year's Form 4562.
+  common.v1.Money prior_year_section_179_carryover = 14;
+
+  // Line 11: Business income limitation. The smaller of business income (not
+  // less than zero) or line 5.
+  common.v1.Money section_179_business_income_limitation = 15;
+
+  // Line 12: Section 179 expense deduction. Lines 9 and 10 added, not more
+  // than line 11.
+  common.v1.Money section_179_expense_deduction = 16;
+
+  // Line 13: Carryover of disallowed deduction to the next year. Lines 9 and
+  // 10 added, less line 12.
+  common.v1.Money section_179_carryover_to_next_year = 17;
+
+  // -- Part II: Special Depreciation Allowance and Other Depreciation ------
+
+  // Line 14: Special depreciation allowance for qualified property other than
+  // listed property placed in service during the tax year.
+  common.v1.Money special_depreciation_allowance = 18;
+
+  // Line 15: Property subject to the section 168(f)(1) election.
+  common.v1.Money section_168_f_1_depreciation = 19;
+
+  // Line 16: Other depreciation, including ACRS.
+  common.v1.Money other_non_macrs_depreciation = 20;
+
+  // -- Part III: MACRS Depreciation ----------------------------------------
+
+  // Line 17: MACRS deductions for assets placed in service in tax years
+  // beginning before the current one.
+  common.v1.Money prior_year_assets_macrs_depreciation = 21;
+
+  // Line 18: Electing to group assets placed in service during the tax year
+  // into general asset accounts.
+  bool general_asset_account_election = 22;
+
+  // Lines 19a through 19j and 20a through 20e: Assets placed in service
+  // during the tax year, by depreciation system and class.
+  repeated MacrsPropertyRow current_year_macrs_rows = 23;
+
+  // -- Part IV: Summary ----------------------------------------------------
+
+  // Line 21: Listed property, from line 28.
+  common.v1.Money listed_property_depreciation = 24;
+
+  // Line 22: Total. Line 12, lines 14 through 17, column (g) of lines 19 and
+  // 20, and line 21 added. Carries to the appropriate lines of the return.
+  common.v1.Money total_depreciation = 25;
+
+  // Line 23a: Basis of current-year Part III assets attributable to interest
+  // costs capitalized under section 263A(f).
+  common.v1.Money section_263a_capitalized_interest = 26;
+
+  // Line 23b: Basis of current-year Part III assets attributable to costs
+  // capitalized under section 263A other than interest.
+  common.v1.Money section_263a_capitalized_costs = 27;
+
+  // -- Part V: Listed Property ---------------------------------------------
+
+  // Line 24a: Whether there is evidence to support the business/investment
+  // use claimed.
+  bool has_business_use_evidence = 28;
+
+  // Line 24b: Whether that evidence is written.
+  bool business_use_evidence_is_written = 29;
+
+  // Line 24c: Owns an aircraft.
+  bool owns_aircraft = 30;
+
+  // Line 24c: Leases an aircraft.
+  bool leases_aircraft = 31;
+
+  // Line 24c: Charters an aircraft.
+  bool charters_aircraft = 32;
+
+  // Line 25: Special depreciation allowance for qualified listed property
+  // placed in service during the tax year and used more than half in a
+  // qualified business use.
+  common.v1.Money listed_property_special_depreciation_allowance = 33;
+
+  // Lines 26 and 27: Listed property.
+  repeated ListedPropertyItem listed_property_items = 34;
+
+  // Line 28: Column (h) of lines 25 through 27 added. Carries to line 21.
+  common.v1.Money total_listed_property_depreciation = 35;
+
+  // Line 29: Column (i) of line 26 added. Carries to line 7.
+  common.v1.Money total_listed_property_section_179_cost = 36;
+
+  // Section B, lines 30 through 36: Use of each vehicle.
+  repeated VehicleUse vehicles = 37;
+
+  // Line 37: Whether a written policy prohibits all personal use of vehicles
+  // by employees, including commuting.
+  bool policy_prohibits_all_personal_use = 38;
+
+  // Line 38: Whether a written policy prohibits personal use of vehicles by
+  // employees, except commuting.
+  bool policy_prohibits_personal_use_except_commuting = 39;
+
+  // Line 39: Whether all use of vehicles by employees is treated as personal
+  // use.
+  bool treats_all_employee_use_as_personal = 40;
+
+  // Line 40: Whether more than five vehicles are provided to employees, with
+  // information about their use obtained and retained.
+  bool provides_more_than_five_vehicles_and_retains_use_information = 41;
+
+  // Line 41: Whether the requirements for qualified automobile demonstration
+  // use are met.
+  bool meets_demonstration_use_requirements = 42;
+
+  // -- Part VI: Amortization -----------------------------------------------
+
+  // Line 42: Costs whose amortization begins during the tax year.
+  repeated AmortizationItem amortization_items = 43;
+
+  // Line 43: Amortization of costs that began before the tax year.
+  common.v1.Money prior_year_amortization = 44;
+
+  // Line 44: Total. Column (f) added.
+  common.v1.Money total_amortization = 45;
+}

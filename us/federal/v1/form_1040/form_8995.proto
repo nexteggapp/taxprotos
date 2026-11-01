@@ -1,0 +1,103 @@
+// Form 8995, Qualified Business Income Deduction Simplified Computation.
+//
+// Used to figure the section 199A qualified business income (QBI) deduction by
+// a filer whose taxable income before the deduction is at or below the
+// threshold the form prints and who is not a patron of an agricultural or
+// horticultural cooperative. Everyone else files Form 8995-A, which is the
+// Form8995A message in form_8995_a.proto.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form8995 reports the qualified business income deduction by the simplified
+// computation.
+message Form8995 {
+  // TradeOrBusiness is one row of line 1, rows i through v.
+  message TradeOrBusiness {
+    // Column (a): Trade, business, or aggregation name.
+    string business_name = 1;
+
+    // Column (b): Taxpayer identification number.
+    string taxpayer_identification_number = 2;
+
+    // Column (c): Qualified business income or (loss).
+    common.v1.Money qualified_business_income_or_loss = 3;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Taxpayer identification number of the filer.
+  string filer_tin = 3;
+
+  // Line 1: Trades, businesses, or aggregations, rows i through v.
+  repeated TradeOrBusiness trades_or_businesses = 4;
+
+  // Line 2: Total qualified business income or (loss), line 1 column (c)
+  // combined.
+  common.v1.Money total_qualified_business_income_or_loss = 5;
+
+  // Line 3: Qualified business net (loss) carryforward from the prior year,
+  // entered as a negative amount.
+  common.v1.Money prior_year_qbi_loss_carryforward = 6;
+
+  // Line 4: Total qualified business income, lines 2 and 3 combined, not less
+  // than zero.
+  common.v1.Money net_qualified_business_income = 7;
+
+  // Line 5: Qualified business income component, line 4 multiplied by the
+  // deduction rate the form prints.
+  common.v1.Money qbi_component = 8;
+
+  // Line 6: Qualified REIT dividends and publicly traded partnership (PTP)
+  // income or (loss).
+  common.v1.Money qualified_reit_dividends_and_ptp_income = 9;
+
+  // Line 7: Qualified REIT dividends and qualified PTP (loss) carryforward from
+  // the prior year, entered as a negative amount.
+  common.v1.Money prior_year_reit_and_ptp_loss_carryforward = 10;
+
+  // Line 8: Total qualified REIT dividends and PTP income, lines 6 and 7
+  // combined, not less than zero.
+  common.v1.Money net_reit_dividends_and_ptp_income = 11;
+
+  // Line 9: REIT and PTP component, line 8 multiplied by the deduction rate
+  // the form prints.
+  common.v1.Money reit_and_ptp_component = 12;
+
+  // Line 10: Qualified business income deduction before the income
+  // limitation, lines 5 and 9 added.
+  common.v1.Money qbi_deduction_before_income_limit = 13;
+
+  // Line 11: Taxable income before the qualified business income deduction.
+  common.v1.Money taxable_income_before_qbi_deduction = 14;
+
+  // Line 12: Net capital gain, increased by any qualified dividends.
+  common.v1.Money net_capital_gain = 15;
+
+  // Line 13: Line 11 minus line 12, not less than zero.
+  common.v1.Money ordinary_taxable_income_limit_base = 16;
+
+  // Line 14: Income limitation, line 13 multiplied by the deduction rate the
+  // form prints.
+  common.v1.Money income_limitation = 17;
+
+  // Line 15: Qualified business income deduction, the smaller of lines 10 and
+  // 14. Carries to Form 1040 line 13a.
+  common.v1.Money qualified_business_income_deduction = 18;
+
+  // Line 16: Total qualified business (loss) carryforward, lines 2 and 3
+  // combined, or zero if greater than zero.
+  common.v1.Money qbi_loss_carryforward_to_next_year = 19;
+
+  // Line 17: Total qualified REIT dividends and PTP (loss) carryforward, lines
+  // 6 and 7 combined, or zero if greater than zero.
+  common.v1.Money reit_and_ptp_loss_carryforward_to_next_year = 20;
+}

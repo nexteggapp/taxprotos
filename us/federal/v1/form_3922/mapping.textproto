@@ -1,0 +1,71 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form 3922 calls each concept, per tax year.
+#
+# Line numbers come from Form 3922. Amount codes come from IRS Publication
+# 1220 for Tax Year 2025.
+
+form: "3922"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form3922"
+tax_years: 2025
+
+concepts {
+  concept: "option_grant_date"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+  }
+}
+concepts {
+  concept: "option_exercise_date"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+  }
+}
+concepts {
+  concept: "fair_market_value_per_share_on_grant_date"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+    amount_code: "3"
+  }
+}
+concepts {
+  concept: "fair_market_value_per_share_on_exercise_date"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+    amount_code: "4"
+  }
+}
+concepts {
+  concept: "exercise_price_paid_per_share"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+    amount_code: "5"
+  }
+}
+concepts {
+  concept: "number_of_shares_transferred"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+  }
+}
+concepts {
+  concept: "date_legal_title_transferred"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+concepts {
+  concept: "exercise_price_determined_as_of_grant_date"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+    amount_code: "8"
+  }
+}

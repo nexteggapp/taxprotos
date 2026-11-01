@@ -1,0 +1,140 @@
+// Schedule 8812 (Form 1040), Credits for Qualifying Children and Other Dependents.
+//
+// Used to figure the child tax credit, the credit for other dependents, and the
+// additional child tax credit.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Schedule8812 reports the child tax credit, the credit for other dependents,
+// and the additional child tax credit.
+message Schedule8812 {
+  // The tax year the schedule applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Social security number of the filer.
+  string filer_tin = 3;
+
+  // -- Part I: Child Tax Credit and Credit for Other Dependents ------------
+
+  // Line 1: Adjusted gross income from Form 1040 line 11a.
+  common.v1.Money adjusted_gross_income = 4;
+
+  // Line 2a: Income from Puerto Rico that was excluded.
+  common.v1.Money excluded_puerto_rico_income = 5;
+
+  // Line 2b: Amounts from Form 2555 lines 45 and 50.
+  common.v1.Money foreign_earned_income_exclusion = 6;
+
+  // Line 2c: Amount from Form 4563 line 15.
+  common.v1.Money american_samoa_excluded_income = 7;
+
+  // Line 2d: Lines 2a through 2c added.
+  common.v1.Money total_excluded_income = 8;
+
+  // Line 3: Modified adjusted gross income, lines 1 and 2d added.
+  common.v1.Money modified_adjusted_gross_income = 9;
+
+  // Line 4: Number of qualifying children under age 17 with the required
+  // social security number.
+  int32 qualifying_children_count = 10;
+
+  // Line 5: Line 4 multiplied by the per-child credit amount the form prints.
+  common.v1.Money initial_child_tax_credit = 11;
+
+  // Line 6: Number of other dependents, including qualifying children who are
+  // not under age 17 or do not have the required social security number.
+  int32 other_dependents_count = 12;
+
+  // Line 7: Line 6 multiplied by the per-dependent credit amount the form
+  // prints.
+  common.v1.Money initial_other_dependent_credit = 13;
+
+  // Line 8: Lines 5 and 7 added.
+  common.v1.Money combined_initial_credits = 14;
+
+  // Line 9: Phaseout threshold the form prints for the filing status.
+  common.v1.Money phaseout_threshold = 15;
+
+  // Line 10: Line 3 minus line 9, not less than zero, rounded up as the form
+  // directs.
+  common.v1.Money excess_modified_agi = 16;
+
+  // Line 11: Phaseout reduction, line 10 multiplied by the phaseout rate the
+  // form prints.
+  common.v1.Money phaseout_reduction = 17;
+
+  // Line 12: Line 8 minus line 11, entered only when line 8 is more than line
+  // 11.
+  common.v1.Money credit_after_phaseout = 18;
+
+  // Line 13: Amount from Credit Limit Worksheet A in the instructions.
+  common.v1.Money tax_liability_credit_limit = 19;
+
+  // Line 14: Child tax credit and credit for other dependents, the smaller of
+  // lines 12 and 13. Carries to Form 1040 line 19.
+  common.v1.Money nonrefundable_child_and_dependent_credit = 20;
+
+  // -- Part II-A: Additional Child Tax Credit for All Filers ---------------
+
+  // Line 16a: Line 12 minus line 14.
+  common.v1.Money unused_credit_after_limit = 21;
+
+  // Line 16b: The number of qualifying children on line 4 multiplied by the
+  // per-child refundable amount the form prints.
+  common.v1.Money maximum_refundable_credit_for_children = 22;
+
+  // Line 17: The smaller of lines 16a and 16b.
+  common.v1.Money tentative_additional_child_tax_credit = 23;
+
+  // Line 18a: Earned income.
+  common.v1.Money earned_income = 24;
+
+  // Line 18b: Nontaxable combat pay.
+  common.v1.Money nontaxable_combat_pay = 25;
+
+  // Line 19: Whether line 18a is more than the earned income floor the form
+  // prints.
+  bool earned_income_exceeds_threshold = 26;
+
+  // Line 19: Line 18a minus the earned income floor.
+  common.v1.Money earned_income_above_threshold = 27;
+
+  // Line 20: Line 19 multiplied by the rate the form prints.
+  common.v1.Money earned_income_credit_amount = 28;
+
+  // -- Part II-B: Certain Filers Who Have Three or More Qualifying Children
+  // and Bona Fide Residents of Puerto Rico
+
+  // Line 21: Withheld social security, Medicare, and Additional Medicare taxes
+  // from Form(s) W-2 boxes 4 and 6, including a joint filer's spouse.
+  common.v1.Money withheld_fica_taxes = 29;
+
+  // Line 22: Total of Schedule 1 line 15 and Schedule 2 lines 5, 6 and 13.
+  common.v1.Money self_employment_and_other_payroll_taxes = 30;
+
+  // Line 23: Lines 21 and 22 added.
+  common.v1.Money total_payroll_taxes = 31;
+
+  // Line 24: Total of Form 1040 line 27a and Schedule 3 line 11.
+  common.v1.Money earned_income_credit_and_excess_ss_withheld = 32;
+
+  // Line 25: Line 23 minus line 24, not less than zero.
+  common.v1.Money net_payroll_tax_limit = 33;
+
+  // Line 26: The larger of lines 20 and 25.
+  common.v1.Money larger_of_earned_income_or_payroll_tax_limit = 34;
+
+  // -- Part II-C: Additional Child Tax Credit ------------------------------
+
+  // Line 27: Additional child tax credit, the smaller of line 17 and either
+  // line 20 or line 26. Carries to Form 1040 line 28.
+  common.v1.Money additional_child_tax_credit = 35;
+}

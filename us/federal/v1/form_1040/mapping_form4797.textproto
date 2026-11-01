@@ -1,0 +1,272 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for 4797.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "4797"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form4797"
+tax_years: 2025
+
+concepts {
+  concept: "gross_proceeds_on_1099_b_or_s"
+  years {
+    tax_year: 2025
+    irs_box: "1a"
+  }
+}
+
+concepts {
+  concept: "partial_disposition_gain"
+  years {
+    tax_year: 2025
+    irs_box: "1b"
+  }
+}
+
+concepts {
+  concept: "partial_disposition_loss"
+  years {
+    tax_year: 2025
+    irs_box: "1c"
+  }
+}
+
+concepts {
+  concept: "section_1231_dispositions"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+  }
+}
+
+concepts {
+  concept: "gain_from_form_4684"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+  }
+}
+
+concepts {
+  concept: "installment_sale_section_1231_gain"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+  }
+}
+
+concepts {
+  concept: "like_kind_exchange_section_1231_gain_or_loss"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+  }
+}
+
+concepts {
+  concept: "gain_from_part_iii_excess_over_recapture"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+  }
+}
+
+concepts {
+  concept: "net_section_1231_gain_or_loss"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+
+concepts {
+  concept: "nonrecaptured_prior_section_1231_losses"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+  }
+}
+
+concepts {
+  concept: "net_section_1231_long_term_capital_gain"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+  }
+}
+
+concepts {
+  concept: "ordinary_dispositions"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+  }
+}
+
+concepts {
+  concept: "section_1231_loss_from_part_i"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+  }
+}
+
+concepts {
+  concept: "recaptured_section_1231_gain_from_part_i"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+  }
+}
+
+concepts {
+  concept: "ordinary_recapture_gain_from_part_iii"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+  }
+}
+
+concepts {
+  concept: "casualty_or_theft_ordinary_gain_or_loss"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+  }
+}
+
+concepts {
+  concept: "installment_sale_ordinary_gain"
+  years {
+    tax_year: 2025
+    irs_box: "15"
+  }
+}
+
+concepts {
+  concept: "like_kind_exchange_ordinary_gain_or_loss"
+  years {
+    tax_year: 2025
+    irs_box: "16"
+  }
+}
+
+concepts {
+  concept: "total_ordinary_gain_or_loss"
+  years {
+    tax_year: 2025
+    irs_box: "17"
+  }
+}
+
+concepts {
+  concept: "income_producing_property_loss"
+  years {
+    tax_year: 2025
+    irs_box: "18a"
+  }
+}
+
+concepts {
+  concept: "net_ordinary_gain_or_loss_for_schedule_1"
+  years {
+    tax_year: 2025
+    irs_box: "18b"
+  }
+}
+
+concepts {
+  concept: "recapture_properties"
+  years {
+    tax_year: 2025
+    irs_box: "19"
+    note: "Lines 19 through 29b, properties A through D"
+  }
+}
+
+concepts {
+  concept: "part_iii_total_gains"
+  years {
+    tax_year: 2025
+    irs_box: "30"
+  }
+}
+
+concepts {
+  concept: "part_iii_total_ordinary_recapture_gain"
+  years {
+    tax_year: 2025
+    irs_box: "31"
+  }
+}
+
+concepts {
+  concept: "part_iii_remaining_section_1231_gain"
+  years {
+    tax_year: 2025
+    irs_box: "32"
+  }
+}
+
+concepts {
+  concept: "section_179_prior_deduction"
+  years {
+    tax_year: 2025
+    irs_box: "33"
+    note: "Column (a)"
+  }
+}
+
+concepts {
+  concept: "section_280f_prior_depreciation"
+  years {
+    tax_year: 2025
+    irs_box: "33"
+    note: "Column (b)"
+  }
+}
+
+concepts {
+  concept: "section_179_recomputed_depreciation"
+  years {
+    tax_year: 2025
+    irs_box: "34"
+    note: "Column (a)"
+  }
+}
+
+concepts {
+  concept: "section_280f_recomputed_depreciation"
+  years {
+    tax_year: 2025
+    irs_box: "34"
+    note: "Column (b)"
+  }
+}
+
+concepts {
+  concept: "section_179_recapture_amount"
+  years {
+    tax_year: 2025
+    irs_box: "35"
+    note: "Column (a)"
+  }
+}
+
+concepts {
+  concept: "section_280f_recapture_amount"
+  years {
+    tax_year: 2025
+    irs_box: "35"
+    note: "Column (b)"
+  }
+}

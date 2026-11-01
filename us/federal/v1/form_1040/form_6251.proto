@@ -1,0 +1,209 @@
+// Form 6251, Alternative Minimum Tax—Individuals.
+//
+// Used to figure the amount, if any, of Alternative Minimum Tax (AMT) an
+// individual owes on Schedule 2 (Form 1040) line 2.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form6251 reports the Alternative Minimum Tax for individuals across Parts I, II, and III.
+message Form6251 {
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on Form 1040.
+  string filer_name = 2;
+
+  // Social Security number of filer.
+  string filer_tin = 3;
+
+  // -- Part I: Alternative Minimum Taxable Income --------------------------
+
+  // Line 1a: Form 1040 line 14 minus Schedule 1-A line 37 (deductions other than the enhanced deduction for seniors).
+  common.v1.Money deductions_excluding_senior_deduction = 4;
+
+  // Line 1b: Form 1040 line 11b minus line 1a. May be negative.
+  common.v1.Money adjusted_gross_income_less_deductions = 5;
+
+  // Line 2a: Taxes from Schedule A line 7, or the amount from Form 1040 line 12e if not itemizing.
+  common.v1.Money taxes_or_standard_deduction = 6;
+
+  // Line 2b: Tax refund from Schedule 1 line 1 or line 8z. Printed in parentheses.
+  common.v1.Money tax_refund_adjustment = 7;
+
+  // Line 2c: Investment interest expense (difference between regular tax and AMT).
+  common.v1.Money investment_interest_expense_adjustment = 8;
+
+  // Line 2d: Depletion (difference between regular tax and AMT).
+  common.v1.Money depletion_adjustment = 9;
+
+  // Line 2e: Net operating loss deduction from Schedule 1 line 8a, as a positive amount.
+  common.v1.Money regular_tax_nol_deduction = 10;
+
+  // Line 2f: Alternative tax net operating loss deduction. Printed in parentheses.
+  common.v1.Money alternative_tax_nol_deduction = 11;
+
+  // Line 2g: Interest from specified private activity bonds exempt from the regular tax.
+  common.v1.Money private_activity_bond_interest = 12;
+
+  // Line 2h: Qualified small business stock preference.
+  common.v1.Money qualified_small_business_stock_preference = 13;
+
+  // Line 2i: Exercise of incentive stock options (excess of AMT income over regular tax income).
+  common.v1.Money incentive_stock_option_exercise_adjustment = 14;
+
+  // Line 2j: Estates and trusts, from Schedule K-1 (Form 1041) box 12 code A.
+  common.v1.Money estates_and_trusts_amt_adjustment = 15;
+
+  // Line 2k: Disposition of property (difference between AMT and regular tax gain or loss).
+  common.v1.Money disposition_of_property_adjustment = 16;
+
+  // Line 2l: Depreciation on assets placed in service after 1986 (difference between regular tax and AMT).
+  common.v1.Money post_1986_depreciation_adjustment = 17;
+
+  // Line 2m: Passive activities (difference between AMT and regular tax income or loss).
+  common.v1.Money passive_activities_adjustment = 18;
+
+  // Line 2n: Loss limitations (difference between AMT and regular tax income or loss).
+  common.v1.Money loss_limitations_adjustment = 19;
+
+  // Line 2o: Circulation costs (difference between regular tax and AMT).
+  common.v1.Money circulation_costs_adjustment = 20;
+
+  // Line 2p: Long-term contracts (difference between AMT and regular tax income).
+  common.v1.Money long_term_contracts_adjustment = 21;
+
+  // Line 2q: Mining costs (difference between regular tax and AMT).
+  common.v1.Money mining_costs_adjustment = 22;
+
+  // Line 2r: Research and experimental costs (difference between regular tax and AMT).
+  common.v1.Money research_and_experimental_costs_adjustment = 23;
+
+  // Line 2s: Income from certain installment sales before January 1, 1987. Printed in parentheses.
+  common.v1.Money installment_sales_adjustment = 24;
+
+  // Line 2t: Intangible drilling costs preference.
+  common.v1.Money intangible_drilling_costs_preference = 25;
+
+  // Line 3: Other adjustments, including income-based related adjustments.
+  common.v1.Money other_amt_adjustments = 26;
+
+  // Line 4: Alternative minimum taxable income (lines 1b through 3).
+  common.v1.Money alternative_minimum_taxable_income = 27;
+
+  // -- Part II: Alternative Minimum Tax ------------------------------------
+
+  // Line 5: Exemption amount for the filing status, after any phaseout.
+  common.v1.Money amt_exemption_amount = 28;
+
+  // Line 6: Line 4 minus line 5, not less than zero.
+  common.v1.Money taxable_excess_amti = 29;
+
+  // Line 7: Tax on line 6 at the AMT rates, or the amount from line 40 when Part III applies.
+  common.v1.Money tentative_minimum_tax_before_ftc = 30;
+
+  // Line 8: Alternative minimum tax foreign tax credit.
+  common.v1.Money amt_foreign_tax_credit = 31;
+
+  // Line 9: Tentative minimum tax (line 7 minus line 8).
+  common.v1.Money tentative_minimum_tax = 32;
+
+  // Line 10: Regular tax for comparison: Form 1040 line 16 (less any Form 4972 tax) plus Schedule 2 line 1z, minus Schedule 3 line 1 and certain Form 8978 amounts.
+  common.v1.Money regular_tax_for_amt_comparison = 33;
+
+  // Line 11: Alternative minimum tax (line 9 minus line 10, not less than zero). Carries to Schedule 2 line 2.
+  common.v1.Money alternative_minimum_tax = 34;
+
+  // -- Part III: Tax Computation Using Maximum Capital Gains Rates ---------
+
+  // Line 12: Amount from line 6.
+  common.v1.Money part_iii_taxable_excess_amti = 35;
+
+  // Line 13: Qualified dividends and net capital gain from the regular tax worksheets, refigured for the AMT.
+  common.v1.Money amt_qualified_dividends_and_net_capital_gain = 36;
+
+  // Line 14: Unrecaptured section 1250 gain from Schedule D line 19, refigured for the AMT.
+  common.v1.Money amt_unrecaptured_section_1250_gain = 37;
+
+  // Line 15: Gain eligible for the capital gain rates.
+  common.v1.Money amt_preferential_rate_gain = 38;
+
+  // Line 16: Smaller of line 12 or line 15.
+  common.v1.Money amti_taxed_at_capital_gain_rates = 39;
+
+  // Line 17: Line 12 minus line 16.
+  common.v1.Money amti_taxed_at_ordinary_rates = 40;
+
+  // Line 18: Tax on line 17 at the AMT rates.
+  common.v1.Money tax_on_ordinary_amti = 41;
+
+  // Line 19: Upper threshold of the lowest capital gain rate for the filing status.
+  common.v1.Money lowest_rate_threshold = 42;
+
+  // Line 20: Ordinary taxable income from the regular tax worksheets, or Form 1040 line 15.
+  common.v1.Money regular_tax_ordinary_income_for_lowest_rate = 43;
+
+  // Line 21: Line 19 minus line 20, not less than zero.
+  common.v1.Money lowest_rate_room = 44;
+
+  // Line 22: Smaller of line 12 or line 13.
+  common.v1.Money capital_gain_within_amti = 45;
+
+  // Line 23: Smaller of line 21 or line 22, taxed at the lowest capital gain rate.
+  common.v1.Money capital_gain_at_lowest_rate = 46;
+
+  // Line 24: Line 22 minus line 23.
+  common.v1.Money capital_gain_above_lowest_rate = 47;
+
+  // Line 25: Upper threshold of the middle capital gain rate for the filing status.
+  common.v1.Money middle_rate_threshold = 48;
+
+  // Line 26: Amount from line 21.
+  common.v1.Money lowest_rate_room_carried = 49;
+
+  // Line 27: Ordinary taxable income from the regular tax worksheets, or Form 1040 line 15.
+  common.v1.Money regular_tax_ordinary_income_for_middle_rate = 50;
+
+  // Line 28: Lines 26 and 27.
+  common.v1.Money income_below_middle_rate = 51;
+
+  // Line 29: Line 25 minus line 28, not less than zero.
+  common.v1.Money middle_rate_room = 52;
+
+  // Line 30: Smaller of line 24 or line 29, taxed at the middle capital gain rate.
+  common.v1.Money capital_gain_at_middle_rate = 53;
+
+  // Line 31: Tax on line 30 at the middle capital gain rate.
+  common.v1.Money tax_at_middle_rate = 54;
+
+  // Line 32: Lines 23 and 30.
+  common.v1.Money capital_gain_at_lowest_and_middle_rates = 55;
+
+  // Line 33: Line 22 minus line 32, taxed at the top capital gain rate.
+  common.v1.Money capital_gain_at_top_rate = 56;
+
+  // Line 34: Tax on line 33 at the top capital gain rate.
+  common.v1.Money tax_at_top_rate = 57;
+
+  // Line 35: Lines 17, 32, and 33.
+  common.v1.Money amti_taxed_before_unrecaptured_gain = 58;
+
+  // Line 36: Line 12 minus line 35, taxed at the unrecaptured section 1250 gain rate.
+  common.v1.Money unrecaptured_section_1250_gain_taxed = 59;
+
+  // Line 37: Tax on line 36 at the unrecaptured section 1250 gain rate.
+  common.v1.Money tax_on_unrecaptured_section_1250_gain = 60;
+
+  // Line 38: Lines 18, 31, 34, and 37.
+  common.v1.Money tax_with_capital_gain_rates = 61;
+
+  // Line 39: Tax on line 12 at the AMT rates, without the capital gain rates.
+  common.v1.Money tax_without_capital_gain_rates = 62;
+
+  // Line 40: Smaller of line 38 or line 39. Carries to line 7.
+  common.v1.Money part_iii_tentative_minimum_tax = 63;
+}

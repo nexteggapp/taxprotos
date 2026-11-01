@@ -1,0 +1,303 @@
+// Form 4684, Casualties and Thefts.
+//
+// Section A is used to figure gains and losses from casualties and thefts of
+// personal-use property. Section B is used for business and income-producing
+// property. Section C figures a theft loss from a Ponzi-type investment scheme
+// under Revenue Procedure 2009-20. Section D elects, or revokes the election,
+// to deduct a federally declared disaster loss in the preceding tax year.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/quantity.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form4684 reports casualty and theft gains and losses for personal-use property (Section A) and business/income-producing property (Section B).
+message Form4684 {
+  // PersonalPropertyItem is one property, a column A through D, in Section A
+  // lines 1 through 9.
+  message PersonalPropertyItem {
+    // Line 1: Type of property.
+    string property_type = 1;
+
+    // Line 1: City and state where the property is located.
+    string city_and_state = 2;
+
+    // Line 1: ZIP code where the property is located.
+    string zip_code = 3;
+
+    // Line 1: Date acquired.
+    common.v1.Date date_acquired = 4;
+
+    // Line 2: Cost or other basis.
+    common.v1.Money cost_or_other_basis = 5;
+
+    // Line 3: Insurance or other reimbursement, whether or not a claim was
+    // filed.
+    common.v1.Money insurance_or_other_reimbursement = 6;
+
+    // Line 4: Gain from casualty or theft. Line 3 minus line 2 when line 3 is
+    // more.
+    common.v1.Money gain_from_casualty_or_theft = 7;
+
+    // Line 5: Fair market value before casualty or theft.
+    common.v1.Money fmv_before = 8;
+
+    // Line 6: Fair market value after casualty or theft.
+    common.v1.Money fmv_after = 9;
+
+    // Line 7: Line 5 minus line 6.
+    common.v1.Money decrease_in_fmv = 10;
+
+    // Line 8: The smaller of line 2 or line 7.
+    common.v1.Money smaller_of_basis_or_decrease_in_fmv = 11;
+
+    // Line 9: Line 8 minus line 3, not less than zero.
+    common.v1.Money unadjusted_property_loss = 12;
+  }
+
+  // BusinessPropertyItem is one property, a column A through D, in Section B,
+  // Part I, lines 19 through 27.
+  message BusinessPropertyItem {
+    // Line 19: Description of the property: type, location, and date
+    // acquired.
+    string property_description = 1;
+
+    // Line 20: Cost or adjusted basis.
+    common.v1.Money cost_or_adjusted_basis = 2;
+
+    // Line 21: Insurance or other reimbursement, whether or not a claim was
+    // filed.
+    common.v1.Money insurance_or_other_reimbursement = 3;
+
+    // Line 22: Gain from casualty or theft. Line 21 minus line 20 when line
+    // 21 is more.
+    common.v1.Money gain_from_casualty_or_theft = 4;
+
+    // Line 23: Fair market value before casualty or theft.
+    common.v1.Money fmv_before = 5;
+
+    // Line 24: Fair market value after casualty or theft.
+    common.v1.Money fmv_after = 6;
+
+    // Line 25: Line 23 minus line 24.
+    common.v1.Money decrease_in_fmv = 7;
+
+    // Line 26: The smaller of line 20 or line 25.
+    common.v1.Money smaller_of_basis_or_decrease_in_fmv = 8;
+
+    // Line 27: Line 26 minus line 21, not less than zero.
+    common.v1.Money property_loss = 9;
+  }
+
+  // BusinessCasualty is one Section B, Part I: one casualty or theft of
+  // business or income-producing property.
+  message BusinessCasualty {
+    // Lines 19 through 27: Properties lost or damaged in the casualty or
+    // theft.
+    repeated BusinessPropertyItem properties = 1;
+
+    // Line 28: Casualty or theft loss. Line 27 added across properties.
+    // Carries to line 29 or line 34.
+    common.v1.Money casualty_or_theft_loss = 2;
+  }
+
+  // SummaryRow is one row of Section B, Part II, line 29 or line 34.
+  message SummaryRow {
+    // Column (a): The casualty or theft.
+    string description = 1;
+
+    // Column (b)(i): Loss on trade, business, rental, or royalty property.
+    // Entered in parentheses.
+    common.v1.Money business_property_loss = 2;
+
+    // Column (b)(ii): Loss on income-producing property. Entered in
+    // parentheses.
+    common.v1.Money income_producing_property_loss = 3;
+
+    // Column (c): Gain includible in income.
+    common.v1.Money gain = 4;
+
+    // Whether the row is on line 34, property held more than one year; false
+    // means line 29, property held one year or less.
+    bool held_more_than_one_year = 5;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Identifying number (SSN or EIN).
+  string filer_tin = 3;
+
+  // -- Section A: Personal Use Property ------------------------------------
+
+  // Section A: The loss is attributable to a federally declared disaster.
+  bool federally_declared_disaster = 4;
+
+  // Section A: The DR- or EM- declaration number FEMA assigned.
+  string fema_disaster_declaration_number = 5;
+
+  // Lines 1 through 9: Properties affected by the casualty or theft.
+  repeated PersonalPropertyItem personal_properties = 6;
+
+  // Line 10: Casualty or theft loss. Line 9 added across columns A through D.
+  common.v1.Money total_event_loss_before_floor = 7;
+
+  // Line 11: The per-event dollar reduction, larger when the qualified
+  // disaster loss rules apply.
+  common.v1.Money per_event_dollar_floor = 8;
+
+  // Line 12: Line 10 minus line 11, not less than zero.
+  common.v1.Money event_loss_after_dollar_floor = 9;
+
+  // Line 13: Line 4 added across all Forms 4684.
+  common.v1.Money total_casualty_or_theft_gains = 10;
+
+  // Line 14: Line 12 added across all Forms 4684.
+  common.v1.Money total_losses_from_all_events = 11;
+
+  // Line 15: The excess of line 13 over line 14, which carries to Schedule D;
+  // or the qualified disaster loss, which carries to Schedule A line 16.
+  common.v1.Money net_gain_or_qualified_disaster_loss = 12;
+
+  // Line 16: Line 14 minus the sum of lines 13 and 15.
+  common.v1.Money losses_subject_to_agi_floor = 13;
+
+  // Line 17: A percentage of adjusted gross income from Form 1040 line 11b.
+  common.v1.Money agi_floor = 14;
+
+  // Line 18: Line 16 minus line 17, not less than zero. Carries to Schedule A
+  // line 15.
+  common.v1.Money deductible_personal_casualty_loss = 15;
+
+  // -- Section B: Business and Income-Producing Property -------------------
+
+  // Part I, lines 19 through 28: One entry per casualty or theft.
+  repeated BusinessCasualty business_casualties = 16;
+
+  // Part II, lines 29 and 34: Summary rows from the separate Parts I.
+  repeated SummaryRow summary_rows = 17;
+
+  // Line 30, column (b)(i): Line 29 added. Entered in parentheses.
+  common.v1.Money short_term_business_property_losses = 18;
+
+  // Line 30, column (b)(ii): Line 29 added. Entered in parentheses.
+  common.v1.Money short_term_income_producing_property_losses = 19;
+
+  // Line 30, column (c): Line 29 added.
+  common.v1.Money short_term_gains = 20;
+
+  // Line 31: Line 30, columns (b)(i) and (c) combined. Carries to Form 4797
+  // line 14.
+  common.v1.Money section_b_net_ordinary_gain_or_loss = 21;
+
+  // Line 32: Line 30, column (b)(ii). Carries to Schedule A line 16.
+  common.v1.Money short_term_income_producing_property_loss = 22;
+
+  // Line 33: Casualty or theft gains from Form 4797 line 32.
+  common.v1.Money gains_from_form_4797 = 23;
+
+  // Line 35, column (b)(i): Line 34 added. Entered in parentheses.
+  common.v1.Money long_term_business_property_losses = 24;
+
+  // Line 35, column (b)(ii): Line 34 added. Entered in parentheses.
+  common.v1.Money long_term_income_producing_property_losses = 25;
+
+  // Line 36: Total gains. Line 33 and line 34, column (c), added.
+  common.v1.Money long_term_gains = 26;
+
+  // Line 37: Line 35, columns (b)(i) and (b)(ii), added.
+  common.v1.Money long_term_losses = 27;
+
+  // Line 38a: When line 37's loss exceeds line 36's gain, line 35, column
+  // (b)(i), combined with line 36. Carries to Form 4797 line 14.
+  common.v1.Money long_term_net_business_gain_or_loss = 28;
+
+  // Line 38b: When line 37's loss exceeds line 36's gain, line 35, column
+  // (b)(ii). Carries to Schedule A line 16.
+  common.v1.Money long_term_income_producing_property_loss = 29;
+
+  // Line 39: When line 37's loss does not exceed line 36's gain, lines 36 and
+  // 37 combined. Carries to Form 4797 line 3.
+  common.v1.Money section_b_net_long_term_gain = 30;
+
+  // -- Section C: Theft Loss Deduction for Ponzi-Type Investment Scheme ----
+
+  // Line 40: Initial investment.
+  common.v1.Money ponzi_initial_investment = 31;
+
+  // Line 41: Subsequent investments.
+  common.v1.Money ponzi_subsequent_investments = 32;
+
+  // Line 42: Income reported on returns for tax years before the discovery
+  // year.
+  common.v1.Money ponzi_income_previously_reported = 33;
+
+  // Line 43: Lines 40, 41, and 42 added.
+  common.v1.Money ponzi_total_investment_and_income = 34;
+
+  // Line 44: Withdrawals for all years.
+  common.v1.Money ponzi_withdrawals = 35;
+
+  // Line 45: Total qualified investment. Line 43 minus line 44.
+  common.v1.Money ponzi_qualified_investment = 36;
+
+  // Line 46: The safe harbor percentage, which depends on whether a
+  // third-party recovery is being pursued.
+  common.v1.Quantity ponzi_safe_harbor_fraction = 37;
+
+  // Line 47: Line 45 multiplied by line 46.
+  common.v1.Money ponzi_safe_harbor_amount = 38;
+
+  // Line 48: Actual recovery.
+  common.v1.Money ponzi_actual_recovery = 39;
+
+  // Line 49: Potential insurance or SIPC recovery.
+  common.v1.Money ponzi_potential_recovery = 40;
+
+  // Line 50: Total recovery. Lines 48 and 49 added.
+  common.v1.Money ponzi_total_recovery = 41;
+
+  // Line 51: Deductible theft loss. Line 47 minus line 50. Carries to line
+  // 28.
+  common.v1.Money ponzi_deductible_theft_loss = 42;
+
+  // Section C, Part II: Name of the individual or entity that conducted the
+  // fraudulent arrangement.
+  string ponzi_lead_figure_name = 43;
+
+  // Section C, Part II: That individual's or entity's taxpayer
+  // identification number, if known.
+  string ponzi_lead_figure_tin = 44;
+
+  // Section C, Part II: That individual's or entity's address.
+  string ponzi_lead_figure_address = 45;
+
+  // -- Section D: Election To Deduct Federally Declared Disaster Loss in Preceding Tax Year
+
+  // Line 52: Name or description of the federally declared disaster.
+  string election_disaster_description = 46;
+
+  // Line 53: Date or dates of the loss.
+  repeated common.v1.Date election_loss_dates = 47;
+
+  // Line 54: Address where the damaged or destroyed property was located.
+  string election_property_address = 48;
+
+  // Line 55: The disaster and property address of the election being
+  // revoked.
+  string revoked_election_disaster_and_address = 49;
+
+  // Line 56: Date the revoked election was filed.
+  common.v1.Date revoked_election_filing_date = 50;
+
+  // Line 57: Payment, evidence, or explanation for repaying any credit or
+  // refund the revoked election produced.
+  string revoked_election_repayment_arrangement = 51;
+}

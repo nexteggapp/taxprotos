@@ -1,0 +1,369 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for 4684.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "4684"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form4684"
+tax_years: 2025
+
+concepts {
+  concept: "personal_properties"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+    note: "Section A, lines 1 through 9, columns A through D"
+  }
+}
+
+concepts {
+  concept: "total_event_loss_before_floor"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+  }
+}
+
+concepts {
+  concept: "per_event_dollar_floor"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+  }
+}
+
+concepts {
+  concept: "event_loss_after_dollar_floor"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+  }
+}
+
+concepts {
+  concept: "total_casualty_or_theft_gains"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+  }
+}
+
+concepts {
+  concept: "total_losses_from_all_events"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+  }
+}
+
+concepts {
+  concept: "net_gain_or_qualified_disaster_loss"
+  years {
+    tax_year: 2025
+    irs_box: "15"
+  }
+}
+
+concepts {
+  concept: "losses_subject_to_agi_floor"
+  years {
+    tax_year: 2025
+    irs_box: "16"
+  }
+}
+
+concepts {
+  concept: "agi_floor"
+  years {
+    tax_year: 2025
+    irs_box: "17"
+  }
+}
+
+concepts {
+  concept: "deductible_personal_casualty_loss"
+  years {
+    tax_year: 2025
+    irs_box: "18"
+  }
+}
+
+concepts {
+  concept: "business_casualties"
+  years {
+    tax_year: 2025
+    irs_box: "19"
+    note: "Section B, Part I, lines 19 through 28"
+  }
+}
+
+concepts {
+  concept: "summary_rows"
+  years {
+    tax_year: 2025
+    irs_box: "29"
+    note: "Section B, Part II, lines 29 and 34"
+  }
+}
+
+concepts {
+  concept: "short_term_business_property_losses"
+  years {
+    tax_year: 2025
+    irs_box: "30"
+    note: "Column (b)(i)"
+  }
+}
+
+concepts {
+  concept: "short_term_income_producing_property_losses"
+  years {
+    tax_year: 2025
+    irs_box: "30"
+    note: "Column (b)(ii)"
+  }
+}
+
+concepts {
+  concept: "short_term_gains"
+  years {
+    tax_year: 2025
+    irs_box: "30"
+    note: "Column (c)"
+  }
+}
+
+concepts {
+  concept: "section_b_net_ordinary_gain_or_loss"
+  years {
+    tax_year: 2025
+    irs_box: "31"
+  }
+}
+
+concepts {
+  concept: "short_term_income_producing_property_loss"
+  years {
+    tax_year: 2025
+    irs_box: "32"
+  }
+}
+
+concepts {
+  concept: "gains_from_form_4797"
+  years {
+    tax_year: 2025
+    irs_box: "33"
+  }
+}
+
+concepts {
+  concept: "long_term_business_property_losses"
+  years {
+    tax_year: 2025
+    irs_box: "35"
+    note: "Column (b)(i)"
+  }
+}
+
+concepts {
+  concept: "long_term_income_producing_property_losses"
+  years {
+    tax_year: 2025
+    irs_box: "35"
+    note: "Column (b)(ii)"
+  }
+}
+
+concepts {
+  concept: "long_term_gains"
+  years {
+    tax_year: 2025
+    irs_box: "36"
+  }
+}
+
+concepts {
+  concept: "long_term_losses"
+  years {
+    tax_year: 2025
+    irs_box: "37"
+  }
+}
+
+concepts {
+  concept: "long_term_net_business_gain_or_loss"
+  years {
+    tax_year: 2025
+    irs_box: "38a"
+  }
+}
+
+concepts {
+  concept: "long_term_income_producing_property_loss"
+  years {
+    tax_year: 2025
+    irs_box: "38b"
+  }
+}
+
+concepts {
+  concept: "section_b_net_long_term_gain"
+  years {
+    tax_year: 2025
+    irs_box: "39"
+  }
+}
+
+concepts {
+  concept: "ponzi_initial_investment"
+  years {
+    tax_year: 2025
+    irs_box: "40"
+  }
+}
+
+concepts {
+  concept: "ponzi_subsequent_investments"
+  years {
+    tax_year: 2025
+    irs_box: "41"
+  }
+}
+
+concepts {
+  concept: "ponzi_income_previously_reported"
+  years {
+    tax_year: 2025
+    irs_box: "42"
+  }
+}
+
+concepts {
+  concept: "ponzi_total_investment_and_income"
+  years {
+    tax_year: 2025
+    irs_box: "43"
+  }
+}
+
+concepts {
+  concept: "ponzi_withdrawals"
+  years {
+    tax_year: 2025
+    irs_box: "44"
+  }
+}
+
+concepts {
+  concept: "ponzi_qualified_investment"
+  years {
+    tax_year: 2025
+    irs_box: "45"
+  }
+}
+
+concepts {
+  concept: "ponzi_safe_harbor_fraction"
+  years {
+    tax_year: 2025
+    irs_box: "46"
+  }
+}
+
+concepts {
+  concept: "ponzi_safe_harbor_amount"
+  years {
+    tax_year: 2025
+    irs_box: "47"
+  }
+}
+
+concepts {
+  concept: "ponzi_actual_recovery"
+  years {
+    tax_year: 2025
+    irs_box: "48"
+  }
+}
+
+concepts {
+  concept: "ponzi_potential_recovery"
+  years {
+    tax_year: 2025
+    irs_box: "49"
+  }
+}
+
+concepts {
+  concept: "ponzi_total_recovery"
+  years {
+    tax_year: 2025
+    irs_box: "50"
+  }
+}
+
+concepts {
+  concept: "ponzi_deductible_theft_loss"
+  years {
+    tax_year: 2025
+    irs_box: "51"
+  }
+}
+
+concepts {
+  concept: "election_disaster_description"
+  years {
+    tax_year: 2025
+    irs_box: "52"
+  }
+}
+
+concepts {
+  concept: "election_loss_dates"
+  years {
+    tax_year: 2025
+    irs_box: "53"
+  }
+}
+
+concepts {
+  concept: "election_property_address"
+  years {
+    tax_year: 2025
+    irs_box: "54"
+  }
+}
+
+concepts {
+  concept: "revoked_election_disaster_and_address"
+  years {
+    tax_year: 2025
+    irs_box: "55"
+  }
+}
+
+concepts {
+  concept: "revoked_election_filing_date"
+  years {
+    tax_year: 2025
+    irs_box: "56"
+  }
+}
+
+concepts {
+  concept: "revoked_election_repayment_arrangement"
+  years {
+    tax_year: 2025
+    irs_box: "57"
+  }
+}

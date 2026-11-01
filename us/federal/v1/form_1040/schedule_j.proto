@@ -1,0 +1,111 @@
+// Schedule J (Form 1040), Income Averaging for Individuals With Income From
+// Farming or Fishing.
+//
+// Used by individuals engaged in a farming or fishing business to elect to
+// figure their tax by spreading all or part of the year's farm or fishing
+// income over the three prior years (the base years) under section 1301.
+//
+// The first base year is three years before the tax year and the third is the
+// year before it. Field names count back from the tax year: base_year_minus_3
+// is the first base year.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// ScheduleJ reports income averaging calculations for farmers and fishermen.
+message ScheduleJ {
+  // The tax year the schedule applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Social security number of the filer.
+  string filer_tin = 3;
+
+  // Line 1: Taxable income from Form 1040 line 15.
+  common.v1.Money current_year_taxable_income = 4;
+
+  // Line 2a: Elected farm income, not more than line 1.
+  common.v1.Money elected_farm_income = 5;
+
+  // Line 2b: Capital gain included on line 2a: the excess of net long-term
+  // capital gain over net short-term capital loss.
+  common.v1.Money elected_farm_net_capital_gain = 6;
+
+  // Line 2c: Unrecaptured section 1250 gain included on line 2a.
+  common.v1.Money elected_farm_unrecaptured_section_1250_gain = 7;
+
+  // Line 3: Line 1 minus line 2a.
+  common.v1.Money taxable_income_less_elected_farm_income = 8;
+
+  // Line 4: Tax on line 3 at the tax year's rates.
+  common.v1.Money tax_on_non_averaged_current_year_income = 9;
+
+  // Line 5: Taxable income for the first base year, from that year's Form
+  // 1040 line 15 or from a later year's Schedule J as the form directs.
+  common.v1.Money base_year_minus_3_taxable_income = 10;
+
+  // Line 6: Line 2a divided by 3.
+  common.v1.Money one_third_of_elected_farm_income = 11;
+
+  // Line 7: Lines 5 and 6 combined, not less than zero.
+  common.v1.Money base_year_minus_3_recomputed_taxable_income = 12;
+
+  // Line 8: Tax on line 7 at the first base year's rates.
+  common.v1.Money base_year_minus_3_recomputed_tax = 13;
+
+  // Line 9: Taxable income for the second base year, from that year's Form
+  // 1040 line 15 or from a later year's Schedule J as the form directs.
+  common.v1.Money base_year_minus_2_taxable_income = 14;
+
+  // Line 10: Amount from line 6.
+  common.v1.Money base_year_minus_2_elected_farm_income_share = 15;
+
+  // Line 11: Lines 9 and 10 combined, negative if less than zero.
+  common.v1.Money base_year_minus_2_recomputed_taxable_income = 16;
+
+  // Line 12: Tax on line 11 at the second base year's rates.
+  common.v1.Money base_year_minus_2_recomputed_tax = 17;
+
+  // Line 13: Taxable income for the third base year, from that year's Form
+  // 1040 line 15 or its Schedule J line 3.
+  common.v1.Money base_year_minus_1_taxable_income = 18;
+
+  // Line 14: Amount from line 6.
+  common.v1.Money base_year_minus_1_elected_farm_income_share = 19;
+
+  // Line 15: Lines 13 and 14 combined, negative if less than zero.
+  common.v1.Money base_year_minus_1_recomputed_taxable_income = 20;
+
+  // Line 16: Tax on line 15 at the third base year's rates.
+  common.v1.Money base_year_minus_1_recomputed_tax = 21;
+
+  // Line 17: Lines 4, 8, 12 and 16 added.
+  common.v1.Money combined_current_and_recomputed_base_year_taxes = 22;
+
+  // Line 18: Amount from line 17.
+  common.v1.Money combined_taxes_carried_to_page_2 = 23;
+
+  // Line 19: Tax for the first base year, from that year's Form 1040 line 16
+  // or from a later year's Schedule J as the form directs.
+  common.v1.Money base_year_minus_3_prior_tax = 24;
+
+  // Line 20: Tax for the second base year, from that year's Form 1040 line
+  // 16 or from a later year's Schedule J as the form directs.
+  common.v1.Money base_year_minus_2_prior_tax = 25;
+
+  // Line 21: Tax for the third base year, from that year's Form 1040 line 16
+  // or its Schedule J line 4. Only tax imposed by section 1 is included.
+  common.v1.Money base_year_minus_1_prior_tax = 26;
+
+  // Line 22: Lines 19 through 21 added.
+  common.v1.Money total_prior_base_year_taxes = 27;
+
+  // Line 23: Tax, line 18 minus line 22. Included on Form 1040 line 16.
+  common.v1.Money averaged_income_tax = 28;
+}

@@ -1,0 +1,675 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for 2555.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "2555"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form2555"
+tax_years: 2025
+
+concepts {
+  concept: "foreign_address"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+  }
+}
+
+concepts {
+  concept: "occupation"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+  }
+}
+
+concepts {
+  concept: "employer_name"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+  }
+}
+
+concepts {
+  concept: "employer_us_address"
+  years {
+    tax_year: 2025
+    irs_box: "4a"
+  }
+}
+
+concepts {
+  concept: "employer_foreign_address"
+  years {
+    tax_year: 2025
+    irs_box: "b"
+    note: "Line 4b"
+  }
+}
+
+concepts {
+  concept: "employer_is_foreign_entity"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+    note: "Box a"
+  }
+}
+
+concepts {
+  concept: "employer_is_us_company"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+    note: "Box b"
+  }
+}
+
+concepts {
+  concept: "employer_is_self"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+    note: "Box c"
+  }
+}
+
+concepts {
+  concept: "employer_is_foreign_affiliate_of_us_company"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+    note: "Box d"
+  }
+}
+
+concepts {
+  concept: "employer_other_description"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+    note: "Box e"
+  }
+}
+
+concepts {
+  concept: "prior_form_2555_year"
+  years {
+    tax_year: 2025
+    irs_box: "6a"
+  }
+}
+
+concepts {
+  concept: "never_claimed_exclusions"
+  years {
+    tax_year: 2025
+    irs_box: "b"
+    note: "Line 6b"
+  }
+}
+
+concepts {
+  concept: "ever_revoked_exclusions"
+  years {
+    tax_year: 2025
+    irs_box: "c"
+    note: "Line 6c"
+  }
+}
+
+concepts {
+  concept: "revocation_details"
+  years {
+    tax_year: 2025
+    irs_box: "d"
+    note: "Line 6d"
+  }
+}
+
+concepts {
+  concept: "country_of_citizenship"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+
+concepts {
+  concept: "separate_foreign_residence_adverse_conditions"
+  years {
+    tax_year: 2025
+    irs_box: "8a"
+  }
+}
+
+concepts {
+  concept: "second_household_location"
+  years {
+    tax_year: 2025
+    irs_box: "b"
+    note: "Line 8b"
+  }
+}
+
+concepts {
+  concept: "second_household_days"
+  years {
+    tax_year: 2025
+    irs_box: "b"
+    note: "Line 8b"
+  }
+}
+
+concepts {
+  concept: "tax_homes_and_dates_established"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+  }
+}
+
+concepts {
+  concept: "bona_fide_residence_start_date"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+  }
+}
+
+concepts {
+  concept: "bona_fide_residence_end_date"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+  }
+}
+
+concepts {
+  concept: "kind_of_living_quarters"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+  }
+}
+
+concepts {
+  concept: "family_lived_with_taxpayer_abroad"
+  years {
+    tax_year: 2025
+    irs_box: "12a"
+  }
+}
+
+concepts {
+  concept: "family_abroad_and_periods"
+  years {
+    tax_year: 2025
+    irs_box: "b"
+    note: "Line 12b"
+  }
+}
+
+concepts {
+  concept: "submitted_nonresident_statement_to_foreign_country"
+  years {
+    tax_year: 2025
+    irs_box: "13a"
+  }
+}
+
+concepts {
+  concept: "required_to_pay_foreign_income_tax"
+  years {
+    tax_year: 2025
+    irs_box: "b"
+    note: "Line 13b"
+  }
+}
+
+concepts {
+  concept: "us_presence"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+  }
+}
+
+concepts {
+  concept: "employment_terms"
+  years {
+    tax_year: 2025
+    irs_box: "15a"
+  }
+}
+
+concepts {
+  concept: "visa_type"
+  years {
+    tax_year: 2025
+    irs_box: "b"
+    note: "Line 15b"
+  }
+}
+
+concepts {
+  concept: "visa_limited_stay"
+  years {
+    tax_year: 2025
+    irs_box: "c"
+    note: "Line 15c"
+  }
+}
+
+concepts {
+  concept: "maintained_us_home"
+  years {
+    tax_year: 2025
+    irs_box: "d"
+    note: "Line 15d"
+  }
+}
+
+concepts {
+  concept: "us_home_details"
+  years {
+    tax_year: 2025
+    irs_box: "e"
+    note: "Line 15e"
+  }
+}
+
+concepts {
+  concept: "physical_presence_start_date"
+  years {
+    tax_year: 2025
+    irs_box: "16"
+  }
+}
+
+concepts {
+  concept: "physical_presence_end_date"
+  years {
+    tax_year: 2025
+    irs_box: "16"
+  }
+}
+
+concepts {
+  concept: "principal_country_of_employment"
+  years {
+    tax_year: 2025
+    irs_box: "17"
+  }
+}
+
+concepts {
+  concept: "travel_schedule"
+  years {
+    tax_year: 2025
+    irs_box: "18"
+  }
+}
+
+concepts {
+  concept: "foreign_wages_salaries_bonuses"
+  years {
+    tax_year: 2025
+    irs_box: "19"
+  }
+}
+
+concepts {
+  concept: "foreign_business_or_professional_income"
+  years {
+    tax_year: 2025
+    irs_box: "20a"
+  }
+}
+
+concepts {
+  concept: "foreign_partnership_income"
+  years {
+    tax_year: 2025
+    irs_box: "20b"
+  }
+}
+
+concepts {
+  concept: "noncash_lodging_income"
+  years {
+    tax_year: 2025
+    irs_box: "21a"
+  }
+}
+
+concepts {
+  concept: "noncash_meals_income"
+  years {
+    tax_year: 2025
+    irs_box: "21b"
+  }
+}
+
+concepts {
+  concept: "noncash_car_income"
+  years {
+    tax_year: 2025
+    irs_box: "21c"
+  }
+}
+
+concepts {
+  concept: "noncash_other_property_income"
+  years {
+    tax_year: 2025
+    irs_box: "21d"
+  }
+}
+
+concepts {
+  concept: "cost_of_living_allowance"
+  years {
+    tax_year: 2025
+    irs_box: "22a"
+  }
+}
+
+concepts {
+  concept: "family_allowance"
+  years {
+    tax_year: 2025
+    irs_box: "22b"
+  }
+}
+
+concepts {
+  concept: "education_allowance"
+  years {
+    tax_year: 2025
+    irs_box: "22c"
+  }
+}
+
+concepts {
+  concept: "home_leave_allowance"
+  years {
+    tax_year: 2025
+    irs_box: "22d"
+  }
+}
+
+concepts {
+  concept: "quarters_allowance"
+  years {
+    tax_year: 2025
+    irs_box: "22e"
+  }
+}
+
+concepts {
+  concept: "other_allowances"
+  years {
+    tax_year: 2025
+    irs_box: "22f"
+  }
+}
+
+concepts {
+  concept: "allowances_and_reimbursements"
+  years {
+    tax_year: 2025
+    irs_box: "22g"
+  }
+}
+
+concepts {
+  concept: "other_foreign_earned_income"
+  years {
+    tax_year: 2025
+    irs_box: "23"
+  }
+}
+
+concepts {
+  concept: "subtotal_foreign_earned_income"
+  years {
+    tax_year: 2025
+    irs_box: "24"
+  }
+}
+
+concepts {
+  concept: "excludable_meals_and_lodging"
+  years {
+    tax_year: 2025
+    irs_box: "25"
+  }
+}
+
+concepts {
+  concept: "total_foreign_earned_income"
+  years {
+    tax_year: 2025
+    irs_box: "26"
+  }
+}
+
+concepts {
+  concept: "part_v_foreign_earned_income"
+  years {
+    tax_year: 2025
+    irs_box: "27"
+  }
+}
+
+concepts {
+  concept: "claims_housing_exclusion_or_deduction"
+  years {
+    tax_year: 2025
+    irs_box: "27"
+    note: "The question after line 27"
+  }
+}
+
+concepts {
+  concept: "qualified_housing_expenses"
+  years {
+    tax_year: 2025
+    irs_box: "28"
+  }
+}
+
+concepts {
+  concept: "housing_location"
+  years {
+    tax_year: 2025
+    irs_box: "29a"
+  }
+}
+
+concepts {
+  concept: "housing_expense_limit"
+  years {
+    tax_year: 2025
+    irs_box: "29b"
+  }
+}
+
+concepts {
+  concept: "capped_housing_expenses"
+  years {
+    tax_year: 2025
+    irs_box: "30"
+  }
+}
+
+concepts {
+  concept: "qualifying_days_in_tax_year"
+  years {
+    tax_year: 2025
+    irs_box: "31"
+  }
+}
+
+concepts {
+  concept: "base_housing_amount"
+  years {
+    tax_year: 2025
+    irs_box: "32"
+  }
+}
+
+concepts {
+  concept: "housing_expenses_over_base"
+  years {
+    tax_year: 2025
+    irs_box: "33"
+  }
+}
+
+concepts {
+  concept: "employer_provided_amounts"
+  years {
+    tax_year: 2025
+    irs_box: "34"
+  }
+}
+
+concepts {
+  concept: "employer_provided_fraction"
+  years {
+    tax_year: 2025
+    irs_box: "35"
+  }
+}
+
+concepts {
+  concept: "foreign_housing_exclusion"
+  years {
+    tax_year: 2025
+    irs_box: "36"
+  }
+}
+
+concepts {
+  concept: "maximum_foreign_earned_income_exclusion"
+  years {
+    tax_year: 2025
+    irs_box: "37"
+  }
+}
+
+concepts {
+  concept: "feie_qualifying_days"
+  years {
+    tax_year: 2025
+    irs_box: "38"
+  }
+}
+
+concepts {
+  concept: "qualifying_days_fraction"
+  years {
+    tax_year: 2025
+    irs_box: "39"
+  }
+}
+
+concepts {
+  concept: "prorated_maximum_exclusion"
+  years {
+    tax_year: 2025
+    irs_box: "40"
+  }
+}
+
+concepts {
+  concept: "foreign_earned_income_less_housing_exclusion"
+  years {
+    tax_year: 2025
+    irs_box: "41"
+  }
+}
+
+concepts {
+  concept: "foreign_earned_income_exclusion"
+  years {
+    tax_year: 2025
+    irs_box: "42"
+  }
+}
+
+concepts {
+  concept: "combined_housing_and_foreign_earned_income_exclusions"
+  years {
+    tax_year: 2025
+    irs_box: "43"
+  }
+}
+
+concepts {
+  concept: "deductions_allocable_to_excluded_income"
+  years {
+    tax_year: 2025
+    irs_box: "44"
+  }
+}
+
+concepts {
+  concept: "net_exclusion_carried_to_schedule_1"
+  years {
+    tax_year: 2025
+    irs_box: "45"
+  }
+}
+
+concepts {
+  concept: "unexcluded_housing_expenses"
+  years {
+    tax_year: 2025
+    irs_box: "46"
+  }
+}
+
+concepts {
+  concept: "unexcluded_foreign_earned_income"
+  years {
+    tax_year: 2025
+    irs_box: "47"
+  }
+}
+
+concepts {
+  concept: "current_year_housing_deduction"
+  years {
+    tax_year: 2025
+    irs_box: "48"
+  }
+}
+
+concepts {
+  concept: "prior_year_housing_deduction_carryover_allowed"
+  years {
+    tax_year: 2025
+    irs_box: "49"
+  }
+}
+
+concepts {
+  concept: "foreign_housing_deduction"
+  years {
+    tax_year: 2025
+    irs_box: "50"
+  }
+}

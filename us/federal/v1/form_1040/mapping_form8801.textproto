@@ -1,0 +1,454 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for Form 8801.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+
+form: "8801"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form8801"
+tax_years: 2025
+
+concepts {
+  concept: "prior_year_taxable_income_and_tax_deduction_adjustment"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+  }
+}
+
+concepts {
+  concept: "prior_year_other_exclusion_items"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+  }
+}
+
+concepts {
+  concept: "minimum_tax_credit_nol_deduction"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+  }
+}
+
+concepts {
+  concept: "prior_year_amti_on_exclusion_items"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+  }
+}
+
+concepts {
+  concept: "prior_year_exemption_amount"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+  }
+}
+
+concepts {
+  concept: "prior_year_phaseout_threshold"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+  }
+}
+
+concepts {
+  concept: "prior_year_amti_over_phaseout_threshold"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+
+concepts {
+  concept: "prior_year_exemption_phaseout_reduction"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+  }
+}
+
+concepts {
+  concept: "prior_year_exemption_on_exclusion_items"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+  }
+}
+
+concepts {
+  concept: "prior_year_taxable_excess_on_exclusion_items"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+  }
+}
+
+concepts {
+  concept: "tax_on_exclusion_items"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+  }
+}
+
+concepts {
+  concept: "exclusion_items_amt_foreign_tax_credit"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+  }
+}
+
+concepts {
+  concept: "tentative_minimum_tax_on_exclusion_items"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+  }
+}
+
+concepts {
+  concept: "prior_year_regular_tax"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+  }
+}
+
+concepts {
+  concept: "net_minimum_tax_on_exclusion_items"
+  years {
+    tax_year: 2025
+    irs_box: "15"
+  }
+}
+
+concepts {
+  concept: "prior_year_alternative_minimum_tax"
+  years {
+    tax_year: 2025
+    irs_box: "16"
+  }
+}
+
+concepts {
+  concept: "exclusion_items_minimum_tax"
+  years {
+    tax_year: 2025
+    irs_box: "17"
+  }
+}
+
+concepts {
+  concept: "net_minimum_tax_on_deferral_items"
+  years {
+    tax_year: 2025
+    irs_box: "18"
+  }
+}
+
+concepts {
+  concept: "minimum_tax_credit_carryforward_from_prior_year"
+  years {
+    tax_year: 2025
+    irs_box: "19"
+  }
+}
+
+concepts {
+  concept: "prior_year_unallowed_electric_vehicle_credit"
+  years {
+    tax_year: 2025
+    irs_box: "20"
+  }
+}
+
+concepts {
+  concept: "total_available_minimum_tax_credit"
+  years {
+    tax_year: 2025
+    irs_box: "21"
+  }
+}
+
+concepts {
+  concept: "current_year_net_regular_tax"
+  years {
+    tax_year: 2025
+    irs_box: "22"
+  }
+}
+
+concepts {
+  concept: "current_year_tentative_minimum_tax"
+  years {
+    tax_year: 2025
+    irs_box: "23"
+  }
+}
+
+concepts {
+  concept: "regular_tax_over_tentative_minimum_tax"
+  years {
+    tax_year: 2025
+    irs_box: "24"
+  }
+}
+
+concepts {
+  concept: "minimum_tax_credit"
+  years {
+    tax_year: 2025
+    irs_box: "25"
+  }
+}
+
+concepts {
+  concept: "minimum_tax_credit_carryforward_to_next_year"
+  years {
+    tax_year: 2025
+    irs_box: "26"
+  }
+}
+
+concepts {
+  concept: "capital_gains_taxable_excess"
+  years {
+    tax_year: 2025
+    irs_box: "27"
+  }
+}
+
+concepts {
+  concept: "capital_gains_qualified_dividends_and_net_gain"
+  years {
+    tax_year: 2025
+    irs_box: "28"
+  }
+}
+
+concepts {
+  concept: "capital_gains_unrecaptured_section_1250_gain"
+  years {
+    tax_year: 2025
+    irs_box: "29"
+  }
+}
+
+concepts {
+  concept: "capital_gains_adjusted_net_gain"
+  years {
+    tax_year: 2025
+    irs_box: "30"
+  }
+}
+
+concepts {
+  concept: "capital_gains_gain_taxed_at_capital_rates"
+  years {
+    tax_year: 2025
+    irs_box: "31"
+  }
+}
+
+concepts {
+  concept: "capital_gains_ordinary_portion"
+  years {
+    tax_year: 2025
+    irs_box: "32"
+  }
+}
+
+concepts {
+  concept: "capital_gains_tax_on_ordinary_portion"
+  years {
+    tax_year: 2025
+    irs_box: "33"
+  }
+}
+
+concepts {
+  concept: "capital_gains_zero_rate_threshold"
+  years {
+    tax_year: 2025
+    irs_box: "34"
+  }
+}
+
+concepts {
+  concept: "capital_gains_prior_year_taxable_income"
+  years {
+    tax_year: 2025
+    irs_box: "35"
+  }
+}
+
+concepts {
+  concept: "capital_gains_zero_rate_room"
+  years {
+    tax_year: 2025
+    irs_box: "36"
+  }
+}
+
+concepts {
+  concept: "capital_gains_smaller_of_excess_or_gain"
+  years {
+    tax_year: 2025
+    irs_box: "37"
+  }
+}
+
+concepts {
+  concept: "capital_gains_zero_rate_amount"
+  years {
+    tax_year: 2025
+    irs_box: "38"
+  }
+}
+
+concepts {
+  concept: "capital_gains_after_zero_rate"
+  years {
+    tax_year: 2025
+    irs_box: "39"
+  }
+}
+
+concepts {
+  concept: "capital_gains_middle_rate_threshold"
+  years {
+    tax_year: 2025
+    irs_box: "40"
+  }
+}
+
+concepts {
+  concept: "capital_gains_zero_rate_room_restated"
+  years {
+    tax_year: 2025
+    irs_box: "41"
+  }
+}
+
+concepts {
+  concept: "capital_gains_prior_year_ordinary_income"
+  years {
+    tax_year: 2025
+    irs_box: "42"
+  }
+}
+
+concepts {
+  concept: "capital_gains_income_below_middle_rate"
+  years {
+    tax_year: 2025
+    irs_box: "43"
+  }
+}
+
+concepts {
+  concept: "capital_gains_middle_rate_room"
+  years {
+    tax_year: 2025
+    irs_box: "44"
+  }
+}
+
+concepts {
+  concept: "capital_gains_middle_rate_amount"
+  years {
+    tax_year: 2025
+    irs_box: "45"
+  }
+}
+
+concepts {
+  concept: "capital_gains_middle_rate_tax"
+  years {
+    tax_year: 2025
+    irs_box: "46"
+  }
+}
+
+concepts {
+  concept: "capital_gains_taxed_at_or_below_middle_rate"
+  years {
+    tax_year: 2025
+    irs_box: "47"
+  }
+}
+
+concepts {
+  concept: "capital_gains_top_rate_amount"
+  years {
+    tax_year: 2025
+    irs_box: "48"
+  }
+}
+
+concepts {
+  concept: "capital_gains_top_rate_tax"
+  years {
+    tax_year: 2025
+    irs_box: "49"
+  }
+}
+
+concepts {
+  concept: "capital_gains_total_before_section_1250"
+  years {
+    tax_year: 2025
+    irs_box: "50"
+  }
+}
+
+concepts {
+  concept: "capital_gains_section_1250_amount"
+  years {
+    tax_year: 2025
+    irs_box: "51"
+  }
+}
+
+concepts {
+  concept: "capital_gains_section_1250_tax"
+  years {
+    tax_year: 2025
+    irs_box: "52"
+  }
+}
+
+concepts {
+  concept: "capital_gains_total_tax"
+  years {
+    tax_year: 2025
+    irs_box: "53"
+  }
+}
+
+concepts {
+  concept: "capital_gains_tax_without_capital_rates"
+  years {
+    tax_year: 2025
+    irs_box: "54"
+  }
+}
+
+concepts {
+  concept: "capital_gains_tentative_minimum_tax"
+  years {
+    tax_year: 2025
+    irs_box: "55"
+  }
+}

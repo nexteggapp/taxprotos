@@ -1,0 +1,174 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for Form 8814.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+
+form: "8814"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form8814"
+tax_years: 2025
+
+concepts {
+  concept: "child_name"
+  years {
+    tax_year: 2025
+    irs_box: "A"
+  }
+}
+
+concepts {
+  concept: "child_tin"
+  years {
+    tax_year: 2025
+    irs_box: "B"
+  }
+}
+
+concepts {
+  concept: "multiple_forms_8814_filed"
+  years {
+    tax_year: 2025
+    irs_box: "C"
+  }
+}
+
+concepts {
+  concept: "child_taxable_interest"
+  years {
+    tax_year: 2025
+    irs_box: "1a"
+  }
+}
+
+concepts {
+  concept: "child_tax_exempt_interest"
+  years {
+    tax_year: 2025
+    irs_box: "1b"
+  }
+}
+
+concepts {
+  concept: "child_ordinary_dividends"
+  years {
+    tax_year: 2025
+    irs_box: "2a"
+  }
+}
+
+concepts {
+  concept: "child_qualified_dividends"
+  years {
+    tax_year: 2025
+    irs_box: "2b"
+  }
+}
+
+concepts {
+  concept: "child_capital_gain_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+  }
+}
+
+concepts {
+  concept: "total_child_income"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+  }
+}
+
+concepts {
+  concept: "base_amount"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+  }
+}
+
+concepts {
+  concept: "income_above_base_amount"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+  }
+}
+
+concepts {
+  concept: "qualified_dividends_fraction"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+
+concepts {
+  concept: "capital_gain_distributions_fraction"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+  }
+}
+
+concepts {
+  concept: "parent_included_qualified_dividends"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+  }
+}
+
+concepts {
+  concept: "parent_included_capital_gain_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+  }
+}
+
+concepts {
+  concept: "total_preferential_income_included"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+  }
+}
+
+concepts {
+  concept: "parent_included_ordinary_income"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+  }
+}
+
+concepts {
+  concept: "amount_not_taxed"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+  }
+}
+
+concepts {
+  concept: "child_income_above_amount_not_taxed"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+  }
+}
+
+concepts {
+  concept: "tax_on_child_income"
+  years {
+    tax_year: 2025
+    irs_box: "15"
+  }
+}

@@ -1,0 +1,64 @@
+// Form 3921: Exercise of an Incentive Stock Option Under Section 422(b).
+//
+// Every corporation that transfers stock to any person pursuant to that
+// person's exercise of an incentive stock option (ISO) described in IRC Section
+// 422(b) files Form 3921 for each transfer made during the calendar year.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+import "taxprotos/common/v1/quantity.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_3921;form3921";
+
+// Form 3921 reports the exercise of an incentive stock option (ISO) under Section 422(b).
+message Form3921 {
+  option (common.v1.fdx_entity) = "Tax3921";
+  option (common.v1.fdx_version) = "5.0";
+
+  // The tax year this form reports. Four digits, such as 2025.
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // The form is marked CORRECTED, which means it replaces one already sent.
+  bool corrected = 2 [(common.v1.fdx_field) = "corrected"];
+
+  // The transferor (typically the employer corporation) that transferred the stock, printed as TRANSFEROR'S.
+  common.v1.Party transferor = 3 [
+    (common.v1.fdx_field) = "transferor",
+    (common.v1.fdx_deviation) = "Party message rather than flat fields"
+  ];
+
+  // The employee to whom the stock was transferred upon exercise, printed as EMPLOYEE'S.
+  common.v1.Party employee = 4 [
+    (common.v1.fdx_field) = "employee",
+    (common.v1.fdx_deviation) = "Party message rather than flat fields"
+  ];
+
+  // The account number or grant identifier, where the form prints one.
+  string account_number = 5 [(common.v1.fdx_field) = "accountNumber"];
+
+  // Date the option was granted, box 1.
+  common.v1.Date option_grant_date = 6 [(common.v1.fdx_field) = "optionGrantDate"];
+
+  // Date the option was exercised, box 2.
+  common.v1.Date option_exercise_date = 7 [(common.v1.fdx_field) = "optionExerciseDate"];
+
+  // Exercise price per share, box 3.
+  common.v1.Money exercise_price_per_share = 8 [(common.v1.fdx_field) = "exercisePrice"];
+
+  // Fair market value per share on the exercise date, box 4.
+  common.v1.Money fair_market_value_per_share_on_exercise_date = 9 [(common.v1.fdx_field) = "exerciseMarketValue"];
+
+  // Number of shares transferred pursuant to the exercise, box 5.
+  common.v1.Quantity number_of_shares_transferred = 10 [(common.v1.fdx_field) = "numberOfShares"];
+
+  // Name, address, and employer identification number (EIN) of the corporation whose stock is being transferred (if other than the transferor), box 6.
+  common.v1.Party corporation_whose_stock_transferred = 11 [
+    (common.v1.fdx_field) = "corporation",
+    (common.v1.fdx_deviation) = "Party message rather than flat fields"
+  ];
+}

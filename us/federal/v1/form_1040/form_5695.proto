@@ -1,0 +1,298 @@
+// Form 5695, Residential Energy Credits.
+//
+// Part I figures the Residential Clean Energy Credit (IRC Section 25D), with a
+// carryforward of any unused credit. Part II figures the Energy Efficient Home
+// Improvement Credit (IRC Section 25C), which caps each kind of property and
+// the year's total.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form5695 reports the Residential Clean Energy Credit and Energy Efficient Home Improvement Credit.
+message Form5695 {
+  // QualifiedProperty is one item the form lists by its Qualified Manufacturer Identification Number and cost.
+  message QualifiedProperty {
+    // Qualified Manufacturer Identification Number of the item.
+    string qualified_manufacturer_id = 1;
+
+    // Cost of the item.
+    common.v1.Money cost = 2;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Social Security number of filer.
+  string filer_tin = 3;
+
+  // -- Part I: Residential Clean Energy Credit ----------------------------
+
+  // Address of the home where the property on lines 1 through 4 and 5b was installed.
+  string clean_energy_property_address = 4;
+
+  // Line 1: Qualified solar electric property costs.
+  common.v1.Money qualified_solar_electric_property_costs = 5;
+
+  // Line 2: Qualified solar water heating property costs.
+  common.v1.Money qualified_solar_water_heating_property_costs = 6;
+
+  // Line 3: Qualified small wind energy property costs.
+  common.v1.Money qualified_small_wind_energy_property_costs = 7;
+
+  // Line 4: Qualified geothermal heat pump property costs.
+  common.v1.Money qualified_geothermal_heat_pump_property_costs = 8;
+
+  // Line 5a: Whether the qualified battery storage technology meets the minimum capacity the form states.
+  bool battery_storage_meets_capacity_minimum = 9;
+
+  // Line 5b: Qualified battery storage technology costs.
+  common.v1.Money qualified_battery_storage_technology_costs = 10;
+
+  // Line 6a: Total clean energy costs (lines 1 through 5b).
+  common.v1.Money total_clean_energy_costs = 11;
+
+  // Line 6b: Credit on line 6a at the credit rate.
+  common.v1.Money clean_energy_costs_credit = 12;
+
+  // Line 7a: Whether qualified fuel cell property was installed on or in connection with the main home in the United States.
+  bool fuel_cell_installed_in_us_main_home = 13;
+
+  // Line 7b: Address of the main home where the fuel cell property was installed.
+  string fuel_cell_main_home_address = 14;
+
+  // Line 7c: Whether the special rule for joint occupants applies to the fuel cell property.
+  bool fuel_cell_joint_occupants = 15;
+
+  // Line 8: Qualified fuel cell property costs.
+  common.v1.Money qualified_fuel_cell_property_costs = 16;
+
+  // Line 9: Credit on line 8 at the credit rate.
+  common.v1.Money fuel_cell_costs_credit = 17;
+
+  // Line 10: Kilowatt capacity of the fuel cell property times the per-kilowatt limit.
+  common.v1.Money fuel_cell_capacity_limit = 18;
+
+  // Line 11: Smaller of line 9 or line 10.
+  common.v1.Money allowable_fuel_cell_credit = 19;
+
+  // Line 12: Credit carryforward from line 16 of the prior year's Form 5695.
+  common.v1.Money clean_energy_credit_carryforward_from_prior_year = 20;
+
+  // Line 13: Total tentative residential clean energy credit (lines 6b, 11, and 12).
+  common.v1.Money total_tentative_clean_energy_credit = 21;
+
+  // Line 14: Limitation based on tax liability, from the Residential Clean Energy Credit Limit Worksheet.
+  common.v1.Money clean_energy_tax_liability_limit = 22;
+
+  // Line 15: Residential clean energy credit (smaller of line 13 or line 14). Carries to Schedule 3 line 5a.
+  common.v1.Money residential_clean_energy_credit = 23;
+
+  // Line 16: Credit carryforward to the next year (line 13 minus line 15).
+  common.v1.Money clean_energy_credit_carryforward_to_next_year = 24;
+
+  // -- Part II, Section A: Qualified Energy Efficiency Improvements --------
+
+  // Line 17a: Whether the improvements are installed in or on the main home in the United States.
+  bool improvements_in_us_main_home = 25;
+
+  // Line 17b: Whether the filer is the original user of the improvements.
+  bool original_user_of_improvements = 26;
+
+  // Line 17c: Whether the components are reasonably expected to remain in use for the period the form states.
+  bool improvements_expected_to_remain_in_use = 27;
+
+  // Line 17d: Address of the main home where the improvements were made.
+  string improvement_address = 28;
+
+  // Line 17e: Whether any improvements related to the construction of the main home.
+  bool related_to_new_construction = 29;
+
+  // Line 18a: Insulation or air sealing material or system costs.
+  common.v1.Money insulation_or_air_sealing_costs = 30;
+
+  // Line 18b: Credit on line 18a, capped.
+  common.v1.Money insulation_credit = 31;
+
+  // Line 19a: Cost of the most expensive exterior door.
+  common.v1.Money most_expensive_door_cost = 32;
+
+  // Line 19b: Qualified Manufacturer Identification Number of the most expensive exterior door.
+  string most_expensive_door_qualified_manufacturer_id = 33;
+
+  // Line 19c: Credit on line 19a, capped per door.
+  common.v1.Money most_expensive_door_credit = 34;
+
+  // Line 19d (i) and (ii): The next most expensive exterior doors.
+  repeated QualifiedProperty next_most_expensive_doors = 35;
+
+  // Line 19d: Total cost of the next most expensive exterior doors.
+  common.v1.Money next_most_expensive_doors_cost = 36;
+
+  // Line 19e: Cost of all other qualifying exterior doors.
+  common.v1.Money other_doors_cost = 37;
+
+  // Line 19f: Lines 19d and 19e.
+  common.v1.Money additional_doors_cost = 38;
+
+  // Line 19g: Credit on line 19f.
+  common.v1.Money additional_doors_credit = 39;
+
+  // Line 19h: Exterior doors credit (lines 19c and 19g), capped.
+  common.v1.Money exterior_doors_credit = 40;
+
+  // Line 20a (i) through (iv): The most expensive windows and skylights.
+  repeated QualifiedProperty most_expensive_windows = 41;
+
+  // Line 20a: Total cost of the most expensive windows and skylights.
+  common.v1.Money most_expensive_windows_cost = 42;
+
+  // Line 20b: Cost of all other exterior windows and skylights.
+  common.v1.Money other_windows_cost = 43;
+
+  // Line 20c: Lines 20a and 20b.
+  common.v1.Money windows_and_skylights_cost = 44;
+
+  // Line 20d: Windows and skylights credit on line 20c, capped.
+  common.v1.Money windows_and_skylights_credit = 45;
+
+  // -- Part II, Section B: Residential Energy Property Expenditures --------
+
+  // Line 21a: Whether qualified energy property was installed on or in connection with a US home used as a residence.
+  bool energy_property_in_us_residence = 46;
+
+  // Line 21b: Whether the filer originally placed the qualified energy property into service.
+  bool energy_property_originally_placed_in_service = 47;
+
+  // Line 21c: Address of each home where qualified energy property was installed.
+  repeated string energy_property_addresses = 48;
+
+  // Line 22a: Qualified Manufacturer Identification Number of the most expensive central air conditioner.
+  string most_expensive_central_air_conditioner_qualified_manufacturer_id = 49;
+
+  // Line 22a: Cost of the most expensive central air conditioner.
+  common.v1.Money most_expensive_central_air_conditioner_cost = 50;
+
+  // Line 22b: Cost of all other central air conditioners.
+  common.v1.Money other_central_air_conditioners_cost = 51;
+
+  // Line 22c: Lines 22a and 22b.
+  common.v1.Money central_air_conditioners_cost = 52;
+
+  // Line 22d: Central air conditioner credit on line 22c, capped.
+  common.v1.Money central_air_conditioners_credit = 53;
+
+  // Line 23a (i) and (ii): The most expensive natural gas, propane, or oil water heaters.
+  repeated QualifiedProperty most_expensive_water_heaters = 54;
+
+  // Line 23a: Total cost of the most expensive natural gas, propane, or oil water heaters.
+  common.v1.Money most_expensive_water_heaters_cost = 55;
+
+  // Line 23b: Cost of all other natural gas, propane, or oil water heaters.
+  common.v1.Money other_water_heaters_cost = 56;
+
+  // Line 23c: Lines 23a and 23b.
+  common.v1.Money water_heaters_cost = 57;
+
+  // Line 23d: Water heater credit on line 23c, capped.
+  common.v1.Money water_heaters_credit = 58;
+
+  // Line 24a: Qualified Manufacturer Identification Number of the most expensive natural gas, propane, or oil furnace or hot water boiler.
+  string most_expensive_furnace_qualified_manufacturer_id = 59;
+
+  // Line 24a: Cost of the most expensive natural gas, propane, or oil furnace or hot water boiler.
+  common.v1.Money most_expensive_furnace_cost = 60;
+
+  // Line 24b: Cost of all other natural gas, propane, or oil furnaces or hot water boilers.
+  common.v1.Money other_furnaces_cost = 61;
+
+  // Line 24c: Lines 24a and 24b.
+  common.v1.Money furnaces_cost = 62;
+
+  // Line 24d: Furnace and boiler credit on line 24c, capped.
+  common.v1.Money furnaces_credit = 63;
+
+  // Line 25a: Whether enabling property (panelboards, subpanelboards, branch circuits, or feeders) and the property it enables were installed this year.
+  bool enabling_property_installed = 64;
+
+  // Line 25b: Codes for the types of enabled property.
+  repeated string enabled_property_codes = 65;
+
+  // Line 25c: Cost of improvements or replacement of enabling property.
+  common.v1.Money enabling_property_cost = 66;
+
+  // Line 25d: Qualified Manufacturer Identification Numbers of the enabling property.
+  repeated string enabling_property_qualified_manufacturer_ids = 67;
+
+  // Line 25e: Enabling property credit on line 25c, capped.
+  common.v1.Money enabling_property_credit = 68;
+
+  // Line 26a: Whether a qualifying home energy audit of the main home was performed.
+  bool home_energy_audit_qualifies = 69;
+
+  // Line 26b: Cost of home energy audits.
+  common.v1.Money home_energy_audit_cost = 70;
+
+  // Line 26c: Home energy audit credit on line 26b, capped.
+  common.v1.Money home_energy_audit_credit = 71;
+
+  // Line 27: Lines 18b, 19h, 20d, 22d, 23d, 24d, 25e, and 26c.
+  common.v1.Money subtotal_improvement_and_property_credits = 72;
+
+  // Line 28: Smaller of line 27 or the annual limit for these items.
+  common.v1.Money capped_improvement_and_property_credits = 73;
+
+  // Line 29a: Qualified Manufacturer Identification Number of the most expensive electric or natural gas heat pump.
+  string most_expensive_heat_pump_qualified_manufacturer_id = 74;
+
+  // Line 29a: Cost of the most expensive electric or natural gas heat pump.
+  common.v1.Money most_expensive_heat_pump_cost = 75;
+
+  // Line 29b: Cost of all other electric or natural gas heat pumps.
+  common.v1.Money other_heat_pumps_cost = 76;
+
+  // Line 29c: Qualified Manufacturer Identification Number of the most expensive electric or natural gas heat pump water heater.
+  string most_expensive_heat_pump_water_heater_qualified_manufacturer_id = 77;
+
+  // Line 29c: Cost of the most expensive electric or natural gas heat pump water heater.
+  common.v1.Money most_expensive_heat_pump_water_heater_cost = 78;
+
+  // Line 29d: Cost of all other electric or natural gas heat pump water heaters.
+  common.v1.Money other_heat_pump_water_heaters_cost = 79;
+
+  // Line 29e: Qualified Manufacturer Identification Number of the most expensive biomass stove or boiler.
+  string most_expensive_biomass_stove_qualified_manufacturer_id = 80;
+
+  // Line 29e: Cost of the most expensive biomass stove or boiler.
+  common.v1.Money most_expensive_biomass_stove_cost = 81;
+
+  // Line 29f: Cost of all other biomass stoves and biomass boilers.
+  common.v1.Money other_biomass_stoves_cost = 82;
+
+  // Line 29g: Lines 29a through 29f.
+  common.v1.Money heat_pump_and_biomass_cost = 83;
+
+  // Line 29h: Heat pump and biomass credit on line 29g, capped.
+  common.v1.Money heat_pump_and_biomass_credit = 84;
+
+  // Line 30: Total tentative home improvement credit (lines 28 and 29h).
+  common.v1.Money total_tentative_home_improvement_credit = 85;
+
+  // Line 31: Limitation based on tax liability, from the Energy Efficient Home Improvement Credit Limit Worksheet.
+  common.v1.Money home_improvement_tax_liability_limit = 86;
+
+  // Line 32: Energy efficient home improvement credit (smaller of line 30 or line 31). Carries to Schedule 3 line 5b.
+  common.v1.Money energy_efficient_home_improvement_credit = 87;
+
+  // Line 32a: Whether the special rule for joint occupants applies.
+  bool home_improvement_joint_occupants = 88;
+
+  // Line 32b: Whether the filer has a fractional share of a condominium's or cooperative's improvements or property.
+  bool condominium_or_cooperative_share = 89;
+}

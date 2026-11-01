@@ -1,0 +1,133 @@
+// Form 6198, At-Risk Limitations.
+//
+// Used to figure the profit or (loss) from an at-risk activity for the current
+// year (Part I), the amount at risk via the simplified computation (Part II) or
+// detailed computation (Part III), and the deductible loss under IRC Section
+// 465 (Part IV).
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form6198 reports the at-risk limitation for an activity across Parts I through IV.
+message Form6198 {
+  // Measurement point is where a Part III amount is measured from, chosen by the
+  // a/b checkboxes on lines 15, 16, and 18.
+  enum MeasurementPoint {
+    // Not recorded.
+    MEASUREMENT_POINT_UNSPECIFIED = 0;
+
+    // Box a: measured from the effective date.
+    MEASUREMENT_POINT_EFFECTIVE_DATE = 1;
+
+    // Box b: measured from the end of the prior year, using the prior year's Form 6198.
+    MEASUREMENT_POINT_PRIOR_YEAR = 2;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Identifying number (SSN or EIN).
+  string filer_tin = 3;
+
+  // Description of activity (including name and EIN of partnership or S corporation if applicable).
+  string activity_description = 4;
+
+  // -- Part I: Current Year Profit (Loss) From the Activity ----------------
+
+  // Line 1: Ordinary income or (loss) from the activity.
+  common.v1.Money ordinary_income_or_loss = 5;
+
+  // Line 2a: Gain or (loss) from disposition of assets used in the activity, reported on Schedule D.
+  common.v1.Money schedule_d_gain_or_loss = 6;
+
+  // Line 2b: Gain or (loss) from disposition of assets used in the activity, reported on Form 4797.
+  common.v1.Money form_4797_gain_or_loss = 7;
+
+  // Line 2c: Gain or (loss) from disposition of assets used in the activity, reported on another form or schedule.
+  common.v1.Money other_form_gain_or_loss = 8;
+
+  // Line 3: Other income and gains from the activity from Schedule K-1 (Form 1065 or 1120-S) not included on lines 1 through 2c.
+  common.v1.Money other_income_and_gains = 9;
+
+  // Line 4: Other deductions and losses from the activity not included on lines 1 through 2c. Printed in parentheses.
+  common.v1.Money other_deductions_and_losses = 10;
+
+  // Line 5: Current year profit or (loss) from the activity (lines 1 through 4).
+  common.v1.Money current_year_profit_or_loss = 11;
+
+  // -- Part II: Simplified Computation of Amount at Risk -------------------
+
+  // Line 6: Adjusted basis in the activity (or in the interest in it) on the first day of the tax year.
+  common.v1.Money beginning_adjusted_basis = 12;
+
+  // Line 7: Increases for the tax year.
+  common.v1.Money increases_for_tax_year = 13;
+
+  // Line 8: Lines 6 and 7.
+  common.v1.Money basis_plus_increases = 14;
+
+  // Line 9: Decreases for the tax year.
+  common.v1.Money decreases_for_tax_year = 15;
+
+  // Line 10a: Line 8 minus line 9.
+  common.v1.Money simplified_net_amount = 16;
+
+  // Line 10b: Amount at risk from the simplified computation (line 10a if more than zero, otherwise zero).
+  common.v1.Money simplified_amount_at_risk = 17;
+
+  // -- Part III: Detailed Computation of Amount at Risk --------------------
+
+  // Line 11: Investment in the activity (or in the interest in it) at the effective date.
+  common.v1.Money effective_date_investment = 18;
+
+  // Line 12: Increases at the effective date.
+  common.v1.Money effective_date_increases = 19;
+
+  // Line 13: Lines 11 and 12.
+  common.v1.Money effective_date_investment_plus_increases = 20;
+
+  // Line 14: Decreases at the effective date.
+  common.v1.Money effective_date_decreases = 21;
+
+  // Line 15: Which box is checked: a, at the effective date (line 13 minus line 14), or b, from line 19b of the prior year's Form 6198.
+  MeasurementPoint starting_amount_at_risk_source = 22;
+
+  // Line 15: Amount at risk at the starting point.
+  common.v1.Money starting_amount_at_risk = 23;
+
+  // Line 16: Which box is checked: increases since a, the effective date, or b, the end of the prior year.
+  MeasurementPoint increases_measured_from = 24;
+
+  // Line 16: Increases since the starting point.
+  common.v1.Money detailed_increases = 25;
+
+  // Line 17: Lines 15 and 16.
+  common.v1.Money starting_amount_plus_increases = 26;
+
+  // Line 18: Which box is checked: decreases since a, the effective date, or b, the end of the prior year.
+  MeasurementPoint decreases_measured_from = 27;
+
+  // Line 18: Decreases since the starting point.
+  common.v1.Money detailed_decreases = 28;
+
+  // Line 19a: Line 17 minus line 18.
+  common.v1.Money detailed_net_amount = 29;
+
+  // Line 19b: Amount at risk from the detailed computation (line 19a if more than zero, otherwise zero).
+  common.v1.Money detailed_amount_at_risk = 30;
+
+  // -- Part IV: Deductible Loss --------------------------------------------
+
+  // Line 20: Amount at risk (larger of line 10b or line 19b).
+  common.v1.Money amount_at_risk = 31;
+
+  // Line 21: Deductible loss (smaller of the line 5 loss or line 20). Printed in parentheses. A passive activity loss is then subject to Form 8582.
+  common.v1.Money deductible_at_risk_loss = 32;
+}

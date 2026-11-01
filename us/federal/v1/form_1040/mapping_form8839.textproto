@@ -1,0 +1,153 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for Form 8839.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Lines 2 to 6, 10, 11a, 11b, 19 to 22, 24, 28 and 29 are per child and live on
+# the repeated children message, so they are not mapped here.
+
+form: "8839"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form8839"
+tax_years: 2025
+
+concepts {
+  concept: "modified_adjusted_gross_income"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+
+concepts {
+  concept: "modified_agi_over_threshold"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+  }
+}
+
+concepts {
+  concept: "phaseout_ratio"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+  }
+}
+
+concepts {
+  concept: "total_refundable_credit"
+  years {
+    tax_year: 2025
+    irs_box: "11c"
+  }
+}
+
+concepts {
+  concept: "total_credit_after_phaseout"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+  }
+}
+
+concepts {
+  concept: "refundable_adoption_credit"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+  }
+}
+
+concepts {
+  concept: "nonrefundable_credit_before_carryforward"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+  }
+}
+
+concepts {
+  concept: "credit_carryforward_from_prior_years"
+  years {
+    tax_year: 2025
+    irs_box: "15"
+  }
+}
+
+concepts {
+  concept: "total_nonrefundable_credit_available"
+  years {
+    tax_year: 2025
+    irs_box: "16"
+  }
+}
+
+concepts {
+  concept: "credit_limit"
+  years {
+    tax_year: 2025
+    irs_box: "17"
+  }
+}
+
+concepts {
+  concept: "nonrefundable_adoption_credit"
+  years {
+    tax_year: 2025
+    irs_box: "18"
+  }
+}
+
+concepts {
+  concept: "total_employer_adoption_benefits"
+  years {
+    tax_year: 2025
+    irs_box: "23"
+  }
+}
+
+concepts {
+  concept: "exclusion_modified_agi"
+  years {
+    tax_year: 2025
+    irs_box: "25"
+  }
+}
+
+concepts {
+  concept: "exclusion_modified_agi_over_threshold"
+  years {
+    tax_year: 2025
+    irs_box: "26"
+  }
+}
+
+concepts {
+  concept: "exclusion_phaseout_ratio"
+  years {
+    tax_year: 2025
+    irs_box: "27"
+  }
+}
+
+concepts {
+  concept: "total_excluded_benefits"
+  years {
+    tax_year: 2025
+    irs_box: "30"
+  }
+}
+
+concepts {
+  concept: "taxable_employer_adoption_benefits"
+  years {
+    tax_year: 2025
+    irs_box: "31"
+  }
+}

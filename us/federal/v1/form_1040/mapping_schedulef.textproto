@@ -1,0 +1,579 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for 1040 Schedule F.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Line 32 (rows a-f) is the repeated other_expenses message and is not mapped
+# here. Line 35 is "Reserved for future use" and has no field.
+
+form: "1040 Schedule F"
+message_name: "nexteggapp.taxprotos.us.federal.v1.ScheduleF"
+tax_years: 2025
+
+concepts {
+  concept: "principal_crop_or_activity"
+  years {
+    tax_year: 2025
+    irs_box: "A"
+  }
+}
+
+concepts {
+  concept: "activity_code"
+  years {
+    tax_year: 2025
+    irs_box: "B"
+  }
+}
+
+concepts {
+  concept: "accrual_accounting_method"
+  years {
+    tax_year: 2025
+    irs_box: "C"
+  }
+}
+
+concepts {
+  concept: "employer_id_number"
+  years {
+    tax_year: 2025
+    irs_box: "D"
+  }
+}
+
+concepts {
+  concept: "materially_participated"
+  years {
+    tax_year: 2025
+    irs_box: "E"
+  }
+}
+
+concepts {
+  concept: "made_payments_requiring_1099"
+  years {
+    tax_year: 2025
+    irs_box: "F"
+  }
+}
+
+concepts {
+  concept: "filed_required_1099s"
+  years {
+    tax_year: 2025
+    irs_box: "G"
+  }
+}
+
+concepts {
+  concept: "sales_of_purchased_livestock_and_resale_items"
+  years {
+    tax_year: 2025
+    irs_box: "1a"
+  }
+}
+
+concepts {
+  concept: "cost_of_purchased_livestock_and_resale_items"
+  years {
+    tax_year: 2025
+    irs_box: "1b"
+  }
+}
+
+concepts {
+  concept: "net_gain_on_purchased_resale_items"
+  years {
+    tax_year: 2025
+    irs_box: "1c"
+  }
+}
+
+concepts {
+  concept: "sales_of_raised_livestock_and_produce"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+  }
+}
+
+concepts {
+  concept: "total_cooperative_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "3a"
+  }
+}
+
+concepts {
+  concept: "taxable_cooperative_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "3b"
+  }
+}
+
+concepts {
+  concept: "total_agricultural_program_payments"
+  years {
+    tax_year: 2025
+    irs_box: "4a"
+  }
+}
+
+concepts {
+  concept: "taxable_agricultural_program_payments"
+  years {
+    tax_year: 2025
+    irs_box: "4b"
+  }
+}
+
+concepts {
+  concept: "ccc_loans_reported_under_election"
+  years {
+    tax_year: 2025
+    irs_box: "5a"
+  }
+}
+
+concepts {
+  concept: "ccc_loans_forfeited"
+  years {
+    tax_year: 2025
+    irs_box: "5b"
+  }
+}
+
+concepts {
+  concept: "taxable_ccc_loans_forfeited"
+  years {
+    tax_year: 2025
+    irs_box: "5c"
+  }
+}
+
+concepts {
+  concept: "crop_insurance_proceeds_received"
+  years {
+    tax_year: 2025
+    irs_box: "6a"
+  }
+}
+
+concepts {
+  concept: "taxable_crop_insurance_proceeds"
+  years {
+    tax_year: 2025
+    irs_box: "6b"
+  }
+}
+
+concepts {
+  concept: "elect_to_defer_crop_insurance_proceeds"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+    note: "Line 6c, printed as \"c\" under line 6."
+  }
+}
+
+concepts {
+  concept: "prior_year_deferred_crop_insurance_proceeds"
+  years {
+    tax_year: 2025
+    irs_box: "6d"
+  }
+}
+
+concepts {
+  concept: "custom_hire_income"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+
+concepts {
+  concept: "other_farm_income"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+  }
+}
+
+concepts {
+  concept: "gross_farm_income"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+  }
+}
+
+concepts {
+  concept: "car_and_truck_expenses"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+  }
+}
+
+concepts {
+  concept: "chemicals"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+  }
+}
+
+concepts {
+  concept: "conservation_expenses"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+  }
+}
+
+concepts {
+  concept: "custom_hire_expenses"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+  }
+}
+
+concepts {
+  concept: "depreciation_and_section_179"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+  }
+}
+
+concepts {
+  concept: "employee_benefit_programs"
+  years {
+    tax_year: 2025
+    irs_box: "15"
+  }
+}
+
+concepts {
+  concept: "feed"
+  years {
+    tax_year: 2025
+    irs_box: "16"
+  }
+}
+
+concepts {
+  concept: "fertilizers_and_lime"
+  years {
+    tax_year: 2025
+    irs_box: "17"
+  }
+}
+
+concepts {
+  concept: "freight_and_trucking"
+  years {
+    tax_year: 2025
+    irs_box: "18"
+  }
+}
+
+concepts {
+  concept: "gasoline_fuel_and_oil"
+  years {
+    tax_year: 2025
+    irs_box: "19"
+  }
+}
+
+concepts {
+  concept: "insurance_other_than_health"
+  years {
+    tax_year: 2025
+    irs_box: "20"
+  }
+}
+
+concepts {
+  concept: "mortgage_interest"
+  years {
+    tax_year: 2025
+    irs_box: "21a"
+  }
+}
+
+concepts {
+  concept: "other_interest"
+  years {
+    tax_year: 2025
+    irs_box: "21b"
+  }
+}
+
+concepts {
+  concept: "labor_hired"
+  years {
+    tax_year: 2025
+    irs_box: "22"
+  }
+}
+
+concepts {
+  concept: "pension_and_profit_sharing_plans"
+  years {
+    tax_year: 2025
+    irs_box: "23"
+  }
+}
+
+concepts {
+  concept: "rent_or_lease_vehicles_and_equipment"
+  years {
+    tax_year: 2025
+    irs_box: "24a"
+  }
+}
+
+concepts {
+  concept: "rent_or_lease_land_and_animals"
+  years {
+    tax_year: 2025
+    irs_box: "24b"
+  }
+}
+
+concepts {
+  concept: "repairs_and_maintenance"
+  years {
+    tax_year: 2025
+    irs_box: "25"
+  }
+}
+
+concepts {
+  concept: "seeds_and_plants"
+  years {
+    tax_year: 2025
+    irs_box: "26"
+  }
+}
+
+concepts {
+  concept: "storage_and_warehousing"
+  years {
+    tax_year: 2025
+    irs_box: "27"
+  }
+}
+
+concepts {
+  concept: "supplies"
+  years {
+    tax_year: 2025
+    irs_box: "28"
+  }
+}
+
+concepts {
+  concept: "taxes"
+  years {
+    tax_year: 2025
+    irs_box: "29"
+  }
+}
+
+concepts {
+  concept: "utilities"
+  years {
+    tax_year: 2025
+    irs_box: "30"
+  }
+}
+
+concepts {
+  concept: "veterinary_breeding_and_medicine"
+  years {
+    tax_year: 2025
+    irs_box: "31"
+  }
+}
+
+concepts {
+  concept: "total_farm_expenses"
+  years {
+    tax_year: 2025
+    irs_box: "33"
+  }
+}
+
+concepts {
+  concept: "net_farm_profit_or_loss"
+  years {
+    tax_year: 2025
+    irs_box: "34"
+  }
+}
+
+concepts {
+  concept: "some_investment_not_at_risk"
+  years {
+    tax_year: 2025
+    irs_box: "36"
+    note: "Box 36b; box 36a when false."
+  }
+}
+
+concepts {
+  concept: "accrual_sales_of_livestock_and_produce"
+  years {
+    tax_year: 2025
+    irs_box: "37"
+  }
+}
+
+concepts {
+  concept: "accrual_cooperative_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "38a"
+  }
+}
+
+concepts {
+  concept: "accrual_taxable_cooperative_distributions"
+  years {
+    tax_year: 2025
+    irs_box: "38b"
+  }
+}
+
+concepts {
+  concept: "accrual_agricultural_program_payments"
+  years {
+    tax_year: 2025
+    irs_box: "39a"
+  }
+}
+
+concepts {
+  concept: "accrual_taxable_agricultural_program_payments"
+  years {
+    tax_year: 2025
+    irs_box: "39b"
+  }
+}
+
+concepts {
+  concept: "accrual_ccc_loans_reported_under_election"
+  years {
+    tax_year: 2025
+    irs_box: "40a"
+  }
+}
+
+concepts {
+  concept: "accrual_ccc_loans_forfeited"
+  years {
+    tax_year: 2025
+    irs_box: "40b"
+  }
+}
+
+concepts {
+  concept: "accrual_taxable_ccc_loans_forfeited"
+  years {
+    tax_year: 2025
+    irs_box: "40c"
+  }
+}
+
+concepts {
+  concept: "accrual_crop_insurance_proceeds"
+  years {
+    tax_year: 2025
+    irs_box: "41"
+  }
+}
+
+concepts {
+  concept: "accrual_custom_hire_income"
+  years {
+    tax_year: 2025
+    irs_box: "42"
+  }
+}
+
+concepts {
+  concept: "accrual_other_income"
+  years {
+    tax_year: 2025
+    irs_box: "43"
+  }
+}
+
+concepts {
+  concept: "accrual_total_income"
+  years {
+    tax_year: 2025
+    irs_box: "44"
+  }
+}
+
+concepts {
+  concept: "beginning_inventory"
+  years {
+    tax_year: 2025
+    irs_box: "45"
+  }
+}
+
+concepts {
+  concept: "cost_of_products_purchased"
+  years {
+    tax_year: 2025
+    irs_box: "46"
+  }
+}
+
+concepts {
+  concept: "inventory_plus_purchases"
+  years {
+    tax_year: 2025
+    irs_box: "47"
+  }
+}
+
+concepts {
+  concept: "ending_inventory"
+  years {
+    tax_year: 2025
+    irs_box: "48"
+  }
+}
+
+concepts {
+  concept: "cost_of_products_sold"
+  years {
+    tax_year: 2025
+    irs_box: "49"
+  }
+}
+
+concepts {
+  concept: "accrual_gross_income"
+  years {
+    tax_year: 2025
+    irs_box: "50"
+  }
+}

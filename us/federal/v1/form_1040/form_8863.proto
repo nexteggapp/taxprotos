@@ -1,0 +1,179 @@
+// Form 8863, Education Credits (American Opportunity and Lifetime Learning Credits).
+//
+// Used to figure and claim the American opportunity credit (refundable part in
+// Part I, the rest in Part II) and the lifetime learning credit (Part II), from
+// per-student details in Part III.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/quantity.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form8863 reports the American Opportunity and Lifetime Learning education credits.
+message Form8863 {
+  // Student is one copy of Part III: one student and that student's expenses.
+  message Student {
+    // EducationalInstitution is one school on line 22, the first (22a) or
+    // second (22b).
+    message EducationalInstitution {
+      // Line 22a or 22b: Name of the educational institution.
+      string institution_name = 1;
+
+      // Line 22a(1) or 22b(1): Address of the institution.
+      string institution_address = 2;
+
+      // Line 22a(2) or 22b(2): The student received Form 1098-T from this
+      // institution for the tax year.
+      bool received_form_1098_t_current_year = 3;
+
+      // Line 22a(3) or 22b(3): The student received Form 1098-T from this
+      // institution for the prior year with box 7 checked.
+      bool received_form_1098_t_prior_year_box_7 = 4;
+
+      // Line 22a(4) or 22b(4): The institution's employer identification
+      // number.
+      string institution_ein = 5;
+    }
+
+    // Line 20: Student name, as shown on page 1 of the return.
+    string student_name = 1;
+
+    // Line 21: Student Social Security number, as shown on page 1 of the
+    // return.
+    string student_ssn = 2;
+
+    // Line 22: Educational institutions the student attended.
+    repeated EducationalInstitution institutions = 3;
+
+    // Line 23: The American opportunity credit has been claimed for this
+    // student for the maximum number of prior tax years.
+    bool aoc_prior_year_limit_reached = 4;
+
+    // Line 24: The student was enrolled at least half-time for at least one
+    // academic period that began in the tax year, in a program leading to a
+    // postsecondary credential at an eligible institution.
+    bool enrolled_at_least_half_time = 5;
+
+    // Line 25: The student completed the first years of postsecondary
+    // education the credit covers before the tax year.
+    bool completed_first_years_of_postsecondary_education = 6;
+
+    // Line 26: The student was convicted, before the end of the tax year, of
+    // a felony for possession or distribution of a controlled substance.
+    bool felony_drug_conviction = 7;
+
+    // Line 27: Adjusted qualified education expenses for the American
+    // opportunity credit, capped at the amount the form prints.
+    common.v1.Money aoc_adjusted_qualified_expenses = 8;
+
+    // Line 28: Line 27 less the first-tier amount the form prints, not less
+    // than zero.
+    common.v1.Money aoc_expenses_above_first_tier = 9;
+
+    // Line 29: The second-tier rate times line 28.
+    common.v1.Money aoc_second_tier_credit = 10;
+
+    // Line 30: This student's American opportunity credit. Line 27 when line
+    // 28 is zero, otherwise the first-tier amount added to line 29. Totaled on
+    // line 1.
+    common.v1.Money aoc_tentative_credit_for_student = 11;
+
+    // Line 31: Adjusted qualified education expenses for the lifetime learning
+    // credit. Totaled on line 10.
+    common.v1.Money llc_adjusted_qualified_expenses = 12;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Social Security number of filer.
+  string filer_tin = 3;
+
+  // -- Part I: Refundable American Opportunity Credit ----------------------
+
+  // Line 1: Total of line 30 from every Part III.
+  common.v1.Money total_tentative_aoc = 4;
+
+  // Line 2: The phaseout ceiling for the filing status, as the form prints
+  // it.
+  common.v1.Money aoc_phaseout_ceiling = 5;
+
+  // Line 3: The amount from Form 1040 line 11b, or the Publication 970 amount
+  // for a filer excluding foreign or possession income.
+  common.v1.Money aoc_modified_agi = 6;
+
+  // Line 4: Line 3 subtracted from line 2. Zero or less means no education
+  // credit.
+  common.v1.Money aoc_remaining_phaseout_range = 7;
+
+  // Line 5: The phaseout range for the filing status, as the form prints it.
+  common.v1.Money aoc_phaseout_range = 8;
+
+  // Line 6: 1.000 when line 4 is at least line 5, otherwise line 4 divided by
+  // line 5 to at least three places.
+  common.v1.Quantity aoc_phaseout_factor = 9;
+
+  // Line 7: Line 1 times line 6.
+  common.v1.Money aoc_after_phaseout = 10;
+
+  // Line 7 checkbox: the filer was under the age the instructions give and
+  // cannot take the refundable credit, so line 8 is skipped.
+  bool ineligible_for_refundable_aoc = 11;
+
+  // Line 8: Refundable American opportunity credit, the refundable share of
+  // line 7. Also entered on Form 1040 line 29.
+  common.v1.Money refundable_american_opportunity_credit = 12;
+
+  // -- Part II: Nonrefundable Education Credits ----------------------------
+
+  // Line 9: Line 8 subtracted from line 7. Also entered on line 2 of the
+  // Credit Limit Worksheet.
+  common.v1.Money nonrefundable_aoc_portion = 13;
+
+  // Line 10: Total of line 31 from every Part III.
+  common.v1.Money total_llc_qualified_expenses = 14;
+
+  // Line 11: The smaller of line 10 or the expense cap the form prints.
+  common.v1.Money capped_llc_expenses = 15;
+
+  // Line 12: The lifetime learning credit rate times line 11.
+  common.v1.Money tentative_lifetime_learning_credit = 16;
+
+  // Line 13: The phaseout ceiling for the filing status, as the form prints
+  // it.
+  common.v1.Money llc_phaseout_ceiling = 17;
+
+  // Line 14: The amount from Form 1040 line 11b, or the Publication 970
+  // amount for a filer excluding foreign or possession income.
+  common.v1.Money llc_modified_agi = 18;
+
+  // Line 15: Line 14 subtracted from line 13. Zero or less means line 18 is
+  // zero.
+  common.v1.Money llc_remaining_phaseout_range = 19;
+
+  // Line 16: The phaseout range for the filing status, as the form prints it.
+  common.v1.Money llc_phaseout_range = 20;
+
+  // Line 17: 1.000 when line 15 is at least line 16, otherwise line 15
+  // divided by line 16 to at least three places.
+  common.v1.Quantity llc_phaseout_factor = 21;
+
+  // Line 18: Line 12 times line 17. Also entered on line 1 of the Credit
+  // Limit Worksheet.
+  common.v1.Money llc_after_phaseout = 22;
+
+  // Line 19: Nonrefundable education credits, from line 7 of the Credit Limit
+  // Worksheet. Also entered on Schedule 3 (Form 1040) line 3.
+  common.v1.Money nonrefundable_education_credits = 23;
+
+  // -- Part III: Student and Educational Institution Information -----------
+
+  // One Part III per student.
+  repeated Student students = 24;
+}

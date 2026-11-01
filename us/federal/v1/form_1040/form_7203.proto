@@ -1,0 +1,371 @@
+// Form 7203, S Corporation Shareholder Stock and Debt Basis Limitations.
+//
+// Filed by S corporation shareholders who claim a deduction for their share of
+// an aggregate loss from an S corporation, receive a non-dividend distribution,
+// dispose of stock, or receive a loan repayment from an S corporation. One form
+// per S corporation, or per stock block where the instructions require it.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/quantity.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form7203 reports an S corporation shareholder's stock basis (Part I), debt basis (Part II), and allowable loss/deduction items (Part III).
+message Form7203 {
+  // StockAcquisition is one of the item D boxes saying how the stock was acquired.
+  enum StockAcquisition {
+    // Not recorded.
+    STOCK_ACQUISITION_UNSPECIFIED = 0;
+
+    // Box (1): original shareholder.
+    STOCK_ACQUISITION_ORIGINAL_SHAREHOLDER = 1;
+
+    // Box (2): purchased.
+    STOCK_ACQUISITION_PURCHASED = 2;
+
+    // Box (3): inherited.
+    STOCK_ACQUISITION_INHERITED = 3;
+
+    // Box (4): gift.
+    STOCK_ACQUISITION_GIFT = 4;
+
+    // Box (5): other, described in other_acquisition_description.
+    STOCK_ACQUISITION_OTHER = 5;
+  }
+
+  // DebtForm is the Part II box saying what kind of instrument a debt is.
+  enum DebtForm {
+    // Not recorded.
+    DEBT_FORM_UNSPECIFIED = 0;
+
+    // Formal note.
+    DEBT_FORM_FORMAL_NOTE = 1;
+
+    // Open account.
+    DEBT_FORM_OPEN_ACCOUNT = 2;
+  }
+
+  // Debt is one column (a) through (c) of Part II: one loan from the shareholder to the S corporation.
+  message Debt {
+    // Whether the debt is a formal note or an open account.
+    DebtForm form = 1;
+
+    // Line 16: Loan balance at the beginning of the corporation's tax year.
+    common.v1.Money beginning_loan_balance = 2;
+
+    // Line 17: Additional loans.
+    common.v1.Money additional_loans = 3;
+
+    // Line 18: Loan balance before repayment (lines 16 and 17).
+    common.v1.Money loan_balance_before_repayment = 4;
+
+    // Line 19: Principal portion of debt repayment, excluding interest.
+    common.v1.Money principal_repayment = 5;
+
+    // Line 20: Loan balance at the end of the corporation's tax year (line 18 minus line 19).
+    common.v1.Money ending_loan_balance = 6;
+
+    // Line 21: Debt basis at the beginning of the corporation's tax year.
+    common.v1.Money beginning_debt_basis = 7;
+
+    // Line 22: Amount from line 17.
+    common.v1.Money additional_loans_basis = 8;
+
+    // Line 23: Debt basis restoration.
+    common.v1.Money debt_basis_restoration = 9;
+
+    // Line 24: Debt basis before repayment (lines 21, 22, and 23).
+    common.v1.Money debt_basis_before_repayment = 10;
+
+    // Line 25: Line 24 divided by line 18.
+    common.v1.Quantity basis_to_balance_ratio = 11;
+
+    // Line 26: Nontaxable debt repayment (line 25 times line 19).
+    common.v1.Money nontaxable_repayment = 12;
+
+    // Line 27: Debt basis before nondeductible expenses and losses (line 24 minus line 26).
+    common.v1.Money debt_basis_before_nondeductibles = 13;
+
+    // Line 28: Nondeductible expenses and oil and gas depletion deductions in excess of stock basis.
+    common.v1.Money nondeductibles_in_excess_of_stock_basis = 14;
+
+    // Line 29: Debt basis before losses and deductions (line 27 minus line 28, not less than zero).
+    common.v1.Money debt_basis_before_losses = 15;
+
+    // Line 30: Allowable losses in excess of stock basis.
+    common.v1.Money allowed_losses_from_debt_basis = 16;
+
+    // Line 31: Debt basis at the end of the corporation's tax year (line 29 minus line 30, not less than zero).
+    common.v1.Money ending_debt_basis = 17;
+
+    // Line 32: Repayment, from line 19.
+    common.v1.Money repayment = 18;
+
+    // Line 33: Nontaxable repayments, from line 26.
+    common.v1.Money nontaxable_repayments = 19;
+
+    // Line 34: Reportable gain on loan repayment (line 32 minus line 33).
+    common.v1.Money reportable_gain_on_repayment = 20;
+  }
+
+  // LossCategory is the Part III row a loss or deduction sits on.
+  enum LossCategory {
+    // Not recorded.
+    LOSS_CATEGORY_UNSPECIFIED = 0;
+
+    // Line 35: Ordinary business loss.
+    LOSS_CATEGORY_ORDINARY_BUSINESS_LOSS = 1;
+
+    // Line 36: Net rental real estate loss.
+    LOSS_CATEGORY_NET_RENTAL_REAL_ESTATE_LOSS = 2;
+
+    // Line 37: Other net rental loss.
+    LOSS_CATEGORY_OTHER_NET_RENTAL_LOSS = 3;
+
+    // Line 38: Net capital loss.
+    LOSS_CATEGORY_NET_CAPITAL_LOSS = 4;
+
+    // Line 39: Net section 1231 loss.
+    LOSS_CATEGORY_NET_SECTION_1231_LOSS = 5;
+
+    // Line 40: Other loss.
+    LOSS_CATEGORY_OTHER_LOSS = 6;
+
+    // Line 41: Section 179 deductions.
+    LOSS_CATEGORY_SECTION_179_DEDUCTIONS = 7;
+
+    // Line 42: Charitable contributions.
+    LOSS_CATEGORY_CHARITABLE_CONTRIBUTIONS = 8;
+
+    // Line 43: Investment interest expense.
+    LOSS_CATEGORY_INVESTMENT_INTEREST_EXPENSE = 9;
+
+    // Line 44: Section 59(e)(2) expenditures.
+    LOSS_CATEGORY_SECTION_59E2_EXPENDITURES = 10;
+
+    // Line 45: Other deductions.
+    LOSS_CATEGORY_OTHER_DEDUCTIONS = 11;
+
+    // Line 46: Foreign taxes paid or accrued.
+    LOSS_CATEGORY_FOREIGN_TAXES = 12;
+  }
+
+  // LossAndDeductionRow is one of Part III lines 35 through 46.
+  message LossAndDeductionRow {
+    // Which line the row is.
+    LossCategory category = 1;
+
+    // Column (a): Current year losses and deductions.
+    common.v1.Money current_year_loss_or_deduction = 2;
+
+    // Column (b): Carryover amounts from column (e) of the previous year.
+    common.v1.Money prior_year_carryover = 3;
+
+    // Column (c): Allowable loss from stock basis.
+    common.v1.Money allowed_from_stock_basis = 4;
+
+    // Column (d): Allowable loss from debt basis.
+    common.v1.Money allowed_from_debt_basis = 5;
+
+    // Column (e): Carryover amounts to the next year.
+    common.v1.Money disallowed_carryover_to_next_year = 6;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name of shareholder shown on return.
+  string shareholder_name = 2;
+
+  // Identifying number (SSN or EIN) of shareholder.
+  string shareholder_tin = 3;
+
+  // Item A: Name of the S corporation.
+  string s_corporation_name = 4;
+
+  // Item B: Employer identification number (EIN) of the S corporation.
+  string s_corporation_ein = 5;
+
+  // Item C: Stock block the form covers.
+  string stock_block = 6;
+
+  // Item D: How the stock was acquired; more than one box may be checked.
+  repeated StockAcquisition stock_acquisitions = 7;
+
+  // Item D(5): Description of an "other" acquisition.
+  string other_acquisition_description = 8;
+
+  // Item E: Whether a Regulations section 1.1367-1(g) election is in effect for this S corporation during the tax year.
+  bool section_1367_1g_election = 9;
+
+  // -- Part I: Shareholder Stock Basis -------------------------------------
+
+  // Line 1: Stock basis at the beginning of the corporation's tax year.
+  common.v1.Money beginning_stock_basis = 10;
+
+  // Line 2: Basis from any capital contributions made or additional stock acquired during the tax year.
+  common.v1.Money capital_contributions_and_additional_stock = 11;
+
+  // Line 3a: Ordinary business income.
+  common.v1.Money ordinary_business_income = 12;
+
+  // Line 3b: Net rental real estate income.
+  common.v1.Money net_rental_real_estate_income = 13;
+
+  // Line 3c: Other net rental income.
+  common.v1.Money other_net_rental_income = 14;
+
+  // Line 3d: Interest income.
+  common.v1.Money interest_income = 15;
+
+  // Line 3e: Ordinary dividends.
+  common.v1.Money ordinary_dividends = 16;
+
+  // Line 3f: Royalties.
+  common.v1.Money royalties = 17;
+
+  // Line 3g: Net capital gains.
+  common.v1.Money net_capital_gains = 18;
+
+  // Line 3h: Net section 1231 gain.
+  common.v1.Money net_section_1231_gain = 19;
+
+  // Line 3i: Other income.
+  common.v1.Money other_income = 20;
+
+  // Line 3j: Excess depletion adjustment.
+  common.v1.Money excess_depletion_adjustment = 21;
+
+  // Line 3k: Tax-exempt income.
+  common.v1.Money tax_exempt_income = 22;
+
+  // Line 3l: Recapture of business credits.
+  common.v1.Money recapture_of_business_credits = 23;
+
+  // Line 3m: Other items that increase stock basis.
+  common.v1.Money other_stock_basis_increases = 24;
+
+  // Line 4: Lines 3a through 3m.
+  common.v1.Money total_income_and_gain_basis_increases = 25;
+
+  // Line 5: Stock basis before distributions (lines 1, 2, and 4).
+  common.v1.Money stock_basis_before_distributions = 26;
+
+  // Line 6: Distributions, excluding dividend distributions.
+  common.v1.Money non_dividend_distributions = 27;
+
+  // Line 7: Stock basis after distributions (line 5 minus line 6, not less than zero).
+  common.v1.Money stock_basis_after_distributions = 28;
+
+  // Line 8a: Nondeductible expenses.
+  common.v1.Money nondeductible_expenses = 29;
+
+  // Line 8b: Depletion for oil and gas.
+  common.v1.Money oil_and_gas_depletion = 30;
+
+  // Line 8c: Business credits (sections 50(c)(1) and (5)).
+  common.v1.Money business_credit_basis_reduction = 31;
+
+  // Line 9: Lines 8a through 8c.
+  common.v1.Money total_nondeductible_reductions = 32;
+
+  // Line 10: Stock basis before loss and deduction items (line 7 minus line 9, not less than zero).
+  common.v1.Money stock_basis_before_loss_and_deduction_items = 33;
+
+  // Line 11: Allowable loss and deduction items, from line 47 column (c).
+  common.v1.Money allowed_losses_from_stock_basis = 34;
+
+  // Line 12: Debt basis restoration.
+  common.v1.Money debt_basis_restoration = 35;
+
+  // Line 13: Other items that decrease stock basis.
+  common.v1.Money other_stock_basis_decreases = 36;
+
+  // Line 14: Lines 11, 12, and 13.
+  common.v1.Money total_stock_basis_decreases = 37;
+
+  // Line 15: Stock basis at the end of the corporation's tax year (line 10 minus line 14, not less than zero).
+  common.v1.Money ending_stock_basis = 38;
+
+  // -- Part II: Shareholder Debt Basis -------------------------------------
+
+  // Lines 16 through 34, columns (a) through (c): one entry per debt.
+  repeated Debt debts = 39;
+
+  // Line 16 column (d): Total loan balance at the beginning of the corporation's tax year.
+  common.v1.Money total_beginning_loan_balance = 40;
+
+  // Line 17 column (d): Total additional loans.
+  common.v1.Money total_additional_loans = 41;
+
+  // Line 18 column (d): Total loan balance before repayment.
+  common.v1.Money total_loan_balance_before_repayment = 42;
+
+  // Line 19 column (d): Total principal portion of debt repayment.
+  common.v1.Money total_principal_repayment = 43;
+
+  // Line 20 column (d): Total loan balance at the end of the corporation's tax year.
+  common.v1.Money total_ending_loan_balance = 44;
+
+  // Line 21 column (d): Total debt basis at the beginning of the corporation's tax year.
+  common.v1.Money total_beginning_debt_basis = 45;
+
+  // Line 22 column (d): Total of the amounts from line 17.
+  common.v1.Money total_additional_loans_basis = 46;
+
+  // Line 23 column (d): Total debt basis restoration.
+  common.v1.Money total_debt_basis_restoration = 47;
+
+  // Line 24 column (d): Total debt basis before repayment.
+  common.v1.Money total_debt_basis_before_repayment = 48;
+
+  // Line 26 column (d): Total nontaxable debt repayment.
+  common.v1.Money total_nontaxable_repayment = 49;
+
+  // Line 27 column (d): Total debt basis before nondeductible expenses and losses.
+  common.v1.Money total_debt_basis_before_nondeductibles = 50;
+
+  // Line 28 column (d): Total nondeductible expenses and oil and gas depletion deductions in excess of stock basis.
+  common.v1.Money total_nondeductibles_in_excess_of_stock_basis = 51;
+
+  // Line 29 column (d): Total debt basis before losses and deductions.
+  common.v1.Money total_debt_basis_before_losses = 52;
+
+  // Line 30 column (d): Total allowable losses in excess of stock basis, from line 47 column (d).
+  common.v1.Money total_allowed_losses_from_debt_basis = 53;
+
+  // Line 31 column (d): Total debt basis at the end of the corporation's tax year.
+  common.v1.Money total_ending_debt_basis = 54;
+
+  // Line 32 column (d): Total repayment.
+  common.v1.Money total_repayment = 55;
+
+  // Line 33 column (d): Total nontaxable repayments.
+  common.v1.Money total_nontaxable_repayments = 56;
+
+  // Line 34 column (d): Total reportable gain on loan repayment.
+  common.v1.Money total_reportable_gain_on_repayment = 57;
+
+  // -- Part III: Shareholder Allowable Loss and Deduction Items ------------
+
+  // Lines 35 through 46: one entry per category of loss or deduction.
+  repeated LossAndDeductionRow loss_and_deduction_rows = 58;
+
+  // Line 47 column (a): Total current year losses and deductions.
+  common.v1.Money total_current_year_losses_and_deductions = 59;
+
+  // Line 47 column (b): Total carryover amounts from the previous year.
+  common.v1.Money total_prior_year_disallowed_carryover = 60;
+
+  // Line 47 column (c): Total allowable loss from stock basis. Carries to line 11.
+  common.v1.Money total_allowed_from_stock_basis = 61;
+
+  // Line 47 column (d): Total allowable loss from debt basis. Carries to line 30.
+  common.v1.Money total_allowed_from_debt_basis = 62;
+
+  // Line 47 column (e): Total carryover amounts to the next year.
+  common.v1.Money total_disallowed_carryover_to_next_year = 63;
+}

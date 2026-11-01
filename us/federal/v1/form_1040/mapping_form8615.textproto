@@ -1,0 +1,226 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for Form 8615.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+
+form: "8615"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form8615"
+tax_years: 2025
+
+concepts {
+  concept: "parent_name"
+  years {
+    tax_year: 2025
+    irs_box: "A"
+  }
+}
+
+concepts {
+  concept: "parent_tin"
+  years {
+    tax_year: 2025
+    irs_box: "B"
+  }
+}
+
+concepts {
+  concept: "parent_filing_status"
+  years {
+    tax_year: 2025
+    irs_box: "C"
+  }
+}
+
+concepts {
+  concept: "child_unearned_income"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+  }
+}
+
+concepts {
+  concept: "unearned_income_threshold_or_deductions"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+  }
+}
+
+concepts {
+  concept: "unearned_income_above_threshold"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+  }
+}
+
+concepts {
+  concept: "child_taxable_income"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+  }
+}
+
+concepts {
+  concept: "net_unearned_income"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+  }
+}
+
+concepts {
+  concept: "parent_taxable_income"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+  }
+}
+
+concepts {
+  concept: "other_children_net_unearned_income"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+
+concepts {
+  concept: "combined_taxable_income"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+  }
+}
+
+concepts {
+  concept: "tax_on_combined_taxable_income"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+  }
+}
+
+concepts {
+  concept: "combined_tax_used_worksheet_or_schedule_j"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+    note: "The checkbox on the line."
+  }
+}
+
+concepts {
+  concept: "parent_tax"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+  }
+}
+
+concepts {
+  concept: "parent_tax_used_worksheet_or_schedule_j"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+    note: "The checkbox on the line."
+  }
+}
+
+concepts {
+  concept: "total_parental_tax_on_children_unearned_income"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+  }
+}
+
+concepts {
+  concept: "total_children_net_unearned_income"
+  years {
+    tax_year: 2025
+    irs_box: "12a"
+  }
+}
+
+concepts {
+  concept: "child_share_of_net_unearned_income"
+  years {
+    tax_year: 2025
+    irs_box: "12b"
+  }
+}
+
+concepts {
+  concept: "child_share_of_parental_tax"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+  }
+}
+
+concepts {
+  concept: "child_taxable_income_less_net_unearned_income"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+  }
+}
+
+concepts {
+  concept: "tax_on_child_taxable_income_less_net_unearned_income"
+  years {
+    tax_year: 2025
+    irs_box: "15"
+  }
+}
+
+concepts {
+  concept: "child_rate_tax_used_worksheet_or_schedule_j"
+  years {
+    tax_year: 2025
+    irs_box: "15"
+    note: "The checkbox on the line."
+  }
+}
+
+concepts {
+  concept: "combined_kiddie_tax"
+  years {
+    tax_year: 2025
+    irs_box: "16"
+  }
+}
+
+concepts {
+  concept: "regular_tax_on_child_taxable_income"
+  years {
+    tax_year: 2025
+    irs_box: "17"
+  }
+}
+
+concepts {
+  concept: "regular_tax_used_worksheet_or_schedule_j"
+  years {
+    tax_year: 2025
+    irs_box: "17"
+    note: "The checkbox on the line."
+  }
+}
+
+concepts {
+  concept: "child_tax"
+  years {
+    tax_year: 2025
+    irs_box: "18"
+  }
+}

@@ -1,0 +1,182 @@
+// Schedule H (Form 1040), Household Employment Taxes.
+//
+// Used by household employers to report social security, Medicare, Additional
+// Medicare, federal income tax withholding, and federal unemployment (FUTA)
+// taxes on cash wages paid to household employees.
+//
+// Part IV, the address and signature block for employers who do not file Form
+// 1040, is not modelled.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/quantity.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// ScheduleH reports household employment taxes.
+message ScheduleH {
+  // StateContribution is one row of the line 17 table in Part II Section B.
+  message StateContribution {
+    // Column (a): Name of the state.
+    string state_name = 1;
+
+    // Column (b): Taxable wages as defined in the state act.
+    common.v1.Money taxable_wages = 2;
+
+    // Column (c): Start of the state experience rate period.
+    common.v1.Date experience_rate_period_from = 3;
+
+    // Column (c): End of the state experience rate period.
+    common.v1.Date experience_rate_period_to = 4;
+
+    // Column (d): State experience rate.
+    common.v1.Quantity experience_rate = 5;
+
+    // Column (e): Column (b) multiplied by the maximum credit rate the form
+    // prints.
+    common.v1.Money wages_times_maximum_credit_rate = 6;
+
+    // Column (f): Column (b) multiplied by column (d).
+    common.v1.Money wages_times_experience_rate = 7;
+
+    // Column (g): Column (e) minus column (f), not less than zero.
+    common.v1.Money additional_credit = 8;
+
+    // Column (h): Contributions paid to the state unemployment fund.
+    common.v1.Money contributions_paid = 9;
+  }
+
+  // The tax year the schedule applies to.
+  int32 tax_year = 1;
+
+  // Name of the employer.
+  string employer_name = 2;
+
+  // Social security number of the employer.
+  string employer_tin = 3;
+
+  // Employer identification number (EIN) of the household employer.
+  string employer_ein = 4;
+
+  // Line A: Whether any one household employee was paid cash wages at or above
+  // the threshold the form prints.
+  bool paid_cash_wages_above_fica_threshold = 5;
+
+  // Line B: Whether federal income tax was withheld during the year for any
+  // household employee.
+  bool withheld_federal_income_tax = 6;
+
+  // Line C: Whether total cash wages paid to all household employees in any
+  // calendar quarter of the year or the prior year reached the FUTA threshold
+  // the form prints.
+  bool paid_quarterly_cash_wages_above_futa_threshold = 7;
+
+  // -- Part I: Social Security, Medicare, and Federal Income Taxes ---------
+
+  // Line 1: Total cash wages subject to social security tax.
+  common.v1.Money cash_wages_subject_to_social_security = 8;
+
+  // Line 2: Social security tax, line 1 multiplied by the combined social
+  // security rate.
+  common.v1.Money social_security_tax = 9;
+
+  // Line 3: Total cash wages subject to Medicare tax.
+  common.v1.Money cash_wages_subject_to_medicare = 10;
+
+  // Line 4: Medicare tax, line 3 multiplied by the combined Medicare rate.
+  common.v1.Money medicare_tax = 11;
+
+  // Line 5: Total cash wages subject to Additional Medicare Tax withholding.
+  common.v1.Money cash_wages_subject_to_additional_medicare = 12;
+
+  // Line 6: Additional Medicare Tax withholding, line 5 multiplied by the
+  // Additional Medicare Tax rate.
+  common.v1.Money additional_medicare_tax_withholding = 13;
+
+  // Line 7: Federal income tax withheld, if any.
+  common.v1.Money federal_income_tax_withheld = 14;
+
+  // Line 8: Total social security, Medicare, and federal income taxes, lines
+  // 2, 4, 6 and 7 added. When line 9 is "No", carries to Schedule 2 line 9.
+  common.v1.Money total_fica_and_withheld_income_taxes = 15;
+
+  // Line 9: Whether total cash wages paid to all household employees in any
+  // calendar quarter of the year or the prior year reached the FUTA threshold
+  // the form prints.
+  bool owes_futa_tax = 16;
+
+  // -- Part II: Federal Unemployment (FUTA) Tax ----------------------------
+
+  // Line 10: Whether unemployment contributions were paid to only one state.
+  bool paid_contributions_to_one_state = 17;
+
+  // Line 11: Whether all state unemployment contributions for the year were
+  // paid by the date the form prints.
+  bool paid_state_unemployment_timely = 18;
+
+  // Line 12: Whether all wages taxable for FUTA tax were also taxable for the
+  // state's unemployment tax.
+  bool futa_wages_taxable_for_state = 19;
+
+  // Section A, line 13: Name of the state where unemployment contributions
+  // were paid.
+  string state_name = 20;
+
+  // Section A, line 14: Contributions paid to the state unemployment fund.
+  common.v1.Money state_unemployment_contributions = 21;
+
+  // Section A, line 15: Total cash wages subject to FUTA tax.
+  common.v1.Money cash_wages_subject_to_futa = 22;
+
+  // Section A, line 16: FUTA tax, line 15 multiplied by the net FUTA rate the
+  // form prints.
+  common.v1.Money section_a_futa_tax = 23;
+
+  // Section B, line 17: One row per state.
+  repeated StateContribution state_contributions = 24;
+
+  // Section B, line 18: Total of line 17 column (g).
+  common.v1.Money total_additional_credit = 25;
+
+  // Section B, line 18: Total of line 17 column (h).
+  common.v1.Money total_contributions_paid = 26;
+
+  // Section B, line 19: Line 18 columns (g) and (h) added.
+  common.v1.Money total_state_credit = 27;
+
+  // Section B, line 20: Total cash wages subject to FUTA tax.
+  common.v1.Money section_b_cash_wages_subject_to_futa = 28;
+
+  // Section B, line 21: Line 20 multiplied by the gross FUTA rate the form
+  // prints.
+  common.v1.Money gross_futa_tax = 29;
+
+  // Section B, line 22: Line 20 multiplied by the maximum credit rate the form
+  // prints.
+  common.v1.Money maximum_state_credit = 30;
+
+  // Section B, line 23: The smaller of lines 19 and 22.
+  common.v1.Money state_unemployment_credit = 31;
+
+  // Section B, line 23 checkbox: Contributions were paid late or the employer
+  // is in a credit reduction state.
+  bool late_contributions_or_credit_reduction_state = 32;
+
+  // Section B, line 24: FUTA tax, line 21 minus line 23.
+  common.v1.Money section_b_futa_tax = 33;
+
+  // -- Part III: Total Household Employment Taxes --------------------------
+
+  // Line 25: Amount from line 8, or zero when line C is "Yes".
+  common.v1.Money part_iii_fica_and_income_taxes = 34;
+
+  // Line 26: Line 16 (or line 24) and line 25 added. Carries to Schedule 2
+  // line 9.
+  common.v1.Money total_household_employment_taxes = 35;
+
+  // Line 27: Whether the employer is required to file Form 1040.
+  bool required_to_file_form_1040 = 36;
+}

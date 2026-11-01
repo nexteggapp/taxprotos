@@ -1,0 +1,486 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for Form 8829.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+
+form: "8829"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form8829"
+tax_years: 2025
+
+concepts {
+  concept: "business_area_square_feet"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+  }
+}
+
+concepts {
+  concept: "total_home_area_square_feet"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+  }
+}
+
+concepts {
+  concept: "raw_business_use_percentage"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+  }
+}
+
+concepts {
+  concept: "daycare_hours_used"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+  }
+}
+
+concepts {
+  concept: "total_hours_in_year"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+  }
+}
+
+concepts {
+  concept: "daycare_time_fraction"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+  }
+}
+
+concepts {
+  concept: "business_use_percentage"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+
+concepts {
+  concept: "tentative_business_profit_or_loss"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+  }
+}
+
+concepts {
+  concept: "direct_casualty_losses"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+    note: "Column (a)."
+  }
+}
+
+concepts {
+  concept: "indirect_casualty_losses"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+    note: "Column (b)."
+  }
+}
+
+concepts {
+  concept: "direct_mortgage_interest"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+    note: "Column (a)."
+  }
+}
+
+concepts {
+  concept: "indirect_mortgage_interest"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+    note: "Column (b)."
+  }
+}
+
+concepts {
+  concept: "direct_real_estate_taxes"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+    note: "Column (a)."
+  }
+}
+
+concepts {
+  concept: "indirect_real_estate_taxes"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+    note: "Column (b)."
+  }
+}
+
+concepts {
+  concept: "total_direct_otherwise_deductible_expenses"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+    note: "Column (a)."
+  }
+}
+
+concepts {
+  concept: "total_indirect_otherwise_deductible_expenses"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+    note: "Column (b)."
+  }
+}
+
+concepts {
+  concept: "business_portion_indirect_otherwise_deductible"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+  }
+}
+
+concepts {
+  concept: "total_otherwise_deductible_business_expenses"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+  }
+}
+
+concepts {
+  concept: "gross_income_limit_for_operating_expenses"
+  years {
+    tax_year: 2025
+    irs_box: "15"
+  }
+}
+
+concepts {
+  concept: "direct_excess_mortgage_interest"
+  years {
+    tax_year: 2025
+    irs_box: "16"
+    note: "Column (a)."
+  }
+}
+
+concepts {
+  concept: "indirect_excess_mortgage_interest"
+  years {
+    tax_year: 2025
+    irs_box: "16"
+    note: "Column (b)."
+  }
+}
+
+concepts {
+  concept: "direct_excess_real_estate_taxes"
+  years {
+    tax_year: 2025
+    irs_box: "17"
+    note: "Column (a)."
+  }
+}
+
+concepts {
+  concept: "indirect_excess_real_estate_taxes"
+  years {
+    tax_year: 2025
+    irs_box: "17"
+    note: "Column (b)."
+  }
+}
+
+concepts {
+  concept: "direct_insurance"
+  years {
+    tax_year: 2025
+    irs_box: "18"
+    note: "Column (a)."
+  }
+}
+
+concepts {
+  concept: "indirect_insurance"
+  years {
+    tax_year: 2025
+    irs_box: "18"
+    note: "Column (b)."
+  }
+}
+
+concepts {
+  concept: "direct_rent"
+  years {
+    tax_year: 2025
+    irs_box: "19"
+    note: "Column (a)."
+  }
+}
+
+concepts {
+  concept: "indirect_rent"
+  years {
+    tax_year: 2025
+    irs_box: "19"
+    note: "Column (b)."
+  }
+}
+
+concepts {
+  concept: "direct_repairs_and_maintenance"
+  years {
+    tax_year: 2025
+    irs_box: "20"
+    note: "Column (a)."
+  }
+}
+
+concepts {
+  concept: "indirect_repairs_and_maintenance"
+  years {
+    tax_year: 2025
+    irs_box: "20"
+    note: "Column (b)."
+  }
+}
+
+concepts {
+  concept: "direct_utilities"
+  years {
+    tax_year: 2025
+    irs_box: "21"
+    note: "Column (a)."
+  }
+}
+
+concepts {
+  concept: "indirect_utilities"
+  years {
+    tax_year: 2025
+    irs_box: "21"
+    note: "Column (b)."
+  }
+}
+
+concepts {
+  concept: "direct_other_expenses"
+  years {
+    tax_year: 2025
+    irs_box: "22"
+    note: "Column (a)."
+  }
+}
+
+concepts {
+  concept: "indirect_other_expenses"
+  years {
+    tax_year: 2025
+    irs_box: "22"
+    note: "Column (b)."
+  }
+}
+
+concepts {
+  concept: "total_direct_operating_expenses"
+  years {
+    tax_year: 2025
+    irs_box: "23"
+    note: "Column (a)."
+  }
+}
+
+concepts {
+  concept: "total_indirect_operating_expenses"
+  years {
+    tax_year: 2025
+    irs_box: "23"
+    note: "Column (b)."
+  }
+}
+
+concepts {
+  concept: "business_portion_indirect_operating_expenses"
+  years {
+    tax_year: 2025
+    irs_box: "24"
+  }
+}
+
+concepts {
+  concept: "prior_year_operating_expense_carryover"
+  years {
+    tax_year: 2025
+    irs_box: "25"
+  }
+}
+
+concepts {
+  concept: "total_operating_expenses"
+  years {
+    tax_year: 2025
+    irs_box: "26"
+  }
+}
+
+concepts {
+  concept: "allowable_operating_expenses"
+  years {
+    tax_year: 2025
+    irs_box: "27"
+  }
+}
+
+concepts {
+  concept: "limit_for_casualty_and_depreciation"
+  years {
+    tax_year: 2025
+    irs_box: "28"
+  }
+}
+
+concepts {
+  concept: "excess_casualty_losses"
+  years {
+    tax_year: 2025
+    irs_box: "29"
+  }
+}
+
+concepts {
+  concept: "home_depreciation"
+  years {
+    tax_year: 2025
+    irs_box: "30"
+  }
+}
+
+concepts {
+  concept: "prior_year_casualty_and_depreciation_carryover"
+  years {
+    tax_year: 2025
+    irs_box: "31"
+  }
+}
+
+concepts {
+  concept: "total_casualty_and_depreciation"
+  years {
+    tax_year: 2025
+    irs_box: "32"
+  }
+}
+
+concepts {
+  concept: "allowable_casualty_and_depreciation"
+  years {
+    tax_year: 2025
+    irs_box: "33"
+  }
+}
+
+concepts {
+  concept: "total_allowable_expenses"
+  years {
+    tax_year: 2025
+    irs_box: "34"
+  }
+}
+
+concepts {
+  concept: "casualty_loss_portion"
+  years {
+    tax_year: 2025
+    irs_box: "35"
+  }
+}
+
+concepts {
+  concept: "allowable_deduction_for_schedule_c"
+  years {
+    tax_year: 2025
+    irs_box: "36"
+  }
+}
+
+concepts {
+  concept: "home_smaller_of_adjusted_basis_or_fmv"
+  years {
+    tax_year: 2025
+    irs_box: "37"
+  }
+}
+
+concepts {
+  concept: "value_of_land"
+  years {
+    tax_year: 2025
+    irs_box: "38"
+  }
+}
+
+concepts {
+  concept: "basis_of_building"
+  years {
+    tax_year: 2025
+    irs_box: "39"
+  }
+}
+
+concepts {
+  concept: "business_basis_of_building"
+  years {
+    tax_year: 2025
+    irs_box: "40"
+  }
+}
+
+concepts {
+  concept: "depreciation_percentage"
+  years {
+    tax_year: 2025
+    irs_box: "41"
+  }
+}
+
+concepts {
+  concept: "calculated_home_depreciation"
+  years {
+    tax_year: 2025
+    irs_box: "42"
+  }
+}
+
+concepts {
+  concept: "operating_expenses_carryover_to_next_year"
+  years {
+    tax_year: 2025
+    irs_box: "43"
+  }
+}
+
+concepts {
+  concept: "casualty_and_depreciation_carryover_to_next_year"
+  years {
+    tax_year: 2025
+    irs_box: "44"
+  }
+}

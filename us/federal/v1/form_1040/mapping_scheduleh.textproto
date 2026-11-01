@@ -1,0 +1,292 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for 1040 Schedule H.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Line 17 is the repeated state_contributions message and is not mapped here.
+
+form: "1040 Schedule H"
+message_name: "nexteggapp.taxprotos.us.federal.v1.ScheduleH"
+tax_years: 2025
+
+concepts {
+  concept: "paid_cash_wages_above_fica_threshold"
+  years {
+    tax_year: 2025
+    irs_box: "A"
+  }
+}
+
+concepts {
+  concept: "withheld_federal_income_tax"
+  years {
+    tax_year: 2025
+    irs_box: "B"
+  }
+}
+
+concepts {
+  concept: "paid_quarterly_cash_wages_above_futa_threshold"
+  years {
+    tax_year: 2025
+    irs_box: "C"
+  }
+}
+
+concepts {
+  concept: "cash_wages_subject_to_social_security"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+    note: "Part I."
+  }
+}
+
+concepts {
+  concept: "social_security_tax"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+    note: "Part I."
+  }
+}
+
+concepts {
+  concept: "cash_wages_subject_to_medicare"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+    note: "Part I."
+  }
+}
+
+concepts {
+  concept: "medicare_tax"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+    note: "Part I."
+  }
+}
+
+concepts {
+  concept: "cash_wages_subject_to_additional_medicare"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+    note: "Part I."
+  }
+}
+
+concepts {
+  concept: "additional_medicare_tax_withholding"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+    note: "Part I."
+  }
+}
+
+concepts {
+  concept: "federal_income_tax_withheld"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+    note: "Part I."
+  }
+}
+
+concepts {
+  concept: "total_fica_and_withheld_income_taxes"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+    note: "Part I."
+  }
+}
+
+concepts {
+  concept: "owes_futa_tax"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+    note: "Part I."
+  }
+}
+
+concepts {
+  concept: "paid_contributions_to_one_state"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+    note: "Part II."
+  }
+}
+
+concepts {
+  concept: "paid_state_unemployment_timely"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+    note: "Part II."
+  }
+}
+
+concepts {
+  concept: "futa_wages_taxable_for_state"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+    note: "Part II."
+  }
+}
+
+concepts {
+  concept: "state_name"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+    note: "Part II, Section A."
+  }
+}
+
+concepts {
+  concept: "state_unemployment_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+    note: "Part II, Section A."
+  }
+}
+
+concepts {
+  concept: "cash_wages_subject_to_futa"
+  years {
+    tax_year: 2025
+    irs_box: "15"
+    note: "Part II, Section A."
+  }
+}
+
+concepts {
+  concept: "section_a_futa_tax"
+  years {
+    tax_year: 2025
+    irs_box: "16"
+    note: "Part II, Section A."
+  }
+}
+
+concepts {
+  concept: "total_additional_credit"
+  years {
+    tax_year: 2025
+    irs_box: "18"
+    note: "Part II, Section B. Column (g)."
+  }
+}
+
+concepts {
+  concept: "total_contributions_paid"
+  years {
+    tax_year: 2025
+    irs_box: "18"
+    note: "Part II, Section B. Column (h)."
+  }
+}
+
+concepts {
+  concept: "total_state_credit"
+  years {
+    tax_year: 2025
+    irs_box: "19"
+    note: "Part II, Section B."
+  }
+}
+
+concepts {
+  concept: "section_b_cash_wages_subject_to_futa"
+  years {
+    tax_year: 2025
+    irs_box: "20"
+    note: "Part II, Section B."
+  }
+}
+
+concepts {
+  concept: "gross_futa_tax"
+  years {
+    tax_year: 2025
+    irs_box: "21"
+    note: "Part II, Section B."
+  }
+}
+
+concepts {
+  concept: "maximum_state_credit"
+  years {
+    tax_year: 2025
+    irs_box: "22"
+    note: "Part II, Section B."
+  }
+}
+
+concepts {
+  concept: "state_unemployment_credit"
+  years {
+    tax_year: 2025
+    irs_box: "23"
+    note: "Part II, Section B."
+  }
+}
+
+concepts {
+  concept: "late_contributions_or_credit_reduction_state"
+  years {
+    tax_year: 2025
+    irs_box: "23"
+    note: "Part II, Section B. The checkbox."
+  }
+}
+
+concepts {
+  concept: "section_b_futa_tax"
+  years {
+    tax_year: 2025
+    irs_box: "24"
+    note: "Part II, Section B."
+  }
+}
+
+concepts {
+  concept: "part_iii_fica_and_income_taxes"
+  years {
+    tax_year: 2025
+    irs_box: "25"
+    note: "Part III."
+  }
+}
+
+concepts {
+  concept: "total_household_employment_taxes"
+  years {
+    tax_year: 2025
+    irs_box: "26"
+    note: "Part III."
+  }
+}
+
+concepts {
+  concept: "required_to_file_form_1040"
+  years {
+    tax_year: 2025
+    irs_box: "27"
+    note: "Part III."
+  }
+}

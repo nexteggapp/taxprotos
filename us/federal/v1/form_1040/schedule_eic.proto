@@ -1,0 +1,54 @@
+// Schedule EIC (Form 1040), Earned Income Credit Qualifying Child Information.
+//
+// Attached to Form 1040 when claiming the Earned Income Credit (EIC) with one
+// or more qualifying children. The credit itself is on Form 1040 line 27a; the
+// worksheet that figures it is not filed and has no schema here.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// ScheduleEIC lists the qualifying children for the Earned Income Credit.
+message ScheduleEIC {
+  // QualifyingChild is one child's column on Schedule EIC.
+  message QualifyingChild {
+    // Line 1: Child's first name and last name.
+    string child_name = 1;
+
+    // Line 2: Child's social security number, or "Died" for a child born and
+    // died in the year without one.
+    string child_ssn = 2;
+
+    // Line 3: Child's year of birth (four digits).
+    int32 birth_year = 3;
+
+    // Line 4a: Whether the child was under age 24 at the end of the year, a
+    // student, and younger than the taxpayer (or spouse if filing jointly).
+    bool full_time_student_under_24 = 4;
+
+    // Line 4b: Whether the child was permanently and totally disabled during
+    // any part of the year.
+    bool permanently_and_totally_disabled = 5;
+
+    // Line 5: Child's relationship to the taxpayer, such as son, daughter,
+    // grandchild or eligible foster child.
+    string relationship_to_taxpayer = 6;
+
+    // Line 6: Number of months the child lived with the taxpayer in the United
+    // States during the year, at most 12.
+    int32 months_lived_with_taxpayer = 7;
+  }
+
+  // The tax year the schedule applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on return.
+  string filer_name = 2;
+
+  // Social security number of the filer.
+  string filer_tin = 3;
+
+  // Qualifying children, one per column. The form has three columns.
+  repeated QualifyingChild qualifying_children = 4;
+}

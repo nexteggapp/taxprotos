@@ -1,0 +1,298 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for Form 8962.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# The monthly rows (lines 12-23) and the policy allocations (lines 30-33) are
+# repeated messages and are not mapped here. Checkbox A, the married filing
+# separately exception, is printed as "A." rather than as a line and is not
+# mapped.
+
+form: "8962"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form8962"
+tax_years: 2025
+
+concepts {
+  concept: "tax_family_size"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+  }
+}
+
+concepts {
+  concept: "taxpayer_modified_agi"
+  years {
+    tax_year: 2025
+    irs_box: "2a"
+  }
+}
+
+concepts {
+  concept: "dependents_modified_agi"
+  years {
+    tax_year: 2025
+    irs_box: "2b"
+  }
+}
+
+concepts {
+  concept: "household_income"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+  }
+}
+
+concepts {
+  concept: "federal_poverty_line_amount"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+  }
+}
+
+concepts {
+  concept: "poverty_line_state_category"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+    note: "The checkbox (a, b or c) for the table used."
+  }
+}
+
+concepts {
+  concept: "household_income_fpl_percentage"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+  }
+}
+
+concepts {
+  concept: "applicable_figure"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+
+concepts {
+  concept: "annual_contribution_amount"
+  years {
+    tax_year: 2025
+    irs_box: "8a"
+  }
+}
+
+concepts {
+  concept: "monthly_contribution_amount"
+  years {
+    tax_year: 2025
+    irs_box: "8b"
+  }
+}
+
+concepts {
+  concept: "allocating_policy_or_alternative_marriage_calculation"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+  }
+}
+
+concepts {
+  concept: "uses_annual_calculation"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+  }
+}
+
+concepts {
+  concept: "annual_enrollment_premiums"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+    note: "Column (a)."
+  }
+}
+
+concepts {
+  concept: "annual_slcsp_premium"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+    note: "Column (b)."
+  }
+}
+
+concepts {
+  concept: "annual_contribution_column_c"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+    note: "Column (c)."
+  }
+}
+
+concepts {
+  concept: "annual_maximum_premium_assistance"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+    note: "Column (d)."
+  }
+}
+
+concepts {
+  concept: "annual_premium_tax_credit_allowed"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+    note: "Column (e)."
+  }
+}
+
+concepts {
+  concept: "annual_advance_ptc"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+    note: "Column (f)."
+  }
+}
+
+concepts {
+  concept: "total_premium_tax_credit"
+  years {
+    tax_year: 2025
+    irs_box: "24"
+  }
+}
+
+concepts {
+  concept: "total_advance_ptc"
+  years {
+    tax_year: 2025
+    irs_box: "25"
+  }
+}
+
+concepts {
+  concept: "net_premium_tax_credit"
+  years {
+    tax_year: 2025
+    irs_box: "26"
+  }
+}
+
+concepts {
+  concept: "excess_advance_ptc"
+  years {
+    tax_year: 2025
+    irs_box: "27"
+  }
+}
+
+concepts {
+  concept: "repayment_limitation"
+  years {
+    tax_year: 2025
+    irs_box: "28"
+  }
+}
+
+concepts {
+  concept: "excess_advance_ptc_repayment"
+  years {
+    tax_year: 2025
+    irs_box: "29"
+  }
+}
+
+concepts {
+  concept: "completed_shared_policy_allocations"
+  years {
+    tax_year: 2025
+    irs_box: "34"
+  }
+}
+
+concepts {
+  concept: "alternative_taxpayer_family_size"
+  years {
+    tax_year: 2025
+    irs_box: "35"
+    note: "Column (a)."
+  }
+}
+
+concepts {
+  concept: "alternative_taxpayer_monthly_contribution"
+  years {
+    tax_year: 2025
+    irs_box: "35"
+    note: "Column (b)."
+  }
+}
+
+concepts {
+  concept: "alternative_taxpayer_start_month"
+  years {
+    tax_year: 2025
+    irs_box: "35"
+    note: "Column (c)."
+  }
+}
+
+concepts {
+  concept: "alternative_taxpayer_stop_month"
+  years {
+    tax_year: 2025
+    irs_box: "35"
+    note: "Column (d)."
+  }
+}
+
+concepts {
+  concept: "alternative_spouse_family_size"
+  years {
+    tax_year: 2025
+    irs_box: "36"
+    note: "Column (a)."
+  }
+}
+
+concepts {
+  concept: "alternative_spouse_monthly_contribution"
+  years {
+    tax_year: 2025
+    irs_box: "36"
+    note: "Column (b)."
+  }
+}
+
+concepts {
+  concept: "alternative_spouse_start_month"
+  years {
+    tax_year: 2025
+    irs_box: "36"
+    note: "Column (c)."
+  }
+}
+
+concepts {
+  concept: "alternative_spouse_stop_month"
+  years {
+    tax_year: 2025
+    irs_box: "36"
+    note: "Column (d)."
+  }
+}

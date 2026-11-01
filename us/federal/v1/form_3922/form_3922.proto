@@ -1,0 +1,69 @@
+// Form 3922: Transfer of Stock Acquired Through an Employee Stock Purchase Plan Under Section 423(c).
+//
+// Every corporation that records a first transfer of legal title of shares
+// acquired by an employee under an employee stock purchase plan (ESPP)
+// described in IRC Section 423(c) where the exercise price was less than 100%
+// of the grant-date fair market value (or not fixed/determinable at grant)
+// files Form 3922.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+import "taxprotos/common/v1/quantity.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_3922;form3922";
+
+// Form 3922 reports the transfer of stock acquired through an Employee Stock Purchase Plan (ESPP) under Section 423(c).
+message Form3922 {
+  option (common.v1.fdx_entity) = "Tax3922";
+  option (common.v1.fdx_version) = "5.0";
+
+  // The tax year this form reports. Four digits, such as 2025.
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  // The form is marked CORRECTED, which means it replaces one already sent.
+  bool corrected = 2 [(common.v1.fdx_field) = "corrected"];
+
+  // The corporation whose stock was transferred, printed as CORPORATION'S.
+  common.v1.Party corporation = 3 [
+    (common.v1.fdx_field) = "corporation",
+    (common.v1.fdx_deviation) = "Party message rather than flat fields"
+  ];
+
+  // The employee who acquired and transferred the ESPP stock, printed as EMPLOYEE'S.
+  common.v1.Party employee = 4 [
+    (common.v1.fdx_field) = "employee",
+    (common.v1.fdx_deviation) = "Party message rather than flat fields"
+  ];
+
+  // The account number or plan identifier, where the form prints one.
+  string account_number = 5 [(common.v1.fdx_field) = "accountNumber"];
+
+  // Date the option (offering period right) was granted, box 1.
+  common.v1.Date option_grant_date = 6 [(common.v1.fdx_field) = "optionGrantDate"];
+
+  // Date the option was exercised (purchase date), box 2.
+  common.v1.Date option_exercise_date = 7 [(common.v1.fdx_field) = "optionExerciseDate"];
+
+  // Fair market value per share on the grant date, box 3.
+  common.v1.Money fair_market_value_per_share_on_grant_date = 8 [(common.v1.fdx_field) = "grantMarketValue"];
+
+  // Fair market value per share on the exercise (purchase) date, box 4.
+  common.v1.Money fair_market_value_per_share_on_exercise_date = 9 [(common.v1.fdx_field) = "exerciseMarketValue"];
+
+  // Exercise (purchase) price paid per share, box 5.
+  common.v1.Money exercise_price_paid_per_share = 10 [(common.v1.fdx_field) = "exercisePrice"];
+
+  // Number of shares transferred, box 6.
+  common.v1.Quantity number_of_shares_transferred = 11 [(common.v1.fdx_field) = "numberOfShares"];
+
+  // Date legal title of the shares was transferred by the employee, box 7.
+  common.v1.Date date_legal_title_transferred = 12 [(common.v1.fdx_field) = "titleTransferDate"];
+
+  // Exercise price per share determined as if the option was exercised on the option grant date (reported when exercise price was not fixed or determinable on grant date), box 8.
+  common.v1.Money exercise_price_determined_as_of_grant_date = 13 [(common.v1.fdx_field) = "grantDateExercisePrice"];
+}

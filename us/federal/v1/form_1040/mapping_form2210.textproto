@@ -1,0 +1,161 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for 2210.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "2210"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form2210"
+tax_years: 2025
+
+concepts {
+  concept: "current_year_tax_after_credits"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+    note: "Part I"
+  }
+}
+
+concepts {
+  concept: "other_taxes"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+    note: "Part I"
+  }
+}
+
+concepts {
+  concept: "refundable_credits"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+    note: "Part I"
+  }
+}
+
+concepts {
+  concept: "total_current_year_tax"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+    note: "Part I"
+  }
+}
+
+concepts {
+  concept: "current_year_safe_harbor_tax"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+    note: "Part I"
+  }
+}
+
+concepts {
+  concept: "total_tax_withheld"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+    note: "Part I"
+  }
+}
+
+concepts {
+  concept: "net_tax_after_withholding"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+    note: "Part I"
+  }
+}
+
+concepts {
+  concept: "prior_year_safe_harbor_tax"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+    note: "Part I"
+  }
+}
+
+concepts {
+  concept: "required_annual_payment"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+    note: "Part I"
+  }
+}
+
+concepts {
+  concept: "required_payment_exceeds_withholding"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+    note: "Part I, the question after line 9"
+  }
+}
+
+concepts {
+  concept: "requests_full_waiver"
+  years {
+    tax_year: 2025
+    irs_box: "A"
+    note: "Part II"
+  }
+}
+
+concepts {
+  concept: "requests_partial_waiver"
+  years {
+    tax_year: 2025
+    irs_box: "B"
+    note: "Part II"
+  }
+}
+
+concepts {
+  concept: "uses_annualized_income_method"
+  years {
+    tax_year: 2025
+    irs_box: "C"
+    note: "Part II"
+  }
+}
+
+concepts {
+  concept: "treats_withholding_as_paid_when_withheld"
+  years {
+    tax_year: 2025
+    irs_box: "D"
+    note: "Part II"
+  }
+}
+
+concepts {
+  concept: "joint_return_in_only_one_year"
+  years {
+    tax_year: 2025
+    irs_box: "E"
+    note: "Part II"
+  }
+}
+
+concepts {
+  concept: "estimated_tax_penalty"
+  years {
+    tax_year: 2025
+    irs_box: "19"
+    note: "Part III"
+  }
+}

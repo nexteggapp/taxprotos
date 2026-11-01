@@ -1,0 +1,274 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for 1040 Schedule 8812.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Line 15 is "Reserved for future use" on the 2025 form and has no field.
+
+form: "1040 Schedule 8812"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Schedule8812"
+tax_years: 2025
+
+concepts {
+  concept: "adjusted_gross_income"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+  }
+}
+
+concepts {
+  concept: "excluded_puerto_rico_income"
+  years {
+    tax_year: 2025
+    irs_box: "2a"
+  }
+}
+
+concepts {
+  concept: "foreign_earned_income_exclusion"
+  years {
+    tax_year: 2025
+    irs_box: "2b"
+  }
+}
+
+concepts {
+  concept: "american_samoa_excluded_income"
+  years {
+    tax_year: 2025
+    irs_box: "2c"
+  }
+}
+
+concepts {
+  concept: "total_excluded_income"
+  years {
+    tax_year: 2025
+    irs_box: "2d"
+  }
+}
+
+concepts {
+  concept: "modified_adjusted_gross_income"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+  }
+}
+
+concepts {
+  concept: "qualifying_children_count"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+  }
+}
+
+concepts {
+  concept: "initial_child_tax_credit"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+  }
+}
+
+concepts {
+  concept: "other_dependents_count"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+  }
+}
+
+concepts {
+  concept: "initial_other_dependent_credit"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+
+concepts {
+  concept: "combined_initial_credits"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+  }
+}
+
+concepts {
+  concept: "phaseout_threshold"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+  }
+}
+
+concepts {
+  concept: "excess_modified_agi"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+  }
+}
+
+concepts {
+  concept: "phaseout_reduction"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+  }
+}
+
+concepts {
+  concept: "credit_after_phaseout"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+  }
+}
+
+concepts {
+  concept: "tax_liability_credit_limit"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+  }
+}
+
+concepts {
+  concept: "nonrefundable_child_and_dependent_credit"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+  }
+}
+
+concepts {
+  concept: "unused_credit_after_limit"
+  years {
+    tax_year: 2025
+    irs_box: "16a"
+  }
+}
+
+concepts {
+  concept: "maximum_refundable_credit_for_children"
+  years {
+    tax_year: 2025
+    irs_box: "16b"
+  }
+}
+
+concepts {
+  concept: "tentative_additional_child_tax_credit"
+  years {
+    tax_year: 2025
+    irs_box: "17"
+  }
+}
+
+concepts {
+  concept: "earned_income"
+  years {
+    tax_year: 2025
+    irs_box: "18a"
+  }
+}
+
+concepts {
+  concept: "nontaxable_combat_pay"
+  years {
+    tax_year: 2025
+    irs_box: "18b"
+  }
+}
+
+concepts {
+  concept: "earned_income_exceeds_threshold"
+  years {
+    tax_year: 2025
+    irs_box: "19"
+    note: "The yes/no question."
+  }
+}
+
+concepts {
+  concept: "earned_income_above_threshold"
+  years {
+    tax_year: 2025
+    irs_box: "19"
+    note: "The amount entered on a yes."
+  }
+}
+
+concepts {
+  concept: "earned_income_credit_amount"
+  years {
+    tax_year: 2025
+    irs_box: "20"
+  }
+}
+
+concepts {
+  concept: "withheld_fica_taxes"
+  years {
+    tax_year: 2025
+    irs_box: "21"
+  }
+}
+
+concepts {
+  concept: "self_employment_and_other_payroll_taxes"
+  years {
+    tax_year: 2025
+    irs_box: "22"
+  }
+}
+
+concepts {
+  concept: "total_payroll_taxes"
+  years {
+    tax_year: 2025
+    irs_box: "23"
+  }
+}
+
+concepts {
+  concept: "earned_income_credit_and_excess_ss_withheld"
+  years {
+    tax_year: 2025
+    irs_box: "24"
+  }
+}
+
+concepts {
+  concept: "net_payroll_tax_limit"
+  years {
+    tax_year: 2025
+    irs_box: "25"
+  }
+}
+
+concepts {
+  concept: "larger_of_earned_income_or_payroll_tax_limit"
+  years {
+    tax_year: 2025
+    irs_box: "26"
+  }
+}
+
+concepts {
+  concept: "additional_child_tax_credit"
+  years {
+    tax_year: 2025
+    irs_box: "27"
+  }
+}

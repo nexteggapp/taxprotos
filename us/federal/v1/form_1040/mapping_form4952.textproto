@@ -1,0 +1,137 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for 4952.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the IRS publishes. The coverage test beside this file checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "4952"
+message_name: "nexteggapp.taxprotos.us.federal.v1.Form4952"
+tax_years: 2025
+
+concepts {
+  concept: "current_year_investment_interest_expense"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+  }
+}
+
+concepts {
+  concept: "prior_year_disallowed_investment_interest"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+  }
+}
+
+concepts {
+  concept: "total_investment_interest_expense"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+  }
+}
+
+concepts {
+  concept: "gross_investment_income"
+  years {
+    tax_year: 2025
+    irs_box: "4a"
+  }
+}
+
+concepts {
+  concept: "qualified_dividends_in_gross_investment_income"
+  years {
+    tax_year: 2025
+    irs_box: "4b"
+  }
+}
+
+concepts {
+  concept: "gross_investment_income_less_qualified_dividends"
+  years {
+    tax_year: 2025
+    irs_box: "4c"
+  }
+}
+
+concepts {
+  concept: "net_gain_from_investment_property_dispositions"
+  years {
+    tax_year: 2025
+    irs_box: "4d"
+  }
+}
+
+concepts {
+  concept: "net_capital_gain_from_investment_property"
+  years {
+    tax_year: 2025
+    irs_box: "4e"
+  }
+}
+
+concepts {
+  concept: "investment_gain_less_net_capital_gain"
+  years {
+    tax_year: 2025
+    irs_box: "4f"
+  }
+}
+
+concepts {
+  concept: "elected_qualified_dividends_and_capital_gain"
+  years {
+    tax_year: 2025
+    irs_box: "4g"
+  }
+}
+
+concepts {
+  concept: "total_investment_income"
+  years {
+    tax_year: 2025
+    irs_box: "4h"
+  }
+}
+
+concepts {
+  concept: "investment_expenses"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+  }
+}
+
+concepts {
+  concept: "net_investment_income"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+  }
+}
+
+concepts {
+  concept: "disallowed_investment_interest_carryforward"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+  }
+}
+
+concepts {
+  concept: "investment_interest_expense_deduction"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+  }
+}
