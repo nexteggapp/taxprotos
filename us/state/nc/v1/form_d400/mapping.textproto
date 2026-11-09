@@ -1,0 +1,170 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form D-400 calls each concept, per tax year.
+#
+# Lines come from the 2025 Form D-400 as the North Carolina Department of
+# Revenue publishes it. There are no amount codes: IRS Publication 1220 covers
+# the information returns the IRS receives electronically, and a state return is
+# not one of them.
+#
+# The form prints its line numbers with a trailing full stop, as Oregon's does,
+# and prints the parts of lines 20, 21 and 26 as "a." to "e." beside the number.
+# A part that never appears as, say, "21c" is mapped to its line with a note
+# saying which part it is.
+
+form: "D-400"
+message_name: "nexteggapp.taxprotos.us.state.nc.v1.FormD400"
+tax_years: 2025
+
+concepts {
+  concept: "filing_status"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+    note: "Circles 1 to 5: single, married filing jointly, married filing separately, head of household, qualifying widow(er)."
+  }
+}
+concepts {
+  concept: "federal_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "6" note: "Federal Form 1040 line 11a." }
+}
+concepts {
+  concept: "total_additions"
+  years { tax_year: 2025 irs_box: "7" note: "From Schedule S, Part A, line 16." }
+}
+concepts {
+  concept: "income_after_additions"
+  years { tax_year: 2025 irs_box: "8" }
+}
+concepts {
+  concept: "total_deductions_from_income"
+  years { tax_year: 2025 irs_box: "9" note: "From Schedule S, Part B, line 41." }
+}
+concepts {
+  concept: "qualifying_children"
+  years { tax_year: 2025 irs_box: "10a" }
+}
+concepts {
+  concept: "child_deduction"
+  years { tax_year: 2025 irs_box: "10b" }
+}
+concepts {
+  concept: "deduction"
+  years { tax_year: 2025 irs_box: "11" note: "The amount." }
+}
+concepts {
+  concept: "itemized"
+  years { tax_year: 2025 irs_box: "11" note: "Which of the two circles is filled in." }
+}
+concepts {
+  concept: "total_deductions"
+  years { tax_year: 2025 irs_box: "12a" }
+}
+concepts {
+  concept: "income_after_deductions"
+  years { tax_year: 2025 irs_box: "12b" }
+}
+concepts {
+  concept: "taxable_income"
+  years { tax_year: 2025 irs_box: "14" }
+}
+concepts {
+  concept: "income_tax"
+  years { tax_year: 2025 irs_box: "15" note: "Line 14 at 4.25%." }
+}
+concepts {
+  concept: "tax_credits"
+  years { tax_year: 2025 irs_box: "16" note: "From Form D-400TC, Part 3, line 20." }
+}
+concepts {
+  concept: "tax_after_credits"
+  years { tax_year: 2025 irs_box: "17" }
+}
+concepts {
+  concept: "consumer_use_tax"
+  years { tax_year: 2025 irs_box: "18" }
+}
+concepts {
+  concept: "total_tax"
+  years { tax_year: 2025 irs_box: "19" }
+}
+concepts {
+  concept: "taxpayer_tax_withheld"
+  years { tax_year: 2025 irs_box: "20a" }
+}
+concepts {
+  concept: "spouse_tax_withheld"
+  years { tax_year: 2025 irs_box: "20" note: "Line 20b." }
+}
+concepts {
+  concept: "estimated_tax_payments"
+  years { tax_year: 2025 irs_box: "21" note: "Line 21a." }
+}
+concepts {
+  concept: "extension_payment"
+  years { tax_year: 2025 irs_box: "21" note: "Line 21b." }
+}
+concepts {
+  concept: "partnership_payments"
+  years { tax_year: 2025 irs_box: "21c" }
+}
+concepts {
+  concept: "s_corporation_payments"
+  years { tax_year: 2025 irs_box: "21" note: "Line 21d." }
+}
+concepts {
+  concept: "total_payments"
+  years { tax_year: 2025 irs_box: "23" }
+}
+concepts {
+  concept: "tax_due"
+  years { tax_year: 2025 irs_box: "26a" }
+}
+concepts {
+  concept: "penalties"
+  years { tax_year: 2025 irs_box: "26b" }
+}
+concepts {
+  concept: "interest"
+  years { tax_year: 2025 irs_box: "26c" }
+}
+concepts {
+  concept: "total_penalties_and_interest"
+  years { tax_year: 2025 irs_box: "26d" }
+}
+concepts {
+  concept: "underpayment_of_estimated_tax_interest"
+  years { tax_year: 2025 irs_box: "26e" }
+}
+concepts {
+  concept: "amount_due"
+  years { tax_year: 2025 irs_box: "27" }
+}
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "28" }
+}
+concepts {
+  concept: "applied_to_next_year"
+  years { tax_year: 2025 irs_box: "29" }
+}
+concepts {
+  concept: "wildlife_fund_contribution"
+  years { tax_year: 2025 irs_box: "30" }
+}
+concepts {
+  concept: "education_endowment_fund_contribution"
+  years { tax_year: 2025 irs_box: "31" }
+}
+concepts {
+  concept: "cancer_control_program_contribution"
+  years { tax_year: 2025 irs_box: "32" }
+}
+concepts {
+  concept: "total_applied_and_contributed"
+  years { tax_year: 2025 irs_box: "33" }
+}
+concepts {
+  concept: "refund"
+  years { tax_year: 2025 irs_box: "34" }
+}
