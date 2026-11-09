@@ -1,0 +1,120 @@
+// Form IL-1040, Illinois Individual Income Tax Return.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.il.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/il/v1/form_il1040;formil1040";
+
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+  FILING_STATUS_WIDOW = 5;
+}
+
+message FormIL1040 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // Exemption counts.
+  int32 exemptions_taxpayer = 5 [(common.v1.fdx_absent) = true];
+  int32 exemptions_spouse = 6 [(common.v1.fdx_absent) = true];
+  int32 exemptions_dependents = 7 [(common.v1.fdx_absent) = true];
+  int32 exemptions_age_taxpayer = 8 [(common.v1.fdx_absent) = true];
+  int32 exemptions_age_spouse = 9 [(common.v1.fdx_absent) = true];
+  int32 exemptions_blind_taxpayer = 10 [(common.v1.fdx_absent) = true];
+  int32 exemptions_blind_spouse = 11 [(common.v1.fdx_absent) = true];
+  int32 total_exemptions = 12 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money exemption_allowance = 13 [(common.v1.fdx_absent) = true];
+
+  // Line 1: Federal adjusted gross income.
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 14 [(common.v1.fdx_absent) = true];
+
+  // Line 2: Federally tax-exempt interest and dividend income.
+  nexteggapp.taxprotos.common.v1.Money federally_tax_exempt_interest = 15 [(common.v1.fdx_absent) = true];
+
+  // Line 3: Other additions from Schedule M.
+  nexteggapp.taxprotos.common.v1.Money other_additions = 16 [(common.v1.fdx_absent) = true];
+
+  // Line 4: Total income.
+  nexteggapp.taxprotos.common.v1.Money total_income = 17 [(common.v1.fdx_absent) = true];
+
+  // Line 5: Social Security benefits and certain retirement plans.
+  nexteggapp.taxprotos.common.v1.Money social_security_and_retirement = 18 [(common.v1.fdx_absent) = true];
+
+  // Line 6: Illinois Income Tax overpayment included in federal AGI.
+  nexteggapp.taxprotos.common.v1.Money illinois_refund_in_federal_agi = 19 [(common.v1.fdx_absent) = true];
+
+  // Line 7: Other subtractions from Schedule M.
+  nexteggapp.taxprotos.common.v1.Money other_subtractions = 20 [(common.v1.fdx_absent) = true];
+
+  // Line 8: Total subtractions.
+  nexteggapp.taxprotos.common.v1.Money total_subtractions = 21 [(common.v1.fdx_absent) = true];
+
+  // Line 9: Base income.
+  nexteggapp.taxprotos.common.v1.Money base_income = 22 [(common.v1.fdx_absent) = true];
+
+  // Line 10: Exemption allowance (from Line 13).
+  nexteggapp.taxprotos.common.v1.Money total_exemption_amount = 23 [(common.v1.fdx_absent) = true];
+
+  // Line 11: Net income.
+  nexteggapp.taxprotos.common.v1.Money net_income = 24 [(common.v1.fdx_absent) = true];
+
+  // Line 12: Tax amount.
+  nexteggapp.taxprotos.common.v1.Money tax_amount = 25 [(common.v1.fdx_absent) = true];
+
+  // Line 13: Recapture of investment tax credits.
+  nexteggapp.taxprotos.common.v1.Money recapture_of_credits = 26 [(common.v1.fdx_absent) = true];
+
+  // Line 14: Total tax.
+  nexteggapp.taxprotos.common.v1.Money total_tax = 27 [(common.v1.fdx_absent) = true];
+
+  // Line 15: Property tax credit.
+  nexteggapp.taxprotos.common.v1.Money property_tax_credit = 28 [(common.v1.fdx_absent) = true];
+
+  // Line 16: Education expense credit.
+  nexteggapp.taxprotos.common.v1.Money education_expense_credit = 29 [(common.v1.fdx_absent) = true];
+
+  // Line 17: Earned income credit.
+  nexteggapp.taxprotos.common.v1.Money earned_income_credit = 30 [(common.v1.fdx_absent) = true];
+
+  // Line 18: Other nonrefundable credits from Schedule CR.
+  nexteggapp.taxprotos.common.v1.Money other_credits = 31 [(common.v1.fdx_absent) = true];
+
+  // Line 19: Total credits.
+  nexteggapp.taxprotos.common.v1.Money total_credits = 32 [(common.v1.fdx_absent) = true];
+
+  // Line 20: Net tax after nonrefundable credits.
+  nexteggapp.taxprotos.common.v1.Money net_tax = 33 [(common.v1.fdx_absent) = true];
+
+  // Line 25: Illinois income tax withheld.
+  nexteggapp.taxprotos.common.v1.Money illinois_tax_withheld = 34 [(common.v1.fdx_absent) = true];
+
+  // Line 26: Estimated tax payments.
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 35 [(common.v1.fdx_absent) = true];
+
+  // Line 27: Pass-through entity payments.
+  nexteggapp.taxprotos.common.v1.Money pass_through_entity_payments = 36 [(common.v1.fdx_absent) = true];
+
+  // Line 28: Total payments and refundable credits.
+  nexteggapp.taxprotos.common.v1.Money total_payments = 37 [(common.v1.fdx_absent) = true];
+
+  // Line 29: Overpayment.
+  nexteggapp.taxprotos.common.v1.Money overpayment = 38 [(common.v1.fdx_absent) = true];
+
+  // Line 30: Tax due.
+  nexteggapp.taxprotos.common.v1.Money tax_due = 39 [(common.v1.fdx_absent) = true];
+}

@@ -1,0 +1,15 @@
+# gazelle:ignore
+
+load("@protobuf//bazel:proto_library.bzl", "proto_library")
+
+proto_library(
+    name = "form_dr0104_proto",
+    import_prefix = "taxprotos",
+    srcs = [
+        "form_dr0104.proto",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//common/v1:common_proto",
+    ],
+)

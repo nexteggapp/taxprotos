@@ -93,8 +93,12 @@ import "taxprotos/us/federal/v1/form_w2g/form_w2g.proto";
 import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1041.proto";
 import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1065.proto";
 import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1120_s.proto";
+import "taxprotos/us/state/az/v1/form_140/form_140.proto";
 import "taxprotos/us/state/ca/v1/form_540/form_540.proto";
 import "taxprotos/us/state/ca/v1/form_540/schedule_ca.proto";
+import "taxprotos/us/state/co/v1/form_dr0104/form_dr0104.proto";
+import "taxprotos/us/state/il/v1/form_il1040/form_il1040.proto";
+import "taxprotos/us/state/nc/v1/form_d400/form_d400.proto";
 import "taxprotos/us/state/or/v1/form_or40/form_or40.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_asc.proto";
@@ -228,6 +232,18 @@ message Document {
     // Form 1040-X: an amended federal return. It is a filing of its own, made
     // after the original, and a year can have more than one.
     us.federal.v1.Form1040X form_1040_x = 47;
+
+    // A filed Illinois return.
+    IllinoisReturn illinois_return = 48;
+
+    // A filed North Carolina return.
+    NorthCarolinaReturn north_carolina_return = 49;
+
+    // A filed Colorado return.
+    ColoradoReturn colorado_return = 50;
+
+    // A filed Arizona return.
+    ArizonaReturn arizona_return = 51;
   }
 }
 
@@ -686,4 +702,28 @@ message OregonReturn {
 
   // Schedule OR-ASC, other additions, subtractions and credits.
   us.state.or.v1.ScheduleORASC schedule_or_asc = 3;
+}
+
+// An Illinois resident return: Form IL-1040.
+message IllinoisReturn {
+  // Form IL-1040.
+  us.state.il.v1.FormIL1040 form_il1040 = 1;
+}
+
+// A North Carolina resident return: Form D-400.
+message NorthCarolinaReturn {
+  // Form D-400.
+  us.state.nc.v1.FormD400 form_d400 = 1;
+}
+
+// A Colorado resident return: Form DR 0104.
+message ColoradoReturn {
+  // Form DR 0104.
+  us.state.co.v1.FormDR0104 form_dr0104 = 1;
+}
+
+// An Arizona resident return: Form 140.
+message ArizonaReturn {
+  // Form 140.
+  us.state.az.v1.Form140 form_140 = 1;
 }

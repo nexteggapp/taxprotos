@@ -376,6 +376,18 @@ message PriorYearReturn {
 
     // An Oregon return.
     OregonReturn oregon = 13;
+
+    // An Illinois return.
+    IllinoisReturn illinois = 18;
+
+    // A North Carolina return.
+    NorthCarolinaReturn north_carolina = 19;
+
+    // A Colorado return.
+    ColoradoReturn colorado = 20;
+
+    // An Arizona return.
+    ArizonaReturn arizona = 21;
   }
 
   // Where the return came from, when it is here.

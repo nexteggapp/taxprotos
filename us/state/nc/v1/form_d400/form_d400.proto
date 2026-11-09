@@ -1,0 +1,85 @@
+// Form D-400, North Carolina Individual Income Tax Return.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.nc.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/nc/v1/form_d400;formd400";
+
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+  FILING_STATUS_SURVIVING_SPOUSE = 5;
+}
+
+message FormD400 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // Line 6: Federal adjusted gross income.
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 5 [(common.v1.fdx_absent) = true];
+
+  // Line 7: Additions to federal adjusted gross income.
+  nexteggapp.taxprotos.common.v1.Money total_additions = 6 [(common.v1.fdx_absent) = true];
+
+  // Line 8: Subtractions from federal adjusted gross income.
+  nexteggapp.taxprotos.common.v1.Money total_subtractions = 7 [(common.v1.fdx_absent) = true];
+
+  // Line 9: North Carolina adjusted gross income.
+  nexteggapp.taxprotos.common.v1.Money north_carolina_adjusted_gross_income = 8 [(common.v1.fdx_absent) = true];
+
+  // Line 10a: North Carolina standard deduction or itemized deductions.
+  nexteggapp.taxprotos.common.v1.Money deduction = 9 [(common.v1.fdx_absent) = true];
+
+  // Line 10b: Child deduction from Form D-400 Schedule S.
+  nexteggapp.taxprotos.common.v1.Money child_deduction = 10 [(common.v1.fdx_absent) = true];
+
+  // Line 11: Total deductions.
+  nexteggapp.taxprotos.common.v1.Money total_deductions = 11 [(common.v1.fdx_absent) = true];
+
+  // Line 12: North Carolina taxable income.
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 12 [(common.v1.fdx_absent) = true];
+
+  // Line 13: North Carolina income tax.
+  nexteggapp.taxprotos.common.v1.Money income_tax = 13 [(common.v1.fdx_absent) = true];
+
+  // Line 14: Tax credits from Form D-400TC.
+  nexteggapp.taxprotos.common.v1.Money tax_credits = 14 [(common.v1.fdx_absent) = true];
+
+  // Line 15: Net tax.
+  nexteggapp.taxprotos.common.v1.Money net_tax = 15 [(common.v1.fdx_absent) = true];
+
+  // Line 16: Use tax.
+  nexteggapp.taxprotos.common.v1.Money use_tax = 16 [(common.v1.fdx_absent) = true];
+
+  // Line 17: Total tax.
+  nexteggapp.taxprotos.common.v1.Money total_tax = 17 [(common.v1.fdx_absent) = true];
+
+  // Line 18: North Carolina income tax withheld.
+  nexteggapp.taxprotos.common.v1.Money north_carolina_tax_withheld = 18 [(common.v1.fdx_absent) = true];
+
+  // Line 19: Other tax payments and credits.
+  nexteggapp.taxprotos.common.v1.Money other_tax_payments = 19 [(common.v1.fdx_absent) = true];
+
+  // Line 20: Total payments.
+  nexteggapp.taxprotos.common.v1.Money total_payments = 20 [(common.v1.fdx_absent) = true];
+
+  // Line 21: Overpayment.
+  nexteggapp.taxprotos.common.v1.Money overpayment = 21 [(common.v1.fdx_absent) = true];
+
+  // Line 22: Tax due.
+  nexteggapp.taxprotos.common.v1.Money tax_due = 22 [(common.v1.fdx_absent) = true];
+}
