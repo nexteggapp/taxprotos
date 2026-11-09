@@ -1,4 +1,24 @@
 // Form 140, Arizona Resident Personal Income Tax Return.
+//
+// A part-year resident files Form 140PY and a non-resident Form 140NR. Neither
+// is modelled here. Nor is Form 140A or 140EZ, the short forms, which a filer
+// may use instead of this one but which carry a subset of its lines.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form 140; testdata holds
+// the text extracted from the published PDF and coverage_test.go asserts every
+// line a mapping claims appears on it.
+//
+// # Arizona starts from federal adjusted gross income
+//
+// Lines 12 to 37 adjust federal AGI, and lines 38 to 41 then subtract
+// Arizona's exemptions for age, blindness and qualifying parents before the
+// result is called Arizona adjusted gross income on line 42. So line 42 is
+// after exemptions, unlike the federal figure of the same name.
+//
+// # One rate
+//
+// Arizona taxes all of its taxable income at 2.5% (line 46).
 syntax = "proto3";
 
 package nexteggapp.taxprotos.us.state.az.v1;
@@ -9,6 +29,10 @@ import "taxprotos/common/v1/party.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/us/state/az/v1/form_140;form140";
 
+// FilingStatus is the status the return is filed under.
+//
+// Arizona has no qualifying surviving spouse status. A filer who is one
+// federally files as head of household here.
 enum FilingStatus {
   FILING_STATUS_UNSPECIFIED = 0;
   FILING_STATUS_SINGLE = 1;
@@ -17,6 +41,7 @@ enum FilingStatus {
   FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
 }
 
+// Form140 is what a Form 140 states.
 message Form140 {
   option (common.v1.fdx_entity) = "";
   option (common.v1.fdx_version) = "5.0";
@@ -28,56 +53,120 @@ message Form140 {
 
   FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
 
-  // Exemptions.
-  int32 age_65_and_older = 5 [(common.v1.fdx_absent) = true];
-  int32 blind_exemptions = 6 [(common.v1.fdx_absent) = true];
-  int32 dependents = 7 [(common.v1.fdx_absent) = true];
+  // Exemption counts. The age and blindness counts are of the filer and
+  // spouse; each is priced on lines 38 and 39.
+  int32 age_65_or_over = 5 [(common.v1.fdx_absent) = true];
+  int32 blind = 6 [(common.v1.fdx_absent) = true];
 
-  // Line 12: Federal adjusted gross income.
-  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 8 [(common.v1.fdx_absent) = true];
+  // Dependents, which carry the dependent tax credit on line 49 rather than an
+  // exemption.
+  int32 dependents_under_17 = 7 [(common.v1.fdx_absent) = true];
+  int32 dependents_17_and_over = 8 [(common.v1.fdx_absent) = true];
 
-  // Line 19: Total additions to income.
-  nexteggapp.taxprotos.common.v1.Money total_additions = 9 [(common.v1.fdx_absent) = true];
+  // Parents and grandparents the filer supports, each worth a $10,000
+  // exemption on line 41.
+  int32 qualifying_parents = 9 [(common.v1.fdx_absent) = true];
 
-  // Line 20: Total income: line 12 plus line 19.
-  nexteggapp.taxprotos.common.v1.Money total_income = 10 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 10 [(common.v1.fdx_absent) = true];
 
-  // Line 36: Total subtractions from income.
-  nexteggapp.taxprotos.common.v1.Money total_subtractions = 11 [(common.v1.fdx_absent) = true];
+  // Income reported on Form 140-SBI, which a filer may elect to tax
+  // separately. It comes out of federal AGI here.
+  nexteggapp.taxprotos.common.v1.Money small_business_income = 11 [(common.v1.fdx_absent) = true];
 
-  // Line 37: Arizona adjusted gross income: line 20 minus line 36.
-  nexteggapp.taxprotos.common.v1.Money arizona_adjusted_gross_income = 12 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money modified_federal_adjusted_gross_income = 12 [(common.v1.fdx_absent) = true];
 
-  // Line 38: Standard or itemized deductions.
-  nexteggapp.taxprotos.common.v1.Money deductions = 13 [(common.v1.fdx_absent) = true];
+  // Additions.
+  nexteggapp.taxprotos.common.v1.Money non_arizona_municipal_interest = 13 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money partnership_income_addition = 14 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_federal_depreciation = 15 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money other_additions = 16 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money income_after_additions = 17 [(common.v1.fdx_absent) = true];
 
-  // Line 39: Personal and dependent exemption allowances.
-  nexteggapp.taxprotos.common.v1.Money total_exemptions = 14 [(common.v1.fdx_absent) = true];
+  // Capital gains, entered so that line 24 can take 25% of the long-term gain
+  // on assets acquired after 2011.
+  nexteggapp.taxprotos.common.v1.Money net_capital_gain = 18 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money net_short_term_capital_gain = 19 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money net_long_term_capital_gain = 20 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money long_term_capital_gain_after_2011 = 21 [(common.v1.fdx_absent) = true];
 
-  // Line 41: Arizona taxable income.
-  nexteggapp.taxprotos.common.v1.Money taxable_income = 15 [(common.v1.fdx_absent) = true];
+  // Subtractions.
+  nexteggapp.taxprotos.common.v1.Money long_term_capital_gain_subtraction = 22 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money qualified_small_business_capital_gain = 23 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money recalculated_arizona_depreciation = 24 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money partnership_income_subtraction = 25 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money us_obligations_interest = 26 [(common.v1.fdx_absent) = true];
 
-  // Line 42: Tax amount.
-  nexteggapp.taxprotos.common.v1.Money tax_amount = 16 [(common.v1.fdx_absent) = true];
+  // Up to $2,500 per filer.
+  nexteggapp.taxprotos.common.v1.Money government_pension_exclusion = 27 [(common.v1.fdx_absent) = true];
 
-  // Line 45: Nonrefundable credits.
-  nexteggapp.taxprotos.common.v1.Money total_nonrefundable_credits = 17 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money uniformed_services_retirement_exclusion = 28 [(common.v1.fdx_absent) = true];
 
-  // Line 46: Net tax: line 42 minus line 45.
-  nexteggapp.taxprotos.common.v1.Money net_tax = 18 [(common.v1.fdx_absent) = true];
+  // The taxable part of social security and railroad retirement benefits,
+  // which Arizona does not tax.
+  nexteggapp.taxprotos.common.v1.Money social_security_benefits = 29 [(common.v1.fdx_absent) = true];
 
-  // Line 47: Arizona income tax withheld.
-  nexteggapp.taxprotos.common.v1.Money arizona_tax_withheld = 19 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money american_indian_wages = 30 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money armed_forces_pay = 31 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money net_operating_loss_adjustment = 32 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money college_savings_plan_contributions = 33 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money able_account_contributions = 34 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_529_contributions = 35 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money income_after_subtractions = 36 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money other_subtractions = 37 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money income_after_other_subtractions = 38 [(common.v1.fdx_absent) = true];
 
-  // Line 48: Estimated tax payments.
-  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 20 [(common.v1.fdx_absent) = true];
+  // Exemptions, as amounts.
+  nexteggapp.taxprotos.common.v1.Money age_65_exemption = 39 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money blind_exemption = 40 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money other_exemptions = 41 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money qualifying_parents_exemption = 42 [(common.v1.fdx_absent) = true];
 
-  // Line 50: Total payments and refundable credits.
-  nexteggapp.taxprotos.common.v1.Money total_payments = 21 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money arizona_adjusted_gross_income = 43 [(common.v1.fdx_absent) = true];
 
-  // Line 51: Overpayment.
-  nexteggapp.taxprotos.common.v1.Money overpayment = 22 [(common.v1.fdx_absent) = true];
+  // The standard or itemized deduction, whichever box 43S or 43I says.
+  nexteggapp.taxprotos.common.v1.Money deduction = 44 [(common.v1.fdx_absent) = true];
+  bool itemized = 45 [(common.v1.fdx_absent) = true];
 
-  // Line 52: Tax due.
-  nexteggapp.taxprotos.common.v1.Money tax_due = 23 [(common.v1.fdx_absent) = true];
+  // An increase to the standard deduction for charitable gifts, available
+  // only to a filer who takes the standard deduction.
+  nexteggapp.taxprotos.common.v1.Money charitable_standard_deduction_increase = 46 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 47 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax = 48 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money credit_recapture = 49 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax_before_credits = 50 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money dependent_tax_credit = 51 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money family_income_tax_credit = 52 [(common.v1.fdx_absent) = true];
+
+  // From Form 301, which totals the nonrefundable credits.
+  nexteggapp.taxprotos.common.v1.Money other_nonrefundable_credits = 53 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_after_credits = 54 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money arizona_tax_withheld = 55 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 56 [(common.v1.fdx_absent) = true];
+
+  // A credit for tax paid on income repaid in a later year.
+  nexteggapp.taxprotos.common.v1.Money claim_of_right = 57 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_estimated_payments = 58 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money extension_payment = 59 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money increased_excise_tax_credit = 60 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money property_tax_credit = 61 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money other_refundable_credits = 62 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_payments_and_refundable_credits = 63 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_due = 64 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money overpayment = 65 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money applied_to_next_year = 66 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money overpayment_balance = 67 [(common.v1.fdx_absent) = true];
+
+  // Lines 64 to 74 are gifts to a dozen funds. Only their total, within line
+  // 78, is modelled.
+  nexteggapp.taxprotos.common.v1.Money estimated_payment_penalty = 68 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_gifts_and_penalty = 69 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money refund = 70 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money amount_owed = 71 [(common.v1.fdx_absent) = true];
 }

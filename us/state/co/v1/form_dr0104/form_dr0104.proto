@@ -1,4 +1,29 @@
 // Form DR 0104, Colorado Individual Income Tax Return.
+//
+// Part-year residents and non-residents file the same form with Form DR
+// 0104PN, which replaces the tax on line 13. Only the full-year resident's
+// return is modelled here. Form DR 0104EZ, the short form, is not.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form DR 0104; testdata
+// holds the text extracted from the published PDF and coverage_test.go asserts
+// every line a mapping claims appears on it.
+//
+// # Colorado starts from federal taxable income
+//
+// Line 1 is federal taxable income, not federal adjusted gross income, so the
+// federal deductions are already taken. Colorado adds back some of them on
+// lines 2 to 4 and then taxes the result at one rate.
+//
+// # No filing status
+//
+// The form asks for none. A spouse on page 1 is what makes a return joint,
+// and the status matters only to the TABOR refund on line 38.
+//
+// # The TABOR refund
+//
+// Lines 34 to 38 compute Colorado's sales tax refund, the state's return of
+// revenue above its constitutional limit. They do not affect the tax.
 syntax = "proto3";
 
 package nexteggapp.taxprotos.us.state.co.v1;
@@ -9,15 +34,7 @@ import "taxprotos/common/v1/party.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/us/state/co/v1/form_dr0104;formdr0104";
 
-enum FilingStatus {
-  FILING_STATUS_UNSPECIFIED = 0;
-  FILING_STATUS_SINGLE = 1;
-  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
-  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
-  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
-  FILING_STATUS_SURVIVING_SPOUSE = 5;
-}
-
+// FormDR0104 is what a Form DR 0104 states.
 message FormDR0104 {
   option (common.v1.fdx_entity) = "";
   option (common.v1.fdx_version) = "5.0";
@@ -27,62 +44,80 @@ message FormDR0104 {
   nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
   nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
 
-  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+  // Federal Form 1040 line 15.
+  nexteggapp.taxprotos.common.v1.Money federal_taxable_income = 4 [(common.v1.fdx_absent) = true];
 
-  // Line 1: Federal taxable income from Form 1040 line 15.
-  nexteggapp.taxprotos.common.v1.Money federal_taxable_income = 5 [(common.v1.fdx_absent) = true];
+  // Additions. The state income tax deducted federally comes back.
+  nexteggapp.taxprotos.common.v1.Money state_income_tax_addback = 5 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money qualified_business_income_deduction_addback = 6 [(common.v1.fdx_absent) = true];
 
-  // Line 2: Additions to federal taxable income from DR 0104AD.
-  nexteggapp.taxprotos.common.v1.Money total_additions = 6 [(common.v1.fdx_absent) = true];
+  // Part of the federal standard or itemized deduction, which a filer with
+  // high income adds back.
+  nexteggapp.taxprotos.common.v1.Money federal_deduction_addback = 7 [(common.v1.fdx_absent) = true];
 
-  // Line 3: Total income: line 1 plus line 2.
-  nexteggapp.taxprotos.common.v1.Money total_income = 7 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money business_meals_addback = 8 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money nonqualified_collegeinvest_distributions = 9 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money nonqualified_able_distributions = 10 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money other_additions = 11 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money income_after_additions = 12 [(common.v1.fdx_absent) = true];
 
-  // Line 4: Subtractions from federal taxable income from DR 0104AD.
-  nexteggapp.taxprotos.common.v1.Money total_subtractions = 8 [(common.v1.fdx_absent) = true];
+  // From Schedule DR 0104AD.
+  nexteggapp.taxprotos.common.v1.Money total_subtractions = 13 [(common.v1.fdx_absent) = true];
 
-  // Line 5: Colorado taxable income: line 3 minus line 4.
-  nexteggapp.taxprotos.common.v1.Money colorado_taxable_income = 9 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money colorado_taxable_income = 14 [(common.v1.fdx_absent) = true];
 
-  // Line 6: Colorado tax.
-  nexteggapp.taxprotos.common.v1.Money colorado_tax = 10 [(common.v1.fdx_absent) = true];
+  // From the tax table.
+  nexteggapp.taxprotos.common.v1.Money tax = 15 [(common.v1.fdx_absent) = true];
 
-  // Line 7: Alternative minimum tax from Form DR 0104AMT.
-  nexteggapp.taxprotos.common.v1.Money alternative_minimum_tax = 11 [(common.v1.fdx_absent) = true];
+  // From Form DR 0104AMT.
+  nexteggapp.taxprotos.common.v1.Money alternative_minimum_tax = 16 [(common.v1.fdx_absent) = true];
 
-  // Line 8: Total tax: line 6 plus line 7.
-  nexteggapp.taxprotos.common.v1.Money total_tax = 12 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money prior_year_credit_recapture = 17 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax_before_credits = 18 [(common.v1.fdx_absent) = true];
 
-  // Line 9: Nonrefundable credits from Form DR 0104CR.
-  nexteggapp.taxprotos.common.v1.Money nonrefundable_credits = 13 [(common.v1.fdx_absent) = true];
+  // Nonrefundable credits, which together cannot exceed line 16.
+  nexteggapp.taxprotos.common.v1.Money nonrefundable_credits = 19 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money enterprise_zone_credits = 20 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money chips_zone_credit = 21 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money strategic_capital_credit = 22 [(common.v1.fdx_absent) = true];
 
-  // Line 10: Net tax: line 8 minus line 9.
-  nexteggapp.taxprotos.common.v1.Money net_tax = 14 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money net_income_tax = 23 [(common.v1.fdx_absent) = true];
 
-  // Line 14: Use tax.
-  nexteggapp.taxprotos.common.v1.Money use_tax = 15 [(common.v1.fdx_absent) = true];
+  // From Form DR 0619.
+  nexteggapp.taxprotos.common.v1.Money credit_repayment = 24 [(common.v1.fdx_absent) = true];
 
-  // Line 15: Net Colorado tax plus use tax.
-  nexteggapp.taxprotos.common.v1.Money total_tax_and_use_tax = 16 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money net_tax = 25 [(common.v1.fdx_absent) = true];
 
-  // Line 16: Colorado income tax withheld.
-  nexteggapp.taxprotos.common.v1.Money colorado_tax_withheld = 17 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money colorado_tax_withheld = 26 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money prior_year_estimated_tax_carryforward = 27 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 28 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money extension_payment = 29 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money other_prepayments = 30 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money conservation_easement_credit = 31 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money innovative_vehicle_credit = 32 [(common.v1.fdx_absent) = true];
 
-  // Line 17: Estimated tax payments.
-  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 18 [(common.v1.fdx_absent) = true];
+  // From Form DR 0104CR, which includes Colorado's earned income and child
+  // tax credits.
+  nexteggapp.taxprotos.common.v1.Money refundable_credits = 33 [(common.v1.fdx_absent) = true];
 
-  // Line 18: Other payments.
-  nexteggapp.taxprotos.common.v1.Money other_payments = 19 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money additional_credit = 34 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_payments_and_credits = 35 [(common.v1.fdx_absent) = true];
 
-  // Line 20: Refundable credits.
-  nexteggapp.taxprotos.common.v1.Money refundable_credits = 20 [(common.v1.fdx_absent) = true];
+  // Modified AGI for the TABOR refund.
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 36 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money nontaxable_social_security = 37 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money nontaxable_bond_interest = 38 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tabor_modified_agi = 39 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tabor_sales_tax_refund = 40 [(common.v1.fdx_absent) = true];
 
-  // Line 21: Total payments and credits.
-  nexteggapp.taxprotos.common.v1.Money total_payments = 21 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_payments_and_tabor_refund = 41 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money overpayment = 42 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_carryforward = 43 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money refund = 44 [(common.v1.fdx_absent) = true];
 
-  // Line 22: Overpayment.
-  nexteggapp.taxprotos.common.v1.Money overpayment = 22 [(common.v1.fdx_absent) = true];
-
-  // Line 23: Tax due.
-  nexteggapp.taxprotos.common.v1.Money tax_due = 23 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money net_tax_due = 45 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money delinquent_payment_penalty = 46 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money delinquent_payment_interest = 47 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_penalty = 48 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money amount_owed = 49 [(common.v1.fdx_absent) = true];
 }

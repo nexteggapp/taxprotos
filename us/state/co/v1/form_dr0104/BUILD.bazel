@@ -2,8 +2,10 @@
 
 load("@protobuf//bazel:proto_library.bzl", "proto_library")
 
+# Form DR 0104: the return a full-year Colorado resident files.
 proto_library(
     name = "form_dr0104_proto",
+    # Imported as taxprotos/..., so consumers import these files by that path.
     import_prefix = "taxprotos",
     srcs = [
         "form_dr0104.proto",
@@ -12,4 +14,15 @@ proto_library(
     deps = [
         "//common/v1:common_proto",
     ],
+)
+
+# The mapping and the form extract it is checked against, for
+# //go/us/state/co/v1/form_dr0104.
+filegroup(
+    name = "test_oracles",
+    srcs = glob([
+        "mapping.textproto",
+        "testdata/**",
+    ]),
+    visibility = ["//go/us/state/co/v1/form_dr0104:__pkg__"],
 )

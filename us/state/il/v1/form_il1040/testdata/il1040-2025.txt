@@ -1,0 +1,140 @@
+                                                    Illinois Department of Revenue
+                                                    2025 Form IL-1040                                                               *60012251W*
+                                                    Individual Income Tax Return                                                                                                          or for fiscal year ending       /
+
+                                  Step 1: Personal Information Enter personal information and Social Security numbers (SSN). You must provide the entire SSN(s) - no partial SSN.
+                           A Your first name and middle initial                          Your last name                                                          Date of birth                   Your social security number
+                                  				                                                                                                                			
+                                  				                                                                                                 		 		
+                                  Spouse’s first name and middle initial                 Spouse’s last name                                                      Spouse’s date of birth Spouse’s social security number
+                                  		
+                                  Mailing address (See inst. if foreign address)                        Apartment number                City                                             State               Zip or postal code
+
+
+                                  Foreign nation if not US (do not abbreviate)                           County (Illinois only)                   Email address
+
+
+                         B Filing status:                  Single           Married filing jointly            Married filing separately                     Widowed                 Head of household
+                          C Check If someone can claim you, or your spouse if filing jointly, as a dependent. See instructions.                                                    You           Spouse
+                          D Check the box if this applies to you during 2025:                               Nonresident - Attach Sch. NR                           Part-year resident - Attach Sch. NR
+                                                                                                                            (Whole dollars only)
+                   Step 2: Income
+                   1 Federal adjusted gross income from your federal Form 1040 or 1040-SR, Line 11a. 											          1                      .00
+                   2 Federally tax-exempt interest and dividend income from your federal Form 1040 or 1040-SR, Line 2a. 		2                      .00
+                   3 Other additions. Attach Sch. M. 																				 3                                                                      .00
+                   4 Total income. Add Lines 1 through 3.               																		 4                                                     .00
+ Staple W-2 and 1099 forms here
+
+
+
+
+                   Step 3: Base Income
+                   5 Social Security benefits and certain retirement plan income if included in Line 1. (Generally
+                 		    on fed. Forms 1040/1040-SR, Lines 4b, 5b, and 6b). Attach fed. Form 1040/1040-SR.				 5            .00
+                   6 Illinois Income Tax overpayment included in federal Form 1040 or 1040-SR,
+                 		    Schedule 1, Ln. 1. 															6                                                                .00
+                   7 Other subtractions. Attach Sch. M. 													 		7                                                 .00
+                   8 Add Lines 5, 6, and 7. This is the total of your subtractions.																	 8                                           .00
+                   9 Illinois base income. Subtract Line 8 from Line 4. 																			9                                                     .00
+                                  Step 4: Exemptions - See instructions for income limitations
+                                  10 a Enter the exemption amount for yourself and your spouse. See instructions.
+                                                                                                         						 a .00
+                    b Check if 65 or older:        You +        Spouse      # of checkboxes x $1,000 = b          .00
+                    c Check if legally blind:      You +        Spouse      # of checkboxes x $1,000 =		 c        .00
+                 		 d If you are claiming dependents, enter the amount from Schedule IL-E/EITC, Step 2, Line 1.
+                 			 Attach Sch. IL-E/EITC.															 d                                                      .00			
+                 		 Exemption allowance. Add Lines 10a through 10d. 																	 10		 .00
+                                  Step 5: Net Income and Tax
+                                  11 Residents: Net income: Subtract Line 10 from Line 9. 																
+                                      Nonresidents and part-year residents: Enter the Illinois net income from Schedule NR. Attach Sch. NR.		 11		 .00
+                                  12 Residents: Multiply Line 11 by 4.95% (.0495). Cannot be less than zero.
+Staple your check and IL-1040-V
+
+
+
+
+                 		 Nonresidents and part-year residents: Enter the tax from Schedule NR.																12 .00
+                  13 Recapture of investment tax credits. Attach Sch. 4255. 			                   				 13		 .00
+                  14 Income tax. Add Lines 12 and 13. Cannot be less than zero. 		              					 14		 .00
+                   Step 6: Tax After Nonrefundable Credits
+                   15 Income tax paid to another state while an Illinois resident. Attach Sch. CR. 										15                 .00
+                   16 Property tax, K-12 education expense, and volunteer emergency worker credit amount
+                 		    from Schedule ICR. Attach Sch. ICR.															16                                                     .00
+                   17 Credit amount from Schedule 1299-C. Attach Sch. 1299-C.												17                                     .00
+                   18 Add Lines 15, 16, and 17. This is the total of your credits. Cannot exceed the tax amount on Line 14.					18		 .00
+                   19 Tax after nonrefundable credits. Subtract Line 18 from Line 14. 																 19		 .00
+                   Step 7: Other Taxes
+                   20 Household employment tax. See instructions. 																			 20                                             .00
+                   21 Use tax on internet, mail order, or other out-of-state purchases from UT Worksheet or UT Table
+                 			   in the instructions. Do not leave blank.																			 21		 .00
+                   22 Compassionate Use of Medical Cannabis Program Act and sale of assets by gaming licensee surcharges.		 22       .00
+                   23 Total Tax. Add Lines 19, 20, 21, and 22. 																			 23                                                .00
+
+
+                                         IL-1040 Front (R-12/25) Printed by authority of the state   This form is authorized as outlined under the Illinois Income Tax Act. Disclosure of
+                                         of Illinois. Electronic only, one copy.                     this information is required. Failure to provide information could result in a penalty.
+ 24 Total tax from Page 1, Line 23.																		 24
+                                                                            *60012252W*           .00
+ Step 8: Payments and Refundable Credit
+ 25 Illinois Income Tax withheld. Attach Sch. IL-WIT.						 25                                .00
+ 26 Estimated payments from Forms IL-1040-ES and IL-505-I,
+			including any overpayment applied from a prior year return. 					 26                       .00
+ 27 Pass-through withholding. Attach Sch. K-1-P or K-1-T.						 27                            .00
+ 28 Pass-through entity tax credit. Attach Sch. K-1-P or K-1-T.					                       28 .00
+ 29 Earned Income Tax credit from Sch. IL-E/EITC, Step 4, Line 9. Attach Sch. IL-E/EITC.			29 .00
+ 30 Child Tax credit from Sch. IL-E/EITC, Step 5, Line 12. Attach Sch. IL-E/EITC.   		     30 .00
+ 31 Total payments and refundable credit. Add Lines 25 through 30. 										 31		 .00
+ Step 9: Total
+ 32 If Line 31 is greater than Line 24, subtract Line 24 from Line 31. 									 		                           32		 .00
+ 33 If Line 24 is greater than Line 31, subtract Line 31 from Line 24. 				                 							 33		 .00
+ Step 10: Underpayment of Estimated Tax Penalty and Donations
+ 34 Late-payment penalty for underpayment of estimated tax.						34                                           .00			
+			a       Check if at least two-thirds of your federal gross income is from farming.
+			 b      Check if you or your spouse are 65 or older and permanently living in a nursing home.			
+			 c      Check if your income was not received evenly during the year and you annualized your income on Form IL-2210.
+			          Attach Form IL-2210.		
+			 d     Check if you were not required to file an Illinois Individual Income Tax return in the previous tax year.
+ 35 Voluntary charitable donations. Attach Sch. G.							35                                                         .00
+ 36 Total penalty and donations. Add Lines 34 and 35. 												 36		 .00
+  Step 11: Refund or Amount you owe
+  37 If you have an amount on Line 32 and this amount is greater than Line 36, subtract Line 36 from Line 32.
+		   This is your overpayment. Otherwise, go to Line 41.												 37		 .00
+  38 Amount from Line 37 you want refunded to you. Check one box on Line 39. See instructions.			38		 .00
+ 39 I choose to receive my refund by
+		 a      direct deposit - Complete the information below if you check this box.
+   You may also contribute
+						                                   Routing number                                                        Checking or        Savings
+   to college savings funds
+						
+    here. See instructions!              Account number
+
+      b   paper check.
+   40 Amount to be credited forward. Subtract Line 38 from Line 37. See instructions.								 40		 .00
+   41 If you have an amount on Line 33, add Lines 33 and 36. If you have an amount on Line 32, and this amount
+		     is less than Line 36, subtract Line 32 from Line 36. If Lines 32 and 33 are blank (zero), enter the amount
+		     from Line 36. This is the amount you owe. See instructions.											 41		 .00
+
+   Step 12: Health Insurance Checkbox and Signature
+   42     Check this box and include your email address in Step 1 if IDOR may share your income and other information from this return
+   with the Department of Insurance in order to determine your eligibility for affordable health insurance coverage through Get Covered
+   Illinois, the state’s Health Insurance Marketplace. See instructions. Tell us who in your household needs health insurance:
+         Self      Spouse         Dependent(s)
+   Signature - Note: If this is a joint return, both you and your spouse must sign below.
+   Under penalties of perjury, I state that I have examined this return, and to the best of my knowledge, it is true, correct, and complete.
+Sign        Your signature                    Date (mm/dd/yyyy) Spouse’s signature                 Date (mm/dd/yyyy)   Daytime phone number
+Here
+                                                                                                                       (      )
+            Print/Type paid preparer’s name                    Paid preparer’s signature           Date (mm/dd/yyyy)        Check if Paid Preparer’s PTIN
+Paid                                                                                                                   self-employed
+Preparer
+         Firm’s name                                                                               Firm’s FEIN
+Use Only
+            Firm’s address                                                                         Firm’s phone        (      )
+Third    Designee’s name (please print)                                     Designee’s phone number                        Check if the Department may
+Party                                                                                                                   discuss this return with the third
+Designee                                                                    (        )                                  party designee shown in this step.
+
+                        Refer to the 2025 IL-1040 Instructions for the address to mail your return.
+               IL-1040 Back (R-12/25)   DR                    AP                         RR   DC   IR     ID                      .
+                                                                                                                   Reset               Print
+

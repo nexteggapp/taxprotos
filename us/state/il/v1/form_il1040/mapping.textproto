@@ -1,0 +1,209 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form IL-1040 calls each concept, per tax year.
+#
+# Lines come from the 2025 Form IL-1040 as the Illinois Department of Revenue
+# publishes it. There are no amount codes: IRS Publication 1220 covers the
+# information returns the IRS receives electronically, and a state return is not
+# one of them.
+#
+# The form prints the parts of line 10 as a bare "a" to "d" beside the number,
+# so 10b and 10c never appear as such. They are mapped to line 10 with a note
+# saying which part they are.
+
+form: "IL-1040"
+message_name: "nexteggapp.taxprotos.us.state.il.v1.FormIL1040"
+tax_years: 2025
+
+concepts {
+  concept: "filing_status"
+  years {
+    tax_year: 2025
+    irs_box: "B"
+    note: "Step 1, item B: single, married filing jointly, married filing separately, widowed, head of household."
+  }
+}
+concepts {
+  concept: "claimed_as_dependent"
+  years { tax_year: 2025 irs_box: "C" }
+}
+concepts {
+  concept: "federal_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "1" note: "Federal Form 1040 line 11a." }
+}
+concepts {
+  concept: "federally_tax_exempt_interest_and_dividends"
+  years { tax_year: 2025 irs_box: "2" note: "Federal Form 1040 line 2a." }
+}
+concepts {
+  concept: "other_additions"
+  years { tax_year: 2025 irs_box: "3" note: "From Schedule M." }
+}
+concepts {
+  concept: "total_income"
+  years { tax_year: 2025 irs_box: "4" }
+}
+concepts {
+  concept: "retirement_income"
+  years { tax_year: 2025 irs_box: "5" }
+}
+concepts {
+  concept: "illinois_refund_in_federal_income"
+  years { tax_year: 2025 irs_box: "6" }
+}
+concepts {
+  concept: "other_subtractions"
+  years { tax_year: 2025 irs_box: "7" note: "From Schedule M." }
+}
+concepts {
+  concept: "total_subtractions"
+  years { tax_year: 2025 irs_box: "8" }
+}
+concepts {
+  concept: "base_income"
+  years { tax_year: 2025 irs_box: "9" }
+}
+concepts {
+  concept: "personal_exemption"
+  years { tax_year: 2025 irs_box: "10a" }
+}
+concepts {
+  concept: "age_65_or_older"
+  years { tax_year: 2025 irs_box: "10" note: "Line 10b: the number of boxes checked." }
+}
+concepts {
+  concept: "age_65_exemption"
+  years { tax_year: 2025 irs_box: "10" note: "Line 10b: the amount." }
+}
+concepts {
+  concept: "legally_blind"
+  years { tax_year: 2025 irs_box: "10" note: "Line 10c: the number of boxes checked." }
+}
+concepts {
+  concept: "blind_exemption"
+  years { tax_year: 2025 irs_box: "10" note: "Line 10c: the amount." }
+}
+concepts {
+  concept: "dependent_exemption"
+  years { tax_year: 2025 irs_box: "10d" note: "From Schedule IL-E/EITC, Step 2, line 1." }
+}
+concepts {
+  concept: "exemption_allowance"
+  years { tax_year: 2025 irs_box: "10" note: "Line 10 itself: lines 10a through 10d." }
+}
+concepts {
+  concept: "net_income"
+  years { tax_year: 2025 irs_box: "11" }
+}
+concepts {
+  concept: "tax"
+  years { tax_year: 2025 irs_box: "12" note: "Line 11 at 4.95%." }
+}
+concepts {
+  concept: "investment_credit_recapture"
+  years { tax_year: 2025 irs_box: "13" note: "From Schedule 4255." }
+}
+concepts {
+  concept: "income_tax"
+  years { tax_year: 2025 irs_box: "14" }
+}
+concepts {
+  concept: "credit_for_tax_paid_to_other_states"
+  years { tax_year: 2025 irs_box: "15" note: "From Schedule CR." }
+}
+concepts {
+  concept: "property_tax_and_education_credits"
+  years { tax_year: 2025 irs_box: "16" note: "From Schedule ICR." }
+}
+concepts {
+  concept: "schedule_1299_c_credits"
+  years { tax_year: 2025 irs_box: "17" }
+}
+concepts {
+  concept: "total_credits"
+  years { tax_year: 2025 irs_box: "18" }
+}
+concepts {
+  concept: "tax_after_credits"
+  years { tax_year: 2025 irs_box: "19" }
+}
+concepts {
+  concept: "household_employment_tax"
+  years { tax_year: 2025 irs_box: "20" }
+}
+concepts {
+  concept: "use_tax"
+  years { tax_year: 2025 irs_box: "21" }
+}
+concepts {
+  concept: "surcharges"
+  years { tax_year: 2025 irs_box: "22" }
+}
+concepts {
+  concept: "total_tax"
+  years { tax_year: 2025 irs_box: "23" note: "Repeated on line 24 at the top of page 2." }
+}
+concepts {
+  concept: "illinois_tax_withheld"
+  years { tax_year: 2025 irs_box: "25" note: "From Schedule IL-WIT." }
+}
+concepts {
+  concept: "estimated_tax_payments"
+  years { tax_year: 2025 irs_box: "26" }
+}
+concepts {
+  concept: "pass_through_withholding"
+  years { tax_year: 2025 irs_box: "27" }
+}
+concepts {
+  concept: "pass_through_entity_tax_credit"
+  years { tax_year: 2025 irs_box: "28" }
+}
+concepts {
+  concept: "earned_income_credit"
+  years { tax_year: 2025 irs_box: "29" }
+}
+concepts {
+  concept: "child_tax_credit"
+  years { tax_year: 2025 irs_box: "30" }
+}
+concepts {
+  concept: "total_payments_and_refundable_credits"
+  years { tax_year: 2025 irs_box: "31" }
+}
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "32" }
+}
+concepts {
+  concept: "underpayment"
+  years { tax_year: 2025 irs_box: "33" }
+}
+concepts {
+  concept: "late_payment_penalty"
+  years { tax_year: 2025 irs_box: "34" }
+}
+concepts {
+  concept: "charitable_donations"
+  years { tax_year: 2025 irs_box: "35" note: "From Schedule G." }
+}
+concepts {
+  concept: "total_penalty_and_donations"
+  years { tax_year: 2025 irs_box: "36" }
+}
+concepts {
+  concept: "overpayment_after_penalty_and_donations"
+  years { tax_year: 2025 irs_box: "37" }
+}
+concepts {
+  concept: "refund"
+  years { tax_year: 2025 irs_box: "38" }
+}
+concepts {
+  concept: "credited_forward"
+  years { tax_year: 2025 irs_box: "40" }
+}
+concepts {
+  concept: "amount_owed"
+  years { tax_year: 2025 irs_box: "41" }
+}

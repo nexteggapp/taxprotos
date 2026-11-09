@@ -2,8 +2,10 @@
 
 load("@protobuf//bazel:proto_library.bzl", "proto_library")
 
+# Form D-400: the return a full-year North Carolina resident files.
 proto_library(
     name = "form_d400_proto",
+    # Imported as taxprotos/..., so consumers import these files by that path.
     import_prefix = "taxprotos",
     srcs = [
         "form_d400.proto",
@@ -12,4 +14,15 @@ proto_library(
     deps = [
         "//common/v1:common_proto",
     ],
+)
+
+# The mapping and the form extract it is checked against, for
+# //go/us/state/nc/v1/form_d400.
+filegroup(
+    name = "test_oracles",
+    srcs = glob([
+        "mapping.textproto",
+        "testdata/**",
+    ]),
+    visibility = ["//go/us/state/nc/v1/form_d400:__pkg__"],
 )

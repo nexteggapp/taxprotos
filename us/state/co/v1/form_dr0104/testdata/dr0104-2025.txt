@@ -1,0 +1,312 @@
+*250104==19999*
+DR 0104 (10/03/25)
+COLORADO DEPARTMENT OF REVENUE
+Tax.Colorado.gov
+Page 1 of 8
+(0013)
+2025 Colorado Individual Income Tax Return
+Residency Status
+Full-Year
+Part-Year or Nonresident (or combination of full-year, part-year, or nonresident). You must submit form DR 0104PN
+with your return.
+Abroad on due date
+Taxpayer Information
+Your Last Name Your First Name Your Middle Initial
+Date of Birth (MM/DD/YYYY) S S N or I T I N
+Deceased: Yes - If checked and claiming a refund, you
+must include the DR 0102 and death
+certificate with your return.
+Enter the following information from your current driver license or state identification card.
+State of Issue Last 4 characters of ID number Date of Issuance (MM/DD/YYYY)
+Spouse’s Information
+If Joint, Spouse’s Last Name Spouse’s First Name Spouse’s Middle Initial
+Date of Birth (MM/DD/YYYY) S S N or I T I N
+Deceased: Yes - If checked and claiming a refund, you
+must include the DR 0102 and death
+certificate with your return.
+Enter the following information from your spouse’s current driver license or state identification card.
+State of Issue Last 4 characters of ID number Date of Issuance (MM/DD/YYYY)
+This page is required.
+
+DR 0104 (10/03/25)
+COLORADO DEPARTMENT OF REVENUE
+*250104 == 29999*
+Tax.Colorado.gov
+Page 2 of 8
+Your Last Name (match page 1) Your First Name (match page 1) Your Middle Initial
+S S N or I T I N (match page 1)
+Contact Information
+Mailing Address Phone Number
+City State ZIP Code
+Foreign Country (if applicable)
+Dependents
+If you have more than 5 dependents, you must file electronically.
+Dependent 1: Child Tax Credit: Yes Deceased: Yes
+Last Name First Name S S N or I T I N Year of Birth
+Dependent 2: Child Tax Credit: Yes Deceased: Yes
+Last Name First Name S S N or I T I N Year of Birth
+Dependent 3: Child Tax Credit: Yes Deceased: Yes
+Last Name First Name S S N or I T I N Year of Birth
+Dependent 4: Child Tax Credit: Yes Deceased: Yes
+Last Name First Name S S N or I T I N Year of Birth
+Dependent 5: Child Tax Credit: Yes Deceased: Yes
+Last Name First Name S S N or I T I N Year of Birth
+This page is required.
+
+DR 0104 (10/03/25)
+COLORADO DEPARTMENT OF REVENUE
+*250104 == 39999*
+Tax.Colorado.gov
+Page 3 of 8
+Your Last Name (match page 1) Your First Name (match page 1) Your Middle Initial
+S S N or I T I N (match page 1)
+To see if you or members of your household qualify for free or reduced-cost health coverage,
+check this box if:
+• You are a Colorado resident and at least one person in your household does not have
+health coverage and
+• You give permission for the Colorado Department of Revenue to share the information on Form
+DR 0104EE with Connect for Health Colorado (the Colorado Health Benefit Exchange) and the
+Department of Health Care Policy & Financing.
+Round To The Nearest Dollar
+1. Federal Taxable Income from your federal income tax form:
+00
+1040, 1040 SR, or 1040 SP line 15
+1
+Additions to Federal Taxable Income
+00
+2. State Income Tax Addback (see instructions)
+2
+3. Qualified Business Income Deduction Addback
+00
+(see instructions) 3
+4. Standard or Itemized Federal Deduction Addback
+00
+4
+(see instructions)
+5. Business meals deducted pursuant to section 274(k) of the
+00
+Internal Revenue Code 5
+6. Nonqualified CollegeInvest Tuition Savings Account
+00
+6
+distributions (see instructions)
+7. Nonqualified Colorado ABLE Account distributions
+00
+(see instructions) 7
+00
+8. Reserved for future use 8
+00
+9. Other Additions, explain (see instructions) 9
+Explain:
+00
+10. Subtotal, sum of lines 1 through 7 and line 9 10
+This page is required.
+
+DR 0104 (10/03/25)
+COLORADO DEPARTMENT OF REVENUE
+*250104 == 49999*
+Tax.Colorado.gov
+Page 4 of 8
+Your Last Name (match page 1) Your First Name (match page 1) Your Middle Initial
+S S N or I T I N (match page 1)
+Colorado Subtractions
+11. Subtractions from the DR 0104AD Schedule, line 22, you
+00
+must submit the DR 0104AD schedule with your return
+11
+00
+12. Colorado Taxable Income, subtract line 11 from line 10
+12
+Tax, Prepayments and Credits: see 104 Book for full-year tax table and part-year DR 0104PN Schedule
+13. Colorado Tax from tax table or the DR 0104PN line 36, you
+00
+must submit the DR 0104PN with your return if applicable
+13
+14. Alternative Minimum Tax from the DR 0104AMT line 8, you
+00
+must submit the DR 0104AMT with your return 14
+00
+15
+15. Recapture of prior year credits
+00
+16
+16. Subtotal, sum of lines 13 through 15
+17. Nonrefundable Credits from the DR 0104CR line 65, the
+sum of lines 17, 18, 19, and 20 cannot exceed line 16, you 00
+must submit the DR 0104CR with your return 17
+18. Nonrefundable Enterprise Zone credits used – as
+calculated, or from the DR 1366 line 26, the sum of lines
+00
+17, 18, 19, and 20 cannot exceed line 16, you must submit
+the DR 1366 with your return 18
+19. Nonrefundable CHIPS Zone Credit from DR 1370, line 22,
+00
+the sum of lines 17, 18, 19, and 20 cannot exceed line 16,
+you must submit DR 1370 with your return 19
+20. Strategic Capital Tax Credit from DR 1330, the sum of lines
+00
+17, 18, 19 and 20 cannot exceed line 16, you must submit
+the DR 1330 with your return 20
+21. Net Income Tax, subtract the sum of lines 17, 18, 19, and
+00
+20 from line 16 21
+22. Repayment of credit from form DR 0619, lines 4 and 11,
+00
+you must submit the DR 0619 with your return 22
+23. Net Tax and Required Repayment, sum of lines
+00
+21 and 22 23
+This page is required.
+
+DR 0104 (10/03/25)
+COLORADO DEPARTMENT OF REVENUE
+*250104 == 59999*
+Tax.Colorado.gov
+Page 5 of 8
+Your Last Name (match page 1) Your First Name (match page 1) Your Middle Initial
+S S N or I T I N (match page 1)
+Tax, Prepayments and Credits (continued):
+24. Colorado Income Tax Withheld from W-2s and 1099s, you
+must submit the W-2s and/or 1099s claiming Colorado 00
+withholding with your return 24
+00
+25. Prior-year Estimated Tax Carryforward 25
+26. Estimated Tax Payments, enter the sum of the quarterly
+00
+26
+payments remitted for this tax year
+00
+27. Extension Payment remitted with the DR 0158 27
+00
+28. Other Prepayments:
+DR 0104BEP DR 1079
+28
+29. Gross Conservation Easement Credit from the DR 1305G
+00
+line 33, you must submit the DR 1305G with your return 29
+30. Innovative Motor Vehicle and Innovative Truck Credit for a
+00
+vehicle you purchased or leased from form DR 0617, you
+30
+must submit the DR 0617(s) with your return
+31. Refundable Credits from the DR 0104CR line 26, you must
+00
+31
+submit the DR 0104CR with your return
+32. Additional credit from form DR 0619, line 3 and 10, you
+00
+32
+must submit the DR 0619 with your return
+00
+33
+33. Subtotal, sum of lines 24 through 32
+This page is required.
+
+DR 0104 (10/03/25)
+COLORADO DEPARTMENT OF REVENUE
+*250104 == 69999*
+Tax.Colorado.gov
+Page 6 of 8
+Your Last Name (match page 1) Your First Name (match page 1) Your Middle Initial
+S S N or I T I N (match page 1)
+Modified Adjusted Gross Income (AGI) for TABOR Sales Tax Refund
+Lines 34 through 37 are only used to calculate your TABOR amount and do not affect your Colorado tax liability.
+34. Federal Adjusted Gross Income from your federal income
+00
+tax form: 1040, 1040 SR, or 1040 SP line 11a
+34
+00
+35. Nontaxable Social Security Income 35
+00
+36. Nontaxable interest income from state and local bonds 36
+37. Sum of lines 34 through 36: Modified AGI for TABOR
+00
+amount
+37
+Modified A G I Tiers for TABOR State Sales Tax Refund
+$52,000 $52,001 – $105,001 – $168,001 – $233,001 – $299,001
+If line 37 is:
+or less $105,000 $168,000 $233,000 $299,000 or more
+$19 $25 $29 $35 $37 $59
+Single Filers Enter
+$38 $50 $58 $70 $74 $118
+Joint Filers Enter
+38. TABOR State Sales Tax Refund: For full-year Colorado
+residents, born before 2007, or full-year Colorado residents
+who are under the age of eighteen but are required to file
+a return. Your return must be postmarked or transmitted
+by the extension due date. Use the amount on line 37 and
+00
+reference the table above 38
+00
+39. Sum of lines 33 and 38 39
+40. Overpayment, if line 39 is greater than line 23 then subtract
+00
+line 23 from line 39 40
+41. Estimated Tax Credit Carryforward to the next tax year, if
+00
+any 41
+42. Refund, subtract line 41 from line 40. If you would like to donate
+all or a portion of your refund to a qualified Colorado charity, 00
+complete and submit form DR 0104CH with your return 42
+This page is required.
+
+DR 0104 (10/03/25)
+COLORADO DEPARTMENT OF REVENUE
+*250104 == 79999*
+Tax.Colorado.gov
+Page 7 of 8
+Your Last Name (match page 1) Your First Name (match page 1) Your Middle Initial
+S S N or I T I N (match page 1)
+00
+43. Net Tax Due, subtract line 39 from line 23 43
+00
+44. Delinquent Payment Penalty (see instructions) 44
+00
+45. Delinquent Payment Interest (see instructions) 45
+46. Estimated Tax Penalty, you must submit the DR 0204 with
+00
+your return (see instructions) 46
+47. Amount You Owe, sum of lines 43 through 46 47
+The State may convert your check to a one-time electronic banking transaction. Your bank account may be debited as
+early as the same day received by the State. If converted, your check will not be returned. If your check is rejected due
+to insufficient or uncollected funds, the Department of Revenue may collect the payment amount directly from your bank
+account electronically.
+Direct Deposit
+Routing Number
+Account Number
+Type: Checking Savings CollegeInvest 529
+For questions regarding CollegeInvest direct deposit or to open an account, visit CollegeInvest.org or
+call 800-448-2424.
+Third Party Designee
+Do you want to allow another person to discuss this return and any related information with the
+Colorado Department of Revenue? See the instructions.
+No Yes. Complete the following:
+Designee’s Name Phone Number
+This page is required.
+
+DR 0104 (10/03/25)
+COLORADO DEPARTMENT OF REVENUE
+*250104 == 89999*
+Tax.Colorado.gov
+Page 8 of 8
+Your Last Name (match page 1) Your First Name (match page 1) Your Middle Initial
+S S N or I T I N (match page 1)
+Sign Below
+Under penalties of perjury, I declare that to the best of my knowledge and belief, this return is true,
+correct, and complete.
+Your Signature Date (MM/DD/YY)
+Spouse’s Signature. If joint return, both must sign. Date (MM/DD/YY)
+Paid Preparer’s Name Paid Preparer’s Phone
+Paid Preparer’s Address
+City State ZIP Code
+File and Pay
+You may file and pay at: Colorado.gov/Rev enueOnline or
+If you are mailing this return with a check or payment, please send all eight required pages to:
+Colorado Department of Revenue
+Denver, CO 80261-000 6
+If you are mailing this return without a check or payment, please send all eight required pages to:
+Colorado Department of Revenue
+Denver, CO 80261-000 5
+These ZIP codes are exclusive to the Colorado Department of Revenue, so a street address is not required.
+This page is required.

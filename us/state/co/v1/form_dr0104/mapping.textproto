@@ -1,0 +1,199 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form DR 0104 calls each concept, per tax year.
+#
+# Lines come from the 2025 Form DR 0104 as the Colorado Department of Revenue
+# publishes it. There are no amount codes: IRS Publication 1220 covers the
+# information returns the IRS receives electronically, and a state return is not
+# one of them.
+#
+# The form prints its line numbers with a trailing full stop, as Oregon's does.
+
+form: "DR 0104"
+message_name: "nexteggapp.taxprotos.us.state.co.v1.FormDR0104"
+tax_years: 2025
+
+concepts {
+  concept: "federal_taxable_income"
+  years { tax_year: 2025 irs_box: "1" note: "Federal Form 1040 line 15." }
+}
+concepts {
+  concept: "state_income_tax_addback"
+  years { tax_year: 2025 irs_box: "2" }
+}
+concepts {
+  concept: "qualified_business_income_deduction_addback"
+  years { tax_year: 2025 irs_box: "3" }
+}
+concepts {
+  concept: "federal_deduction_addback"
+  years { tax_year: 2025 irs_box: "4" }
+}
+concepts {
+  concept: "business_meals_addback"
+  years { tax_year: 2025 irs_box: "5" }
+}
+concepts {
+  concept: "nonqualified_collegeinvest_distributions"
+  years { tax_year: 2025 irs_box: "6" }
+}
+concepts {
+  concept: "nonqualified_able_distributions"
+  years { tax_year: 2025 irs_box: "7" }
+}
+concepts {
+  concept: "other_additions"
+  years { tax_year: 2025 irs_box: "9" note: "Line 8 is reserved." }
+}
+concepts {
+  concept: "income_after_additions"
+  years { tax_year: 2025 irs_box: "10" }
+}
+concepts {
+  concept: "total_subtractions"
+  years { tax_year: 2025 irs_box: "11" note: "From Schedule DR 0104AD, line 22." }
+}
+concepts {
+  concept: "colorado_taxable_income"
+  years { tax_year: 2025 irs_box: "12" }
+}
+concepts {
+  concept: "tax"
+  years { tax_year: 2025 irs_box: "13" }
+}
+concepts {
+  concept: "alternative_minimum_tax"
+  years { tax_year: 2025 irs_box: "14" note: "From Form DR 0104AMT, line 8." }
+}
+concepts {
+  concept: "prior_year_credit_recapture"
+  years { tax_year: 2025 irs_box: "15" }
+}
+concepts {
+  concept: "tax_before_credits"
+  years { tax_year: 2025 irs_box: "16" }
+}
+concepts {
+  concept: "nonrefundable_credits"
+  years { tax_year: 2025 irs_box: "17" note: "From Form DR 0104CR, line 65." }
+}
+concepts {
+  concept: "enterprise_zone_credits"
+  years { tax_year: 2025 irs_box: "18" }
+}
+concepts {
+  concept: "chips_zone_credit"
+  years { tax_year: 2025 irs_box: "19" }
+}
+concepts {
+  concept: "strategic_capital_credit"
+  years { tax_year: 2025 irs_box: "20" }
+}
+concepts {
+  concept: "net_income_tax"
+  years { tax_year: 2025 irs_box: "21" }
+}
+concepts {
+  concept: "credit_repayment"
+  years { tax_year: 2025 irs_box: "22" }
+}
+concepts {
+  concept: "net_tax"
+  years { tax_year: 2025 irs_box: "23" }
+}
+concepts {
+  concept: "colorado_tax_withheld"
+  years { tax_year: 2025 irs_box: "24" }
+}
+concepts {
+  concept: "prior_year_estimated_tax_carryforward"
+  years { tax_year: 2025 irs_box: "25" }
+}
+concepts {
+  concept: "estimated_tax_payments"
+  years { tax_year: 2025 irs_box: "26" }
+}
+concepts {
+  concept: "extension_payment"
+  years { tax_year: 2025 irs_box: "27" note: "Paid with Form DR 0158." }
+}
+concepts {
+  concept: "other_prepayments"
+  years { tax_year: 2025 irs_box: "28" }
+}
+concepts {
+  concept: "conservation_easement_credit"
+  years { tax_year: 2025 irs_box: "29" }
+}
+concepts {
+  concept: "innovative_vehicle_credit"
+  years { tax_year: 2025 irs_box: "30" }
+}
+concepts {
+  concept: "refundable_credits"
+  years { tax_year: 2025 irs_box: "31" note: "From Form DR 0104CR, line 26." }
+}
+concepts {
+  concept: "additional_credit"
+  years { tax_year: 2025 irs_box: "32" note: "From Form DR 0619." }
+}
+concepts {
+  concept: "total_payments_and_credits"
+  years { tax_year: 2025 irs_box: "33" }
+}
+concepts {
+  concept: "federal_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "34" note: "Federal Form 1040 line 11a. Used only for the TABOR refund." }
+}
+concepts {
+  concept: "nontaxable_social_security"
+  years { tax_year: 2025 irs_box: "35" }
+}
+concepts {
+  concept: "nontaxable_bond_interest"
+  years { tax_year: 2025 irs_box: "36" }
+}
+concepts {
+  concept: "tabor_modified_agi"
+  years { tax_year: 2025 irs_box: "37" }
+}
+concepts {
+  concept: "tabor_sales_tax_refund"
+  years { tax_year: 2025 irs_box: "38" }
+}
+concepts {
+  concept: "total_payments_and_tabor_refund"
+  years { tax_year: 2025 irs_box: "39" }
+}
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "40" }
+}
+concepts {
+  concept: "estimated_tax_carryforward"
+  years { tax_year: 2025 irs_box: "41" }
+}
+concepts {
+  concept: "refund"
+  years { tax_year: 2025 irs_box: "42" }
+}
+concepts {
+  concept: "net_tax_due"
+  years { tax_year: 2025 irs_box: "43" }
+}
+concepts {
+  concept: "delinquent_payment_penalty"
+  years { tax_year: 2025 irs_box: "44" }
+}
+concepts {
+  concept: "delinquent_payment_interest"
+  years { tax_year: 2025 irs_box: "45" }
+}
+concepts {
+  concept: "estimated_tax_penalty"
+  years { tax_year: 2025 irs_box: "46" }
+}
+concepts {
+  concept: "amount_owed"
+  years { tax_year: 2025 irs_box: "47" }
+}
