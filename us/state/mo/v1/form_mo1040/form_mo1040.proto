@@ -1,0 +1,157 @@
+// Form MO-1040, Missouri Individual Income Tax Return.
+//
+// Part-year residents and nonresidents file the same form with Form MO-NRI,
+// which sets the percentage on line 32. Only the full-year resident's return
+// is modelled here: line 32 is 100% and is not carried. Kansas City's and
+// St. Louis's earnings taxes are separate returns and are not on this form.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form MO-1040; testdata
+// holds the text extracted from the published PDF and coverage_test.go asserts
+// every line a mapping claims appears on it.
+//
+// # Two columns
+//
+// A married couple files one "combined" return, but Missouri figures a tax
+// for each spouse. Lines 1 to 5 and 27 to 35 have a column for yourself (Y)
+// and one for the spouse (S); the lines between are figured once for the
+// couple and line 26 is split back by each spouse's share of income on line 7.
+// Fields for a two-column line end in _yourself and _spouse.
+//
+// # Amended returns
+//
+// Lines 46 to 48 are filled only on an amended return and are not modelled.
+// Line 51 is the total of the trust fund boxes 51a to 51n.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.mo.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/mo/v1/form_mo1040;formmo1040";
+
+// FilingStatus is the status the return is filed under.
+//
+// Missouri requires the federal status. A federal joint return is "married
+// filing combined" in Missouri.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_COMBINED = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+  FILING_STATUS_QUALIFYING_WIDOWER = 5;
+}
+
+// FormMO1040 is what a Form MO-1040 states.
+message FormMO1040 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // Someone else can claim the filer as a dependent.
+  bool claimed_as_dependent = 5 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income_yourself = 6 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income_spouse = 7 [(common.v1.fdx_absent) = true];
+
+  // From Form MO-A Part 1, line 7.
+  nexteggapp.taxprotos.common.v1.Money additions_yourself = 8 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money additions_spouse = 9 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_income_yourself = 10 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_income_spouse = 11 [(common.v1.fdx_absent) = true];
+
+  // From Form MO-A Part 1, line 19.
+  nexteggapp.taxprotos.common.v1.Money subtractions_yourself = 12 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money subtractions_spouse = 13 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money missouri_adjusted_gross_income_yourself = 14 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money missouri_adjusted_gross_income_spouse = 15 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_missouri_adjusted_gross_income = 16 [(common.v1.fdx_absent) = true];
+
+  // Each spouse's share of line 6, in whole percent; the two add to 100.
+  int32 income_percentage_yourself = 17 [(common.v1.fdx_absent) = true];
+  int32 income_percentage_spouse = 18 [(common.v1.fdx_absent) = true];
+
+  // From Form MO-A Part 3, Section D.
+  nexteggapp.taxprotos.common.v1.Money pension_and_social_security_exemption = 19 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money federal_tax = 20 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money other_federal_tax = 21 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_federal_tax = 22 [(common.v1.fdx_absent) = true];
+
+  // Set by line 6 from a chart printed on the form, 35% down to 0%.
+  int32 federal_tax_percentage = 23 [(common.v1.fdx_absent) = true];
+
+  // Line 11 times line 12, at most $5,000, or $10,000 on a combined return.
+  nexteggapp.taxprotos.common.v1.Money federal_income_tax_deduction = 24 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money standard_or_itemized_deduction = 25 [(common.v1.fdx_absent) = true];
+
+  // The additional exemption for a head of household or qualifying widow(er).
+  nexteggapp.taxprotos.common.v1.Money head_of_household_exemption = 26 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money long_term_care_insurance_deduction = 27 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money health_care_sharing_ministry_deduction = 28 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money active_duty_military_deduction = 29 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money inactive_duty_military_deduction = 30 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money beginning_farmer_deduction = 31 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money foster_parent_deduction = 32 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_deductions = 33 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money income_after_deductions = 34 [(common.v1.fdx_absent) = true];
+
+  // Line 26 split by the percentages on line 7.
+  nexteggapp.taxprotos.common.v1.Money apportioned_income_yourself = 35 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money apportioned_income_spouse = 36 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money enterprise_zone_modification_yourself = 37 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money enterprise_zone_modification_spouse = 38 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money taxable_income_yourself = 39 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money taxable_income_spouse = 40 [(common.v1.fdx_absent) = true];
+
+  // Each spouse's tax is figured separately from the tax chart.
+  nexteggapp.taxprotos.common.v1.Money tax_yourself = 41 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax_spouse = 42 [(common.v1.fdx_absent) = true];
+
+  // Credit for tax paid to another state, from Form MO-CR.
+  nexteggapp.taxprotos.common.v1.Money resident_credit_yourself = 43 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money resident_credit_spouse = 44 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money balance_yourself = 45 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money balance_spouse = 46 [(common.v1.fdx_absent) = true];
+
+  // Lump-sum distribution tax and low income housing credit recapture.
+  nexteggapp.taxprotos.common.v1.Money other_taxes_yourself = 47 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money other_taxes_spouse = 48 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax_after_other_taxes_yourself = 49 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax_after_other_taxes_spouse = 50 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_tax = 51 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money missouri_tax_withheld = 52 [(common.v1.fdx_absent) = true];
+
+  // Includes the 2024 overpayment applied to 2025.
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 53 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money nonresident_partner_payments = 54 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money nonresident_entertainer_payments = 55 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money extension_payment = 56 [(common.v1.fdx_absent) = true];
+
+  // From Form MO-TC.
+  nexteggapp.taxprotos.common.v1.Money miscellaneous_tax_credits = 57 [(common.v1.fdx_absent) = true];
+
+  // From Form MO-PTS.
+  nexteggapp.taxprotos.common.v1.Money property_tax_credit = 58 [(common.v1.fdx_absent) = true];
+
+  // From Form MO-WFTC.
+  nexteggapp.taxprotos.common.v1.Money working_family_tax_credit = 59 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_payments_and_credits = 60 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money overpayment = 61 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money applied_to_estimated_tax = 62 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money trust_fund_donations = 63 [(common.v1.fdx_absent) = true];
+
+  // Deposited to a MOST 529 account.
+  nexteggapp.taxprotos.common.v1.Money education_savings_deposit = 64 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money refund = 65 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money underpayment = 66 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_penalty = 67 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money amount_due = 68 [(common.v1.fdx_absent) = true];
+}

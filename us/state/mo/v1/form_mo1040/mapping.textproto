@@ -1,0 +1,266 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form MO-1040 calls each concept, per tax year.
+#
+# Lines come from the 2025 Form MO-1040 as the Missouri Department of Revenue
+# publishes it. Two-column lines are printed as, for example, 1Y and 1S, and
+# are mapped that way. There are no amount codes: IRS Publication 1220 covers
+# the information returns the IRS receives electronically, and a state return
+# is not one of them.
+
+form: "MO-1040"
+message_name: "nexteggapp.taxprotos.us.state.mo.v1.FormMO1040"
+tax_years: 2025
+
+concepts {
+  concept: "federal_adjusted_gross_income_yourself"
+  years { tax_year: 2025 irs_box: "1Y" }
+}
+concepts {
+  concept: "federal_adjusted_gross_income_spouse"
+  years { tax_year: 2025 irs_box: "1S" }
+}
+concepts {
+  concept: "additions_yourself"
+  years { tax_year: 2025 irs_box: "2Y" }
+}
+concepts {
+  concept: "additions_spouse"
+  years { tax_year: 2025 irs_box: "2S" }
+}
+concepts {
+  concept: "total_income_yourself"
+  years { tax_year: 2025 irs_box: "3Y" }
+}
+concepts {
+  concept: "total_income_spouse"
+  years { tax_year: 2025 irs_box: "3S" }
+}
+concepts {
+  concept: "subtractions_yourself"
+  years { tax_year: 2025 irs_box: "4Y" }
+}
+concepts {
+  concept: "subtractions_spouse"
+  years { tax_year: 2025 irs_box: "4S" }
+}
+concepts {
+  concept: "missouri_adjusted_gross_income_yourself"
+  years { tax_year: 2025 irs_box: "5Y" }
+}
+concepts {
+  concept: "missouri_adjusted_gross_income_spouse"
+  years { tax_year: 2025 irs_box: "5S" }
+}
+concepts {
+  concept: "total_missouri_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "6" }
+}
+concepts {
+  concept: "income_percentage_yourself"
+  years { tax_year: 2025 irs_box: "7Y" }
+}
+concepts {
+  concept: "income_percentage_spouse"
+  years { tax_year: 2025 irs_box: "7S" }
+}
+concepts {
+  concept: "pension_and_social_security_exemption"
+  years { tax_year: 2025 irs_box: "8" }
+}
+concepts {
+  concept: "federal_tax"
+  years { tax_year: 2025 irs_box: "9" }
+}
+concepts {
+  concept: "other_federal_tax"
+  years { tax_year: 2025 irs_box: "10" }
+}
+concepts {
+  concept: "total_federal_tax"
+  years { tax_year: 2025 irs_box: "11" }
+}
+concepts {
+  concept: "federal_tax_percentage"
+  years { tax_year: 2025 irs_box: "12" }
+}
+concepts {
+  concept: "federal_income_tax_deduction"
+  years { tax_year: 2025 irs_box: "13" }
+}
+concepts {
+  concept: "standard_or_itemized_deduction"
+  years { tax_year: 2025 irs_box: "14" }
+}
+concepts {
+  concept: "head_of_household_exemption"
+  years { tax_year: 2025 irs_box: "15" }
+}
+concepts {
+  concept: "long_term_care_insurance_deduction"
+  years { tax_year: 2025 irs_box: "16" }
+}
+concepts {
+  concept: "health_care_sharing_ministry_deduction"
+  years { tax_year: 2025 irs_box: "17" }
+}
+concepts {
+  concept: "active_duty_military_deduction"
+  years { tax_year: 2025 irs_box: "18" }
+}
+concepts {
+  concept: "inactive_duty_military_deduction"
+  years { tax_year: 2025 irs_box: "19" }
+}
+concepts {
+  concept: "beginning_farmer_deduction"
+  years { tax_year: 2025 irs_box: "21" }
+}
+concepts {
+  concept: "foster_parent_deduction"
+  years { tax_year: 2025 irs_box: "24" }
+}
+concepts {
+  concept: "total_deductions"
+  years { tax_year: 2025 irs_box: "25" }
+}
+concepts {
+  concept: "income_after_deductions"
+  years { tax_year: 2025 irs_box: "26" }
+}
+concepts {
+  concept: "apportioned_income_yourself"
+  years { tax_year: 2025 irs_box: "27Y" }
+}
+concepts {
+  concept: "apportioned_income_spouse"
+  years { tax_year: 2025 irs_box: "27S" }
+}
+concepts {
+  concept: "enterprise_zone_modification_yourself"
+  years { tax_year: 2025 irs_box: "28Y" }
+}
+concepts {
+  concept: "enterprise_zone_modification_spouse"
+  years { tax_year: 2025 irs_box: "28S" }
+}
+concepts {
+  concept: "taxable_income_yourself"
+  years { tax_year: 2025 irs_box: "29Y" }
+}
+concepts {
+  concept: "taxable_income_spouse"
+  years { tax_year: 2025 irs_box: "29S" }
+}
+concepts {
+  concept: "tax_yourself"
+  years { tax_year: 2025 irs_box: "30Y" }
+}
+concepts {
+  concept: "tax_spouse"
+  years { tax_year: 2025 irs_box: "30S" }
+}
+concepts {
+  concept: "resident_credit_yourself"
+  years { tax_year: 2025 irs_box: "31Y" }
+}
+concepts {
+  concept: "resident_credit_spouse"
+  years { tax_year: 2025 irs_box: "31S" }
+}
+concepts {
+  concept: "balance_yourself"
+  years { tax_year: 2025 irs_box: "33Y" }
+}
+concepts {
+  concept: "balance_spouse"
+  years { tax_year: 2025 irs_box: "33S" }
+}
+concepts {
+  concept: "other_taxes_yourself"
+  years { tax_year: 2025 irs_box: "34Y" }
+}
+concepts {
+  concept: "other_taxes_spouse"
+  years { tax_year: 2025 irs_box: "34S" }
+}
+concepts {
+  concept: "tax_after_other_taxes_yourself"
+  years { tax_year: 2025 irs_box: "35Y" }
+}
+concepts {
+  concept: "tax_after_other_taxes_spouse"
+  years { tax_year: 2025 irs_box: "35S" }
+}
+concepts {
+  concept: "total_tax"
+  years { tax_year: 2025 irs_box: "36" }
+}
+concepts {
+  concept: "missouri_tax_withheld"
+  years { tax_year: 2025 irs_box: "37" }
+}
+concepts {
+  concept: "estimated_tax_payments"
+  years { tax_year: 2025 irs_box: "38" }
+}
+concepts {
+  concept: "nonresident_partner_payments"
+  years { tax_year: 2025 irs_box: "39" }
+}
+concepts {
+  concept: "nonresident_entertainer_payments"
+  years { tax_year: 2025 irs_box: "40" }
+}
+concepts {
+  concept: "extension_payment"
+  years { tax_year: 2025 irs_box: "41" }
+}
+concepts {
+  concept: "miscellaneous_tax_credits"
+  years { tax_year: 2025 irs_box: "42" }
+}
+concepts {
+  concept: "property_tax_credit"
+  years { tax_year: 2025 irs_box: "43" }
+}
+concepts {
+  concept: "working_family_tax_credit"
+  years { tax_year: 2025 irs_box: "44" }
+}
+concepts {
+  concept: "total_payments_and_credits"
+  years { tax_year: 2025 irs_box: "45" }
+}
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "49" }
+}
+concepts {
+  concept: "applied_to_estimated_tax"
+  years { tax_year: 2025 irs_box: "50" }
+}
+concepts {
+  concept: "trust_fund_donations"
+  years { tax_year: 2025 irs_box: "51" }
+}
+concepts {
+  concept: "education_savings_deposit"
+  years { tax_year: 2025 irs_box: "52" }
+}
+concepts {
+  concept: "refund"
+  years { tax_year: 2025 irs_box: "53" }
+}
+concepts {
+  concept: "underpayment"
+  years { tax_year: 2025 irs_box: "54" }
+}
+concepts {
+  concept: "estimated_tax_penalty"
+  years { tax_year: 2025 irs_box: "55" }
+}
+concepts {
+  concept: "amount_due"
+  years { tax_year: 2025 irs_box: "56" }
+}

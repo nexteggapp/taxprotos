@@ -107,6 +107,7 @@ import "taxprotos/us/state/ky/v1/form_740/form_740.proto";
 import "taxprotos/us/state/in/v1/form_it40/form_it40.proto";
 import "taxprotos/us/state/la/v1/form_it540/form_it540.proto";
 import "taxprotos/us/state/ms/v1/form_80105/form_80105.proto";
+import "taxprotos/us/state/mo/v1/form_mo1040/form_mo1040.proto";
 import "taxprotos/us/state/nc/v1/form_d400/form_d400.proto";
 import "taxprotos/us/state/or/v1/form_or40/form_or40.proto";
 import "taxprotos/us/state/pa/v1/form_pa40/form_pa40.proto";
@@ -247,6 +248,9 @@ message Document {
 
     // A filed Illinois return.
     IllinoisReturn illinois_return = 48;
+
+    // A filed Missouri return.
+    MissouriReturn missouri_return = 71;
 
     // A filed North Carolina return.
     NorthCarolinaReturn north_carolina_return = 49;
@@ -767,6 +771,10 @@ message MichiganReturn {
 message IndianaReturn {
   // Form IT-40.
   us.state.in.v1.FormIT40 form_it40 = 1;
+// A Missouri resident return: Form MO-1040.
+message MissouriReturn {
+  // Form MO-1040.
+  us.state.mo.v1.FormMO1040 form_mo1040 = 1;
 }
 
 // A North Carolina resident return: Form D-400.
