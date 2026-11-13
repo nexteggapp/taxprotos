@@ -1,0 +1,177 @@
+                                                                                                                                   Reset Form
+Form 80-105-25-8-1-000 (Rev. 09/25)
+                                                                                                                                   Print Form
+                                                                                      Mississippi
+                                                                  Resident Individual Income Tax Return
+          801052581000
+                                                                                  2025                                                             Amended
+
+Taxpayer First Name                                    Initial Last Name
+                                                                                                           SSN
+                                                                                                           Spouse SSN
+Spouse First Name                                      Initial Last Name
+
+                                                                                                           1           Married - Combined or Joint Return ($12,000)
+Mailing Address (Number and Street, Including Rural Route)                                                 2           Married - Spouse Died in Tax Year ($12,000)
+                                                                                                           3           Married - Filing Separate Returns ($12,000)
+City                                                    State   Zip                     County Code        4           Head of Family ($8,000)
+                                                                                                           5           Single ($6,000)
+
+    EXEMPTIONS
+
+Dependents (in column B, enter "C" for child, "P" for parent or "R" for relative)       8             Taxpayer Age 65 or Over              Spouse Age 65 or Over
+6      (A) Name                                      (B)          (C) Dependent SSN                   Taxpayer Blind                       Spouse Blind
+
+
+                                                                                        9     Total dependents line 7 plus number of boxes checked line 8
+
+
+                                                                                        10 Line 9 x $1,500                        10                             .00
+                                                                                        11 Enter filing status exemption           11                            .00
+7      Total number of dependents (from line 6 and Form 80-491)                         12 Total (line 10 plus line 11)            12                            .00
+    MISSISSIPPI INCOME TAX                                                                     Column A (Taxpayer)                       Column B (Spouse)
+13     Mississippi adjusted gross income (from page 2, line 66)                         13A                                .00     13B                           .00
+14     Standard or itemized deductions (if itemized, attach Form 80-108)                14A                                .00     14B                           .00
+15     Exemptions (from line 12; if married filing separately use 1/2 amount) 15A                                          .00     15B                           .00
+16     Mississippi taxable income (line 13 minus line 14 and line 15)         16A                                          .00     16B                           .00
+17     Income tax due (from Schedule of Tax Computation, see instructions)                                                         17                            .00
+18     Credit for tax paid to another state (from Form 80-160, line 12; attach other state return)                                 18                            .00
+19     Other credits (from Form 80-401, line 1)                                                                                    19                            .00
+20     Net income tax due (line 17 minus line 18 and line 19)                                                                      20                            .00
+21     Consumer use tax (see instructions)                                                                                        21                             .00
+22     Catastrophe savings tax (see instructions)                                                                                  22                            .00
+23     Total Mississippi income tax due (line 20 plus line 21 and line 22)                                                         23                            .00
+    PAYMENTS
+
+24     Mississippi income tax withheld (complete Form 80-107)                                                                      24                            .00
+25     Estimated tax payments, extension payments and/or amount paid on original return                                            25                            .00
+26     Credit for tax paid on an electing Pass-Through Entity Tax Return (from Form 80-161, line 3D)                               26                            .00
+27     Refund received and/or amount carried forward from original return (amended return only)                                    27                            .00
+28     Total payments (line 24 plus line 25 and line 26 minus line 27)                                                             28                            .00
+    REFUND OR BALANCE DUE
+29     Overpayment (if line 28 is more than line 23, subtract line 23 from line 28; if zero, skip to line 35)                      29                            .00
+30     Interest and penalty (from Form 80-320, line 11 and/or line 12)                                                             30                            .00
+31     Adjusted overpayment (line 29 minus line 30)                                                                                31                            .00
+32     Overpayment to be applied to next year estimated tax account                         Farmers or Fishermen
+                                                                                            (see instructions)
+                                                                                                                                   32                            .00
+33     Voluntary contribution (from Form 80-108, part III)                                                                         33                            .00
+34     Overpayment refund (line 31 minus line 32 and line 33)                                                      REFUND          34                            .00
+                  Direct Deposit Request
+                  (check box and go to page 3)
+
+35     Balance due (if line 23 is more than line 28, subtract line 28 from line 23)                            BALANCE DUE         35                            .00
+36     Interest and penalty (from Form 80-320, line 19)                                                                            36                            .00
+37     Total due (line 35 plus line 36)                                                                 AMOUNT YOU OWE             37                            .00
+                  Installment Agreement Request
+                  (see instructions for eligibility; attach Form 71-661)
+
+                                                     PLEASE SIGN THIS TAX RETURN ON THE BOTTOM OF PAGE 3
+Form 80-105-25-8-2-000 (Rev. 09/25)
+
+
+                                                                            Mississippi
+                                                                                                                                Page 2
+                                                        Resident Individual Income Tax Return
+         801052582000
+                                                                         2025
+
+                                                                                                          SSN
+
+
+ INCOME                                                                             Column A (Taxpayer)                Column B (Spouse)
+
+
+38    Wages, salaries, tips, etc. (complete Form 80-107)                      38A                         .00   38B                        .00
+39    Business income (loss) (attach Federal Schedule C or C-EZ)              39A                         .00   39B                        .00
+40    Capital gain (loss) (attach Federal Schedule D, if applicable)          40A                         .00   40B                        .00
+41    Rent, royalties, partnerships, S corporations, trusts, etc.
+      (from Form 80-108, part IV)                                             41A                         .00   41B                        .00
+42    Farm income (loss) (attach Federal Schedule F)                          42A                         .00   42B                        .00
+43    Interest income (from Form 80-108, part II, line 3)                     43A                         .00   43B                        .00
+44    Dividend income (from Form 80-108, part II, line 6)                     44A                         .00   44B                        .00
+45    Alimony received                                                        45A                         .00   45B                        .00
+46    Taxable pensions and annuities (complete Form 80-107)                   46A                         .00   46B                        .00
+47    Unemployment compensation (complete Form 80-107)                        47A                         .00   47B                        .00
+48    Other income (loss) (from Form 80-108, part V, line 10)                 48A                         .00   48B                        .00
+49    Total income (add lines 38 through 48)                                  49A                         .00   49B                        .00
+ ADJUSTMENTS                                                                        Column A (Taxpayer)                Column B (Spouse)
+
+
+50    Payments to IRA                                                      50A                            .00   50B                        .00
+51    Payments to self-employed SEP, SIMPLE and qualified retirement plans 51A                            .00   51B                        .00
+52    Interest penalty on early withdrawal of savings                      52A                            .00   52B                        .00
+53    Alimony paid (complete below)                                           53A                         .00   53B                        .00
+     Name                                                   SSN                        State         Date of Divorce
+
+
+54    Moving expense (attach Federal Form 3903)                               54A                         .00   54B                        .00
+55    National Guard or Reserve pay (enter the lesser of amount or $15,000)   55A                         .00   55B                        .00
+56    Mississippi Prepaid Affordable College Tuition (MPACT)                  56A                         .00   56B                        .00
+57    Mississippi Affordable College Savings (MACS)                           57A                         .00   57B                        .00
+58    Self-employed health insurance deduction                                58A                         .00   58B                        .00
+59    Health savings account deduction                                        59A                         .00   59B                        .00
+60    Catastrophe savings account deduction                                   60A                         .00   60B                        .00
+61    Self-employment tax deduction                                           61A                         .00   61B                        .00
+62    First-time home buyer savings account deduction                         62A                         .00   62B                        .00
+63    Agricultural disaster program compensation deduction                    63A                         .00   63B                        .00
+64    Mississippi Achieving a Better Life Experience (ABLE) Act deduction     64A                         .00   64B                        .00
+65    Total adjustments (add lines 50 through 64)                             65A                         .00   65B                        .00
+66    Mississippi adjusted gross income (line 49 minus line 65; enter
+      on page 1, line 13)
+                                                                              66A                         .00   66B                        .00
+
+ AMENDED RETURN - EXPLANATION OF CHANGES TO ORIGINAL RETURN (attach additional statement if needed)
+Form 80-105-25-8-3-000 (Rev. 09/25)
+
+
+                                                                               Mississippi
+                                                                                                                                                        Page 3
+                                                           Resident Individual Income Tax Return
+         801052583000
+                                                                            2025
+
+                                                                                                                         SSN
+
+
+    DIRECT DEPOSIT INFORMATION
+
+1    Overpayment refund (from page 1, line 34)                                                                                         1                           .00
+
+
+a    Routing Number 1                                 Account Number 1                Checking              Savings                         Direct Deposit 1 Amount
+
+
+                                                                                                                                       1a                          .00
+b    Routing Number 2                                 Account Number 2                Checking              Savings                         Direct Deposit 2 Amount
+
+
+                                                                                                                                       1b                          .00
+
+
+    SIGNATURE
+
+This return may be discussed with the preparer            Yes            No
+
+
+I declare, under penalties of perjury, that I have examined this return and accompanying schedules and statements, and to the best of my knowledge and belief,
+this is a true, correct and complete return. Declaration of preparer (other than taxpayer) is based on all information of which preparer has any knowledge.
+
+
+
+       Taxpayer Signature                                   Date              Taxpayer Phone Number               Paid Preparer PTIN
+
+
+       Spouse Signature                                     Date               Paid Preparer Phone Number         Paid Preparer Email Address
+
+
+
+       Paid Preparer Signature                              Date              Paid Preparer Address               City                          State   Zip Code
+
+
+
+
+                                      Mail REFUND returns to: Department of Revenue, P.O. Box 23058, Jackson, MS 39225-3058
+                                      Mail all other returns to: Department of Revenue, P.O. Box 23050, Jackson, MS 39225-3050
+                                                             Duplex and Photocopies NOT Acceptable
+

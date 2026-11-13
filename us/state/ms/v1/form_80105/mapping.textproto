@@ -1,0 +1,388 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form 80-105 calls each concept, per tax year.
+#
+# Lines come from the 2025 Form 80-105 as the Mississippi Department of Revenue
+# publishes it. Lines with a taxpayer and a spouse column are printed with an
+# A or B suffix ("13A", "13B"), and those are the boxes recorded here.
+
+form: "80-105"
+message_name: "nexteggapp.taxprotos.us.state.ms.v1.Form80105"
+tax_years: 2025
+
+concepts {
+  concept: "filing_status"
+  years { tax_year: 2025 irs_box: "5" note: "Lines 1 to 5, one box per filing status; line 5 is single." }
+}
+concepts {
+  concept: "dependents"
+  years { tax_year: 2025 irs_box: "7" }
+}
+concepts {
+  concept: "age_and_blindness_boxes"
+  years { tax_year: 2025 irs_box: "8" }
+}
+concepts {
+  concept: "additional_exemptions"
+  years { tax_year: 2025 irs_box: "9" }
+}
+concepts {
+  concept: "additional_exemption_amount"
+  years { tax_year: 2025 irs_box: "10" }
+}
+concepts {
+  concept: "filing_status_exemption"
+  years { tax_year: 2025 irs_box: "11" }
+}
+concepts {
+  concept: "total_exemption"
+  years { tax_year: 2025 irs_box: "12" }
+}
+concepts {
+  concept: "income_tax"
+  years { tax_year: 2025 irs_box: "17" }
+}
+concepts {
+  concept: "credit_for_tax_paid_to_other_states"
+  years { tax_year: 2025 irs_box: "18" }
+}
+concepts {
+  concept: "other_credits"
+  years { tax_year: 2025 irs_box: "19" }
+}
+concepts {
+  concept: "net_income_tax"
+  years { tax_year: 2025 irs_box: "20" }
+}
+concepts {
+  concept: "consumer_use_tax"
+  years { tax_year: 2025 irs_box: "21" }
+}
+concepts {
+  concept: "catastrophe_savings_tax"
+  years { tax_year: 2025 irs_box: "22" }
+}
+concepts {
+  concept: "total_tax"
+  years { tax_year: 2025 irs_box: "23" }
+}
+concepts {
+  concept: "mississippi_tax_withheld"
+  years { tax_year: 2025 irs_box: "24" }
+}
+concepts {
+  concept: "estimated_and_extension_payments"
+  years { tax_year: 2025 irs_box: "25" }
+}
+concepts {
+  concept: "pass_through_entity_tax_credit"
+  years { tax_year: 2025 irs_box: "26" }
+}
+concepts {
+  concept: "refund_from_original_return"
+  years { tax_year: 2025 irs_box: "27" }
+}
+concepts {
+  concept: "total_payments"
+  years { tax_year: 2025 irs_box: "28" }
+}
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "29" }
+}
+concepts {
+  concept: "overpayment_interest_and_penalty"
+  years { tax_year: 2025 irs_box: "30" }
+}
+concepts {
+  concept: "adjusted_overpayment"
+  years { tax_year: 2025 irs_box: "31" }
+}
+concepts {
+  concept: "applied_to_next_year"
+  years { tax_year: 2025 irs_box: "32" }
+}
+concepts {
+  concept: "voluntary_contributions"
+  years { tax_year: 2025 irs_box: "33" }
+}
+concepts {
+  concept: "refund"
+  years { tax_year: 2025 irs_box: "34" }
+}
+concepts {
+  concept: "balance_due"
+  years { tax_year: 2025 irs_box: "35" }
+}
+concepts {
+  concept: "balance_due_interest_and_penalty"
+  years { tax_year: 2025 irs_box: "36" }
+}
+concepts {
+  concept: "amount_owed"
+  years { tax_year: 2025 irs_box: "37" }
+}
+concepts {
+  concept: "taxpayer_wages"
+  years { tax_year: 2025 irs_box: "38A" }
+}
+concepts {
+  concept: "spouse_wages"
+  years { tax_year: 2025 irs_box: "38B" }
+}
+concepts {
+  concept: "taxpayer_business_income"
+  years { tax_year: 2025 irs_box: "39A" }
+}
+concepts {
+  concept: "spouse_business_income"
+  years { tax_year: 2025 irs_box: "39B" }
+}
+concepts {
+  concept: "taxpayer_capital_gain"
+  years { tax_year: 2025 irs_box: "40A" }
+}
+concepts {
+  concept: "spouse_capital_gain"
+  years { tax_year: 2025 irs_box: "40B" }
+}
+concepts {
+  concept: "taxpayer_rents_royalties_partnerships"
+  years { tax_year: 2025 irs_box: "41A" }
+}
+concepts {
+  concept: "spouse_rents_royalties_partnerships"
+  years { tax_year: 2025 irs_box: "41B" }
+}
+concepts {
+  concept: "taxpayer_farm_income"
+  years { tax_year: 2025 irs_box: "42A" }
+}
+concepts {
+  concept: "spouse_farm_income"
+  years { tax_year: 2025 irs_box: "42B" }
+}
+concepts {
+  concept: "taxpayer_interest_income"
+  years { tax_year: 2025 irs_box: "43A" }
+}
+concepts {
+  concept: "spouse_interest_income"
+  years { tax_year: 2025 irs_box: "43B" }
+}
+concepts {
+  concept: "taxpayer_dividend_income"
+  years { tax_year: 2025 irs_box: "44A" }
+}
+concepts {
+  concept: "spouse_dividend_income"
+  years { tax_year: 2025 irs_box: "44B" }
+}
+concepts {
+  concept: "taxpayer_alimony_received"
+  years { tax_year: 2025 irs_box: "45A" }
+}
+concepts {
+  concept: "spouse_alimony_received"
+  years { tax_year: 2025 irs_box: "45B" }
+}
+concepts {
+  concept: "taxpayer_taxable_pensions_and_annuities"
+  years { tax_year: 2025 irs_box: "46A" }
+}
+concepts {
+  concept: "spouse_taxable_pensions_and_annuities"
+  years { tax_year: 2025 irs_box: "46B" }
+}
+concepts {
+  concept: "taxpayer_unemployment_compensation"
+  years { tax_year: 2025 irs_box: "47A" }
+}
+concepts {
+  concept: "spouse_unemployment_compensation"
+  years { tax_year: 2025 irs_box: "47B" }
+}
+concepts {
+  concept: "taxpayer_other_income"
+  years { tax_year: 2025 irs_box: "48A" }
+}
+concepts {
+  concept: "spouse_other_income"
+  years { tax_year: 2025 irs_box: "48B" }
+}
+concepts {
+  concept: "taxpayer_total_income"
+  years { tax_year: 2025 irs_box: "49A" }
+}
+concepts {
+  concept: "spouse_total_income"
+  years { tax_year: 2025 irs_box: "49B" }
+}
+concepts {
+  concept: "taxpayer_ira_payments"
+  years { tax_year: 2025 irs_box: "50A" }
+}
+concepts {
+  concept: "spouse_ira_payments"
+  years { tax_year: 2025 irs_box: "50B" }
+}
+concepts {
+  concept: "taxpayer_self_employed_retirement_plans"
+  years { tax_year: 2025 irs_box: "51A" }
+}
+concepts {
+  concept: "spouse_self_employed_retirement_plans"
+  years { tax_year: 2025 irs_box: "51B" }
+}
+concepts {
+  concept: "taxpayer_early_withdrawal_penalty"
+  years { tax_year: 2025 irs_box: "52A" }
+}
+concepts {
+  concept: "spouse_early_withdrawal_penalty"
+  years { tax_year: 2025 irs_box: "52B" }
+}
+concepts {
+  concept: "taxpayer_alimony_paid"
+  years { tax_year: 2025 irs_box: "53A" }
+}
+concepts {
+  concept: "spouse_alimony_paid"
+  years { tax_year: 2025 irs_box: "53B" }
+}
+concepts {
+  concept: "taxpayer_moving_expense"
+  years { tax_year: 2025 irs_box: "54A" }
+}
+concepts {
+  concept: "spouse_moving_expense"
+  years { tax_year: 2025 irs_box: "54B" }
+}
+concepts {
+  concept: "taxpayer_national_guard_or_reserve_pay"
+  years { tax_year: 2025 irs_box: "55A" }
+}
+concepts {
+  concept: "spouse_national_guard_or_reserve_pay"
+  years { tax_year: 2025 irs_box: "55B" }
+}
+concepts {
+  concept: "taxpayer_mpact_deduction"
+  years { tax_year: 2025 irs_box: "56A" }
+}
+concepts {
+  concept: "spouse_mpact_deduction"
+  years { tax_year: 2025 irs_box: "56B" }
+}
+concepts {
+  concept: "taxpayer_macs_deduction"
+  years { tax_year: 2025 irs_box: "57A" }
+}
+concepts {
+  concept: "spouse_macs_deduction"
+  years { tax_year: 2025 irs_box: "57B" }
+}
+concepts {
+  concept: "taxpayer_self_employed_health_insurance"
+  years { tax_year: 2025 irs_box: "58A" }
+}
+concepts {
+  concept: "spouse_self_employed_health_insurance"
+  years { tax_year: 2025 irs_box: "58B" }
+}
+concepts {
+  concept: "taxpayer_health_savings_account"
+  years { tax_year: 2025 irs_box: "59A" }
+}
+concepts {
+  concept: "spouse_health_savings_account"
+  years { tax_year: 2025 irs_box: "59B" }
+}
+concepts {
+  concept: "taxpayer_catastrophe_savings_account"
+  years { tax_year: 2025 irs_box: "60A" }
+}
+concepts {
+  concept: "spouse_catastrophe_savings_account"
+  years { tax_year: 2025 irs_box: "60B" }
+}
+concepts {
+  concept: "taxpayer_self_employment_tax_deduction"
+  years { tax_year: 2025 irs_box: "61A" }
+}
+concepts {
+  concept: "spouse_self_employment_tax_deduction"
+  years { tax_year: 2025 irs_box: "61B" }
+}
+concepts {
+  concept: "taxpayer_first_time_home_buyer_savings"
+  years { tax_year: 2025 irs_box: "62A" }
+}
+concepts {
+  concept: "spouse_first_time_home_buyer_savings"
+  years { tax_year: 2025 irs_box: "62B" }
+}
+concepts {
+  concept: "taxpayer_agricultural_disaster_compensation"
+  years { tax_year: 2025 irs_box: "63A" }
+}
+concepts {
+  concept: "spouse_agricultural_disaster_compensation"
+  years { tax_year: 2025 irs_box: "63B" }
+}
+concepts {
+  concept: "taxpayer_able_act_deduction"
+  years { tax_year: 2025 irs_box: "64A" }
+}
+concepts {
+  concept: "spouse_able_act_deduction"
+  years { tax_year: 2025 irs_box: "64B" }
+}
+concepts {
+  concept: "taxpayer_total_adjustments"
+  years { tax_year: 2025 irs_box: "65A" }
+}
+concepts {
+  concept: "spouse_total_adjustments"
+  years { tax_year: 2025 irs_box: "65B" }
+}
+concepts {
+  concept: "taxpayer_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "66A" }
+}
+concepts {
+  concept: "spouse_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "66B" }
+}
+concepts {
+  concept: "taxpayer_adjusted_gross_income_on_page_1"
+  years { tax_year: 2025 irs_box: "13A" }
+}
+concepts {
+  concept: "spouse_adjusted_gross_income_on_page_1"
+  years { tax_year: 2025 irs_box: "13B" }
+}
+concepts {
+  concept: "taxpayer_deductions"
+  years { tax_year: 2025 irs_box: "14A" }
+}
+concepts {
+  concept: "spouse_deductions"
+  years { tax_year: 2025 irs_box: "14B" }
+}
+concepts {
+  concept: "taxpayer_exemptions"
+  years { tax_year: 2025 irs_box: "15A" }
+}
+concepts {
+  concept: "spouse_exemptions"
+  years { tax_year: 2025 irs_box: "15B" }
+}
+concepts {
+  concept: "taxpayer_taxable_income"
+  years { tax_year: 2025 irs_box: "16A" }
+}
+concepts {
+  concept: "spouse_taxable_income"
+  years { tax_year: 2025 irs_box: "16B" }
+}
