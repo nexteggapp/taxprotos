@@ -1,0 +1,196 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Montana Form 2 calls each concept, per tax year.
+#
+# Lines come from the 2025 Form 2 (2025v3) as the Montana Department of Revenue
+# publishes it. The tax worksheet on page 2 numbers its lines 1 to 13 again;
+# every concept carries a note saying whether it is page 1 or the worksheet.
+
+form: "MT-2"
+message_name: "nexteggapp.taxprotos.us.state.mt.v1.Form2"
+tax_years: 2025
+
+concepts {
+  concept: "filing_status"
+  years {
+    tax_year: 2025
+    irs_box: "Federal Filing Status"
+    note: "Single, married filing jointly, married filing separately, qualifying surviving spouse, head of household."
+  }
+}
+concepts {
+  concept: "age_65_or_older"
+  years { tax_year: 2025 irs_box: "6" note: "Page 1, line 6: how many filers the subtraction is taken for." }
+}
+concepts {
+  concept: "federal_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "1" note: "Page 1, line 1." }
+}
+concepts {
+  concept: "federal_deductions"
+  years { tax_year: 2025 irs_box: "2" note: "Page 1, line 2." }
+}
+concepts {
+  concept: "federal_taxable_income"
+  years { tax_year: 2025 irs_box: "3" note: "Page 1, line 3." }
+}
+concepts {
+  concept: "montana_additions"
+  years { tax_year: 2025 irs_box: "4" note: "Page 1, line 4." }
+}
+concepts {
+  concept: "montana_subtractions"
+  years { tax_year: 2025 irs_box: "5" note: "Page 1, line 5." }
+}
+concepts {
+  concept: "age_65_subtraction"
+  years { tax_year: 2025 irs_box: "6" note: "Page 1, line 6." }
+}
+concepts {
+  concept: "montana_taxable_income"
+  years { tax_year: 2025 irs_box: "7" note: "Page 1, line 7." }
+}
+concepts {
+  concept: "tax_before_credits"
+  years { tax_year: 2025 irs_box: "8" note: "Page 1, line 8." }
+}
+concepts {
+  concept: "nonrefundable_credits"
+  years { tax_year: 2025 irs_box: "9" note: "Page 1, line 9." }
+}
+concepts {
+  concept: "tax_after_nonrefundable_credits"
+  years { tax_year: 2025 irs_box: "10" note: "Page 1, line 10." }
+}
+concepts {
+  concept: "w2_withholding"
+  years { tax_year: 2025 irs_box: "11a" note: "Page 1, line 11a." }
+}
+concepts {
+  concept: "form_1099_withholding"
+  years { tax_year: 2025 irs_box: "11b" note: "Page 1, line 11b." }
+}
+concepts {
+  concept: "pass_through_entity_tax_credit"
+  years { tax_year: 2025 irs_box: "11c" note: "Page 1, line 11c." }
+}
+concepts {
+  concept: "schedule_k1_withholding"
+  years { tax_year: 2025 irs_box: "11d" note: "Page 1, line 11d." }
+}
+concepts {
+  concept: "loan_out_withholding"
+  years { tax_year: 2025 irs_box: "11e" note: "Page 1, line 11e." }
+}
+concepts {
+  concept: "total_withholding"
+  years { tax_year: 2025 irs_box: "11" note: "Page 1, line 11." }
+}
+concepts {
+  concept: "estimated_tax_payments"
+  years { tax_year: 2025 irs_box: "12" note: "Page 1, line 12." }
+}
+concepts {
+  concept: "prior_year_overpayment_applied"
+  years { tax_year: 2025 irs_box: "13" note: "Page 1, line 13." }
+}
+concepts {
+  concept: "extension_payment"
+  years { tax_year: 2025 irs_box: "14" note: "Page 1, line 14." }
+}
+concepts {
+  concept: "federal_earned_income_credit"
+  years { tax_year: 2025 irs_box: "15" note: "Page 1, line 15." }
+}
+concepts {
+  concept: "earned_income_credit"
+  years { tax_year: 2025 irs_box: "15" note: "Page 1, line 15." }
+}
+concepts {
+  concept: "elderly_homeowner_renter_credit"
+  years { tax_year: 2025 irs_box: "16" note: "Page 1, line 16." }
+}
+concepts {
+  concept: "refundable_credits"
+  years { tax_year: 2025 irs_box: "17" note: "Page 1, line 17." }
+}
+concepts {
+  concept: "amended_original_payments"
+  years { tax_year: 2025 irs_box: "18" note: "Page 1, line 18." }
+}
+concepts {
+  concept: "contributions_penalties_and_other_taxes"
+  years { tax_year: 2025 irs_box: "19" note: "Page 1, line 19." }
+}
+concepts {
+  concept: "amended_previous_overpayment"
+  years { tax_year: 2025 irs_box: "20" note: "Page 1, line 20." }
+}
+concepts {
+  concept: "total_payments"
+  years { tax_year: 2025 irs_box: "21" note: "Page 1, line 21." }
+}
+concepts {
+  concept: "tax_due"
+  years { tax_year: 2025 irs_box: "22" note: "Page 1, line 22." }
+}
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "23" note: "Page 1, line 23." }
+}
+concepts {
+  concept: "applied_to_estimated_tax"
+  years { tax_year: 2025 irs_box: "24" note: "Page 1, line 24." }
+}
+concepts {
+  concept: "deposit_to_529_accounts"
+  years { tax_year: 2025 irs_box: "25" note: "Page 1, line 25." }
+}
+concepts {
+  concept: "refund"
+  years { tax_year: 2025 irs_box: "26" note: "Page 1, line 26." }
+}
+concepts {
+  concept: "net_long_term_capital_gains"
+  years { tax_year: 2025 irs_box: "2" note: "Page 2 worksheet, line 2." }
+}
+concepts {
+  concept: "capital_gains_taxed"
+  years { tax_year: 2025 irs_box: "3" note: "Page 2 worksheet, line 3." }
+}
+concepts {
+  concept: "ordinary_income"
+  years { tax_year: 2025 irs_box: "4" note: "Page 2 worksheet, line 4." }
+}
+concepts {
+  concept: "capital_gains_threshold"
+  years { tax_year: 2025 irs_box: "5" note: "Page 2 worksheet, line 5." }
+}
+concepts {
+  concept: "capital_gains_threshold_remaining"
+  years { tax_year: 2025 irs_box: "6" note: "Page 2 worksheet, line 6." }
+}
+concepts {
+  concept: "capital_gains_at_lower_rate"
+  years { tax_year: 2025 irs_box: "7" note: "Page 2 worksheet, line 7." }
+}
+concepts {
+  concept: "tax_on_capital_gains_at_lower_rate"
+  years { tax_year: 2025 irs_box: "8" note: "Page 2 worksheet, line 8." }
+}
+concepts {
+  concept: "capital_gains_at_higher_rate"
+  years { tax_year: 2025 irs_box: "9" note: "Page 2 worksheet, line 9." }
+}
+concepts {
+  concept: "tax_on_capital_gains_at_higher_rate"
+  years { tax_year: 2025 irs_box: "10" note: "Page 2 worksheet, line 10." }
+}
+concepts {
+  concept: "capital_gains_tax"
+  years { tax_year: 2025 irs_box: "11" note: "Page 2 worksheet, line 11." }
+}
+concepts {
+  concept: "ordinary_income_tax"
+  years { tax_year: 2025 irs_box: "12" note: "Page 2 worksheet, line 12." }
+}

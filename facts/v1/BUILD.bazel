@@ -60,6 +60,7 @@ proto_library(
         "//us/state/la/v1/form_it540:form_it540_proto",
         "//us/state/ms/v1/form_80105:form_80105_proto",
         "//us/state/mo/v1/form_mo1040:form_mo1040_proto",
+        "//us/state/mt/v1/form_2:form_2_proto",
         "//us/state/nc/v1/form_d400:form_d400_proto",
         "//us/state/ok/v1/form_511:form_511_proto",
         "//us/state/or/v1/form_or40:form_or40_proto",

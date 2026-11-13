@@ -109,6 +109,7 @@ import "taxprotos/us/state/in/v1/form_it40/form_it40.proto";
 import "taxprotos/us/state/la/v1/form_it540/form_it540.proto";
 import "taxprotos/us/state/ms/v1/form_80105/form_80105.proto";
 import "taxprotos/us/state/mo/v1/form_mo1040/form_mo1040.proto";
+import "taxprotos/us/state/mt/v1/form_2/form_2.proto";
 import "taxprotos/us/state/nc/v1/form_d400/form_d400.proto";
 import "taxprotos/us/state/ok/v1/form_511/form_511.proto";
 import "taxprotos/us/state/or/v1/form_or40/form_or40.proto";
@@ -253,6 +254,8 @@ message Document {
 
     // A filed Missouri return.
     MissouriReturn missouri_return = 71;
+    // A filed Montana return.
+    MontanaReturn montana_return = 72;
 
     // A filed North Carolina return.
     NorthCarolinaReturn north_carolina_return = 49;
@@ -786,6 +789,10 @@ message IndianaReturn {
 message MissouriReturn {
   // Form MO-1040.
   us.state.mo.v1.FormMO1040 form_mo1040 = 1;
+// A Montana resident return: Form 2.
+message MontanaReturn {
+  // Form 2.
+  us.state.mt.v1.Form2 form_2 = 1;
 }
 
 // A North Carolina resident return: Form D-400.
