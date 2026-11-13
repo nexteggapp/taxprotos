@@ -112,6 +112,7 @@ import "taxprotos/us/state/mo/v1/form_mo1040/form_mo1040.proto";
 import "taxprotos/us/state/mt/v1/form_2/form_2.proto";
 import "taxprotos/us/state/nc/v1/form_d400/form_d400.proto";
 import "taxprotos/us/state/ok/v1/form_511/form_511.proto";
+import "taxprotos/us/state/nd/v1/form_nd1/form_nd1.proto";
 import "taxprotos/us/state/or/v1/form_or40/form_or40.proto";
 import "taxprotos/us/state/pa/v1/form_pa40/form_pa40.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
@@ -308,6 +309,8 @@ message Document {
 
     // A filed Arkansas return.
     ArkansasReturn arkansas_return = 53;
+    // A filed North Dakota return.
+    NorthDakotaReturn north_dakota_return = 77;
   }
 }
 
@@ -887,4 +890,8 @@ message OklahomaReturn {
 message ArkansasReturn {
   // Form AR1000F.
   us.state.ar.v1.FormAR1000F form_ar1000f = 1;
+// A North Dakota resident return: Form ND-1.
+message NorthDakotaReturn {
+  // Form ND-1.
+  us.state.nd.v1.FormND1 form_nd1 = 1;
 }
