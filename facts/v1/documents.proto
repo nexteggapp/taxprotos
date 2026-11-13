@@ -745,6 +745,8 @@ message IllinoisReturn {
 message MichiganReturn {
   // Form MI-1040.
   us.state.mi.v1.FormMI1040 form_mi1040 = 1;
+}
+
 // An Indiana resident return: Form IT-40.
 message IndianaReturn {
   // Form IT-40.
@@ -798,14 +800,20 @@ message WashingtonReturn {
 message PennsylvaniaReturn {
   // Form PA-40.
   us.state.pa.v1.FormPA40 form_pa40 = 1;
+}
+
 // A Kentucky resident return: Form 740.
 message KentuckyReturn {
   // Form 740.
   us.state.ky.v1.Form740 form_740 = 1;
+}
+
 // An Iowa resident return: Form IA 1040.
 message IowaReturn {
   // Form IA 1040.
   us.state.ia.v1.FormIA1040 form_ia1040 = 1;
+}
+
 // A Louisiana resident return: Form IT-540.
 message LouisianaReturn {
   // Form IT-540.
