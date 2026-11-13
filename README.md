@@ -2,8 +2,8 @@
 
 Protobuf schemas for US tax documents: the W-2 and 1099 forms a household
 receives, the Form 1040 it files, the state returns for Arizona, California,
-Colorado, Illinois, North Carolina, Oregon and Washington, and `TaxYearFacts`, a
-household's own facts for one tax year.
+Colorado, Idaho, Illinois, North Carolina, Oregon and Washington, and
+`TaxYearFacts`, a household's own facts for one tax year.
 
 A schema holds what the form prints and nothing else. It has no confidence
 scores, page coordinates or other traces of how a document was read. Software
@@ -188,11 +188,12 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [8995](https://www.irs.gov/pub/irs-pdf/f8995.pdf) | [`form_8995.proto`](us/federal/v1/form_1040/form_8995.proto) | Qualified business income deduction, simplified computation |
 | [8995-A](https://www.irs.gov/pub/irs-pdf/f8995a.pdf) | [`form_8995_a.proto`](us/federal/v1/form_1040/form_8995_a.proto) | Qualified business income deduction |
 
-### State returns — what seven states want as well
+### State returns — what eight states want as well
 
 | Form | Schema | Reports |
 |---|---|---|
 | [140](https://azdor.gov/sites/default/files/document/FORMS_INDIVIDUAL_2025_140_f.pdf) | [`form_140.proto`](us/state/az/v1/form_140/form_140.proto) | The Arizona resident return |
+| [40](https://tax.idaho.gov/wp-content/uploads/forms/EFO00089/EFO00089_03-02-2026.pdf) | [`form_40.proto`](us/state/id/v1/form_40/form_40.proto) | The Idaho resident return |
 | [DR 0104](https://tax.colorado.gov/sites/tax/files/documents/DR0104_2025.pdf) | [`form_dr0104.proto`](us/state/co/v1/form_dr0104/form_dr0104.proto) | The Colorado resident return |
 | [500](https://dor.georgia.gov/document/document/2025-it-511-individual-income-tax-booklet/download) | [`form_500.proto`](us/state/ga/v1/form_500/form_500.proto) | The Georgia resident return, printed in the IT-511 booklet |
 | [IL-1040](https://tax.illinois.gov/content/dam/soi/en/web/tax/forms/incometax/documents/currentyear/individual/il-1040.pdf) | [`form_il1040.proto`](us/state/il/v1/form_il1040/form_il1040.proto) | The Illinois resident return |
