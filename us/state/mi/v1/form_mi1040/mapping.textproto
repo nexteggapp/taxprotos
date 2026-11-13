@@ -1,0 +1,193 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form MI-1040 calls each concept, per tax year.
+#
+# Lines come from the 2025 Form MI-1040 as the Michigan Department of Treasury
+# publishes it. There are no amount codes: IRS Publication 1220 covers the
+# information returns the IRS receives electronically, and a state return is not
+# one of them.
+#
+# Line 9 prints a count and an amount on each of lines 9a to 9d, both under the
+# same number; the count and the amount are mapped to it with a note saying
+# which is which. Line 33 is for amended returns only and is not modelled.
+
+form: "MI-1040"
+message_name: "nexteggapp.taxprotos.us.state.mi.v1.FormMI1040"
+tax_years: 2025
+
+concepts {
+  concept: "filing_status"
+  years { tax_year: 2025 irs_box: "7" note: "Item 7: single, married filing jointly, married filing separately." }
+}
+concepts {
+  concept: "claimed_as_dependent"
+  years { tax_year: 2025 irs_box: "9e" note: "The box on line 9e." }
+}
+concepts {
+  concept: "exemptions"
+  years { tax_year: 2025 irs_box: "9a" note: "The number of exemptions." }
+}
+concepts {
+  concept: "personal_exemption"
+  years { tax_year: 2025 irs_box: "9a" note: "The amount: the number times the exemption allowance." }
+}
+concepts {
+  concept: "special_exemptions"
+  years { tax_year: 2025 irs_box: "9b" note: "The number of individuals." }
+}
+concepts {
+  concept: "special_exemption"
+  years { tax_year: 2025 irs_box: "9b" note: "The amount." }
+}
+concepts {
+  concept: "qualified_disabled_veterans"
+  years { tax_year: 2025 irs_box: "9c" note: "The number of veterans." }
+}
+concepts {
+  concept: "disabled_veteran_exemption"
+  years { tax_year: 2025 irs_box: "9c" note: "The amount." }
+}
+concepts {
+  concept: "stillbirths"
+  years { tax_year: 2025 irs_box: "9d" note: "The number of certificates." }
+}
+concepts {
+  concept: "stillbirth_exemption"
+  years { tax_year: 2025 irs_box: "9d" note: "The amount." }
+}
+concepts {
+  concept: "dependent_filer_exemption"
+  years { tax_year: 2025 irs_box: "9e" note: "The amount." }
+}
+concepts {
+  concept: "total_exemptions"
+  years { tax_year: 2025 irs_box: "9f" note: "Lines 9a through 9e." }
+}
+concepts {
+  concept: "federal_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "10" note: "Federal Form 1040 line 11a." }
+}
+concepts {
+  concept: "additions"
+  years { tax_year: 2025 irs_box: "11" note: "From Schedule 1, line 9." }
+}
+concepts {
+  concept: "total_income"
+  years { tax_year: 2025 irs_box: "12" }
+}
+concepts {
+  concept: "subtractions"
+  years { tax_year: 2025 irs_box: "13" note: "From Schedule 1, line 31." }
+}
+concepts {
+  concept: "income_subject_to_tax"
+  years { tax_year: 2025 irs_box: "14" }
+}
+concepts {
+  concept: "exemption_allowance"
+  years { tax_year: 2025 irs_box: "15" note: "From line 9f." }
+}
+concepts {
+  concept: "taxable_income"
+  years { tax_year: 2025 irs_box: "16" }
+}
+concepts {
+  concept: "tax"
+  years { tax_year: 2025 irs_box: "17" note: "Line 16 at 4.25%." }
+}
+concepts {
+  concept: "tax_paid_to_other_governments"
+  years { tax_year: 2025 irs_box: "18a" }
+}
+concepts {
+  concept: "credit_for_tax_paid_to_other_governments"
+  years { tax_year: 2025 irs_box: "18b" }
+}
+concepts {
+  concept: "historic_preservation_credit_amount"
+  years { tax_year: 2025 irs_box: "19a" }
+}
+concepts {
+  concept: "historic_preservation_credit"
+  years { tax_year: 2025 irs_box: "19b" }
+}
+concepts {
+  concept: "organ_donation_expenses"
+  years { tax_year: 2025 irs_box: "20a" }
+}
+concepts {
+  concept: "organ_donation_credit"
+  years { tax_year: 2025 irs_box: "20b" }
+}
+concepts {
+  concept: "income_tax"
+  years { tax_year: 2025 irs_box: "21" }
+}
+concepts {
+  concept: "voluntary_contributions"
+  years { tax_year: 2025 irs_box: "22" note: "From Form 4642, line 6." }
+}
+concepts {
+  concept: "home_buyer_savings_withdrawal_penalty"
+  years { tax_year: 2025 irs_box: "23" note: "From Form 5792, line 5." }
+}
+concepts {
+  concept: "use_tax"
+  years { tax_year: 2025 irs_box: "24" note: "From Worksheet 1." }
+}
+concepts {
+  concept: "total_tax_liability"
+  years { tax_year: 2025 irs_box: "25" }
+}
+concepts {
+  concept: "property_tax_credit"
+  years { tax_year: 2025 irs_box: "26" note: "From MI-1040CR or MI-1040CR-2." }
+}
+concepts {
+  concept: "farmland_preservation_credit"
+  years { tax_year: 2025 irs_box: "27" note: "From MI-1040CR-5." }
+}
+concepts {
+  concept: "federal_earned_income_credit"
+  years { tax_year: 2025 irs_box: "28a" }
+}
+concepts {
+  concept: "earned_income_credit"
+  years { tax_year: 2025 irs_box: "28b" note: "Line 28a at 30%." }
+}
+concepts {
+  concept: "refundable_historic_preservation_credit"
+  years { tax_year: 2025 irs_box: "29" note: "From Form 3581." }
+}
+concepts {
+  concept: "flow_through_entity_tax_credit"
+  years { tax_year: 2025 irs_box: "30" }
+}
+concepts {
+  concept: "michigan_tax_withheld"
+  years { tax_year: 2025 irs_box: "31" note: "From Schedule W, line 6." }
+}
+concepts {
+  concept: "estimated_tax_payments"
+  years { tax_year: 2025 irs_box: "32" }
+}
+concepts {
+  concept: "total_refundable_credits_and_payments"
+  years { tax_year: 2025 irs_box: "34" note: "Lines 26, 27, 28b, 29 through 32 and, on an amended return, 33c." }
+}
+concepts {
+  concept: "amount_owed"
+  years { tax_year: 2025 irs_box: "36" }
+}
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "37" }
+}
+concepts {
+  concept: "credited_forward"
+  years { tax_year: 2025 irs_box: "38" }
+}
+concepts {
+  concept: "refund"
+  years { tax_year: 2025 irs_box: "39" }
+}

@@ -397,6 +397,8 @@ message PriorYearReturn {
     UtahReturn utah = 50;
     // A Washington capital gains excise tax return.
     WashingtonReturn washington = 55;
+    // A Michigan return.
+    MichiganReturn michigan = 35;
   }
 
   // Where the return came from, when it is here.

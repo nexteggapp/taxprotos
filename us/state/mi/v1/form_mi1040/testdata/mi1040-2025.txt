@@ -1,0 +1,200 @@
+                                                                                                                                                                               Reset Form
+Michigan Department of Treasury (Rev. 06-25), Page 1 of 3                                                                               Issued under authority of Public Act 281 of 1967, as amended.
+
+2025 MICHIGAN Individual Income Tax Return MI-1040                                                                                                                      Amended Return
+                                                                                                                                                                        (Include Schedule AMD)
+Return is due April 15, 2026. Type or print in blue or black ink.
+ 1. Filer’s First Name                                   M.I.     Last Name                                                                2. Filer’s Full Social Security No. (Example: 123-45-6789)
+
+
+ If a Joint Return, Spouse’s First Name                  M.I.     Last Name
+                                                                                                                                           3. Spouse’s Full Social Security No. (Example: 123-45-6789)
+ Home Address (Number, Street, or P.O. Box)
+
+
+ City or Town                                                                    State        ZIP/Postal Code          Country Code        4. School District Code (5 digits)
+
+
+  5. STATE CAMPAIGN FUND                                                                                                6. FARMERS, FISHERMEN, OR SEAFARERS
+     Check if you (and/or your spouse, if                                  a.         Filer
+     filing a joint return) want $3 of your taxes                                                                                    Check this box if 2/3 of your income is from farming,
+     to go to this fund. This will not increase                            b.                                                        fishing, or seafaring.
+                                                                                      Spouse
+     your tax or reduce your refund.
+
+  7. 2025 FILING STATUS. Check one.                                                                                     8. 2025 RESIDENCY STATUS. Check all that apply.
+   a.     Single                    * If you check box “c,” complete                                                     a.     Resident
+                                                         line 3 and enter spouse’s full name                                                           * If you check box “b” or
+   b.           Married filing jointly                   below:                                                          b.     Nonresident *          “c,” you must complete
+                                                                                                                                                       and include Schedule
+                                                                                                                                                       NR.
+   c.           Married filing separately*                                                                               c.     Part-Year Resident *
+
+
+
+  9. EXEMPTIONS. NOTE: If someone else can claim you as a dependent, check box 9e, enter 0 on line 9a and enter $1,500 on line 9e (see instr.).
+
+        a. Number of exemptions (see instructions) .............................................................                 9a.                   x       $5,800   9a.                         00
+        b. Number of individuals who qualify for one of the following special exemptions: deaf,
+           blind, hemiplegic, paraplegic, quadriplegic, or totally and permanently disabled     9b.                                                    x       $3,400   9b.                         00
+
+        c. Number of qualified disabled veterans .................................................................               9c.                   x       $500     9c.                         00
+
+        d. Number of Certificates of Stillbirth from MDHHS (see instructions) .....................                              9d.                   x       $5,800   9d.                         00
+
+        e. Claimed as dependent, see line 9 NOTE above ..................................................                        9e.                                    9e.                         00
+
+        f. Add lines 9a, 9b, 9c, 9d and 9e. Enter here and on line 15 .............................................................................                      9f.                        00
+
+  10.   Adjusted Gross Income from your U.S. Form 1040 (see instructions) ....................................................                                   10.                                00
+
+  11. Additions from Schedule 1, line 9. Include Schedule 1 ............................................................................                         11.                                00
+
+  12.   Total. Add lines 10 and 11..........................................................................................................................     12.                                00
+
+  13.   Subtractions from Schedule 1, line 31. Include Schedule 1 ....................................................................                           13.                                00
+
+  14.   Income subject to tax. Subtract line 13 from line 12. If line 13 is greater than line 12, enter “0” ............                                         14.                                00
+
+  15.   Exemption allowance. Enter amount from line 9f or Schedule NR, line 19..............................................                                     15.                                00
+
+  16.   Taxable income. Subtract line 15 from line 14. If line 15 is greater than line 14, enter “0” ......................                                      16.                                00
+
+  17.   Tax. Multiply line 16 by 4.25% (0.0425) .....................................................................................................            17.                                00
+
+
+
+
+                                                          Continue on page 2. This form cannot be processed if pages 2 and 3 are not completed and included.
+
++ 0000 2025 05 01 27 8
+2025 MI-1040, Page 2 of 3
+                                                                                       Filer’s Full Social Security Number
+
+
+
+NONREFUNDABLE CREDITS                                                                                                             AMOUNT                                     CREDIT
+
+ 18. Income Tax Imposed by government units outside Michigan.
+     Include a copy of the return (see instructions)........................                           18a.                                                  00       18b.              00
+
+ 19.    Michigan Historic Preservation Tax Credit (see instructions).                                 19a.                                                   00       19b.              00
+
+ 20. Credit for organ donation expenses (see instructions) ............. 20a.                                                                                00       20b.              00
+ 21.    Income Tax. Subtract the sum of lines 18b, 19b, and 20b from line 17.
+        If the sum of lines 18b, 19b, and 20b is greater than line 17, enter “0” ......................................................                                21.              00
+
+
+ 22.    Voluntary Contributions from Form 4642, line 6. Include Form 4642........................................................                                      22.              00
+ 23.    Penalty for nonqualified withdrawal from Form 5792, Michigan First-Time Home Buyer Savings
+        Program, line 5 ...........................................................................................................................................    23.              00
+ 24.    USE TAX. Use tax due on Internet, mail order or other out-of-state purchases from
+        Worksheet 1 (see instructions) ...................................................................................................................             24.              00
+
+ 25. Total Tax Liability. Add lines 21 through 24 ...................................................................................                       25.                         00
+
+REFUNDABLE CREDITS AND PAYMENTS
+
+ 26.    Property Tax Credit. Include MI-1040CR or MI-1040CR-2 .....................................................................                                    26.              00
+
+ 27.    Farmland Preservation Tax Credit. Include MI-1040CR-5 .....................................................................                                    27.              00
+
+                                                                                                                               FEDERAL                                       MICHIGAN
+
+ 28.    Earned Income Tax Credit. Multiply line 28a by 30% (0.30)
+        and enter result on line 28b. .................................................... 28a.                                                           00          28b.              00
+
+ 29.    Michigan Historic Preservation Tax Credit (refundable). Include Form 3581. ...........................................                                         29.              00
+
+ 30.    Credit for allocated share of tax paid by an electing flow-through entity (see instructions) ........................                                          30.              00
+
+ 31.    Michigan tax withheld from Schedule W, line 6. Include Schedule W (do not submit W-2s) .................                                                       31.              00
+
+ 32.    Estimated tax, extension payments and 2024 credit forward .....................................................................                                32.              00
+ 33.    2025 AMENDED RETURNS ONLY. Taxpayers completing an original 2025 return should skip to line 34.
+        Amended returns must include Schedule AMD (see instructions).
+
+                          If you had a refund and/or credit forward on the original return, check box 33a and enter this amount as a
+        33a.              negative number on line 33c.
+
+                          If you paid with the original return, check box 33b and enter the amount paid with the original return, plus
+        33b.              any additional tax paid after filing, as a positive number on line 33c. Do not include interest or penalty.                                 33c.              00
+
+ 34.    Total refundable credits and payments. Add lines 26, 27, 28b, 29, 30, 31, 32 and 33c ..................                                             34.                         00
+
+
+
+
+                                                               Continue on page 3. This form cannot be processed if pages 2 and 3 are not completed and included.
+
+
++ 0000 2025 05 02 27 6
+2025 MI-1040, Page 3 of 3
+                                                                               Filer’s Full Social Security Number
+
+
+
+PENALTY AND/OR INTEREST RELIEF REQUEST
+35a.           Check this box if you and/or your spouse, if filing jointly, are eligible for a federal extension for service in a combat zone. Do not complete
+               lines 35c or 35d.
+
+35b.           Check this box if you and/or your spouse, if filing jointly, have been affected by a declared disaster zone in Michigan (see instructions).
+               Complete lines 35c and 35d.
+ 35c. Address affected by the declared disaster.
+
+
+ 35d. Enter the disaster zone and describe how you were affected by the disaster (see instructions).
+
+
+
+
+REFUND OR TAX DUE
+ 36.      If line 34 is less than line 25, subtract line 34 from line 25. If applicable, see instructions.
+
+          Include interest                       00 and penalty                          00 ......................... YOU OWE            36.                                              00
+
+ 37.      Overpayment. If line 34 is greater than line 25, subtract line 25 from line 34 ................................                37.                                              00
+
+ 38.      Credit Forward. Amount of line 37 to be credited to your 2026 estimated tax for your 2026 tax return ...                                38.                                     00
+
+ 39.      Subtract line 38 from line 37. ...................................................................................... REFUND   39.                                              00
+
+DIGITAL ASSET (INCLUDING FINANCIAL INTEREST IN A DIGITAL ASSET)
+ 40.           Check this box if you and/or your spouse, if filing jointly, engaged in any of the following during 2025:
+                      • Received a digital asset as a reward, award, or payment for property or services
+                      • Sold, exchanged, or otherwise disposed of a digital asset.
+
+
+DIRECT DEPOSIT                                                a. Routing Transit Number                          b. Account Number                           c. Type of Account
+Deposit your refund directly to your financial
+institution! See instructions and complete a, b
+and c.                                                                                                                                             1.       Checking       2.      Savings
+
+
+Deceased Taxpayer. If Filer and/or Spouse died after December 31, 2024, enter dates below                             Preparer Certification. I declare under penalty of perjury that
+as (MM-DD-YYYY). ENTER DATE OF DEATH ONLY.                                                                            this return is based on all information of which I have any knowledge.
+                                                                                                                      Preparer’s PTIN, FEIN or SSN
+  Filer                                                     Spouse
+
+                                                                                                                      Preparer’s Name (print or type)
+Taxpayer Certification. I declare under penalty of perjury that the information in this return
+and attachments is true and complete to the best of my knowledge.
+ Filer’s Signature                                                                     Date                           Preparer’s Signature
+
+
+ Spouse’s Signature                                                                    Date                           Preparer’s Business Name, Address and Telephone Number
+
+
+
+
+          By checking this box, I authorize Treasury to discuss my return with my preparer.
+
+
+Refund, credit, or zero returns. Mail your return to:                    Michigan Department of Treasury, Lansing, MI 48956
+Pay amount on line 36 (see instructions). Mail your check and return to: Michigan Department of Treasury, Lansing, MI 48929
+
+
+
+
++ 0000 2025 05 03 27 4
+
