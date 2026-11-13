@@ -382,6 +382,7 @@ message PriorYearReturn {
 
     // A Missouri return.
     MissouriReturn missouri = 38;
+
     // A Montana return.
     MontanaReturn montana = 39;
 

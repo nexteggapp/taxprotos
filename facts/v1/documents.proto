@@ -254,6 +254,7 @@ message Document {
 
     // A filed Missouri return.
     MissouriReturn missouri_return = 71;
+
     // A filed Montana return.
     MontanaReturn montana_return = 72;
 
@@ -789,6 +790,8 @@ message IndianaReturn {
 message MissouriReturn {
   // Form MO-1040.
   us.state.mo.v1.FormMO1040 form_mo1040 = 1;
+}
+
 // A Montana resident return: Form 2.
 message MontanaReturn {
   // Form 2.
