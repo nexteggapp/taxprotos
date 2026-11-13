@@ -190,13 +190,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [8995](https://www.irs.gov/pub/irs-pdf/f8995.pdf) | [`form_8995.proto`](us/federal/v1/form_1040/form_8995.proto) | Qualified business income deduction, simplified computation |
 | [8995-A](https://www.irs.gov/pub/irs-pdf/f8995a.pdf) | [`form_8995_a.proto`](us/federal/v1/form_1040/form_8995_a.proto) | Qualified business income deduction |
 
-### State returns — what 21 states want as well
-### State returns — what 21 states want as well
-### State returns — what 21 states want as well
-### State returns — what 21 states want as well
-### State returns — what 21 states want as well
-### State returns — what 21 states want as well
-### State returns — what 21 states want as well
+### State returns — what twenty-one states want as well
 
 | Form | Schema | Reports |
 |---|---|---|
