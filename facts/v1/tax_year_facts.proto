@@ -418,6 +418,7 @@ message PriorYearReturn {
 
     // A Louisiana return.
     LouisianaReturn louisiana = 31;
+
     // A Mississippi return.
     MississippiReturn mississippi = 37;
   }

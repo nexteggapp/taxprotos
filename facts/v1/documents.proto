@@ -285,6 +285,7 @@ message Document {
 
     // A filed Louisiana return.
     LouisianaReturn louisiana_return = 64;
+
     // A filed Mississippi return.
     MississippiReturn mississippi_return = 70;
   }
@@ -830,6 +831,8 @@ message IowaReturn {
 message LouisianaReturn {
   // Form IT-540.
   us.state.la.v1.FormIT540 form_it540 = 1;
+}
+
 // A Mississippi resident return: Form 80-105.
 message MississippiReturn {
   // Form 80-105.
