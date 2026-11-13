@@ -257,22 +257,31 @@ message Document {
 
     // A filed Georgia return.
     GeorgiaReturn georgia_return = 57;
+
     // A filed Idaho return.
     IdahoReturn idaho_return = 59;
+
     // A filed Utah return.
     UtahReturn utah_return = 83;
+
     // A filed Washington capital gains excise tax return.
     WashingtonReturn washington_return = 88;
+
     // A filed Michigan return.
     MichiganReturn michigan_return = 68;
+
     // A filed Pennsylvania return.
     PennsylvaniaReturn pennsylvania_return = 80;
+
     // A filed Kentucky return.
     KentuckyReturn kentucky_return = 63;
+
     // A filed Indiana return.
     IndianaReturn indiana_return = 60;
+
     // A filed Iowa return.
     IowaReturn iowa_return = 61;
+
     // A filed Louisiana return.
     LouisianaReturn louisiana_return = 64;
   }

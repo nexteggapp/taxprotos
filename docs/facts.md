@@ -60,16 +60,7 @@ messages are used directly. These have messages of their own:
 | `Receipt` | A receipt |
 | `FormW4` | An employee's withholding certificate, as filled in |
 | `PaymentConfirmation` | A confirmation of an estimated, balance-due or extension payment |
-| `FederalReturn`, `ArizonaReturn`, `CaliforniaReturn`, `ColoradoReturn`, `GeorgiaReturn`, `IllinoisReturn`, `NorthCarolinaReturn`, `OregonReturn` | A filed return with its schedules |
-| `FederalReturn`, `ArizonaReturn`, `CaliforniaReturn`, `ColoradoReturn`, `IdahoReturn`, `IllinoisReturn`, `NorthCarolinaReturn`, `OregonReturn` | A filed return with its schedules |
-| `FederalReturn`, `ArizonaReturn`, `CaliforniaReturn`, `ColoradoReturn`, `IllinoisReturn`, `NorthCarolinaReturn`, `OregonReturn`, `UtahReturn` | A filed return with its schedules |
-| `FederalReturn`, `ArizonaReturn`, `CaliforniaReturn`, `ColoradoReturn`, `IllinoisReturn`, `NorthCarolinaReturn`, `OregonReturn`, `WashingtonReturn` | A filed return with its schedules |
-| `FederalReturn`, `ArizonaReturn`, `CaliforniaReturn`, `ColoradoReturn`, `IllinoisReturn`, `MichiganReturn`, `NorthCarolinaReturn`, `OregonReturn` | A filed return with its schedules |
-| `FederalReturn`, `ArizonaReturn`, `CaliforniaReturn`, `ColoradoReturn`, `IllinoisReturn`, `NorthCarolinaReturn`, `OregonReturn`, `PennsylvaniaReturn` | A filed return with its schedules |
-| `FederalReturn`, `ArizonaReturn`, `CaliforniaReturn`, `ColoradoReturn`, `IllinoisReturn`, `KentuckyReturn`, `NorthCarolinaReturn`, `OregonReturn` | A filed return with its schedules |
-| `FederalReturn`, `ArizonaReturn`, `CaliforniaReturn`, `ColoradoReturn`, `IllinoisReturn`, `IndianaReturn`, `NorthCarolinaReturn`, `OregonReturn` | A filed return with its schedules |
-| `FederalReturn`, `ArizonaReturn`, `CaliforniaReturn`, `ColoradoReturn`, `IllinoisReturn`, `IowaReturn`, `NorthCarolinaReturn`, `OregonReturn` | A filed return with its schedules |
-| `FederalReturn`, `ArizonaReturn`, `CaliforniaReturn`, `ColoradoReturn`, `IllinoisReturn`, `LouisianaReturn`, `NorthCarolinaReturn`, `OregonReturn` | A filed return with its schedules |
+| `FederalReturn`, `ArizonaReturn`, `CaliforniaReturn`, `ColoradoReturn`, `GeorgiaReturn`, `IdahoReturn`, `IllinoisReturn`, `IndianaReturn`, `IowaReturn`, `KentuckyReturn`, `LouisianaReturn`, `MichiganReturn`, `NorthCarolinaReturn`, `OregonReturn`, `PennsylvaniaReturn`, `UtahReturn`, `WashingtonReturn` | A filed return with its schedules |
 
 `Document` pairs one of these, or a form message, with a `DocumentRef`.
 

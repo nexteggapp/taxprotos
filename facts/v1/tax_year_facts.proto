@@ -391,22 +391,31 @@ message PriorYearReturn {
 
     // A Georgia return.
     GeorgiaReturn georgia = 24;
+
     // An Idaho return.
     IdahoReturn idaho = 26;
+
     // A Utah return.
     UtahReturn utah = 50;
+
     // A Washington capital gains excise tax return.
     WashingtonReturn washington = 55;
+
     // A Michigan return.
     MichiganReturn michigan = 35;
+
     // A Pennsylvania return.
     PennsylvaniaReturn pennsylvania = 47;
+
     // A Kentucky return.
     KentuckyReturn kentucky = 30;
+
     // An Indiana return.
     IndianaReturn indiana = 27;
+
     // An Iowa return.
     IowaReturn iowa = 28;
+
     // A Louisiana return.
     LouisianaReturn louisiana = 31;
   }
