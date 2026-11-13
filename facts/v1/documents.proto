@@ -321,6 +321,7 @@ message Document {
 
     // A filed Virginia return.
     VirginiaReturn virginia_return = 85;
+
     // A filed Alabama return.
     AlabamaReturn alabama_return = 52;
   }
