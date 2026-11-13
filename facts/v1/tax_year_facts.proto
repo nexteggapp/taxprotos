@@ -403,6 +403,8 @@ message PriorYearReturn {
     PennsylvaniaReturn pennsylvania = 47;
     // A Kentucky return.
     KentuckyReturn kentucky = 30;
+    // An Indiana return.
+    IndianaReturn indiana = 27;
   }
 
   // Where the return came from, when it is here.

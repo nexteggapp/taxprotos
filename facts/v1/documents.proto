@@ -102,6 +102,7 @@ import "taxprotos/us/state/ga/v1/form_500/form_500.proto";
 import "taxprotos/us/state/il/v1/form_il1040/form_il1040.proto";
 import "taxprotos/us/state/mi/v1/form_mi1040/form_mi1040.proto";
 import "taxprotos/us/state/ky/v1/form_740/form_740.proto";
+import "taxprotos/us/state/in/v1/form_it40/form_it40.proto";
 import "taxprotos/us/state/nc/v1/form_d400/form_d400.proto";
 import "taxprotos/us/state/or/v1/form_or40/form_or40.proto";
 import "taxprotos/us/state/pa/v1/form_pa40/form_pa40.proto";
@@ -266,6 +267,8 @@ message Document {
     PennsylvaniaReturn pennsylvania_return = 80;
     // A filed Kentucky return.
     KentuckyReturn kentucky_return = 63;
+    // A filed Indiana return.
+    IndianaReturn indiana_return = 60;
   }
 }
 
@@ -736,6 +739,10 @@ message IllinoisReturn {
 message MichiganReturn {
   // Form MI-1040.
   us.state.mi.v1.FormMI1040 form_mi1040 = 1;
+// An Indiana resident return: Form IT-40.
+message IndianaReturn {
+  // Form IT-40.
+  us.state.in.v1.FormIT40 form_it40 = 1;
 }
 
 // A North Carolina resident return: Form D-400.
