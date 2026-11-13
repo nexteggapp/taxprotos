@@ -1,0 +1,176 @@
+// Form AR1000F, Arkansas Individual Income Tax Return, Full Year Resident.
+//
+// Part-year residents and non-residents file Form AR1000NR instead. Only the
+// full-year resident's return is modelled here, and only column A: column B
+// carries the spouse's income for filing status 4, married filing separately
+// on the same return, which is not modelled.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form AR1000F; testdata
+// holds the text extracted from the published PDF and coverage_test.go asserts
+// every line a mapping claims appears on it.
+//
+// # Arkansas builds its own income
+//
+// Arkansas does not start from federal adjusted gross income. Lines 8 to 22
+// list each kind of income as Arkansas counts it: military pay, military
+// retirement and social security are left out, and the first $6,000 of
+// employer pension and IRA income is excluded on lines 18A and 18B.
+//
+// # A tax table, then credits of $29 a head
+//
+// The tax on line 29 comes from a table: a low income table with no
+// deduction, or the regular table after the standard or itemized deduction.
+// Personal tax credits of $29 for each filer, spouse, dependent and each age,
+// blindness, deafness or head of household box come off the tax on line 34.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.ar.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/ar/v1/form_ar1000f;formar1000f";
+
+// FilingStatus is the status the return is filed under, numbered on the form
+// 1 to 6.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 3;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY_SAME_RETURN = 4;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY_DIFFERENT_RETURNS = 5;
+  FILING_STATUS_SURVIVING_SPOUSE = 6;
+}
+
+// TaxTable is the table selected on line 26.
+enum TaxTable {
+  TAX_TABLE_UNSPECIFIED = 0;
+  // A low income table, with no deduction on line 27.
+  TAX_TABLE_LOW_INCOME = 1;
+  // The regular table after the standard deduction.
+  TAX_TABLE_STANDARD_DEDUCTION = 2;
+  // The regular table after itemized deductions from Form AR3.
+  TAX_TABLE_ITEMIZED_DEDUCTIONS = 3;
+}
+
+// FormAR1000F is what a Form AR1000F states.
+message FormAR1000F {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // The table selected on line 26.
+  TaxTable tax_table = 5 [(common.v1.fdx_absent) = true];
+
+  // The boxes checked on line 7A: yourself, spouse, 65 or over, special,
+  // blind, deaf, and head of household or surviving spouse.
+  int32 personal_credit_boxes = 6 [(common.v1.fdx_absent) = true];
+
+  // Line 7A: $29 for each box checked.
+  nexteggapp.taxprotos.common.v1.Money personal_credits = 7 [(common.v1.fdx_absent) = true];
+
+  // The dependents listed above line 7B.
+  int32 dependents = 8 [(common.v1.fdx_absent) = true];
+
+  // Line 7B: $29 for each dependent.
+  nexteggapp.taxprotos.common.v1.Money dependent_credits = 9 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_personal_credits = 10 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money wages = 11 [(common.v1.fdx_absent) = true];
+
+  // Military pay, which Arkansas does not tax; the form records it beside
+  // line 9 without carrying it into total income.
+  nexteggapp.taxprotos.common.v1.Money military_pay = 12 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money interest_income = 13 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money dividend_income = 14 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money alimony_received = 15 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money business_income = 16 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money capital_gains = 17 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money other_gains = 18 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money nonqualified_ira_distributions_and_annuities = 19 [(common.v1.fdx_absent) = true];
+
+  // Military retirement, which Arkansas does not tax.
+  nexteggapp.taxprotos.common.v1.Money military_retirement = 20 [(common.v1.fdx_absent) = true];
+
+  // Line 18A: the primary taxpayer's taxable employer pension and qualified
+  // IRA distributions, less up to $6,000.
+  nexteggapp.taxprotos.common.v1.Money primary_taxable_retirement_income = 21 [(common.v1.fdx_absent) = true];
+
+  // Line 18B: the same for the spouse.
+  nexteggapp.taxprotos.common.v1.Money spouse_taxable_retirement_income = 22 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money rents_royalties_partnerships_estates_trusts = 23 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money farm_income = 24 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money unemployment_compensation = 25 [(common.v1.fdx_absent) = true];
+
+  // From Form AR-OI, including depreciation differences.
+  nexteggapp.taxprotos.common.v1.Money other_income = 26 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_income = 27 [(common.v1.fdx_absent) = true];
+
+  // From Form AR1000ADJ.
+  nexteggapp.taxprotos.common.v1.Money total_adjustments = 28 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money adjusted_gross_income = 29 [(common.v1.fdx_absent) = true];
+
+  // The standard or itemized deduction, or zero on a low income table.
+  nexteggapp.taxprotos.common.v1.Money deduction = 30 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money net_taxable_income = 31 [(common.v1.fdx_absent) = true];
+
+  // From the tax table line 26 selects.
+  nexteggapp.taxprotos.common.v1.Money tax = 32 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money combined_tax = 33 [(common.v1.fdx_absent) = true];
+
+  // From Form AR1000TD.
+  nexteggapp.taxprotos.common.v1.Money lump_sum_distribution_tax = 34 [(common.v1.fdx_absent) = true];
+
+  // Additional tax on IRA and qualified plan withdrawals and overpayments.
+  nexteggapp.taxprotos.common.v1.Money additional_tax_on_early_withdrawals = 35 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_tax = 36 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money personal_tax_credits = 37 [(common.v1.fdx_absent) = true];
+
+  // From Form AR2441.
+  nexteggapp.taxprotos.common.v1.Money child_care_credit = 38 [(common.v1.fdx_absent) = true];
+
+  // From Form AR1000TC.
+  nexteggapp.taxprotos.common.v1.Money other_credits = 39 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_credits = 40 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money net_tax = 41 [(common.v1.fdx_absent) = true];
+
+  // Arkansas tax withheld on Forms W-2 and W-2G.
+  nexteggapp.taxprotos.common.v1.Money withholding_on_w2s = 42 [(common.v1.fdx_absent) = true];
+
+  // Arkansas tax withheld on Forms 1099-R, 1099-PT and AR-K1.
+  nexteggapp.taxprotos.common.v1.Money withholding_on_1099s = 43 [(common.v1.fdx_absent) = true];
+
+  // Estimated tax paid or credit brought forward from last year.
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 44 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money extension_payment = 45 [(common.v1.fdx_absent) = true];
+
+  // Amended returns only.
+  nexteggapp.taxprotos.common.v1.Money previous_payments = 46 [(common.v1.fdx_absent) = true];
+
+  // From Forms AR1000EC and AR2441.
+  nexteggapp.taxprotos.common.v1.Money early_childhood_program_credit = 47 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_payments = 48 [(common.v1.fdx_absent) = true];
+
+  // Amended returns only.
+  nexteggapp.taxprotos.common.v1.Money previous_refund = 49 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money adjusted_total_payments = 50 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money overpayment = 51 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money applied_to_estimated_tax = 52 [(common.v1.fdx_absent) = true];
+
+  // From Form AR1000CO.
+  nexteggapp.taxprotos.common.v1.Money check_off_contributions = 53 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money refund = 54 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money amount_due = 55 [(common.v1.fdx_absent) = true];
+
+  // Line 52A, box B: the estimated tax penalty from Form AR2210 or AR2210A.
+  nexteggapp.taxprotos.common.v1.Money underpayment_penalty = 56 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_due = 57 [(common.v1.fdx_absent) = true];
+}
