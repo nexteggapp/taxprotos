@@ -393,6 +393,8 @@ message PriorYearReturn {
     GeorgiaReturn georgia = 24;
     // An Idaho return.
     IdahoReturn idaho = 26;
+    // A Utah return.
+    UtahReturn utah = 50;
   }
 
   // Where the return came from, when it is here.

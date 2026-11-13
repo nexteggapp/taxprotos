@@ -104,6 +104,7 @@ import "taxprotos/us/state/nc/v1/form_d400/form_d400.proto";
 import "taxprotos/us/state/or/v1/form_or40/form_or40.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_asc.proto";
+import "taxprotos/us/state/ut/v1/form_tc40/form_tc40.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/facts/v1;factsv1";
 
@@ -251,6 +252,8 @@ message Document {
     GeorgiaReturn georgia_return = 57;
     // A filed Idaho return.
     IdahoReturn idaho_return = 59;
+    // A filed Utah return.
+    UtahReturn utah_return = 83;
   }
 }
 
@@ -743,4 +746,8 @@ message GeorgiaReturn {
 message IdahoReturn {
   // Form 40.
   us.state.id.v1.Form40 form_40 = 1;
+// A Utah resident return: Form TC-40.
+message UtahReturn {
+  // Form TC-40.
+  us.state.ut.v1.FormTC40 form_tc40 = 1;
 }

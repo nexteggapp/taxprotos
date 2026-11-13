@@ -1,0 +1,159 @@
+// Form TC-40, Utah Individual Income Tax Return.
+//
+// Part-year residents and non-residents file the same form with Schedule
+// TC-40B, which replaces line 25. Only the full-year resident's return is
+// modelled here.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form TC-40; testdata
+// holds the text of the published PDF and coverage_test.go asserts every line
+// a mapping claims appears on it.
+//
+// # A flat tax less a credit
+//
+// Utah starts from federal adjusted gross income, adjusts it to Utah taxable
+// income on line 9 and taxes it at 4.5% on line 10. There is no deduction.
+// Instead the taxpayer tax credit, lines 11 to 20, gives back 6% of the
+// federal deduction and the Utah exemption for dependents, less 1.3% of the
+// income above a base amount.
+//
+// # Credits from TC-40A
+//
+// The other credits are figured on Schedule TC-40A and carried to page 2:
+// nonrefundable ones on lines 24 and 26, refundable ones on lines 36 and 37.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.ut.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/ut/v1/form_tc40;formtc40";
+
+// FilingStatus is the status the return is filed under, entered as a code on
+// line 1.
+//
+// Utah requires the federal status.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+  FILING_STATUS_QUALIFYING_SURVIVING_SPOUSE = 5;
+}
+
+// FormTC40 is what a Form TC-40 states.
+message FormTC40 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // Dependents the federal return claims a child or other dependent credit
+  // for, age 16 or younger at the end of the year.
+  int32 dependents_age_16_and_under = 5 [(common.v1.fdx_absent) = true];
+
+  // The other dependents the federal return claims a credit for.
+  int32 other_dependents = 6 [(common.v1.fdx_absent) = true];
+
+  // Dependents born in the tax year, counted a second time.
+  int32 dependents_born_in_tax_year = 7 [(common.v1.fdx_absent) = true];
+
+  // The three counts added, which the personal exemption multiplies.
+  int32 qualifying_dependents = 8 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 9 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money additions = 10 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_income = 11 [(common.v1.fdx_absent) = true];
+
+  // A state tax refund counted as income federally, when last year's
+  // federal return itemized.
+  nexteggapp.taxprotos.common.v1.Money state_tax_refund_in_federal_income = 12 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money subtractions = 13 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money utah_taxable_income = 14 [(common.v1.fdx_absent) = true];
+
+  // Utah taxable income at the flat rate, before the taxpayer tax credit.
+  nexteggapp.taxprotos.common.v1.Money tax_before_credit = 15 [(common.v1.fdx_absent) = true];
+
+  // The Utah personal exemption: an amount for each qualifying dependent.
+  nexteggapp.taxprotos.common.v1.Money personal_exemption = 16 [(common.v1.fdx_absent) = true];
+
+  // The standard or itemized deduction on the federal return.
+  nexteggapp.taxprotos.common.v1.Money federal_deduction = 17 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money exemption_and_deduction = 18 [(common.v1.fdx_absent) = true];
+
+  // State income tax in the federal itemized deductions, which the credit
+  // does not give back.
+  nexteggapp.taxprotos.common.v1.Money state_income_tax_deducted = 19 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money exemption_and_deduction_less_state_tax = 20 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money initial_credit = 21 [(common.v1.fdx_absent) = true];
+
+  // The base phase-out amount for the filing status.
+  nexteggapp.taxprotos.common.v1.Money phase_out_base = 22 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money income_subject_to_phase_out = 23 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money phase_out_amount = 24 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money taxpayer_tax_credit = 25 [(common.v1.fdx_absent) = true];
+
+  // Federal adjusted gross income is no more than the federal standard
+  // deduction, so no Utah income tax is due.
+  bool qualified_exempt_taxpayer = 26 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money utah_income_tax = 27 [(common.v1.fdx_absent) = true];
+
+  // Page 2 begins with the tax from page 1.
+  nexteggapp.taxprotos.common.v1.Money tax_from_page_1 = 28 [(common.v1.fdx_absent) = true];
+
+  // TC-40A Part 3: credits a part-year resident apportions.
+  nexteggapp.taxprotos.common.v1.Money apportionable_nonrefundable_credits = 29 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_after_apportionable_credits = 30 [(common.v1.fdx_absent) = true];
+
+  // TC-40A Part 4.
+  nexteggapp.taxprotos.common.v1.Money nonapportionable_nonrefundable_credits = 31 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_after_nonrefundable_credits = 32 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money voluntary_contributions = 33 [(common.v1.fdx_absent) = true];
+
+  // On an amended return, the refund the original return got.
+  nexteggapp.taxprotos.common.v1.Money previous_refund = 34 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money low_income_housing_credit_recapture = 35 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money use_tax = 36 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_tax = 37 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money utah_tax_withheld = 38 [(common.v1.fdx_absent) = true];
+
+  // Extension prepayments and last year's refund applied to this year.
+  nexteggapp.taxprotos.common.v1.Money prepaid_tax = 39 [(common.v1.fdx_absent) = true];
+
+  // On an amended return, what was paid with and after the original.
+  nexteggapp.taxprotos.common.v1.Money previous_payments = 40 [(common.v1.fdx_absent) = true];
+
+  // TC-40A Part 5.
+  nexteggapp.taxprotos.common.v1.Money nonapportionable_refundable_credits = 41 [(common.v1.fdx_absent) = true];
+
+  // TC-40A Part 6.
+  nexteggapp.taxprotos.common.v1.Money apportionable_refundable_credits = 42 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_payments_and_refundable_credits = 43 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax_due = 44 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money penalty_and_interest = 45 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money amount_owed = 46 [(common.v1.fdx_absent) = true];
+
+  // The overpayment, before what the filer gives away or applies forward.
+  nexteggapp.taxprotos.common.v1.Money overpayment = 47 [(common.v1.fdx_absent) = true];
+
+  // Contributions, my529 deposits and next year's tax, from page 3 Part 6.
+  nexteggapp.taxprotos.common.v1.Money subtractions_from_refund = 48 [(common.v1.fdx_absent) = true];
+}
