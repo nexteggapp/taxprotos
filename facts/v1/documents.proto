@@ -103,6 +103,7 @@ import "taxprotos/us/state/il/v1/form_il1040/form_il1040.proto";
 import "taxprotos/us/state/mi/v1/form_mi1040/form_mi1040.proto";
 import "taxprotos/us/state/nc/v1/form_d400/form_d400.proto";
 import "taxprotos/us/state/or/v1/form_or40/form_or40.proto";
+import "taxprotos/us/state/pa/v1/form_pa40/form_pa40.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_asc.proto";
 import "taxprotos/us/state/ut/v1/form_tc40/form_tc40.proto";
@@ -260,6 +261,8 @@ message Document {
     WashingtonReturn washington_return = 88;
     // A filed Michigan return.
     MichiganReturn michigan_return = 68;
+    // A filed Pennsylvania return.
+    PennsylvaniaReturn pennsylvania_return = 80;
   }
 }
 
@@ -773,4 +776,8 @@ message UtahReturn {
 message WashingtonReturn {
   // The capital gains excise tax return.
   us.state.wa.v1.CapitalGainsReturn capital_gains = 1;
+// A Pennsylvania resident return: Form PA-40.
+message PennsylvaniaReturn {
+  // Form PA-40.
+  us.state.pa.v1.FormPA40 form_pa40 = 1;
 }

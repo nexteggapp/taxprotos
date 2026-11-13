@@ -1,0 +1,155 @@
+// Form PA-40, Pennsylvania Income Tax Return.
+//
+// Nonresidents and part-year residents file the same form, filling in a
+// different residency oval and reporting only Pennsylvania-source income. Only
+// the full-year resident's return is modelled here.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form PA-40; testdata
+// holds the text extracted from the published PDF and coverage_test.go asserts
+// every line a mapping claims appears on it.
+//
+// # Eight classes of income, not federal AGI
+//
+// Pennsylvania does not start from federal adjusted gross income. It taxes
+// eight classes of income, lines 1c to 8, each figured under Pennsylvania's
+// own rules. A loss in one class does not reduce income in another: line 9
+// adds only the positive amounts. Line 12 taxes the result, less a few
+// deductions on line 10, at a flat 3.07%. There is no standard deduction and
+// no personal exemption.
+//
+// # Tax Forgiveness
+//
+// A household whose eligibility income, from Schedule SP, is low enough for
+// its size has all or part of the tax forgiven, on line 21. Lines 19a, 19b
+// and 20 restate the Schedule SP figures it depends on.
+//
+// # Local taxes are separate
+//
+// Local earned income taxes are filed with the local collector, not on this
+// form.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.pa.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/pa/v1/form_pa40;formpa40";
+
+// FilingStatus is the status the return is filed under.
+//
+// Pennsylvania has three: single, married filing jointly and married filing
+// separately. A head of household or surviving spouse files as single.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+}
+
+// TaxForgivenessStatus is the filing status Schedule SP uses, restated on
+// line 19a. It picks the eligibility income table.
+enum TaxForgivenessStatus {
+  TAX_FORGIVENESS_STATUS_UNSPECIFIED = 0;
+  // Unmarried, or separated: Eligibility Income Table 1.
+  TAX_FORGIVENESS_STATUS_UNMARRIED_OR_SEPARATED = 1;
+  // Married, even filing separately: Eligibility Income Table 2.
+  TAX_FORGIVENESS_STATUS_MARRIED = 2;
+  // Deceased: Eligibility Income Table 1.
+  TAX_FORGIVENESS_STATUS_DECEASED = 3;
+}
+
+// FormPA40 is what a Form PA-40 states.
+message FormPA40 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // Compensation for services, less exempt income such as qualifying
+  // retirement benefits. Elective deferrals to a retirement plan are taxed.
+  nexteggapp.taxprotos.common.v1.Money gross_compensation = 5 [(common.v1.fdx_absent) = true];
+
+  // From Schedule UE.
+  nexteggapp.taxprotos.common.v1.Money unreimbursed_employee_business_expenses = 6 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money net_compensation = 7 [(common.v1.fdx_absent) = true];
+
+  // From Schedule A when required.
+  nexteggapp.taxprotos.common.v1.Money interest_income = 8 [(common.v1.fdx_absent) = true];
+
+  // From Schedule B when required.
+  nexteggapp.taxprotos.common.v1.Money dividend_and_capital_gains_distributions_income = 9 [(common.v1.fdx_absent) = true];
+
+  // These three classes may be losses, which line 9 leaves out.
+  nexteggapp.taxprotos.common.v1.Money business_income_or_loss = 10 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money property_disposition_gain_or_loss = 11 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money rents_and_royalties_income_or_loss = 12 [(common.v1.fdx_absent) = true];
+
+  // From Schedule J.
+  nexteggapp.taxprotos.common.v1.Money estate_or_trust_income = 13 [(common.v1.fdx_absent) = true];
+
+  // From Schedule T.
+  nexteggapp.taxprotos.common.v1.Money gambling_and_lottery_winnings = 14 [(common.v1.fdx_absent) = true];
+
+  // The positive amounts of lines 1c to 8.
+  nexteggapp.taxprotos.common.v1.Money total_taxable_income = 15 [(common.v1.fdx_absent) = true];
+
+  // Contributions to medical and health savings accounts, tuition and ABLE
+  // accounts, under one deduction code.
+  nexteggapp.taxprotos.common.v1.Money other_deductions = 16 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money adjusted_taxable_income = 17 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax_liability = 18 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_withheld = 19 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money prior_year_overpayment_credit = 20 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 21 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money extension_payment = 22 [(common.v1.fdx_absent) = true];
+
+  // From Schedule NRK-1; nonresidents only.
+  nexteggapp.taxprotos.common.v1.Money nonresident_tax_withheld = 23 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_estimated_payments_and_credits = 24 [(common.v1.fdx_absent) = true];
+
+  TaxForgivenessStatus tax_forgiveness_status = 25 [(common.v1.fdx_absent) = true];
+
+  // The dependents Schedule SP counts, from its Section II, line 2.
+  int32 tax_forgiveness_dependents = 26 [(common.v1.fdx_absent) = true];
+
+  // Taxable and nontaxable income together, from Schedule SP Section III,
+  // line 11.
+  nexteggapp.taxprotos.common.v1.Money eligibility_income = 27 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_forgiveness_credit = 28 [(common.v1.fdx_absent) = true];
+
+  // Credit for tax paid to other states, from Schedules G-L and RK-1.
+  nexteggapp.taxprotos.common.v1.Money resident_credit = 29 [(common.v1.fdx_absent) = true];
+
+  // From Schedules OC and DC.
+  nexteggapp.taxprotos.common.v1.Money other_credits = 30 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_payments_and_credits = 31 [(common.v1.fdx_absent) = true];
+
+  // Use tax on internet, mail order and out-of-state purchases.
+  nexteggapp.taxprotos.common.v1.Money use_tax = 32 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_due = 33 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money penalties_and_interest = 34 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_payment_due = 35 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money overpayment = 36 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money refund = 37 [(common.v1.fdx_absent) = true];
+
+  // Applied to next year's estimated tax.
+  nexteggapp.taxprotos.common.v1.Money credited_forward = 38 [(common.v1.fdx_absent) = true];
+
+  // The five refund donation lines together.
+  nexteggapp.taxprotos.common.v1.Money refund_donations = 39 [(common.v1.fdx_absent) = true];
+}

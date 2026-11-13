@@ -6,6 +6,7 @@ Colorado, Idaho, Illinois, North Carolina, Oregon and Washington, and
 `TaxYearFacts`, a household's own facts for one tax year.
 Colorado, Illinois, North Carolina, Oregon, Utah and Washington, and `TaxYearFacts`, a
 Colorado, Illinois, Michigan, North Carolina, Oregon and Washington, and `TaxYearFacts`, a
+Colorado, Illinois, North Carolina, Oregon, Pennsylvania and Washington, and `TaxYearFacts`, a
 household's own facts for one tax year.
 
 A schema holds what the form prints and nothing else. It has no confidence
@@ -208,6 +209,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [Schedule OR-A](https://www.oregon.gov/dor/forms/FormsPubs/schedule-or-a_101-007_2025.pdf) | [`schedule_or_a.proto`](us/state/or/v1/form_or40/schedule_or_a.proto) | Oregon itemized deductions |
 | [Schedule OR-ASC](https://www.oregon.gov/dor/forms/FormsPubs/schedule-or-asc_101-063_2025.pdf) | [`schedule_or_asc.proto`](us/state/or/v1/form_or40/schedule_or_asc.proto) | Oregon additions, subtractions and credits |
 | [TC-40](https://files.tax.utah.gov/tax/forms/current/tc-40.pdf) | [`form_tc40.proto`](us/state/ut/v1/form_tc40/form_tc40.proto) | The Utah resident return |
+| [PA-40](https://www.pa.gov/content/dam/copapwp-pagov/en/revenue/documents/formsandpublications/formsforindividuals/pit/documents/2025/2025_pa-40.pdf) | [`form_pa40.proto`](us/state/pa/v1/form_pa40/form_pa40.proto) | The Pennsylvania resident return |
 | [Capital gains](https://app.leg.wa.gov/rcw/default.aspx?cite=82.87) | [`capital_gains_return.proto`](us/state/wa/v1/capital_gains/capital_gains_return.proto) | Washington's excise tax on long-term gains |
 
 Washington levies no personal income tax, so `us/state/wa` has no income tax
