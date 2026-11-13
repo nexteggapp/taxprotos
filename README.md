@@ -6,6 +6,9 @@ California, Colorado, Georgia, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky,
 Louisiana, Michigan, Mississippi, Missouri, Montana, Nebraska, North Carolina,
 North Dakota, Oklahoma, Oregon, Pennsylvania, Utah, Virginia and Washington, and
 `TaxYearFacts`, a household's own facts for one tax year.
+receives, the Form 1040 it files, the state returns for Alabama, Arizona, California,
+Colorado, Illinois, North Carolina, Oregon and Washington, and `TaxYearFacts`, a
+household's own facts for one tax year.
 
 A schema holds what the form prints and nothing else. It has no confidence
 scores, page coordinates or other traces of how a document was read. Software
@@ -201,6 +204,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [500](https://dor.georgia.gov/document/document/2025-it-511-individual-income-tax-booklet/download) | [`form_500.proto`](us/state/ga/v1/form_500/form_500.proto) | The Georgia resident return, printed in the IT-511 booklet |
 | [IA 1040](https://revenue.iowa.gov/media/4401/download?inline) | [`form_ia1040.proto`](us/state/ia/v1/form_ia1040/form_ia1040.proto) | The Iowa resident return |
 | [K-40](https://www.ksrevenue.gov/pdf/k-4025.pdf) | [`form_k40.proto`](us/state/ks/v1/form_k40/form_k40.proto) | The Kansas resident return |
+| [40](https://www.revenue.alabama.gov/wp-content/uploads/2026/01/25f40blk.pdf) | [`form_40.proto`](us/state/al/v1/form_40/form_40.proto) | The Alabama resident return |
 | [IL-1040](https://tax.illinois.gov/content/dam/soi/en/web/tax/forms/incometax/documents/currentyear/individual/il-1040.pdf) | [`form_il1040.proto`](us/state/il/v1/form_il1040/form_il1040.proto) | The Illinois resident return |
 | [MI-1040](https://www.michigan.gov/taxes/-/media/Project/Websites/taxes/Forms/IIT/TY2025/MI-1040.pdf) | [`form_mi1040.proto`](us/state/mi/v1/form_mi1040/form_mi1040.proto) | The Michigan resident return |
 | [740](https://revenue.ky.gov/Forms/740%20(2025).pdf) | [`form_740.proto`](us/state/ky/v1/form_740/form_740.proto) | The Kentucky resident return |

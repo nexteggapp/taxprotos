@@ -45,6 +45,7 @@ proto_library(
         "//us/federal/v1/form_w2g:form_w2g_proto",
         "//us/federal/v1/schedule_k1:schedule_k1_proto",
         "//us/state/ar/v1/form_ar1000f:form_ar1000f_proto",
+        "//us/state/al/v1/form_40:form_40_proto",
         "//us/state/az/v1/form_140:form_140_proto",
         "//us/state/id/v1/form_40:form_40_proto",
         "//us/state/ca/v1/form_540:form_540_proto",

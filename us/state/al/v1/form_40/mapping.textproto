@@ -1,0 +1,160 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form 40 calls each concept, per tax year.
+#
+# Lines come from the 2025 Form 40 as the Alabama Department of Revenue
+# publishes it. There are no amount codes: IRS Publication 1220 covers the
+# information returns the IRS receives electronically, and a state return is not
+# one of them.
+#
+# Page 2 numbers its parts from 1 again; the dependent count is page 2,
+# Part III, line 1, and carries a note saying so.
+
+form: "40"
+message_name: "nexteggapp.taxprotos.us.state.al.v1.Form40"
+tax_years: 2025
+
+concepts {
+  concept: "filing_status"
+  years { tax_year: 2025 irs_box: "1" note: "Lines 1 to 4: single, married filing joint, married filing separate, head of family." }
+}
+concepts {
+  concept: "itemizes"
+  years { tax_year: 2025 irs_box: "11" note: "Box 11a checked." }
+}
+concepts {
+  concept: "dependents"
+  years { tax_year: 2025 irs_box: "1" note: "Page 2, Part III, line 1: number of dependents." }
+}
+concepts {
+  concept: "alabama_tax_withheld"
+  years { tax_year: 2025 irs_box: "5a" }
+}
+concepts {
+  concept: "wages"
+  years { tax_year: 2025 irs_box: "5b" }
+}
+concepts {
+  concept: "interest_and_dividends"
+  years { tax_year: 2025 irs_box: "6" }
+}
+concepts {
+  concept: "other_income"
+  years { tax_year: 2025 irs_box: "7" }
+}
+concepts {
+  concept: "total_income"
+  years { tax_year: 2025 irs_box: "8" }
+}
+concepts {
+  concept: "total_adjustments"
+  years { tax_year: 2025 irs_box: "9" }
+}
+concepts {
+  concept: "adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "10" }
+}
+concepts {
+  concept: "deduction"
+  years { tax_year: 2025 irs_box: "11" note: "The itemized deduction from Schedule A or the standard deduction, whichever box 11a or 11b says." }
+}
+concepts {
+  concept: "federal_tax_deduction"
+  years { tax_year: 2025 irs_box: "12" }
+}
+concepts {
+  concept: "personal_exemption"
+  years { tax_year: 2025 irs_box: "13" }
+}
+concepts {
+  concept: "dependent_exemption"
+  years { tax_year: 2025 irs_box: "14" }
+}
+concepts {
+  concept: "total_deductions"
+  years { tax_year: 2025 irs_box: "15" }
+}
+concepts {
+  concept: "taxable_income"
+  years { tax_year: 2025 irs_box: "16" }
+}
+concepts {
+  concept: "income_tax"
+  years { tax_year: 2025 irs_box: "17" }
+}
+concepts {
+  concept: "net_tax"
+  years { tax_year: 2025 irs_box: "18" }
+}
+concepts {
+  concept: "additional_taxes"
+  years { tax_year: 2025 irs_box: "19" }
+}
+concepts {
+  concept: "democratic_party_contribution"
+  years { tax_year: 2025 irs_box: "20a" }
+}
+concepts {
+  concept: "republican_party_contribution"
+  years { tax_year: 2025 irs_box: "20b" }
+}
+concepts {
+  concept: "total_tax_liability"
+  years { tax_year: 2025 irs_box: "21" }
+}
+concepts {
+  concept: "withholding"
+  years { tax_year: 2025 irs_box: "22" }
+}
+concepts {
+  concept: "estimated_tax_payments"
+  years { tax_year: 2025 irs_box: "23" }
+}
+concepts {
+  concept: "amended_previous_payments"
+  years { tax_year: 2025 irs_box: "24" }
+}
+concepts {
+  concept: "refundable_credits"
+  years { tax_year: 2025 irs_box: "25" }
+}
+concepts {
+  concept: "schedule_cp_payments"
+  years { tax_year: 2025 irs_box: "26" }
+}
+concepts {
+  concept: "total_payments"
+  years { tax_year: 2025 irs_box: "27" }
+}
+concepts {
+  concept: "amended_previous_refund"
+  years { tax_year: 2025 irs_box: "28" }
+}
+concepts {
+  concept: "adjusted_total_payments"
+  years { tax_year: 2025 irs_box: "29" }
+}
+concepts {
+  concept: "amount_owed"
+  years { tax_year: 2025 irs_box: "30" }
+}
+concepts {
+  concept: "penalties"
+  years { tax_year: 2025 irs_box: "31" }
+}
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "32" }
+}
+concepts {
+  concept: "applied_to_next_year"
+  years { tax_year: 2025 irs_box: "33" }
+}
+concepts {
+  concept: "donation_checkoffs"
+  years { tax_year: 2025 irs_box: "34" }
+}
+concepts {
+  concept: "refund"
+  years { tax_year: 2025 irs_box: "35" }
+}
