@@ -7,6 +7,8 @@ Michigan, Mississippi, North Carolina, Oregon, Pennsylvania, Utah and
 Washington, and `TaxYearFacts`, a household's own facts for one tax year.
 Colorado, Illinois, Kansas, North Carolina, Oregon and Washington, and `TaxYearFacts`, a
 Colorado, Illinois, North Carolina, Oklahoma, Oregon and Washington, and `TaxYearFacts`, a
+receives, the Form 1040 it files, the state returns for Arizona, Arkansas, California,
+Colorado, Illinois, North Carolina, Oregon and Washington, and `TaxYearFacts`, a
 household's own facts for one tax year.
 
 A schema holds what the form prints and nothing else. It has no confidence
@@ -199,6 +201,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 |---|---|---|
 | [140](https://azdor.gov/sites/default/files/document/FORMS_INDIVIDUAL_2025_140_f.pdf) | [`form_140.proto`](us/state/az/v1/form_140/form_140.proto) | The Arizona resident return |
 | [40](https://tax.idaho.gov/wp-content/uploads/forms/EFO00089/EFO00089_03-02-2026.pdf) | [`form_40.proto`](us/state/id/v1/form_40/form_40.proto) | The Idaho resident return |
+| [AR1000F](https://www.dfa.arkansas.gov/wp-content/uploads/2025_AR1000F_FullYearResidentIndividualIncomeTaxReturn.pdf) | [`form_ar1000f.proto`](us/state/ar/v1/form_ar1000f/form_ar1000f.proto) | The Arkansas full-year resident return |
 | [DR 0104](https://tax.colorado.gov/sites/tax/files/documents/DR0104_2025.pdf) | [`form_dr0104.proto`](us/state/co/v1/form_dr0104/form_dr0104.proto) | The Colorado resident return |
 | [500](https://dor.georgia.gov/document/document/2025-it-511-individual-income-tax-booklet/download) | [`form_500.proto`](us/state/ga/v1/form_500/form_500.proto) | The Georgia resident return, printed in the IT-511 booklet |
 | [IA 1040](https://revenue.iowa.gov/media/4401/download?inline) | [`form_ia1040.proto`](us/state/ia/v1/form_ia1040/form_ia1040.proto) | The Iowa resident return |

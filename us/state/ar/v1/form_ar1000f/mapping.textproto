@@ -1,0 +1,389 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form AR1000F calls each concept, per tax year.
+#
+# Lines come from the 2025 Form AR1000F as the Arkansas Department of Finance
+# and Administration publishes it. There are no amount codes: IRS Publication
+# 1220 covers the information returns the IRS receives electronically, and a
+# state return is not one of them.
+#
+# Lines 7A and 7B each print a count and an amount; both are mapped to the
+# line, with a note saying which figure each is. Amounts are column A's.
+
+form: "AR1000F"
+message_name: "nexteggapp.taxprotos.us.state.ar.v1.FormAR1000F"
+tax_years: 2025
+
+concepts {
+  concept: "tax_table"
+  years { tax_year: 2025 irs_box: "26" }
+}
+concepts {
+  concept: "personal_credit_boxes"
+  years {
+    tax_year: 2025
+    irs_box: "7A"
+    note: "Number of boxes checked on line 7A."
+  }
+}
+concepts {
+  concept: "personal_credits"
+  years {
+    tax_year: 2025
+    irs_box: "7A"
+    note: "The amount: number of boxes times $29."
+  }
+}
+concepts {
+  concept: "dependents"
+  years {
+    tax_year: 2025
+    irs_box: "7B"
+    note: "Number of dependents listed."
+  }
+}
+concepts {
+  concept: "dependent_credits"
+  years {
+    tax_year: 2025
+    irs_box: "7B"
+    note: "The amount: number of dependents times $29."
+  }
+}
+concepts {
+  concept: "total_personal_credits"
+  years {
+    tax_year: 2025
+    irs_box: "7C"
+  }
+}
+concepts {
+  concept: "wages"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+  }
+}
+concepts {
+  concept: "military_pay"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+  }
+}
+concepts {
+  concept: "interest_income"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+  }
+}
+concepts {
+  concept: "dividend_income"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+  }
+}
+concepts {
+  concept: "alimony_received"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+  }
+}
+concepts {
+  concept: "business_income"
+  years {
+    tax_year: 2025
+    irs_box: "13"
+  }
+}
+concepts {
+  concept: "capital_gains"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+  }
+}
+concepts {
+  concept: "other_gains"
+  years {
+    tax_year: 2025
+    irs_box: "15"
+  }
+}
+concepts {
+  concept: "nonqualified_ira_distributions_and_annuities"
+  years {
+    tax_year: 2025
+    irs_box: "16"
+  }
+}
+concepts {
+  concept: "military_retirement"
+  years {
+    tax_year: 2025
+    irs_box: "17"
+  }
+}
+concepts {
+  concept: "primary_taxable_retirement_income"
+  years {
+    tax_year: 2025
+    irs_box: "18A"
+  }
+}
+concepts {
+  concept: "spouse_taxable_retirement_income"
+  years {
+    tax_year: 2025
+    irs_box: "18B"
+  }
+}
+concepts {
+  concept: "rents_royalties_partnerships_estates_trusts"
+  years {
+    tax_year: 2025
+    irs_box: "19"
+  }
+}
+concepts {
+  concept: "farm_income"
+  years {
+    tax_year: 2025
+    irs_box: "20"
+  }
+}
+concepts {
+  concept: "unemployment_compensation"
+  years {
+    tax_year: 2025
+    irs_box: "21"
+  }
+}
+concepts {
+  concept: "other_income"
+  years {
+    tax_year: 2025
+    irs_box: "22"
+  }
+}
+concepts {
+  concept: "total_income"
+  years {
+    tax_year: 2025
+    irs_box: "23"
+  }
+}
+concepts {
+  concept: "total_adjustments"
+  years {
+    tax_year: 2025
+    irs_box: "24"
+  }
+}
+concepts {
+  concept: "adjusted_gross_income"
+  years {
+    tax_year: 2025
+    irs_box: "25"
+  }
+}
+concepts {
+  concept: "deduction"
+  years {
+    tax_year: 2025
+    irs_box: "27"
+  }
+}
+concepts {
+  concept: "net_taxable_income"
+  years {
+    tax_year: 2025
+    irs_box: "28"
+  }
+}
+concepts {
+  concept: "tax"
+  years {
+    tax_year: 2025
+    irs_box: "29"
+  }
+}
+concepts {
+  concept: "combined_tax"
+  years {
+    tax_year: 2025
+    irs_box: "30"
+  }
+}
+concepts {
+  concept: "lump_sum_distribution_tax"
+  years {
+    tax_year: 2025
+    irs_box: "31"
+  }
+}
+concepts {
+  concept: "additional_tax_on_early_withdrawals"
+  years {
+    tax_year: 2025
+    irs_box: "32"
+  }
+}
+concepts {
+  concept: "total_tax"
+  years {
+    tax_year: 2025
+    irs_box: "33"
+  }
+}
+concepts {
+  concept: "personal_tax_credits"
+  years {
+    tax_year: 2025
+    irs_box: "34"
+  }
+}
+concepts {
+  concept: "child_care_credit"
+  years {
+    tax_year: 2025
+    irs_box: "35"
+  }
+}
+concepts {
+  concept: "other_credits"
+  years {
+    tax_year: 2025
+    irs_box: "36"
+  }
+}
+concepts {
+  concept: "total_credits"
+  years {
+    tax_year: 2025
+    irs_box: "37"
+  }
+}
+concepts {
+  concept: "net_tax"
+  years {
+    tax_year: 2025
+    irs_box: "38"
+  }
+}
+concepts {
+  concept: "withholding_on_w2s"
+  years {
+    tax_year: 2025
+    irs_box: "39A"
+  }
+}
+concepts {
+  concept: "withholding_on_1099s"
+  years {
+    tax_year: 2025
+    irs_box: "39B"
+  }
+}
+concepts {
+  concept: "estimated_tax_payments"
+  years {
+    tax_year: 2025
+    irs_box: "40"
+  }
+}
+concepts {
+  concept: "extension_payment"
+  years {
+    tax_year: 2025
+    irs_box: "41"
+  }
+}
+concepts {
+  concept: "previous_payments"
+  years {
+    tax_year: 2025
+    irs_box: "42"
+  }
+}
+concepts {
+  concept: "early_childhood_program_credit"
+  years {
+    tax_year: 2025
+    irs_box: "43"
+  }
+}
+concepts {
+  concept: "total_payments"
+  years {
+    tax_year: 2025
+    irs_box: "44"
+  }
+}
+concepts {
+  concept: "previous_refund"
+  years {
+    tax_year: 2025
+    irs_box: "45"
+  }
+}
+concepts {
+  concept: "adjusted_total_payments"
+  years {
+    tax_year: 2025
+    irs_box: "46"
+  }
+}
+concepts {
+  concept: "overpayment"
+  years {
+    tax_year: 2025
+    irs_box: "47"
+  }
+}
+concepts {
+  concept: "applied_to_estimated_tax"
+  years {
+    tax_year: 2025
+    irs_box: "48"
+  }
+}
+concepts {
+  concept: "check_off_contributions"
+  years {
+    tax_year: 2025
+    irs_box: "49"
+  }
+}
+concepts {
+  concept: "refund"
+  years {
+    tax_year: 2025
+    irs_box: "50"
+  }
+}
+concepts {
+  concept: "amount_due"
+  years {
+    tax_year: 2025
+    irs_box: "51"
+  }
+}
+concepts {
+  concept: "underpayment_penalty"
+  years {
+    tax_year: 2025
+    irs_box: "52A"
+    note: "Line 52A carries the penalty in a box marked B, which the form calls 52B on line 52C; the extract prints no 52B."
+  }
+}
+concepts {
+  concept: "total_due"
+  years {
+    tax_year: 2025
+    irs_box: "52C"
+  }
+}

@@ -93,6 +93,7 @@ import "taxprotos/us/federal/v1/form_w2g/form_w2g.proto";
 import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1041.proto";
 import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1065.proto";
 import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1120_s.proto";
+import "taxprotos/us/state/ar/v1/form_ar1000f/form_ar1000f.proto";
 import "taxprotos/us/state/az/v1/form_140/form_140.proto";
 import "taxprotos/us/state/id/v1/form_40/form_40.proto";
 import "taxprotos/us/state/ca/v1/form_540/form_540.proto";
@@ -298,6 +299,8 @@ message Document {
     KansasReturn kansas_return = 62;
     // A filed Oklahoma return.
     OklahomaReturn oklahoma_return = 79;
+    // A filed Arkansas return.
+    ArkansasReturn arkansas_return = 53;
   }
 }
 
@@ -859,4 +862,8 @@ message KansasReturn {
 message OklahomaReturn {
   // Form 511.
   us.state.ok.v1.Form511 form_511 = 1;
+// An Arkansas full-year resident return: Form AR1000F.
+message ArkansasReturn {
+  // Form AR1000F.
+  us.state.ar.v1.FormAR1000F form_ar1000f = 1;
 }
