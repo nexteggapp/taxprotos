@@ -1,0 +1,205 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Georgia Form 500 calls each concept, per tax year.
+#
+# Lines come from the 2025 Form 500 as the Georgia Department of Revenue prints
+# it in the IT-511 booklet. There are no amount codes: IRS Publication 1220
+# covers the information returns the IRS receives electronically, and a state
+# return is not one of them.
+
+form: "500"
+message_name: "nexteggapp.taxprotos.us.state.ga.v1.Form500"
+tax_years: 2025
+
+concepts {
+  concept: "filing_status"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+    note: "Letters A to D: single, married filing jointly, married filing separately, head of household or qualifying surviving spouse."
+  }
+}
+concepts {
+  concept: "qualified_dependents"
+  years { tax_year: 2025 irs_box: "7a" }
+}
+concepts {
+  concept: "unborn_dependents"
+  years { tax_year: 2025 irs_box: "7b" }
+}
+concepts {
+  concept: "total_dependents"
+  years { tax_year: 2025 irs_box: "7c" }
+}
+concepts {
+  concept: "federal_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "8" note: "Federal Form 1040 line 11." }
+}
+concepts {
+  concept: "schedule_1_adjustments"
+  years { tax_year: 2025 irs_box: "9" note: "From Schedule 1, line 14." }
+}
+concepts {
+  concept: "georgia_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "10" }
+}
+concepts {
+  concept: "standard_deduction"
+  years { tax_year: 2025 irs_box: "11" }
+}
+concepts {
+  concept: "federal_itemized_deductions"
+  years { tax_year: 2025 irs_box: "12a" }
+}
+concepts {
+  concept: "itemized_deduction_adjustments"
+  years { tax_year: 2025 irs_box: "12b" }
+}
+concepts {
+  concept: "georgia_itemized_deductions"
+  years { tax_year: 2025 irs_box: "12c" }
+}
+concepts {
+  concept: "income_after_deductions"
+  years { tax_year: 2025 irs_box: "13" }
+}
+concepts {
+  concept: "dependent_exemption"
+  years { tax_year: 2025 irs_box: "14" }
+}
+concepts {
+  concept: "income_before_net_operating_loss"
+  years { tax_year: 2025 irs_box: "15a" }
+}
+concepts {
+  concept: "net_operating_loss_used"
+  years { tax_year: 2025 irs_box: "15b" }
+}
+concepts {
+  concept: "taxable_income"
+  years { tax_year: 2025 irs_box: "15c" }
+}
+concepts {
+  concept: "tax"
+  years { tax_year: 2025 irs_box: "16" }
+}
+concepts {
+  concept: "low_income_credit"
+  years { tax_year: 2025 irs_box: "17c" }
+}
+concepts {
+  concept: "other_state_tax_credit"
+  years { tax_year: 2025 irs_box: "18" }
+}
+concepts {
+  concept: "eligible_itemizer_credit"
+  years { tax_year: 2025 irs_box: "19" }
+}
+concepts {
+  concept: "ind_cr_credits"
+  years { tax_year: 2025 irs_box: "20" }
+}
+concepts {
+  concept: "schedule_2_credits"
+  years { tax_year: 2025 irs_box: "21" }
+}
+concepts {
+  concept: "total_credits"
+  years { tax_year: 2025 irs_box: "22" }
+}
+concepts {
+  concept: "tax_after_credits"
+  years { tax_year: 2025 irs_box: "23" }
+}
+concepts {
+  concept: "georgia_tax_withheld"
+  years { tax_year: 2025 irs_box: "24" }
+}
+concepts {
+  concept: "other_georgia_tax_withheld"
+  years { tax_year: 2025 irs_box: "25" }
+}
+concepts {
+  concept: "estimated_tax_payments"
+  years { tax_year: 2025 irs_box: "26" }
+}
+concepts {
+  concept: "refundable_credits"
+  years { tax_year: 2025 irs_box: "27" }
+}
+concepts {
+  concept: "total_payments"
+  years { tax_year: 2025 irs_box: "28" }
+}
+concepts {
+  concept: "balance_due"
+  years { tax_year: 2025 irs_box: "29" }
+}
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "30" }
+}
+concepts {
+  concept: "credited_to_estimated_tax"
+  years { tax_year: 2025 irs_box: "31" }
+}
+concepts {
+  concept: "wildlife_conservation_fund"
+  years { tax_year: 2025 irs_box: "32" }
+}
+concepts {
+  concept: "children_and_elderly_fund"
+  years { tax_year: 2025 irs_box: "33" }
+}
+concepts {
+  concept: "cancer_research_fund"
+  years { tax_year: 2025 irs_box: "34" }
+}
+concepts {
+  concept: "land_conservation_program"
+  years { tax_year: 2025 irs_box: "35" }
+}
+concepts {
+  concept: "national_guard_foundation"
+  years { tax_year: 2025 irs_box: "36" }
+}
+concepts {
+  concept: "dog_and_cat_sterilization_fund"
+  years { tax_year: 2025 irs_box: "37" }
+}
+concepts {
+  concept: "saving_the_cure_fund"
+  years { tax_year: 2025 irs_box: "38" }
+}
+concepts {
+  concept: "reach_program"
+  years { tax_year: 2025 irs_box: "39" }
+}
+concepts {
+  concept: "public_safety_memorial_grant"
+  years { tax_year: 2025 irs_box: "40" }
+}
+concepts {
+  concept: "disabled_veterans_scholarship_fund"
+  years { tax_year: 2025 irs_box: "41" }
+}
+concepts {
+  concept: "estimated_tax_penalty"
+  years { tax_year: 2025 irs_box: "42" }
+}
+concepts {
+  concept: "late_penalty"
+  years { tax_year: 2025 irs_box: "43" }
+}
+concepts {
+  concept: "interest"
+  years { tax_year: 2025 irs_box: "44" }
+}
+concepts {
+  concept: "amount_owed"
+  years { tax_year: 2025 irs_box: "45" }
+}
+concepts {
+  concept: "refund"
+  years { tax_year: 2025 irs_box: "46" }
+}

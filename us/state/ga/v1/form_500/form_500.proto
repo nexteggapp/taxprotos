@@ -1,0 +1,158 @@
+// Georgia Form 500, Individual Income Tax Return.
+//
+// Part-year residents and nonresidents file the same form, omitting lines 9
+// to 14 for Schedule 3. Only the full-year resident's return is modelled here.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form 500 printed in the
+// IT-511 booklet; testdata holds the text extracted from the published PDF and
+// coverage_test.go asserts every line a mapping claims appears on it.
+//
+// # A flat tax after a deduction and exemptions
+//
+// Georgia starts from federal adjusted gross income, adjusts it on Schedule 1
+// (line 9), takes off the standard or itemized deduction and $4,000 for each
+// dependent, and taxes the rest at 5.19% on line 16.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.ga.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/ga/v1/form_500;form500";
+
+// FilingStatus is the status the return is filed under, line 5.
+//
+// Georgia files a head of household and a qualifying surviving spouse under
+// the same letter, D.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD_OR_QUALIFYING_SURVIVING_SPOUSE = 4;
+}
+
+// Form500 is what a Georgia Form 500 states.
+message Form500 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // Dependents claimed, not counting the filer or spouse.
+  int32 qualified_dependents = 5 [(common.v1.fdx_absent) = true];
+
+  // Unborn children, which Georgia counts as dependents.
+  int32 unborn_dependents = 6 [(common.v1.fdx_absent) = true];
+
+  int32 total_dependents = 7 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 8 [(common.v1.fdx_absent) = true];
+
+  // Net of the additions and subtractions on Schedule 1, which may be negative.
+  // Social security and the retirement income exclusion are subtracted there.
+  nexteggapp.taxprotos.common.v1.Money schedule_1_adjustments = 9 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money georgia_adjusted_gross_income = 10 [(common.v1.fdx_absent) = true];
+
+  // $12,000, or $24,000 on a joint return. There is no addition for age or
+  // blindness in 2025.
+  nexteggapp.taxprotos.common.v1.Money standard_deduction = 11 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money federal_itemized_deductions = 12 [(common.v1.fdx_absent) = true];
+
+  // Other states' income taxes and interest on income Georgia does not tax.
+  nexteggapp.taxprotos.common.v1.Money itemized_deduction_adjustments = 13 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money georgia_itemized_deductions = 14 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money income_after_deductions = 15 [(common.v1.fdx_absent) = true];
+
+  // $4,000 for each dependent on line 7c.
+  nexteggapp.taxprotos.common.v1.Money dependent_exemption = 16 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money income_before_net_operating_loss = 17 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money net_operating_loss_used = 18 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 19 [(common.v1.fdx_absent) = true];
+
+  // 5.19% of line 15c, to the nearest dollar.
+  nexteggapp.taxprotos.common.v1.Money tax = 20 [(common.v1.fdx_absent) = true];
+
+  // For federal AGI under $20,000, from the worksheet in the IT-511 booklet.
+  nexteggapp.taxprotos.common.v1.Money low_income_credit = 21 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money other_state_tax_credit = 22 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money eligible_itemizer_credit = 23 [(common.v1.fdx_absent) = true];
+
+  // Credits from the IND-CR Summary Worksheet.
+  nexteggapp.taxprotos.common.v1.Money ind_cr_credits = 24 [(common.v1.fdx_absent) = true];
+
+  // Credits from Schedule 2, which must be filed electronically.
+  nexteggapp.taxprotos.common.v1.Money schedule_2_credits = 25 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_credits = 26 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_after_credits = 27 [(common.v1.fdx_absent) = true];
+
+  // Withheld on wages and 1099s.
+  nexteggapp.taxprotos.common.v1.Money georgia_tax_withheld = 28 [(common.v1.fdx_absent) = true];
+
+  // Withheld on Forms G2-A, G2-FL, G2-LP and G2-RP.
+  nexteggapp.taxprotos.common.v1.Money other_georgia_tax_withheld = 29 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 30 [(common.v1.fdx_absent) = true];
+
+  // Schedule 2B refundable credits.
+  nexteggapp.taxprotos.common.v1.Money refundable_credits = 31 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_payments = 32 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money balance_due = 33 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money overpayment = 34 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money credited_to_estimated_tax = 35 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money wildlife_conservation_fund = 36 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money children_and_elderly_fund = 37 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money cancer_research_fund = 38 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money land_conservation_program = 39 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money national_guard_foundation = 40 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money dog_and_cat_sterilization_fund = 41 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money saving_the_cure_fund = 42 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money reach_program = 43 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money public_safety_memorial_grant = 44 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money disabled_veterans_scholarship_fund = 45 [(common.v1.fdx_absent) = true];
+
+  // From Form 500 UET.
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_penalty = 46 [(common.v1.fdx_absent) = true];
+
+  // For paying or filing late.
+  nexteggapp.taxprotos.common.v1.Money late_penalty = 47 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money interest = 48 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money amount_owed = 49 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money refund = 50 [(common.v1.fdx_absent) = true];
+}
