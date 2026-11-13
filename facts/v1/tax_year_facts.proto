@@ -438,6 +438,8 @@ message PriorYearReturn {
     ArkansasReturn arkansas = 20;
     // A North Dakota return.
     NorthDakotaReturn north_dakota = 44;
+    // A Nebraska return.
+    NebraskaReturn nebraska = 40;
   }
 
   // Where the return came from, when it is here.

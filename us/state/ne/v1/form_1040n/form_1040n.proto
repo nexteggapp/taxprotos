@@ -1,0 +1,256 @@
+// Form 1040N, Nebraska Individual Income Tax Return.
+//
+// Partial-year residents and nonresidents file the same form with Schedule
+// III, which replaces lines 15 and 16. Only the full-year resident's return is
+// modelled here.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form 1040N; testdata
+// holds the text extracted from the published PDF and coverage_test.go asserts
+// every line a mapping claims appears on it.
+//
+// # Graduated tax on federal AGI less a Nebraska deduction
+//
+// Nebraska starts from federal adjusted gross income on line 5, takes off the
+// larger of its own standard deduction or federal itemized deductions less
+// state income taxes on line 10, adjusts on lines 12 and 13 with Schedule I,
+// and taxes the result on line 15 at graduated rates. Personal exemptions are
+// a credit, on line 18, not a deduction.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.ne.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/ne/v1/form_1040n;form1040n";
+
+// FilingStatus is the federal filing status, line 1.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+  FILING_STATUS_SURVIVING_SPOUSE = 5;
+}
+
+// Form1040N is what a Form 1040N states.
+message Form1040N {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // Line 2a: the filer and spouse who are 65 or older, and who are blind.
+  // Either changes the standard deduction on line 6.
+  int32 age_65_or_older = 5 [(common.v1.fdx_absent) = true];
+  int32 blind = 6 [(common.v1.fdx_absent) = true];
+
+  // Line 2b: someone can claim the filer or spouse as a dependent.
+  bool claimed_as_dependent = 7 [(common.v1.fdx_absent) = true];
+
+  // Line 4. Line 4a: Yourself; left blank if someone can claim you.
+  int32 exemptions_self = 8 [(common.v1.fdx_absent) = true];
+
+  // Line 4. Line 4b: Spouse, on a joint return.
+  int32 exemptions_spouse = 9 [(common.v1.fdx_absent) = true];
+
+  // Line 4c. Dependents listed.
+  int32 exemptions_dependents = 10 [(common.v1.fdx_absent) = true];
+
+  // Line 4. The total of 4a, 4b and 4c.
+  int32 total_exemptions = 11 [(common.v1.fdx_absent) = true];
+
+  // Line 5. Federal Form 1040 line 11a.
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 12 [(common.v1.fdx_absent) = true];
+
+  // Line 6.
+  nexteggapp.taxprotos.common.v1.Money standard_deduction = 13 [(common.v1.fdx_absent) = true];
+
+  // Line 7. Federal Schedule A line 17.
+  nexteggapp.taxprotos.common.v1.Money federal_itemized_deductions = 14 [(common.v1.fdx_absent) = true];
+
+  // Line 8. Federal Schedule A line 5a.
+  nexteggapp.taxprotos.common.v1.Money state_and_local_income_taxes = 15 [(common.v1.fdx_absent) = true];
+
+  // Line 9.
+  nexteggapp.taxprotos.common.v1.Money nebraska_itemized_deductions = 16 [(common.v1.fdx_absent) = true];
+
+  // Line 10.
+  nexteggapp.taxprotos.common.v1.Money deduction = 17 [(common.v1.fdx_absent) = true];
+
+  // Line 11.
+  nexteggapp.taxprotos.common.v1.Money income_before_adjustments = 18 [(common.v1.fdx_absent) = true];
+
+  // Line 12. From Nebraska Schedule I line 13.
+  nexteggapp.taxprotos.common.v1.Money adjustments_increasing_agi = 19 [(common.v1.fdx_absent) = true];
+
+  // Line 13. From Nebraska Schedule I line 44.
+  nexteggapp.taxprotos.common.v1.Money adjustments_decreasing_agi = 20 [(common.v1.fdx_absent) = true];
+
+  // Line 14.
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 21 [(common.v1.fdx_absent) = true];
+
+  // Line 15.
+  nexteggapp.taxprotos.common.v1.Money income_tax = 22 [(common.v1.fdx_absent) = true];
+
+  // Line 16a.
+  nexteggapp.taxprotos.common.v1.Money lump_sum_distribution_tax = 23 [(common.v1.fdx_absent) = true];
+
+  // Line 16. Line 16b: federal tax on early distributions.
+  nexteggapp.taxprotos.common.v1.Money early_distribution_tax = 24 [(common.v1.fdx_absent) = true];
+
+  // Line 16c.
+  nexteggapp.taxprotos.common.v1.Money federal_other_taxes = 25 [(common.v1.fdx_absent) = true];
+
+  // Line 16. The result: line 16c times 29.6%.
+  nexteggapp.taxprotos.common.v1.Money other_tax = 26 [(common.v1.fdx_absent) = true];
+
+  // Line 17.
+  nexteggapp.taxprotos.common.v1.Money tax_before_exemption_credit = 27 [(common.v1.fdx_absent) = true];
+
+  // Line 18.
+  nexteggapp.taxprotos.common.v1.Money personal_exemption_credit = 28 [(common.v1.fdx_absent) = true];
+
+  // Line 19.
+  nexteggapp.taxprotos.common.v1.Money other_state_tax_credit = 29 [(common.v1.fdx_absent) = true];
+
+  // Line 20.
+  nexteggapp.taxprotos.common.v1.Money elderly_or_disabled_credit = 30 [(common.v1.fdx_absent) = true];
+
+  // Line 21.
+  nexteggapp.taxprotos.common.v1.Money community_development_assistance_credit = 31 [(common.v1.fdx_absent) = true];
+
+  // Line 22.
+  nexteggapp.taxprotos.common.v1.Money form_3800n_nonrefundable_credit = 32 [(common.v1.fdx_absent) = true];
+
+  // Line 23.
+  nexteggapp.taxprotos.common.v1.Money child_care_nonrefundable_credit = 33 [(common.v1.fdx_absent) = true];
+
+  // Line 24.
+  nexteggapp.taxprotos.common.v1.Money financial_institution_tax_credit = 34 [(common.v1.fdx_absent) = true];
+
+  // Line 25.
+  nexteggapp.taxprotos.common.v1.Money tanf_employer_credit = 35 [(common.v1.fdx_absent) = true];
+
+  // Line 26.
+  nexteggapp.taxprotos.common.v1.Money extremely_blighted_area_credit = 36 [(common.v1.fdx_absent) = true];
+
+  // Line 27.
+  nexteggapp.taxprotos.common.v1.Money employing_felons_credit = 37 [(common.v1.fdx_absent) = true];
+
+  // Line 28.
+  nexteggapp.taxprotos.common.v1.Money school_readiness_provider_credit = 38 [(common.v1.fdx_absent) = true];
+
+  // Line 29.
+  nexteggapp.taxprotos.common.v1.Money child_care_contributor_credit = 39 [(common.v1.fdx_absent) = true];
+
+  // Line 30.
+  nexteggapp.taxprotos.common.v1.Money opportunity_scholarships_credit = 40 [(common.v1.fdx_absent) = true];
+
+  // Line 31.
+  nexteggapp.taxprotos.common.v1.Money chief_credit = 41 [(common.v1.fdx_absent) = true];
+
+  // Line 32.
+  nexteggapp.taxprotos.common.v1.Money family_caregiver_credit = 42 [(common.v1.fdx_absent) = true];
+
+  // Line 33.
+  nexteggapp.taxprotos.common.v1.Money pregnancy_help_credit = 43 [(common.v1.fdx_absent) = true];
+
+  // Line 34.
+  nexteggapp.taxprotos.common.v1.Money total_nonrefundable_credits = 44 [(common.v1.fdx_absent) = true];
+
+  // Line 35.
+  nexteggapp.taxprotos.common.v1.Money tax_after_nonrefundable_credits = 45 [(common.v1.fdx_absent) = true];
+
+  // Line 36.
+  nexteggapp.taxprotos.common.v1.Money w2_withholding = 46 [(common.v1.fdx_absent) = true];
+
+  // Line 37. Forms W-2G, 1099-R, 1099-MISC, 1099-NEC and the like.
+  nexteggapp.taxprotos.common.v1.Money other_withholding = 47 [(common.v1.fdx_absent) = true];
+
+  // Line 38.
+  nexteggapp.taxprotos.common.v1.Money k1n_withholding = 48 [(common.v1.fdx_absent) = true];
+
+  // Line 39.
+  nexteggapp.taxprotos.common.v1.Money pass_through_entity_tax_credit = 49 [(common.v1.fdx_absent) = true];
+
+  // Line 40.
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 50 [(common.v1.fdx_absent) = true];
+
+  // Line 41.
+  nexteggapp.taxprotos.common.v1.Money form_3800n_refundable_credit = 51 [(common.v1.fdx_absent) = true];
+
+  // Line 42.
+  nexteggapp.taxprotos.common.v1.Money child_care_refundable_credit = 52 [(common.v1.fdx_absent) = true];
+
+  // Line 43.
+  nexteggapp.taxprotos.common.v1.Money beginning_farmer_credit = 53 [(common.v1.fdx_absent) = true];
+
+  // Line 44.
+  nexteggapp.taxprotos.common.v1.Money earned_income_credit = 54 [(common.v1.fdx_absent) = true];
+
+  // Line 45.
+  nexteggapp.taxprotos.common.v1.Money community_college_property_tax_credit = 55 [(common.v1.fdx_absent) = true];
+
+  // Line 46.
+  nexteggapp.taxprotos.common.v1.Money volunteer_emergency_responder_credit = 56 [(common.v1.fdx_absent) = true];
+
+  // Line 47.
+  nexteggapp.taxprotos.common.v1.Money stillborn_child_credit = 57 [(common.v1.fdx_absent) = true];
+
+  // Line 48.
+  nexteggapp.taxprotos.common.v1.Money child_care_parent_credit = 58 [(common.v1.fdx_absent) = true];
+
+  // Line 49.
+  nexteggapp.taxprotos.common.v1.Money school_readiness_staff_credit = 59 [(common.v1.fdx_absent) = true];
+
+  // Line 50.
+  nexteggapp.taxprotos.common.v1.Money reverse_osmosis_credit = 60 [(common.v1.fdx_absent) = true];
+
+  // Line 51.
+  nexteggapp.taxprotos.common.v1.Money direct_support_professional_credit = 61 [(common.v1.fdx_absent) = true];
+
+  // Line 52. Amended returns only.
+  nexteggapp.taxprotos.common.v1.Money amount_paid_with_original_return = 62 [(common.v1.fdx_absent) = true];
+
+  // Line 53.
+  nexteggapp.taxprotos.common.v1.Money total_payments = 63 [(common.v1.fdx_absent) = true];
+
+  // Line 54. Amended returns only.
+  nexteggapp.taxprotos.common.v1.Money overpayment_allowed_on_original_return = 64 [(common.v1.fdx_absent) = true];
+
+  // Line 55.
+  nexteggapp.taxprotos.common.v1.Money net_payments = 65 [(common.v1.fdx_absent) = true];
+
+  // Line 56.
+  nexteggapp.taxprotos.common.v1.Money underpayment_penalty = 66 [(common.v1.fdx_absent) = true];
+
+  // Line 57.
+  nexteggapp.taxprotos.common.v1.Money total_tax_and_penalty = 67 [(common.v1.fdx_absent) = true];
+
+  // Line 58.
+  nexteggapp.taxprotos.common.v1.Money use_tax = 68 [(common.v1.fdx_absent) = true];
+
+  // Line 59.
+  nexteggapp.taxprotos.common.v1.Money amount_owed = 69 [(common.v1.fdx_absent) = true];
+
+  // Line 60.
+  nexteggapp.taxprotos.common.v1.Money overpayment = 70 [(common.v1.fdx_absent) = true];
+
+  // Line 61.
+  nexteggapp.taxprotos.common.v1.Money applied_to_next_year = 71 [(common.v1.fdx_absent) = true];
+
+  // Line 62.
+  nexteggapp.taxprotos.common.v1.Money wildlife_conservation_donation = 72 [(common.v1.fdx_absent) = true];
+
+  // Line 63.
+  nexteggapp.taxprotos.common.v1.Money refund = 73 [(common.v1.fdx_absent) = true];
+}

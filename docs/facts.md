@@ -62,6 +62,7 @@ messages are used directly. These have messages of their own:
 | `PaymentConfirmation` | A confirmation of an estimated, balance-due or extension payment |
 | `FederalReturn`, `ArizonaReturn`, `ArkansasReturn`, `CaliforniaReturn`, `ColoradoReturn`, `GeorgiaReturn`, `IdahoReturn`, `IllinoisReturn`, `IndianaReturn`, `IowaReturn`, `KansasReturn`, `KentuckyReturn`, `LouisianaReturn`, `MichiganReturn`, `MississippiReturn`, `MissouriReturn`, `MontanaReturn`, `NorthCarolinaReturn`, `OklahomaReturn`, `OregonReturn`, `PennsylvaniaReturn`, `UtahReturn`, `WashingtonReturn` | A filed return with its schedules |
 | `FederalReturn`, `ArizonaReturn`, `CaliforniaReturn`, `ColoradoReturn`, `IllinoisReturn`, `NorthCarolinaReturn`, `NorthDakotaReturn`, `OregonReturn` | A filed return with its schedules |
+| `FederalReturn`, `ArizonaReturn`, `CaliforniaReturn`, `ColoradoReturn`, `IllinoisReturn`, `NebraskaReturn`, `NorthCarolinaReturn`, `OregonReturn` | A filed return with its schedules |
 
 `Document` pairs one of these, or a form message, with a `DocumentRef`.
 
