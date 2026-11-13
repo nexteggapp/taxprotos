@@ -102,6 +102,7 @@ import "taxprotos/us/state/nc/v1/form_d400/form_d400.proto";
 import "taxprotos/us/state/or/v1/form_or40/form_or40.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_asc.proto";
+import "taxprotos/us/state/wa/v1/capital_gains/capital_gains_return.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/facts/v1;factsv1";
 
@@ -244,6 +245,9 @@ message Document {
 
     // A filed Arizona return.
     ArizonaReturn arizona_return = 51;
+
+    // A filed Washington capital gains excise tax return.
+    WashingtonReturn washington_return = 88;
   }
 }
 
@@ -726,4 +730,11 @@ message ColoradoReturn {
 message ArizonaReturn {
   // Form 140.
   us.state.az.v1.Form140 form_140 = 1;
+}
+
+// A Washington return: the capital gains excise tax return. Washington levies
+// no personal income tax, so this is the only individual return it has.
+message WashingtonReturn {
+  // The capital gains excise tax return.
+  us.state.wa.v1.CapitalGainsReturn capital_gains = 1;
 }
