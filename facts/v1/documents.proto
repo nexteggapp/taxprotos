@@ -310,8 +310,10 @@ message Document {
 
     // A filed Arkansas return.
     ArkansasReturn arkansas_return = 53;
+
     // A filed North Dakota return.
     NorthDakotaReturn north_dakota_return = 77;
+
     // A filed Nebraska return.
     NebraskaReturn nebraska_return = 73;
   }
@@ -893,10 +895,14 @@ message OklahomaReturn {
 message ArkansasReturn {
   // Form AR1000F.
   us.state.ar.v1.FormAR1000F form_ar1000f = 1;
+}
+
 // A North Dakota resident return: Form ND-1.
 message NorthDakotaReturn {
   // Form ND-1.
   us.state.nd.v1.FormND1 form_nd1 = 1;
+}
+
 // A Nebraska resident return: Form 1040N.
 message NebraskaReturn {
   // Form 1040N.
