@@ -11,7 +11,7 @@
 # Part III, line 1, and carries a note saying so.
 
 form: "40"
-message_name: "nexteggapp.taxprotos.us.state.al.v1.Form40"
+message_name: "nexteggapp.taxprotos.us.state.al.v1.FormAL40"
 tax_years: 2025
 
 concepts {

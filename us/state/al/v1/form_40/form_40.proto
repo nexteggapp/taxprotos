@@ -34,8 +34,8 @@ enum FilingStatus {
   FILING_STATUS_HEAD_OF_FAMILY = 4;
 }
 
-// Form40 is what an Alabama Form 40 states.
-message Form40 {
+// FormAL40 is what an Alabama Form 40 states.
+message FormAL40 {
   option (common.v1.fdx_entity) = "";
   option (common.v1.fdx_version) = "5.0";
 
