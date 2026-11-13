@@ -100,6 +100,7 @@ import "taxprotos/us/state/ca/v1/form_540/schedule_ca.proto";
 import "taxprotos/us/state/co/v1/form_dr0104/form_dr0104.proto";
 import "taxprotos/us/state/ga/v1/form_500/form_500.proto";
 import "taxprotos/us/state/ia/v1/form_ia1040/form_ia1040.proto";
+import "taxprotos/us/state/ks/v1/form_k40/form_k40.proto";
 import "taxprotos/us/state/il/v1/form_il1040/form_il1040.proto";
 import "taxprotos/us/state/mi/v1/form_mi1040/form_mi1040.proto";
 import "taxprotos/us/state/ky/v1/form_740/form_740.proto";
@@ -288,6 +289,8 @@ message Document {
 
     // A filed Mississippi return.
     MississippiReturn mississippi_return = 70;
+    // A filed Kansas return.
+    KansasReturn kansas_return = 62;
   }
 }
 
@@ -837,4 +840,8 @@ message LouisianaReturn {
 message MississippiReturn {
   // Form 80-105.
   us.state.ms.v1.Form80105 form_80105 = 1;
+// A Kansas resident return: Form K-40.
+message KansasReturn {
+  // Form K-40.
+  us.state.ks.v1.FormK40 form_k40 = 1;
 }

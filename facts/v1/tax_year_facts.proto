@@ -421,6 +421,8 @@ message PriorYearReturn {
 
     // A Mississippi return.
     MississippiReturn mississippi = 37;
+    // A Kansas return.
+    KansasReturn kansas = 29;
   }
 
   // Where the return came from, when it is here.
