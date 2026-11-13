@@ -202,6 +202,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [40](https://tax.idaho.gov/wp-content/uploads/forms/EFO00089/EFO00089_03-02-2026.pdf) | [`form_40.proto`](us/state/id/v1/form_40/form_40.proto) | The Idaho resident return |
 | [DR 0104](https://tax.colorado.gov/sites/tax/files/documents/DR0104_2025.pdf) | [`form_dr0104.proto`](us/state/co/v1/form_dr0104/form_dr0104.proto) | The Colorado resident return |
 | [500](https://dor.georgia.gov/document/document/2025-it-511-individual-income-tax-booklet/download) | [`form_500.proto`](us/state/ga/v1/form_500/form_500.proto) | The Georgia resident return, printed in the IT-511 booklet |
+| [IA 1040](https://revenue.iowa.gov/media/4401/download?inline) | [`form_ia1040.proto`](us/state/ia/v1/form_ia1040/form_ia1040.proto) | The Iowa resident return |
 | [IL-1040](https://tax.illinois.gov/content/dam/soi/en/web/tax/forms/incometax/documents/currentyear/individual/il-1040.pdf) | [`form_il1040.proto`](us/state/il/v1/form_il1040/form_il1040.proto) | The Illinois resident return |
 | [MI-1040](https://www.michigan.gov/taxes/-/media/Project/Websites/taxes/Forms/IIT/TY2025/MI-1040.pdf) | [`form_mi1040.proto`](us/state/mi/v1/form_mi1040/form_mi1040.proto) | The Michigan resident return |
 | [740](https://revenue.ky.gov/Forms/740%20(2025).pdf) | [`form_740.proto`](us/state/ky/v1/form_740/form_740.proto) | The Kentucky resident return |

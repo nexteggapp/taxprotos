@@ -1,0 +1,210 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form IA 1040 calls each concept, per tax year.
+#
+# Lines come from the 2025 Form IA 1040 as the Iowa Department of Revenue
+# publishes it. There are no amount codes: IRS Publication 1220 covers the
+# information returns the IRS receives electronically, and a state return is not
+# one of them.
+#
+# Steps 2 and 3 print their own short numbering (filing status boxes 1 to 5,
+# exemption lines a to d), so a few numbers are shared with Step 4 onward; each
+# concept on a shared number says which figure it is. Line 31b, previous
+# refunds, is for amended returns and is not modelled.
+
+form: "IA 1040"
+message_name: "nexteggapp.taxprotos.us.state.ia.v1.FormIA1040"
+tax_years: 2025
+
+concepts {
+  concept: "filing_status"
+  years { tax_year: 2025 irs_box: "1" note: "Step 2: single, married filing jointly, married filing separately, head of household, qualifying surviving spouse; the boxes are numbered 1 to 5." }
+}
+concepts {
+  concept: "claimed_as_dependent"
+  years { tax_year: 2025 irs_box: "1" note: "Step 2, the Yes/No question beside status 1, Single." }
+}
+concepts {
+  concept: "spouse_iowa_taxable_income"
+  years { tax_year: 2025 irs_box: "3" note: "Step 2, beside status 3, Married filing separately; not Step 4 line 3." }
+}
+concepts {
+  concept: "personal_credit"
+  years { tax_year: 2025 irs_box: "a" note: "Step 3, line a: $40 each." }
+}
+concepts {
+  concept: "age_65_or_blind_credit"
+  years { tax_year: 2025 irs_box: "b" note: "Step 3, line b: $20 each." }
+}
+concepts {
+  concept: "dependent_credit"
+  years { tax_year: 2025 irs_box: "c" note: "Step 3, line c: $40 each." }
+}
+concepts {
+  concept: "total_exemption_credit"
+  years { tax_year: 2025 irs_box: "8" note: "Step 3 line d, carried to Step 5 line 8." }
+}
+concepts {
+  concept: "federal_total_income"
+  years { tax_year: 2025 irs_box: "1a" note: "Federal Form 1040 line 9." }
+}
+concepts {
+  concept: "federal_adjustments_to_income"
+  years { tax_year: 2025 irs_box: "1b" note: "Federal Form 1040 line 10." }
+}
+concepts {
+  concept: "federal_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "1c" note: "Federal Form 1040 line 11a." }
+}
+concepts {
+  concept: "federal_standard_or_itemized_deduction"
+  years { tax_year: 2025 irs_box: "1d" note: "Federal Form 1040 line 12e." }
+}
+concepts {
+  concept: "qualified_business_income_deduction"
+  years { tax_year: 2025 irs_box: "1e" note: "Federal Form 1040 line 13a." }
+}
+concepts {
+  concept: "enhanced_deduction_for_seniors"
+  years { tax_year: 2025 irs_box: "1f" note: "Federal Schedule 1-A line 37." }
+}
+concepts {
+  concept: "federal_taxable_income"
+  years { tax_year: 2025 irs_box: "2" note: "Federal Form 1040 line 15." }
+}
+concepts {
+  concept: "net_iowa_modifications"
+  years { tax_year: 2025 irs_box: "3" note: "Step 4 line 3, from IA 1040 Schedule 1 line 21; not the Step 2 spouse's income." }
+}
+concepts {
+  concept: "iowa_taxable_income"
+  years { tax_year: 2025 irs_box: "4" }
+}
+concepts {
+  concept: "iowa_tax"
+  years { tax_year: 2025 irs_box: "5" }
+}
+concepts {
+  concept: "lump_sum_tax"
+  years { tax_year: 2025 irs_box: "6" }
+}
+concepts {
+  concept: "total_tax"
+  years { tax_year: 2025 irs_box: "7" }
+}
+concepts {
+  concept: "tuition_and_textbook_credit"
+  years { tax_year: 2025 irs_box: "9" }
+}
+concepts {
+  concept: "volunteer_responder_credit"
+  years { tax_year: 2025 irs_box: "10" }
+}
+concepts {
+  concept: "total_credits"
+  years { tax_year: 2025 irs_box: "11" }
+}
+concepts {
+  concept: "balance_after_credits"
+  years { tax_year: 2025 irs_box: "12" }
+}
+concepts {
+  concept: "nonresident_credit"
+  years { tax_year: 2025 irs_box: "13" note: "From the IA 126." }
+}
+concepts {
+  concept: "balance_after_nonresident_credit"
+  years { tax_year: 2025 irs_box: "14" }
+}
+concepts {
+  concept: "out_of_state_tax_credit"
+  years { tax_year: 2025 irs_box: "15" note: "From the IA 130." }
+}
+concepts {
+  concept: "balance_after_out_of_state_credit"
+  years { tax_year: 2025 irs_box: "16" }
+}
+concepts {
+  concept: "other_nonrefundable_credits"
+  years { tax_year: 2025 irs_box: "17" note: "From the IA 148." }
+}
+concepts {
+  concept: "state_tax"
+  years { tax_year: 2025 irs_box: "18" }
+}
+concepts {
+  concept: "school_district_and_ems_surtax"
+  years { tax_year: 2025 irs_box: "19" }
+}
+concepts {
+  concept: "total_state_and_local_tax"
+  years { tax_year: 2025 irs_box: "20" }
+}
+concepts {
+  concept: "contributions"
+  years { tax_year: 2025 irs_box: "21" }
+}
+concepts {
+  concept: "total_tax_and_contributions"
+  years { tax_year: 2025 irs_box: "22" }
+}
+concepts {
+  concept: "fuel_tax_credit"
+  years { tax_year: 2025 irs_box: "23" note: "From the IA 4136." }
+}
+concepts {
+  concept: "child_care_credit"
+  years { tax_year: 2025 irs_box: "24" }
+}
+concepts {
+  concept: "earned_income_credit"
+  years { tax_year: 2025 irs_box: "25" }
+}
+concepts {
+  concept: "other_refundable_credits"
+  years { tax_year: 2025 irs_box: "26" note: "From the IA 148." }
+}
+concepts {
+  concept: "composite_and_ptet_credit"
+  years { tax_year: 2025 irs_box: "27" note: "From IA Schedule CC." }
+}
+concepts {
+  concept: "iowa_tax_withheld"
+  years { tax_year: 2025 irs_box: "28" }
+}
+concepts {
+  concept: "estimated_and_other_payments"
+  years { tax_year: 2025 irs_box: "29" }
+}
+concepts {
+  concept: "total_payments_and_refundable_credits"
+  years { tax_year: 2025 irs_box: "30" }
+}
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "31a" }
+}
+concepts {
+  concept: "refund"
+  years { tax_year: 2025 irs_box: "32" }
+}
+concepts {
+  concept: "applied_to_next_year_estimated_tax"
+  years { tax_year: 2025 irs_box: "33" }
+}
+concepts {
+  concept: "amount_owed"
+  years { tax_year: 2025 irs_box: "34" }
+}
+concepts {
+  concept: "estimated_tax_penalty"
+  years { tax_year: 2025 irs_box: "35" }
+}
+concepts {
+  concept: "penalty_and_interest"
+  years { tax_year: 2025 irs_box: "36" }
+}
+concepts {
+  concept: "total_amount_due"
+  years { tax_year: 2025 irs_box: "37" }
+}

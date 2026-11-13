@@ -99,6 +99,7 @@ import "taxprotos/us/state/ca/v1/form_540/form_540.proto";
 import "taxprotos/us/state/ca/v1/form_540/schedule_ca.proto";
 import "taxprotos/us/state/co/v1/form_dr0104/form_dr0104.proto";
 import "taxprotos/us/state/ga/v1/form_500/form_500.proto";
+import "taxprotos/us/state/ia/v1/form_ia1040/form_ia1040.proto";
 import "taxprotos/us/state/il/v1/form_il1040/form_il1040.proto";
 import "taxprotos/us/state/mi/v1/form_mi1040/form_mi1040.proto";
 import "taxprotos/us/state/ky/v1/form_740/form_740.proto";
@@ -269,6 +270,8 @@ message Document {
     KentuckyReturn kentucky_return = 63;
     // A filed Indiana return.
     IndianaReturn indiana_return = 60;
+    // A filed Iowa return.
+    IowaReturn iowa_return = 61;
   }
 }
 
@@ -796,4 +799,8 @@ message PennsylvaniaReturn {
 message KentuckyReturn {
   // Form 740.
   us.state.ky.v1.Form740 form_740 = 1;
+// An Iowa resident return: Form IA 1040.
+message IowaReturn {
+  // Form IA 1040.
+  us.state.ia.v1.FormIA1040 form_ia1040 = 1;
 }

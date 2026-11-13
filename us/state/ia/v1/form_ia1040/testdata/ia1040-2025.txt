@@ -1,0 +1,432 @@
+                                                                                                                                                                         2025 IA 1040
+                                                                                                                                           Iowa Individual Income Tax Return
+                                                                                                                                                                                   revenue.iowa.gov
+
+Step 1:       Personal information.
+              You must fill in your Social Security Number (SSN).
+
+          Fiscal or short year filers only:
+                                                        to   
+
+          M      M     D      D     Y    Y    Y    Y               M    M      D       D   Y     Y    Y   Y
+
+
+     If this is an amended return, check 
+          the box and include the IA 102.
+
+
+          Last Name                                                                    First Name                                                   MI                   Social Security Number (SSN)
+                                                                                                                                                                  
+
+
+
+                                                                                                                                                                         Spouse’s Social
+          Spouse’s Last Name                                                           Spouse’s First Name                                          MI                   Security Number (SSN)
+                                                                                                                                                                  
+
+
+
+          Current mailing address (number, street, apartment, lot, or suite number) or PO Box
+    
+
+
+
+          City                                                                                       State            ZIP                                                Date of Birth
+                                                                                                                                                                  
+
+                                                                                                                                                                         M     M   D   D   Y    Y   Y   Y
+                                                                                                     County No.           School District No.                            Spouse Date of Birth
+                                             Use residence as of 12/31/2025.                                                                                       
+                                             See instructions.
+                                                                                                                                                                         M     M   D   D   Y    Y   Y   Y
+
+
+
+Step 2:       Filing status from federal 1040.
+              Mark one box only
+                                                                                                                                                                         Yes                   No
+                        1.       Single: Were you claimed on another person’s Iowa return?                                                                                               
+
+
+                        2.       Married filing jointly
+                         3.       Married filing separately. Enter your spouse’s information
+      
+                                  above. Spouse’s Iowa taxable income:............................................................................
+                                                                                                                                                                        3                                  00
+                        4.       Head of Household (HOH)
+
+                        5.       Qualifying Surviving Spouse (QSS)
+
+
+    If you checked the HOH or QSS box,                                                         Last Name                                                                 First Name
+    enter the child’s full legal name if the                                                                                                                        
+    qualifying person is a child but not your depedent.......
+
+Step 3:       Exemptions
+
+                                                                                                                                                     x $40 =                                              00
+    a.        Personal Credit: Enter 1 (enter 2 if filing status 2 or 4)............................................
+
+    b.        Enter 1 for each taxpayer 65 or older and/or 1 for each                                                                                x $20 =                                              00
+              taxpayer who is blind................................................................................................
+
+    Check if:                 You are 65 or older                           You are blind                        Spouse is 65 or older                            Spouse is blind       
+
+
+
+
+    c.        Dependents: Enter 1 for each dependent.                                                                                                x $40 =                                              00
+              List dependents below..............................................................................................
+
+                                                                                                                                                                                                           00
+    d.        Total. Add lines a, b and c.........................................................................................................................
+
+
+
+
+                     41-001a (07/24/2025)
+                                                                                                                                             2025 IA 1040, Page 2
+    Taxpayer’s Name                                                                                                                                             Taxpayer’s SSN
+
+
+
+
+                                                                                                                                                                                            
+                                                  If more than four dependents, check the box and see instructions...........................................................
+
+                 Dependent’s first name                            Dependent’s last name                                   Dependent’s SSN                                  Relationship to you
+
+
+                                                                                                                                                                     
+
+
+
+                                                                                                                                                                     
+
+
+
+                                                                                                                                                                     
+
+
+
+                                                                                                                                                                     
+
+
+
+
+  Step 4:         Iowa Taxable Income
+                                                                                                                                                                   1a                            00
+          1a. Federal total income from federal 1040, line 9..................................................................................
+                                                                                                                                                                   1b                            00
+          1b. Federal adjustments to income from federal 1040, line 10...............................................................
+                                                                                                                                                                   1c                            00
+          1c. Federal adjusted gross income from federal 1040, line 11a..............................................................
+                                                                                                                                                                   1d                            00
+          1d. Standard deduction or itemized deductions from federal 1040, line 12e..........................................
+                                                                                                                                                                   1e                            00
+          1e. Qualified business income deduction from federal 1040, line 13a....................................................
+                                                                                                                                                                   1f                            00
+          1f.     Enhanced Deduction for Seniors (personal exemption) from federal Schedule 1-A, line 37............
+                                                                                                                                                                   2                             00
+          2.      Federal taxable income from federal 1040, line 15...........................................................................
+
+          3.      Net Iowa modifications from IA 1040 Schedule 1, line 21.................................................................
+                                                                                                                                                                   3                             00
+                                                                                                                                                                   4                             00
+          4.      Iowa taxable income. Add lines 2 and 3. Do not include lines 1a through 1f....................................
+
+Step 5:         Tax, Non-refundable Credits, and
+                Check-off Contributions
+          Check if using alternate tax (line 5), tax reduction calculation (line 12),                                                                           
+          or low-income exemption. See instructions...............................................................................................
+                                                                                                                                                                   5                             00
+          5.      Iowa tax. Multiply line 4 by 3.8% or amount from alternate tax calculation.......................................
+                                                                                                                                                                   6                             00
+          6.      Iowa lump-sum tax. See instructions.................................................................................................
+                                                                                                                                                                   7                             00
+          7.      Total tax. Add lines 5 and 6...............................................................................................................
+                                                                                                                                                                   8                             00
+          8.      Total exemption credit amount from Step 3.......................................................................................
+                                                                                                                                                                   9                             00
+          9.      Tuition and textbook credit for dependents in grades K-12...............................................................
+                                                                                                                                                                 10                              00
+          10. Volunteer firefighter/EMS/reserve peace officer credit......................................................................
+                                                                                                                                                                 11                              00
+          11. Total Credits. Add lines 8, 9, and 10..................................................................................................
+                                                                                                                                                                 12                              00
+          12. BALANCE. Subtract line 11 from line 7.............................................................................................
+                                                                                                                                                                 13                              00
+          13. Nonresident or part-year resident credit. Include IA 126...................................................................
+                                                                                                                                                                 14                              00
+          14. BALANCE. Subtract line 13 from line 12...........................................................................................
+                                                                                                                                                                 15                              00
+          15. Out-of-State tax credit. Include IA 130..............................................................................................
+
+
+
+
+                     41-001b (10/14/2025)
+                                                                                                                                       2025 IA 1040, Page 3
+    Taxpayer’s Name                                                                                                                                         Taxpayer’s SSN
+
+
+
+
+                                                                                                                                                           16                          00
+    16. BALANCE. Subtract line 15 from line 14...........................................................................................
+                                                                                                                                                           17                          00
+    17. Other non-refundable Iowa credits. Include IA 148...........................................................................
+                                                                                                                                                           18                          00
+    18. BALANCE. Subtract line 17 from line 16...........................................................................................
+                                                                                                                                                           19                          00
+    19. School district surtax or EMS surtax. Multiply line 18 by the percentage from list............................
+                                                                                                                                                           20                          00
+    20. Total state tax and local surtax. Add lines 18 and 19........................................................................
+
+    21. Contributions will reduce your refund or add to the amount you owe.
+                                                                                                                     Child Abuse
+                                                                                  Fish/Wildlife           00         Prevention
+                                                                                                                                                 00
+
+                                                                                                                                                           21                          00
+                                                                                                       Enter total here........................
+                                                                                                                                                           22                          00
+    22. TOTAL STATE TAX, LOCAL TAX, AND CONTRIBUTIONS. Add lines 20 and 21............................
+
+Step 6:    Refundable Credits and Payments
+
+                                                                                                                                                           23                          00
+    23. Iowa fuel tax credit. Include IA 4136..................................................................................................
+                                                                                                                            OR
+    24. Check one:                                   Child and dependent care credit
+
+                                                     Early childhood development credit
+                                                                                                                
+                                                                                                                            .........................		
+                                                                                                                                                           24                          00
+                                                                                                                                                           25                          00
+    25. Iowa earned income tax credit..........................................................................................................
+                                                                                                                                                           26                          00
+    26. Other refundable credits. Include IA 148...........................................................................................
+                                                                                                                                                           27                          00
+    27. Composite and PTET credit. Include IA Schedule CC......................................................................
+
+    28. Iowa income tax withheld..................................................................................................................
+                                                                                                                                                           28                          00
+
+    29. Estimated and other payments made for tax year 2025. Amended returns see instructions............
+                                                                                                                                                           29                          00
+
+    30. Total refundable credits and payments. Add lines 23 through 29......................................................
+                                                                                                                                                           30                          00
+
+Step 7:    Refund
+
+                                                                                                                                                           31a                         00
+    31a. If line 30 is more than line 22, subtract line 22 from line 30; otherwise, go to line 34.......................
+
+                                                                                                                                                           31b                         00
+    31b. AMENDED RETURN ONLY. Previous refunds. See instructions......................................................
+
+                                                                                                                                                           32                          00
+    32. Amount of line 31 to be REFUNDED. Subtract line 31b from line 31a, if applicable.........................
+
+           a.     Routing Number                                                                                                                                           Checking
+                                                                                                                                                      c. Account
+                                                                                                                                                         Type
+           b.     Account Number                                                                                                                                           Savings
+
+                                                                                                                                                           33                          00
+    33. Amount of line 31a to be applied to your 2026 estimated tax...........................................................
+
+
+
+
+                  41-001c (07/24/2025)
+                                                                                                                    2025 IA 1040, Page 4
+    Taxpayer’s Name                                                                                                                   Taxpayer’s SSN
+
+
+
+
+Step 8:   Amount due
+
+                                                                                                                                   34                 00
+    34. If line 30 is less than line 22, subtract line 30 from line 22. Amended returns see instructions.........
+
+                                                                                                                                   35                 00
+    35. Penalty for underpayment of estimated tax from IA 2210, IA 2210AI, or IA 2210F...........................
+
+
+    Check if using either method: annualized income (IA 2210AI)		                           or farmer/fisher (IA 2210F)          
+
+
+
+
+                                                                                               00
+    36. Penalty and Interest                   36a. Penalty
+
+                                               36b. Interest
+                                                                                               00      Enter total here.......
+                                                                                                                                   36                 00
+
+                                                                                                                                   37                 00
+    37. TOTAL AMOUNT DUE. ADD lines 34, 35, and 36.............................................................................
+
+
+                      Continue to pages 5 and 6 for IA 1040 Schedule 1 and signatures. The return must be signed to be valid.
+
+
+
+
+                41-001d (07/29/2024)
+                                                                                                                                     2025 IA 1040, Page 5
+         Taxpayer’s Name                                                                                                                                   Taxpayer’s SSN
+                                                                                                                                                     
+
+
+
+IA 1040 Schedule 1
+           Iowa Modifications to Federal Total Income                                                                       A                                          B
+                                                                                                                         Additions                                Subtractions
+
+
+                                                                                                              1                                    00                          00
+    1.     Interest.....................................................................................
+                                                                                                              2                                    00                          00
+    2.     Dividends..................................................................................
+                                                                                                              3                                    00                          00
+    3.     Partnership, S corporation, or Fiduciary modifications.............
+                                                                                                              4                                                                00
+    4.     Military retirement income........................................................
+                                                                                                              5                                                                00
+    5.     Social Security benefits from federal 1040, line 6(b)................
+                                                                                                              6                                                                00
+    6.     Active duty military pay.............................................................
+                                                                                                              7                                                                00
+    7.     IRA/Pension/Railroad retirement income.................................
+
+    8.     Railroad unemployment income...............................................
+                                                                                                              8                                                                00
+                                                                                                              9                                    00                          00
+    9.     Bonus depreciation/section 179 expenses...............................
+
+    10. Federal Net Operating Loss prior to 1/1/23. Include IA 124.....
+                                                                                                            10                                     00 
+
+
+                                                                                                            11                                     00                          00
+    11. Other income........................................... Code:
+
+
+    12. Total modifications to federal total income.                                                        12                                     00                          00
+        Add lines 1 through 11..............................................................
+
+
+    13. Net modifications to federal total income.                                                                                                   13                         00
+        Subtract line 12 column B from A. If less than zero, enter as a (negative) number..........................
+
+           Iowa Modifications to Federal Taxable Income
+
+    14. College Savings Iowa or Iowa Advisor 529 Education                                                  14                                                                 00
+        Savings Plans...........................................................................
+                                                                                                            15                                                                 00
+    15. Health insurance deduction. See instructions..........................
+                                                                                                            16                                                                 00
+    16. Iowa capital gains deduction. Include applicable IA 100(s)......
+                                                                                                            17                                                                 00
+    17. Iowa net operating loss prior to 1/1/23. Include IA 124............
+                                                                                                            18                                                                 00
+    18. Farm Tenancy Income Exclusion. Include IA 125.....................
+
+
+                                                                                                            19                                                                 00
+    19. Other Adjustments................................... Code:
+
+
+    20. Net modifications to federal taxable income.                                                                                                 20                         00
+        Add lines 14 through 19. Enter as a (negative) number....................................................................
+
+           Net Modifications
+
+    21. Net Iowa modifications. Add lines 13 and 20. If less than zero, enter as a (negative) number.                                                21                         00
+        Enter here and IA 1040, line 3...........................................................................................................
+
+
+
+
+                  41-001e (07/24/2025)
+                                                                                                      2025 IA 1040, Page 6
+        Taxpayer’s Name                                                                                                 Taxpayer’s SSN
+                                                                                                                   
+
+
+Step 9:         Do you want to allow an individual to discuss this return with the Department? See instructions.
+Third Party
+Designee
+                     Designee’s Name
+                 
+
+
+                     Mailing address                                                                              ID Number (optional)
+                                                                                                             
+
+
+                     City                                                  State           ZIP                    Designee’s phone number
+                                                                                                           
+
+
+                     Designee’s Email
+                
+
+
+Step 10:        I, the undersigned, declare under penalties of perjury or false certificate, that I have examined this return, and, to the best
+Signatures      of my knowledge and belief, it is true, correct, and complete.
+                Returns must be signed by hand or via a digital signature with a digital certificate. Stamped or typed signatures are not
+                accepted.
+
+                         Your Signature                                                                                     Date
+  Sign Here                                                                                                            
+                                                                                                                            M   M   D   D   Y   Y   Y   Y
+
+
+                                                                                                                            Date of death
+                                                                                       Check if deceased:              
+                                                                                                                            M   M   D   D   Y   Y   Y   Y
+
+                         Spouse’s Signature                                                                                 Date
+  Sign Here                                                                                                            
+                                                                                                                            M   M   D   D   Y   Y   Y   Y
+
+
+                                                                                                                            Date of death
+                                                                                       Check if deceased:              
+                                                                                                                            M   M   D   D   Y   Y   Y   Y
+                         Taxpayer’s phone number                     Taxpayer’s email address
+                                                                
+
+
+                         Your Driver License or State Issued ID number (optional)          Spouse’s Driver License or State Issued ID number (optional)
+                                                                                      
+
+
+
+
+                         Preparer’s Signature                                                                               Date
+  Paid                                                                                                                 
+  Preparer                                                                                                                  M   M   D   D   Y   Y   Y   Y
+  Use
+                         Preparer’s PTIN, STIN, or SSN                   Firm’s FEIN                              Preparer’s phone number
+                                                                                                            
+
+
+
+                                                             This return is due April 30, 2026. Sign, include federal return, W-2s, and verify SSNs.
+                                                                                      MAILING ADDRESS: Iowa Income Tax Document Processing
+                                                                                                           PO BOX 9187, Des Moines IA 50306-9187
+                                                                                             Make checks payable to Iowa Department of Revenue
+
+
+
+              41-001f (07/24/2025)
+

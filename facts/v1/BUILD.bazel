@@ -49,6 +49,7 @@ proto_library(
         "//us/state/ca/v1/form_540:form_540_proto",
         "//us/state/co/v1/form_dr0104:form_dr0104_proto",
         "//us/state/ga/v1/form_500:form_500_proto",
+        "//us/state/ia/v1/form_ia1040:form_ia1040_proto",
         "//us/state/il/v1/form_il1040:form_il1040_proto",
         "//us/state/mi/v1/form_mi1040:form_mi1040_proto",
         "//us/state/pa/v1/form_pa40:form_pa40_proto",
