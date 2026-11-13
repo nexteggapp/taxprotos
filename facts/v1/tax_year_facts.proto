@@ -388,6 +388,9 @@ message PriorYearReturn {
 
     // An Arizona return.
     ArizonaReturn arizona = 18;
+
+    // An Idaho return.
+    IdahoReturn idaho = 26;
   }
 
   // Where the return came from, when it is here.

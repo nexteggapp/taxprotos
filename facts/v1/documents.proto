@@ -94,6 +94,7 @@ import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1041.proto";
 import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1065.proto";
 import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1120_s.proto";
 import "taxprotos/us/state/az/v1/form_140/form_140.proto";
+import "taxprotos/us/state/id/v1/form_40/form_40.proto";
 import "taxprotos/us/state/ca/v1/form_540/form_540.proto";
 import "taxprotos/us/state/ca/v1/form_540/schedule_ca.proto";
 import "taxprotos/us/state/co/v1/form_dr0104/form_dr0104.proto";
@@ -244,6 +245,9 @@ message Document {
 
     // A filed Arizona return.
     ArizonaReturn arizona_return = 51;
+
+    // A filed Idaho return.
+    IdahoReturn idaho_return = 59;
   }
 }
 
@@ -726,4 +730,10 @@ message ColoradoReturn {
 message ArizonaReturn {
   // Form 140.
   us.state.az.v1.Form140 form_140 = 1;
+}
+
+// An Idaho resident return: Form 40.
+message IdahoReturn {
+  // Form 40.
+  us.state.id.v1.Form40 form_40 = 1;
 }
