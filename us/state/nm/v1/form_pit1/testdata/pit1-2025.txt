@@ -1,0 +1,141 @@
+2025 PIT-1
+NEW MEXICO PERSONAL INCOME TAX RETURN
+For the year January 1 - December 31, 2025
+or fiscal year beginning F.1
+                                          If amending use Form 2025 PIT-X.
+                                                                           ending F.2                                                    *250180200*       FOR DEPARTMENT USE ONLY
+
+
+
+
+                                                                                                                                                                         Age 65 Residency
+     Print your name (first, middle, last) as it appears on your state-issued driver's license or ID.                   SOCIAL SECURITY NUMBER                  Blind    or over  status               Taxpayer's date of birth
+1a                                                                                                                1b                                          1c        1d          1e        1f
+
+     Print your spouse's name (first, middle, last). If married filing separately, include spouse.                                                                                                      Spouse's date of birth
+2a                                                                                                                2b                                          2c        2d          2e        2f
+
+3a           If the address is new or changed, mark this box.
+                                                                                                                   4. If a deceased taxpayer's refund must              If taxpayer or spouse          Taxpayer's date of death
+     Mailing Address (Number and street)                                                                              be made payable to a person other                 died before this       4c
+                                                                                                                      than the taxpayer or spouse named                 return is filed, enter
+3b                                                                                                                                                                      date of death.
+                                                                                                                      on this return, enter below the name                                             Spouse's date of death
+     City                                                            State       Postal/ZIP Code                      and social security number of that
+                                                                                                                                                                                              4d
+                                                                                                                      person. You must also attach Form
+3c
+                                                                                                                      RPD-41083.
+                                                                                                                                                                                                    Residency status:
+     If foreign address, enter country        Foreign province and/or state                                        4a                                                                               For taxpayer and spouse
+3d                                                                                                                       Claimant's Name                                                            (1e and 2e), enter:
+                                                                                                                                                                                                    R if Resident
+                                                                                                                   4b
+                                                                                                                                                                                                    N if Non-Resident
+5                   EXEMPTIONS: Taxpayer, spouse, dependents, and other dependents                                       Claimant's SSN
+                                                                                                                                                                                                    F if First-Year Resident
+                    reported on federal Form 1040. If you are a dependent or other dependent of
+                                                                                                                                                                                                    P if Part-Year Resident
+                    another taxpayer, enter 00. (See instructions)
+
+6a            EXTENSION OF TIME TO FILE: If you have a federal or state
+              extension, mark box 6a and enter the extension date in box 6b.                        6b                                                          7. FILING STATUS. Mark only one box.
+            8. DEPENDENTS AND OTHER DEPENDENTS. As listed on your federal return.                                                                               (1) Single
+           (You must report the first 5 dependents and other dependents in this table. Use Schedule PIT-S for additional entries.)                              (2) Married filing jointly
+                               Column 1                                       Column 2                         Column 3
+     First name               Last name                                 Dependent's SSN              Date of birth (MM/DD/CCYY)                                 (3) Married filing separately (Enter spouse's name
+                                                                                                                                                                      and social security number in 2a and 2b.)
+
+                                                                                                                                                                (4) Head of household (Enter name of person
+                                                                                                                                                                      qualifying you as head of household if that person is not
+                                                                                                                                                                      counted as a qualified dependent on your federal return.)
+
+                                                                                                                                                               (4a)
+                                                                                                                                                                (5) Surviving Spouse with dependent child
+
+9.          FEDERAL ADJUSTED GROSS INCOME. (from federal Form 1040 or 1040SR, line 11).....................................                                                               9
+10. If you itemized your federal deduction amount, enter the amount of state and local tax deduction claimed on
+    federal Form 1040, Schedule A, line 5a. See the worksheet in the instructions.....................................................                                               + 10
+11. Total Additions to federal adjusted gross income (PIT-ADJ, line 6). Attach PIT-ADJ.............................................                                                  + 11
+12. Federal standard or itemized deduction amount (from federal Form 1040, line 12.................................................                                                  - 12
+            12a. If you itemized, mark the box..................................................................................................... 12a
+13. Deduction for certain dependents. See the worksheet in the instructions...............................................................                                           -   13
+14. New Mexico low- and middle-income tax exemption. See PIT-1 instructions.........................................................                                                 -   14
+15. Total Deductions and Exemptions from federal income (PIT-ADJ, line 28). Attach PIT-ADJ.................................                                                          -   15
+16. Reserved for Future Use.........................................................................................................................................                     16            DO NOT USE
+
+
+
+17. NEW MEXICO TAXABLE INCOME. Add lines 9, 10 and 11, then subtract lines 12, 13, 14, and 15. Cannot be
+    less than zero..........................................................................................................................................................         = 17
+18. New Mexico tax on amount on line 17 or from PIT-B, line 14.................................................................................                                          18
+            18a. From Tax Rate Table = R. From PIT-B, line 14 = B..................................................................... 18a
+19. Additional amount for tax on lump-sum distributions. See PIT-1 instructions.........................................................                                             + 19
+20. Credit for taxes paid to another state. You must have been a New Mexico resident during all or
+    part of the year. Include a copy of other state's return. See PIT-1 instructions..................................................                                               - 20
+21. Business-related income tax credits applied, from Schedule PIT-CR, line A. Attach PIT-CR.................................                                                        - 21
+22. NET NEW MEXICO INCOME TAX. Add lines 18 and 19, then subtract lines 20 and 21. Cannot be less than
+    zero.........................................................................................................................................................................    = 22
+                                                                                                                                                                                         Continue on the next page.
+2025 PIT-1 (page 2)
+NEW MEXICO PERSONAL INCOME TAX RETURN
+
+YOUR SOCIAL SECURITY NUMBER
+                                                                                                                                  *250190200*
+Do not submit a photocopy of this form to the Department. Submit only original forms and keep a copy for your records. If submitting this return by mail,
+send to: New Mexico Taxation and Revenue Department, P. O. Box 25122, Santa Fe, New Mexico 87504-5122
+
+23. The amount on line 22 from page 1........................................................................................................................                    23
+24. Total claimed on rebate and credit schedule (PIT-RC, line 26 ). Attach PIT-RC....................................................                                            24
+25. Working families tax credit. (You must complete lines 25, 25a, and 25b* or the deduction will be denied.)...........                                                   + 25
+         25a. The amount of federal earned income credit (EIC) reported on your
+                                                                                  25a
+              2025 federal income tax return or calculated under NM Expansion....
+         25b. *NM Expansion Only: Check this box if you did not qualify for the EIC on your federal return.. 25b
+26. Refundable business-related income tax credits from Schedule PIT-CR, line B. Attach PIT-CR...........................                                                  + 26
+27. New Mexico income tax withheld. Attach annual statements of income and withholding................................                                                     + 27
+28. New Mexico income tax withheld from oil and gas proceeds. Attach 1099-Misc or RPD-41285..........................                                                      + 28
+29. New Mexico income tax withheld from or paid as Entity-level tax or Composite income tax by a pass-through
+    entity. Attach 1099-Misc or RPD-41359................................................................................................................
+                                                                                                                                                                           + 29
+30. 2025 estimated income tax payments. See PIT-1 instructions................................................................................                             + 30
+31. Other Payments......................................................................................................................................................   + 31
+32. TOTAL PAYMENTS AND CREDITS. Add lines 24 through 31...............................................................................                                     = 32
+33. TAX DUE. If line 22 is greater than line 32, enter the difference here...................................................................                                    33
+34. Penalty on underpayment of estimated tax. See PIT-1 instructions .......................................................................                               +     34
+35. Special method allowed for calculation of underpayment of estimated tax penalty. If you owe penalty on
+                                                                                                                                                                                 35
+    underpayment of estimated tax and you qualify, enter 1, 2, 3, 4, or 5 in the box. Attach RPD-41272 ...................
+36. Penalty. See PIT-1 instructions...............................................................................................................................         + 36
+37. Interest. See PIT-1 instructions...............................................................................................................................        + 37
+38. TAX, PENALTY, AND INTEREST DUE. Add lines 33, 34, 36, and 37....................................................................                                       = 38
+39. OVERPAYMENT. If line 23 is less than line 32, enter the difference here.............................................................                                         39
+40. Refund voluntary contributions (PIT-D, line 18). Attach PIT-D................................................................................                          - 40
+41. Amount from line 39 you want applied to your 2026 Estimated Tax....................................................................                                    - 41
+42. AMOUNT TO BE REFUNDED TO YOU. Line 39 minus lines 40 and 41...............................................................                                             = 42
+Refund Express!! Have it directly deposited! See instructions and complete all questions in this block.
+RE. 1 Routing Number                                            RE. 2 Account Number                                                          RE.3 Account Type: Checking             Savings
+Re. 4: Will this refund go to or through an account outside of the United States? Important: If "yes," you can not use this refund method. See instructions.               Yes            No
+
+                 Check this box if you would like to see if you and the members of your household qualify for medical insurance through the Health Care
+HCA. 1           Authority (HCA) or BeWell, New Mexico's Health Insurance Marketplace. Important: Checking this box gives the Taxation and Revenue De-
+                 partment permission to share information provided on the PIT-1 and PIT-S with HCA and BeWell. See instructions for additional information.
+
+I declare I have examined this return, including accompanying schedules and state-
+ments, and to the best of my knowledge and belief it is true, correct, and complete.                                         Paid preparer's use only:
+
+Your signature                                                                        Date
+
+                                                                                                                             Signature of preparer                                              Date
+Driver's License, State ID No. or enter "NONE" or "DECLINED"                 State    Expiration Date
+                                                                                                                            P.1   Firm's name (or yours, if self-employed)
+Spouse's signature                                                                    Date                                  P.2   NMBTIN
+                                                                                                                            P.3   Preparer's PTIN
+Spouse's Driver's License, State ID No. or enter "NONE" or "DECLINED"        State    Expiration Date                       P.4   FEIN
+                                                                                                                            P.5   Preparer's phone number
+(If filing jointly, BOTH must sign even if only one had income.)
+                                                                                                                                        Mark this box if Form RPD-41338 is on file for this tax-
+Taxpayer's phone number                                                                                                     P.6
+                                                                                                                                        payer. See PIT-1 instructions.
+Taxpayer's email address
+

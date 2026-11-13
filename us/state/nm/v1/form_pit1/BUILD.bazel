@@ -1,0 +1,28 @@
+# gazelle:ignore
+
+load("@protobuf//bazel:proto_library.bzl", "proto_library")
+
+# Form PIT-1: the return a full-year New Mexico resident files.
+proto_library(
+    name = "form_pit1_proto",
+    # Imported as taxprotos/..., so consumers import these files by that path.
+    import_prefix = "taxprotos",
+    srcs = [
+        "form_pit1.proto",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//common/v1:common_proto",
+    ],
+)
+
+# The mapping and the form extract it is checked against, for
+# //go/us/state/nm/v1/form_pit1.
+filegroup(
+    name = "test_oracles",
+    srcs = glob([
+        "mapping.textproto",
+        "testdata/**",
+    ]),
+    visibility = ["//go/us/state/nm/v1/form_pit1:__pkg__"],
+)

@@ -1,0 +1,98 @@
+// Form PIT-1, New Mexico Personal Income Tax Return.
+//
+// Part-year residents, first-year residents and non-residents file the same
+// form with Schedule PIT-B, which apportions the tax on line 18. Only the
+// full-year resident's return is modelled here.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form PIT-1; testdata
+// holds the text extracted from the published PDF and coverage_test.go asserts
+// every line a mapping claims appears on it.
+//
+// # Federal deductions, then New Mexico's own
+//
+// New Mexico starts from federal adjusted gross income on line 9, adds back
+// the state and local tax deduction of an itemizer on line 10, and takes off
+// the federal standard or itemized deduction on line 12, the deduction for
+// certain dependents on line 13 and the low- and middle-income exemption on
+// line 14. Line 17 is taxed at graduated rates on line 18.
+//
+// # Credits that are refunded
+//
+// Rebates and credits from Schedule PIT-RC and the working families tax
+// credit come after the net tax, on lines 24 and 25, as payments: they are
+// refunded where they exceed the tax.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.nm.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/nm/v1/form_pit1;formpit1";
+
+// FilingStatus is the status the return is filed under, box 7.
+//
+// New Mexico requires the federal status.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+  FILING_STATUS_SURVIVING_SPOUSE = 5;
+}
+
+// FormPIT1 is what a Form PIT-1 states.
+message FormPIT1 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // The taxpayer, spouse, dependents and other dependents on the federal
+  // return, box 5: zero when someone else can claim the filer.
+  int32 exemptions = 5 [(common.v1.fdx_absent) = true];
+
+  // The federal deduction on line 12 was itemized, box 12a.
+  bool itemized = 10 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 6 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money state_and_local_tax_deduction = 7 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_additions = 8 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money federal_deduction = 9 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money certain_dependents_deduction = 11 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money low_and_middle_income_exemption = 12 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_deductions_and_exemptions = 13 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 14 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax = 15 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money lump_sum_distribution_tax = 16 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money credit_for_tax_paid_to_other_states = 17 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money business_credits_applied = 18 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money net_income_tax = 19 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money rebates_and_credits = 20 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money working_families_tax_credit = 21 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money federal_earned_income_credit = 22 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money refundable_business_credits = 23 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax_withheld = 24 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money oil_and_gas_withholding = 25 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money pass_through_entity_withholding = 26 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 27 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money other_payments = 28 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_payments_and_credits = 29 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax_due = 30 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_penalty = 31 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money penalty = 32 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money interest = 33 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_due = 34 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money overpayment = 35 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money voluntary_contributions = 36 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money applied_to_estimated_tax = 37 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money refund = 38 [(common.v1.fdx_absent) = true];
+}
