@@ -102,6 +102,7 @@ import "taxprotos/us/state/nc/v1/form_d400/form_d400.proto";
 import "taxprotos/us/state/or/v1/form_or40/form_or40.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_asc.proto";
+import "taxprotos/us/state/va/v1/form_760/form_760.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/facts/v1;factsv1";
 
@@ -244,6 +245,9 @@ message Document {
 
     // A filed Arizona return.
     ArizonaReturn arizona_return = 51;
+
+    // A filed Virginia return.
+    VirginiaReturn virginia_return = 85;
   }
 }
 
@@ -726,4 +730,10 @@ message ColoradoReturn {
 message ArizonaReturn {
   // Form 140.
   us.state.az.v1.Form140 form_140 = 1;
+}
+
+// A Virginia resident return: Form 760.
+message VirginiaReturn {
+  // Form 760.
+  us.state.va.v1.Form760 form_760 = 1;
 }

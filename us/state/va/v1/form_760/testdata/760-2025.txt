@@ -1,0 +1,154 @@
+WEB         2025 Virginia Form 760
+            Resident Income Tax Return
+2601031    File by May 1, 2026 — USE BLACK INK
+Rev. 04/26
+                                                                                                                                                                                                      First 4 letters
+ Your first name                                         M.I.        Last name including suffix                                                         Social Security Number                        of last name
+                                                                                                                                    You
+ Spouse’s first name (joint returns only) M.I.                       Last name including suffix
+                                                                                                                                  Spouse
+
+ Number and Street – If this is a change, you must fill in oval                                                                                     Birth Date (mm-dd-yyyy)                    Deceased      Locality
+                                                                                                                                    You
+                                                                                                                                                                                                              Code
+ City, town, or post office                                      State                            ZIP Code
+                                                                                                                                  Spouse
+
+         I/we authorize the sharing of certain information from Form 760 and Schedule HCI with the Dept. of Medical Assistance Services (DMAS), the Dept. of Social Services
+         (VDSS), and the Virginia Health Benefit Exchange (VHBE) to determine eligibility for medical assistance services and/or health coverage as described in the instructions.
+         Fill in all ovals that apply:                                                                                       Customer ID                 VA Driver’s License Information             Issue Date
+         Name or Filing Status changed                                  Overseas on due date
+                                                                                                  You
+         Virginia return not filed last year                            Federal Schedule C filed
+         Dependent on another’s return                                  Earned Income Credit
+                                                                                                 Spouse
+                                                                        on federal return
+         Qualifying farmer, fisherman or
+                                                                        Amount claimed:                                           Exemptions Add Sections A and B. Enter the sum on Line 12.
+         merchant seaman                                                                                                                           Spouse if
+         Amended Return - Reason Code                                                                                                  You      Filing Status 2         Dependents                          Total Section A
+
+Filing Status Enter in box (1 = Single, 2 = Joint, and 3 = Married Filing Separately)                                                  1        +                 +                   =          X $930 =
+ Code
+             Federal head of household? Filing Status 1 only YES                                                                     You 65         Spouse 65         You         Spouse
+                                                                                                                                     or over         or over          Blind        Blind                    Total Section B
+             If Filing Status 3, enter spouse's SSN in the Spouse's Social Security Number
+             box at top of form and enter Spouse’s Name_______________________________                                                          +            +                +            =     X $800 =
+
+
+                                - - - Do you need to file? See Line 9 and Instructions - - -
+                                                                                                                                                                                                                    . 00
+                                                                                                                                                             loss
+
+    1. Adjusted Gross Income from federal return - Not federal taxable income........................................1
+
+    2. Additions from enclosed Schedule ADJ, Line 3.....................................................................................2                                                                           . 00
+                                                                                                                                                             loss
+    3. Add Lines 1 and 2.................................................................................................................................3                                                          . 00
+    4. Age Deduction. See Instructions. Be sure to provide date of birth above.
+
+                                                       . 00                                                                    . 00             =       4                                                           . 00
+           You
+                                                                      +        Spouse
+
+    5. Social Security and equivalent Tier 1 Railroad Retirement benefits if taxable on federal return............5                                                                                                 . 00
+
+    6. State Income Tax refund or overpayment credit (reported as income on federal return).......................6                                                                                                 . 00
+
+    7. Subtractions from enclosed Schedule ADJ, Line 7...............................................................................7                                                                              . 00
+
+    8. Add Lines 4, 5, 6, and 7........................................................................................................................8                                                            . 00
+
+    9. Virginia Adjusted Gross Income (VAGI) - Subtract Line 8 from Line 3. Enter the result on this line.
+                                                                                                                                                                                                                    . 00
+                                                                                                                                                             loss
+
+       Note: If less than $11,950 for Filing Status 1 or 3; or $23,900 for Filing Status 2, your tax is $0.00.....9
+
+    10. Itemized Deductions from Virginia Schedule A. See instructions.........................................................10                                                                                   . 00
+
+
+    11. If you do not claim itemized deductions on Line 10, enter standard deduction. See instructions........ 11                                                                                                   . 00
+
+
+    12. Exemptions. Sum of total from Exemption Section A plus Exemption Section B.................................12                                                                                               . 00
+                                                                                                                                                             loss
+
+    13. Deductions from Schedule ADJ, Line 9................................................................................................13                                                                      . 00
+                                                                                                                                                             loss
+
+    14. Add Lines 10, 11, 12, and 13..............................................................................................................14                                                                . 00
+                                                                                                                                                             loss
+    15. Virginia Taxable Income - Subtract Line 14 from Line 9.................................................................15                                                                                   . 00
+
+        LAR              DLAR                DTD                LTD       $_________
+                                                                                                                                                                      Social Security Number
+WEB            Page 2
+2025 Form 760
+16. Amount of Tax from Tax Table or Tax Rate Schedule (round to whole dollars)....................................16                                                                                   . 00
+17. Spouse Tax Adjustment (STA). Filing Status 2
+                                                                                                       . 00
+    only. Enter Spouse’s VAGI in box here
+                                                                                                                                                                                                       . 00
+                                                   loss
+
+    and STA amount on Line 17.                                                                                    17
+
+18. Net Amount of Tax - Subtract Line 17 from Line 16........................................................................18                                                                        . 00
+
+19. Virginia income tax withheld for 2025. Enclose copies of Forms W-2, W-2G, 1099, and/or VK-1.
+    19a. Your Virginia withholding............................................................................................................19a                                                      . 00
+
+      19b. Spouse’s Virginia withholding (Filing Status 2 only)..................................................................19b                                                                   . 00
+
+
+20. Estimated tax payments for taxable year 2025 (from Form 760ES).....................................................20                                                                              . 00
+
+                                                                                                                                                                                                       . 00
+21. Amount of 2024 overpayment applied toward 2025 estimated tax.......................................................21
+
+22. Extension Payments (from Form 760IP)..............................................................................................22                                                               . 00
+
+23. Tax Credit for Low-Income Individuals or Earned Income Credit from Sch. ADJ, Line 17 ......................23                                                                                      . 00
+24. Credit for Tax Paid to Another State from Schedule OSC, Line 21.
+    You must enclose Schedule OSC and a copy of all other state returns...............................................24                                                                               . 00
+
+25. Credits from enclosed Schedule CR, Section 5, Part 1, Line 1A.....................................................25                                                                               . 00
+
+26. Add Lines 19a through 25..................................................................................................................26                                                       . 00
+
+27. If Line 26 is less than Line 18, subtract Line 26 from Line 18. This is the Tax You Owe.....................27                                                                                     . 00
+
+28. If Line 18 is less than Line 26, subtract Line 18 from Line 26. This is Your Tax Overpayment............28                                                                                         . 00
+
+29. Amount of overpayment you want credited to next year’s estimated tax.............................................29                                                                                . 00
+30. Commonwealth Savers (formerly Virginia529 and ABLE) Contributions
+    from Schedule VAC, Section I, Line 6..................................................................................................30                                                           . 00
+
+31. Other Voluntary Contributions from Schedule VAC, Section II, Line 14...............................................31                                                                              . 00
+32. Addition to Tax, Penalty, and Interest from enclosed Schedule ADJ, Line 21.
+    See instructions............................. enclose 760C or 760F and fill in oval..............................................32                                                                . 00
+
+33. Sales and Use Tax is due on Internet, mail order, and out-of-state purchases (Consumer’s Use Tax).
+                                                                                                                                                                                                       . 00
+    See instructions............................. fill in oval if no sales and use tax is due........................................33
+
+34. Add Lines 29 through 33....................................................................................................................34                                                      . 00
+35. If you owe tax on Line 27, add Lines 27 and 34. OR If Line 28 is less than Line 34, subtract Line 28
+    from Line 34. Enclose payment or pay at www.tax.virginia.gov............ AMOUNT YOU OWE .......35                                                                                                  . 00
+                               fill in oval if paying by credit or debit card - see instructions
+
+36. If Line 28 is greater than Line 34, subtract Line 34 from Line 28............... YOUR REFUND...............36                                                                                      . 00
+    If the Direct Deposit section below is not completed, your refund will be issued by check.
+DIRECT BANK DEPOSIT (refunds only)               Bank Routing Transit Number                  Bank Account Number                                                 Checking            Savings
+Domestic Accounts Only.
+No International Deposits.
+          I (We) authorize the Dept. of Taxation to discuss this return with my (our) preparer.                                          I agree to obtain my Form 1099-G at www.tax.virginia.gov.
+I (We), the undersigned, declare under penalty of law that I (we) have examined this return and to the best of my (our) knowledge, it is a true, correct, and complete return.
+Your Signature                                                                             Date                      Spouse’s Signature                                                         Date
+
+   Your                                                                             Spouse‘s                                                                           ID Theft
+  Phone                                                                              Phone                                                                               PIN
+
+              Preparer’s Name                                          Firm Name                                     Phone Number                   Filing Election               Preparer’s PTIN
+
