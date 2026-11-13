@@ -1,0 +1,197 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form TC-40 calls each concept, per tax year.
+#
+# Lines come from the 2025 Form TC-40 as the Utah State Tax Commission
+# publishes it. There are no amount codes: IRS Publication 1220 covers the
+# information returns the IRS receives electronically, and a state return is not
+# one of them.
+#
+# The form prints the parts of box 2 as a bare "a" to "d" beside the number, so
+# 2a to 2d never appear as such. They are mapped to line 2 with a note saying
+# which part they are.
+
+form: "TC-40"
+message_name: "nexteggapp.taxprotos.us.state.ut.v1.FormTC40"
+tax_years: 2025
+
+concepts {
+  concept: "filing_status"
+  years { tax_year: 2025 irs_box: "1" note: "Line 1: the filing status code, 1 to 5." }
+}
+concepts {
+  concept: "dependents_age_16_and_under"
+  years { tax_year: 2025 irs_box: "2" note: "Box 2, line a." }
+}
+concepts {
+  concept: "other_dependents"
+  years { tax_year: 2025 irs_box: "2" note: "Box 2, line b." }
+}
+concepts {
+  concept: "dependents_born_in_tax_year"
+  years { tax_year: 2025 irs_box: "2" note: "Box 2, line c." }
+}
+concepts {
+  concept: "qualifying_dependents"
+  years { tax_year: 2025 irs_box: "2" note: "Box 2, line d: lines a, b and c added." }
+}
+concepts {
+  concept: "federal_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "4" note: "Federal Form 1040 line 11a." }
+}
+concepts {
+  concept: "additions"
+  years { tax_year: 2025 irs_box: "5" note: "From TC-40A, Part 1." }
+}
+concepts {
+  concept: "total_income"
+  years { tax_year: 2025 irs_box: "6" }
+}
+concepts {
+  concept: "state_tax_refund_in_federal_income"
+  years { tax_year: 2025 irs_box: "7" note: "Federal Schedule 1 line 1." }
+}
+concepts {
+  concept: "subtractions"
+  years { tax_year: 2025 irs_box: "8" note: "From TC-40A, Part 2." }
+}
+concepts {
+  concept: "utah_taxable_income"
+  years { tax_year: 2025 irs_box: "9" }
+}
+concepts {
+  concept: "tax_before_credit"
+  years { tax_year: 2025 irs_box: "10" }
+}
+concepts {
+  concept: "personal_exemption"
+  years { tax_year: 2025 irs_box: "11" }
+}
+concepts {
+  concept: "federal_deduction"
+  years { tax_year: 2025 irs_box: "12" note: "Federal Form 1040 line 12e." }
+}
+concepts {
+  concept: "exemption_and_deduction"
+  years { tax_year: 2025 irs_box: "13" }
+}
+concepts {
+  concept: "state_income_tax_deducted"
+  years { tax_year: 2025 irs_box: "14" note: "Federal Schedule A line 5e, less lines 5b and 5c." }
+}
+concepts {
+  concept: "exemption_and_deduction_less_state_tax"
+  years { tax_year: 2025 irs_box: "15" }
+}
+concepts {
+  concept: "initial_credit"
+  years { tax_year: 2025 irs_box: "16" }
+}
+concepts {
+  concept: "phase_out_base"
+  years { tax_year: 2025 irs_box: "17" }
+}
+concepts {
+  concept: "income_subject_to_phase_out"
+  years { tax_year: 2025 irs_box: "18" }
+}
+concepts {
+  concept: "phase_out_amount"
+  years { tax_year: 2025 irs_box: "19" }
+}
+concepts {
+  concept: "taxpayer_tax_credit"
+  years { tax_year: 2025 irs_box: "20" }
+}
+concepts {
+  concept: "qualified_exempt_taxpayer"
+  years { tax_year: 2025 irs_box: "21" }
+}
+concepts {
+  concept: "utah_income_tax"
+  years { tax_year: 2025 irs_box: "22" }
+}
+concepts {
+  concept: "tax_from_page_1"
+  years { tax_year: 2025 irs_box: "23" }
+}
+concepts {
+  concept: "apportionable_nonrefundable_credits"
+  years { tax_year: 2025 irs_box: "24" note: "From TC-40A, Part 3." }
+}
+concepts {
+  concept: "tax_after_apportionable_credits"
+  years { tax_year: 2025 irs_box: "25" }
+}
+concepts {
+  concept: "nonapportionable_nonrefundable_credits"
+  years { tax_year: 2025 irs_box: "26" note: "From TC-40A, Part 4." }
+}
+concepts {
+  concept: "tax_after_nonrefundable_credits"
+  years { tax_year: 2025 irs_box: "27" }
+}
+concepts {
+  concept: "voluntary_contributions"
+  years { tax_year: 2025 irs_box: "28" note: "From TC-40 page 3, Part 4." }
+}
+concepts {
+  concept: "previous_refund"
+  years { tax_year: 2025 irs_box: "29" }
+}
+concepts {
+  concept: "low_income_housing_credit_recapture"
+  years { tax_year: 2025 irs_box: "30" }
+}
+concepts {
+  concept: "use_tax"
+  years { tax_year: 2025 irs_box: "31" }
+}
+concepts {
+  concept: "total_tax"
+  years { tax_year: 2025 irs_box: "32" }
+}
+concepts {
+  concept: "utah_tax_withheld"
+  years { tax_year: 2025 irs_box: "33" }
+}
+concepts {
+  concept: "prepaid_tax"
+  years { tax_year: 2025 irs_box: "34" }
+}
+concepts {
+  concept: "previous_payments"
+  years { tax_year: 2025 irs_box: "35" }
+}
+concepts {
+  concept: "nonapportionable_refundable_credits"
+  years { tax_year: 2025 irs_box: "36" note: "From TC-40A, Part 5." }
+}
+concepts {
+  concept: "apportionable_refundable_credits"
+  years { tax_year: 2025 irs_box: "37" note: "From TC-40A, Part 6, line c." }
+}
+concepts {
+  concept: "total_payments_and_refundable_credits"
+  years { tax_year: 2025 irs_box: "38" }
+}
+concepts {
+  concept: "tax_due"
+  years { tax_year: 2025 irs_box: "39" }
+}
+concepts {
+  concept: "penalty_and_interest"
+  years { tax_year: 2025 irs_box: "40" }
+}
+concepts {
+  concept: "amount_owed"
+  years { tax_year: 2025 irs_box: "41" }
+}
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "42" }
+}
+concepts {
+  concept: "subtractions_from_refund"
+  years { tax_year: 2025 irs_box: "43" note: "From TC-40 page 3, Part 6." }
+}

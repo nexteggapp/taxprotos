@@ -1,0 +1,71 @@
+                                                                               Clear form
+                                                                                                Utah State Tax Commission
+                                                                                                                                                             2025
+40501                                                                      Utah Individual Income Tax Return
+                                                                                   All state income tax dollars support education,
+                                                                                                                                                           TC-40
+9998                                                                                  children and individuals with disabilities.
+                                                                                          • Amended Return - enter code:             (see instructions)
+USTC ORIGINAL FORM                                                                                                                                         Full-yr Resident?
+    Your Social Security No.       Your first name                             Your last name                                                                     Y/N
+
+
+    Spouse’s Soc. Sec. No.         Spouse’s first name                         Spouse's last name
+
+
+                                   Address                                                                                 Telephone number
+
+    If deceased, complete
+                                  City                                                 State        ZIP+4                  Foreign country (if not U.S.)
+        page 3, Part 1
+
+
+
+1 Filing Status - enter code                              •2   Qualifying Dependents                             3 Election Campaign Fund
+        1 = Single                                         a         Dependents age 16 and under                    Does not increase your tax or reduce your refund.
+•       2 = Married filing jointly                         b         Other dependents                           Enter the code for the         Yourself    Spouse
+        3 = Married filing separately                      c         Dependents born in 2025                    party of your choice.        •           •
+        4 = Head of household                              d         Total (add lines a, b and c)                  See instructions for
+        5 = Qualifying surviving spouse                                                                            code letters or go to incometax.utah.gov/elect.
+If using code 2 or 3, enter spouse’s name and SSN above    See instructions.                                    If no contribution, enter N.
+
+
+4     Federal adjusted gross income from federal return                                                                                    • 4                           .00
+
+5     Additions to income from TC-40A, Part 1 (attach TC-40A, page 1)                                                                      • 5                           .00
+
+6     Total income - add line 4 and line 5                                                                                                   6                           .00
+
+7     State tax refund included on federal form 1040, Schedule 1, line 1 (if any)                                                          • 7                           .00
+
+8     Subtractions from income from TC-40A, Part 2 (attach TC-40A, page 1)                                                                 • 8                           .00
+
+9     Utah taxable income/loss - subtract the sum of lines 7 and 8 from line 6                                                             • 9                           .00
+
+10 Utah tax - multiply line 9 by 4.5% (.045) (not less than zero)                                                                          • 10                          .00
+
+11 Utah personal exemption (multiply line 2d by $2,111)                                             • 11                             .00
+                                                                                                                                                 Electronic filing
+12 Federal standard or itemized deductions                                                          • 12                             .00        is quick, easy and
+                                                                                                                                                   free, and will
+13 Add line 11 and line 12                                                                           13                              .00      speed up your refund.
+
+14 State income tax from federal 1040, Schedule A, line 5e, less lines 5b and 5c                    • 14                             .00          To learn more,
+   (not less than zero)                                                                                                                                go to
+15 Subtract line 14 from line 13                                                                     15                              .00           tap.utah.gov
+
+16 Initial credit before phase-out - multiply line 15 by 6% (.06)                                   • 16                             .00
+
+17 Enter: $18,213 (single or married filing separately); $27,320 (head of                           • 17                             .00
+   household); or $36,426 (married filing jointly or qualifying surviving spouse)
+18 Income subject to phase-out - subtract line 17 from line 9 (not less than zero)                   18                              .00
+
+19 Phase-out amount - multiply line 18 by 1.3% (.013)                                               • 19                             .00
+
+20 Taxpayer tax credit - subtract line 19 from line 16 (not less than zero)                                                                • 20                          .00
+
+21 If you are a qualified exempt taxpayer, enter “X” (complete worksheet in instr.)                 • 21
+
+
+22 Utah income tax - subtract line 20 from line 10 (not less than zero)                                                                    • 22                          .00
+

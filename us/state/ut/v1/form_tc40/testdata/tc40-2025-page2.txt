@@ -1,0 +1,28 @@
+Utah Individual Income Tax Return (continued)                         TC-40 2025   Pg. 2
+
+23 Enter tax from TC-40, page 1, line 22                                                        23 .00
+24 Apportionable nonrefundable credits from TC-40A, Part 3 (attach TC-40A, page 1)            • 24 .00
+25 Full-year resident, subtract line 24 from line 23 (not less than zero)                     • 25 .00
+   Non or Part-year resident, complete and enter the UTAH TAX from TC-40B, line 41
+26 Nonapportionable nonrefundable credits from TC-40A, Part 4 (attach TC-40A, page 1)         • 26 .00
+27 Subtract line 26 from line 25 (not less than zero)                                           27 .00
+28 Voluntary contributions from TC-40, page 3, Part 4 (attach TC-40, page 3)                  • 28 .00
+29 AMENDED RETURN ONLY - previous refund                                                      • 29 .00
+30 Recapture of low-income housing credit                                                     • 30 .00
+31 Utah use tax                                                                               • 31 .00
+32 Total tax, use tax and additions to tax (add lines 27 through 31)                            32 .00
+33 Total withholding - If you have mineral production withholding or pass-through entity withholding,
+   complete page 3, Part 5. If not, enter on line 33 the total of TC-40W, Part 1.             • 33 .00
+34 Credit for Utah income taxes prepaid from TC-546 and 2024 refund applied to 2025           • 34 .00
+35 AMENDED RETURN ONLY - previous payments                                                    • 35 .00
+36 Nonapportionable refundable credits from TC-40A, Part 5 (attach TC-40A, page 2)            • 36 .00
+37 Apportionable refundable credits from TC-40A, Part 6, line c (attach TC-40A, page 2)       • 37 .00
+38 Total withholding and refundable credits - add lines 33 through 37                           38 .00
+39 TAX DUE - subtract line 38 from line 32 (not less than zero)                               • 39 .00
+40 Penalty and interest (see instructions)                                                      40 .00
+41 TOTAL DUE - PAY THIS AMOUNT - add line 39 and line 40                                      • 41 .00
+42 REFUND - subtract line 32 from line 38 (not less than zero)                                • 42 .00
+43 Voluntary subtractions from refund (not greater than line 42)                              • 43 .00
+   Enter the total from page 3, Part 6
+44 REMAINING REFUND DIRECT DEPOSIT - your account information (see instructions for foreign accounts)
+   • Routing number                • Account number                       Type: checking  savings  foreign
