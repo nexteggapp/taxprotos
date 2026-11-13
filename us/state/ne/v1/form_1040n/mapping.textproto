@@ -1,0 +1,293 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form 1040N calls each concept, per tax year.
+#
+# Lines come from the 2025 Form 1040N as the Nebraska Department of Revenue
+# publishes it. There are no amount codes: IRS Publication 1220 covers the
+# information returns the IRS receives electronically, and a state return is not
+# one of them.
+
+form: "1040N"
+message_name: "nexteggapp.taxprotos.us.state.ne.v1.Form1040N"
+tax_years: 2025
+
+concepts {
+  concept: "filing_status"
+  years { tax_year: 2025 irs_box: "1" }
+}
+concepts {
+  concept: "age_65_or_older"
+  years { tax_year: 2025 irs_box: "2a" note: "Boxes (1) and (3): 65 or older." }
+}
+concepts {
+  concept: "blind"
+  years { tax_year: 2025 irs_box: "2a" note: "Boxes (2) and (4): blind." }
+}
+concepts {
+  concept: "claimed_as_dependent"
+  years { tax_year: 2025 irs_box: "2b" }
+}
+concepts {
+  concept: "exemptions_self"
+  years { tax_year: 2025 irs_box: "4" note: "Line 4a: Yourself; left blank if someone can claim you." }
+}
+concepts {
+  concept: "exemptions_spouse"
+  years { tax_year: 2025 irs_box: "4" note: "Line 4b: Spouse, on a joint return." }
+}
+concepts {
+  concept: "exemptions_dependents"
+  years { tax_year: 2025 irs_box: "4c" note: "Dependents listed." }
+}
+concepts {
+  concept: "total_exemptions"
+  years { tax_year: 2025 irs_box: "4" note: "The total of 4a, 4b and 4c." }
+}
+concepts {
+  concept: "federal_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "5" note: "Federal Form 1040 line 11a." }
+}
+concepts {
+  concept: "standard_deduction"
+  years { tax_year: 2025 irs_box: "6" }
+}
+concepts {
+  concept: "federal_itemized_deductions"
+  years { tax_year: 2025 irs_box: "7" note: "Federal Schedule A line 17." }
+}
+concepts {
+  concept: "state_and_local_income_taxes"
+  years { tax_year: 2025 irs_box: "8" note: "Federal Schedule A line 5a." }
+}
+concepts {
+  concept: "nebraska_itemized_deductions"
+  years { tax_year: 2025 irs_box: "9" }
+}
+concepts {
+  concept: "deduction"
+  years { tax_year: 2025 irs_box: "10" }
+}
+concepts {
+  concept: "income_before_adjustments"
+  years { tax_year: 2025 irs_box: "11" }
+}
+concepts {
+  concept: "adjustments_increasing_agi"
+  years { tax_year: 2025 irs_box: "12" note: "From Nebraska Schedule I line 13." }
+}
+concepts {
+  concept: "adjustments_decreasing_agi"
+  years { tax_year: 2025 irs_box: "13" note: "From Nebraska Schedule I line 44." }
+}
+concepts {
+  concept: "taxable_income"
+  years { tax_year: 2025 irs_box: "14" }
+}
+concepts {
+  concept: "income_tax"
+  years { tax_year: 2025 irs_box: "15" }
+}
+concepts {
+  concept: "lump_sum_distribution_tax"
+  years { tax_year: 2025 irs_box: "16a" }
+}
+concepts {
+  concept: "early_distribution_tax"
+  years { tax_year: 2025 irs_box: "16" note: "Line 16b: federal tax on early distributions." }
+}
+concepts {
+  concept: "federal_other_taxes"
+  years { tax_year: 2025 irs_box: "16c" }
+}
+concepts {
+  concept: "other_tax"
+  years { tax_year: 2025 irs_box: "16" note: "The result: line 16c times 29.6%." }
+}
+concepts {
+  concept: "tax_before_exemption_credit"
+  years { tax_year: 2025 irs_box: "17" }
+}
+concepts {
+  concept: "personal_exemption_credit"
+  years { tax_year: 2025 irs_box: "18" }
+}
+concepts {
+  concept: "other_state_tax_credit"
+  years { tax_year: 2025 irs_box: "19" }
+}
+concepts {
+  concept: "elderly_or_disabled_credit"
+  years { tax_year: 2025 irs_box: "20" }
+}
+concepts {
+  concept: "community_development_assistance_credit"
+  years { tax_year: 2025 irs_box: "21" }
+}
+concepts {
+  concept: "form_3800n_nonrefundable_credit"
+  years { tax_year: 2025 irs_box: "22" }
+}
+concepts {
+  concept: "child_care_nonrefundable_credit"
+  years { tax_year: 2025 irs_box: "23" }
+}
+concepts {
+  concept: "financial_institution_tax_credit"
+  years { tax_year: 2025 irs_box: "24" }
+}
+concepts {
+  concept: "tanf_employer_credit"
+  years { tax_year: 2025 irs_box: "25" }
+}
+concepts {
+  concept: "extremely_blighted_area_credit"
+  years { tax_year: 2025 irs_box: "26" }
+}
+concepts {
+  concept: "employing_felons_credit"
+  years { tax_year: 2025 irs_box: "27" }
+}
+concepts {
+  concept: "school_readiness_provider_credit"
+  years { tax_year: 2025 irs_box: "28" }
+}
+concepts {
+  concept: "child_care_contributor_credit"
+  years { tax_year: 2025 irs_box: "29" }
+}
+concepts {
+  concept: "opportunity_scholarships_credit"
+  years { tax_year: 2025 irs_box: "30" }
+}
+concepts {
+  concept: "chief_credit"
+  years { tax_year: 2025 irs_box: "31" }
+}
+concepts {
+  concept: "family_caregiver_credit"
+  years { tax_year: 2025 irs_box: "32" }
+}
+concepts {
+  concept: "pregnancy_help_credit"
+  years { tax_year: 2025 irs_box: "33" }
+}
+concepts {
+  concept: "total_nonrefundable_credits"
+  years { tax_year: 2025 irs_box: "34" }
+}
+concepts {
+  concept: "tax_after_nonrefundable_credits"
+  years { tax_year: 2025 irs_box: "35" }
+}
+concepts {
+  concept: "w2_withholding"
+  years { tax_year: 2025 irs_box: "36" }
+}
+concepts {
+  concept: "other_withholding"
+  years { tax_year: 2025 irs_box: "37" note: "Forms W-2G, 1099-R, 1099-MISC, 1099-NEC and the like." }
+}
+concepts {
+  concept: "k1n_withholding"
+  years { tax_year: 2025 irs_box: "38" }
+}
+concepts {
+  concept: "pass_through_entity_tax_credit"
+  years { tax_year: 2025 irs_box: "39" }
+}
+concepts {
+  concept: "estimated_tax_payments"
+  years { tax_year: 2025 irs_box: "40" }
+}
+concepts {
+  concept: "form_3800n_refundable_credit"
+  years { tax_year: 2025 irs_box: "41" }
+}
+concepts {
+  concept: "child_care_refundable_credit"
+  years { tax_year: 2025 irs_box: "42" }
+}
+concepts {
+  concept: "beginning_farmer_credit"
+  years { tax_year: 2025 irs_box: "43" }
+}
+concepts {
+  concept: "earned_income_credit"
+  years { tax_year: 2025 irs_box: "44" }
+}
+concepts {
+  concept: "community_college_property_tax_credit"
+  years { tax_year: 2025 irs_box: "45" }
+}
+concepts {
+  concept: "volunteer_emergency_responder_credit"
+  years { tax_year: 2025 irs_box: "46" }
+}
+concepts {
+  concept: "stillborn_child_credit"
+  years { tax_year: 2025 irs_box: "47" }
+}
+concepts {
+  concept: "child_care_parent_credit"
+  years { tax_year: 2025 irs_box: "48" }
+}
+concepts {
+  concept: "school_readiness_staff_credit"
+  years { tax_year: 2025 irs_box: "49" }
+}
+concepts {
+  concept: "reverse_osmosis_credit"
+  years { tax_year: 2025 irs_box: "50" }
+}
+concepts {
+  concept: "direct_support_professional_credit"
+  years { tax_year: 2025 irs_box: "51" }
+}
+concepts {
+  concept: "amount_paid_with_original_return"
+  years { tax_year: 2025 irs_box: "52" note: "Amended returns only." }
+}
+concepts {
+  concept: "total_payments"
+  years { tax_year: 2025 irs_box: "53" }
+}
+concepts {
+  concept: "overpayment_allowed_on_original_return"
+  years { tax_year: 2025 irs_box: "54" note: "Amended returns only." }
+}
+concepts {
+  concept: "net_payments"
+  years { tax_year: 2025 irs_box: "55" }
+}
+concepts {
+  concept: "underpayment_penalty"
+  years { tax_year: 2025 irs_box: "56" }
+}
+concepts {
+  concept: "total_tax_and_penalty"
+  years { tax_year: 2025 irs_box: "57" }
+}
+concepts {
+  concept: "use_tax"
+  years { tax_year: 2025 irs_box: "58" }
+}
+concepts {
+  concept: "amount_owed"
+  years { tax_year: 2025 irs_box: "59" }
+}
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "60" }
+}
+concepts {
+  concept: "applied_to_next_year"
+  years { tax_year: 2025 irs_box: "61" }
+}
+concepts {
+  concept: "wildlife_conservation_donation"
+  years { tax_year: 2025 irs_box: "62" }
+}
+concepts {
+  concept: "refund"
+  years { tax_year: 2025 irs_box: "63" }
+}
