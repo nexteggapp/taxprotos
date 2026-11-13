@@ -1,0 +1,182 @@
+// Form 511, Oklahoma Resident Income Tax Return.
+//
+// Part-year residents and non-residents file Form 511-NR instead. Only the
+// full-year resident's return is modelled here, without Schedule 511-E, which
+// prorates deductions and exemptions when there is out-of-state income on
+// line 4.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form 511; testdata
+// holds the text extracted from the published PDF and coverage_test.go asserts
+// every line a mapping claims appears on it.
+//
+// # Graduated tax from a table
+//
+// Oklahoma starts from federal adjusted gross income, adjusts it to Oklahoma
+// adjusted gross income on line 7, takes off a standard or itemized deduction
+// and $1,000 for each exemption on lines 10 to 12, and looks the tax up in a
+// table on line 14. The table taxes the midpoint of each $50 band of taxable
+// income; from $100,000 a worksheet applies the top rate instead.
+//
+// # Credits that are refunded
+//
+// The child care or child tax credit on line 15 only reduces the tax. The
+// earned income credit on line 28, like the sales tax relief and property tax
+// credits beside it, is entered with the payments and refunded where it
+// exceeds the tax.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.ok.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/ok/v1/form_511;form511";
+
+// FilingStatus is the status the return is filed under, boxes 1 to 5.
+//
+// Oklahoma generally follows the federal status. The form calls a
+// qualifying surviving spouse "Qualifying surviving spouse with dependent
+// child".
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+  FILING_STATUS_QUALIFYING_SURVIVING_SPOUSE = 5;
+}
+
+// Form511 is what a Form 511 states.
+message Form511 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // The exemptions box on page 1: a regular exemption for the filer and the
+  // spouse, a special exemption for each who is 65 or older with federal AGI
+  // under the limit for the filing status, one for each who is legally blind,
+  // and one for each dependent.
+  int32 regular_exemptions = 5 [(common.v1.fdx_absent) = true];
+  int32 special_exemptions = 6 [(common.v1.fdx_absent) = true];
+  int32 blind_exemptions = 7 [(common.v1.fdx_absent) = true];
+  int32 dependent_exemptions = 8 [(common.v1.fdx_absent) = true];
+  int32 total_exemptions = 9 [(common.v1.fdx_absent) = true];
+
+  // Part One: to arrive at Oklahoma adjusted gross income.
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 10 [(common.v1.fdx_absent) = true];
+
+  // From Schedule 511-A.
+  nexteggapp.taxprotos.common.v1.Money subtractions = 11 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money income_after_subtractions = 12 [(common.v1.fdx_absent) = true];
+
+  // Income from property and business located in another state; wages
+  // earned elsewhere stay in.
+  nexteggapp.taxprotos.common.v1.Money out_of_state_income = 13 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money income_after_out_of_state_income = 14 [(common.v1.fdx_absent) = true];
+
+  // From Schedule 511-B.
+  nexteggapp.taxprotos.common.v1.Money additions = 15 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money oklahoma_adjusted_gross_income = 16 [(common.v1.fdx_absent) = true];
+
+  // Part Two: Oklahoma taxable income, tax and credits.
+  // From Schedule 511-C.
+  nexteggapp.taxprotos.common.v1.Money adjustments = 17 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money income_after_adjustments = 18 [(common.v1.fdx_absent) = true];
+
+  // The Oklahoma standard deduction, or itemized deductions from Schedule
+  // 511-D, as the itemized flag says.
+  nexteggapp.taxprotos.common.v1.Money deduction = 19 [(common.v1.fdx_absent) = true];
+  bool itemized = 20 [(common.v1.fdx_absent) = true];
+
+  // $1,000 for each exemption claimed on page 1.
+  nexteggapp.taxprotos.common.v1.Money exemption_amount = 21 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_deductions_and_exemptions = 22 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 23 [(common.v1.fdx_absent) = true];
+
+  // From the tax table, or the computation for $100,000 and over.
+  nexteggapp.taxprotos.common.v1.Money tax = 24 [(common.v1.fdx_absent) = true];
+
+  // The health savings account additional tax, affordable housing credit
+  // recapture, or Section 965 installment.
+  nexteggapp.taxprotos.common.v1.Money additional_tax = 25 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money income_tax = 26 [(common.v1.fdx_absent) = true];
+
+  // The greater of 20% of the federal child care credit or 5% of the federal
+  // child tax credit, when federal AGI is $100,000 or less.
+  nexteggapp.taxprotos.common.v1.Money child_care_or_child_tax_credit = 27 [(common.v1.fdx_absent) = true];
+
+  // From Form 511-TX.
+  nexteggapp.taxprotos.common.v1.Money credit_for_tax_paid_to_other_states = 28 [(common.v1.fdx_absent) = true];
+
+  // From Form 511-CR.
+  nexteggapp.taxprotos.common.v1.Money other_credits = 29 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_after_credits = 30 [(common.v1.fdx_absent) = true];
+
+  // Part Three: tax, credits and payments.
+  nexteggapp.taxprotos.common.v1.Money use_tax = 31 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money balance = 32 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money oklahoma_tax_withheld = 33 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 34 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money extension_payment = 35 [(common.v1.fdx_absent) = true];
+
+  // From Form 538-H.
+  nexteggapp.taxprotos.common.v1.Money low_income_property_tax_credit = 36 [(common.v1.fdx_absent) = true];
+
+  // From Form 538-S.
+  nexteggapp.taxprotos.common.v1.Money sales_tax_relief_credit = 37 [(common.v1.fdx_absent) = true];
+
+  // From Form 576.
+  nexteggapp.taxprotos.common.v1.Money natural_disaster_credit = 38 [(common.v1.fdx_absent) = true];
+
+  // From Form 578.
+  nexteggapp.taxprotos.common.v1.Money form_578_credit = 39 [(common.v1.fdx_absent) = true];
+
+  // 5% of the federal earned income credit, figured under the 2020 federal
+  // rules.
+  nexteggapp.taxprotos.common.v1.Money earned_income_credit = 40 [(common.v1.fdx_absent) = true];
+
+  // From Form 591-D.
+  nexteggapp.taxprotos.common.v1.Money homeschool_expense_credit = 41 [(common.v1.fdx_absent) = true];
+
+  // Amended returns only.
+  nexteggapp.taxprotos.common.v1.Money amount_paid_with_original_return = 42 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money payments_and_credits = 43 [(common.v1.fdx_absent) = true];
+
+  // Amended returns only.
+  nexteggapp.taxprotos.common.v1.Money overpayment_on_original_return = 44 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_payments_and_credits = 45 [(common.v1.fdx_absent) = true];
+
+  // Part Four: refund.
+  nexteggapp.taxprotos.common.v1.Money overpayment = 46 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money applied_to_next_year = 47 [(common.v1.fdx_absent) = true];
+
+  // From Schedule 511-H.
+  nexteggapp.taxprotos.common.v1.Money donations = 48 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_deductions_from_refund = 49 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money refund = 50 [(common.v1.fdx_absent) = true];
+
+  // Part Five: amount you owe.
+  nexteggapp.taxprotos.common.v1.Money tax_due = 51 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_interest = 52 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money late_payment_penalty = 53 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money late_payment_interest = 54 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money amount_owed = 55 [(common.v1.fdx_absent) = true];
+}

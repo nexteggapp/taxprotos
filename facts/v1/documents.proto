@@ -109,6 +109,7 @@ import "taxprotos/us/state/la/v1/form_it540/form_it540.proto";
 import "taxprotos/us/state/ms/v1/form_80105/form_80105.proto";
 import "taxprotos/us/state/mo/v1/form_mo1040/form_mo1040.proto";
 import "taxprotos/us/state/nc/v1/form_d400/form_d400.proto";
+import "taxprotos/us/state/ok/v1/form_511/form_511.proto";
 import "taxprotos/us/state/or/v1/form_or40/form_or40.proto";
 import "taxprotos/us/state/pa/v1/form_pa40/form_pa40.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
@@ -295,6 +296,8 @@ message Document {
     MississippiReturn mississippi_return = 70;
     // A filed Kansas return.
     KansasReturn kansas_return = 62;
+    // A filed Oklahoma return.
+    OklahomaReturn oklahoma_return = 79;
   }
 }
 
@@ -852,4 +855,8 @@ message MississippiReturn {
 message KansasReturn {
   // Form K-40.
   us.state.ks.v1.FormK40 form_k40 = 1;
+// An Oklahoma resident return: Form 511.
+message OklahomaReturn {
+  // Form 511.
+  us.state.ok.v1.Form511 form_511 = 1;
 }
