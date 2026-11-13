@@ -98,6 +98,7 @@ import "taxprotos/us/state/ca/v1/form_540/form_540.proto";
 import "taxprotos/us/state/ca/v1/form_540/schedule_ca.proto";
 import "taxprotos/us/state/co/v1/form_dr0104/form_dr0104.proto";
 import "taxprotos/us/state/il/v1/form_il1040/form_il1040.proto";
+import "taxprotos/us/state/in/v1/form_it40/form_it40.proto";
 import "taxprotos/us/state/nc/v1/form_d400/form_d400.proto";
 import "taxprotos/us/state/or/v1/form_or40/form_or40.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
@@ -244,6 +245,9 @@ message Document {
 
     // A filed Arizona return.
     ArizonaReturn arizona_return = 51;
+
+    // A filed Indiana return.
+    IndianaReturn indiana_return = 60;
   }
 }
 
@@ -708,6 +712,12 @@ message OregonReturn {
 message IllinoisReturn {
   // Form IL-1040.
   us.state.il.v1.FormIL1040 form_il1040 = 1;
+}
+
+// An Indiana resident return: Form IT-40.
+message IndianaReturn {
+  // Form IT-40.
+  us.state.in.v1.FormIT40 form_it40 = 1;
 }
 
 // A North Carolina resident return: Form D-400.

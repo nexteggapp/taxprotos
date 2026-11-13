@@ -1,0 +1,124 @@
+// Form IT-40, Indiana Full-Year Resident Individual Income Tax Return.
+//
+// Part-year residents and nonresidents file Form IT-40PNR instead. Amended
+// returns use the same form with the amending box marked. Only the full-year
+// resident's original return is modelled here.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form IT-40; testdata
+// holds the text extracted from the published PDF and coverage_test.go asserts
+// every line a mapping claims appears on it.
+//
+// # A flat state tax and a county tax on the same base
+//
+// Indiana starts from federal adjusted gross income, adds back the items on
+// Schedule 1, subtracts the deductions on Schedule 2 and the exemptions on
+// Schedule 3, and taxes the result, Indiana adjusted gross income, at a flat
+// rate on line 8. The county tax on line 9 is the same base at the rate of the
+// county where the filer lived on January 1, worked on Schedule CT-40.
+//
+// # Payments are credits
+//
+// Withholding, estimated payments and the refundable credits are all credits
+// on Schedule 5, entered on line 12 beside the offset credits of Schedule 6.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.in.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/in/v1/form_it40;formit40";
+
+// FormIT40 is what a Form IT-40 states.
+message FormIT40 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  // The box for a married couple filing separately. Indiana has no other
+  // filing status on the form; a joint return is one with a spouse.
+  bool married_filing_separately = 4 [(common.v1.fdx_absent) = true];
+
+  // The two-digit county codes from the back of Schedule CT-40 for where the
+  // filer and spouse lived and worked on January 1.
+  string county_lived = 5 [(common.v1.fdx_absent) = true];
+  string county_worked = 6 [(common.v1.fdx_absent) = true];
+  string spouse_county_lived = 7 [(common.v1.fdx_absent) = true];
+  string spouse_county_worked = 8 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 10 [(common.v1.fdx_absent) = true];
+
+  // From Schedule 1, line 7.
+  nexteggapp.taxprotos.common.v1.Money add_backs = 11 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money income_with_add_backs = 12 [(common.v1.fdx_absent) = true];
+
+  // From Schedule 2, line 12: among them taxable social security and the
+  // renter's deduction.
+  nexteggapp.taxprotos.common.v1.Money deductions = 13 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money income_after_deductions = 14 [(common.v1.fdx_absent) = true];
+
+  // From Schedule 3, line 7.
+  nexteggapp.taxprotos.common.v1.Money exemptions = 15 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money indiana_adjusted_gross_income = 16 [(common.v1.fdx_absent) = true];
+
+  // Line 7 at the flat state rate.
+  nexteggapp.taxprotos.common.v1.Money state_adjusted_gross_income_tax = 17 [(common.v1.fdx_absent) = true];
+
+  // From Schedule CT-40, line 7.
+  nexteggapp.taxprotos.common.v1.Money county_tax = 18 [(common.v1.fdx_absent) = true];
+
+  // From Schedule 4, line 4.
+  nexteggapp.taxprotos.common.v1.Money other_taxes = 19 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_taxes = 20 [(common.v1.fdx_absent) = true];
+
+  // From Schedule 5, line 13: withholding, estimated payments and the
+  // refundable credits.
+  nexteggapp.taxprotos.common.v1.Money credits = 21 [(common.v1.fdx_absent) = true];
+
+  // From Schedule 6, line 8.
+  nexteggapp.taxprotos.common.v1.Money offset_credits = 22 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_credits = 23 [(common.v1.fdx_absent) = true];
+
+  // The amount from line 11, carried to the back of the form.
+  nexteggapp.taxprotos.common.v1.Money taxes_carried_forward = 24 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money overpayment_before_donations = 25 [(common.v1.fdx_absent) = true];
+
+  // From Schedule IN-DONATE.
+  nexteggapp.taxprotos.common.v1.Money donations = 26 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money overpayment = 27 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money county_tax_applied_to_estimated_tax = 28 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money spouse_county_tax_applied_to_estimated_tax = 29 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money state_tax_applied_to_estimated_tax = 30 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money applied_to_estimated_tax = 31 [(common.v1.fdx_absent) = true];
+
+  // From Schedule IT-2210 or IT-2210A.
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_penalty = 32 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money refund = 33 [(common.v1.fdx_absent) = true];
+
+  // Line 15 minus line 14, plus any penalty on line 20.
+  nexteggapp.taxprotos.common.v1.Money tax_due = 34 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money late_filing_penalty = 35 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money late_filing_interest = 36 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money amount_owed = 37 [(common.v1.fdx_absent) = true];
+}
