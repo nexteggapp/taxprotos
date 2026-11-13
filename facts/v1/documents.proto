@@ -93,6 +93,7 @@ import "taxprotos/us/federal/v1/form_w2g/form_w2g.proto";
 import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1041.proto";
 import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1065.proto";
 import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1120_s.proto";
+import "taxprotos/us/state/al/v1/form_40/form_40.proto";
 import "taxprotos/us/state/az/v1/form_140/form_140.proto";
 import "taxprotos/us/state/ca/v1/form_540/form_540.proto";
 import "taxprotos/us/state/ca/v1/form_540/schedule_ca.proto";
@@ -244,6 +245,9 @@ message Document {
 
     // A filed Arizona return.
     ArizonaReturn arizona_return = 51;
+
+    // A filed Alabama return.
+    AlabamaReturn alabama_return = 52;
   }
 }
 
@@ -702,6 +706,12 @@ message OregonReturn {
 
   // Schedule OR-ASC, other additions, subtractions and credits.
   us.state.or.v1.ScheduleORASC schedule_or_asc = 3;
+}
+
+// An Alabama resident return: Form 40.
+message AlabamaReturn {
+  // Form 40.
+  us.state.al.v1.Form40 form_40 = 1;
 }
 
 // An Illinois resident return: Form IL-1040.
