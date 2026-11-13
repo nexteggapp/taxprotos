@@ -407,14 +407,14 @@ message PriorYearReturn {
     // A Michigan return.
     MichiganReturn michigan = 35;
 
-    // A Pennsylvania return.
-    PennsylvaniaReturn pennsylvania = 47;
-
     // A Kentucky return.
     KentuckyReturn kentucky = 30;
 
     // An Indiana return.
     IndianaReturn indiana = 27;
+
+    // A Pennsylvania return.
+    PennsylvaniaReturn pennsylvania = 47;
 
     // An Iowa return.
     IowaReturn iowa = 28;
@@ -424,10 +424,13 @@ message PriorYearReturn {
 
     // A Mississippi return.
     MississippiReturn mississippi = 37;
+
     // A Kansas return.
     KansasReturn kansas = 29;
+
     // An Oklahoma return.
     OklahomaReturn oklahoma = 46;
+
     // An Arkansas return.
     ArkansasReturn arkansas = 20;
   }

@@ -278,14 +278,14 @@ message Document {
     // A filed Michigan return.
     MichiganReturn michigan_return = 68;
 
-    // A filed Pennsylvania return.
-    PennsylvaniaReturn pennsylvania_return = 80;
-
     // A filed Kentucky return.
     KentuckyReturn kentucky_return = 63;
 
     // A filed Indiana return.
     IndianaReturn indiana_return = 60;
+
+    // A filed Pennsylvania return.
+    PennsylvaniaReturn pennsylvania_return = 80;
 
     // A filed Iowa return.
     IowaReturn iowa_return = 61;
@@ -295,10 +295,13 @@ message Document {
 
     // A filed Mississippi return.
     MississippiReturn mississippi_return = 70;
+
     // A filed Kansas return.
     KansasReturn kansas_return = 62;
+
     // A filed Oklahoma return.
     OklahomaReturn oklahoma_return = 79;
+
     // A filed Arkansas return.
     ArkansasReturn arkansas_return = 53;
   }
@@ -777,6 +780,8 @@ message MichiganReturn {
 message IndianaReturn {
   // Form IT-40.
   us.state.in.v1.FormIT40 form_it40 = 1;
+}
+
 // A Missouri resident return: Form MO-1040.
 message MissouriReturn {
   // Form MO-1040.
@@ -826,16 +831,16 @@ message WashingtonReturn {
   us.state.wa.v1.CapitalGainsReturn capital_gains = 1;
 }
 
-// A Pennsylvania resident return: Form PA-40.
-message PennsylvaniaReturn {
-  // Form PA-40.
-  us.state.pa.v1.FormPA40 form_pa40 = 1;
-}
-
 // A Kentucky resident return: Form 740.
 message KentuckyReturn {
   // Form 740.
   us.state.ky.v1.Form740 form_740 = 1;
+}
+
+// A Pennsylvania resident return: Form PA-40.
+message PennsylvaniaReturn {
+  // Form PA-40.
+  us.state.pa.v1.FormPA40 form_pa40 = 1;
 }
 
 // An Iowa resident return: Form IA 1040.
@@ -854,14 +859,20 @@ message LouisianaReturn {
 message MississippiReturn {
   // Form 80-105.
   us.state.ms.v1.Form80105 form_80105 = 1;
+}
+
 // A Kansas resident return: Form K-40.
 message KansasReturn {
   // Form K-40.
   us.state.ks.v1.FormK40 form_k40 = 1;
+}
+
 // An Oklahoma resident return: Form 511.
 message OklahomaReturn {
   // Form 511.
   us.state.ok.v1.Form511 form_511 = 1;
+}
+
 // An Arkansas full-year resident return: Form AR1000F.
 message ArkansasReturn {
   // Form AR1000F.
