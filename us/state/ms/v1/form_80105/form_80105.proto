@@ -1,0 +1,308 @@
+// Form 80-105, Mississippi Resident Individual Income Tax Return.
+//
+// Non-residents and part-year residents file Form 80-205 instead. Only the
+// full-year resident's return is modelled here.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form 80-105; testdata
+// holds the text extracted from the published PDF and coverage_test.go asserts
+// every line a mapping claims appears on it.
+//
+// # Two columns
+//
+// From line 13 down, and on page 2, the form has a column for the taxpayer (A)
+// and one for the spouse (B). A married couple may file a "joint" return, with
+// everything in column A, or a "combined" return, with each spouse's income in
+// their own column, so that each gets the first $10,000 of taxable income
+// untaxed. Each column is its own field, prefixed taxpayer_ or spouse_.
+//
+// # Exemptions and deductions
+//
+// Mississippi does not start from federal adjusted gross income. It rebuilds
+// income on page 2, then takes off a standard or itemized deduction (line 14)
+// and a fixed exemption for the filing status, age, blindness and dependents
+// (lines 10 to 12, carried to line 15).
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.ms.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/ms/v1/form_80105;form80105";
+
+// FilingStatus is the status checked on lines 1 to 5.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  // Line 1: married, combined or joint return.
+  FILING_STATUS_MARRIED_JOINT_OR_COMBINED = 1;
+  // Line 2: married, spouse died in the tax year.
+  FILING_STATUS_MARRIED_SPOUSE_DIED = 2;
+  // Line 3: married, filing separate returns.
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  // Line 4: head of family.
+  FILING_STATUS_HEAD_OF_FAMILY = 4;
+  // Line 5: single.
+  FILING_STATUS_SINGLE = 5;
+}
+
+// Form80105 is what a Form 80-105 states.
+message Form80105 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // Line 7: dependents listed on line 6 and Form 80-491.
+  int32 dependents = 5 [(common.v1.fdx_absent) = true];
+
+  // Line 8: boxes checked for the taxpayer and spouse being 65 or over, or
+  // blind.
+  int32 age_and_blindness_boxes = 6 [(common.v1.fdx_absent) = true];
+
+  // Line 9: line 7 plus line 8.
+  int32 additional_exemptions = 7 [(common.v1.fdx_absent) = true];
+
+  // Line 10: Line 9 times $1,500.
+  nexteggapp.taxprotos.common.v1.Money additional_exemption_amount = 8 [(common.v1.fdx_absent) = true];
+
+  // Line 11: The exemption for the filing status.
+  nexteggapp.taxprotos.common.v1.Money filing_status_exemption = 9 [(common.v1.fdx_absent) = true];
+
+  // Line 12: Line 10 plus line 11.
+  nexteggapp.taxprotos.common.v1.Money total_exemption = 10 [(common.v1.fdx_absent) = true];
+
+  // Line 17: From the Schedule of Tax Computation.
+  nexteggapp.taxprotos.common.v1.Money income_tax = 11 [(common.v1.fdx_absent) = true];
+
+  // Line 18: From Form 80-160.
+  nexteggapp.taxprotos.common.v1.Money credit_for_tax_paid_to_other_states = 12 [(common.v1.fdx_absent) = true];
+
+  // Line 19: From Form 80-401.
+  nexteggapp.taxprotos.common.v1.Money other_credits = 13 [(common.v1.fdx_absent) = true];
+
+  // Line 20.
+  nexteggapp.taxprotos.common.v1.Money net_income_tax = 14 [(common.v1.fdx_absent) = true];
+
+  // Line 21.
+  nexteggapp.taxprotos.common.v1.Money consumer_use_tax = 15 [(common.v1.fdx_absent) = true];
+
+  // Line 22.
+  nexteggapp.taxprotos.common.v1.Money catastrophe_savings_tax = 16 [(common.v1.fdx_absent) = true];
+
+  // Line 23.
+  nexteggapp.taxprotos.common.v1.Money total_tax = 17 [(common.v1.fdx_absent) = true];
+
+  // Line 24: From Form 80-107.
+  nexteggapp.taxprotos.common.v1.Money mississippi_tax_withheld = 18 [(common.v1.fdx_absent) = true];
+
+  // Line 25.
+  nexteggapp.taxprotos.common.v1.Money estimated_and_extension_payments = 19 [(common.v1.fdx_absent) = true];
+
+  // Line 26: From Form 80-161.
+  nexteggapp.taxprotos.common.v1.Money pass_through_entity_tax_credit = 20 [(common.v1.fdx_absent) = true];
+
+  // Line 27: Amended returns only.
+  nexteggapp.taxprotos.common.v1.Money refund_from_original_return = 21 [(common.v1.fdx_absent) = true];
+
+  // Line 28.
+  nexteggapp.taxprotos.common.v1.Money total_payments = 22 [(common.v1.fdx_absent) = true];
+
+  // Line 29.
+  nexteggapp.taxprotos.common.v1.Money overpayment = 23 [(common.v1.fdx_absent) = true];
+
+  // Line 30: From Form 80-320.
+  nexteggapp.taxprotos.common.v1.Money overpayment_interest_and_penalty = 24 [(common.v1.fdx_absent) = true];
+
+  // Line 31.
+  nexteggapp.taxprotos.common.v1.Money adjusted_overpayment = 25 [(common.v1.fdx_absent) = true];
+
+  // Line 32.
+  nexteggapp.taxprotos.common.v1.Money applied_to_next_year = 26 [(common.v1.fdx_absent) = true];
+
+  // Line 33: From Form 80-108, part III.
+  nexteggapp.taxprotos.common.v1.Money voluntary_contributions = 27 [(common.v1.fdx_absent) = true];
+
+  // Line 34.
+  nexteggapp.taxprotos.common.v1.Money refund = 28 [(common.v1.fdx_absent) = true];
+
+  // Line 35.
+  nexteggapp.taxprotos.common.v1.Money balance_due = 29 [(common.v1.fdx_absent) = true];
+
+  // Line 36.
+  nexteggapp.taxprotos.common.v1.Money balance_due_interest_and_penalty = 30 [(common.v1.fdx_absent) = true];
+
+  // Line 37.
+  nexteggapp.taxprotos.common.v1.Money amount_owed = 31 [(common.v1.fdx_absent) = true];
+
+  // Line 38A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_wages = 32 [(common.v1.fdx_absent) = true];
+  // Line 38B.
+  nexteggapp.taxprotos.common.v1.Money spouse_wages = 33 [(common.v1.fdx_absent) = true];
+
+  // Line 39A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_business_income = 34 [(common.v1.fdx_absent) = true];
+  // Line 39B.
+  nexteggapp.taxprotos.common.v1.Money spouse_business_income = 35 [(common.v1.fdx_absent) = true];
+
+  // Line 40A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_capital_gain = 36 [(common.v1.fdx_absent) = true];
+  // Line 40B.
+  nexteggapp.taxprotos.common.v1.Money spouse_capital_gain = 37 [(common.v1.fdx_absent) = true];
+
+  // Line 41A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_rents_royalties_partnerships = 38 [(common.v1.fdx_absent) = true];
+  // Line 41B.
+  nexteggapp.taxprotos.common.v1.Money spouse_rents_royalties_partnerships = 39 [(common.v1.fdx_absent) = true];
+
+  // Line 42A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_farm_income = 40 [(common.v1.fdx_absent) = true];
+  // Line 42B.
+  nexteggapp.taxprotos.common.v1.Money spouse_farm_income = 41 [(common.v1.fdx_absent) = true];
+
+  // Line 43A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_interest_income = 42 [(common.v1.fdx_absent) = true];
+  // Line 43B.
+  nexteggapp.taxprotos.common.v1.Money spouse_interest_income = 43 [(common.v1.fdx_absent) = true];
+
+  // Line 44A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_dividend_income = 44 [(common.v1.fdx_absent) = true];
+  // Line 44B.
+  nexteggapp.taxprotos.common.v1.Money spouse_dividend_income = 45 [(common.v1.fdx_absent) = true];
+
+  // Line 45A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_alimony_received = 46 [(common.v1.fdx_absent) = true];
+  // Line 45B.
+  nexteggapp.taxprotos.common.v1.Money spouse_alimony_received = 47 [(common.v1.fdx_absent) = true];
+
+  // Line 46A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_taxable_pensions_and_annuities = 48 [(common.v1.fdx_absent) = true];
+  // Line 46B.
+  nexteggapp.taxprotos.common.v1.Money spouse_taxable_pensions_and_annuities = 49 [(common.v1.fdx_absent) = true];
+
+  // Line 47A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_unemployment_compensation = 50 [(common.v1.fdx_absent) = true];
+  // Line 47B.
+  nexteggapp.taxprotos.common.v1.Money spouse_unemployment_compensation = 51 [(common.v1.fdx_absent) = true];
+
+  // Line 48A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_other_income = 52 [(common.v1.fdx_absent) = true];
+  // Line 48B.
+  nexteggapp.taxprotos.common.v1.Money spouse_other_income = 53 [(common.v1.fdx_absent) = true];
+
+  // Line 49A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_total_income = 54 [(common.v1.fdx_absent) = true];
+  // Line 49B.
+  nexteggapp.taxprotos.common.v1.Money spouse_total_income = 55 [(common.v1.fdx_absent) = true];
+
+  // Line 50A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_ira_payments = 56 [(common.v1.fdx_absent) = true];
+  // Line 50B.
+  nexteggapp.taxprotos.common.v1.Money spouse_ira_payments = 57 [(common.v1.fdx_absent) = true];
+
+  // Line 51A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_self_employed_retirement_plans = 58 [(common.v1.fdx_absent) = true];
+  // Line 51B.
+  nexteggapp.taxprotos.common.v1.Money spouse_self_employed_retirement_plans = 59 [(common.v1.fdx_absent) = true];
+
+  // Line 52A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_early_withdrawal_penalty = 60 [(common.v1.fdx_absent) = true];
+  // Line 52B.
+  nexteggapp.taxprotos.common.v1.Money spouse_early_withdrawal_penalty = 61 [(common.v1.fdx_absent) = true];
+
+  // Line 53A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_alimony_paid = 62 [(common.v1.fdx_absent) = true];
+  // Line 53B.
+  nexteggapp.taxprotos.common.v1.Money spouse_alimony_paid = 63 [(common.v1.fdx_absent) = true];
+
+  // Line 54A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_moving_expense = 64 [(common.v1.fdx_absent) = true];
+  // Line 54B.
+  nexteggapp.taxprotos.common.v1.Money spouse_moving_expense = 65 [(common.v1.fdx_absent) = true];
+
+  // Line 55A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_national_guard_or_reserve_pay = 66 [(common.v1.fdx_absent) = true];
+  // Line 55B.
+  nexteggapp.taxprotos.common.v1.Money spouse_national_guard_or_reserve_pay = 67 [(common.v1.fdx_absent) = true];
+
+  // Line 56A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_mpact_deduction = 68 [(common.v1.fdx_absent) = true];
+  // Line 56B.
+  nexteggapp.taxprotos.common.v1.Money spouse_mpact_deduction = 69 [(common.v1.fdx_absent) = true];
+
+  // Line 57A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_macs_deduction = 70 [(common.v1.fdx_absent) = true];
+  // Line 57B.
+  nexteggapp.taxprotos.common.v1.Money spouse_macs_deduction = 71 [(common.v1.fdx_absent) = true];
+
+  // Line 58A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_self_employed_health_insurance = 72 [(common.v1.fdx_absent) = true];
+  // Line 58B.
+  nexteggapp.taxprotos.common.v1.Money spouse_self_employed_health_insurance = 73 [(common.v1.fdx_absent) = true];
+
+  // Line 59A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_health_savings_account = 74 [(common.v1.fdx_absent) = true];
+  // Line 59B.
+  nexteggapp.taxprotos.common.v1.Money spouse_health_savings_account = 75 [(common.v1.fdx_absent) = true];
+
+  // Line 60A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_catastrophe_savings_account = 76 [(common.v1.fdx_absent) = true];
+  // Line 60B.
+  nexteggapp.taxprotos.common.v1.Money spouse_catastrophe_savings_account = 77 [(common.v1.fdx_absent) = true];
+
+  // Line 61A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_self_employment_tax_deduction = 78 [(common.v1.fdx_absent) = true];
+  // Line 61B.
+  nexteggapp.taxprotos.common.v1.Money spouse_self_employment_tax_deduction = 79 [(common.v1.fdx_absent) = true];
+
+  // Line 62A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_first_time_home_buyer_savings = 80 [(common.v1.fdx_absent) = true];
+  // Line 62B.
+  nexteggapp.taxprotos.common.v1.Money spouse_first_time_home_buyer_savings = 81 [(common.v1.fdx_absent) = true];
+
+  // Line 63A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_agricultural_disaster_compensation = 82 [(common.v1.fdx_absent) = true];
+  // Line 63B.
+  nexteggapp.taxprotos.common.v1.Money spouse_agricultural_disaster_compensation = 83 [(common.v1.fdx_absent) = true];
+
+  // Line 64A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_able_act_deduction = 84 [(common.v1.fdx_absent) = true];
+  // Line 64B.
+  nexteggapp.taxprotos.common.v1.Money spouse_able_act_deduction = 85 [(common.v1.fdx_absent) = true];
+
+  // Line 65A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_total_adjustments = 86 [(common.v1.fdx_absent) = true];
+  // Line 65B.
+  nexteggapp.taxprotos.common.v1.Money spouse_total_adjustments = 87 [(common.v1.fdx_absent) = true];
+
+  // Line 66A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_adjusted_gross_income = 88 [(common.v1.fdx_absent) = true];
+  // Line 66B.
+  nexteggapp.taxprotos.common.v1.Money spouse_adjusted_gross_income = 89 [(common.v1.fdx_absent) = true];
+
+  // Line 13A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_adjusted_gross_income_on_page_1 = 90 [(common.v1.fdx_absent) = true];
+  // Line 13B.
+  nexteggapp.taxprotos.common.v1.Money spouse_adjusted_gross_income_on_page_1 = 91 [(common.v1.fdx_absent) = true];
+
+  // Line 14A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_deductions = 92 [(common.v1.fdx_absent) = true];
+  // Line 14B.
+  nexteggapp.taxprotos.common.v1.Money spouse_deductions = 93 [(common.v1.fdx_absent) = true];
+
+  // Line 15A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_exemptions = 94 [(common.v1.fdx_absent) = true];
+  // Line 15B.
+  nexteggapp.taxprotos.common.v1.Money spouse_exemptions = 95 [(common.v1.fdx_absent) = true];
+
+  // Line 16A.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_taxable_income = 96 [(common.v1.fdx_absent) = true];
+  // Line 16B.
+  nexteggapp.taxprotos.common.v1.Money spouse_taxable_income = 97 [(common.v1.fdx_absent) = true];
+}
