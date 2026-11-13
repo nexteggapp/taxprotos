@@ -9,6 +9,7 @@ Colorado, Illinois, Michigan, North Carolina, Oregon and Washington, and `TaxYea
 Colorado, Illinois, North Carolina, Oregon, Pennsylvania and Washington, and `TaxYearFacts`, a
 Colorado, Illinois, Kentucky, North Carolina, Oregon and Washington, and `TaxYearFacts`, a
 Colorado, Illinois, Indiana, North Carolina, Oregon and Washington, and `TaxYearFacts`, a
+Colorado, Illinois, Louisiana, North Carolina, Oregon and Washington, and `TaxYearFacts`, a
 household's own facts for one tax year.
 
 A schema holds what the form prints and nothing else. It has no confidence
@@ -207,6 +208,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [MI-1040](https://www.michigan.gov/taxes/-/media/Project/Websites/taxes/Forms/IIT/TY2025/MI-1040.pdf) | [`form_mi1040.proto`](us/state/mi/v1/form_mi1040/form_mi1040.proto) | The Michigan resident return |
 | [740](https://revenue.ky.gov/Forms/740%20(2025).pdf) | [`form_740.proto`](us/state/ky/v1/form_740/form_740.proto) | The Kentucky resident return |
 | [IT-40](https://forms.in.gov/Download.aspx?id=16914) | [`form_it40.proto`](us/state/in/v1/form_it40/form_it40.proto) | The Indiana resident return |
+| [IT-540](https://dam.ldr.la.gov/taxforms/IT540WEB-BC(2025)%20F.pdf) | [`form_it540.proto`](us/state/la/v1/form_it540/form_it540.proto) | The Louisiana resident return |
 | [D-400](https://www.ncdor.gov/2025-d-400-web-filled-version/open) | [`form_d400.proto`](us/state/nc/v1/form_d400/form_d400.proto) | The North Carolina resident return |
 | [540](https://www.ftb.ca.gov/forms/2025/2025-540.pdf) | [`form_540.proto`](us/state/ca/v1/form_540/form_540.proto) | The California resident return |
 | [Schedule CA](https://www.ftb.ca.gov/forms/2025/2025-540-ca.pdf) | [`schedule_ca.proto`](us/state/ca/v1/form_540/schedule_ca.proto) | How a federal return becomes a Californian one |

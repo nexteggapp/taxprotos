@@ -407,6 +407,8 @@ message PriorYearReturn {
     IndianaReturn indiana = 27;
     // An Iowa return.
     IowaReturn iowa = 28;
+    // A Louisiana return.
+    LouisianaReturn louisiana = 31;
   }
 
   // Where the return came from, when it is here.
