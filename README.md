@@ -4,7 +4,7 @@ Protobuf schemas for US tax documents: the W-2 and 1099 forms a household
 receives, the Form 1040 it files, the state returns for Arizona, Arkansas,
 California, Colorado, Georgia, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky,
 Louisiana, Michigan, Mississippi, Missouri, Montana, Nebraska, North Carolina,
-North Dakota, Oklahoma, Oregon, Pennsylvania, Utah and Washington, and
+North Dakota, Oklahoma, Oregon, Pennsylvania, Utah, Virginia and Washington, and
 `TaxYearFacts`, a household's own facts for one tax year.
 
 A schema holds what the form prints and nothing else. It has no confidence
@@ -190,7 +190,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [8995](https://www.irs.gov/pub/irs-pdf/f8995.pdf) | [`form_8995.proto`](us/federal/v1/form_1040/form_8995.proto) | Qualified business income deduction, simplified computation |
 | [8995-A](https://www.irs.gov/pub/irs-pdf/f8995a.pdf) | [`form_8995_a.proto`](us/federal/v1/form_1040/form_8995_a.proto) | Qualified business income deduction |
 
-### State returns — what twenty-four states want as well
+### State returns — what twenty-five states want as well
 
 | Form | Schema | Reports |
 |---|---|---|

@@ -442,6 +442,7 @@ message PriorYearReturn {
 
     // A Nebraska return.
     NebraskaReturn nebraska = 40;
+
     // A Virginia return.
     VirginiaReturn virginia = 52;
   }

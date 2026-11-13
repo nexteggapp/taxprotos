@@ -317,6 +317,7 @@ message Document {
 
     // A filed Nebraska return.
     NebraskaReturn nebraska_return = 73;
+
     // A filed Virginia return.
     VirginiaReturn virginia_return = 85;
   }
@@ -910,6 +911,8 @@ message NorthDakotaReturn {
 message NebraskaReturn {
   // Form 1040N.
   us.state.ne.v1.Form1040N form_1040n = 1;
+}
+
 // A Virginia resident return: Form 760.
 message VirginiaReturn {
   // Form 760.
