@@ -754,14 +754,20 @@ message ArizonaReturn {
 message GeorgiaReturn {
   // Form 500.
   us.state.ga.v1.Form500 form_500 = 1;
+}
+
 // An Idaho resident return: Form 40.
 message IdahoReturn {
   // Form 40.
   us.state.id.v1.Form40 form_40 = 1;
+}
+
 // A Utah resident return: Form TC-40.
 message UtahReturn {
   // Form TC-40.
   us.state.ut.v1.FormTC40 form_tc40 = 1;
+}
+
 // A Washington return: the capital gains excise tax return. Washington levies
 // no personal income tax, so this is the only individual return it has.
 message WashingtonReturn {
