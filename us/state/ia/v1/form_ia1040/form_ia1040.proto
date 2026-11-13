@@ -1,0 +1,160 @@
+// Form IA 1040, Iowa Individual Income Tax Return.
+//
+// Nonresidents and part-year residents file the same form with the IA 126,
+// which gives the credit on line 13. Only the full-year resident's return is
+// modelled here.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form IA 1040; testdata
+// holds the text extracted from the published PDF and coverage_test.go asserts
+// every line a mapping claims appears on it.
+//
+// # A flat tax on federal taxable income
+//
+// From 2025 Iowa taxes Iowa taxable income at a flat 3.8%. Iowa taxable income
+// is federal taxable income, line 2, adjusted by the net Iowa modifications of
+// IA 1040 Schedule 1 on line 3. Lines 1a to 1f copy federal figures that the
+// low-income exemption, the alternate tax and the tax reduction worksheet add
+// back; they are not part of line 4.
+//
+// # Exemptions are credits
+//
+// Iowa has no exemption deduction. Step 3 counts personal, age, blindness and
+// dependent exemptions, each worth a fixed credit against the tax on line 8.
+//
+// # Schedule 1 is not modelled
+//
+// The additions and subtractions of IA 1040 Schedule 1 arrive here only as
+// their net, line 3.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.ia.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/ia/v1/form_ia1040;formia1040";
+
+// FilingStatus is the status the return is filed under.
+//
+// Iowa requires the federal status.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+  FILING_STATUS_QUALIFYING_SURVIVING_SPOUSE = 5;
+}
+
+// FormIA1040 is what a Form IA 1040 states.
+message FormIA1040 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // A single filer someone else claims on their Iowa return. It changes the
+  // low-income exemption.
+  bool claimed_as_dependent = 5 [(common.v1.fdx_absent) = true];
+
+  // Married filing separately: the spouse's Iowa taxable income, which the
+  // low-income exemption and the alternate tax combine with the filer's.
+  nexteggapp.taxprotos.common.v1.Money spouse_iowa_taxable_income = 6 [(common.v1.fdx_absent) = true];
+
+  // Step 3. Personal credits: one, or two on a joint or head of household
+  // return.
+  int32 personal_credit_count = 7 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money personal_credit = 8 [(common.v1.fdx_absent) = true];
+
+  // Step 3. One credit for each filer 65 or older and each filer who is blind.
+  int32 age_65_or_blind_count = 9 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money age_65_or_blind_credit = 10 [(common.v1.fdx_absent) = true];
+
+  // Step 3. One credit for each dependent claimed federally.
+  int32 dependent_count = 11 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money dependent_credit = 12 [(common.v1.fdx_absent) = true];
+
+  // Step 3 total, carried to line 8.
+  nexteggapp.taxprotos.common.v1.Money total_exemption_credit = 13 [(common.v1.fdx_absent) = true];
+
+  // Step 4. Federal figures, copied for the worksheets that add them back.
+  nexteggapp.taxprotos.common.v1.Money federal_total_income = 14 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money federal_adjustments_to_income = 15 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 16 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money federal_standard_or_itemized_deduction = 17 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money qualified_business_income_deduction = 18 [(common.v1.fdx_absent) = true];
+
+  // The federal enhanced deduction for seniors, which Iowa treats as a
+  // personal exemption.
+  nexteggapp.taxprotos.common.v1.Money enhanced_deduction_for_seniors = 19 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money federal_taxable_income = 20 [(common.v1.fdx_absent) = true];
+
+  // From IA 1040 Schedule 1, line 21. Negative when subtractions exceed
+  // additions.
+  nexteggapp.taxprotos.common.v1.Money net_iowa_modifications = 21 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money iowa_taxable_income = 22 [(common.v1.fdx_absent) = true];
+
+  // The box in Step 5: the tax comes from the alternate tax, the tax
+  // reduction worksheet or the low-income exemption.
+  bool special_tax_computation = 23 [(common.v1.fdx_absent) = true];
+
+  // 3.8% of line 4, or the alternate tax.
+  nexteggapp.taxprotos.common.v1.Money iowa_tax = 24 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money lump_sum_tax = 25 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_tax = 26 [(common.v1.fdx_absent) = true];
+
+  // Nonrefundable credits.
+  nexteggapp.taxprotos.common.v1.Money tuition_and_textbook_credit = 27 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money volunteer_responder_credit = 28 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_credits = 29 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money balance_after_credits = 30 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money nonresident_credit = 31 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money balance_after_nonresident_credit = 32 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money out_of_state_tax_credit = 33 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money balance_after_out_of_state_credit = 34 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money other_nonrefundable_credits = 35 [(common.v1.fdx_absent) = true];
+
+  // The state tax: line 16 less line 17.
+  nexteggapp.taxprotos.common.v1.Money state_tax = 36 [(common.v1.fdx_absent) = true];
+
+  // A percentage of the state tax set by the filer's school district and
+  // county.
+  nexteggapp.taxprotos.common.v1.Money school_district_and_ems_surtax = 37 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_state_and_local_tax = 38 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money contributions = 39 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_tax_and_contributions = 40 [(common.v1.fdx_absent) = true];
+
+  // Refundable credits and payments.
+  nexteggapp.taxprotos.common.v1.Money fuel_tax_credit = 41 [(common.v1.fdx_absent) = true];
+
+  // The child and dependent care credit or the early childhood development
+  // credit; the filer claims one.
+  nexteggapp.taxprotos.common.v1.Money child_care_credit = 42 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money earned_income_credit = 43 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money other_refundable_credits = 44 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money composite_and_ptet_credit = 45 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money iowa_tax_withheld = 46 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money estimated_and_other_payments = 47 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_payments_and_refundable_credits = 48 [(common.v1.fdx_absent) = true];
+
+  // Refund.
+  nexteggapp.taxprotos.common.v1.Money overpayment = 49 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money refund = 50 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money applied_to_next_year_estimated_tax = 51 [(common.v1.fdx_absent) = true];
+
+  // Amount due.
+  nexteggapp.taxprotos.common.v1.Money amount_owed = 52 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_penalty = 53 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money penalty_and_interest = 54 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_amount_due = 55 [(common.v1.fdx_absent) = true];
+}

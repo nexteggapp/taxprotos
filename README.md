@@ -194,6 +194,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 |---|---|---|
 | [140](https://azdor.gov/sites/default/files/document/FORMS_INDIVIDUAL_2025_140_f.pdf) | [`form_140.proto`](us/state/az/v1/form_140/form_140.proto) | The Arizona resident return |
 | [DR 0104](https://tax.colorado.gov/sites/tax/files/documents/DR0104_2025.pdf) | [`form_dr0104.proto`](us/state/co/v1/form_dr0104/form_dr0104.proto) | The Colorado resident return |
+| [IA 1040](https://revenue.iowa.gov/media/4401/download?inline) | [`form_ia1040.proto`](us/state/ia/v1/form_ia1040/form_ia1040.proto) | The Iowa resident return |
 | [IL-1040](https://tax.illinois.gov/content/dam/soi/en/web/tax/forms/incometax/documents/currentyear/individual/il-1040.pdf) | [`form_il1040.proto`](us/state/il/v1/form_il1040/form_il1040.proto) | The Illinois resident return |
 | [D-400](https://www.ncdor.gov/2025-d-400-web-filled-version/open) | [`form_d400.proto`](us/state/nc/v1/form_d400/form_d400.proto) | The North Carolina resident return |
 | [540](https://www.ftb.ca.gov/forms/2025/2025-540.pdf) | [`form_540.proto`](us/state/ca/v1/form_540/form_540.proto) | The California resident return |
