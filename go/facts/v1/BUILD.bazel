@@ -41,6 +41,7 @@ go_proto_library(
         "//go/us/state/az/v1/form_140",
         "//go/us/state/ca/v1/form_540",
         "//go/us/state/co/v1/form_dr0104",
+        "//go/us/state/ks/v1/form_k40",
         "//go/us/state/il/v1/form_il1040",
         "//go/us/state/nc/v1/form_d400",
         "//go/us/state/or/v1/form_or40",
