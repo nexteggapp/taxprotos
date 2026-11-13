@@ -1,0 +1,136 @@
+// Form ND-1, North Dakota Individual Income Tax Return.
+//
+// Part-year residents and nonresidents file the same form with Schedule
+// ND-1NR, which replaces the tax on line 20. Only the full-year resident's
+// return is modelled here.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form ND-1; testdata
+// holds the text extracted from the published PDF and coverage_test.go asserts
+// every line a mapping claims appears on it.
+//
+// # Federal taxable income, adjusted
+//
+// North Dakota starts from federal taxable income on line 1b, so the federal
+// standard or itemized deduction carries over. Additions and subtractions
+// give North Dakota taxable income on line 18, which is taxed from the tax
+// table or the rate schedules on line 20.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.nd.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/nd/v1/form_nd1;formnd1";
+
+// FilingStatus is the status the return is filed under.
+//
+// North Dakota requires the federal status.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+  FILING_STATUS_QUALIFYING_SURVIVING_SPOUSE = 5;
+}
+
+// FormND1 is what a Form ND-1 states.
+message FormND1 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 5 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money federal_taxable_income = 6 [(common.v1.fdx_absent) = true];
+
+  // The income deducted federally for a gift that earned the planned gift or endowment credit, added back.
+  nexteggapp.taxprotos.common.v1.Money planned_gift_credit_adjustment = 7 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money other_additions = 8 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_additions = 9 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money federal_taxable_income_plus_additions = 10 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money us_obligation_interest = 11 [(common.v1.fdx_absent) = true];
+
+  // 40% of the net long-term capital gain, from the worksheet in the instructions.
+  nexteggapp.taxprotos.common.v1.Money long_term_capital_gain_exclusion = 12 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money native_american_exempt_income = 13 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money railroad_retirement_benefits = 14 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money peace_officer_retirement_exclusion = 15 [(common.v1.fdx_absent) = true];
+
+  // For nonresidents only; always empty on a full-year resident's return.
+  nexteggapp.taxprotos.common.v1.Money servicemember_relief_adjustment = 16 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money military_pay_exclusion = 17 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money college_save_deduction = 18 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money qualified_dividend_exclusion = 19 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money military_retirement_exclusion = 20 [(common.v1.fdx_absent) = true];
+
+  // The taxable social security benefits included in federal adjusted gross income, which North Dakota does not tax.
+  nexteggapp.taxprotos.common.v1.Money social_security_exclusion = 21 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money other_subtractions = 22 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_subtractions = 23 [(common.v1.fdx_absent) = true];
+
+  // Line 19 repeats it at the top of page 2.
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 24 [(common.v1.fdx_absent) = true];
+
+  // From the tax table or the tax rate schedules.
+  nexteggapp.taxprotos.common.v1.Money tax = 25 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money other_state_tax_credit = 26 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money marriage_penalty_credit = 27 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money other_credits = 28 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_credits = 29 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money net_tax_liability = 30 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money north_dakota_tax_withheld = 31 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 32 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_payments = 33 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money overpayment = 34 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money overpayment_applied_to_next_year = 35 [(common.v1.fdx_absent) = true];
+
+  // The total of the voluntary contributions taken from the refund.
+  nexteggapp.taxprotos.common.v1.Money refund_contributions = 36 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money refund = 37 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_due = 38 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money penalty_and_interest = 39 [(common.v1.fdx_absent) = true];
+
+  // The total of the voluntary contributions added to the balance due.
+  nexteggapp.taxprotos.common.v1.Money balance_due_contributions = 40 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money balance_due = 41 [(common.v1.fdx_absent) = true];
+
+  // From Schedule ND-1UT.
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_interest = 42 [(common.v1.fdx_absent) = true];
+}
