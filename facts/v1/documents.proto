@@ -98,6 +98,7 @@ import "taxprotos/us/state/ca/v1/form_540/form_540.proto";
 import "taxprotos/us/state/ca/v1/form_540/schedule_ca.proto";
 import "taxprotos/us/state/co/v1/form_dr0104/form_dr0104.proto";
 import "taxprotos/us/state/il/v1/form_il1040/form_il1040.proto";
+import "taxprotos/us/state/mo/v1/form_mo1040/form_mo1040.proto";
 import "taxprotos/us/state/nc/v1/form_d400/form_d400.proto";
 import "taxprotos/us/state/or/v1/form_or40/form_or40.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
@@ -235,6 +236,9 @@ message Document {
 
     // A filed Illinois return.
     IllinoisReturn illinois_return = 48;
+
+    // A filed Missouri return.
+    MissouriReturn missouri_return = 71;
 
     // A filed North Carolina return.
     NorthCarolinaReturn north_carolina_return = 49;
@@ -708,6 +712,12 @@ message OregonReturn {
 message IllinoisReturn {
   // Form IL-1040.
   us.state.il.v1.FormIL1040 form_il1040 = 1;
+}
+
+// A Missouri resident return: Form MO-1040.
+message MissouriReturn {
+  // Form MO-1040.
+  us.state.mo.v1.FormMO1040 form_mo1040 = 1;
 }
 
 // A North Carolina resident return: Form D-400.

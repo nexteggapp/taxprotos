@@ -1,0 +1,410 @@
+                     View instructions                                        Print Form                              Reset Form                                Calculate
+                                                                         Department Use Only
+
+
+
+
+                    Form
+                   MO-1040          2025 Individual Income
+                                    Tax Return - Long Form
+
+                                        For Calendar Year January 1 - December 31, 2025
+ Print in BLACK ink only and DO NOT STAPLE.
+
+                    Amended Return                         Composite Return (For use by S corporations or Partnerships)
+
+                    Federal Extension - Select this box if you have an approved federal extension. Attach a copy Federal Extension (Form 4868).
+
+                    Department of Social Services Application of Eligibility form attached.                                         Federal return attached.
+
+ If filing a fiscal year return enter the beginning and ending dates here.
+ Fiscal Year Beginning (MM/DD/YY)                          Fiscal Year Ending (MM/DD/YY)                                        Vendor Code                       Department Use Only
+
+
+                                                                                                                                 0006
+                                                                                                                                   0 6
+   Filing Status
+
+
+
+
+                           Single                Claimed as a                    Married Filing                     Married Filing                   Head of                   Qualifying
+                                                 Dependent                       Combined                           Separately                       Household                 Widow(er)
+
+                   Age 62 through 64                      Age 65 or Older                                Blind                            100% Disabled                 Non-Obligated Spouse
+
+       Yourself               Spouse               Yourself         Spouse              Yourself            Spouse                 Yourself          Spouse             Yourself        Spouse
+
+
+                                                                                             Deceased                                                                                      Deceased
+                    Social Security Number                                                     in 2025           Spouse’s Social Security Number                                            in 2025
+
+                                         -                 -                                                                              -                 -
+                    First Name                                                   M.I.       Last Name                                                                                        Suffix
+   Name
+
+
+
+
+                    Spouse’s First Name                                          M.I.       Spouse’s Last Name                                                                               Suffix
+
+
+
+                    In Care Of Name (Attorney, Executor, Personal Representative, etc.)
+
+
+
+
+                    Present Address (Include Apartment Number or Rural Route)
+   Address
+
+
+
+
+                    City, Town, or Post Office                                                                                           State             ZIP Code
+                                                                                                                                                                                   _
+
+                    County of Residence
+
+                     SELECT COUNTY
+
+
+ You may contribute to any one or all of the trust funds on Line 51. See pages 11-12 of the instructions for more trust fund information.
+                                                                                                                                                                                      Kansas
+                                                                                               Workers              LEAD                              General                          City
+                                                                                                                                                      Revenue                        Regional
+                                                                                                                                                                                       Law         Soldiers
+                                                            Elderly Home      Missouri       Workers’             Childhood      Missouri Military   General                    Enforcement
+                           Children’s         Veterans     Delivered Meals National Guard    Memorial            Lead Testing     Family Relief                  Organ Donor                      Memorial
+Missouri Medal                                                                                                                                       Revenue     Program Fund    Memorial     Military Museum
+of Honor Fund              Trust Fund        Trust Fund      Trust Fund     Trust Fund        Fund                  Fund              Fund            Fund                    Foundation Fund in St. Louis Fund
+
+
+
+                                                                        *25322010006*
+                                                                                                25322010006
+
+                                                                                                1 CLICK HERE
+                                                                                 For Privacy Notice
+                                                                                       Worksheet                                              Yourself (Y)                                      Spouse (S)
+                              1. Federal adjusted gross income from federal return
+                                                                                                                                                                                                                        Line 1
+                              		 (see instructions and worksheet on pages 6 and 7 . . . . . . . . .  1Y                                                                . 00           1S                         . 00
+                                                                                            MO-A                                                                   0                                         0          Line 2
+                               2. Total additions (from Form MO‑A, Part 1, Line 7) . . . . . . . . . .                             2Y                                  . 00           2S                         . 00
+                                                                                                                                                                   0                                         0
+                               3. Total income - Add Lines 1 and 2 . . . . . . . . . . . . . . . . . . . . . .                     3Y                                  . 00           3S                         . 00
+Income
+
+
+
+
+                                                                                          MO-A                                                                     0                                         0          Line 4
+                               4. Total subtractions (from Form MO‑A, Part 1, Line 19)  . . . . . .                                4Y                                  . 00           4S                         . 00
+                                                                                                                                                                   0                                         0
+                               5. Missouri adjusted gross income - Subtract Line 4 from Line 3 .                                   5Y                                  . 00           5S                         . 00
+                                                                                                                                                                                           0
+                               6. Total Missouri adjusted gross income - Add columns 5Y and 5S . . . . . . . . . . .                                      6                                    . 00
+
+                              7. Income percentages - Divide columns 5Y and 5S by total on
+                                                                                                                                                                       0                                     0 %        Line 7
+                              		 Line 6. (Must equal 100%) . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7Y                                                      % 7S
+                             8. Pension, Social Security and Social Security Disability exemption (from Form MO‑A, Part 3,
+                                                                                                                                                                         MO-A                                0          Line 8
+                            		 Section D) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      8                         . 00
+                                                                                                                                                                                                                        Line 9
+                              9. Tax from federal return  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .               9                                    . 00
+                                                                                                                                                                                                                        Line 10
+                             10. Other tax from federal return . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .               10                                    . 00
+                                                                                                                                                                           0
+                             11. Total tax from federal return. Do not enter federal income tax withheld. 11                                                                   . 00
+
+                            12.		 Federal tax percentage – Enter the percentage based on your
+                                  Missouri Adjusted Gross Income, Line 6. Use the chart below to
+                                  find your percentage .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .            12                                      %
+
+                                   Missouri Adjusted Gross Income Range, Line 6:                             Federal Tax Percentage:
+                                   $25,000 or less......................................................................... 35%
+                                   $25,001 to $50,000.................................................................. 25%
+                                   $50,001 to $100,000................................................................15%                          *25322020006*
+                                                                                                                                                                               25322020006
+Exemptions and Deductions
+
+
+
+
+                                   $100,001 to $125,000............................................................... 5%
+                                   $125,001 or more...................................................................... 0%
+
+                            13. Federal income tax deduction – Multiply Line 11 by the percentage on Line 12. Enter this
+                                                                                                                                                                 13                0 00 Line 13
+                                amount not to exceed $5,000 for an individual or $10,000 for combined filers. . . . . . . . . . . . . . .                                            .
+                            14. Missouri standard deduction or itemized deductions. (If itemizing, See Form MO-A, Part 2)                                    Itemized Deductions Worksheet
+                                • Single or Married Filing Separate-$15,750        • Head of Household-$23,625		
+                                                                                                                                                                                   0 00 Line 14
+                                • Married Filing Combined or Qualifying Widow(er)-$31,500  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   14                  .
+                                                                                                                                                                                                             0
+                            15. Additional Exemption for Head of Household and Qualifying Widow(er)  . . . . . . . . . . . . . . . . . .                                              15                         . 00
+                                                                                                                 Long-term Care Worksheet                                                                    0          Line 16
+                            16. Long-term care insurance deduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                        16                         . 00
+                                                                                                                                                                                                                        Line 17
+                            17. Health care sharing ministry deduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                        17                         . 00
+                                                                                                                                                                                                                        Line 18
+                            18. Active Duty Military income deduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                       18                         . 00
+                            19. Inactive Duty Military income deduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                       19                         . 00
+                            20. Reserved . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        20                         . 00
+                            21. Farmland sold, rented, leased, or crop-shared to a beginning farmer deduction. Enter the sum
+                                                                                                                                                                                                                        Line 21
+                                of Lines 21A, 21B, and 21C on Line 21 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                         21                         . 00
+
+                              21A. Sold                                          21B. Rented/                                           21C. Crop-
+                                               $                       . 00           Leased $                                . 00         Shared $                                 . 00
+                                                                                                                         2
+                          22. Reserved                                                          A.                               B.                                             22          . 00
+
+                         23. Reserved . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     23          . 00
+  Deductions Continued
+
+
+
+
+                         24. Foster parent tax deduction  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .               24          . 00
+                                                                                                                                                                                25      0
+                         25. Total deductions - Add Lines 8 and 13 through 24  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                        . 00
+                                                                                                                                                                                        0          Line 26
+                         26. Subtotal - Subtract Line 25 from Line 6  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                     26          . 00
+
+                         27. Multiply Line 26 by appropriate percentages (%) on
+                                                                                                                                                                0                       0
+                         		Lines 7Y and 7S . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .              27Y                                   . 00       27S          . 00
+
+                         28. Enterprise zone or rural empowerment zone income
+                                                                                                                                                                                                   Line 28
+                             modification . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       28Y                                   . 00       28S          . 00
+
+                                                                                                                                                                0                       0
+                         29. Taxable income - Subtract Line 28 from Line 27  . . . . . . . . . . .                            29Y                                   . 00       29S          . 00
+                                                                                                                                                                0                       0          Line 30
+                         30. Tax (see tax chart on page 21 of the instructions) . . . . . . . . . .                           30Y                                   . 00       30S          . 00
+
+                         31. Resident credit - Attach Form MO‑CR and other states’
+                                                                                                       MO-CR                                                    0                       0          Line 31
+                         		 income tax return(s) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31Y                                              . 00       31S          . 00
+
+                         32. Missouri income percentage - Enter 100% if not completing MO-NRI
+                                                                                                                                                                    100 %              100 %       Line 32
+                         		  Form MO-NRI. Attach Form MO-NRI and federal return if applicable. 32Y                                                                               32S
+Tax
+
+
+
+
+                         33. Balance - Subtract Line 31 from Line 30; OR
+                                                                                                                                                                0                       0
+                         		 multiply Line 30 by percentage on Line 32 . . . . . . . . . . . . . . .                           33Y                                   . 00       33S          . 00
+
+                         34. Other taxes - Select box and attach federal form indicated.
+                                                                                                                                           *25322030006*
+                                                                                                                                                                     25322030006
+                                        Lump sum distribution (Form 4972)
+                                                                                                                                                                                                   Line 34
+                                        Recapture of low income housing credit (Form 8611)                                    34Y                                   . 00       34S          . 00
+                                                                                                                                                                0                       0
+                         35. Subtotal - Add Lines 33 and 34  . . . . . . . . . . . . . . . . . . . . . . .                    35Y                                   . 00       35S          . 00
+                                                                                                                                                                                        0
+                         36. Total Tax - Add Lines 35Y and 35S . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                  36          . 00
+
+                                                                                                                                                                                                   Line 37
+                         37. MISSOURI tax withheld - Attach Forms W‑2 and 1099 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                37          . 00
+                                                                                                                                                                                                   Line 38
+                         38. 2025 Missouri estimated tax payments - Include overpayment from 2024 applied to 2025 . . . . . . . .                                               38          . 00
+
+                         39. Missouri tax payments for nonresident partners or S corporation shareholders - Attach Forms
+                                                                                                                                                                                                   Line 39
+Payments and Credits
+
+
+
+
+                         		  MO-2NR and MO-NRP . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .              39          . 00
+                                                                                                                                                                                                   Line 40
+                         40. Missouri tax payments for nonresident entertainers - Attach Form MO-2ENT  . . . . . . . . . . . . . . .                                            40          . 00
+                                                                                                                                                                                                   Line 41
+                         41. Amount paid with Missouri extension of time to file (Form MO-60) . . . . . . . . . . . . . . . . . . . . . . . .                                   41          . 00
+                                                                                                                       MO-TC                                                            0          Line 42
+                         42. Miscellaneous tax credits (from Form MO-TC, Line 13) - Attach Form MO-TC . . . . . . . . . . . . . . .                                             42          . 00
+                                                                                                                                            MO-PTS                                      0          Line 43
+                         43. Property tax credit - Attach Form MO-PTS  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                      43          . 00
+                                                                                                                MO-WFTC                                                                 0
+                         44. Missouri Working Family Tax Credit (Attach Form MO-WFTC and federal return)  . . . . . . . . . . . .                                               44          . 00
+                                                                                                                                                                                        0
+                         45. Total payments and credits - Add Lines 37 through 44  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                            45          . 00
+                                                                                                                     3
+                   Skip Lines 46 through 48 if you are not filing an amended return.
+
+                                                                                                                                                                                                      Line 46
+                 46. Amount paid on original return . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .            46                      . 00
+                                                                                                                                                                                                      Line 47
+                 47. Overpayment as shown (or adjusted) on original return . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                           47                      . 00
+
+                        Indicate Reason for Amending
+                                                                                                 Enter date of IRS report (MM/DD/YY)
+Amended Return
+
+
+
+
+                                A. Federal audit . . . . . . . . . . . . . . . . . . . . . 
+                                                                                                 Enter year of loss (YY)                                      These fields are locked.
+                                                                                                                                                              To unlock them, Click on
+                                B. Net Operating Loss carryback . . . . . . . .                                                                              the "amended" check box
+                                                                                                                                                             on page 1 of this form (top
+                                                                                                 Enter year of credit (YY)                                              left).
+
+                                C. Investment tax credit carryback . . . . . . . 
+                                                                                                 Enter date of federal amended return, if filed. (MM/DD/YY)
+
+                                D. Correction other than A, B, or C  . . . . . . 
+
+                 48. Amended return total payments and credits - Add Lines 45 and 46; subtract Line 47.
+                 		 Enter on Line 48.  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     48                      . 00
+
+
+                 49. If Line 45, or if amended return, Line 48, is larger than Line 36, enter the difference.
+                                                                                                                                                                                           0          Line 49
+                 		 Amount of OVERPAYMENT . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .            49                      . 00
+                                                                                                                                                                                           0          Line 50
+                 50. Amount of Line 49 to be applied to your 2026 estimated tax . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                              50                      . 00
+
+                 51. Enter the amount of your donation in the trust fund boxes below. See instructions for additional trust fund codes.
+
+                                                                                                                         Elderly Home                                Missouri
+                           Children’s                                  Veterans                                          Delivered Meals                             National Guard
+                   51a.    Trust Fund                   . 00      51b. Trust Fund                       . 00      51c.   Trust Fund                   . 00      51d. Trust Fund            . 00
+
+                                                                          Childhood                                    Missouri
+                        Workers’                                          Lead                                         Military Family                                  General
+                   51e. Memorial Fund                   . 00      51f.    Testing Fund                  . 00      51g. Relief Fund                    . 00      51h. Revenue Fund          . 00
+                                                                                                                       Soldiers
+                                                                          Kansas City                                  Memorial
+                                                                          Regional Law
+                                                                          Enforcement                                  Military                                         MIssouri
+                           Organ Donor                                                                                 Museum in                                        Medal of
+                                                        . 00 51j.         Memorial
+                                                                                                        . 00                                          . 00                                 . 00
+Refund
+
+
+
+
+                   51i.    Program Fund                                   Foundation Fund                         51k. St. Louis Fund                           51l.    Honor Fund
+
+
+
+                           Additional             Additional                                     Additional              Additional
+                           Fund                   Fund                                           Fund                    Fund
+                   51m. Code                      Amount                   . 00             51n. Code                    Amount                  . 00                                                 Line 51
+
+
+                        Total Donation - Add amounts from Boxes 51a through 51n and enter here . . . . . . . . . . . . . . . . .                                       51                  0
+                                                                                                                                                                                               . 00 51 Part 2
+
+                 52. Amount of Line 49 to be deposited into a Missouri 529 Education Plan (MOST)
+                                                                                                                               MOST
+                 		 account. Enter the total deposit amount from Form 5632  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                              52                      . 00
+                                                                                                                                                                                           0          Line 53
+                 53. REFUND - Subtract Lines 50, 51, and 52 from Line 49 and enter here . . . . . . . . . . . . . . . . . . . . .                                      53                      . 00
+
+
+                         a. Routing
+                        		Number                                                                                                                        c.           Checking         Savings
+                         b. Account
+                        		Number
+
+
+
+
+                                                                           *25322040006*
+                                                                                                    25322040006
+                                                                                                              4
+              54. If Line 36 is larger than Line 45 or Line 48, enter the difference.
+                                                                                                                                                                                           0
+              		 Amount of UNDERPAYMENT  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .            54                                 . 00
+                                                                                                                                                                                                        Line 55
+ Amount Due
+
+
+
+              55. Underpayment of estimated tax penalty - Attach Form MO-2210. Enter penalty amount here . . .  55                                                                             . 00
+
+                              Select this box if you are a farmer exempt from the underpayment of estimated tax penalty.
+
+              56. AMOUNT DUE - Add Lines 54 and 55.
+              		 If you pay by check, you authorize the Department of Revenue to process the check
+                                                                                                                                                                                           0            Line 56
+              		 electronically. Any returned check may be presented again electronically . . . . . . . . . . . . . . . . . .                               56                                 . 00
+                Under penalties of perjury, I declare that I have examined this return, including accompanying schedules and statements, and to the best
+                of my knowledge and belief it is true, correct, and complete. By signing or entering my name in the “Signature” field(s) below, I am providing
+                the Department of Revenue with my signature as required under Section 143.561, RSMo. Declaration of preparer (other than taxpayer) is
+                based on all information of which he or she has knowledge. As provided in Chapter 143, RSMo., a penalty of up to $500 shall be
+                imposed on any individual who files a frivolous return. I also declare under penalties of perjury that I employ no illegal or
+                unauthorized aliens as defined under federal law and that I am not eligible for any tax exemption, credit, or abatement if I employ such
+                aliens. I am aware of any applicable reporting requirements of Section 135.805, RSMo, and the penalty provisions of Section 135.810,
+                RSMo.
+                Signature                                                                                                                         Date (MM/DD/YY)
+
+
+
+                Spouse’s Signature (If filing combined, BOTH must sign)                                                                           Date (MM/DD/YY)
+
+
+
+                E-mail Address                                                                                                                    Daytime Telephone
+ Signature
+
+
+
+
+                Preparer’s Signature                                                                                                              Date (MM/DD/YY)
+
+
+
+                Preparer’s FEIN, SSN, or PTIN                                                                                                     Preparer’s Telephone
+
+
+
+                Preparer’s Address                                                                                                                State            ZIP Code
+
+
+
+
+                I authorize the Director of Revenue or delegate to discuss my return and attachments with the preparer
+                or any member of the preparer’s firm  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .            Yes              No
+
+                Did you pay a tax return preparer to complete your return, but the preparer failed to sign the return or provide
+                an Internal Revenue Service preparer tax identification number? If you marked yes, please insert the
+                preparer’s name, address, and phone number in the applicable sections of the signature block above. . . . . . .                                                Yes              No
+
+                                                                     *25322050006*
+                                                                                             25322050006
+                                                                                        Department Use Only
+
+
+                A                     FA                       E10                        DE                       F                                                                 .
+
+                                                                                                                                                                       Form MO-1040 (Revised 12-2025)
+Mail to: Balance Due:                                                       Refund or No Amount Due:                             Fax: (573) 522-1762
+		       Missouri Department of Revenue                                     Missouri Department of Revenue                       Email: incometaxprocessing@dor.mo.gov
+			      P.O. Box 3370                                                      P.O. Box 3222                                        Submission of Individual Income Tax Returns
+			Jefferson City, MO 65105-3370                                            Jefferson City, MO 65105-3222                        Email: income@dor.mo.gov
+			      Phone: (573) 751-7200                                              Phone: (573) 751-3505                                Inquiry and correspondence
+					
+Ever served on active duty in the United States Armed Forces?
+		
+If yes, visit dor.mo.gov/military/ to see the services and benefits DOR offers to all eligible military
+individuals, or complete the survey at mvc.dps.mo.gov/MoVeteransInformation/Survey/DOR to
+receive information from the Missouri Veterans Commission. A list of all state agency resources
+and benefits can be found at veteranbenefits.mo.gov/state-benefits/.
+                                                                 5
+Visit dor.mo.gov/taxation/individual/tax-types/income/ for additional information.                                                                           Click here to finish
+

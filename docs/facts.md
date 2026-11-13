@@ -60,7 +60,7 @@ messages are used directly. These have messages of their own:
 | `Receipt` | A receipt |
 | `FormW4` | An employee's withholding certificate, as filled in |
 | `PaymentConfirmation` | A confirmation of an estimated, balance-due or extension payment |
-| `FederalReturn`, `ArizonaReturn`, `CaliforniaReturn`, `ColoradoReturn`, `IllinoisReturn`, `NorthCarolinaReturn`, `OregonReturn` | A filed return with its schedules |
+| `FederalReturn`, `ArizonaReturn`, `CaliforniaReturn`, `ColoradoReturn`, `IllinoisReturn`, `MissouriReturn`, `NorthCarolinaReturn`, `OregonReturn` | A filed return with its schedules |
 
 `Document` pairs one of these, or a form message, with a `DocumentRef`.
 
