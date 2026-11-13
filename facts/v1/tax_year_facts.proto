@@ -380,6 +380,9 @@ message PriorYearReturn {
     // An Illinois return.
     IllinoisReturn illinois = 15;
 
+    // A Montana return.
+    MontanaReturn montana = 39;
+
     // A North Carolina return.
     NorthCarolinaReturn north_carolina = 16;
 

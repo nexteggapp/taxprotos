@@ -1,0 +1,506 @@
+St No
+    les                                                                                                             Clear Form
+  ap
+
+
+                                       2025 Montana Individual Income Tax Return                                    Form 2
+                                                                                                                          2025v3
+                                                                                                                         12/2025
+               For the year Jan 1 – Dec 31, 2025, or the tax year beginning M M D D 2 0 2 5 and ending M M D D 2 0 Y Y
+               Mark if this is an amended return
+          First Name                Initial Last Name                                      Social Security Number Deceased?
+
+          Spouse’s First Name       Initial Spouse’s Last Name                                   Social Security Number Deceased?
+
+          Current mailing address                                   City                                State ZIP Code + 4
+
+          Federal Filing Status     Single           Married Filing Jointly     Married Filing Separately
+                                    Qualifying Surviving Spouse                 Head of Household
+
+          Residency Status          Resident          Part-year Resident        Mixed Residency
+                                    Nonresident       ND Reciprocity            Nonresident Military Spouse
+          Taxable Income
+           1 Federal adjusted gross income from Form 1040, line 11b                                           1                    00
+           2 Add Form 1040, lines 12e and 13b                                                                 2                    00
+           3 Subtract line 2 from line 1. If zero or less, enter 0 (zero).                                    3                    00
+           4 Montana additions to federal taxable income from Schedule I, Part I, line 7                      4                    00
+           5 Montana subtractions from federal taxable income from Schedule I, Part I, line 24                5                    00
+           6 $5,660 subtraction for taxpayers 65 and older
+             ($11,320 if married filing jointly and both are 65 and older)                                    6                    00
+           7 Add lines 3 and 4. Then subtract lines 5 and 6. If zero or less, enter 0 (zero).
+                                                                     This is your Montana taxable income.     7                    00
+          Tax, Credits, and Payments
+           8   Tax liability before tax credits (See instructions)                                            8                    00
+           9   Nonrefundable tax credits from Schedule III, Part I, line 14                                   9                    00
+          10   Subtract line 9 from line 8.                This is your tax after nonrefundable tax credits. 10                    00
+          11   Montana income tax withheld from:
+               11a Form(s) W-2                                                        11a                  00
+               11b Form(s) 1099                                                       11b                  00
+               11c Total pass-through entity tax credit from Montana Schedule(s) K-1 11c                   00
+               11d Total withholding from Montana Schedule(s) K-1                     11d                  00
+               11e Loan-out withholding from Form LOWCERT                             11e                  00
+               Add lines 11a through 11e                                                                     11                    00
+          12   2025 estimated tax payments                                                                   12                    00
+          13   Overpayment applied from 2024 return                                                          13                    00
+          14   Extension payment                                                                             14                    00
+          15   Earned Income Credit. Federal EIC                     00 Multiply Federal EIC by 10% (0.10) 15                      00
+          16   Elderly Homeowner/Renter Credit from Schedule 2EC, Line 30                                    16                    00
+          17   Refundable tax credits from Schedule III, Part I, line 17                                     17                    00
+          18   If filing an amended return: payments made with original return                               18                    00
+          19   Contributions, penalties, interest, and other taxes from Schedule IV, line 8                  19                    00
+          20   If filing an amended return: previous overpayment                                             20                    00
+          21   Add lines 11 through 18, then subtract lines 19 and 20.          This is your total payments. 21                    00
+          Tax Due or Overpayment
+          22   If line 21 is less than line 10, subtract line 21 from line 10.      This is your tax due. 22                       00
+          23   If line 21 is more than line 10, subtract line 10 from line 21. This is your tax overpaid. 23                       00
+          24   Enter the amount from line 23 you would like applied to your 2026 estimated taxes          24                       00
+          25   Enter the amount you want deposited into a 529 or 529A account                             25                       00
+          26   Add lines 24 and 25, then subtract from line 23.                      This is your refund. 26                       00
+
+
+
+
+                                                                                              *25CE0101*
+                                                                                                      *25CE0101*
+Name                                                                      Social Security Number
+Montana Individual Income Tax
+Nonresidents, part-year residents, and Montana residents with nonresident or part-year resident spouses, enter line 11 on
+Schedule II, line 23; line 12 on Schedule II, line 18; and leave line 13 below blank.
+  1 Enter your total Montana taxable income from page 1, line 7. If you do not have a net long-term
+      capital gains, skip lines 2 through 10 and enter 0 (zero) on line 11.                                1                     00
+  2 Enter your net long-term capital gains (See instructions)                                              2                     00
+  3 Enter the lesser of line 1 or line 2                                                                   3                     00
+  4 Subtract line 3 from line 1                                                                            4                     00
+  5 Enter the amount for your federal filing status:
+          $21,100 if single or married filing separately
+          $42,200 if married filing jointly or qualifying surviving spouse
+          $31,700 if head of household                                                                     5                     00
+  6 Subtract line 4 from line 5. If zero or less, enter 0 (zero)                                           6                     00
+  7 Enter the lesser of line 3 or line 6                                                                   7                     00
+  8 Multiply line 7 by 3% (0.03)                                                                           8                     00
+  9 Subtract line 6 from line 3. If zero or less, enter 0 (zero)                                           9                     00
+10 Multiply line 9 by 4.1% (0.041)                                                                        10                     00
+ 11 Add lines 8 and 10.                      This is your Montana net long-term capital gains tax. 11                            00
+12 If you do not have a net long-term capital gain, figure your tax on the amount on line 1 using the
+      Montana Ordinary Income Tax Table. If you have a net long-term capital gain, figure your tax on
+      the amount on line 4 using the Montana Ordinary Income Tax Table.
+                                                            This is your Montana ordinary income tax. 12                         00
+13 Residents add lines 11 and 12, and enter this amount on page 1, line 8.
+                                                                   This is your Montana resident tax. 13                         00
+If you are filing a return in Montana for the first time, direct deposit is not available. Stop here and sign your return below.
+If the direct deposit option is available and you wish to use it, provide your bank account information, and sign your return below.
+
+Direct Deposit Your Refund Complete 1, 2, and 3. (See instructions)
+ 1 Routing Number
+ 2 Account Number                                                               Checking          Savings
+ 3    Mark this box if this refund is going to an account that is located outside of the United States or its territories.
+529/529A Account Deposit Information (See instructions)                                                529/529A deposit amount
+ 4 Account Type       529 Qualified Tuition Program          529A Achieving a Better Life Experience
+   RTN#                              ACCT#                                                                                 00
+ 5 Account Type       529 Qualified Tuition Program          529A Achieving a Better Life Experience
+   RTN#                              ACCT#                                                                                 00
+
+REQUIRED – Signature, Paid Preparer, and Third-Party Designee
+Under penalties of false swearing, I declare that I have examined this return, including accompanying schedules and
+statements, and to the best of my knowledge and belief, it is true, correct, and complete.
+Taxpayer
+  Signature x                                                 Date M M D D Y Y Y Y Date of Birth M M D D Y Y Y Y
+                                                                                               Phone
+Spouse
+  Signature x                                                 Date M M D D Y Y Y Y Date of Birth M M D D Y Y Y Y
+                                                                                               Phone
+Tax Preparer
+  Signature                                                                               Date Signed M M D D Y Y Y Y
+ Print Name                                                                                    Phone
+      Mark this box if you allow the DOR to discuss this tax return with your tax preparer.      PTIN
+      Mark this box if you allow the DOR to discuss this tax return with someone other than your tax preparer.
+      Name                                                                                     Phone
+
+
+
+
+                                                                                         *25CE0201*
+                                                                                                  *25CE0201*
+
+
+                                                                                                         Form 2 – Page 2 – 2025
+                           2025 Montana Form 2 Schedule I – Adjustments                                                  2025v3
+                                                                                                                        12/2025
+
+
+
+Name                                                                            Social Security Number
+Part I. Montana Adjustments to Federal Taxable Income
+Additions
+ 1 Interest and mutual fund dividends from state, county, or municipal bonds from other states 1                                  00
+ 2 Other recoveries of amounts deducted in earlier years that reduced Montana taxable income.
+   (Do not include recoveries of federal income tax.)                                                       2                     00
+ 3 Taxable distribution from         Montana medical savings account Part II, line 8
+                                     first-time homebuyer’s account (See instructions)                      3                     00
+ 4 State income tax deduction included in federal taxable income (See instructions)                         4                     00
+ 5 Expenses used to claim a Montana tax credit                                                              5                     00
+ 6 Other additions Code                    Code                                                             6                     00
+ 7 Add lines 1 through 6, and enter the total on page 1, line 4. This is your Montana additions. 7                                00
+Subtractions
+ 8 State income tax refunds included in federal taxable income (See instructions)                           8                     00
+ 9 Interest and mutual fund dividends from federal bonds, notes, and obligations                            9                     00
+10 Recoveries of amounts deducted in earlier years included in federal taxable income that did
+   not reduce Montana income tax                                                                           10                     00
+11 Exempt tribal income. Include Form ETM                                                                  11                     00
+12 Military salary of active-duty service member                                                           12                     00
+13 Subtraction of military retirement income for working military retirees and military survivor benefits.
+   Include Form WMRE                                                                                       13                     00
+14 Montana medical savings accounts deposits and earnings from Part II, line 4                             14                     00
+15 First-time homebuyer account deposits and earnings from deposits made before January 1, 2024 15                                00
+16 Family education savings (529 plan) account deposits                                                    16                     00
+17 Achieving a Better Life Experience Act (ABLE) account deposits                                          17                     00
+18 Business-related expenses for purchasing recycled material. Include Form RCYL                           18                     00
+19 Business expenses not included in federal taxable income due to an existing federal credit taken 19                            00
+20 Certain expenses incurred by cannabis businesses                                                        20                     00
+21 Business sales and other miscellaneous subtractions. Code                        Code                   21                     00
+22 Tier I Railroad Retirement Benefits included on Form 1040, line 6b                                      22                     00
+23 Tier II Railroad Retirement Benefits included on Form 1040, line 5b (See instructions)                  23                     00
+24 Add lines 8 through 23, and enter total on page 1, line 5.     This is your Montana subtractions. 24                           00
+Part II. Montana Medical Savings Account (MSA) Adjustment
+Subtraction
+ 1 Beginning balance. If this is a new account, enter 0                                              1                            00
+ 2 Total contributions for the year (up to $4,600 per taxpayer)                                      2                            00
+ 3 Earnings from the account: interest, dividends, capital gains, etc.
+       Mark this box if your account balance is less than your beginning balance (See instructions)  3                            00
+ 4 Add lines 2 and 3. Enter the total on Part I, line 14                                             4                            00
+ 5 Ending balance. Enter your ending balance as shown on your year-end account statement. 5                                       00
+Addition
+ 6 Total withdrawals made during the year                                                            6                            00
+ 7 Withdrawals for eligible expenses. (See instructions)                                             7                            00
+ 8 Nonqualified withdrawals. Subtract line 7 from line 6. Enter the total on Part I, line 3          8                            00
+ 9 Nonqualified withdrawals not subject to penalty (See instructions)                                9                            00
+10 Nonqualified withdrawals subject to penalty. Subtract line 9 from line 8                         10                            00
+
+
+
+
+                                                                                          *25CE0301*
+                                                                                                   *25CE0301*
+
+
+                                                                                                           Form 2 – Page 3 – 2025
+                                  2025 Montana Form 2 Schedule II –                                             2025v3
+
+                                   Tax on Montana Source Income                                                12/2025
+
+
+
+     Alternative Method Filer (See instructions)         30 Day Nonresident Exclusion (See instructions)
+Part-Year Resident Information
+Date of Residency Change M M D D Y Y Y Y State moved to                     State moved from
+Mixed Residency (See instructions)
+Complete this section if one spouse was a Montana resident at any point during the tax year and the other spouse was a
+nonresident or part-year resident.
+Montana Resident Spouse                                                              Social Security Number
+
+Nonresident/Part-Year Resident Spouse                                                 Social Security Number
+
+Montana Source Ordinary Income
+Montana source ordinary income is all income that is not considered a net long-term capital gain.
+ 1 Wages, salaries, tips, etc.                                                                     1                     00
+ 2 Interest                                                                                        2                     00
+ 3 Ordinary dividends                                                                              3                     00
+ 4 Refunds, credits, or offsets of local income taxes                                              4                     00
+ 5 Alimony received                                                                                5                     00
+ 6 Business income or (loss). (See instructions)
+    6a Montana source business income                                        6a                00
+    6b Additional Montana source business expenses                           6b                00
+   Subtract line 6b from line 6a.      This is your net Montana source business income or (loss) 6                       00
+ 7 Short-term capital gain or (loss)                                                               7                     00
+ 8 Other gains or (losses)                                                                         8                     00
+ 9 IRAs, pensions, and annuities                                                                   9                     00
+10 Rental real estate, royalties, partnerships, S corporations, trusts, etc.
+         Mark this box if you have Montana source suspended losses (See instructions)
+   10a Montana source income from rental real estate, royalties,
+       partnerships, S corporations, trusts, etc.                           10a                00
+   10b Additional Montana source business expenses related to rental
+       real estate, royalties, partnerships, S corporations, trusts, etc.
+                                                                           10b
+       (See instructions)                                                                      00
+   Subtract line 10b from line 10a.                       This is your net Montana source income
+                  from rental real estate, royalties, partnerships, S corporations, trusts, etc. 10                      00
+11 Farm income or (loss)
+   11a Montana source farm income or (loss)                                 11a                00
+   11b Additional Montana source expenses related to farm income or
+       (loss) (See instructions)                                            11b                00
+   Subtract line 11b from line 11a. This is your net Montana source farm income or (loss). 11                            00
+12 Social Security Benefits                                                                       12                     00
+13 Other income and adjustments to income (See instructions)                                      13                     00
+14 Montana source additions to income (See instructions)                                          14                     00
+15 Add lines 1 through 14.                        This is your Montana source ordinary income. 15                        00
+Everywhere Ordinary Income
+16 Everywhere Ordinary Income
+   16a Form 1040, line 9                                           16a                 00
+   16b Certain federal adjustments
+       (See instructions)                                          16b                 00
+   16c Net long-term capital gains                                 16c                 00
+   Subtract lines 16b and 16c from line 16a.
+                                    This is your everywhere ordinary income for Montana. 16                              00
+
+
+
+
+                                                                                   *25CE0401*
+                                                                                           *25CE0401*
+
+
+                                                                                                  Form 2 – Page 4 – 2025
+                                 2025 Montana Form 2 Schedule II –
+                                  Tax on Montana Source Income
+                                           (Continued)
+Name                                                                  Social Security Number
+Montana Source Ordinary Income Tax
+17 Divide line 15 by line 16.
+   Round to 6 decimal places and do not enter more than 1.000000.
+                                          This is your Montana source ordinary income ratio. 17      .
+18 Montana ordinary income tax from page 2, line 12                                          18                   00
+19 Multiply the tax on line 18 by the ratio on line 17.
+                                            This is your Montana source ordinary income tax. 19                   00
+Montana Source Net Long-Term Capital Gains Tax
+20 Total net long-term capital gains from page 2, line 2                                     20                   00
+21 Montana source net long-term capital gains                                                21                   00
+22 Divide line 21 by line 20. Round to 6 decimal places and do not enter more than 1.000000.
+                              This is your Montana source net long-term capital gains ratio. 22      .
+23 Montana net long-term capital gains tax from page 2, line 11                              23                   00
+24 Multiply the tax on line 23 by the ratio on line 22.
+                               This is your Montana source net long-term capital gains tax. 24                    00
+Total Tax on Montana Source Income
+25 Add lines 19 and 24. Enter here and on page 1, line 8.
+                                         This is your total tax on Montana source income. 25                      00
+
+
+
+
+                                                                               *25CE0501*
+                                                                                      *25CE0501*
+
+
+                                                                                               Form 2 – Page 5 – 2025
+                           2025 Montana Form 2 Schedule III – Tax Credits                                             2025v3
+                                                                                                                     12/2025
+
+
+
+Name                                                                          Social Security Number
+Part I. Tax Credits
+Nonrefundable Credits
+ 1 Total credit for an income tax liability paid to another state or country from all Parts II, line 21  1                     00
+ 2 Qualified endowment credit. Include Form QEC                                                          2                     00
+ 3 Recycle credit. Include Form RCYL                                                                     3                     00
+ 4 Apprenticeship credit                                                                                 4                     00
+ 5 Trades education and training credit. Include Form TETC                                               5                     00
+ 6 Innovative educational program credit
+    Credit confirmation code
+    Credit confirmation code                                                                             6                     00
+ 7 Student scholarship organization credit
+    Credit confirmation code
+    Credit confirmation code                                                                             7                     00
+ 8 Contractor’s gross receipts tax credit. If multiple CGR accounts, mark here
+    CGR Account ID:                                   C G R                                              8                     00
+ 9 Historic property preservation credit. Include federal Form 3468                                      9                     00
+10 Infrastructure users fee credit. Include Form IUFC                                                   10                     00
+11 MEDIA Credit
+    UCRN           -          -      -           -          -
+    UCRN           -          -      -           -          -                                           11                     00
+12 Jobs growth incentive credit. Include Form JGI
+    Credit certificate number               -           -                                               12                     00
+13 Carryforward amount from an expired or repealed tax credit (See instructions)
+    Tax credit code                                                                                     13                     00
+14 Add lines 1 through 13 and enter the total on page 1, line 9.
+                                                          These are your nonrefundable credits. 14                             00
+Refundable Credits
+15 Adoption credit. Include Form ADPT                                                                   15                     00
+16 Unlocking public lands credit                                                                        16                     00
+17 Add lines 15 and 16 and enter the total on page 1, line 17. These are your refundable credits. 17                           00
+
+
+
+
+                                                                                        *25CE0601*
+                                                                                                *25CE0601*
+
+
+                                                                                                        Form 2 – Page 6 – 2025
+                          2025 Montana Form 2 Schedule III – Tax Credits
+                                          (Continued)
+
+Name                                                                        Social Security Number
+Part II. Credit For Income Taxes Paid to Another State or Country
+Complete a separate page for each state or other country. Report the total of all pages on Part I, line 1.
+Montana Ordinary Income Tax
+ 1 Enter your income sourced and taxable to another state or country that is included in your
+    Montana taxable income or in your Montana source income if a part-year resident, excluding any
+    net long-term capital gains. (See instructions)                                                   1                 00
+ 2 Enter all income sourced and taxable to the other state or country
+    Enter state’s abbreviation                                                                        2                 00
+ 3 Income sourced and taxable to Montana excluding your net long-term capital gains
+    (See instructions)
+     3a If a full-year resident, enter Form 1040, line 9 excluding your
+         net long-term capital gains                                         3a                    00
+     3b If a full-year resident, enter expenses related to sourced and
+         taxable income                                                      3b                    00
+    Full-year residents subtract line 3b from line 3a.
+    Part-year residents and mixed residency filers, enter Schedule II, line 16.                       3                 00
+ 4 Enter your total tax liability paid to the other state or country                                  4                 00
+ 5 Enter your Montana ordinary income tax (See instructions)                                          5                 00
+ 6 Divide line 1 by line 2. Round to 6 decimal places and do not enter more than 1.000000             6      .
+ 7 Multiply line 4 by line 6                                                                          7                 00
+ 8 Divide line 1 by line 3. Round to 6 decimal places and do not enter more than 1.000000             8      .
+ 9 Multiply line 5 by line 8                                                                          9                 00
+10 Enter the lesser of the amounts on lines 4, 7, or 9.                          This is your credit
+    for income tax paid to another state or country for Montana ordinary income tax.                 10                 00
+Montana Net Long-Term Capital Gains Tax
+11 Enter your net long-term capital gain sourced and taxable to another state or country that is
+    included in your Montana taxable income or in your Montana source income if a part-year
+    resident. (See instructions)                                                                     11                 00
+12 Enter all income sourced and taxable to the other state or country
+    Enter state’s abbreviation                                                                       12                 00
+13 Enter federal net long-term capital gains.
+    Part-year residents and mixed residency filers, enter Schedule II, line 21.                      13                 00
+14 Enter your income tax liability paid to the other state or country (See instructions)             14                 00
+15 Full-year residents enter page 2, line 11.
+    Part-year residents and mixed residency filers enter Schedule II, line 24.                       15                 00
+16 Divide line 11 by line 12. Round to 6 decimal places and do not enter more than 1.000000 16               .
+17 Multiply line 14 by line 16                                                                       17                 00
+18 Divide line 11 by line 13. Round to 6 decimal places and do not enter more than 1.000000 18               .
+19 Multiply line 15 by line 18                                                                       19                 00
+20 Enter the lesser of the amounts on lines 14, 17, or 19.                   This is your credit for
+    income tax paid to another state or country for Montana net long-term capital gains tax. 20                         00
+Total Credit for Income Taxes Paid to Another State or Country
+21 Add lines 10 and 20.                                                                              21                 00
+
+
+
+
+                                                                                     *25CE0701*
+                                                                                             *25CE0701*
+
+
+                                                                                                     Form 2 – Page 7 – 2025
+                             2025 Montana Form 2 Schedule IV –                                                  2025v3
+
+                      Contributions, Penalties, Interest, and Other Taxes                                      12/2025
+
+
+
+Name                                                                     Social Security Number
+ 1 Total voluntary check-off contribution programs from lines 1a through 1d
+   1a Nongame Wildlife Program                    $5       $10       $20                     00 other amount
+   1b Child Abuse Prevention                      $5       $10       $20                     00 other amount
+   1c Agriculture Literacy in Montana Schools     $5       $10       $20                     00 other amount
+   1d Montana Military Family Relief Fund         $5       $10       $20                     00 other amount
+   Total voluntary check-off contribution programs from lines 1a through 1d                     1                        00
+ 2 Interest on underpayment of estimated taxes (See instructions)                               2                        00
+   If applicable, mark the appropriate box
+                2/3 farming gross income
+                Estimated payments made using the annualization method
+ 3 Late filing penalty                                                                          3                        00
+ 4 Late payment penalty                                                                         4                        00
+ 5 Interest                                                                                     5                        00
+ 6 Other penalties (See instructions)             First-Time Homebuyer Account
+                                                  Montana Medical Savings Account
+                                                  Farm and Ranch Risk Management Account 6                               00
+ 7 Lump-sum and recapture taxes (See instructions) Code                  Code                   7                        00
+ 8 Add lines 1 through 7, and enter on page 1, line 19.
+                     These are your total contributions, penalties, interest, and other taxes. 8                         00
+
+
+
+
+                                                                               *25CE0801*
+                                                                                       *25CE0801*
+
+
+                                                                                              Form 2 – Page 8 – 2025
+                               2025 Montana Form 2 Schedule V –                                        2025v3
+
+                                  Amended Return Information                                          12/2025
+
+
+
+Name                                                            Social Security Number
+
+Adjustment Type:    Federal Audit      Amended Federal Return     Montana Adjustment          Other
+
+              A                     B                                    C
+       Form or Schedule        Line or Box                             Reason
+
+
+
+
+                                                                        *25CE0901*
+                                                                                *25CE0901*
+
+
+                                                                                         Form 2 – Page 9 – 2025
+                                 2025 Montana Form 2 Schedule 2EC –                                             2025v3
+
+                                   Elderly Homeowner/Renter Credit                                             12/2025
+
+
+
+Claimant Name           Initial Last Name                                      Social Security Number Date of Death
+                                                                                                       MM D D Y Y Y Y
+Physical address                                         City                                  State ZIP Code + 4
+
+
+Attestation
+      I reached age 62 by December 31, 2025
+      I resided in Montana for a minimum of nine months during 2025
+      I occupied a Montana residence as a renter, owner, or lessee for at least six months during 2025
+      The combined gross household income was less than $45,000 for 2025 (See instructions)
+      I am the only member of my household claiming this credit
+
+Household Occupancy
+     How many people lived in your household during 2025?
+Gross Household Income
+ 1   Wages, salaries, tips, etc.                                                                   1                     00
+ 2   Interest                                                                                      2                     00
+ 3   Dividends                                                                                     3                     00
+ 4   IRA distributions from Form 1099-R (See instructions)                                         4                     00
+ 5   Pensions and annuities from Form 1099-R and Tier II Railroad Retirement benefits
+     (See instructions)                                                                            5                     00
+ 6   Social Security benefits and Tier I Railroad Retirement benefits (See instructions)           6                     00
+ 7   Capital gain, including any exclusion                                                         7                     00
+ 8   Refundable credits received, including your elderly homeowner renter credit received in 2025 8                      00
+ 9   Alimony                                                                                       9                     00
+10   Business income                                                                              10                     00
+11   Other gains                                                                                  11                     00
+12   Rental real estate, royalties, partnerships, S corporations, trusts, etc.                    12                     00
+13   Farm income                                                                                  13                     00
+14   Unemployment compensation                                                                    14                     00
+15   Other income not included above (See instructions)                                           15                     00
+16   Government assistance and support money                                                      16                     00
+17   Income received by other members of your household                                           17                     00
+18   Add lines 1 through 17.                              This is your gross household income. 18                        00
+Net Household Income
+19   Your standard exclusion is entered here for you                                           19            1 2 6 0 0 00
+20   Subtract line 19 from line 18 and enter the result here, but not less than zero           20                      00
+21   Enter your multiplier rate from the Household Income Reduction Table. (See instructions)  21        .
+22   Multiply line 20 by line 21.                           This is your net household income. 22                        00
+Credit Calculation
+23 Enter the property tax you were billed for your Montana residence and up to one acre in 2025 23                       00
+24 Enter the rent that you paid in 2025 for your Montana residence                              24                       00
+25 Multiply line 24 by 15% (0.15)                                                               25                       00
+26 Add lines 23 and 25                                                                          26                       00
+27 Subtract line 22 from line 26 and enter the result here, but not less than zero              27                       00
+28 Enter the lesser of line 27 or $1,150                                                        28                       00
+29 Enter the percentage from the Credit Multiplier Table that corresponds to your gross
+   household income on line 18 (See instructions)                                               29       .
+30 Multiply line 28 by the percentage on line 29. Enter the total here and on page 1, line 16.
+                                                This is your elderly homeowner/renter credit. 30                         00
+
+
+
+
+                                                                                   *25CE1001*
+                                                                                           *25CE1001*
+
+
+                                                                                                Form 2 – Page 10 – 2025
+
