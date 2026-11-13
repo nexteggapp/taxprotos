@@ -1,0 +1,144 @@
+// Form MI-1040, Michigan Individual Income Tax Return.
+//
+// Part-year residents and non-residents file the same form with Schedule NR,
+// which replaces the exemption allowance on line 15. Amended returns add
+// line 33. Only the full-year resident's original return is modelled here.
+// Michigan's city income taxes are separate returns and are not part of it.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form MI-1040; testdata
+// holds the text extracted from the published PDF and coverage_test.go asserts
+// every line a mapping claims appears on it.
+//
+// # A flat tax after exemptions
+//
+// Michigan starts from federal adjusted gross income, adds and subtracts the
+// items on Schedule 1, takes off an exemption allowance for each person on
+// line 9 and taxes the rest at a flat rate on line 17. There is no standard or
+// itemized deduction on the form itself; the deductions by year of birth are
+// subtractions on Schedule 1.
+//
+// # Credits that are refunded
+//
+// The property tax, farmland preservation and earned income credits come
+// after the total tax liability, beside withholding and estimated payments,
+// and are refunded where they exceed the tax.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.mi.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/mi/v1/form_mi1040;formmi1040";
+
+// FilingStatus is the status the return is filed under.
+//
+// Michigan has three. A filer who is head of household or a qualifying
+// surviving spouse federally files as single.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+}
+
+// FormMI1040 is what a Form MI-1040 states.
+message FormMI1040 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // Someone else can claim the filer as a dependent. The filer then takes the
+  // fixed allowance on line 9e in place of the exemptions on line 9a.
+  bool claimed_as_dependent = 5 [(common.v1.fdx_absent) = true];
+
+  // The filer, the spouse on a joint return, and the dependents.
+  int32 exemptions = 6 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money personal_exemption = 7 [(common.v1.fdx_absent) = true];
+
+  // People who are deaf, blind, hemiplegic, paraplegic, quadriplegic, or
+  // totally and permanently disabled, one exemption each.
+  int32 special_exemptions = 8 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money special_exemption = 9 [(common.v1.fdx_absent) = true];
+
+  int32 qualified_disabled_veterans = 10 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money disabled_veteran_exemption = 11 [(common.v1.fdx_absent) = true];
+
+  // Certificates of Stillbirth from the Michigan Department of Health and
+  // Human Services.
+  int32 stillbirths = 12 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money stillbirth_exemption = 13 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money dependent_filer_exemption = 14 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_exemptions = 15 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 16 [(common.v1.fdx_absent) = true];
+
+  // From Schedule 1.
+  nexteggapp.taxprotos.common.v1.Money additions = 17 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_income = 18 [(common.v1.fdx_absent) = true];
+
+  // From Schedule 1: among them taxable social security, retirement and
+  // pension benefits, and interest on U.S. obligations.
+  nexteggapp.taxprotos.common.v1.Money subtractions = 19 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money income_subject_to_tax = 20 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money exemption_allowance = 21 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 22 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax = 23 [(common.v1.fdx_absent) = true];
+
+  // Nonrefundable credits: each beside the amount it is figured from.
+  nexteggapp.taxprotos.common.v1.Money tax_paid_to_other_governments = 24 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money credit_for_tax_paid_to_other_governments = 25 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money historic_preservation_credit_amount = 26 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money historic_preservation_credit = 27 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money organ_donation_expenses = 28 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money organ_donation_credit = 29 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money income_tax = 30 [(common.v1.fdx_absent) = true];
+
+  // From Form 4642.
+  nexteggapp.taxprotos.common.v1.Money voluntary_contributions = 31 [(common.v1.fdx_absent) = true];
+
+  // From Form 5792, the First-Time Home Buyer Savings Program.
+  nexteggapp.taxprotos.common.v1.Money home_buyer_savings_withdrawal_penalty = 32 [(common.v1.fdx_absent) = true];
+
+  // Use tax on purchases from out of state.
+  nexteggapp.taxprotos.common.v1.Money use_tax = 33 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_tax_liability = 34 [(common.v1.fdx_absent) = true];
+
+  // From Form MI-1040CR or MI-1040CR-2.
+  nexteggapp.taxprotos.common.v1.Money property_tax_credit = 35 [(common.v1.fdx_absent) = true];
+
+  // From Form MI-1040CR-5.
+  nexteggapp.taxprotos.common.v1.Money farmland_preservation_credit = 36 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money federal_earned_income_credit = 37 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money earned_income_credit = 38 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money refundable_historic_preservation_credit = 39 [(common.v1.fdx_absent) = true];
+
+  // The filer's share of tax an electing flow-through entity paid itself.
+  nexteggapp.taxprotos.common.v1.Money flow_through_entity_tax_credit = 40 [(common.v1.fdx_absent) = true];
+
+  // From Schedule W.
+  nexteggapp.taxprotos.common.v1.Money michigan_tax_withheld = 41 [(common.v1.fdx_absent) = true];
+
+  // Estimated tax, extension payments and the prior year's credit forward.
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 42 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_refundable_credits_and_payments = 43 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money amount_owed = 44 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money overpayment = 45 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money credited_forward = 46 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money refund = 47 [(common.v1.fdx_absent) = true];
+}
