@@ -100,6 +100,7 @@ import "taxprotos/us/state/co/v1/form_dr0104/form_dr0104.proto";
 import "taxprotos/us/state/il/v1/form_il1040/form_il1040.proto";
 import "taxprotos/us/state/nc/v1/form_d400/form_d400.proto";
 import "taxprotos/us/state/or/v1/form_or40/form_or40.proto";
+import "taxprotos/us/state/pa/v1/form_pa40/form_pa40.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_asc.proto";
 
@@ -244,6 +245,9 @@ message Document {
 
     // A filed Arizona return.
     ArizonaReturn arizona_return = 51;
+
+    // A filed Pennsylvania return.
+    PennsylvaniaReturn pennsylvania_return = 80;
   }
 }
 
@@ -726,4 +730,10 @@ message ColoradoReturn {
 message ArizonaReturn {
   // Form 140.
   us.state.az.v1.Form140 form_140 = 1;
+}
+
+// A Pennsylvania resident return: Form PA-40.
+message PennsylvaniaReturn {
+  // Form PA-40.
+  us.state.pa.v1.FormPA40 form_pa40 = 1;
 }

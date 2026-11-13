@@ -2,7 +2,7 @@
 
 Protobuf schemas for US tax documents: the W-2 and 1099 forms a household
 receives, the Form 1040 it files, the state returns for Arizona, California,
-Colorado, Illinois, North Carolina, Oregon and Washington, and `TaxYearFacts`, a
+Colorado, Illinois, North Carolina, Oregon, Pennsylvania and Washington, and `TaxYearFacts`, a
 household's own facts for one tax year.
 
 A schema holds what the form prints and nothing else. It has no confidence
@@ -201,6 +201,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [OR-40](https://www.oregon.gov/dor/forms/FormsPubs/form-or-40_101-040_2025.pdf) | [`form_or40.proto`](us/state/or/v1/form_or40/form_or40.proto) | The Oregon resident return |
 | [Schedule OR-A](https://www.oregon.gov/dor/forms/FormsPubs/schedule-or-a_101-007_2025.pdf) | [`schedule_or_a.proto`](us/state/or/v1/form_or40/schedule_or_a.proto) | Oregon itemized deductions |
 | [Schedule OR-ASC](https://www.oregon.gov/dor/forms/FormsPubs/schedule-or-asc_101-063_2025.pdf) | [`schedule_or_asc.proto`](us/state/or/v1/form_or40/schedule_or_asc.proto) | Oregon additions, subtractions and credits |
+| [PA-40](https://www.pa.gov/content/dam/copapwp-pagov/en/revenue/documents/formsandpublications/formsforindividuals/pit/documents/2025/2025_pa-40.pdf) | [`form_pa40.proto`](us/state/pa/v1/form_pa40/form_pa40.proto) | The Pennsylvania resident return |
 | [Capital gains](https://app.leg.wa.gov/rcw/default.aspx?cite=82.87) | [`capital_gains_return.proto`](us/state/wa/v1/capital_gains/capital_gains_return.proto) | Washington's excise tax on long-term gains |
 
 Washington levies no personal income tax, so `us/state/wa` has no income tax
