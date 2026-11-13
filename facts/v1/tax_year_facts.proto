@@ -401,6 +401,8 @@ message PriorYearReturn {
     MichiganReturn michigan = 35;
     // A Pennsylvania return.
     PennsylvaniaReturn pennsylvania = 47;
+    // A Kentucky return.
+    KentuckyReturn kentucky = 30;
   }
 
   // Where the return came from, when it is here.

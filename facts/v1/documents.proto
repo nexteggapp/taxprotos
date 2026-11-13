@@ -101,6 +101,7 @@ import "taxprotos/us/state/co/v1/form_dr0104/form_dr0104.proto";
 import "taxprotos/us/state/ga/v1/form_500/form_500.proto";
 import "taxprotos/us/state/il/v1/form_il1040/form_il1040.proto";
 import "taxprotos/us/state/mi/v1/form_mi1040/form_mi1040.proto";
+import "taxprotos/us/state/ky/v1/form_740/form_740.proto";
 import "taxprotos/us/state/nc/v1/form_d400/form_d400.proto";
 import "taxprotos/us/state/or/v1/form_or40/form_or40.proto";
 import "taxprotos/us/state/pa/v1/form_pa40/form_pa40.proto";
@@ -263,6 +264,8 @@ message Document {
     MichiganReturn michigan_return = 68;
     // A filed Pennsylvania return.
     PennsylvaniaReturn pennsylvania_return = 80;
+    // A filed Kentucky return.
+    KentuckyReturn kentucky_return = 63;
   }
 }
 
@@ -782,4 +785,8 @@ message WashingtonReturn {
 message PennsylvaniaReturn {
   // Form PA-40.
   us.state.pa.v1.FormPA40 form_pa40 = 1;
+// A Kentucky resident return: Form 740.
+message KentuckyReturn {
+  // Form 740.
+  us.state.ky.v1.Form740 form_740 = 1;
 }
