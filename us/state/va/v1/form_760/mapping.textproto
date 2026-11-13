@@ -1,0 +1,163 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form 760 calls each concept, per tax year.
+#
+# Lines come from the 2025 Form 760 as the Virginia Department of Taxation
+# publishes it.
+
+form: "760"
+message_name: "nexteggapp.taxprotos.us.state.va.v1.Form760"
+tax_years: 2025
+
+concepts {
+  concept: "filing_status"
+  years { tax_year: 2025 irs_box: "Filing Status" }
+}
+concepts {
+  concept: "federal_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "1" }
+}
+concepts {
+  concept: "additions"
+  years { tax_year: 2025 irs_box: "2" note: "From Schedule ADJ, line 3." }
+}
+concepts {
+  concept: "total_income"
+  years { tax_year: 2025 irs_box: "3" }
+}
+concepts {
+  concept: "age_deduction"
+  years { tax_year: 2025 irs_box: "4" }
+}
+concepts {
+  concept: "taxable_social_security"
+  years { tax_year: 2025 irs_box: "5" }
+}
+concepts {
+  concept: "state_refund_in_federal_income"
+  years { tax_year: 2025 irs_box: "6" }
+}
+concepts {
+  concept: "other_subtractions"
+  years { tax_year: 2025 irs_box: "7" note: "From Schedule ADJ, line 7." }
+}
+concepts {
+  concept: "total_subtractions"
+  years { tax_year: 2025 irs_box: "8" }
+}
+concepts {
+  concept: "virginia_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "9" }
+}
+concepts {
+  concept: "itemized_deductions"
+  years { tax_year: 2025 irs_box: "10" note: "From Virginia Schedule A." }
+}
+concepts {
+  concept: "standard_deduction"
+  years { tax_year: 2025 irs_box: "11" }
+}
+concepts {
+  concept: "exemptions"
+  years { tax_year: 2025 irs_box: "12" }
+}
+concepts {
+  concept: "other_deductions"
+  years { tax_year: 2025 irs_box: "13" note: "From Schedule ADJ, line 9." }
+}
+concepts {
+  concept: "total_deductions"
+  years { tax_year: 2025 irs_box: "14" }
+}
+concepts {
+  concept: "taxable_income"
+  years { tax_year: 2025 irs_box: "15" }
+}
+concepts {
+  concept: "tax"
+  years { tax_year: 2025 irs_box: "16" }
+}
+concepts {
+  concept: "spouse_tax_adjustment"
+  years { tax_year: 2025 irs_box: "17" }
+}
+concepts {
+  concept: "net_tax"
+  years { tax_year: 2025 irs_box: "18" }
+}
+concepts {
+  concept: "withholding_you"
+  years { tax_year: 2025 irs_box: "19a" }
+}
+concepts {
+  concept: "withholding_spouse"
+  years { tax_year: 2025 irs_box: "19b" }
+}
+concepts {
+  concept: "estimated_tax_payments"
+  years { tax_year: 2025 irs_box: "20" }
+}
+concepts {
+  concept: "prior_year_overpayment_applied"
+  years { tax_year: 2025 irs_box: "21" }
+}
+concepts {
+  concept: "extension_payments"
+  years { tax_year: 2025 irs_box: "22" }
+}
+concepts {
+  concept: "low_income_or_earned_income_credit"
+  years { tax_year: 2025 irs_box: "23" note: "From Schedule ADJ, line 17." }
+}
+concepts {
+  concept: "credit_for_tax_paid_to_another_state"
+  years { tax_year: 2025 irs_box: "24" note: "From Schedule OSC, line 21." }
+}
+concepts {
+  concept: "schedule_cr_credits"
+  years { tax_year: 2025 irs_box: "25" note: "From Schedule CR, Section 5, Part 1, line 1A." }
+}
+concepts {
+  concept: "total_payments_and_credits"
+  years { tax_year: 2025 irs_box: "26" }
+}
+concepts {
+  concept: "tax_owed"
+  years { tax_year: 2025 irs_box: "27" }
+}
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "28" }
+}
+concepts {
+  concept: "overpayment_credited_to_next_year"
+  years { tax_year: 2025 irs_box: "29" }
+}
+concepts {
+  concept: "commonwealth_savers_contributions"
+  years { tax_year: 2025 irs_box: "30" }
+}
+concepts {
+  concept: "other_voluntary_contributions"
+  years { tax_year: 2025 irs_box: "31" }
+}
+concepts {
+  concept: "addition_to_tax_penalty_and_interest"
+  years { tax_year: 2025 irs_box: "32" }
+}
+concepts {
+  concept: "consumers_use_tax"
+  years { tax_year: 2025 irs_box: "33" }
+}
+concepts {
+  concept: "total_adjustments"
+  years { tax_year: 2025 irs_box: "34" }
+}
+concepts {
+  concept: "amount_you_owe"
+  years { tax_year: 2025 irs_box: "35" }
+}
+concepts {
+  concept: "refund"
+  years { tax_year: 2025 irs_box: "36" }
+}

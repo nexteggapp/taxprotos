@@ -120,6 +120,7 @@ import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_asc.proto";
 import "taxprotos/us/state/ut/v1/form_tc40/form_tc40.proto";
 import "taxprotos/us/state/wa/v1/capital_gains/capital_gains_return.proto";
+import "taxprotos/us/state/va/v1/form_760/form_760.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/facts/v1;factsv1";
 
@@ -316,6 +317,8 @@ message Document {
 
     // A filed Nebraska return.
     NebraskaReturn nebraska_return = 73;
+    // A filed Virginia return.
+    VirginiaReturn virginia_return = 85;
   }
 }
 
@@ -907,4 +910,8 @@ message NorthDakotaReturn {
 message NebraskaReturn {
   // Form 1040N.
   us.state.ne.v1.Form1040N form_1040n = 1;
+// A Virginia resident return: Form 760.
+message VirginiaReturn {
+  // Form 760.
+  us.state.va.v1.Form760 form_760 = 1;
 }
