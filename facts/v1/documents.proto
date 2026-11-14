@@ -117,8 +117,8 @@ import "taxprotos/us/state/mt/v1/form_2/form_2.proto";
 import "taxprotos/us/state/me/v1/form_1040me/form_1040me.proto";
 import "taxprotos/us/state/ri/v1/form_ri1040/form_ri1040.proto";
 import "taxprotos/us/state/mn/v1/form_m1/form_m1.proto";
-import "taxprotos/us/state/md/v1/form_502/form_502.proto";
 import "taxprotos/us/state/ma/v1/form_1/form_1.proto";
+import "taxprotos/us/state/md/v1/form_502/form_502.proto";
 import "taxprotos/us/state/nc/v1/form_d400/form_d400.proto";
 import "taxprotos/us/state/ok/v1/form_511/form_511.proto";
 import "taxprotos/us/state/nm/v1/form_pit1/form_pit1.proto";
@@ -378,6 +378,9 @@ message Document {
     // A filed Wisconsin return.
     WisconsinReturn wisconsin_return = 87;
 
+    // A filed Massachusetts return.
+    MassachusettsReturn massachusetts_return = 67;
+
     // A filed Maryland return.
     MarylandReturn maryland_return = 66;
 
@@ -389,8 +392,6 @@ message Document {
 
     // A filed New York return.
     NewYorkReturn new_york_return = 76;
-    // A filed Massachusetts return.
-    MassachusettsReturn massachusetts_return = 67;
   }
 }
 
@@ -1068,6 +1069,12 @@ message WisconsinReturn {
   us.state.wi.v1.Form1 form_1 = 1;
 }
 
+// A Massachusetts resident return: Form 1.
+message MassachusettsReturn {
+  // Form 1.
+  us.state.ma.v1.FormMA1 form_1 = 1;
+}
+
 // A Maryland resident return: Form 502.
 message MarylandReturn {
   // Form 502.
@@ -1090,8 +1097,4 @@ message NewJerseyReturn {
 message NewYorkReturn {
   // Form IT-201.
   us.state.ny.v1.FormIT201 form_it201 = 1;
-// A Massachusetts resident return: Form 1.
-message MassachusettsReturn {
-  // Form 1.
-  us.state.ma.v1.FormMA1 form_1 = 1;
 }

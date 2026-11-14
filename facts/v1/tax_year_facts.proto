@@ -485,6 +485,9 @@ message PriorYearReturn {
     // A Wisconsin return.
     WisconsinReturn wisconsin = 54;
 
+    // A Massachusetts return.
+    MassachusettsReturn massachusetts = 34;
+
     // A Maryland return.
     MarylandReturn maryland = 33;
 
@@ -496,8 +499,6 @@ message PriorYearReturn {
 
     // A New York return.
     NewYorkReturn new_york = 43;
-    // A Massachusetts return.
-    MassachusettsReturn massachusetts = 34;
   }
 
   // Where the return came from, when it is here.
