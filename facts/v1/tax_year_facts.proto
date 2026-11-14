@@ -449,6 +449,9 @@ message PriorYearReturn {
     // A Nebraska return.
     NebraskaReturn nebraska = 40;
 
+    // A Delaware return.
+    DelawareReturn delaware = 22;
+
     // A Virginia return.
     VirginiaReturn virginia = 52;
 
@@ -463,12 +466,12 @@ message PriorYearReturn {
 
     // A West Virginia return.
     WestVirginiaReturn west_virginia = 53;
+
     // A Hawaii return.
     HawaiiReturn hawaii = 25;
+
     // A Vermont return.
     VermontReturn vermont = 51;
-    // A Delaware return.
-    DelawareReturn delaware = 22;
   }
 
   // Where the return came from, when it is here.

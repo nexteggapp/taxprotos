@@ -103,9 +103,9 @@ import "taxprotos/us/state/co/v1/form_dr0104/form_dr0104.proto";
 import "taxprotos/us/state/ga/v1/form_500/form_500.proto";
 import "taxprotos/us/state/ia/v1/form_ia1040/form_ia1040.proto";
 import "taxprotos/us/state/ks/v1/form_k40/form_k40.proto";
+import "taxprotos/us/state/de/v1/form_pit_res/form_pit_res.proto";
 import "taxprotos/us/state/dc/v1/form_d40/form_d40.proto";
 import "taxprotos/us/state/hi/v1/form_n11/form_n11.proto";
-import "taxprotos/us/state/de/v1/form_pit_res/form_pit_res.proto";
 import "taxprotos/us/state/il/v1/form_il1040/form_il1040.proto";
 import "taxprotos/us/state/mi/v1/form_mi1040/form_mi1040.proto";
 import "taxprotos/us/state/ky/v1/form_740/form_740.proto";
@@ -333,6 +333,9 @@ message Document {
     // A filed Nebraska return.
     NebraskaReturn nebraska_return = 73;
 
+    // A filed Delaware return.
+    DelawareReturn delaware_return = 55;
+
     // A filed Virginia return.
     VirginiaReturn virginia_return = 85;
 
@@ -347,12 +350,12 @@ message Document {
 
     // A filed West Virginia return.
     WestVirginiaReturn west_virginia_return = 86;
+
     // A filed Hawaii return.
     HawaiiReturn hawaii_return = 58;
+
     // A filed Vermont return.
     VermontReturn vermont_return = 84;
-    // A filed Delaware return.
-    DelawareReturn delaware_return = 55;
   }
 }
 
@@ -813,6 +816,12 @@ message OregonReturn {
   us.state.or.v1.ScheduleORASC schedule_or_asc = 3;
 }
 
+// A Delaware resident return: Form PIT-RES.
+message DelawareReturn {
+  // Form PIT-RES.
+  us.state.de.v1.FormPITRES form_pit_res = 1;
+}
+
 // An Alabama resident return: Form 40.
 message AlabamaReturn {
   // Form 40.
@@ -823,10 +832,6 @@ message AlabamaReturn {
 message MaineReturn {
   // Form 1040ME.
   us.state.me.v1.Form1040ME form_1040me = 1;
-// A Delaware resident return: Form PIT-RES.
-message DelawareReturn {
-  // Form PIT-RES.
-  us.state.de.v1.FormPITRES form_pit_res = 1;
 }
 
 // An Illinois resident return: Form IL-1040.
@@ -990,10 +995,14 @@ message SouthCarolinaReturn {
 message WestVirginiaReturn {
   // Form IT-140.
   us.state.wv.v1.FormIT140 form_it140 = 1;
+}
+
 // A Hawaii resident return: Form N-11.
 message HawaiiReturn {
   // Form N-11.
   us.state.hi.v1.FormN11 form_n11 = 1;
+}
+
 // A Vermont resident return: Form IN-111.
 message VermontReturn {
   // Form IN-111.
