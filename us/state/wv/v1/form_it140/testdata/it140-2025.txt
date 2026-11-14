@@ -1,0 +1,282 @@
+                                             WEST VIRGINIA
+     IT-140               W
+                                       PERSONAL INCOME TAX RETURN                                                                                                         2025
+ SOCIAL                                               Deceased                                         **SPOUSE’S                                              Deceased
+SECURITY                                                                                             SOCIAL SECURITY
+ NUMBER                                               Date of Death*                                     NUMBER                                                Date of Death*
+                                                                                                                               YOUR
+LAST NAME                                                                                             SUFFIX                   FIRST                                                    MI
+                                                                                                                               NAME
+                                                                                                                            SPOUSE’S
+ SPOUSE’S
+                                                                                                      SUFFIX                  FIRST                                                     MI
+LAST NAME
+                                                                                                                              NAME
+
+ FIRST LINE                                                                                             SECOND LINE
+OF ADDRESS                                                                                              OF ADDRESS
+
+
+    CITY                                                                                             STATE                    ZIP CODE
+
+
+TELEPHONE                                                                                                                                                       EXTENDED
+                                                        EMAIL                                                                                                    DUE DATE
+ NUMBER
+                                                                                                                                                               MM/DD/YYYY
+* ONLY INCLUDE A DECEASED TAXPAYER AND THEIR DATE OF DEATH IF IT OCCURRED IN THIS TAX YEAR. FOR THE NEXT TWO YEARS, PLEASE LIST THEM BELOW ON THE SURVIVING SPOUSE EXEMPTION.
+
+     AMENDED RETURN                    NONRESIDENT SPECIAL                      NONRESIDENT/PART YEAR RESIDENT                          FORM WV-8379 FILED AS AN INJURED SPOUSE
+
+
+FILING STATUS                          1 SINGLE              2 HEAD OF                  3 MARRIED,                  4 MARRIED, FILING SEPARATE                                  5 WIDOW(ER) WITH
+       (CHECK ONE)                                             HOUSEHOLD                  FILING JOINT                 **Enter spouse’s SS# and name in the boxes above           DEPENDENT CHILD
+
+EXEMPTIONS
+(a) YOURSELF                   To claim an exemption for yourself, enter 1. If someone can claim you as a dependent, leave box (a) blank.                                               (a)
+
+(b) SPOUSE                     To claim an exemption for your spouse, enter 1. They may not be claimed as an exemption by anyone else.                                                  (b)
+
+(c) DEPENDENTS                 List your dependents. If over four dependents, continue on Schedule DP on page 49. Enter total number of dependents (c)
+
+                   Dependent First name                                                 Dependent Last name                                Social Security Number         Date of Birth (MM DD YYYY)
+
+
+
+
+(d) SURVIVING SPOUSE           (See page 21) Decedents SSN                                                       Year Spouse Died:
+                                                                                                                                                                                        (d)
+
+(e) Total Exemptions           (add boxes a, b, c, and d). Enter here and on line 6 below. If box e is zero, enter $500 on line 6 below.                                                (e)
+
+
+
+1.	 Federal Adjusted Gross Income or income to claim senior citizen tax credit from Schedule SCTC-A                                                1                                          .00
+
+2.	 Additions to income (line 61 of Schedule M).............................................................................................       2                                          .00
+
+3.	 Subtractions from income (line 52 of Schedule M)....................................................................................           3                                          .00
+
+4.	 West Virginia Adjusted Gross Income (line 1 plus line 2 minus line 3)......................................................                    4                                          .00
+
+5.	 Low-Income Earned Income Exclusion (see worksheet on page 29)........................................................                          5                                          .00
+
+6.	 Total Exemptions as shown above on Exemption Box (e) ________ x $2,000 ........................................                                6                                          .00
+
+7.	 West Virginia Taxable Income (line 4 minus lines 5 & 6) IF LESS THAN ZERO, ENTER ZERO ............                                             7                                          .00
+
+8.	 Income Tax Due (Check One) .................................................................................................................   8                                          .00
+           Tax Table                Rate Schedule                    Nonresident/Part-year resident
+                                                                     calculation schedule
+
+
+
+
+                                                                                                   –1–
+                                                                                                                                 *P40202501W*
+                                                                                                                                       P     4     0   2   0    2    5     0    1   W
+      PRIMARY LAST NAME                                                                                             SOCIAL SECURITY NUMBER
+
+
+
+ 9.	 Credits from Tax Credit Recap Schedule (see schedule on page 5 ) ............................................................                9                                    .00
+
+ 10.	Total Income Tax Due. Line 8 minus 9. If line 9 is greater than line 8, enter 0                                                              10                                   .00
+
+ 11.	 Overpayment previously refunded or credited (amended return only) ...........................................................               11                                   .00
+12.	 Penalty Due from                 REQUEST            QUALIFIED            REQUEST                  REQUEST             If you owe penalty,
+     Form IT-210                      WAIVER             FARMER               ANNUALIZED               SHORT METHOD                enter here: 12                                      .00
+ 13.	West Virginia Use Tax Due on out-of-state purchases
+     (See Schedule UT on page 44).                                                                     CHECK IF NO USE TAX DUE ...............    13                                   .00
+
+ 14.	Add lines 10 through 13. This is your total amount due..................................................................................     14                                   .00
+
+                                                                                                       Check if withholding from NRSR                                                  .00
+ 15.	West Virginia Income Tax Withheld (See instructions page 23)                                      (Nonresident Sale of Real Estate)          15
+
+ 16.	Estimated Tax Payments and Payments with Schedule 4868 .......................................................................               16                                   .00
+
+ 17.	Non-Family Adoption Tax Credit, if applicable (MUST include Schedule WV NFA-1) ...................................... 17                                                          .00
+
+ 18.	Senior Citizen Tax Credit for property tax paid (MUST include Schedule SCTC-A) ......................................... 18                                                       .00
+
+ 19.	Homestead Excess Property Tax Credit for property tax paid (include Schedule HEPTC-1 and Class 2 receipt)                                    19                                   .00
+
+ 20.	Build WV Property Value Adjustment Refundable Tax Credit ...........................................................................         20                                   .00
+ 21.	WV Property Tax Adjustment Tax Credits (claim each separately below. Enter sum on line 21)
+         A.                                                     B.                                       C.
+    MOTOR VEHICLE                                       DISABLED VETERAN                           SMALL BUSINESS
+    PROPERTY TAX                                        REAL PROPERTY TAX                           PROPERTY TAX                                  21                                   .00
+
+ 22.	Amount paid with original return (amended return only) ................................................................................      22                                   .00
+
+ 23.	Payments and Refundable Credits (add lines 15 through 22) .......................................................................            23                                   .00
+
+ 24. Balance Due (line 14 minus line 23). If Line 23 is greater than line 14, complete line 25 ... PAY THIS AMOUNT                                24                                .00
+ 25.	This is your Total Overpayment. Line 23 minus line 14 ...................................................................................    25                                   .00
+ 26.	Enter donation amounts below and enter the sum on Line 26
+          A.                                                     B.                                       C.
+   CHILDREN’S TRUST                                    WV DEPT. OF VETERANS                        STATE VETERANS
+         FUND                                              ASSISTANCE                                CEMETERY                                     26                                   .00
+
+ 27.	Amount of Overpayment to be credited to your next year's estimated tax .......................................................... 27                                              .00
+
+ 28.	Refund due to you (line 25 minus line 26 and line 27)..............................................................     REFUND               28                                   .00
+ Direct Deposit
+ of Refund                          CHECKING                          SAVINGS
+                                                                                                   ROUTING NUMBER                                 ACCOUNT NUMBER
+        PLEASE REVIEW YOUR ACCOUNT INFORMATION FOR ACCURACY. INCORRECT ACCOUNT INFORMATION MAY RESULT IN A $15.00 RETURNED PAYMENT CHARGE.
+
+ I authorize the Tax Division to discuss my return with my preparer             YES           NO
+Under penalty of perjury, I declare that I have examined this return, accompanying schedules, and statements, and to the best of my knowledge and belief, it is true, correct and complete.
+
+
+Your Signature                                           Date                         Spouse’s Signature                               Date                         Telephone Number
+
+
+
+Signature of preparer other than above                                                Preparer’s EIN                                   Date                         Telephone Number
+
+
+
+ Preparer’s Printed Name                                 Preparer’s Firm
+
+            FOR REFUND, MAIL TO THIS ADDRESS:                     FOR BALANCE DUE, MAIL TO THIS ADDRESS:
+
+
+
+
+                                                                                                                            *P40202502W*
+                     WV TAX DIVISION                                         WV TAX DIVISION
+                       P.O. BOX 1071                                           P.O. BOX 3694
+                 CHARLESTON, WV 25324-1071                               CHARLESTON, WV 25336-3694
+
+
+                                                                                                                                 P     4      0   2    0   2    5      0   2    W
+                                                                                                –2–
+                                                          MODIFICATIONS TO
+                                                                                                                                                                               2025
+        Schedule
+           M
+       Form IT-140 W                                   ADJUSTED GROSS INCOME
+Modifications Decreasing Federal Adjusted Gross Income                                                                                     Column A (You)                    Column B (Spouse)
+29.	Interest or dividends received on United States or West Virginia obligations, or
+    allowance for government obligation income, included in federal adjusted gross income
+    but exempt from state tax ..............................................................................................          29                               .00                      .00
+30.	Total amount of any benefit (including survivorship annuities) received from certain
+    federal retirement systems by retired federal law enforcement officers ........................                                   30                               .00                      .00
+31.	Total amount of any benefit (including survivorship annuities) received from WV
+    state or local police, deputy sheriffs’ or firemen’s retirement system, excluding PERS
+    – see page 26 .................................................................................................................   31                               .00                      .00
+
+32.	Military Retirement Modification .....................................................................................
+                                                                                                                                      32                               .00                      .00
+33.	Other Retirement Modification                             Column A (You)                     Column B (Spouse)
+ (a) West Virginia Teachers’ and                                                                                                           Add lines 33 (a) and (b). If that sum is greater than
+     Public Employees’ Retirement                                                     .00                                   .00            $2,000, enter $2,000
+ (b) Federal Retirement Systems
+    (Title 4 USC §111)                                                                .00                                   .00 33                                     .00                      .00
+34.	Social Security Benefits                                                                                                               Multiply 34(c) by 0.65 if your Federal AGI exceeds
+(a) TOTAL Social Security Benefits                                                    .00                                   .00            $ 50,000 for SINGLE or MARRIED SEPARATE filers
+(b) Benefits exempt for Federal tax                                                                                                        $100,000 for MARRIED JOINT filers
+   purposes                                                                                                                                Enter 34(c) on Line 34 below.
+                                                                                      .00                                   .00
+(c) Benefits taxable for Federal tax
+   purposes (line a minus line b) ....                                                .00                                   .00 34                                     .00                      .00
+
+35.	Certain assets held by subchapter S Corporation bank..................................................                            35                               .00                      .00
+
+36.	Certain Active Duty Military pay (See instructions on page 20) ......................................
+    If not domiciled in WV, complete Part II of Schedule A instead.                                                                   36                               .00                      .00
+
+37.	Active Military Separation (see instructions on page 20)
+    Must enclose military orders and discharge papers .......................................................                         37                               .00                      .00
+
+38.	Refunds of state and local income taxes received and reported as income to the IRS ...                                            38                               .00                      .00
+
+39.	Contributions to the West Virginia Prepaid Tuition/Savings Plan Trust Funds
+    Annual Statement must be included ...............................................................................                 39                               .00                      .00
+
+40.	Railroad Retirement Board Income received ..................................................................                      40                               .00                      .00
+
+41.	Long-Term Care Insurance ............................................................................................             41                               .00                      .00
+
+42.	IRC 1341 Repayments ...................................................................................................           42                               .00                      .00
+
+43.	ABLE Act
+    Annual Statement must be included ...............................................................................                 43                               .00                      .00
+44.	West Virginia Jumpstart Savings Program deposits made (not to exceed $25,000)
+    Annual Statement must be included................................................................................                 44                               .00                      .00
+45.	PBGC Modification .....................
+(a) retirement benefits that would have been                                          .00                                   .00            Subtract line 45 (b) from (a)
+    paid from your employer-provided plan
+(b) retirement benefits actually received
+    from PBGC                                                                         .00                                   .00 45                                     .00                      .00
+
+46.	Gambling losses (cannot be greater than your gambling winnings) ................................
+                                                                                                                                      46                               .00                      .00
+
+                                          This line is intentionally left blank. Do no use unless directed                                                             .00                      .00
+                                                                                                                                                                              Continues on next page
+
+
+
+
+      *P40202503W*
+              P     4     0     2     0      2     5     0     3     W
+                                                                                                           –3–
+                                                MODIFICATIONS
+                                                                                                                                                                    2025
+        Schedule
+           M
+       Form IT-140
+                   W
+                                          TO ADJUSTED GROSS INCOME
+Modifications Decreasing Federal Adjusted Gross Income                                                                      Column A (You)                     Column B (Spouse)
+                (a)                 (b)                      (c)                                 (d)
+             Year of              Year of          Income not included                           Add
+               birth             disability          in lines 35 to 46                        lines 29                                  Subtract line 47 column (d) from (c)
+47.	       (65 or older)                         (NOT TO EXCEED $8000)                      through 34                                    (If less than zero, enter zero)
+
+ You
+                                                                            .00                               .00                                      .00
+
+Spouse
+                                                                            .00                               .00 47                                                            .00
+
+48.	Surviving spouse deduction (instructions on page 28) ....................................................         48                               .00                      .00
+
+49.	Add lines 29 through 48 for each column .......................................................................   49                               .00                      .00
+
+50. Total Subtractions (line 49, Col A plus line 49,Col B) Enter here and on line 3 of FORM IT-140 .............................                                                .00
+
+Modifications Increasing Federal Adjusted Gross Income
+Do not provide negative amounts in this section.
+
+51.	Interest or dividend income on federal obligations which is exempt from federal tax but subject to state tax                              51                                .00
+
+52.	Interest or dividend income on state and local bonds other than bonds from West Virginia sources ...........                              52                                .00
+
+53.	Interest on money borrowed to purchase bonds earning income exempt from West Virginia tax...................                              53                                .00
+
+54.	Qualifying 402(e) lump-sum income NOT included in federal adjusted gross income but subject to state tax                                  54                                .00
+
+55.	Other income deducted from federal adjusted gross income but subject to state tax ..................................                      55                                .00
+
+56.	 Withdrawals from a WV Prepaid Tuition/Savings Plan Trust Funds NOT used for payment of qualifying expenses                               56                                .00
+
+57.	ABLE Act withdrawals NOT used for qualifying expenses .........................................................................           57                                .00
+
+58.	West Virginia Jumpstart Savings Program withdrawals NOT used for qualifying expenses .............................                        58                                .00
+
+This line is intentionally left blank. Do no use unless directed. .........................................................................                                     .00
+
+59. TOTAL ADDITIONS (Add lines 51 through 58). Enter here and on Line 2 of Form IT-140 ..........................                             59                                .00
+
+
+
+
+                                                                                              –4–
+                                                                                                                            *P40202504W*
+                                                                                                                                 P     4      0    2   0   2    5   0   4   W
+

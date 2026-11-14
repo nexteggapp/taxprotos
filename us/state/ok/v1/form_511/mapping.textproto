@@ -1,0 +1,241 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form 511 calls each concept, per tax year.
+#
+# Lines come from the 2025 Form 511 as the Oklahoma Tax Commission publishes
+# it. There are no amount codes: IRS Publication 1220 covers the information
+# returns the IRS receives electronically, and a state return is not one of
+# them.
+#
+# Line 1 is shared by the filing status (boxes 1 to 5 at the top of page 1)
+# and federal adjusted gross income, and line 11 by the exemption count and
+# its dollar amount; lines 14 and 41 each have parts (a) and (b).
+
+form: "511"
+message_name: "nexteggapp.taxprotos.us.state.ok.v1.Form511"
+tax_years: 2025
+
+concepts {
+  concept: "filing_status"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+    note: "Boxes 1 to 5: single, married filing joint, married filing separate, head of household, qualifying surviving spouse."
+  }
+}
+concepts {
+  concept: "total_exemptions"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+    note: "The count of exemptions from page 1 that line 11 multiplies by $1,000."
+  }
+}
+concepts {
+  concept: "federal_adjusted_gross_income"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+    note: "Line 1: federal adjusted gross income from Form 1040."
+  }
+}
+concepts {
+  concept: "subtractions"
+  years { tax_year: 2025 irs_box: "2" }
+}
+concepts {
+  concept: "income_after_subtractions"
+  years { tax_year: 2025 irs_box: "3" }
+}
+concepts {
+  concept: "out_of_state_income"
+  years { tax_year: 2025 irs_box: "4" }
+}
+concepts {
+  concept: "income_after_out_of_state_income"
+  years { tax_year: 2025 irs_box: "5" }
+}
+concepts {
+  concept: "additions"
+  years { tax_year: 2025 irs_box: "6" }
+}
+concepts {
+  concept: "oklahoma_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "7" }
+}
+concepts {
+  concept: "adjustments"
+  years { tax_year: 2025 irs_box: "8" }
+}
+concepts {
+  concept: "income_after_adjustments"
+  years { tax_year: 2025 irs_box: "9" }
+}
+concepts {
+  concept: "deduction"
+  years { tax_year: 2025 irs_box: "10" }
+}
+concepts {
+  concept: "exemption_amount"
+  years {
+    tax_year: 2025
+    irs_box: "11"
+    note: "The dollar amount: the number of exemptions times $1,000."
+  }
+}
+concepts {
+  concept: "total_deductions_and_exemptions"
+  years { tax_year: 2025 irs_box: "12" }
+}
+concepts {
+  concept: "taxable_income"
+  years { tax_year: 2025 irs_box: "13" }
+}
+concepts {
+  concept: "tax"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+    note: "Line 14(a): tax from the tax table or Form 573."
+  }
+}
+concepts {
+  concept: "additional_tax"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+    note: "Line 14(b): HSA additional tax, credit recapture or Section 965 installment."
+  }
+}
+concepts {
+  concept: "income_tax"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+    note: "Line 14 total: line 14(a) plus line 14(b)."
+  }
+}
+concepts {
+  concept: "child_care_or_child_tax_credit"
+  years { tax_year: 2025 irs_box: "15" }
+}
+concepts {
+  concept: "credit_for_tax_paid_to_other_states"
+  years { tax_year: 2025 irs_box: "16" }
+}
+concepts {
+  concept: "other_credits"
+  years { tax_year: 2025 irs_box: "17" }
+}
+concepts {
+  concept: "tax_after_credits"
+  years { tax_year: 2025 irs_box: "18" }
+}
+concepts {
+  concept: "use_tax"
+  years { tax_year: 2025 irs_box: "19" }
+}
+concepts {
+  concept: "balance"
+  years { tax_year: 2025 irs_box: "20" }
+}
+concepts {
+  concept: "oklahoma_tax_withheld"
+  years { tax_year: 2025 irs_box: "21" }
+}
+concepts {
+  concept: "estimated_tax_payments"
+  years { tax_year: 2025 irs_box: "22" }
+}
+concepts {
+  concept: "extension_payment"
+  years { tax_year: 2025 irs_box: "23" }
+}
+concepts {
+  concept: "low_income_property_tax_credit"
+  years { tax_year: 2025 irs_box: "24" }
+}
+concepts {
+  concept: "sales_tax_relief_credit"
+  years { tax_year: 2025 irs_box: "25" }
+}
+concepts {
+  concept: "natural_disaster_credit"
+  years { tax_year: 2025 irs_box: "26" }
+}
+concepts {
+  concept: "form_578_credit"
+  years { tax_year: 2025 irs_box: "27" }
+}
+concepts {
+  concept: "earned_income_credit"
+  years { tax_year: 2025 irs_box: "28" }
+}
+concepts {
+  concept: "homeschool_expense_credit"
+  years { tax_year: 2025 irs_box: "29" }
+}
+concepts {
+  concept: "amount_paid_with_original_return"
+  years { tax_year: 2025 irs_box: "30" }
+}
+concepts {
+  concept: "payments_and_credits"
+  years { tax_year: 2025 irs_box: "31" }
+}
+concepts {
+  concept: "overpayment_on_original_return"
+  years { tax_year: 2025 irs_box: "32" }
+}
+concepts {
+  concept: "total_payments_and_credits"
+  years { tax_year: 2025 irs_box: "33" }
+}
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "34" }
+}
+concepts {
+  concept: "applied_to_next_year"
+  years { tax_year: 2025 irs_box: "35" }
+}
+concepts {
+  concept: "donations"
+  years { tax_year: 2025 irs_box: "36" }
+}
+concepts {
+  concept: "total_deductions_from_refund"
+  years { tax_year: 2025 irs_box: "37" }
+}
+concepts {
+  concept: "refund"
+  years { tax_year: 2025 irs_box: "38" }
+}
+concepts {
+  concept: "tax_due"
+  years { tax_year: 2025 irs_box: "39" }
+}
+concepts {
+  concept: "estimated_tax_interest"
+  years { tax_year: 2025 irs_box: "40" }
+}
+concepts {
+  concept: "late_payment_penalty"
+  years {
+    tax_year: 2025
+    irs_box: "41"
+    note: "Line 41(a): 5% penalty for delinquent payment."
+  }
+}
+concepts {
+  concept: "late_payment_interest"
+  years {
+    tax_year: 2025
+    irs_box: "41"
+    note: "Line 41(b): interest of 1.25% a month for delinquent payment."
+  }
+}
+concepts {
+  concept: "amount_owed"
+  years { tax_year: 2025 irs_box: "42" }
+}

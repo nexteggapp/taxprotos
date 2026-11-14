@@ -1,0 +1,208 @@
+                                                                                                                                                              PRINT FORM RESET FORM
+                                                               Nebraska Individual Income Tax Return                                                                           FORM 1040N
+
+                                                                                                                                                                                  2025
+                                                              for the taxable year January 1, 2025 through December 31, 2025 or other taxable year:
+                                                                                     , 2025 through                        ,
+                        Your First Name and Middle Initial                           Last Name                                        Please Do Not Write In This Space
+Please Type or Print
+
+
+
+
+                        If a Joint Return, Spouse’s First Name and Middle Initial Last Name
+
+
+                        Current Mailing Address (Number and Street or PO Box)
+
+
+                        City                                                      State                                   ZIP Code
+
+
+                               Your Social Security Number              Spouse’s Social Security Number                              High School District Code
+                                                                                                                                                                            Amended Return
+                       During 2025, did you receive, sell, exchange, gift, or otherwise dispose of a digital asset or a fnancial interest in a digital asset?                       Yes       No
+                       Is the taxpayer claiming any benefts or tax credits from a business that is, or is owned in whole or part, by a foreign adversarial company?
+                       (See instructions)                                                                                                                                           Yes      No
+
+                       (1)     Farmer/Rancher           (2)     Active Military           (1)     Deceased Taxpayer(s)
+                                                                                                  (frst name & date of death):
+
+                        1 Federal Filing Status:
+                          (1)  Single                (3)              Married, fling separately – Spouse’s SSN:                                         (4)    Head of Household
+                          (2)  Married, fling jointly                 and Full Name                                                                     (5)    Qualifying surviving spouse (QSS)
+                       2a Check if YOU were:         (1)              65 or older           (2)     Blind           2b Check here if someone (such as your parent) can claim you or
+                          SPOUSE was:                         (3)     65 or older           (4)     Blind              your spouse as a dependent: (1)   You        (2)   Spouse
+                        3 Type of Return:
+                          (1)   Resident                      (2)     Partial-year resident from                      /              , 2025 to            /          , 2025 (attach Schedule III)
+                                                              (3)     Nonresident (attach Schedule III)
+                        4 Nebraska personal exemptions (Enter 1 in each line of 4a or 4b that applies):
+                          a Yourself. If someone can claim you as a dependent, leave blank                                                                             4 a ______
+                          b Spouse. Married fling jointly returns, if someone can claim your spouse as a dependent, leave blank                                        4 b ______
+                          c       Dependents, if more than three, see instructions            Dependent's
+                                     First Name                                           Last Name           Social Security Number
+
+
+                                                                                                                                                 Total number of
+                                                                                                                                                 dependents listed     4 c ______
+                          Total Nebraska personal exemptions – add lines 4a, 4b, and 4c                                                                                              4
+                        5 Federal adjusted gross income (AGI) (line 11a, Federal Form 1040 or 1040-SR) Do not leave blank                                               5                     00
+                        6 Nebraska standard deduction (if you checked any boxes on line 2a or 2b above,
+                          see instructions; otherwise, enter $8,600 if single; $17,200 if married, fling jointly or
+                          qualifying surviving spouse; $8,600 if married, fling separately; or $12,600 if head of
+                          household)                                                                                 6             00
+                        7 Total itemized deductions (line 17, Federal Schedule A – see instructions)                 7             00
+                        8 State and local income taxes (line 5a, Schedule A, Federal Form 1040 or 1040-SR) 8                       00
+                        9 Nebraska itemized deductions (line 7 minus line 8)                                         9             00
+                       10 Nebraska standard deduction or the Nebraska itemized deductions, the larger of line 6 or line 9                                              10                     00
+                       11 Nebraska income before adjustments (line 5 minus line 10)                                                                                    11                     00
+                       12 Adjustments increasing federal AGI (line 13, from attached Nebraska Schedule I) 12                       00
+                       13 Adjustments decreasing federal AGI (line 44, from attached Nebraska Schedule I) 13                       00
+                       14 Nebraska Taxable Income (enter line 11 plus line 12 minus line 13) If less than -0-, enter -0- Residents
+                          complete lines 15 and 16 Partial-year residents and nonresidents complete NE Sch III before continuing                                       14                     00
+                       15 Nebraska income tax (Partial-year residents and nonresidents enter the result
+                          from line 9, NE Sch III Paper flers may use the Nebraska Tax Table
+                          All others must use Tax Calculation Schedule )                                            15             00
+                       16 Nebraska other tax calculation:
+                          a Federal Tax on Lump-Sum Distributions (Federal Form 4972) 16 a $___________
+                          b Federal tax on early distributions (lesser of Federal
+                             Form 5329 or line 8, Sch 2, Federal Form 1040 or 1040-SR) 16 b $___________
+                          c Total (add lines 16a and 16b)                                      16 c $___________
+                             Residents multiply line 16c by 29 6% (x 296) and enter the result on line 16
+                             Partial-year residents and nonresidents enter the result from line 10, NE Sch III 16                  00
+                       17 Total Nebraska tax before Nebraska personal exemption credit (add lines 15 and 16)
+                          Do not pay the amount on this line. Pay the amount from line 59                                                                              17                     00
+                                                                                                                                                                                    Page 1 of 3.
+                                                                                                                                                                                          8-417-2025
+Form 1040N (2025)                                                                                                               Page 2
+18 NE personal exemption credit for residents only ($171 times the number on line 4)           18                 00
+19 Credit for tax paid to another state, line 6, Nebraska Schedule II
+   (attach Nebraska Schedule II and a copy of the other state's return)                         19                00
+20 Credit for the elderly or disabled (attach copy of Federal Schedule R)                       20                00
+21 Community Development Assistance Act credit (attach Form CDN)                                21                00
+22 Form 3800N nonrefundable credit (attach Form 3800N)                                          22                00
+23 Nebraska child/dependent care nonrefundable credit, only if line 5 is more
+   than $29,000 (attach a copy of Federal Form 2441 and see instructions)                       23                00
+24 Credit for fnancial institution tax (attach Form NFC)                                        24                00
+25 Employer’s credit for expenses incurred for TANF (ADC) recipients (see instr )               25                00
+26 Designated extremely blighted area tax credit (attach Form 1040N-EB)                        26                 00
+27 NE employer tax credit for employing convicted felons
+   Enter certifcate number from Form ETC-A _________________________                            27                00
+28 School Readiness Tax Credit for providers
+   Enter certifcate number from Form SR-3604 _____________________                              28                00
+29 Child Care Tax Credit for Contributors
+   Enter certifcate number from Form CCTC-A __________________                                  29                00
+30 Opportunity Scholarships Act credit for contributors                                        30                 00
+31 Creating High Impact Economic Futures (CHIEF) credit                                         31                00
+32 Family Caregiver Tax Credit Act
+   Enter certifcate number from Form 3165 ____________________                                 32                 00
+33 Nebraska Pregnancy Help Act Credit for contributors                                          33                00
+34 Total nonrefundable credits (add lines 18 through 33)                                                               34          00
+35 Nebraska tax after nonrefundable credits Subtract line 34 from line 17 (if line 34 is more than line 17, enter -0-)
+   If the result is greater than your federal tax liability, see instructions If entering federal tax, check box       35          00
+36 Total Nebraska income tax withheld from Federal Forms W-2 (attach 2025 Forms,
+   see instructions)                                                                            36                00
+37 Total Nebraska income tax withheld from Federal Forms W-2G, 1099-R, 1099-MISC,
+   1099-NEC, etc (attach 2025 Forms, see instructions)                                         37                 00
+38 Total Nebraska income tax withheld from Nebraska Schedules K-1N
+   (attach 2025 Forms, see instructions)                                                       38                 00
+39 Total Pass-Through Entity Tax (PTET) credit from Schedules K-1N
+   (attach 2025 Schedules K-1N, see instructions)
+   a Name:________________ b Nebraska ID Number:_______________
+   c Amount:______________                                                                     39                 00
+40 2025 estimated income tax payments (include any 2024 overpayment credited to
+   2025 and any payments submitted with an extension request)                                   40                00
+41 Form 3800N refundable credit (attach Form 3800N)                                             41                00
+42 Nebraska child/dependent care refundable credit, if line 5 is $29,000 or less
+   (attach a copy of Form 2441N)                                                                42                00
+43 Beginning Farmer credit from Form 1099 BFC (NDA NextGen)                                     43                00
+44 Nebraska earned income credit Enter number of qualifying children 97 _________
+   Federal credit 98 $ _____________ 00 x 10 (10%) (see instructions)                          44                 00
+45 Credit for community college property taxes (attach Form PTC)                                45                00
+46 Credit for qualifed Volunteer Emergency Responders (see instructions)                        46                00
+47 Stillborn child tax credit (attach Birth Resulting in Stillbirth Certifcate and
+   see instructions)                                                                            47               00
+48 Child Care Tax Credit for parent or legal guardian
+   Enter certifcate number from Form 7203_______________                                  48                     00
+49 School Readiness Tax Credit for qualifed staff member
+   Enter certifcate number from Form SR-3605____________________                          49                     00
+50 Reverse Osmosis System Tax Credit
+   Enter certifcate number from Form 1040N-OS___________________                          50                     00
+51 Intellectual and Developmental Disabilities Direct Support Professional Tax Credit
+   Enter certifcate number from Form 3157-A____________________                           51                     00
+52 Amount paid with original return, plus additional tax payments made after it was
+   fled (Amended Return Only)                                                             52                     00
+53 Total payments and refundable credits (add lines 36 through 52)                                                    53           00
+54 Overpayment allowed on original return, plus additional overpayments of tax
+   allowed after it was fled (Amended Return Only)                                        54                     00
+55 Actual tax paid, line 53 minus line 54 (Original returns enter line 53)                55                     00
+                                                                                                                            Page 2 of 3.
+Form 1040N (2025)                                                                                                                                                                       Page 3
+ 56 Penalty for underpayment of estimated tax (see instructions) If you calculated a Form 2210N penalty of -0-
+    or greater, or used the annualized income method, attach Form 2210N, and check this box 96                                                                 56                           00
+ 57 Total tax and penalty for underpayment of estimated tax. Add lines 35 and 56                                                                               57                           00
+ 58 Use tax due on taxable purchases where applicable sales tax was not collected (see instructions)
+    Enter purchases subject to state tax 91 $ _______ State tax 92 $ _______ (purchases x 5 5%);
+    Enter purchases subject to local tax 93 $ _______ Local tax 94 $ _______ (purchases x local rate of ____ %)
+    95 Local code_______ (see local rate schedule);
+    Add state and local taxes and enter on line 58 If no use tax is due, enter -0- on line 58                                                                  58                           00
+ 59 Total amount due. If line 55 is less than total of lines 57 and 58, subtract line 55 from total of lines 57 and 58                                         59                           00
+ 60 Overpayment. If line 55 is more than the total of lines 57 and 58, subtract the total of lines 57 and 58 from
+    line 55                                                                                                                                                    60                           00
+ 61 Amount of line 60 to be applied to your 2026 estimated tax (Original return only) 61                            00
+ 62 Wildlife Conservation Fund donation of $1 or more (Original return only)                62                      00
+ 63 Amount of line 60 you want refunded to you (line 60 minus lines 61 and 62) Your refund will generally be
+    issued by July 15, if your paper return is fled by April 15 (see instructions) Allow three months for an
+    amended return                                                                                                                                             63                           00
+                                                 Complete FOR AMENDED RETURNS ONLY
+ Are you fling this amended return because:                                                    Are you fling for a refund based on:
+  a The Nebraska Department of Revenue (DOR) has                            YES         NO      a The fling of a federal amended return or claim for refund?   YES      NO
+    notifed you that your return will be audited?                                                  Attach copies of Federal Form 1045 or 1040X and supporting schedules
+  b The Internal Revenue Service (IRS) has corrected                        YES         NO      b Carryback of a net operating loss or IRC § 1256 loss?        YES      NO
+     your federal return?
+                                                                                                     If Yes, year of loss:                        Amount: $
+         If Yes, identify office:                                                                    Attach copies of Federal Form 1045 or 1040X with supporting schedules,
+       Attach a copy of changes from the Internal Revenue Service                                       and a completed Nebraska NOL Worksheet
+
+ Reasons for Amending
+     Only Federal change (no NE change)                                  Childcare Credit Change                                   Dependent or personal exemption count change
+                                                                                                                                   (line 4)
+        Federal Filing Status change (single, MFJ, MFS,                  Other Credit Adjustment                                   Earned Income Credit Change
+        HOH, QSS)
+
+        K-1N Change                                                      Property Tax Credit Change (include                       Other Reason for Amending (explain below)
+                                                                         previously claimed parcels on Form PTC)
+                                                                         Use Form PTCX if this is the only change
+                                Explanation of Changes (Reference change and line number. If necessary attach additional sheets for explanation):
+
+
+
+
+  64a Routing Number                                                                           64b Type of Account                     1 = Checking         2 = Savings
+
+  64c Account Number
+  64d         Check this box if this refund will go to a bank account outside the United States
+   sign
+                  Under penalties of perjury, I declare that, as taxpayer or preparer, I have examined this return and to the best of my knowledge and belief, it is true, correct, and complete
+
+
+   here
+Keep a copy of
+                    Your Signature                                             Date                            Email Address
+this return for
+your records        Spouse’s Signature (if fling jointly, both must sign)      Daytime Phone
+     paid
+preparer’s          Preparer’s Signature                                       Date                            Preparer’s PTIN
+ use only
+                    Print Firm’s Name (or your name if self-employed), Address and ZIP Code                    EIN                                                        Daytime Phone
+
+                                A copy of the federal return and schedules must be attached to this return.
+                    E-fle your return NebFile offers FREE e-fling of your original state return for most Nebraska residents
+              Mail returns requesting a refund to: Nebraska Department of Revenue, PO Box 98912, Lincoln, NE 68509-8912
+             Mail returns not requesting a refund to: Nebraska Department of Revenue, PO Box 98934, Lincoln, NE 68509-8934
+
+
+
+
+                                                                                                                                                                               Page 3 of 3.
+

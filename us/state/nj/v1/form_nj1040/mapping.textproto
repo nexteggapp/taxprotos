@@ -1,0 +1,309 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form NJ-1040 calls each concept, per tax year.
+#
+# Lines come from the 2025 Form NJ-1040 as the New Jersey Division of Taxation
+# publishes it. There are no amount codes: IRS Publication 1220 covers the
+# information returns the IRS receives electronically, and a state return is not
+# one of them.
+#
+# The form prints line 37 as "37a" with "b" and "c" set beside it, so 37b and
+# 37c never appear as such. They are mapped to line 37a with a note saying
+# which part they are.
+
+form: "NJ-1040"
+message_name: "nexteggapp.taxprotos.us.state.nj.v1.FormNJ1040"
+tax_years: 2025
+
+concepts {
+  concept: "filing_status"
+  years { tax_year: 2025 irs_box: "1" note: "Lines 1 to 5: one oval for the filing status." }
+}
+concepts {
+  concept: "regular_exemptions"
+  years { tax_year: 2025 irs_box: "6" }
+}
+concepts {
+  concept: "senior_exemptions"
+  years { tax_year: 2025 irs_box: "7" }
+}
+concepts {
+  concept: "blind_or_disabled_exemptions"
+  years { tax_year: 2025 irs_box: "8" }
+}
+concepts {
+  concept: "veteran_exemptions"
+  years { tax_year: 2025 irs_box: "9" }
+}
+concepts {
+  concept: "qualified_dependent_children"
+  years { tax_year: 2025 irs_box: "10" }
+}
+concepts {
+  concept: "other_dependents"
+  years { tax_year: 2025 irs_box: "11" }
+}
+concepts {
+  concept: "dependents_attending_college"
+  years { tax_year: 2025 irs_box: "12" }
+}
+concepts {
+  concept: "total_exemption_amount"
+  years { tax_year: 2025 irs_box: "13" }
+}
+concepts {
+  concept: "wages"
+  years { tax_year: 2025 irs_box: "15" note: "State wages from Forms W-2, box 16." }
+}
+concepts {
+  concept: "taxable_interest"
+  years { tax_year: 2025 irs_box: "16a" }
+}
+concepts {
+  concept: "tax_exempt_interest"
+  years { tax_year: 2025 irs_box: "16b" }
+}
+concepts {
+  concept: "dividends"
+  years { tax_year: 2025 irs_box: "17" }
+}
+concepts {
+  concept: "net_business_profits"
+  years { tax_year: 2025 irs_box: "18" note: "From Schedule NJ-BUS-1, Part I." }
+}
+concepts {
+  concept: "net_gains_from_property"
+  years { tax_year: 2025 irs_box: "19" note: "From Schedule NJ-DOP; a net loss is entered as zero." }
+}
+concepts {
+  concept: "taxable_pensions"
+  years { tax_year: 2025 irs_box: "20a" }
+}
+concepts {
+  concept: "excludable_pensions"
+  years { tax_year: 2025 irs_box: "20b" }
+}
+concepts {
+  concept: "partnership_income"
+  years { tax_year: 2025 irs_box: "21" }
+}
+concepts {
+  concept: "s_corporation_income"
+  years { tax_year: 2025 irs_box: "22" }
+}
+concepts {
+  concept: "rents_and_royalties"
+  years { tax_year: 2025 irs_box: "23" }
+}
+concepts {
+  concept: "gambling_winnings"
+  years { tax_year: 2025 irs_box: "24" }
+}
+concepts {
+  concept: "alimony_received"
+  years { tax_year: 2025 irs_box: "25" }
+}
+concepts {
+  concept: "other_income"
+  years { tax_year: 2025 irs_box: "26" }
+}
+concepts {
+  concept: "total_income"
+  years { tax_year: 2025 irs_box: "27" }
+}
+concepts {
+  concept: "pension_exclusion"
+  years { tax_year: 2025 irs_box: "28a" }
+}
+concepts {
+  concept: "other_retirement_income_exclusion"
+  years { tax_year: 2025 irs_box: "28b" note: "From Worksheet D." }
+}
+concepts {
+  concept: "total_exclusion"
+  years { tax_year: 2025 irs_box: "28c" }
+}
+concepts {
+  concept: "gross_income"
+  years { tax_year: 2025 irs_box: "29" }
+}
+concepts {
+  concept: "exemption_amount"
+  years { tax_year: 2025 irs_box: "30" note: "The total exemption amount from line 13 for a full-year resident." }
+}
+concepts {
+  concept: "medical_expenses"
+  years { tax_year: 2025 irs_box: "31" note: "From Worksheet F." }
+}
+concepts {
+  concept: "alimony_paid"
+  years { tax_year: 2025 irs_box: "32" }
+}
+concepts {
+  concept: "conservation_contribution"
+  years { tax_year: 2025 irs_box: "33" }
+}
+concepts {
+  concept: "health_enterprise_zone_deduction"
+  years { tax_year: 2025 irs_box: "34" }
+}
+concepts {
+  concept: "alternative_business_calculation_adjustment"
+  years { tax_year: 2025 irs_box: "35" note: "From Schedule NJ-BUS-2." }
+}
+concepts {
+  concept: "organ_donation_deduction"
+  years { tax_year: 2025 irs_box: "36" }
+}
+concepts {
+  concept: "njbest_deduction"
+  years { tax_year: 2025 irs_box: "37a" note: "Printed as \"37a\": the NJBEST deduction." }
+}
+concepts {
+  concept: "njclass_deduction"
+  years { tax_year: 2025 irs_box: "37a" note: "Printed as \"b\" beside line 37a: the NJCLASS deduction." }
+}
+concepts {
+  concept: "higher_education_tuition_deduction"
+  years { tax_year: 2025 irs_box: "37a" note: "Printed as \"c\" beside line 37a: the NJ higher education tuition deduction." }
+}
+concepts {
+  concept: "total_exemptions_and_deductions"
+  years { tax_year: 2025 irs_box: "38" }
+}
+concepts {
+  concept: "taxable_income_before_property_tax"
+  years { tax_year: 2025 irs_box: "39" }
+}
+concepts {
+  concept: "property_taxes_paid"
+  years { tax_year: 2025 irs_box: "40a" note: "Property taxes paid, or 18% of rent." }
+}
+concepts {
+  concept: "property_tax_deduction"
+  years { tax_year: 2025 irs_box: "41" note: "From Worksheet H." }
+}
+concepts {
+  concept: "taxable_income"
+  years { tax_year: 2025 irs_box: "42" }
+}
+concepts {
+  concept: "tax"
+  years { tax_year: 2025 irs_box: "43" note: "From the Tax Table or the Tax Rate Schedules." }
+}
+concepts {
+  concept: "credit_for_taxes_paid_to_other_jurisdictions"
+  years { tax_year: 2025 irs_box: "44" note: "From Schedule NJ-COJ." }
+}
+concepts {
+  concept: "balance_of_tax"
+  years { tax_year: 2025 irs_box: "45" }
+}
+concepts {
+  concept: "sheltered_workshop_credit"
+  years { tax_year: 2025 irs_box: "46" }
+}
+concepts {
+  concept: "gold_star_family_counseling_credit"
+  years { tax_year: 2025 irs_box: "47" }
+}
+concepts {
+  concept: "organ_donor_employer_credit"
+  years { tax_year: 2025 irs_box: "48" }
+}
+concepts {
+  concept: "total_credits"
+  years { tax_year: 2025 irs_box: "49" }
+}
+concepts {
+  concept: "balance_of_tax_after_credits"
+  years { tax_year: 2025 irs_box: "50" }
+}
+concepts {
+  concept: "use_tax"
+  years { tax_year: 2025 irs_box: "51" }
+}
+concepts {
+  concept: "estimated_tax_interest"
+  years { tax_year: 2025 irs_box: "52" }
+}
+concepts {
+  concept: "shared_responsibility_payment"
+  years { tax_year: 2025 irs_box: "53c" }
+}
+concepts {
+  concept: "total_tax_due"
+  years { tax_year: 2025 irs_box: "54" }
+}
+concepts {
+  concept: "tax_withheld"
+  years { tax_year: 2025 irs_box: "55" }
+}
+concepts {
+  concept: "property_tax_credit"
+  years { tax_year: 2025 irs_box: "56" }
+}
+concepts {
+  concept: "estimated_tax_payments"
+  years { tax_year: 2025 irs_box: "57" note: "Includes an overpayment credited from the 2024 return." }
+}
+concepts {
+  concept: "earned_income_credit"
+  years { tax_year: 2025 irs_box: "58" }
+}
+concepts {
+  concept: "excess_unemployment_insurance_withheld"
+  years { tax_year: 2025 irs_box: "59" note: "From Form NJ-2450." }
+}
+concepts {
+  concept: "excess_disability_insurance_withheld"
+  years { tax_year: 2025 irs_box: "60" note: "From Form NJ-2450." }
+}
+concepts {
+  concept: "excess_family_leave_insurance_withheld"
+  years { tax_year: 2025 irs_box: "61" note: "From Form NJ-2450." }
+}
+concepts {
+  concept: "wounded_warrior_caregivers_credit"
+  years { tax_year: 2025 irs_box: "62" }
+}
+concepts {
+  concept: "pass_through_business_alternative_income_tax_credit"
+  years { tax_year: 2025 irs_box: "63" }
+}
+concepts {
+  concept: "child_and_dependent_care_credit"
+  years { tax_year: 2025 irs_box: "64" }
+}
+concepts {
+  concept: "child_tax_credit"
+  years { tax_year: 2025 irs_box: "65" }
+}
+concepts {
+  concept: "total_payments_and_credits"
+  years { tax_year: 2025 irs_box: "66" }
+}
+concepts {
+  concept: "amount_owed_before_adjustments"
+  years { tax_year: 2025 irs_box: "67" }
+}
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "68" }
+}
+concepts {
+  concept: "credited_forward"
+  years { tax_year: 2025 irs_box: "69" }
+}
+concepts {
+  concept: "total_adjustments"
+  years { tax_year: 2025 irs_box: "78" note: "Lines 69 through 77: the credit forward and the designated contributions." }
+}
+concepts {
+  concept: "balance_due"
+  years { tax_year: 2025 irs_box: "79" }
+}
+concepts {
+  concept: "refund"
+  years { tax_year: 2025 irs_box: "80" }
+}

@@ -1,0 +1,150 @@
+Clear ALL fields
+
+                                                                                                                                     DEPT
+                   Vermont Department of Taxes                                       FILE YOUR RETURN
+
+                                                                                                                                                *251111100*
+                                                                                                                                     USE
+                                                                                   ELECTRONICALLY FOR A                              ONLY
+                       2025 Form IN-111                                               FASTER REFUND.
+                                                                                  GO TO TAX.VERMONT.GOV                                         * 2 5 1 1 1 1 1 0 0 *
+               Vermont Income Tax Return                                          FOR MORE INFORMATION.
+                                                                                                                                               Please PRINT in BLUE or BLACK INK
+                        Taxpayer’s Last Name                                               First Name                          MI           Social Security Number                      Check if
+                                                                                                                                                                                        Deceased
+                 Spouse’s/CU Partner’s Last Name                                           First Name                          MI           Social Security Number                      Check if
+                                                                                                                                                                                        Deceased
+                                          Mailing Address (Number and Street/Road or PO Box)                                                911/Physical Street Address on 12/31/2025
+
+
+                                   City                                   State      ZIP Code or Foreign Postal Code                                      Foreign Country
+
+
+      Vermont School District Code
+                                            Vermont Residency Status as of                                                                 PART-YEAR
+                                            12/31/2025 (check one)                                      RESIDENT                           RESIDENT                          NONRESIDENT
+      Filing Status and                      Single                   Married/CU Filing                 Married/CU Filing                  Head of Household                 Qualifying Widow(er)
+      Standard Deduction                     ($7,650)                 Jointly ($15,300)                 Separately ($7,650)                ($11,450)                         ($15,300)
+                                                  Check all                                         CANNABIS
+            Enter Healthcare Coverage Code                                  AMENDED                 With Recomputed              RECOMPUTED                   EXTENDED                   FARMER /
+            (See instructions for code options) that apply                  Return                  Federal Return               Return                       Return                     FISHERMAN
+
+
+
+     1. Federal Adjusted Gross Income (federal Form 1040, Line 11a). .  .  .  .  .  .  . . . . . . . . . . . 1. _______________________.00
+
+     2. Net Modifications to Federal AGI (Schedule IN-112, Part I, Line 19). .  . . . . . . . . . . . 2. _______________________.00
+
+     3. Federal AGI with Modifications (ADD Lines 1 and 2) .  .  .  .  .  .  .  .  .  .  .  .  .  . . . . . . . . . . . 3. _______________________.00
+
+     4. 2025 Vermont Standard Deduction from filing status section above.. .  .  . . . . . . . . . . . 4. _______________________.00
+            Please see instructions if you or your spouse checked any standard
+            deduction boxes on federal Form 1040, page 1.
+     5. Personal Exemptions:              5b. Enter "1" for your jointly filed 5c. Enter number of OTHER
+            5a. Enter "1" for yourself if no one                                                                                                                              5d. Total Exemptions
+                                                              spouse or CU partner if no one can                       dependents claimed on
+              can claim you as a dependent                                                                                                                                  (ADD Lines 5a through 5c)
+                                                                 claim them as a dependent                               federal Form 1040
+    		 5a. ________                                +             5b. ________                           +              5c. ________                       =               5d. ____________
+
+    5e. MULTIPLY Line 5d by $5,300 (2025 Personal Exemption) . .  .  .  .  .  .  .  . . . . . . . . . . 5e. _______________________.00
+
+     6. ADD Lines 4 and 5e.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . . . . . . . . . . . 6. _______________________.00
+     7. Vermont Taxable Income (SUBTRACT Line 6 from Line 3.
+        If less than zero, enter -0-).  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . . . . . . . . . . . 7. _______________________.00
+
+     8. Vermont Income Tax from tax table or tax rate schedule.  .  .  .  .  .  .  .  .  .  .  .  . . . . . . . . . . . 8. _______________________.00
+        (If Line 1 is greater than $150,000, see instructions)
+     9. Net Adjustment to Vermont Tax (Schedule IN-119, Part I, Line 15) . .  .  . . . . . . . . . . . 9. _______________________.00
+    10. Vermont Income Tax with Adjustment (ADD Lines 8 and 9.
+        If less than zero, enter -0-).  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 10. _______________________.00
+       11. Tax-Deductible Charitable Contribution                   12. Multiply Line 11 by 5% (0.05)         13. Charitable Contribution
+           (See instructions)                                                                                     Deduction (Enter the lesser
+    				                           ___________ .00                         ___________ .00                        of Line 12 or $1,000) . . . . . . 13. _______________________.00
+
+
+    14. Vermont Income Tax (Line 10 MINUS Line 13. If less than zero, enter -0-) .  .  .  . 14. _______________________.00
+
+    15. Income Adjustment (Schedule IN-113, Line 35, or 100.0000%) .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 15. ___________ . ___________%
+
+    16. Adjusted Vermont Income Tax (MULTIPLY Line 14 by Line 15) .  .  .  .  .  .  .  .  .  .  .  . 16. _______________________.00
+
+                                                                                                                                                                         Form IN-111
+                                                                             Amount Due
+                                                                                                                                                                          Page 1 of 2
+    5454                                                                     (from Line 32)                                           .00                                  Rev. 10/25
+               Taxpayer’s Last Name                       Social Security Number
+
+
+        Amount from
+        Line 16                                       .00
+                                                                                                                                        *251111200*
+                                                                                                                                        * 2 5 1 1 1 1 2 0 0 *
+      Other State Credit (Schedule IN-117, Line 21)                       Vermont Tax Credits (Schedule IN-119, Part II)                         Total Vermont Credits (Add Lines 17 and 18)
+17. __________________.00              +               18.__________________.00                                                               =              19. _______________________.00
+20. Vermont Income Tax after credits (SUBTRACT Line 19 from Line 16.
+     If Line 19 is greater than Line 16, enter -0-). .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 20. _______________________.00
+21. Child Care Contributions for Self-Employed individuals
+     (see instructions for calculation). .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 21. _______________________.00
+22. Use Tax for taxable items on which no sales tax
+                                                                                                        Check to certify                           OR 22. _______________________.00
+     was charged, including online purchases.. .  .  .  .  .  .  .  .  .
+                                                                                                        no Use Tax is due.
+     (See instructions, worksheet, and chart)
+23. Total Vermont Taxes (ADD Lines 20 through 22). .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 23. _______________________.00
+                                                                                                                             Vermont Children’s
+    Vermont Veterans Fund                     Green Up Vermont                    Nongame Wildlife Fund                                                                Total Contributions
+                                                                                                                              Trust Foundation
+
+24a. _________.00                 + 24b. _________.00 + 24c. _________.00                                       +     24d. _________.00                   =    24e.___________.00
+
+25. Total of Vermont Taxes and Voluntary Contributions (ADD Lines 23 and 24e). .  . 25. _______________________.00
+
+26a. 2025 Vermont Tax Withheld from W-2, 1099.  .  .  .  .  .  .  .  . 26a. ________________ .00
+26b. 2025 Estimated Tax payments, amount carried forward
+     from 2024, and/or payment made with 2025 extension. . 26b. ________________ .00
+26c. Refundable Credits (Schedule IN-112, Part II: Full-Year
+     Residents-Line 13; Part-Year Residents-Line 17). .  .  .  . 26c. ________________ .00
+26d. 2025 Vermont Real Estate Withholding from
+     Form RW-171.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 26d. ________________ .00
+26e. 2025 Nonresident Estimated Tax payments (nonresident
+     withholding) allocated on Schedule K-1VT, Line 30. .  .  . 26e. ________________ .00
+
+26f. Total Payments and Credits (ADD Lines 26a through 26e).  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 26f. _______________________.00
+27. Overpayment. If Line 25 is less than Line 26f,
+     SUBTRACT Line 25 from Line 26f .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 27. _______________________.00
+
+28a. Refund to be credited to 2026 Estimated Tax Payment.  . 28a. ________________ .00
+
+28b. Refund to be credited to 2026 Property Tax Bill.  .  .  .  .  .  . 28b. ________________ .00
+
+29. REFUND AMOUNT (SUBTRACT Lines 28a and 28b from Line 27).  .  .  .  .  .  .  . 29. _______________________.00
+30. If Line 25 is more than Line 26f, subtract Line 26f from Line 25.
+    See instructions on tax due.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 30. _______________________.00
+31. Interest and Penalty on 		                                                                              32. AMOUNT DUE
+    Underpayment of Estimated 31. _____________.00                                                          (ADD Lines 30 & 31).  32. _______________________.00
+    Tax (Worksheet IN-152 or IN-152A)
+    For Amended           Original refund received                  Refund due now                           Original payment                            Amount due now
+    Returns Only:                                        .00                                         .00                                         .00                                      .00
+Under penalties of perjury, I declare that I have examined this return and accompanying schedules and statements, and to the best of my knowledge
+and belief, they are true, correct and complete. Preparers cannot use return information for purposes other than preparing returns.
+  Signature                                                                               Date (MMDDYYYY)             Date of Birth (MMDDYYYY)                Daytime Telephone Number
+
+
+  Signature (If a joint return, BOTH must sign.)                                          Date (MMDDYYYY)             Date of Birth (MMDDYYYY)                Daytime Telephone Number
+
+
+  Paid Preparer’s Signature		                                                                                         Date (MMDDYYYY)                         Preparer’s Telephone Number
+
+
+  Firm’s Name (or yours if self-employed) and address		                                                               Preparer’s SSN or PTIN                  FEIN
+
+
+                             Check if the Department of Taxes may discuss                                                                                        Form IN-111
+                                                                                                                     Keep a copy for                              Page 2 of 2
+                             this return with the preparer shown.                                                    your records.
+5454                                                                                                                                                               Rev. 10/25
+
+
+        Clear ALL fields                                         Save and go to Important Printing Instructions                                                 Save and Print
+

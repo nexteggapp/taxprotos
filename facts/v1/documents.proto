@@ -93,15 +93,52 @@ import "taxprotos/us/federal/v1/form_w2g/form_w2g.proto";
 import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1041.proto";
 import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1065.proto";
 import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1120_s.proto";
+import "taxprotos/us/state/ar/v1/form_ar1000f/form_ar1000f.proto";
+import "taxprotos/us/state/al/v1/form_40/form_40.proto";
 import "taxprotos/us/state/az/v1/form_140/form_140.proto";
+import "taxprotos/us/state/id/v1/form_40/form_40.proto";
 import "taxprotos/us/state/ca/v1/form_540/form_540.proto";
 import "taxprotos/us/state/ca/v1/form_540/schedule_ca.proto";
 import "taxprotos/us/state/co/v1/form_dr0104/form_dr0104.proto";
+import "taxprotos/us/state/ga/v1/form_500/form_500.proto";
+import "taxprotos/us/state/ia/v1/form_ia1040/form_ia1040.proto";
+import "taxprotos/us/state/ks/v1/form_k40/form_k40.proto";
+import "taxprotos/us/state/de/v1/form_pit_res/form_pit_res.proto";
+import "taxprotos/us/state/dc/v1/form_d40/form_d40.proto";
+import "taxprotos/us/state/hi/v1/form_n11/form_n11.proto";
 import "taxprotos/us/state/il/v1/form_il1040/form_il1040.proto";
+import "taxprotos/us/state/mi/v1/form_mi1040/form_mi1040.proto";
+import "taxprotos/us/state/ky/v1/form_740/form_740.proto";
+import "taxprotos/us/state/in/v1/form_it40/form_it40.proto";
+import "taxprotos/us/state/la/v1/form_it540/form_it540.proto";
+import "taxprotos/us/state/ms/v1/form_80105/form_80105.proto";
+import "taxprotos/us/state/mo/v1/form_mo1040/form_mo1040.proto";
+import "taxprotos/us/state/mt/v1/form_2/form_2.proto";
+import "taxprotos/us/state/me/v1/form_1040me/form_1040me.proto";
+import "taxprotos/us/state/ri/v1/form_ri1040/form_ri1040.proto";
+import "taxprotos/us/state/mn/v1/form_m1/form_m1.proto";
+import "taxprotos/us/state/ma/v1/form_1/form_1.proto";
+import "taxprotos/us/state/md/v1/form_502/form_502.proto";
 import "taxprotos/us/state/nc/v1/form_d400/form_d400.proto";
+import "taxprotos/us/state/ok/v1/form_511/form_511.proto";
+import "taxprotos/us/state/nm/v1/form_pit1/form_pit1.proto";
+import "taxprotos/us/state/nd/v1/form_nd1/form_nd1.proto";
+import "taxprotos/us/state/ne/v1/form_1040n/form_1040n.proto";
+import "taxprotos/us/state/ct/v1/form_ct1040/form_ct1040.proto";
+import "taxprotos/us/state/oh/v1/form_it1040/form_it1040.proto";
+import "taxprotos/us/state/nj/v1/form_nj1040/form_nj1040.proto";
+import "taxprotos/us/state/ny/v1/form_it201/form_it201.proto";
 import "taxprotos/us/state/or/v1/form_or40/form_or40.proto";
+import "taxprotos/us/state/pa/v1/form_pa40/form_pa40.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_asc.proto";
+import "taxprotos/us/state/ut/v1/form_tc40/form_tc40.proto";
+import "taxprotos/us/state/wa/v1/capital_gains/capital_gains_return.proto";
+import "taxprotos/us/state/va/v1/form_760/form_760.proto";
+import "taxprotos/us/state/sc/v1/form_sc1040/form_sc1040.proto";
+import "taxprotos/us/state/wv/v1/form_it140/form_it140.proto";
+import "taxprotos/us/state/vt/v1/form_in111/form_in111.proto";
+import "taxprotos/us/state/wi/v1/form_1/form_1.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/facts/v1;factsv1";
 
@@ -236,14 +273,125 @@ message Document {
     // A filed Illinois return.
     IllinoisReturn illinois_return = 48;
 
+    // A filed Missouri return.
+    MissouriReturn missouri_return = 71;
+
+    // A filed Montana return.
+    MontanaReturn montana_return = 72;
+
     // A filed North Carolina return.
     NorthCarolinaReturn north_carolina_return = 49;
+
+    // A filed Maine return.
+    MaineReturn maine_return = 65;
 
     // A filed Colorado return.
     ColoradoReturn colorado_return = 50;
 
     // A filed Arizona return.
     ArizonaReturn arizona_return = 51;
+
+    // A filed Georgia return.
+    GeorgiaReturn georgia_return = 57;
+
+    // A filed Idaho return.
+    IdahoReturn idaho_return = 59;
+
+    // A filed Utah return.
+    UtahReturn utah_return = 83;
+
+    // A filed Washington capital gains excise tax return.
+    WashingtonReturn washington_return = 88;
+
+    // A filed Michigan return.
+    MichiganReturn michigan_return = 68;
+
+    // A filed Kentucky return.
+    KentuckyReturn kentucky_return = 63;
+
+    // A filed Indiana return.
+    IndianaReturn indiana_return = 60;
+
+    // A filed Pennsylvania return.
+    PennsylvaniaReturn pennsylvania_return = 80;
+
+    // A filed Iowa return.
+    IowaReturn iowa_return = 61;
+
+    // A filed Louisiana return.
+    LouisianaReturn louisiana_return = 64;
+
+    // A filed Mississippi return.
+    MississippiReturn mississippi_return = 70;
+
+    // A filed Kansas return.
+    KansasReturn kansas_return = 62;
+
+    // A filed Oklahoma return.
+    OklahomaReturn oklahoma_return = 79;
+
+    // A filed Arkansas return.
+    ArkansasReturn arkansas_return = 53;
+
+    // A filed New Mexico return.
+    NewMexicoReturn new_mexico_return = 75;
+
+    // A filed North Dakota return.
+    NorthDakotaReturn north_dakota_return = 77;
+
+    // A filed Nebraska return.
+    NebraskaReturn nebraska_return = 73;
+
+    // A filed Delaware return.
+    DelawareReturn delaware_return = 55;
+
+    // A filed Virginia return.
+    VirginiaReturn virginia_return = 85;
+
+    // A filed Alabama return.
+    AlabamaReturn alabama_return = 52;
+
+    // A filed District of Columbia return.
+    DistrictOfColumbiaReturn district_of_columbia_return = 56;
+
+    // A filed South Carolina return.
+    SouthCarolinaReturn south_carolina_return = 82;
+
+    // A filed West Virginia return.
+    WestVirginiaReturn west_virginia_return = 86;
+
+    // A filed Hawaii return.
+    HawaiiReturn hawaii_return = 58;
+
+    // A filed Vermont return.
+    VermontReturn vermont_return = 84;
+
+    // A filed Rhode Island return.
+    RhodeIslandReturn rhode_island_return = 81;
+
+    // A filed Connecticut return.
+    ConnecticutReturn connecticut_return = 54;
+
+    // A filed Minnesota return.
+    MinnesotaReturn minnesota_return = 69;
+
+    // A filed Wisconsin return.
+    WisconsinReturn wisconsin_return = 87;
+
+    // A filed Massachusetts return.
+    MassachusettsReturn massachusetts_return = 67;
+
+    // A filed Maryland return.
+    MarylandReturn maryland_return = 66;
+
+    // A filed Ohio return.
+    OhioReturn ohio_return = 78;
+
+    // A filed New Jersey return.
+    NewJerseyReturn new_jersey_return = 74;
+
+    // A filed New York return.
+    NewYorkReturn new_york_return = 76;
   }
 }
 
@@ -704,10 +852,52 @@ message OregonReturn {
   us.state.or.v1.ScheduleORASC schedule_or_asc = 3;
 }
 
+// A Delaware resident return: Form PIT-RES.
+message DelawareReturn {
+  // Form PIT-RES.
+  us.state.de.v1.FormPITRES form_pit_res = 1;
+}
+
+// An Alabama resident return: Form 40.
+message AlabamaReturn {
+  // Form 40.
+  us.state.al.v1.FormAL40 form_40 = 1;
+}
+
+// A Maine resident return: Form 1040ME.
+message MaineReturn {
+  // Form 1040ME.
+  us.state.me.v1.Form1040ME form_1040me = 1;
+}
+
 // An Illinois resident return: Form IL-1040.
 message IllinoisReturn {
   // Form IL-1040.
   us.state.il.v1.FormIL1040 form_il1040 = 1;
+}
+
+// A Michigan resident return: Form MI-1040.
+message MichiganReturn {
+  // Form MI-1040.
+  us.state.mi.v1.FormMI1040 form_mi1040 = 1;
+}
+
+// An Indiana resident return: Form IT-40.
+message IndianaReturn {
+  // Form IT-40.
+  us.state.in.v1.FormIT40 form_it40 = 1;
+}
+
+// A Missouri resident return: Form MO-1040.
+message MissouriReturn {
+  // Form MO-1040.
+  us.state.mo.v1.FormMO1040 form_mo1040 = 1;
+}
+
+// A Montana resident return: Form 2.
+message MontanaReturn {
+  // Form 2.
+  us.state.mt.v1.Form2 form_2 = 1;
 }
 
 // A North Carolina resident return: Form D-400.
@@ -726,4 +916,185 @@ message ColoradoReturn {
 message ArizonaReturn {
   // Form 140.
   us.state.az.v1.Form140 form_140 = 1;
+}
+
+// A Georgia resident return: Form 500.
+message GeorgiaReturn {
+  // Form 500.
+  us.state.ga.v1.Form500 form_500 = 1;
+}
+
+// An Idaho resident return: Form 40.
+message IdahoReturn {
+  // Form 40.
+  us.state.id.v1.Form40 form_40 = 1;
+}
+
+// A Utah resident return: Form TC-40.
+message UtahReturn {
+  // Form TC-40.
+  us.state.ut.v1.FormTC40 form_tc40 = 1;
+}
+
+// A Washington return: the capital gains excise tax return. Washington levies
+// no personal income tax, so this is the only individual return it has.
+message WashingtonReturn {
+  // The capital gains excise tax return.
+  us.state.wa.v1.CapitalGainsReturn capital_gains = 1;
+}
+
+// A Kentucky resident return: Form 740.
+message KentuckyReturn {
+  // Form 740.
+  us.state.ky.v1.Form740 form_740 = 1;
+}
+
+// A Pennsylvania resident return: Form PA-40.
+message PennsylvaniaReturn {
+  // Form PA-40.
+  us.state.pa.v1.FormPA40 form_pa40 = 1;
+}
+
+// An Iowa resident return: Form IA 1040.
+message IowaReturn {
+  // Form IA 1040.
+  us.state.ia.v1.FormIA1040 form_ia1040 = 1;
+}
+
+// A Louisiana resident return: Form IT-540.
+message LouisianaReturn {
+  // Form IT-540.
+  us.state.la.v1.FormIT540 form_it540 = 1;
+}
+
+// A Mississippi resident return: Form 80-105.
+message MississippiReturn {
+  // Form 80-105.
+  us.state.ms.v1.Form80105 form_80105 = 1;
+}
+
+// A Kansas resident return: Form K-40.
+message KansasReturn {
+  // Form K-40.
+  us.state.ks.v1.FormK40 form_k40 = 1;
+}
+
+// An Oklahoma resident return: Form 511.
+message OklahomaReturn {
+  // Form 511.
+  us.state.ok.v1.Form511 form_511 = 1;
+}
+
+// An Arkansas full-year resident return: Form AR1000F.
+message ArkansasReturn {
+  // Form AR1000F.
+  us.state.ar.v1.FormAR1000F form_ar1000f = 1;
+}
+
+// A New Mexico resident return: Form PIT-1.
+message NewMexicoReturn {
+  // Form PIT-1.
+  us.state.nm.v1.FormPIT1 form_pit1 = 1;
+}
+
+// A North Dakota resident return: Form ND-1.
+message NorthDakotaReturn {
+  // Form ND-1.
+  us.state.nd.v1.FormND1 form_nd1 = 1;
+}
+
+// A Nebraska resident return: Form 1040N.
+message NebraskaReturn {
+  // Form 1040N.
+  us.state.ne.v1.Form1040N form_1040n = 1;
+}
+
+// A Virginia resident return: Form 760.
+message VirginiaReturn {
+  // Form 760.
+  us.state.va.v1.Form760 form_760 = 1;
+}
+
+// A District of Columbia resident return: Form D-40.
+message DistrictOfColumbiaReturn {
+  // Form D-40.
+  us.state.dc.v1.FormD40 form_d40 = 1;
+}
+
+// A South Carolina resident return: the SC1040.
+message SouthCarolinaReturn {
+  // The SC1040.
+  us.state.sc.v1.FormSC1040 form_sc1040 = 1;
+}
+
+// A West Virginia resident return: Form IT-140.
+message WestVirginiaReturn {
+  // Form IT-140.
+  us.state.wv.v1.FormIT140 form_it140 = 1;
+}
+
+// A Hawaii resident return: Form N-11.
+message HawaiiReturn {
+  // Form N-11.
+  us.state.hi.v1.FormN11 form_n11 = 1;
+}
+
+// A Vermont resident return: Form IN-111.
+message VermontReturn {
+  // Form IN-111.
+  us.state.vt.v1.FormIN111 form_in111 = 1;
+}
+
+// A Rhode Island resident return: Form RI-1040.
+message RhodeIslandReturn {
+  // Form RI-1040.
+  us.state.ri.v1.FormRI1040 form_ri1040 = 1;
+}
+
+// A Connecticut resident return: Form CT-1040.
+message ConnecticutReturn {
+  // Form CT-1040.
+  us.state.ct.v1.FormCT1040 form_ct1040 = 1;
+}
+
+// A Minnesota resident return: Form M1.
+message MinnesotaReturn {
+  // Form M1.
+  us.state.mn.v1.FormM1 form_m1 = 1;
+}
+
+// A Wisconsin resident return: Form 1.
+message WisconsinReturn {
+  // Form 1.
+  us.state.wi.v1.Form1 form_1 = 1;
+}
+
+// A Massachusetts resident return: Form 1.
+message MassachusettsReturn {
+  // Form 1.
+  us.state.ma.v1.FormMA1 form_1 = 1;
+}
+
+// A Maryland resident return: Form 502.
+message MarylandReturn {
+  // Form 502.
+  us.state.md.v1.Form502 form_502 = 1;
+}
+
+// An Ohio resident return: Ohio IT 1040.
+message OhioReturn {
+  // Ohio IT 1040.
+  us.state.oh.v1.FormIT1040 form_it1040 = 1;
+}
+
+// A New Jersey resident return: Form NJ-1040.
+message NewJerseyReturn {
+  // Form NJ-1040.
+  us.state.nj.v1.FormNJ1040 form_nj1040 = 1;
+}
+
+// A New York resident return: Form IT-201.
+message NewYorkReturn {
+  // Form IT-201.
+  us.state.ny.v1.FormIT201 form_it201 = 1;
 }

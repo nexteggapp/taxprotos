@@ -1,0 +1,150 @@
+// Form NJ-1040, New Jersey Resident Income Tax Return.
+//
+// Part-year residents file the same form, prorating the exemptions and the
+// property tax figures. Only the full-year resident's return is modelled here.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form NJ-1040; testdata
+// holds the text extracted from the published PDF and coverage_test.go asserts
+// every line a mapping claims appears on it.
+//
+// # Gross income, not federal income
+//
+// New Jersey does not start from federal adjusted gross income. It adds up
+// its own categories of income on lines 15 to 26, excludes retirement income
+// on line 28, takes off fixed exemptions and a few deductions, then the
+// property tax deduction on line 41, and taxes the rest through graduated
+// rates on line 43.
+//
+// # The property tax deduction or credit
+//
+// A homeowner or tenant takes either the deduction on line 41 or the credit
+// on line 56, whichever is worth more; the credit is refundable.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.nj.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/nj/v1/form_nj1040;formnj1040";
+
+// FilingStatus is the status the return is filed under, lines 1 to 5.
+//
+// New Jersey treats civil union couples as married couples.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+  FILING_STATUS_QUALIFYING_SURVIVING_SPOUSE = 5;
+}
+
+// FormNJ1040 is what a Form NJ-1040 states.
+message FormNJ1040 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // Exemptions claimed on lines 6 to 12, as counts.
+  int32 regular_exemptions = 5 [(common.v1.fdx_absent) = true];
+  int32 senior_exemptions = 6 [(common.v1.fdx_absent) = true];
+  int32 blind_or_disabled_exemptions = 7 [(common.v1.fdx_absent) = true];
+  int32 veteran_exemptions = 8 [(common.v1.fdx_absent) = true];
+  int32 qualified_dependent_children = 9 [(common.v1.fdx_absent) = true];
+  int32 other_dependents = 10 [(common.v1.fdx_absent) = true];
+  int32 dependents_attending_college = 11 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_exemption_amount = 12 [(common.v1.fdx_absent) = true];
+  // State wages from Forms W-2, box 16.
+  nexteggapp.taxprotos.common.v1.Money wages = 13 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money taxable_interest = 14 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax_exempt_interest = 15 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money dividends = 16 [(common.v1.fdx_absent) = true];
+  // From Schedule NJ-BUS-1, Part I.
+  nexteggapp.taxprotos.common.v1.Money net_business_profits = 17 [(common.v1.fdx_absent) = true];
+  // From Schedule NJ-DOP; a net loss is entered as zero.
+  nexteggapp.taxprotos.common.v1.Money net_gains_from_property = 18 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money taxable_pensions = 19 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money excludable_pensions = 20 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money partnership_income = 21 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money s_corporation_income = 22 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money rents_and_royalties = 23 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money gambling_winnings = 24 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money alimony_received = 25 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money other_income = 26 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_income = 27 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money pension_exclusion = 28 [(common.v1.fdx_absent) = true];
+  // From Worksheet D.
+  nexteggapp.taxprotos.common.v1.Money other_retirement_income_exclusion = 29 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_exclusion = 30 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money gross_income = 31 [(common.v1.fdx_absent) = true];
+  // The total exemption amount from line 13 for a full-year resident.
+  nexteggapp.taxprotos.common.v1.Money exemption_amount = 32 [(common.v1.fdx_absent) = true];
+  // From Worksheet F.
+  nexteggapp.taxprotos.common.v1.Money medical_expenses = 33 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money alimony_paid = 34 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money conservation_contribution = 35 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money health_enterprise_zone_deduction = 36 [(common.v1.fdx_absent) = true];
+  // From Schedule NJ-BUS-2.
+  nexteggapp.taxprotos.common.v1.Money alternative_business_calculation_adjustment = 37 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money organ_donation_deduction = 38 [(common.v1.fdx_absent) = true];
+  // Printed as "37a": the NJBEST deduction.
+  nexteggapp.taxprotos.common.v1.Money njbest_deduction = 39 [(common.v1.fdx_absent) = true];
+  // Printed as "b" beside line 37a: the NJCLASS deduction.
+  nexteggapp.taxprotos.common.v1.Money njclass_deduction = 40 [(common.v1.fdx_absent) = true];
+  // Printed as "c" beside line 37a: the NJ higher education tuition deduction.
+  nexteggapp.taxprotos.common.v1.Money higher_education_tuition_deduction = 41 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_exemptions_and_deductions = 42 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money taxable_income_before_property_tax = 43 [(common.v1.fdx_absent) = true];
+  // Property taxes paid, or 18% of rent.
+  nexteggapp.taxprotos.common.v1.Money property_taxes_paid = 44 [(common.v1.fdx_absent) = true];
+  // From Worksheet H.
+  nexteggapp.taxprotos.common.v1.Money property_tax_deduction = 45 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 46 [(common.v1.fdx_absent) = true];
+  // From the Tax Table or the Tax Rate Schedules.
+  nexteggapp.taxprotos.common.v1.Money tax = 47 [(common.v1.fdx_absent) = true];
+  // From Schedule NJ-COJ.
+  nexteggapp.taxprotos.common.v1.Money credit_for_taxes_paid_to_other_jurisdictions = 48 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money balance_of_tax = 49 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money sheltered_workshop_credit = 50 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money gold_star_family_counseling_credit = 51 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money organ_donor_employer_credit = 52 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_credits = 53 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money balance_of_tax_after_credits = 54 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money use_tax = 55 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_interest = 56 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money shared_responsibility_payment = 57 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_tax_due = 58 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax_withheld = 59 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money property_tax_credit = 60 [(common.v1.fdx_absent) = true];
+  // Includes an overpayment credited from the 2024 return.
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 61 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money earned_income_credit = 62 [(common.v1.fdx_absent) = true];
+  // From Form NJ-2450.
+  nexteggapp.taxprotos.common.v1.Money excess_unemployment_insurance_withheld = 63 [(common.v1.fdx_absent) = true];
+  // From Form NJ-2450.
+  nexteggapp.taxprotos.common.v1.Money excess_disability_insurance_withheld = 64 [(common.v1.fdx_absent) = true];
+  // From Form NJ-2450.
+  nexteggapp.taxprotos.common.v1.Money excess_family_leave_insurance_withheld = 65 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money wounded_warrior_caregivers_credit = 66 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money pass_through_business_alternative_income_tax_credit = 67 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money child_and_dependent_care_credit = 68 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money child_tax_credit = 69 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_payments_and_credits = 70 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money amount_owed_before_adjustments = 71 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money overpayment = 72 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money credited_forward = 73 [(common.v1.fdx_absent) = true];
+  // Lines 69 through 77: the credit forward and the designated contributions.
+  nexteggapp.taxprotos.common.v1.Money total_adjustments = 74 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money balance_due = 75 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money refund = 76 [(common.v1.fdx_absent) = true];
+}

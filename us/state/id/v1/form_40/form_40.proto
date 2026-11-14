@@ -1,0 +1,143 @@
+// Form 40, Idaho Individual Income Tax Return.
+//
+// Full-year residents file Form 40. A part-year or non-resident files Form 43,
+// which is not modelled here. Lines 58 to 61, which only an amended return
+// completes, are not modelled either.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form 40; testdata holds
+// the text extracted from the published PDF and coverage_test.go asserts every
+// line a mapping claims appears on it.
+//
+// # Idaho starts from federal adjusted gross income
+//
+// Lines 7 to 11 adjust federal AGI with the additions and subtractions of
+// Form 39R. Lines 13 to 17 take the larger of the federal standard deduction
+// and the federal itemized deductions less state and local taxes, and line 18
+// the federal qualified business income and Schedule 1-A deductions.
+//
+// # One rate above a zero-rate amount
+//
+// The tax on line 20 is 5.3% of taxable income above $4,811 ($9,622 for a
+// joint return, a head of household or a surviving spouse) for 2025.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.id.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/id/v1/form_40;form40";
+
+// FilingStatus is the status the return is filed under, lines 1 to 5. Idaho
+// requires the federal filing status.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+  FILING_STATUS_QUALIFYING_SURVIVING_SPOUSE = 5;
+}
+
+// Form40 is what a Form 40 states.
+message Form40 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // Household, line 6: 1 for the filer unless someone else can claim them, 1
+  // for a spouse on a joint return, and the number of dependents.
+  int32 household_yourself = 5 [(common.v1.fdx_absent) = true];
+  int32 household_spouse = 6 [(common.v1.fdx_absent) = true];
+  int32 household_dependents = 7 [(common.v1.fdx_absent) = true];
+  int32 household_total = 8 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 9 [(common.v1.fdx_absent) = true];
+
+  // Additions to federal AGI, totalled on Form 39R Part A.
+  nexteggapp.taxprotos.common.v1.Money additions = 10 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money income_after_additions = 11 [(common.v1.fdx_absent) = true];
+
+  // Subtractions, totalled on Form 39R Part B, among them taxable Social Security
+  // benefits, which Idaho does not tax.
+  nexteggapp.taxprotos.common.v1.Money subtractions = 12 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_adjusted_income = 13 [(common.v1.fdx_absent) = true];
+
+  // Boxes checked on line 12a, 12b and 12c, which decide the standard
+  // deduction worksheet.
+  int32 age_65_or_older = 14 [(common.v1.fdx_absent) = true];
+  int32 blind = 15 [(common.v1.fdx_absent) = true];
+  bool claimed_as_dependent = 16 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money itemized_deductions = 17 [(common.v1.fdx_absent) = true];
+
+  // Idaho takes state and local income or sales taxes back out of the
+  // federal itemized deductions.
+  nexteggapp.taxprotos.common.v1.Money state_and_local_taxes = 18 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money itemized_deductions_less_taxes = 19 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money standard_deduction = 20 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money income_after_deduction = 21 [(common.v1.fdx_absent) = true];
+
+  // The federal qualified business income deduction and the Schedule 1-A
+  // deductions, together.
+  nexteggapp.taxprotos.common.v1.Money qualified_business_income_deduction = 22 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 23 [(common.v1.fdx_absent) = true];
+
+  // Idaho taxes taxable income above a zero-rate amount at one rate.
+  nexteggapp.taxprotos.common.v1.Money tax = 24 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money credit_for_tax_paid_to_other_states = 25 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money charitable_and_organ_donation_credits = 26 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money business_income_tax_credits = 27 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money child_tax_credit = 28 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_credits = 29 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax_after_credits = 30 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money fuels_use_tax = 31 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money use_tax = 32 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money credit_recapture_tax = 33 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money qualified_investment_exemption_recapture = 34 [(common.v1.fdx_absent) = true];
+
+  // The $10 permanent building fund tax, and the box a filer who received
+  // Idaho public assistance checks to be excused from it.
+  nexteggapp.taxprotos.common.v1.Money permanent_building_fund_tax = 35 [(common.v1.fdx_absent) = true];
+  bool received_public_assistance = 36 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_tax = 37 [(common.v1.fdx_absent) = true];
+
+  // Donations.
+  nexteggapp.taxprotos.common.v1.Money nongame_wildlife_donation = 38 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money childrens_trust_fund_donation = 39 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money special_olympics_donation = 40 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money guard_and_reserve_family_donation = 41 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money red_cross_donation = 42 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money veterans_support_donation = 43 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money food_bank_donation = 44 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money opportunity_scholarship_donation = 45 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_tax_and_donations = 46 [(common.v1.fdx_absent) = true];
+
+  // Payments and refundable credits.
+  nexteggapp.taxprotos.common.v1.Money parental_choice_tax_credit = 47 [(common.v1.fdx_absent) = true];
+
+  // The food tax credit, or zero when the filer donates it to the
+  // Cooperative Welfare Fund by checking the box.
+  nexteggapp.taxprotos.common.v1.Money food_tax_credit = 48 [(common.v1.fdx_absent) = true];
+  bool food_tax_credit_donated = 49 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money family_member_care_credit = 50 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money fuels_tax_refund = 51 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money idaho_tax_withheld = 52 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 53 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money pass_through_entity_payments = 54 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money reimbursement_incentive_and_claim_of_right_credits = 55 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_payments_and_credits = 56 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax_due = 57 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money penalty_and_interest = 58 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money prior_year_nonrefundable_credit = 59 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_due = 60 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money overpayment = 61 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money refund = 62 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money applied_to_next_year = 63 [(common.v1.fdx_absent) = true];
+}

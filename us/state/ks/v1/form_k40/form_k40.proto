@@ -1,0 +1,103 @@
+// Form K-40, Kansas Individual Income Tax.
+//
+// Part-year residents and nonresidents file the same form with Schedule S
+// Part B, which sets the nonresident percentage on line 9 and the tax on line
+// 10. Only the full-year resident's return is modelled here, so lines 9 and 10
+// are not. Lines 24 and 26 are for amended returns only and are not modelled
+// either.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form K-40; testdata
+// holds the text extracted from the published PDF and coverage_test.go asserts
+// every line a mapping claims appears on it.
+//
+// # The exemptions on page 1
+//
+// Kansas's exemption allowance is figured in unnumbered boxes on the front of
+// the form and carried to line 5. The mapping names them by caption.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.ks.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/ks/v1/form_k40;formk40";
+
+// The filing status marked on page 1. Kansas has no qualifying surviving
+// spouse status.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+}
+
+// FormK40 is what a Form K-40 states.
+message FormK40 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // The number of dependents entered in the first box of the dependents line.
+  int32 dependents = 5 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money personal_exemption = 6 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money head_of_household_exemption = 7 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money dependent_exemption = 8 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money newborn_dependent_exemption = 9 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money stillborn_child_exemption = 10 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money disabled_veteran_exemption = 11 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_exemption_amount = 12 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 13 [(common.v1.fdx_absent) = true];
+  // Schedule S line A27: additions less subtractions. Negative when subtractions are larger.
+  nexteggapp.taxprotos.common.v1.Money modifications = 14 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money kansas_adjusted_gross_income = 15 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money standard_or_itemized_deduction = 16 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money exemption_allowance = 17 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_deductions = 18 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 19 [(common.v1.fdx_absent) = true];
+  // From the tax tables when line 7 is $100,000 or less, else the Tax Computation Worksheet.
+  nexteggapp.taxprotos.common.v1.Money tax = 20 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money lump_sum_distribution_tax = 21 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_income_tax = 22 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money credit_for_tax_paid_to_other_states = 23 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money child_and_dependent_care_credit = 24 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money other_credits = 25 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money subtotal = 26 [(common.v1.fdx_absent) = true];
+  // The nonrefundable part of the Kansas earned income tax credit.
+  nexteggapp.taxprotos.common.v1.Money earned_income_credit = 27 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_tax_balance = 28 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money kansas_tax_withheld = 29 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 30 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money extension_payment = 31 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money refundable_earned_income_credit = 32 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money refundable_credits = 33 [(common.v1.fdx_absent) = true];
+  // Credit for tax paid on the K-120S, from Schedule K-9.
+  nexteggapp.taxprotos.common.v1.Money k120s_tax_credit = 34 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_refundable_credits = 35 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money underpayment = 36 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money interest = 37 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money penalty = 38 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_penalty = 39 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money amount_owed = 40 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money overpayment = 41 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money credit_forward = 42 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money chickadee_checkoff = 43 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money meals_on_wheels_contribution = 44 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money breast_cancer_research_contribution = 45 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money military_emergency_relief_contribution = 46 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money hometown_heroes_contribution = 47 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money creative_arts_industry_contribution = 48 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money local_school_district_contribution = 49 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money historic_site_contribution = 50 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money refund = 51 [(common.v1.fdx_absent) = true];
+}

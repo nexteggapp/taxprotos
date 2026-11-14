@@ -1,0 +1,153 @@
+// Form IT-540, Louisiana Resident Income Tax Return.
+//
+// A part-year resident or non-resident files Form IT-540B, which is not
+// modelled here.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form IT-540-WEB-BC;
+// testdata holds the text extracted from the published PDF and
+// coverage_test.go asserts every line a mapping claims appears on it.
+//
+// # Louisiana starts from federal adjusted gross income
+//
+// Line 7 is federal adjusted gross income, or, when Schedule E is attached,
+// Louisiana adjusted gross income from Schedule E line 5: federal AGI plus
+// the additions on lines 2A to 2E, less the exempt income on lines 4A to 4G.
+// The Schedule E lines this schema carries are prefixed schedule_e_ or name
+// the exemption code they report.
+//
+// # One rate
+//
+// From 2025 Louisiana taxes all of its taxable income at 3% (line 11), after
+// a standard deduction of $12,500, or $25,000 for a joint return, a head of
+// household or a qualifying surviving spouse. Personal and dependent
+// exemptions were repealed.
+//
+// # Credits come in four priorities
+//
+// Priority 1 credits (Schedule C) are nonrefundable and come off the tax
+// first. Priority 2 credits (lines 14 to 18) are refundable, and any excess
+// over the tax is carried to line 25 as a payment. Priority 3 credits
+// (Schedule J) are nonrefundable again. Priority 4 credits (Schedule I) are
+// refundable and sit with the payments.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.la.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/la/v1/form_it540;formit540";
+
+// FilingStatus is the status the return is filed under. It must agree with
+// the federal return.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+  FILING_STATUS_QUALIFYING_SURVIVING_SPOUSE = 5;
+}
+
+// FormIT540 is what a Form IT-540 states.
+message FormIT540 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // How many of the filer and spouse are 65 or older (box 6A). Since 2025
+  // this carries no exemption; it qualifies the filer for the retirement
+  // income exemption on Schedule E.
+  int32 age_65_or_older = 5 [(common.v1.fdx_absent) = true];
+
+  // Dependents claimed on the federal return (box 6B).
+  int32 dependents = 6 [(common.v1.fdx_absent) = true];
+
+  // Federal AGI, or Louisiana AGI from Schedule E line 5 when it is attached.
+  nexteggapp.taxprotos.common.v1.Money adjusted_gross_income = 7 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money standard_deduction = 8 [(common.v1.fdx_absent) = true];
+
+  // Lines 9A to 9D: the medical and dental deduction a federal itemizer takes
+  // beyond the federal standard deduction.
+  nexteggapp.taxprotos.common.v1.Money federal_itemized_deductions = 9 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money federal_medical_and_dental_deduction = 10 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money federal_standard_deduction = 11 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money excess_federal_itemized_deductions = 12 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 13 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money income_tax = 14 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money nonrefundable_priority_1_credits = 15 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax_after_priority_1_credits = 16 [(common.v1.fdx_absent) = true];
+
+  // Refundable priority 2 credits.
+  nexteggapp.taxprotos.common.v1.Money refundable_child_care_credit = 17 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money child_care_qualified_expenses = 18 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money child_care_worksheet_amount = 19 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money school_readiness_credit = 20 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money earned_income_credit = 21 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money other_refundable_priority_2_credits = 22 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_refundable_priority_2_credits = 23 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_after_priority_2_credits = 24 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money priority_2_credit_overpayment = 25 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money nonrefundable_priority_3_credits = 26 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money adjusted_income_tax = 27 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money consumer_use_tax = 28 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money vehicle_road_usage_fee = 29 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_tax = 30 [(common.v1.fdx_absent) = true];
+
+  // Payments.
+  nexteggapp.taxprotos.common.v1.Money priority_2_credit_overpayment_applied = 31 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money refundable_priority_4_credits = 32 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money louisiana_tax_withheld = 33 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money credit_carried_forward_from_prior_year = 34 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 35 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money extension_payment = 36 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_credits_and_payments = 37 [(common.v1.fdx_absent) = true];
+
+  // Refund.
+  nexteggapp.taxprotos.common.v1.Money overpayment = 38 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money underpayment_penalty_from_overpayment = 39 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money adjusted_overpayment = 40 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money donations = 41 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money overpayment_available = 42 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money credited_to_next_year = 43 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money refund = 44 [(common.v1.fdx_absent) = true];
+
+  // Amount due.
+  nexteggapp.taxprotos.common.v1.Money amount_owed = 45 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money military_family_assistance_donation = 46 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money coastal_protection_donation = 47 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money food_bank_donation = 48 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money interest = 49 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money delinquent_filing_penalty = 50 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money delinquent_payment_penalty = 51 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money underpayment_penalty = 52 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money balance_due = 53 [(common.v1.fdx_absent) = true];
+
+  // Schedule E, Adjustments to Income.
+  nexteggapp.taxprotos.common.v1.Money schedule_e_federal_adjusted_gross_income = 54 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money other_state_obligation_interest = 55 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money start_contribution_recapture = 56 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money start_k12_contribution_recapture = 57 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money pass_through_entity_loss_addback = 58 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money bonus_depreciation_addback = 59 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money schedule_e_total = 60 [(common.v1.fdx_absent) = true];
+
+  // Exempt income, each reported on one of lines 4A to 4G under its code.
+  nexteggapp.taxprotos.common.v1.Money us_government_obligation_interest = 61 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money retirement_income_exemption = 62 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money taxable_social_security = 63 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money other_exempt_income = 64 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_exempt_income = 65 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money schedule_e_louisiana_adjusted_gross_income = 66 [(common.v1.fdx_absent) = true];
+}

@@ -1,0 +1,36 @@
+# gazelle:ignore
+
+load("@rules_go//go:def.bzl", "go_library", "go_test")
+load("@rules_go//proto:def.bzl", "go_proto_library")
+
+go_proto_library(
+    name = "form_511_go_proto",
+    importpath = "github.com/nexteggapp/taxprotos/go/us/state/ok/v1/form_511",
+    proto = "//us/state/ok/v1/form_511:form_511_proto",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//go/common/v1",
+    ],
+)
+
+go_library(
+    name = "form_511",
+    embed = [":form_511_go_proto"],
+    importpath = "github.com/nexteggapp/taxprotos/go/us/state/ok/v1/form_511",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "form_511_test",
+    size = "small",
+    srcs = ["coverage_test.go"],
+    data = ["//us/state/ok/v1/form_511:test_oracles"],
+    deps = [
+        ":form_511",
+        "//go/common/v1",
+        "@org_golang_google_protobuf//encoding/prototext",
+        "@org_golang_google_protobuf//reflect/protoreflect",
+        "@org_golang_google_protobuf//reflect/protoregistry",
+        "@rules_go//go/runfiles",
+    ],
+)

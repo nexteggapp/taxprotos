@@ -1,0 +1,208 @@
+// Form 1, Wisconsin Income Tax, for full-year residents.
+//
+// Part-year residents and non-residents file Form 1NPR instead. Only the
+// full-year resident's return is modelled here.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form 1; testdata holds
+// the text extracted from the published PDF and coverage_test.go asserts every
+// line a mapping claims appears on it.
+//
+// # Graduated rates on income after a sliding deduction
+//
+// Wisconsin starts from federal adjusted gross income, adjusts it to Wisconsin
+// income on line 7, takes off a standard deduction that shrinks as income rises
+// on line 8 and fixed exemptions on line 10, and taxes the rest at graduated
+// rates on line 12.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.wi.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/wi/v1/form_1;form1";
+
+// FilingStatus is the status the return is filed under.
+//
+// Wisconsin has no qualifying surviving spouse status: such a filer files as
+// head of household. A married person may file as head of household.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD_MARRIED = 5;
+}
+
+// Form1 is what a Wisconsin Form 1 states.
+message Form1 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // Someone else can claim the filer, or the spouse, as a dependent. It
+  // changes the standard deduction on line 8.
+  bool claimed_as_dependent = 5 [(common.v1.fdx_absent) = true];
+
+  // The number of $700 exemptions on line 10a.
+  int32 exemption_count = 6 [(common.v1.fdx_absent) = true];
+
+  // The number of filers 65 or older on line 10b.
+  int32 age_65_count = 7 [(common.v1.fdx_absent) = true];
+
+  // Line 1: Federal adjusted gross income, Form 1040 line 11.
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 10 [(common.v1.fdx_absent) = true];
+
+  // Line 2: Adjustments from Schedule I, line 3.
+  nexteggapp.taxprotos.common.v1.Money schedule_i_adjustments = 11 [(common.v1.fdx_absent) = true];
+
+  // Line 3: Federal AGI for Wisconsin purposes: lines 1 plus 2.
+  nexteggapp.taxprotos.common.v1.Money wisconsin_federal_adjusted_gross_income = 12 [(common.v1.fdx_absent) = true];
+
+  // Line 4: Total additions from Schedule AD, line 33.
+  nexteggapp.taxprotos.common.v1.Money additions = 13 [(common.v1.fdx_absent) = true];
+
+  // Line 5: Lines 3 plus 4.
+  nexteggapp.taxprotos.common.v1.Money income_before_subtractions = 14 [(common.v1.fdx_absent) = true];
+
+  // Line 6: Total subtractions from Schedule SB, line 50.
+  nexteggapp.taxprotos.common.v1.Money subtractions = 15 [(common.v1.fdx_absent) = true];
+
+  // Line 7: Wisconsin income: line 5 less line 6.
+  nexteggapp.taxprotos.common.v1.Money wisconsin_income = 16 [(common.v1.fdx_absent) = true];
+
+  // Line 8: The sliding-scale standard deduction.
+  nexteggapp.taxprotos.common.v1.Money standard_deduction = 17 [(common.v1.fdx_absent) = true];
+
+  // Line 9: Line 7 less line 8, not below zero.
+  nexteggapp.taxprotos.common.v1.Money income_after_standard_deduction = 18 [(common.v1.fdx_absent) = true];
+
+  // Line 10a: $700 for each exemption.
+  nexteggapp.taxprotos.common.v1.Money personal_exemptions = 19 [(common.v1.fdx_absent) = true];
+
+  // Line 10b: $250 for each filer 65 or older.
+  nexteggapp.taxprotos.common.v1.Money age_65_exemptions = 20 [(common.v1.fdx_absent) = true];
+
+  // Line 10c: Lines 10a plus 10b.
+  nexteggapp.taxprotos.common.v1.Money total_exemptions = 21 [(common.v1.fdx_absent) = true];
+
+  // Line 11: Line 9 less line 10c, not below zero.
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 22 [(common.v1.fdx_absent) = true];
+
+  // Line 12: From the tax table or the tax computation worksheet.
+  nexteggapp.taxprotos.common.v1.Money tax = 23 [(common.v1.fdx_absent) = true];
+
+  // Line 13: From Schedule 1.
+  nexteggapp.taxprotos.common.v1.Money itemized_deduction_credit = 24 [(common.v1.fdx_absent) = true];
+
+  // Line 14: Additional child and dependent care tax credit, Schedule WI-2441.
+  nexteggapp.taxprotos.common.v1.Money child_and_dependent_care_credit = 25 [(common.v1.fdx_absent) = true];
+
+  // Line 15: Half of qualifying expenses.
+  nexteggapp.taxprotos.common.v1.Money blind_worker_transportation_credit = 26 [(common.v1.fdx_absent) = true];
+
+  // Line 16a: School property tax credit on rent.
+  nexteggapp.taxprotos.common.v1.Money school_property_tax_credit_rent = 27 [(common.v1.fdx_absent) = true];
+
+  // Line 16b: School property tax credit on property taxes.
+  nexteggapp.taxprotos.common.v1.Money school_property_tax_credit_property_taxes = 28 [(common.v1.fdx_absent) = true];
+
+  // Line 17: Working families tax credit.
+  nexteggapp.taxprotos.common.v1.Money working_families_credit = 29 [(common.v1.fdx_absent) = true];
+
+  // Line 18: From Schedule 2.
+  nexteggapp.taxprotos.common.v1.Money married_couple_credit = 30 [(common.v1.fdx_absent) = true];
+
+  // Line 19: Schedule CR line 34.
+  nexteggapp.taxprotos.common.v1.Money schedule_cr_nonrefundable_credits = 31 [(common.v1.fdx_absent) = true];
+
+  // Line 20: Net income tax paid to another state, Schedule OS.
+  nexteggapp.taxprotos.common.v1.Money other_state_tax_credit = 32 [(common.v1.fdx_absent) = true];
+
+  // Line 21: Lines 13 through 20.
+  nexteggapp.taxprotos.common.v1.Money total_nonrefundable_credits = 33 [(common.v1.fdx_absent) = true];
+
+  // Line 22: Line 12 less line 21, not below zero.
+  nexteggapp.taxprotos.common.v1.Money net_tax = 34 [(common.v1.fdx_absent) = true];
+
+  // Line 23: Use tax due on out-of-state purchases.
+  nexteggapp.taxprotos.common.v1.Money sales_and_use_tax = 35 [(common.v1.fdx_absent) = true];
+
+  // Line 24: From Schedule 3, Part I.
+  nexteggapp.taxprotos.common.v1.Money donations = 36 [(common.v1.fdx_absent) = true];
+
+  // Line 25: 33% of the federal penalty.
+  nexteggapp.taxprotos.common.v1.Money retirement_plan_penalties = 37 [(common.v1.fdx_absent) = true];
+
+  // Line 26: Other penalties.
+  nexteggapp.taxprotos.common.v1.Money other_penalties = 38 [(common.v1.fdx_absent) = true];
+
+  // Line 27: Lines 22 through 26.
+  nexteggapp.taxprotos.common.v1.Money total_tax = 39 [(common.v1.fdx_absent) = true];
+
+  // Line 28: Wisconsin tax withheld.
+  nexteggapp.taxprotos.common.v1.Money wisconsin_tax_withheld = 40 [(common.v1.fdx_absent) = true];
+
+  // Line 29: Including the amount applied from the prior year's return.
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 41 [(common.v1.fdx_absent) = true];
+
+  // Line 30: A percentage of the federal credit by number of qualifying children.
+  nexteggapp.taxprotos.common.v1.Money earned_income_credit = 42 [(common.v1.fdx_absent) = true];
+
+  // Line 31a: Schedule FC, line 17.
+  nexteggapp.taxprotos.common.v1.Money farmland_preservation_credit = 43 [(common.v1.fdx_absent) = true];
+
+  // Line 31b: Schedule FC-A, line 13.
+  nexteggapp.taxprotos.common.v1.Money farmland_preservation_credit_agricultural = 44 [(common.v1.fdx_absent) = true];
+
+  // Line 32: Repayment credit.
+  nexteggapp.taxprotos.common.v1.Money repayment_credit = 45 [(common.v1.fdx_absent) = true];
+
+  // Line 33: Schedule H or H-EZ.
+  nexteggapp.taxprotos.common.v1.Money homestead_credit = 46 [(common.v1.fdx_absent) = true];
+
+  // Line 34: Eligible veterans and surviving spouses property tax credit.
+  nexteggapp.taxprotos.common.v1.Money veterans_property_tax_credit = 47 [(common.v1.fdx_absent) = true];
+
+  // Line 35: Schedule CR line 40.
+  nexteggapp.taxprotos.common.v1.Money schedule_cr_refundable_credits = 48 [(common.v1.fdx_absent) = true];
+
+  // Line 36: Amended returns only.
+  nexteggapp.taxprotos.common.v1.Money amounts_previously_paid = 49 [(common.v1.fdx_absent) = true];
+
+  // Line 37: Lines 28 through 36.
+  nexteggapp.taxprotos.common.v1.Money total_payments_and_credits = 50 [(common.v1.fdx_absent) = true];
+
+  // Line 38: Amended returns only.
+  nexteggapp.taxprotos.common.v1.Money amounts_previously_refunded = 51 [(common.v1.fdx_absent) = true];
+
+  // Line 39: Line 37 less line 38.
+  nexteggapp.taxprotos.common.v1.Money net_payments = 52 [(common.v1.fdx_absent) = true];
+
+  // Line 40: Line 39 less line 27 when line 39 is larger.
+  nexteggapp.taxprotos.common.v1.Money overpayment = 53 [(common.v1.fdx_absent) = true];
+
+  // Line 41: The part of line 40 refunded.
+  nexteggapp.taxprotos.common.v1.Money refund = 54 [(common.v1.fdx_absent) = true];
+
+  // Line 42: The part of line 40 applied to 2026 estimated tax.
+  nexteggapp.taxprotos.common.v1.Money applied_to_next_year_estimated_tax = 55 [(common.v1.fdx_absent) = true];
+
+  // Line 43: Line 27 less line 39 when line 39 is smaller.
+  nexteggapp.taxprotos.common.v1.Money underpayment = 56 [(common.v1.fdx_absent) = true];
+
+  // Line 44: From Schedule U.
+  nexteggapp.taxprotos.common.v1.Money underpayment_interest = 57 [(common.v1.fdx_absent) = true];
+
+  // Line 45: Lines 43 plus 44.
+  nexteggapp.taxprotos.common.v1.Money amount_owed = 58 [(common.v1.fdx_absent) = true];
+}

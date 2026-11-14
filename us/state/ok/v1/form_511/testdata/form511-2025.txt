@@ -1,0 +1,507 @@
+                                                                                                                                                                Form 511
+                                                                                                                                                                    2025
+           Oklahoma Resident Income Tax Return
+                                                                                       Spouse’s Social Security Number                                                              AMENDED RETURN!
+Your Social Security Number                                                            (joint return only)
+                                                  Place an ‘X’ in this                                                                       Place an ‘X’ in this                   Place an ‘X’ in this box if
+                                                  box if this taxpayer                                                                       box if this taxpayer                   this is an amended 511. See
+                                                  is deceased                                                                                is deceased                            Schedule 511-I.
+
+Name and Address - Please Print or Type
+Your First Name                                    Middle Initial   Last Name                                  If a Joint Return, Spouse’s First Name             Middle Initial    Last Name
+
+
+
+
+Mailing Address (Number and street, including apartment number, rural route, or PO Box)               City                                            State       ZIP or Postal Code        County in Which Located
+
+
+
+
+Foreign Country (if not U.S.):
+
+
+                                          Filing Status                                                                                                       Exemptions
+1             Single                                                                                               *Note: If claiming Special Exemption, see instructions on page 9 of 511 Packet.
+                                                                                                                                                Regular
+                                                                                                                                                               * Special       Blind
+
+2             Married filing joint return (even if only one had income)                                                           Yourself                 +               +                =                     (a)
+
+
+3             Married filing separate                                                                                             Spouse                   +               +                =                     (b)
+              (If spouse is also filing, list name and SSN below)
+              Name                                                     Social Security Number
+                                                                                                                                                    Number of dependents                    =                     (c)
+
+                                                                                                                                  Add the Totals from lines (a), (b), and (c).
+                                                                                                                                                    Enter the TOTAL here:                   =
+4              Head of household with qualifying person                                                            Note: If you may be claimed as a dependent on another return, enter “0” on the
+                                                                                                                   TOTAL line for your regular exemption.
+5              Qualifying surviving spouse with dependent child
+               • List year of spouse death here:                                                                    Age 65 or Older? (Please see instructions)                           Yourself                 Spouse
+
+
+
+ Dependents - If more than four dependents, see instructions and place an ‘X’ here:
+ 1. First Name                                      2. Last Name                                               3. Social Security Number           4. Date of Birth            5. Relationship to You
+
+
+
+
+                                                                                                                                                                                     ROUND TO NEAREST WHOLE DOLLAR.
+PART ONE: TO ARRIVE AT OKLAHOMA ADJUSTED GROSS INCOME
+1 Federal adjusted gross income (from Federal 1040 or 1040-SR).....................................................................................
+
+
+2 Oklahoma Subtractions (provide Schedule 511-A)..........................................................................................................
+
+3 Line 1 minus line 2............................................................................................................................................................
+
+4 Out-of-state income, except wages. Describe:__________________________________________________
+  (Provide Federal schedule with detailed description; see instructions)
+5 Line 3 minus line 4............................................................................................................................................................
+
+
+6 Oklahoma Additions (provide Schedule 511-B)................................................................................................................
+
+7 Oklahoma adjusted gross income (line 5 plus line 6)....................................................................................................
+  (If line 7 is different than line 1, provide a copy of your federal return.)
+PART TWO: OKLAHOMA TAXABLE INCOME, TAX AND CREDITS
+8 Oklahoma Adjustments (provide Schedule 511-C)..........................................................................................................
+
+9 Oklahoma income after adjustments (line 7 minus line 8).................................................................................................
+           2025 Form 511 - Resident Income Tax Return - Page 2
+
+Your Social Security Number: _____________________________________
+PART TWO: OKLAHOMA TAXABLE INCOME, TAX AND CREDITS (continued)
+STOP AND READ: If line 4 on page 1 is zero, complete lines 10-11. If line 4 is more than zero,
+see Schedule 511-E and do not complete lines 10-11.
+10 .Oklahoma itemized deductions (from Schedule 511-D, line 11) or Oklahoma standard deduction
+     (Single or Married Filing Separate: $6,350 • Married Filing Joint or Qualifying Surviving Spouse: $12,700 •
+     Head of Household: $9,350).......................................................................................................................................
+
+11     Exemptions: Enter the total number of exemptions claimed on page 1..................                                                      X $1,000.................
+
+12    Total deductions and exemptions (add lines 10 and 11 or amount from Sch. 511-E, line 5).........................................
+
+
+13    Oklahoma Taxable Income (line 9 minus line 12)..........................................................................................................
+14 (a) Oklahoma Income Tax from Tax Table (see pages 27-38 of instructions) or if using Farm Income Averaging,
+       enter tax from Form 573, line 22 and enter a “1” in box on line 14...........................................................................
+
+     (b) If paying the Health Savings Account additional 10% tax, add additional tax here and enter a “2” in box on
+         line 14. If recapturing the Oklahoma Affordable Housing Tax Credit, add recaptured credit here and enter a “3”
+         in box on line 14. If making an Oklahoma installment payment pursuant to IRC Section 965(h) and 68 Oklahoma
+         Statutes (OS) Section 2368(K), add the installment payment here and enter a “4” in the box on line 14................
+
+
+14     Oklahoma Income Tax (line 14a plus line 14b).......................................................................................                               ......
+STOP AND READ: If line 7 is equal to or larger than line 1, complete line 15. If line 7 is smaller than line 1,
+complete Schedules 511-F and 511-G.
+15     Oklahoma child care/child tax credit (see instructions).................................................................................................
+
+16     Credit for taxes paid to another state (provide Form 511-TX)......................................................................................
+
+
+17     Other Tax Credits (provide Form 511-CR). Enter the 511-CR line number of the credit in the box:.......                                                            ......
+
+18     Income Tax (line 14 minus lines 15-17) Do not enter less than zero..................................................................................
+       DO NOT PAY THIS AMOUNT. PAYMENT IS FIGURED ON LINE 41.
+PART THREE: TAX, CREDITS, AND PAYMENTS
+19     Use tax due on Internet, mail order, or other out-of-state purchases
+       (See page 14 of the Packet or Use Tax Table) If you certify that no use tax is due, place an ‘X’ here:....                                                        ......
+
+
+20     Balance (add lines 18 and 19).......................................................................................................................................
+
+21     Oklahoma withholding (provide all W-2s, 1099s, or other withholding statements)....................................................................
+
+
+22     2025 estimated tax payments.................................................................................... (qualified farmer                                 ).....
+
+23     2025 payment with extension........................................................................................................................................
+
+24     Low Income Property Tax Credit (provide Form 538-H)...............................................................................................
+
+
+25     Sales Tax Relief Credit (provide Form 538-S)..............................................................................................................
+
+26     Natural Disaster Tax Credit (provide Form 576)...........................................................................................................
+
+
+27     Credit from Form 578....................................................................................................................................................
+
+28     Oklahoma earned income credit (provide Form 511-EIC) (see instructions)...............................................................
+
+29     Parental Choice Tax Credit for Homeschool Expenses (provide Form 591-D)
+          Total number of eligible students claimed:..........................................................................................                           ......
+
+30     Amount paid with original return plus additional paid after it was filed .(amended return only)......................................
+           2025 Form 511 - Resident Income Tax Return - Page 3
+
+Your Social Security Number: _____________________________________
+
+PART THREE: TAX, CREDITS, AND PAYMENTS (continued)
+31     Payments and credits (add lines 21-30 from page 2).................................................................................................
+32     Overpayment, if any, as shown on original return and/or prior amended return(s) or as previously adjusted by
+       Oklahoma (amended return only)..................................................................................................................................
+
+33     Total payments and credits (line 31 minus 32)..........................................................................................................
+
+PART FOUR: REFUND
+34     If line 33 is more than line 20, subtract line 20 from line 33. This is your overpayment................................................
+35     Amount of line 34 to be applied to 2026 estimated tax (original return only)
+       (For further information regarding estimated tax, see page 5 of the 511 Packet.)..................................................................
+Schedule 511-H provides you with the opportunity to make a financial gift from your refund to a variety of Oklahoma
+organizations. Place the line number of the organization from Schedule 511-H in the box below.
+If you give to more than one organization, put a “99” in the box. Provide Schedule 511-H.....................................
+36     Donations from your refund (total from Schedule 511-H)..............................................................................................
+
+37     Total deductions from refund (add lines 35 and 36)......................................................................................................
+
+38     Amount to be refunded to you (line 34 minus line 37)...................................................................................................
+
+ Refund Note: For Direct Deposit, verify your account and routing numbers are correct. If your direct deposit fails to process, you will receive a debit
+ card. You can also choose to receive either a debit card or a paper check by placing an ‘X’ in the appropriate box below. Note: A minimum refund of
+ $10.00 is required to receive a paper check. If you request a paper check for an amount less than $10.00, a debit card will be issued. If no options are
+ selected, you will receive a debit card. See the 511 Packet for direct deposit, debit card, and paper check information. Due to electronic banking rules,
+ the OTC will not allow direct deposits to or through foreign financial institutions. If you use a foreign financial institution, you will be issued a paper check.
+
+
+  Send my refund as a:                                     Is this refund going to or through an account that is located outside of the United States?                                   Yes           No
+                                                              Direct Deposit my refund in my:
+            Debit Card
+                                                                      Checking Account                 Routing
+                                                                                                       Number:
+            Paper Check
+                                                                      Savings Account                  Account
+                                                                                                       Number:
+
+
+PART FIVE: AMOUNT YOU OWE
+39     If line 20 is more than line 33, subtract line 33 from line 20. This is your tax due.........................................................
+
+40     Underpayment of estimated tax interest (annualized installment method)..............................................                                       ......
+        (If you have an underpayment of estimated tax (line 40) and overpayment (line 34), see instructions.)
+
+
+41 (a) For delinquent payment add penalty of 5%...............................................................................................................
+
+
+     (b) For delinquent payment add interest of 1.25% per month........................................................................................
+
+
+42     Total tax, penalty, and interest (add lines 39 through 41b)............................................................................................
+
+If the Oklahoma Tax Commission may discuss this return with your tax preparer, place an ‘X’ here:                                                                          Make check payable to the
+                                                                                                                                                                           Oklahoma Tax Commission
+Under penalty of perjury, I declare the information contained in this document, and all attachments and schedules, is true and correct to the best of my knowledge and belief.
+Taxpayer’s Signature                                     Date          Spouse’s Signature                                       Date          Paid Preparer’s Signature                        Date
+
+
+
+Taxpayer’s Occupation                                                  Spouse’s Occupation                                                    Paid Preparer’s Address and Phone Number
+
+
+Daytime Phone (optional)                                               Daytime Phone (optional)
+                                                                                                                                              Preparer’s PTIN:
+
+
+
+                                                Do not staple documentation to this form. To attach items, use a paper clip.
+                                                Mailing Address for this form: PO Box 26800, Oklahoma City, OK 73126-0800
+                                     The Oklahoma Tax Commission is not required to give actual notice to taxpayers of changes in any state tax law.
+         2025 Form 511 - Resident Income Tax Return - Page 4
+         Note: Provide this page ONLY if you have an amount shown on a schedule.
+
+Your Social Security Number: _____________________________________
+
+Schedule 511-A: Oklahoma Subtractions (See instructions on pages 16-20.)
+1    Interest on U.S. government obligations.......................................................................................................................
+
+2    Social Security benefits taxed on your Federal Form 1040 or 1040-SR.......................................................................
+
+
+3    Federal civil service retirement in lieu of social security................................................................................................
+
+            Retirement Claim Number:                     Taxpayer                                                       Spouse
+
+
+4    Military Retirement........................................................................................................................................................
+
+
+5    Oklahoma government or Federal civil service retirement (see instructions for limitation)...........................................
+
+6    Other retirement income (see instructions for limitation)...............................................................................................
+
+
+7    U.S. Railroad Retirement Board benefits......................................................................................................................
+
+8    Oklahoma depletion......................................................................................................................................................
+
+9    Oklahoma net operating loss (provide schedules)................Loss Year(s):                                                                                         ......
+
+
+10   Exempt tribal income (see instructions for qualifications).............................................................................................
+
+11   Gains from the sale of exempt government obligations................................................................................................
+
+
+12   Oklahoma Capital Gain Deduction (provide Form 561)...............................................................................................
+
+13   Income Tax Refund (Federal Form 1040 or 1040-SR, Schedule 1, line 1)...................................................................
+
+
+14   Oklahoma income distributed by an electing PTE.........................................................................................................
+
+
+15   Oklahoma Bonus Depreciation Deduction....................................................................................................................
+
+16   Oklahoma Deduction for Qualified Equity Investments in an Eligible Oklahoma Venture Capital Company................
+
+17   Miscellaneous: Other subtractions (enter number in box for type of deduction).....................................                                                   ......
+
+18   Total subtractions (add lines 1-17, enter total here and on line 2 of Form 511)..........................................................
+
+Schedule 511-B: Oklahoma Additions (See instructions on pages 20-22.)
+1    State and municipal bond interest.................................................................................................................................
+
+2    Out-of-state losses (describe_____________________________________________ ) Enter as a positive number
+
+
+3    Lump sum distributions (not included in your Federal Adjusted Gross Income)...........................................................
+
+4    Federal net operating loss - Enter as a positive number...............................................................................................
+
+
+5    Recapture of depletion claimed on a lease bonus or add back of excess Federal depletion........................................
+
+6    Recapture of Contributions to Oklahoma 529 College Savings Plan and OklahomaDream 529 Account(s)................
+          2025 Form 511 - Resident Income Tax Return - Page 5
+          Note: Provide this page ONLY if you have an amount shown on a schedule.
+
+Your Social Security Number: _____________________________________
+
+Schedule 511-B: Oklahoma Additions (continued)
+7    Oklahoma loss distributed by an electing PTE..............................................................................................................
+
+
+8    Oklahoma Bonus Depreciation Add-back......................................................................................................................
+
+9    Miscellaneous: Other additions (enter number in box for type of addition).............................................                                               ......
+
+10   Total additions (add lines 1-9, enter total here and on line 6 of Form 511).................................................................
+
+Schedule 511-C: Oklahoma Adjustments (See instructions on pages 22-24.)
+
+1    Military pay exclusion - Active Duty, Reserve, and National Guard (not retirement income)........................................
+
+2    Qualifying disability deduction.......................................................................................................................................
+
+3    Contributions to Oklahoma 529 College Savings Plan and OklahomaDream 529 Account(s).....................................
+
+
+4    Deduction for providing foster care...............................................................................................................................
+
+5    Parental Choice Tax Credit for Private School..............................................................................................................
+
+
+6    Miscellaneous: Other adjustments (enter number in box for type of deduction).....................................                                                    ......
+
+7    Total adjustments (add lines 1-6, enter total here and on line 8 of Form 511)............................................................
+
+Schedule 511-D: Oklahoma Itemized Deductions (See instructions on page 25.)
+
+If you claimed itemized deductions on your federal return, you must claim Oklahoma Itemized Deductions.
+
+1    Federal itemized deductions from Federal Sch. A, line 17............................................................................................
+2    State and local sales or income taxes from .Federal Sch. A, line 5a (If Federal Sch. A, line 5e is limited,
+     enter that portion of Federal Sch. A, line 5a included in line 5e)...................................................................................
+
+3    Line 1 minus line 2........................................................................................................................................................
+
+4    Medical and Dental expenses from Federal Sch. A, line 4............................................................................................
+
+
+5    Gifts to Charity from Federal Sch. A, line 14.................................................................................................................
+
+6    Line 3 minus lines 4 and 5.............................................................................................................................................
+7    Is line 6 more than $17,000?
+
+              YES. Your itemized deductions are limited. Complete lines 9-11.
+
+              NO. Your itemized deductions are not limited. Skip lines 9 and 10. Go to line 11.
+
+
+8    Maximum amount allowed for itemized deductions. (exception: lines 9 and 10)..........................................................
+                                                                                                                                                                                   17,000
+
+9    Medical and Dental expenses from Federal Sch. A, line 4............................................................................................
+
+10   Gifts to Charity from Federal Sch. A, line 14.................................................................................................................
+11   Oklahoma Itemized Deductions (.If you responded YES on line 7: Add lines 8, 9, and 10.
+     If you responded NO on line 7: Enter the amount from line 3.).....................................................................................
+Enter your Oklahoma Itemized Deductions on line 10 of Form 511 unless you have out-of-state income on line 4 of Form 511. If you have an amount on
+line 4 of Form 511, complete Schedule 511-E: Deductions and Exemptions to determine the amount to enter on line 12 of Form 511.
+          2025 Form 511 - Resident Income Tax Return - Page 6
+          Note: Provide this page ONLY if you have an amount shown on a schedule.
+
+Your Social Security Number: _____________________________________
+
+Schedule 511-E: Deductions and Exemptions (See instructions on page 25.)
+Use this schedule if you have out-of-state income (Form 511, line 4). Your exemptions and deductions must be prorated on the ratio of Oklahoma
+Adjusted Gross Income to Federal Adjusted Gross Income reduced by allowable adjustments except out-of-state income. If you claimed itemized
+deductions on your federal return, complete Schedule 511-D before completing this schedule.
+
+
+1    Oklahoma itemized deductions (Schedule 511-D, line 11) or Oklahoma standard deduction.......................................
+
+2    Exemptions ($1,000 x number of exemptions claimed on page 1 of Form 511)...........................................................
+
+3    Total (add lines 1 and 2)................................................................................................................................................
+
+4    Divide the amount on line 7 of Form 511 by the amount on line 3 of Form 511:
+
+                                                                                         •
+                                                                                         •
+     Enter the percentage from the above calculation here (do not enter more than 100%).............................................                                               %
+
+5    Total allowable deductions and exemptions. Multiply line 3 by percentage on line 4,
+     enter total here and on line 12 of Form 511. (Leave lines 10-11 of Form 511 blank.)................................................
+
+Schedule 511-F: Child Care/Child Tax Credit (See instructions on page 25.)
+
+If your Federal Adjusted Gross Income is $100,000 or less and you are allowed either a credit for child care expenses or the child tax credit on your
+federal return, you are allowed a credit against your Oklahoma tax. Your Oklahoma credit is the greater of:
+     • 20% of the credit for child care expenses allowed by the IRS Code.
+        or
+     • 5% of the child tax credit allowed by the IRS Code.
+       This includes both the nonrefundable child tax credit and the refundable additional child tax credit.
+
+The credit must be prorated based on the ratio of Oklahoma Adjusted Gross Income to Federal Adjusted Gross Income.
+If your Federal Adjusted Gross Income is greater than $100,000, no credit is allowed.
+Provide a copy of your federal return and, if applicable, the federal child care credit schedule.
+
+
+
+1    Enter your federal child care credit...............................................................................................................................
+
+2    Multiply line 1 by 20%....................................................................................................................................................
+
+
+3    Enter your federal child tax credit (total of child tax credit and additional child tax credit)............................................
+
+
+4    Multiply line 3 by 5%......................................................................................................................................................
+
+5    Enter the larger of line 2 or line 4..................................................................................................................................
+6    Divide the amount on line 7 of Form 511 by the amount on line 1 of Form 511:
+
+                                                                                         •
+                                                                                         •
+     Enter the percentage from the above calculation here (do not enter more than 100%).............................................                                               %
+
+7    Multiply line 5 by line 6. This is your Oklahoma child care/child tax credit.
+     Enter total here and on line 15 of Form 511..................................................................................................................
+           2025 Form 511 - Resident Income Tax Return - Page 7
+           Note: Provide this page ONLY if you have an amount shown on a schedule.
+
+Your Social Security Number: _____________________________________
+
+Schedule 511-G: Earned Income Credit (See instructions on page 25.)
+You are allowed a credit equal to 5% of the federal earned income credit calculated using the same requirements for calculating the earned income
+tax credit for federal income tax purposes in effect for the 2020 income tax year. The credit must be prorated on the ratio of Oklahoma Adjusted Gross
+Income to Federal Adjusted Gross Income. Provide a copy of your federal return and OTC Form 511-EIC.
+
+
+1     Federal earned income credit (from OTC Form 511-EIC).............................................................................................
+
+
+2     Multiply line 1 by 5%......................................................................................................................................................
+3     Divide the amount on line 7 of Form 511 by the amount on line 1 of Form 511:
+                                                                                          •
+                                                                                          •
+      Enter the percentage from the above calculation here (do not enter more than 100%).............................................                                               %
+
+4     Oklahoma earned income credit.
+      (Multiply line 2 by line 3, enter total here and on line 28 of Form 511)..........................................................................
+
+Schedule 511-H: Donations from Refund (Original Return Only) (See instructions on page 26.)
+This schedule allows you to make a donation from your refund to a variety of Oklahoma organizations. Information regarding each program, its mission,
+how funds are utilized, and mailing addresses are shown in Schedule 511-H Information. If you are not receiving a refund, but would like to make a
+donation to one of these organizations, Schedule 511-H Information lists the mailing address to mail your donation to the organization.
+Place an ‘X’ in the box associated with the dollar amount you wish to have deducted from your refund and donated to that organization. Then carry that
+figure over into the column at the right. When you carry your figure back to line 36 of Form 511, list the line number of the organization to which you
+donated. If you donate to more than one organization, write a “99” in the box at line 36 of Form 511.
+
+
+1		   Support of Programs for Volunteers to Act
+      as Court Appointed Special Advocates
+      for Abused or Neglected Children...................................                              $2                $5                $
+
+
+2     Support Wildlife Diversity Fund........................................                          $2                $5                $
+
+
+
+3     Total donations (add lines 1 and 2, enter total here and on line 36 of Form 511).......................................................
+        2025 Form 511 - Resident Income Tax Return - Page 8
+        Note: Provide this page ONLY if you are filing an amended return.
+
+Your Social Security Number: _____________________________________
+
+Schedule 511-I: Amended Return Information (See instructions on page 26.)
+
+Did you file an amended federal return?		               Yes               No
+
+If Yes, provide a copy of the IRS Form 1040X or 1045 AND proof of IRS acceptance, such as a copy of the IRS “Statement of Adjustment,” IRS check,
+or deposit slip. IRS documents submitted after filing this Oklahoma amended return may delay processing.
+
+Explain the changes to income, deductions, and/or credits below. Enter the line reference number for which you are reporting a change and give the
+reason. If more space is needed, provide a separate schedule.
+
+__________________________________________________________________________________________________________
+
+__________________________________________________________________________________________________________
+
+__________________________________________________________________________________________________________
+
+________________________________________________________________________________________________
+
+________________________________________________________________________________________________
+
+________________________________________________________________________________________________
+
+________________________________________________________________________________________________
+
+________________________________________________________________________________________________
+
+__________________________________________________________________________________________________________
+
+__________________________________________________________________________________________________________
+
+__________________________________________________________________________________________________________
+
+________________________________________________________________________________________________
+
+________________________________________________________________________________________________
+
+________________________________________________________________________________________________
+
+________________________________________________________________________________________________
+
+________________________________________________________________________________________________
+
+________________________________________________________________________________________________
+
+________________________________________________________________________________________________
+
+________________________________________________________________________________________________
+
+________________________________________________________________________________________________
+
+________________________________________________________________________________________________
+
+________________________________________________________________________________________________
+

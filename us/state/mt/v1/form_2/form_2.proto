@@ -1,0 +1,169 @@
+// Montana Form 2, Montana Individual Income Tax Return.
+//
+// Part-year residents and nonresidents file the same form with Schedule II.
+// Only the full-year resident's return is modelled here: page 1 and the tax
+// worksheet on page 2. Schedules I, III and IV are carried as their totals.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form 2 (2025v3);
+// testdata holds the text extracted from the published PDF and
+// coverage_test.go asserts every line a mapping claims appears on it.
+//
+// # Federal taxable income, then two brackets
+//
+// Montana starts from federal taxable income, without the qualified business
+// income deduction, on line 3, adjusts it on lines 4 to 6 and taxes the result
+// on page 2: ordinary income at 4.7% and 5.9%, net long-term capital gains at
+// 3% and 4.1%.
+//
+// # Worksheet lines share numbers with page 1
+//
+// The page 2 worksheet numbers its lines 1 to 13 again. The mapping gives each
+// worksheet field a note saying it is the worksheet line.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.mt.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/mt/v1/form_2;form2";
+
+// FilingStatus is the federal status, which Montana requires.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+  FILING_STATUS_QUALIFYING_SURVIVING_SPOUSE = 5;
+}
+
+// Form2 is what a Montana Form 2 states.
+message Form2 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // Filers 65 or older at the end of the year, which sets line 6.
+  int32 age_65_or_older = 5 [(common.v1.fdx_absent) = true];
+
+  // Federal adjusted gross income, Form 1040 line 11b.
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 6 [(common.v1.fdx_absent) = true];
+
+  // The federal standard or itemized deduction and the Schedule 1-A deductions: Form 1040 lines 12e and 13b.
+  nexteggapp.taxprotos.common.v1.Money federal_deductions = 7 [(common.v1.fdx_absent) = true];
+
+  // Federal adjusted gross income less those deductions.
+  nexteggapp.taxprotos.common.v1.Money federal_taxable_income = 8 [(common.v1.fdx_absent) = true];
+
+  // From Schedule I, Part I, line 7.
+  nexteggapp.taxprotos.common.v1.Money montana_additions = 9 [(common.v1.fdx_absent) = true];
+
+  // From Schedule I, Part I, line 24.
+  nexteggapp.taxprotos.common.v1.Money montana_subtractions = 10 [(common.v1.fdx_absent) = true];
+
+  // $5,660 for each filer 65 or older.
+  nexteggapp.taxprotos.common.v1.Money age_65_subtraction = 11 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money montana_taxable_income = 12 [(common.v1.fdx_absent) = true];
+
+  // The resident tax from the page 2 worksheet, line 13.
+  nexteggapp.taxprotos.common.v1.Money tax_before_credits = 13 [(common.v1.fdx_absent) = true];
+
+  // From Schedule III, Part I, line 14.
+  nexteggapp.taxprotos.common.v1.Money nonrefundable_credits = 14 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_after_nonrefundable_credits = 15 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money w2_withholding = 16 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money form_1099_withholding = 17 [(common.v1.fdx_absent) = true];
+
+  // The filer's share of tax a pass-through entity paid, from Montana Schedules K-1.
+  nexteggapp.taxprotos.common.v1.Money pass_through_entity_tax_credit = 18 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money schedule_k1_withholding = 19 [(common.v1.fdx_absent) = true];
+
+  // From Form LOWCERT.
+  nexteggapp.taxprotos.common.v1.Money loan_out_withholding = 20 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_withholding = 21 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 22 [(common.v1.fdx_absent) = true];
+
+  // Overpayment applied from the 2024 return.
+  nexteggapp.taxprotos.common.v1.Money prior_year_overpayment_applied = 23 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money extension_payment = 24 [(common.v1.fdx_absent) = true];
+
+  // The federal earned income credit, entered beside line 15.
+  nexteggapp.taxprotos.common.v1.Money federal_earned_income_credit = 25 [(common.v1.fdx_absent) = true];
+
+  // Ten percent of the federal earned income credit.
+  nexteggapp.taxprotos.common.v1.Money earned_income_credit = 26 [(common.v1.fdx_absent) = true];
+
+  // From Schedule 2EC, line 30.
+  nexteggapp.taxprotos.common.v1.Money elderly_homeowner_renter_credit = 27 [(common.v1.fdx_absent) = true];
+
+  // From Schedule III, Part I, line 17.
+  nexteggapp.taxprotos.common.v1.Money refundable_credits = 28 [(common.v1.fdx_absent) = true];
+
+  // On an amended return, payments made with the original.
+  nexteggapp.taxprotos.common.v1.Money amended_original_payments = 29 [(common.v1.fdx_absent) = true];
+
+  // From Schedule IV, line 8.
+  nexteggapp.taxprotos.common.v1.Money contributions_penalties_and_other_taxes = 30 [(common.v1.fdx_absent) = true];
+
+  // On an amended return, the overpayment the original claimed.
+  nexteggapp.taxprotos.common.v1.Money amended_previous_overpayment = 31 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_payments = 32 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_due = 33 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money overpayment = 34 [(common.v1.fdx_absent) = true];
+
+  // Overpayment applied to 2026 estimated tax.
+  nexteggapp.taxprotos.common.v1.Money applied_to_estimated_tax = 35 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money deposit_to_529_accounts = 36 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money refund = 37 [(common.v1.fdx_absent) = true];
+
+  // Net long-term capital gains subject to the federal capital gains rates.
+  nexteggapp.taxprotos.common.v1.Money net_long_term_capital_gains = 38 [(common.v1.fdx_absent) = true];
+
+  // The lesser of taxable income and the net long-term capital gains.
+  nexteggapp.taxprotos.common.v1.Money capital_gains_taxed = 39 [(common.v1.fdx_absent) = true];
+
+  // Taxable income less the capital gains taxed.
+  nexteggapp.taxprotos.common.v1.Money ordinary_income = 40 [(common.v1.fdx_absent) = true];
+
+  // $21,100, $42,200 or $31,700 by filing status: the top of the 3% bracket.
+  nexteggapp.taxprotos.common.v1.Money capital_gains_threshold = 41 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money capital_gains_threshold_remaining = 42 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money capital_gains_at_lower_rate = 43 [(common.v1.fdx_absent) = true];
+
+  // At 3%.
+  nexteggapp.taxprotos.common.v1.Money tax_on_capital_gains_at_lower_rate = 44 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money capital_gains_at_higher_rate = 45 [(common.v1.fdx_absent) = true];
+
+  // At 4.1%.
+  nexteggapp.taxprotos.common.v1.Money tax_on_capital_gains_at_higher_rate = 46 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money capital_gains_tax = 47 [(common.v1.fdx_absent) = true];
+
+  // From the ordinary income tax table on worksheet line 4, or line 1 without gains.
+  nexteggapp.taxprotos.common.v1.Money ordinary_income_tax = 48 [(common.v1.fdx_absent) = true];
+}

@@ -1,0 +1,175 @@
+// Form 740, Kentucky Individual Income Tax Return (residents only).
+//
+// Part-year residents and non-residents file Form 740-NP instead. Only the
+// full-year resident's return is modelled here.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form 740; testdata holds
+// the text extracted from the published PDF and coverage_test.go asserts every
+// line a mapping claims appears on it.
+//
+// # Two columns
+//
+// Page 1 has two columns: Column A for the spouse, used only when a married
+// couple files separately on one combined return (filing status 2), and
+// Column B for the filer, or for both on a joint return. This message holds
+// Column B, which is the whole return for every other filing status. A
+// combined return's Column A is not modelled.
+//
+// # A flat tax less credits
+//
+// Kentucky starts from federal adjusted gross income, adjusts it by Schedule M
+// to Kentucky adjusted gross income on line 9, takes off the standard deduction
+// or Kentucky itemized deductions, and taxes the rest at 4% on line 12. The
+// personal tax credits on line 17 and the family size tax credit on line 21
+// reduce the tax; neither is refunded.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.ky.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/ky/v1/form_740;form740";
+
+// FilingStatus is the status the return is filed under.
+//
+// Kentucky has no head of household or surviving spouse status: those filers
+// file as single. Married couples choose among three statuses.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+
+  // Married, filing separately on one combined return, when both had income.
+  FILING_STATUS_MARRIED_FILING_SEPARATELY_COMBINED = 2;
+
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 3;
+
+  // Married, filing separate returns.
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 4;
+}
+
+// Form740 is what a Form 740 states.
+message Form740 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 5 [(common.v1.fdx_absent) = true];
+
+  // Schedule M additions to federal adjusted gross income.
+  nexteggapp.taxprotos.common.v1.Money additions = 6 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money income_with_additions = 7 [(common.v1.fdx_absent) = true];
+
+  // Schedule M subtractions: among them social security benefits, which
+  // Kentucky does not tax, and the pension income exclusion.
+  nexteggapp.taxprotos.common.v1.Money subtractions = 8 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money kentucky_adjusted_gross_income = 9 [(common.v1.fdx_absent) = true];
+
+  // The standard deduction, or itemized deductions from Kentucky Schedule A.
+  nexteggapp.taxprotos.common.v1.Money deductions = 10 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 11 [(common.v1.fdx_absent) = true];
+
+  // Taxable income at 4%, or the tax from Schedule J (farm income averaging).
+  nexteggapp.taxprotos.common.v1.Money tax = 12 [(common.v1.fdx_absent) = true];
+
+  // Tax on lump-sum distributions (Form 4972-K) and credit recaptures
+  // (Schedules RC-R and DS-R, angel investor).
+  nexteggapp.taxprotos.common.v1.Money other_taxes = 13 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_before_credits = 14 [(common.v1.fdx_absent) = true];
+
+  // Business incentive and other credits from Schedule ITC, Section A.
+  nexteggapp.taxprotos.common.v1.Money business_incentive_credits = 15 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_after_business_incentive_credits = 16 [(common.v1.fdx_absent) = true];
+
+  // $40 for each of the filer and spouse who is 65 or older, $40 for each who
+  // is blind, $20 for each in the Kentucky National Guard (Schedule ITC,
+  // Section B).
+  nexteggapp.taxprotos.common.v1.Money personal_tax_credits = 17 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_after_personal_tax_credits = 18 [(common.v1.fdx_absent) = true];
+
+  // Columns A and B of line 18 together.
+  nexteggapp.taxprotos.common.v1.Money tax_both_columns = 19 [(common.v1.fdx_absent) = true];
+
+  // The filer, a spouse living in the household, and qualifying children:
+  // 1 to 4, where 4 means four or more.
+  int32 family_size = 20 [(common.v1.fdx_absent) = true];
+
+  // The family size tax credit percentage from the Schedule ITC table, in
+  // whole percent.
+  int32 family_size_credit_percent = 21 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money family_size_tax_credit = 22 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax_after_family_size_tax_credit = 23 [(common.v1.fdx_absent) = true];
+
+  // From Form 8863-K.
+  nexteggapp.taxprotos.common.v1.Money education_tuition_tax_credit = 24 [(common.v1.fdx_absent) = true];
+
+  // 20% of the federal credit on Form 2441 line 11.
+  nexteggapp.taxprotos.common.v1.Money child_and_dependent_care_credit = 25 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money income_tax_liability = 26 [(common.v1.fdx_absent) = true];
+
+  // Use tax on purchases from out of state.
+  nexteggapp.taxprotos.common.v1.Money use_tax = 27 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_tax_liability = 28 [(common.v1.fdx_absent) = true];
+
+  // On an amended return, the overpayment the original showed.
+  nexteggapp.taxprotos.common.v1.Money original_return_overpayment = 29 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_tax_and_original_overpayment = 30 [(common.v1.fdx_absent) = true];
+
+  // From Schedule KW-2.
+  nexteggapp.taxprotos.common.v1.Money kentucky_tax_withheld = 31 [(common.v1.fdx_absent) = true];
+
+  // Estimated tax and extension payments.
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 32 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money certified_rehabilitation_credit = 33 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money entertainment_incentive_credit = 34 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money development_area_credit = 35 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money decontamination_credit = 36 [(common.v1.fdx_absent) = true];
+
+  // From Form PTET-CR line 9.
+  nexteggapp.taxprotos.common.v1.Money pass_through_entity_tax_credit = 37 [(common.v1.fdx_absent) = true];
+
+  // On an amended return, what was paid with and after the original.
+  nexteggapp.taxprotos.common.v1.Money original_return_payments = 38 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_payments = 39 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money additional_tax_due = 40 [(common.v1.fdx_absent) = true];
+
+  // Penalty for underpaying estimated tax (Form 2210-K).
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_penalty = 41 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money interest = 42 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money late_payment_penalty = 43 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money late_filing_penalty = 44 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_penalties_and_interest = 45 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money amount_owed = 46 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money overpayment = 47 [(common.v1.fdx_absent) = true];
+
+  // Voluntary contributions to the trust funds listed on lines 38a to 38k,
+  // together.
+  nexteggapp.taxprotos.common.v1.Money fund_contributions = 48 [(common.v1.fdx_absent) = true];
+
+  // Of the overpayment, the part applied to next year's estimated tax.
+  nexteggapp.taxprotos.common.v1.Money credited_forward = 49 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money refund = 50 [(common.v1.fdx_absent) = true];
+}

@@ -1,0 +1,221 @@
+       740
+FORM
+
+
+                                                                                                                         KENTUCKY
+
+       Commonwealth of Kentucky
+                                                                                                               INDIVIDUAL INCOME TAX RETURN
+                                                                                                                       Residents Only
+                                                                                                                                                                         2025
+       Department of Revenue
+
+
+
+Check if deceased:                ¨ Spouse ¨ Taxpayer                                  For calendar year or other taxable year beginning ________________, and ending ________________ .
+              A. Spouse’s Social Security Number                      B. Your Social Security Number
+
+
+
+
+   Name—Last, First, Middle Initial (Joint or combined return, give both names and initials.)
+
+
+
+
+   Mailing Address (Number and Street including Apartment Number or P.O. Box)
+
+
+
+
+   City, Town or Post Office                                                   State            ZIP Code
+
+
+
+
+FILING STATUS (see instructions)                                                                  Check if applicable:         POLITICAL PARTY FUND
+ 1         Single                                                                                    Amended (Enclose            Designating $2 will not change your refund or tax due.
+ 2         Married, filing separately on this combined                                                 copy of 1040X, if                                A. Spouse            B. Yourself
+                                                                                                       applicable.)
+           return. (If both had income.)                                                                                         Democratic              (1)                   (4)
+ 3         Married, filing joint return.                                                                                         Republican              (2)                   (5)
+ 4         Married, filing separate returns. Enter spouse’s                                                                      No Designation          (3)                   (6)
+           Social Security number above and full name here.
+
+
+                                                                                                                       A. Spouse (Use if                       B.      Yourself
+                                                                                                                     	 Filing Status 2 is checked.)                   (or Joint)
+ 5 Enter amount from federal Form 1040 or 1040-SR, line 11a. (If total
+   of Columns A and B is $42,760 or less, you may qualify for the
+   Family Size Tax Credit. See instructions.)......................................................... 		 5                                     00      5                             00
+                                                                                                                   00
+ 6 Additions from Schedule M, line 6......................................................................... 		 6		6                                                                 00
+                                                                                                                             00
+ 7 Add lines 5 and 6................................................................................................... 		 7		7                                                       00
+                                                                                                                00
+ 8 Subtractions from Schedule M, line 17.................................................................. 		 8		8                                                                    00
+                                                                                         00
+ 9 Subtract line 8 from line 7. This is your Kentucky Adjusted Gross Income........ 		 9		9                                                                                           00
+
+10 Itemizers: Enter itemized deductions from Kentucky Schedule A.                                                    		
+                                                                                                             00
+        Nonitemizers: Enter $3,270 in Columns A and/or B............................................. 		 10		10                                                                       00
+                                                                                                        00
+11 Subtract line 10 from line 9. This is your Taxable Income ................................... 		 11		11                                                                            00
+
+12 Tax Computation: Multiply line 11 by 4% (.04) or amount from Schedule J                                             00
+                                                                                                           .... 		 12		12                                                             00
+
+13 Enter tax from Form 4972-K                      ; Schedule RC-R              ;
+
+                                                                                                      00
+        Schedule DS-R  ; Angel Investor Recapture  	 ......................................... 		 13		13                                                                              00
+                                                                                                                  00
+14 Add lines 12 and 13 and enter total here .............................................................. 		 14		14                                                                  00
+                                                                                                00
+15 Enter amounts from Schedule ITC, Section A, lines 25E and 25F........................ 		 15		15                                                                                    00
+                                                                                                      00
+16 Subtract line 15 from line 14. If line 15 is larger than line 14, enter zero............... 		 16		16                                                                              00
+                                                                                                         00
+17 Enter personal tax credit amounts from Schedule ITC, Section B................................ 		 17		17                                                                           00
+                                                                                                      00
+18 Subtract line 17 from line 16. If line 17 is larger than line 16, enter zero............... 		 18		18                                                                              00
+                                                                                            		
+19 Add tax amount(s) in Columns A and B, line 18 and enter here, continue to page 2...................................................... 		19                                        00
+
+
+                           250001 42A740 (10-25)                                                                                                               Page 1 of 3
+FORM 740 (2025)                                                                                                                                                                         Page 2 of 3
+
+
+
+
+20 Check the box that represents your total family size (see instructions before completing lines 20 and 21)................. 		20  1	 2	 3                                                    4
+
+21 Multiply line 19 by Family Size Tax Credit decimal amount __ . __ __ (__ __ __%) from 		
+                                                                                         Schedule ITC....................... 		21                                                               00
+                                                                                                                               		
+22 Subtract line 21 from line 19............................................................................................................................................ 		22               00
+                                                                                                    		
+23 Enter the Education Tuition Tax Credit from Form 8863-K, line 17.............................................................................. 		23                                          00
+24 Enter Child and Dependent Care Credit from federal Form 2441, line 11                                                                  		
+                                                                                                                                            x 20% (.20)		24                                     00
+                                                                                                                                   		
+25 RESERVED..................................................................................................................................................................... 		25           00
+                                                                                             		
+26 Income Tax Liability. Subtract lines 23 through 25 from line 22. If zero or less, enter zero.......................................... 		26                                                  00
+                                                                                 		
+27 Enter KENTUCKY USE TAX due on Internet, mail order, or other out-of-state purchases (see instructions).... 		27                                                                              00
+                                                                                                         		
+28 Add lines 26 and 27. This is your TOTAL TAX LIABILITY ............................................................................................. 		28                                     00
+                                                                                                    		
+29 For amended return; overpayment, if any, shown on original return.............................................................................	 29                                           00
+                                                                                                                            		
+30 Add lines 28 and 29, enter here.......................................................................................................................................		30                   00
+
+31 a Enter Kentucky income tax withheld as shown on enclosed
+		Schedule KW-2..................................................................................................                    31a             00
+     b     Enter 2025 Kentucky estimated tax/extension payments..................................	 31b                                               00
+     c     Enter 2025 refundable certified rehabilitation credit ..........................................	 31c                                     00
+     d     Enter 2025 refundable entertainment incentive tax credit..................................                                31d             00
+     e     Enter 2025 refundable development area tax credit..........................................                               31e             00
+     f     Enter 2025 refundable decontamination tax credit............................................                              31f             00
+  g        Enter 2025 refundable pass-through entity tax credit
+		         from Form PTET-CR, line 9...............................................................................                  31g             00
+     h     For amended return; enter amount paid with original return plus
+           additional payment(s) made after it was filed.....................................................	 31h                                   00
+
+                                                                                                                             		
+32 Add lines 31(a) through 31(h)..........................................................................................................................................  	32                 00
+                                                                                           		
+33 If line 30 is larger than line 32, subtract line 32 from line 30, enter ADDITIONAL TAX DUE. ......................................... 33                                                     00
+34 a       Estimated tax penalty                           Check if Form 2210-K attached.....................                        34a             00
+     b     Interest...............................................................................................................   34b             00
+     c     Late payment penalty.........................................................................................             34c             00
+     d     Late filing penalty...............................................................................................        34d             00
+
+                                                                                                                      		
+35 Add lines 34(a) through 34(d). Enter here....................................................................................................................... 35                          00
+                                                                                                   		
+36 If the total of lines 30 and 35 is more than line 32, subtract line 32 from the total of lines 30 and 35.
+
+                                                                                                            		
+     This is the AMOUNT YOU OWE, continue to page 3.................................................................................. OWE 36                                                    00
+37 If line 32 is more than line 30, subtract lines 30 and 35 from line 32. This is the AMOUNT YOU OVERPAID,
+
+                                                                                                                                     		
+     continue to page 3........................................................................................................................................................... 37           00
+
+
+
+
+                     250002 42A740 (10-25)
+FORM 740 (2025)                                                                                                                                                                           Page 3 of 3
+
+
+
+
+38 FUND CONTRIBUTIONS; see instructions.
+
+     a    Nature and Wildlife Fund...................................................................................    38a                          00
+     b    Child Victims’ Trust Fund...................................................................................   38b                          00
+     c    Veterans’ Program Trust Fund...........................................................................        38c                          00
+     d    Breast Cancer Research/Education Trust Fund................................................                    38d                          00
+     e    Farms to Food Banks Trust Fund......................................................................           38e                          00
+     f    Local History Trust Fund....................................................................................   38f                          00
+     g    Special Olympics Kentucky................................................................................      38g                          00
+     h    Pediatric Cancer Research Trust Fund..............................................................             38h                          00
+     i    Rape Crisis Center Trust Fund ........................................................................         38i                          00
+     j    Court Appointed Special AdvocateTrust Fund...................................................                  38j                          00
+     k    YMCA Youth Association Fund..........................................................................          38k                          00
+                                                                                                                             		
+39 Add lines 38(a) through 38(k).......................................................................................................................................... 39                     00
+                                                                                          		
+40 Amount of line 37 to be CREDITED TO YOUR 2026 ESTIMATED TAX ............................. CREDIT FORWARD
+                                                                                             		40                                                                                                 00
+     (Credit forwards not available for amended returns)
+
+                                                                                            			00
+41 Subtract lines 39 and 40 from line 37. Amount to be REFUNDED TO YOU ....................................... REFUND
+                                                                                                               		41
+
+
+
+
+  I, the undersigned, declare under penalties of perjury that I have examined this return, including all accompanying schedules and statements, and to
+  the best of my knowledge and belief, it is true, correct and complete. I also understand and agree that our election to file a combined return under the
+  provisions of Regulation 103 KAR 17:020 will result in refunds being made payable to us jointly and in each of us being jointly and severally liable for all
+  taxes accruing under this return.
+
+                  Signature of Taxpayer                                                  Driver’s License/State Issued ID No.       Date                             Telephone Number (daytime)
+
+Sign
+Here              Signature of Spouse                                                    Driver’s License/State Issued ID No.       Date
+
+
+
+                  Signature of Preparer                                                                                             Date
+
+
+Paid              Name of Preparer or Firm                                                                                          ID Number
+Preparer
+Use
+                  Email                                                                  Telephone No.                              May the DOR discuss this return with this preparer?
+
+                  		
+                   Yes No                                                                                                                             ¨            ¨
+                  Include a complete copy of federal Form 1040, if you                                                          Refund
+                                                                                                                                                Kentucky Department of Revenue
+Enclose           received farm, business, or rental income or loss. If not                                                     or No
+                                                                                                                                                Frankfort, KY 40618-0006
+                  required, check here.                                                                                         Payment
+
+                  Check Payable: Kentucky State Treasurer
+                                                                                                                                With            Kentucky Department of Revenue
+Payment           E-Pay Options: www.revenue.ky.gov                                                                             Payment         Frankfort, KY 40619-0008
+                  Include: Your Social Security number and “KY Income Tax—2025”
+
+
+
+                   250040 42A740 (10-25)
+

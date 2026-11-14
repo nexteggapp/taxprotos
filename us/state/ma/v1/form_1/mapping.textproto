@@ -1,0 +1,317 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Massachusetts Form 1 calls each concept, per tax year.
+#
+# Lines come from the 2025 Form 1 as the Massachusetts Department of Revenue
+# publishes it. There are no amount codes: IRS Publication 1220 covers the
+# information returns the IRS receives electronically, and a state return is not
+# one of them.
+#
+# The two federal figures at the top of page 1 are printed as items a and b.
+# Lines 2e, 2g, 6a, 8a, 8b and 38b are printed with the dot leader running
+# into the number (".2e"), so the extract never shows them standing alone.
+# They are mapped to their bare number with a note naming the part.
+#
+# The amended-return lines 36 and 42 and the six voluntary fund lines 33a to
+# 33f are not modelled.
+
+form: "Form 1"
+message_name: "nexteggapp.taxprotos.us.state.ma.v1.FormMA1"
+tax_years: 2025
+
+concepts {
+  concept: "filing_status"
+  years { tax_year: 2025 irs_box: "1" note: "Single, married filing jointly, married filing separately, head of household." }
+}
+concepts {
+  concept: "total_federal_income"
+  years { tax_year: 2025 irs_box: "a" note: "Federal Form 1040 line 9." }
+}
+concepts {
+  concept: "federal_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "b" note: "Federal Form 1040 line 11a." }
+}
+concepts {
+  concept: "personal_exemption"
+  years { tax_year: 2025 irs_box: "2a" }
+}
+concepts {
+  concept: "dependents"
+  years { tax_year: 2025 irs_box: "2b" note: "The number of dependents." }
+}
+concepts {
+  concept: "dependent_exemption"
+  years { tax_year: 2025 irs_box: "2b" note: "The number of dependents times $1,000." }
+}
+concepts {
+  concept: "age_65_or_older"
+  years { tax_year: 2025 irs_box: "2c" note: "The number of boxes filled in." }
+}
+concepts {
+  concept: "age_65_exemption"
+  years { tax_year: 2025 irs_box: "2c" note: "The number of boxes times $1,700." }
+}
+concepts {
+  concept: "blind"
+  years { tax_year: 2025 irs_box: "2d" note: "The number of boxes filled in." }
+}
+concepts {
+  concept: "blind_exemption"
+  years { tax_year: 2025 irs_box: "2d" note: "The number of boxes times $2,200." }
+}
+concepts {
+  concept: "medical_dental_exemption"
+  years { tax_year: 2025 irs_box: "2" note: "Line 2e: medical and dental, U.S. Schedule A line 4." }
+}
+concepts {
+  concept: "adoption_exemption"
+  years { tax_year: 2025 irs_box: "2f" }
+}
+concepts {
+  concept: "total_exemptions"
+  years { tax_year: 2025 irs_box: "2" note: "Line 2g: total exemptions, lines 2a through 2f." }
+}
+concepts {
+  concept: "wages"
+  years { tax_year: 2025 irs_box: "3" }
+}
+concepts {
+  concept: "taxable_pensions_and_annuities"
+  years { tax_year: 2025 irs_box: "4" }
+}
+concepts {
+  concept: "massachusetts_bank_interest"
+  years { tax_year: 2025 irs_box: "5" }
+}
+concepts {
+  concept: "business_income"
+  years { tax_year: 2025 irs_box: "6" note: "Line 6a: business or profession income, Schedule C." }
+}
+concepts {
+  concept: "farm_income"
+  years { tax_year: 2025 irs_box: "6b" }
+}
+concepts {
+  concept: "rental_royalty_partnership_income"
+  years { tax_year: 2025 irs_box: "7" }
+}
+concepts {
+  concept: "unemployment_compensation"
+  years { tax_year: 2025 irs_box: "8" note: "Line 8a: unemployment compensation." }
+}
+concepts {
+  concept: "lottery_winnings"
+  years { tax_year: 2025 irs_box: "8" note: "Line 8b: Massachusetts state lottery winnings." }
+}
+concepts {
+  concept: "other_income"
+  years { tax_year: 2025 irs_box: "9" note: "From Schedule X, line 7." }
+}
+concepts {
+  concept: "total_income"
+  years { tax_year: 2025 irs_box: "10" note: "Total 5.0% income." }
+}
+concepts {
+  concept: "taxpayer_retirement_contributions"
+  years { tax_year: 2025 irs_box: "11a" }
+}
+concepts {
+  concept: "spouse_retirement_contributions"
+  years { tax_year: 2025 irs_box: "11b" }
+}
+concepts {
+  concept: "rent_paid"
+  years { tax_year: 2025 irs_box: "14" note: "The rent paid, entered in the box before it is divided by 2." }
+}
+concepts {
+  concept: "rental_deduction"
+  years { tax_year: 2025 irs_box: "14" note: "Half the rent paid, up to $4,000." }
+}
+concepts {
+  concept: "other_deductions"
+  years { tax_year: 2025 irs_box: "15" note: "From Schedule Y, line 19." }
+}
+concepts {
+  concept: "total_deductions"
+  years { tax_year: 2025 irs_box: "16" }
+}
+concepts {
+  concept: "income_after_deductions"
+  years { tax_year: 2025 irs_box: "17" }
+}
+concepts {
+  concept: "exemption_amount"
+  years { tax_year: 2025 irs_box: "18" note: "From line 2g." }
+}
+concepts {
+  concept: "income_after_exemptions"
+  years { tax_year: 2025 irs_box: "19" }
+}
+concepts {
+  concept: "interest_and_dividend_income"
+  years { tax_year: 2025 irs_box: "20" note: "From Schedule B, line 38." }
+}
+concepts {
+  concept: "taxable_income"
+  years { tax_year: 2025 irs_box: "21" note: "Total taxable 5.0% income." }
+}
+concepts {
+  concept: "tax_on_taxable_income"
+  years { tax_year: 2025 irs_box: "22" }
+}
+concepts {
+  concept: "short_term_gain_income"
+  years { tax_year: 2025 irs_box: "23a" note: "The 8.5% income, entered before it is multiplied." }
+}
+concepts {
+  concept: "short_term_gain_tax"
+  years { tax_year: 2025 irs_box: "23a" note: "The 8.5% income times .085." }
+}
+concepts {
+  concept: "twelve_percent_income"
+  years { tax_year: 2025 irs_box: "23b" note: "The 12% income, entered before it is multiplied." }
+}
+concepts {
+  concept: "twelve_percent_tax"
+  years { tax_year: 2025 irs_box: "23b" note: "The 12% income times .12." }
+}
+concepts {
+  concept: "schedule_b_tax"
+  years { tax_year: 2025 irs_box: "23" }
+}
+concepts {
+  concept: "long_term_capital_gains_tax"
+  years { tax_year: 2025 irs_box: "24" note: "From Schedule D, line 22." }
+}
+concepts {
+  concept: "credit_recapture"
+  years { tax_year: 2025 irs_box: "25" }
+}
+concepts {
+  concept: "installment_sales_tax"
+  years { tax_year: 2025 irs_box: "26" }
+}
+concepts {
+  concept: "no_tax_status"
+  years { tax_year: 2025 irs_box: "27" }
+}
+concepts {
+  concept: "income_tax"
+  years { tax_year: 2025 irs_box: "28a" }
+}
+concepts {
+  concept: "surtax"
+  years { tax_year: 2025 irs_box: "28b" note: "From Schedule 4% Surtax, line 7." }
+}
+concepts {
+  concept: "total_tax"
+  years { tax_year: 2025 irs_box: "28" }
+}
+concepts {
+  concept: "limited_income_credit"
+  years { tax_year: 2025 irs_box: "29" }
+}
+concepts {
+  concept: "other_jurisdiction_credit"
+  years { tax_year: 2025 irs_box: "30" }
+}
+concepts {
+  concept: "other_credits"
+  years { tax_year: 2025 irs_box: "31" note: "From Schedule CMS." }
+}
+concepts {
+  concept: "income_tax_after_credits"
+  years { tax_year: 2025 irs_box: "32" }
+}
+concepts {
+  concept: "voluntary_contributions"
+  years { tax_year: 2025 irs_box: "33" note: "The total of lines 33a through 33f." }
+}
+concepts {
+  concept: "use_tax"
+  years { tax_year: 2025 irs_box: "34" }
+}
+concepts {
+  concept: "health_care_penalty"
+  years { tax_year: 2025 irs_box: "35" note: "The total of 35a and 35b, from Schedule HC." }
+}
+concepts {
+  concept: "total_tax_and_penalty"
+  years { tax_year: 2025 irs_box: "37" }
+}
+concepts {
+  concept: "w2_withholding"
+  years { tax_year: 2025 irs_box: "38a" }
+}
+concepts {
+  concept: "form_1099_withholding"
+  years { tax_year: 2025 irs_box: "38" note: "Line 38b: withheld on Forms 1099." }
+}
+concepts {
+  concept: "other_withholding"
+  years { tax_year: 2025 irs_box: "38c" }
+}
+concepts {
+  concept: "massachusetts_tax_withheld"
+  years { tax_year: 2025 irs_box: "38" note: "The total of lines 38a through 38c." }
+}
+concepts {
+  concept: "prior_year_overpayment_applied"
+  years { tax_year: 2025 irs_box: "39" }
+}
+concepts {
+  concept: "estimated_tax_payments"
+  years { tax_year: 2025 irs_box: "40" }
+}
+concepts {
+  concept: "extension_payments"
+  years { tax_year: 2025 irs_box: "41" }
+}
+concepts {
+  concept: "earned_income_credit"
+  years { tax_year: 2025 irs_box: "43" note: "The federal earned income credit times 40%." }
+}
+concepts {
+  concept: "senior_circuit_breaker_credit"
+  years { tax_year: 2025 irs_box: "44" }
+}
+concepts {
+  concept: "child_and_family_tax_credit"
+  years { tax_year: 2025 irs_box: "46" }
+}
+concepts {
+  concept: "other_refundable_credits"
+  years { tax_year: 2025 irs_box: "47" note: "From Schedule CMS." }
+}
+concepts {
+  concept: "total_refundable_credits"
+  years { tax_year: 2025 irs_box: "48" }
+}
+concepts {
+  concept: "excess_paid_family_leave_withholding"
+  years { tax_year: 2025 irs_box: "49" }
+}
+concepts {
+  concept: "real_estate_withholding"
+  years { tax_year: 2025 irs_box: "50" }
+}
+concepts {
+  concept: "total_payments"
+  years { tax_year: 2025 irs_box: "51" }
+}
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "52" }
+}
+concepts {
+  concept: "credited_forward"
+  years { tax_year: 2025 irs_box: "53" }
+}
+concepts {
+  concept: "refund"
+  years { tax_year: 2025 irs_box: "54" }
+}
+concepts {
+  concept: "amount_owed"
+  years { tax_year: 2025 irs_box: "55" }
+}

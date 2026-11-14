@@ -1,0 +1,96 @@
+// Form 760, Virginia Resident Income Tax Return.
+//
+// Part-year residents and non-residents file Form 760PY and Form 763. Only the
+// full-year resident's return is modelled here.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form 760; testdata holds
+// the text extracted from the published PDF and coverage_test.go asserts every
+// line a mapping claims appears on it.
+//
+// # Graduated tax on Virginia taxable income
+//
+// Virginia starts from federal adjusted gross income, adjusts it to Virginia
+// adjusted gross income on line 9, takes off a deduction and exemptions, and
+// taxes the rest at 2% to 5.75% on line 16. Married couples filing jointly may
+// reduce the tax by the spouse tax adjustment on line 17.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.va.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/va/v1/form_760;form760";
+
+// FilingStatus is the status the return is filed under. Form 760 has three;
+// a federal head of household files as single.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+}
+
+// Form760 is what a Form 760 states.
+message Form760 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // A single filer who files federally as head of household.
+  bool federal_head_of_household = 5 [(common.v1.fdx_absent) = true];
+
+  // Exemption Section A: the filer, the spouse on a joint return, and
+  // dependents, each worth $930.
+  int32 section_a_exemptions = 6 [(common.v1.fdx_absent) = true];
+
+  // Exemption Section B: the filer and spouse who are 65 or older, or blind,
+  // each worth $800.
+  int32 section_b_exemptions = 7 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 8 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money additions = 9 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_income = 10 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money age_deduction = 11 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money taxable_social_security = 12 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money state_refund_in_federal_income = 13 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money other_subtractions = 14 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_subtractions = 15 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money virginia_adjusted_gross_income = 16 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money itemized_deductions = 17 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money standard_deduction = 18 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money exemptions = 19 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money other_deductions = 20 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_deductions = 21 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 22 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax = 23 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money spouse_tax_adjustment = 24 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money net_tax = 25 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money withholding_you = 26 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money withholding_spouse = 27 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 28 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money prior_year_overpayment_applied = 29 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money extension_payments = 30 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money low_income_or_earned_income_credit = 31 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money credit_for_tax_paid_to_another_state = 32 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money schedule_cr_credits = 33 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_payments_and_credits = 34 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax_owed = 35 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money overpayment = 36 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money overpayment_credited_to_next_year = 37 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money commonwealth_savers_contributions = 38 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money other_voluntary_contributions = 39 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money addition_to_tax_penalty_and_interest = 40 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money consumers_use_tax = 41 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_adjustments = 42 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money amount_you_owe = 43 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money refund = 44 [(common.v1.fdx_absent) = true];
+}

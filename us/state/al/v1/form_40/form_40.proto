@@ -1,0 +1,154 @@
+// Form 40, Alabama Individual Income Tax Return.
+//
+// Residents and part-year residents file Form 40; only the full-year
+// resident's return is modelled here. Page 2's other income (Part I) and
+// adjustments (Part II) are carried as their totals on lines 7 and 9.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form 40; testdata holds
+// the text extracted from the published PDF and coverage_test.go asserts every
+// line a mapping claims appears on it.
+//
+// # Graduated tax after a federal tax deduction
+//
+// Alabama taxes income at 2%, 4% and 5%. Before it does, it allows a
+// deduction for federal income tax (line 12), a standard deduction that
+// phases out with adjusted gross income (line 11), and personal and dependent
+// exemptions (lines 13 and 14).
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.al.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/al/v1/form_40;form40";
+
+// FilingStatus is the status checked on lines 1 to 4.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_FAMILY = 4;
+}
+
+// FormAL40 is what an Alabama Form 40 states.
+message FormAL40 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  // Lines 1 to 4.
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // Box 11a: the deduction on line 11 is itemized.
+  bool itemizes = 5 [(common.v1.fdx_absent) = true];
+
+  // Page 2, Part III, line 1: dependents claimed.
+  int32 dependents = 6 [(common.v1.fdx_absent) = true];
+
+  // Line 5a. Alabama income tax withheld, from Schedule W-2 column A.
+  nexteggapp.taxprotos.common.v1.Money alabama_tax_withheld = 7 [(common.v1.fdx_absent) = true];
+
+  // Line 5b. Wages, salaries and tips, from Schedule W-2.
+  nexteggapp.taxprotos.common.v1.Money wages = 8 [(common.v1.fdx_absent) = true];
+
+  // Line 6. Interest and dividend income.
+  nexteggapp.taxprotos.common.v1.Money interest_and_dividends = 9 [(common.v1.fdx_absent) = true];
+
+  // Line 7. Total other income, from page 2, Part I.
+  nexteggapp.taxprotos.common.v1.Money other_income = 10 [(common.v1.fdx_absent) = true];
+
+  // Line 8. Lines 5b through 7.
+  nexteggapp.taxprotos.common.v1.Money total_income = 11 [(common.v1.fdx_absent) = true];
+
+  // Line 9. Total adjustments to income, from page 2, Part II.
+  nexteggapp.taxprotos.common.v1.Money total_adjustments = 12 [(common.v1.fdx_absent) = true];
+
+  // Line 10. Line 8 less line 9.
+  nexteggapp.taxprotos.common.v1.Money adjusted_gross_income = 13 [(common.v1.fdx_absent) = true];
+
+  // Line 11. The itemized deduction from Schedule A or the standard deduction, whichever box 11a or 11b says.
+  nexteggapp.taxprotos.common.v1.Money deduction = 14 [(common.v1.fdx_absent) = true];
+
+  // Line 12. The federal income tax deduction.
+  nexteggapp.taxprotos.common.v1.Money federal_tax_deduction = 15 [(common.v1.fdx_absent) = true];
+
+  // Line 13. The exemption for the filing status checked on lines 1 to 4.
+  nexteggapp.taxprotos.common.v1.Money personal_exemption = 16 [(common.v1.fdx_absent) = true];
+
+  // Line 14. The dependent exemption, from page 2, Part III.
+  nexteggapp.taxprotos.common.v1.Money dependent_exemption = 17 [(common.v1.fdx_absent) = true];
+
+  // Line 15. Lines 11 to 14.
+  nexteggapp.taxprotos.common.v1.Money total_deductions = 18 [(common.v1.fdx_absent) = true];
+
+  // Line 16. Line 10 less line 15.
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 19 [(common.v1.fdx_absent) = true];
+
+  // Line 17. Tax on line 16, from the tax table.
+  nexteggapp.taxprotos.common.v1.Money income_tax = 20 [(common.v1.fdx_absent) = true];
+
+  // Line 18. Net tax due Alabama: line 17 less any Schedule OC credits.
+  nexteggapp.taxprotos.common.v1.Money net_tax = 21 [(common.v1.fdx_absent) = true];
+
+  // Line 19. Additional taxes, from Schedule ATP.
+  nexteggapp.taxprotos.common.v1.Money additional_taxes = 22 [(common.v1.fdx_absent) = true];
+
+  // Line 20a. Alabama Election Campaign Fund contribution to the Democratic Party.
+  nexteggapp.taxprotos.common.v1.Money democratic_party_contribution = 23 [(common.v1.fdx_absent) = true];
+
+  // Line 20b. Alabama Election Campaign Fund contribution to the Republican Party.
+  nexteggapp.taxprotos.common.v1.Money republican_party_contribution = 24 [(common.v1.fdx_absent) = true];
+
+  // Line 21. Lines 18, 19, 20a and 20b.
+  nexteggapp.taxprotos.common.v1.Money total_tax_liability = 25 [(common.v1.fdx_absent) = true];
+
+  // Line 22. Alabama income tax withheld, from line 5a.
+  nexteggapp.taxprotos.common.v1.Money withholding = 26 [(common.v1.fdx_absent) = true];
+
+  // Line 23. 2025 estimated tax and extension payments.
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 27 [(common.v1.fdx_absent) = true];
+
+  // Line 24. Amended returns only: previous payments.
+  nexteggapp.taxprotos.common.v1.Money amended_previous_payments = 28 [(common.v1.fdx_absent) = true];
+
+  // Line 25. Refundable credits, from Schedule OC.
+  nexteggapp.taxprotos.common.v1.Money refundable_credits = 29 [(common.v1.fdx_absent) = true];
+
+  // Line 26. Payments from Schedule CP.
+  nexteggapp.taxprotos.common.v1.Money schedule_cp_payments = 30 [(common.v1.fdx_absent) = true];
+
+  // Line 27. Lines 22 to 26.
+  nexteggapp.taxprotos.common.v1.Money total_payments = 31 [(common.v1.fdx_absent) = true];
+
+  // Line 28. Amended returns only: previous refund.
+  nexteggapp.taxprotos.common.v1.Money amended_previous_refund = 32 [(common.v1.fdx_absent) = true];
+
+  // Line 29. Line 27 less line 28.
+  nexteggapp.taxprotos.common.v1.Money adjusted_total_payments = 33 [(common.v1.fdx_absent) = true];
+
+  // Line 30. Line 21 less line 29, plus line 31.
+  nexteggapp.taxprotos.common.v1.Money amount_owed = 34 [(common.v1.fdx_absent) = true];
+
+  // Line 31. Penalties, from Schedule ATP.
+  nexteggapp.taxprotos.common.v1.Money penalties = 35 [(common.v1.fdx_absent) = true];
+
+  // Line 32. Line 29 less line 21.
+  nexteggapp.taxprotos.common.v1.Money overpayment = 36 [(common.v1.fdx_absent) = true];
+
+  // Line 33. Amount of line 32 applied to 2026 estimated tax.
+  nexteggapp.taxprotos.common.v1.Money applied_to_next_year = 37 [(common.v1.fdx_absent) = true];
+
+  // Line 34. Donation check-offs, from Schedule DC.
+  nexteggapp.taxprotos.common.v1.Money donation_checkoffs = 38 [(common.v1.fdx_absent) = true];
+
+  // Line 35. Line 32 less lines 31, 33 and 34.
+  nexteggapp.taxprotos.common.v1.Money refund = 39 [(common.v1.fdx_absent) = true];
+}

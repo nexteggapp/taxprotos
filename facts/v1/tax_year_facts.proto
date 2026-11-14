@@ -380,6 +380,15 @@ message PriorYearReturn {
     // An Illinois return.
     IllinoisReturn illinois = 15;
 
+    // A Missouri return.
+    MissouriReturn missouri = 38;
+
+    // A Montana return.
+    MontanaReturn montana = 39;
+
+    // A Maine return.
+    MaineReturn maine = 32;
+
     // A North Carolina return.
     NorthCarolinaReturn north_carolina = 16;
 
@@ -388,6 +397,108 @@ message PriorYearReturn {
 
     // An Arizona return.
     ArizonaReturn arizona = 18;
+
+    // A Georgia return.
+    GeorgiaReturn georgia = 24;
+
+    // An Idaho return.
+    IdahoReturn idaho = 26;
+
+    // A Utah return.
+    UtahReturn utah = 50;
+
+    // A Washington capital gains excise tax return.
+    WashingtonReturn washington = 55;
+
+    // A Michigan return.
+    MichiganReturn michigan = 35;
+
+    // A Kentucky return.
+    KentuckyReturn kentucky = 30;
+
+    // An Indiana return.
+    IndianaReturn indiana = 27;
+
+    // A Pennsylvania return.
+    PennsylvaniaReturn pennsylvania = 47;
+
+    // An Iowa return.
+    IowaReturn iowa = 28;
+
+    // A Louisiana return.
+    LouisianaReturn louisiana = 31;
+
+    // A Mississippi return.
+    MississippiReturn mississippi = 37;
+
+    // A Kansas return.
+    KansasReturn kansas = 29;
+
+    // An Oklahoma return.
+    OklahomaReturn oklahoma = 46;
+
+    // An Arkansas return.
+    ArkansasReturn arkansas = 20;
+
+    // A New Mexico return.
+    NewMexicoReturn new_mexico = 42;
+
+    // A North Dakota return.
+    NorthDakotaReturn north_dakota = 44;
+
+    // A Nebraska return.
+    NebraskaReturn nebraska = 40;
+
+    // A Delaware return.
+    DelawareReturn delaware = 22;
+
+    // A Virginia return.
+    VirginiaReturn virginia = 52;
+
+    // An Alabama return.
+    AlabamaReturn alabama = 19;
+
+    // A District of Columbia return.
+    DistrictOfColumbiaReturn district_of_columbia = 23;
+
+    // A South Carolina return.
+    SouthCarolinaReturn south_carolina = 49;
+
+    // A West Virginia return.
+    WestVirginiaReturn west_virginia = 53;
+
+    // A Hawaii return.
+    HawaiiReturn hawaii = 25;
+
+    // A Vermont return.
+    VermontReturn vermont = 51;
+
+    // A Rhode Island return.
+    RhodeIslandReturn rhode_island = 48;
+
+    // A Connecticut return.
+    ConnecticutReturn connecticut = 21;
+
+    // A Minnesota return.
+    MinnesotaReturn minnesota = 36;
+
+    // A Wisconsin return.
+    WisconsinReturn wisconsin = 54;
+
+    // A Massachusetts return.
+    MassachusettsReturn massachusetts = 34;
+
+    // A Maryland return.
+    MarylandReturn maryland = 33;
+
+    // An Ohio return.
+    OhioReturn ohio = 45;
+
+    // A New Jersey return.
+    NewJerseyReturn new_jersey = 41;
+
+    // A New York return.
+    NewYorkReturn new_york = 43;
   }
 
   // Where the return came from, when it is here.

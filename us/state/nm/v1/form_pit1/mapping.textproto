@@ -1,0 +1,155 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form PIT-1 calls each concept, per tax year.
+#
+# Lines come from the 2025 Form PIT-1 as the New Mexico Taxation and Revenue
+# Department publishes it. There are no amount codes: IRS Publication 1220
+# covers the information returns the IRS receives electronically, and a state
+# return is not one of them.
+#
+# Line 23 repeats line 22 at the top of page 2 and has no field of its own.
+
+form: "PIT-1"
+message_name: "nexteggapp.taxprotos.us.state.nm.v1.FormPIT1"
+tax_years: 2025
+
+concepts {
+  concept: "filing_status"
+  years { tax_year: 2025 irs_box: "7" }
+}
+concepts {
+  concept: "exemptions"
+  years { tax_year: 2025 irs_box: "5" }
+}
+concepts {
+  concept: "itemized"
+  years { tax_year: 2025 irs_box: "12a" }
+}
+concepts {
+  concept: "federal_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "9" note: "Federal Form 1040 line 11." }
+}
+concepts {
+  concept: "state_and_local_tax_deduction"
+  years { tax_year: 2025 irs_box: "10" note: "If itemized: the state and local tax deduction from federal Schedule A line 5a, added back." }
+}
+concepts {
+  concept: "total_additions"
+  years { tax_year: 2025 irs_box: "11" note: "From Schedule PIT-ADJ line 6." }
+}
+concepts {
+  concept: "federal_deduction"
+  years { tax_year: 2025 irs_box: "12" note: "The federal standard or itemized deduction, federal Form 1040 line 12." }
+}
+concepts {
+  concept: "certain_dependents_deduction"
+  years { tax_year: 2025 irs_box: "13" }
+}
+concepts {
+  concept: "low_and_middle_income_exemption"
+  years { tax_year: 2025 irs_box: "14" }
+}
+concepts {
+  concept: "total_deductions_and_exemptions"
+  years { tax_year: 2025 irs_box: "15" note: "From Schedule PIT-ADJ line 28." }
+}
+concepts {
+  concept: "taxable_income"
+  years { tax_year: 2025 irs_box: "17" }
+}
+concepts {
+  concept: "tax"
+  years { tax_year: 2025 irs_box: "18" }
+}
+concepts {
+  concept: "lump_sum_distribution_tax"
+  years { tax_year: 2025 irs_box: "19" }
+}
+concepts {
+  concept: "credit_for_tax_paid_to_other_states"
+  years { tax_year: 2025 irs_box: "20" }
+}
+concepts {
+  concept: "business_credits_applied"
+  years { tax_year: 2025 irs_box: "21" note: "From Schedule PIT-CR line A." }
+}
+concepts {
+  concept: "net_income_tax"
+  years { tax_year: 2025 irs_box: "22" }
+}
+concepts {
+  concept: "rebates_and_credits"
+  years { tax_year: 2025 irs_box: "24" note: "From Schedule PIT-RC line 26." }
+}
+concepts {
+  concept: "working_families_tax_credit"
+  years { tax_year: 2025 irs_box: "25" }
+}
+concepts {
+  concept: "federal_earned_income_credit"
+  years { tax_year: 2025 irs_box: "25a" }
+}
+concepts {
+  concept: "refundable_business_credits"
+  years { tax_year: 2025 irs_box: "26" note: "From Schedule PIT-CR line B." }
+}
+concepts {
+  concept: "tax_withheld"
+  years { tax_year: 2025 irs_box: "27" }
+}
+concepts {
+  concept: "oil_and_gas_withholding"
+  years { tax_year: 2025 irs_box: "28" }
+}
+concepts {
+  concept: "pass_through_entity_withholding"
+  years { tax_year: 2025 irs_box: "29" }
+}
+concepts {
+  concept: "estimated_tax_payments"
+  years { tax_year: 2025 irs_box: "30" }
+}
+concepts {
+  concept: "other_payments"
+  years { tax_year: 2025 irs_box: "31" }
+}
+concepts {
+  concept: "total_payments_and_credits"
+  years { tax_year: 2025 irs_box: "32" }
+}
+concepts {
+  concept: "tax_due"
+  years { tax_year: 2025 irs_box: "33" }
+}
+concepts {
+  concept: "estimated_tax_penalty"
+  years { tax_year: 2025 irs_box: "34" }
+}
+concepts {
+  concept: "penalty"
+  years { tax_year: 2025 irs_box: "36" }
+}
+concepts {
+  concept: "interest"
+  years { tax_year: 2025 irs_box: "37" }
+}
+concepts {
+  concept: "total_due"
+  years { tax_year: 2025 irs_box: "38" }
+}
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "39" }
+}
+concepts {
+  concept: "voluntary_contributions"
+  years { tax_year: 2025 irs_box: "40" note: "From Schedule PIT-D line 18." }
+}
+concepts {
+  concept: "applied_to_estimated_tax"
+  years { tax_year: 2025 irs_box: "41" }
+}
+concepts {
+  concept: "refund"
+  years { tax_year: 2025 irs_box: "42" }
+}

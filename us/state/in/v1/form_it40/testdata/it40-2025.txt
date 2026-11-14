@@ -1,0 +1,125 @@
+           Form IT-40                                 Indiana Department of Revenue
+           State Form 154
+           (R24 / 9-25)                               Indiana Full-Year Resident
+                                                    Individual Income Tax Return                               2025
+                                                                  Due April 15, 2026
+                     If filing for a fiscal year, enter the dates (MM/DD/YYYY). All others, leave blank (see instructions).
+
+                                   from                                   to:
+                                                                                                                          Place “X” in box
+Place “X” in box if you are applying for I T I N.        Place “X” in box if spouse is applying for I T I N.              if amending.
+Your Social                                              Spouse’s Social                                       Place “X” in box if you are
+Security Number                                          Security Number                                       married filing separately.
+Your first name                                      Initial   Last name                                                           Suffix
+
+
+
+If filing a joint return, spouse’s first name        Initial   Last name                                                           Suffix
+
+
+
+Mailing address (number and street or PO Box)
+
+                                                                                                                Foreign country 2-character
+City                                                                    State           ZIP/Postal code         code (see instructions)
+
+
+
+
+Enter below the 2-digit county code numbers (found on the back of Schedule CT-40) for the county where you lived and worked
+on Jan. 1, 2025.
+County where                County where                          County where               County where
+you lived                   you worked                            spouse lived               spouse worked
+
+If, as of Jan. 1, 2025, the mailing address you listed is different from your principal residence address or if you are married filing jointly
+and either your mailing address or your spouse’s mailing address you listed is different from your principal residence address, you must
+list the physical address of your and/or your spouse’s principal place of residence as of Jan. 1, 2025 on Schedule CT-40.
+See instructions for further information on determining your principal residence address.
+                                                                                                                    Round all entries
+  1. Enter your federal adjusted gross income from your federal
+      income tax return, Form 1040 or Form 1040-SR, line 11_______________________ Federal A G I                1                         .00
+
+ 2. Enter amount from Schedule 1, line 7, and enclose Schedule 1____________Indiana Add-Backs                   2                        .00
+
+ 3. Add line 1 and line 2______________________________________________________________                         3                        .00
+
+ 4. Enter amount from Schedule 2, line 12, and enclose Schedule 2__________ Indiana Deductions                  4                        .00
+
+ 5. Subtract line 4 from line 3__________________________________________________________                       5                        .00
+
+ 6. Complete Schedule 3. Enter amount from Schedule 3, line 7,
+    and enclose Schedule 3__________________________________________ Indiana Exemptions                         6                        .00
+
+ 7. Subtract line 6 from line 5_______________________________ Indiana Adjusted Gross Income                    7                        .00
+ 8. State adjusted gross income tax: multiply line 7 by 3% (.03)
+    (if answer is less than zero, leave blank)___________________ 8                     .00
+ 9. County tax. Enter county tax due from Schedule CT-40
+    (if answer is less than zero, leave blank)___________________ 9                     .00
+10. Other taxes. Enter amount from Schedule 4, line 4
+    (enclose schedule)____________________________________ 10                           .00
+
+11. Add lines 8, 9 and 10. Enter total here and on line 15 on the back______________ Indiana Taxes             11                        .00
+
+                                                    *15125111694*
+                                                         15125111694
+12. Enter credits from Schedule 5, line 13 (enclose schedule)_____          12                         .00
+
+13. Enter offset credits from Schedule 6, line 8 (enclose schedule)_        13                         .00
+
+14. Add lines 12 and 13 _________________________________________________ Indiana Credits                        14          .00
+
+15. Enter amount from line 11_____________________________________________ Indiana Taxes                         15          .00
+
+16. If line 14 is equal to or more than line 15, subtract line 15 from line 14 (if smaller, skip to line 23)__   16          .00
+
+17. Enter donations from Schedule IN-DONATE (enclose schedule); cannot be greater than line 16__                 17          .00
+
+18. Subtract line 17 from line 16____________________________________________ Overpayment                        18          .00
+
+19. Amount from line 18 to be applied to your 2026 estimated tax account (see instructions).
+
+      a. Enter your county code          county tax to be applied_____ 19a                             .00
+
+      b. Spouse’s county code            county tax to be applied_____ 19b                             .00
+      c. Indiana adjusted gross income tax to be applied_________ 19c                                  .00
+
+      d. Total to be applied to your estimated tax account (a + b + c; cannot be more than line 18)____ 19d                  .00
+
+20. Penalty for underpayment of estimated tax from Schedule IT-2210 and IT-2210A ______________                  20          .00
+
+      a. Enter Code A if annualizing. Enter Code F if farmer or fisherman___________            20a
+
+21. Refund: Line 18 minus lines 19d and 20. Note: If less than zero, see line 23 instructions __ Your Refund     21          .00
+22. Direct Deposit (see instructions)
+
+      a. Routing Number
+
+      b. Account Number
+
+      c. Type:        Checking           Savings           Hoosier Works MC
+
+      d. Place an “X” in the box if refund will go to an account outside the United States.
+
+23. If line 15 is more than line 14, subtract line 14 from line 15. Add to this any amount on
+     line 20 (see instructions)__________________________________________________________                        23          .00
+
+24. Penalty if filed after due date (see instructions)_________________________________________                  24          .00
+
+25. Interest if filed after due date (see instructions)_________________________________________                 25          .00
+
+26. Amount Due: Add lines 23, 24 and 25_________________________________ Amount You Owe                          26          .00
+    Do not send cash. Make your check or money order payable to: Indiana Department of Revenue.
+    See instructions if paying with a credit card.
+
+Sign and date this return after reading the Authorization statement on Schedule 7. Remember to enclose Schedule 7.
+
+
+Signature                                           Date                    Spouse’s Signature                        Date
+• Mail payments to: Indiana Department of Revenue, P.O. Box 7224, Indianapolis, I N 46207-7224.
+• Mail all other returns to: Indiana Department of Revenue, P.O. Box 40, Indianapolis, I N 46206-0040.
+• Visit www.in.gov/taxpayer-receipt to view your taxpayer receipt.
+
+
+                                               *15125121694*
+                                                    15125121694
+

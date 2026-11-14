@@ -1,0 +1,205 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form 740 calls each concept, per tax year.
+#
+# Lines come from the 2025 Form 740 as the Kentucky Department of Revenue
+# publishes it. There are no amount codes: IRS Publication 1220 covers the
+# information returns the IRS receives electronically, and a state return is not
+# one of them.
+#
+# Line 21 carries both the family size credit percentage and the credit, so
+# both concepts say which they are. Line 25 is reserved. The fund contributions
+# on lines 38a to 38k are kept only as their total on line 39.
+
+form: "740"
+message_name: "nexteggapp.taxprotos.us.state.ky.v1.Form740"
+tax_years: 2025
+
+concepts {
+  concept: "filing_status"
+  years { tax_year: 2025 irs_box: "1" note: "Filing status boxes 1 to 4; the box number is the status." }
+}
+concepts {
+  concept: "federal_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "5" note: "Federal Form 1040 line 11a." }
+}
+concepts {
+  concept: "additions"
+  years { tax_year: 2025 irs_box: "6" note: "From Schedule M line 6." }
+}
+concepts {
+  concept: "income_with_additions"
+  years { tax_year: 2025 irs_box: "7" }
+}
+concepts {
+  concept: "subtractions"
+  years { tax_year: 2025 irs_box: "8" note: "From Schedule M line 17." }
+}
+concepts {
+  concept: "kentucky_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "9" }
+}
+concepts {
+  concept: "deductions"
+  years { tax_year: 2025 irs_box: "10" }
+}
+concepts {
+  concept: "taxable_income"
+  years { tax_year: 2025 irs_box: "11" }
+}
+concepts {
+  concept: "tax"
+  years { tax_year: 2025 irs_box: "12" }
+}
+concepts {
+  concept: "other_taxes"
+  years { tax_year: 2025 irs_box: "13" }
+}
+concepts {
+  concept: "tax_before_credits"
+  years { tax_year: 2025 irs_box: "14" }
+}
+concepts {
+  concept: "business_incentive_credits"
+  years { tax_year: 2025 irs_box: "15" note: "Schedule ITC, Section A, lines 25E and 25F." }
+}
+concepts {
+  concept: "tax_after_business_incentive_credits"
+  years { tax_year: 2025 irs_box: "16" }
+}
+concepts {
+  concept: "personal_tax_credits"
+  years { tax_year: 2025 irs_box: "17" note: "Schedule ITC, Section B." }
+}
+concepts {
+  concept: "tax_after_personal_tax_credits"
+  years { tax_year: 2025 irs_box: "18" }
+}
+concepts {
+  concept: "tax_both_columns"
+  years { tax_year: 2025 irs_box: "19" }
+}
+concepts {
+  concept: "family_size"
+  years { tax_year: 2025 irs_box: "20" }
+}
+concepts {
+  concept: "family_size_credit_percent"
+  years { tax_year: 2025 irs_box: "21" note: "The percentage printed on line 21, from the Schedule ITC table." }
+}
+concepts {
+  concept: "family_size_tax_credit"
+  years { tax_year: 2025 irs_box: "21" note: "The credit amount on line 21." }
+}
+concepts {
+  concept: "tax_after_family_size_tax_credit"
+  years { tax_year: 2025 irs_box: "22" }
+}
+concepts {
+  concept: "education_tuition_tax_credit"
+  years { tax_year: 2025 irs_box: "23" note: "Form 8863-K line 17." }
+}
+concepts {
+  concept: "child_and_dependent_care_credit"
+  years { tax_year: 2025 irs_box: "24" }
+}
+concepts {
+  concept: "income_tax_liability"
+  years { tax_year: 2025 irs_box: "26" }
+}
+concepts {
+  concept: "use_tax"
+  years { tax_year: 2025 irs_box: "27" }
+}
+concepts {
+  concept: "total_tax_liability"
+  years { tax_year: 2025 irs_box: "28" }
+}
+concepts {
+  concept: "original_return_overpayment"
+  years { tax_year: 2025 irs_box: "29" }
+}
+concepts {
+  concept: "total_tax_and_original_overpayment"
+  years { tax_year: 2025 irs_box: "30" }
+}
+concepts {
+  concept: "kentucky_tax_withheld"
+  years { tax_year: 2025 irs_box: "31a" }
+}
+concepts {
+  concept: "estimated_tax_payments"
+  years { tax_year: 2025 irs_box: "31b" }
+}
+concepts {
+  concept: "certified_rehabilitation_credit"
+  years { tax_year: 2025 irs_box: "31c" }
+}
+concepts {
+  concept: "entertainment_incentive_credit"
+  years { tax_year: 2025 irs_box: "31d" }
+}
+concepts {
+  concept: "development_area_credit"
+  years { tax_year: 2025 irs_box: "31e" }
+}
+concepts {
+  concept: "decontamination_credit"
+  years { tax_year: 2025 irs_box: "31f" }
+}
+concepts {
+  concept: "pass_through_entity_tax_credit"
+  years { tax_year: 2025 irs_box: "31g" }
+}
+concepts {
+  concept: "original_return_payments"
+  years { tax_year: 2025 irs_box: "31h" }
+}
+concepts {
+  concept: "total_payments"
+  years { tax_year: 2025 irs_box: "32" }
+}
+concepts {
+  concept: "additional_tax_due"
+  years { tax_year: 2025 irs_box: "33" }
+}
+concepts {
+  concept: "estimated_tax_penalty"
+  years { tax_year: 2025 irs_box: "34a" }
+}
+concepts {
+  concept: "interest"
+  years { tax_year: 2025 irs_box: "34b" }
+}
+concepts {
+  concept: "late_payment_penalty"
+  years { tax_year: 2025 irs_box: "34c" }
+}
+concepts {
+  concept: "late_filing_penalty"
+  years { tax_year: 2025 irs_box: "34d" }
+}
+concepts {
+  concept: "total_penalties_and_interest"
+  years { tax_year: 2025 irs_box: "35" }
+}
+concepts {
+  concept: "amount_owed"
+  years { tax_year: 2025 irs_box: "36" }
+}
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "37" }
+}
+concepts {
+  concept: "fund_contributions"
+  years { tax_year: 2025 irs_box: "39" note: "Lines 38a to 38k together." }
+}
+concepts {
+  concept: "credited_forward"
+  years { tax_year: 2025 irs_box: "40" }
+}
+concepts {
+  concept: "refund"
+  years { tax_year: 2025 irs_box: "41" }
+}

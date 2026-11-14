@@ -1,0 +1,1017 @@
+          2025 INSTRUCTIONS FOR FILING RI-1040
+                      (FOR FULL YEAR RHODE ISLAND RESIDENTS FILING FORM RI-1040)
+
+                                     WHAT’S NEW FOR TAX YEAR 2025
+          Each year the RI Division of Taxation is required to make an inflationary adjustment for the following amounts:
+           •    Standard deduction amounts (see page I-4 for the increased amounts)
+           •    Exemption amount (see page I-5 for the increased amount)
+           •    Income tax brackets (see page I-13 for the new tiers)
+           •    Increased Standard Deduction and Exemption phaseout amount (see pages I-4 and I-5 for the increased amount)
+           •    Federal AGI amounts for the social security modification (see worksheet on page 18)
+           •    Federal AGI amounts for the pension and annuity modification (see instructions starting on page I-9)
+           •    RI-1040H - Property Tax Relief Credit (see Form RI-1040H)
+
+           Additional changes for tax year 2025 include:
+           •   New RI Schedule HR1 - Individual to be used to add back deductions allowed on the Federal level in relation to P.L. 119-21, H.R.1 119th
+               Cong. (2025).
+               •    Business interest expense deduction [I.R.S. Code 163(j)
+               •    Section 174A Amortization Adjustment for research and experimental expenditures [I.R.S. Code 174A]
+               •    Depreciation of business assets [I.R.S. Code 179(b)]
+               •    Qualified sound recording production deduction [I.R.S.Code 181]
+           •   New code “A’ on RI Schedule W for Rhode Island income tax withholding from 1099-DA
+
+
+
+                                                GENERAL INSTRUCTIONS
+    The RI-1040 Resident booklet contains returns and instructions for filing        Island and spends more than 183 days of the year in Rhode Island.
+the 2025 Rhode Island Resident Individual Income Tax Return. Read the in-               For purposes of the above definition, domicile is found to be a place an
+structions in this booklet carefully. For your convenience we have provided          individual regards as his or her permanent home – the place to which he or
+“line by line instructions” which will aid you in completing your return. Please     she intends to return after a period of absence. A domicile, once established,
+print or type so that it will be legible. Fillable forms are available on our web-   continues until a new fixed and permanent home is acquired. No change of
+site at www.tax.ri.gov. Check the accuracy of your name(s), address, social          domicile results from moving to a new location if the intention is to remain
+security number(s) and the federal identification numbers listed on RI Sched-        only for a limited time, even if it is for a relatively long duration. For a married
+ule W.                                                                               couple, normally both individuals have the same domicile.
+    Most resident taxpayers will only need to complete the first three pages
+of Form RI-1040, RI Schedule W, RI Schedule E and RI Schedule U. Those                  Any person asserting a change in domicile must show:
+taxpayers claiming modifications to federal adjusted gross income must                 (1) an intent to abandon the former domicile,
+complete RI Schedule M on pages 9 and 10 of the RI-1040 Resident booklet.              (2) an intent to acquire a new domicile and
+Taxpayers claiming a credit for income taxes paid to another state must com-           (3) actual physical presence in a new domicile.
+plete RI Schedule II on page 3 of the RI-1040 Resident booklet. See page
+I-6 of these instructions if claiming credit for multiple states.
+    These instructions are to be used for full year resident taxpayers only.         JOINT AND SEPARATE RETURNS
+Nonresidents and part-year residents will file their Rhode Island Individual             JOINT RETURNS: Generally, if two married individuals file a joint federal
+Income Tax Returns using Form RI-1040NR.                                             income tax return, they also must file a joint Rhode Island income tax return.
+    Forms and instructions are available upon request at the Rhode Island            However, if either one of the married individuals is a resident and the other
+Division of Taxation and on the Division of Taxation’s website at:                   is a nonresident, they must file separate returns, unless they elect to file a
+    https://tax.ri.gov/forms/individual-tax-forms/personal-income-tax-forms.         joint return as if both were residents of Rhode Island. If the resident spouse
+                                                                                     files separately in Rhode Island and a joint federal return is filed for both
+Complete your 2025 Federal Income Tax Return first.                                  spouses, the resident spouse must compute income, exemptions, credits
+   It is the basis for preparing your Rhode Island income tax return. In gen-        and tax as if a separate federal return had been filed.
+eral, the Rhode Island income tax is based on your federal adjusted gross                If neither spouse is required to file a federal income tax return and either
+income.                                                                              or both are required to file a Rhode Island income tax return, they may elect
+   Accuracy and attention to detail in completing the return in accordance           to file a joint Rhode Island income tax return.
+with these instructions will facilitate the processing of your tax return. You           Individuals filing joint Rhode Island income tax returns are both equally li-
+may find the following points helpful in preparing your Rhode Island Personal        able to pay the tax. They incur what is known as “joint and several liability”
+Income Tax Return.                                                                   for Rhode Island income tax.
+
+                                                                                        SEPARATE RETURNS: Married individuals filing separate federal income
+WHO MUST FILE A RETURN                                                               tax returns must file separate Rhode Island income tax returns.
+   RESIDENT INDIVIDUALS – Every resident individual of Rhode Island
+who is required to file a federal income tax return must file a Rhode Island
+individual income tax return (RI-1040).                                              MILITARY PERSONNEL
+   A resident individual who is not required to file a federal income tax return        Under the provisions of the Soldiers and Sailors Civil Relief Act, the serv-
+may be required to file a Rhode Island income tax return if his/her income           ice pay of members of the armed forces can only be subject to income tax
+for the taxable year is in excess of the sum of his/her Rhode Island personal        by the state of which they are legal residents. Place of legal residence at
+exemptions and applicable standard deduction.                                        the time of entry into the service is normally presumed to be the legal state
+                                                                                     of residence and remains so until legal residence in another state is estab-
+   “Resident” means an individual who is domiciled in the State of Rhode             lished and service records are changed accordingly. The Rhode Island in-
+Island or an individual who maintains a permanent place of abode in Rhode            come tax is imposed on all the federal taxable income of a resident who is
+                                                                               Page I-1                                                               Revised 11/2025
+a member of the armed forces, regardless of where such income is received.               (4) Such application for extension must show the full amount prop-
+   Military pay received by a nonresident service person stationed in Rhode           erly estimated as tax for such taxpayer for such taxable year, and such
+Island is not subject to Rhode Island income tax. This does not apply to              application must be accompanied by the full remittance of the amount
+other income derived from Rhode Island sources, e.g., if the service person           properly estimated as tax which is unpaid as of the date prescribed for
+holds a separate job, not connected with his or her military service, income          the filing of the return.
+received from that job is subject to Rhode Island income tax.
+   In addition, under the provisions of the Military Spouses Residency Relief       NOTE: If no payment is required to be made with your Rhode Island exten-
+Act, income for services performed by the servicemember’s spouse can only           sion form and you are filing a federal extension form for the same period of
+be subject to income tax by the state of his/her legal residency if the ser-        time, you do not need to submit the Rhode Island form. Attach a copy
+vicemember’s spouse meets certain conditions.                                       of Federal Form 4868 or the electronic acknowledgment you receive from
+   Income for services performed by the servicemember’s spouse in Rhode             the IRS to your Rhode Island individual income tax return at the time it is
+Island would be exempt from Rhode Island income tax if the servicemem-              submitted.
+ber’s spouse moved to Rhode Island solely to be with the servicemember
+complying with military orders sending the servicemember to Rhode Island.           Filing for an extension of time to file Form RI-1040 does not extend the time
+The servicemember and the servicemember’s spouse must also share the                to file Form RI-1040H, Rhode Island Property Tax Relief Claim or Form RI-
+same non-Rhode Island domicile.                                                     6238, Rhode Island Residential Lead Paint Credit. Rhode Island income tax
+   However, other income derived from Rhode Island sources such as busi-            returns will be considered timely filed if post-marked by Wednesday, April
+ness income, ownership or disposition of any interest in real or tangible per-      15, 2026.
+sonal property and gambling winnings are still subject to Rhode Island
+income tax.
+   Internal Revenue Code provisions governing armed forces pay while serv-          WHERE TO GET FORMS
+ing in a “combat zone” or in an area under conditions that qualify for Hostile      Forms (and instructions) may be obtained by:
+Fire Pay are applicable for Rhode Island purposes.                                    - visiting the Division of Taxation’s website:
+                                                                                        https://tax.ri.gov/forms/individual-tax-forms/personal-income-tax-forms
+                                                                                      - calling the Division of Taxation’s Forms Request line: (401) 574-8970
+DECEASED TAXPAYERS                                                                    - emailing the Division of Taxation’s Forms address: Tax.Forms@tax.ri.gov
+   If the taxpayer died before filing a return for tax year 2025, the taxpayer’s
+spouse or personal representative must file and sign a return for the person
+who died if the deceased was required to file a return. A personal represen-        MISSING OR INCORRECT FORM W-2
+tative can be an executor, administrator or anyone who is in charge of the              This form is given to you by your employer showing the amount of income
+taxpayer’s property.                                                                tax withheld on your behalf by your employer. A copy of it must accompany
+   The person filing the return should check the “deceased” check box after         your Rhode Island income tax return if you are to receive credit for such
+the deceased’s name.                                                                withheld tax. Only your employer can issue or correct this form. If you
+    If you are claiming a refund as a surviving spouse filing a joint return with   have not received a Form W-2 from your employer by February 15, 2026 or
+the deceased, no other form is needed to have the refund issued to you.             if the form which you have received is incorrect, contact your employer as
+However, all other filers requesting a refund due the deceased must file Form       soon as possible.
+RI-1310, Statement of Person Claiming Refund Due a Deceased Taxpayer,
+to claim the refund.
+   If you are filing Form RI-1040H, the right to file a claim does not survive      CHANGES IN YOUR FEDERAL TAXABLE INCOME OR
+a person's death. Therefore, a claim filed on behalf of a deceased person           FEDERAL TAX LIABILITY
+cannot be allowed. If the claimant dies after having filed a timely claim, the         You must report to the Rhode Island Division of Taxation any change or
+amount thereof will be disbursed to another member of the household as              correction in federal taxable income or federal tax liability as reported on
+determined by the Tax Administrator.                                                your federal income tax return, whether resulting from the filing of an
+                                                                                    amended federal return or otherwise. Such report must be made within
+                                                                                    ninety (90) days after filing an amended federal return or final determination
+WHERE AND WHEN TO FILE                                                              of such change by the Internal Revenue Service. Report any changes on
+Rhode Island income tax returns will be considered timely filed if post-            Form RI-1040, and check the Amended checkbox. Using the Supplement
+marked by Wednesday, April 15, 2026.                                                to Individual Income Tax Return, provide an explanation of the changes to
+                                                                                    your income, deductions and/or credits. Attach the supplement to your
+If you are claiming a refund, mail your return to:                                  amended return along with all schedules that are part of your return, not just
+                                                                                    those that were changed because of the amendment. The Supplement can
+        Rhode Island Division of Taxation                                           be found on page 25 of the RI-1040 Resident Booklet or on the Division of
+        One Capitol Hill                                                            Taxation’s website at:
+        Providence, RI 02908 – 5806                                                    https://tax.ri.gov/forms/individual-tax-forms/personal-income-tax-forms
+
+If you are making a payment, mail your return, payment and Form RI-1040V
+to:                                                                                 RHODE ISLAND LOTTERY PRIZES AND GAMBLING WINNINGS
+         Rhode Island Division of Taxation                                            Winnings and prizes received from the Rhode Island Lottery and other
+         One Capitol Hill                                                           gambling establishments are taxable under the Rhode Island personal in-
+         Providence, RI 02908 – 5807                                                come tax law and are to be included in the income of both residents and
+                                                                                    nonresidents alike.
+
+EXTENSION OF TIME
+   Any extension of time granted for filing an individual income tax return         ESTIMATED INCOME TAX PAYMENTS
+shall not operate to extend the time for the payment of any tax due on such            If a taxpayer can reasonably expect to owe more than $250 after allowing
+return.                                                                             for withholding tax and/or credits, he or she must make estimated tax pay-
+In General -                                                                        ments. Estimated tax payments are made on Form RI-1040ES that has in-
+       (1) An individual who is required to file a Rhode Island income tax          structions for computing the estimated tax and making payments.
+   return shall be allowed an automatic six month extension of time to file
+   such return.
+       (2) An application must be prepared in duplicate on Form RI-4868.
+                                                                                    PAYMENTS OR REFUNDS
+       (3) The original of the application must be filed on or before the date
+                                                                                      Any PAYMENT of tax liability shown on your return to be due to the State
+   prescribed for the filing of the return of the individual with the Rhode
+                                                                                   of Rhode Island must be paid in full with your return. Complete and submit
+   Island Division of Taxation.
+                                                                                   Form RI-1040V with your payment.
+                                                                              Page I-2
+   An amount due of less than five dollars ($5) need not be paid.                   ification on RI Schedule M - page 1, line 1i for Rhode Island purposes.
+
+  See “Where and When to File” for mailing instructions.                              A separate schedule of depreciation must be kept for Rhode Island pur-
+                                                                                    poses. The gain or loss on the sale or other disposition of the asset is to be
+   A REFUND will be made if an overpayment of income tax is shown on                determined, for Rhode Island purposes, using a Rhode Island depreciation
+your return, unless you indicate on your return that such overpayment is to         schedule.
+be credited to your estimated tax liability for 2026. No other application for
+refund is necessary. Please note that no refund can be made unless your                EXAMPLE: A company bought equipment after September 11, 2001 that
+return is properly signed.                                                          cost $10,000 and had a 10 year life and qualified for 30% bonus deprecia-
+                                                                                    tion. Depreciation for federal purposes in the first year was $3,700 (30% X
+  Refunds of less than $5.00 will not be paid unless specifically requested.        $10,000) + (10% x 7,000). Normal depreciation in the first year would have
+                                                                                    been $1,000. The Company should add back on RI Schedule M, page 2,
+  See “Where and When to File” on page I-2 for mailing instructions.                line 2d the amount of $2,700 ($3,700 - $1,000). In subsequent years the
+                                                                                    company should deduct $300 ($1000 - $700) each year while depreciation
+                                                                                    lasts. The deduction should be on RI Schedule M - page 1, line 1i.
+REFUND CLAIMS                                                                          If a taxpayer has already filed a return, an amended return should be filed.
+    R.I. Gen. Laws § 44-30-87 provides different time periods within which a        Questions on this procedure should be addressed by calling the Personal
+refund claim is allowed. A refund may be claimed within three (3) years of          Income Tax Section at (401) 574-8829, option #3.
+filing a return or two (2) years from the time the tax was paid, whichever ex-
+pires later.
+    If a claim is made within the three (3) year period, the amount of the refund   SECTION 179 DEPRECIATION
+cannot exceed the amount of tax paid within that three (3) year period.                 Rhode Island passed a bill disallowing the increase in the Section 179
+    If a claim is made within the two (2) year period, the amount of refund         depreciation under the Jobs & Growth Tax Relief Reconciliation Act of 2003.
+may not exceed the portion of tax paid during the two (2) years preceding           Section 179 depreciation will remain limited to $25,000 for Rhode Island in-
+the filing of the claim.                                                            come tax purposes. When filing your Rhode Island tax return, a deduction
+                                                                                    is allowed for depreciation taken on your federal return in prior years which
+   For purposes of this section, any income tax withheld from the taxpayer          was previously taken as an increasing modification to adjusted gross in-
+during any calendar year and any amount paid as estimated income tax for            come. Enter the deduction as a modification on Schedule M - page 1, line
+a taxable year is deemed to have been paid on the fifteenth day of the fourth       1j.
+month following the close of the taxable year for which the payments were               A separate schedule of depreciation must be kept for Rhode Island pur-
+being made.                                                                         poses. The gain or loss on the sale or other disposition of the asset is to be
+   For more information, call the Personal Income Tax Section at                    determined, for Rhode Island purposes, using the Rhode Island depreciation
+(401) 574-8829, option #3.                                                          schedule.
+                                                                                        Legislation passed in July of 2013 sets Rhode Island to conform with the
+                                                                                    federal Section 179 deduction amounts for all assets placed in service on
+                                                                                    or after January 1, 2015.
+VICTIM OF IDENTITY THEFT
+   If you are a victim of identity theft, attach a copy of Federal Form 14039
+to your return.
+                                                                                    PASSAGE OF P. L. 119-21, H.R.1, 119TH CONG. (2025)
+                                                                                       Rhode Island passed a bill disallowing multiple provisions contained in
+                                                                                    P. L. 119-21, H.R.1, 119th Cong. (2025). Those federal provisions not being
+SIGNATURE                                                                           allowed for Rhode island purposes are:
+   You must sign your Rhode Island income tax return. If filing a joint return,           •    Business interest expense deduction [I.R.S. Code 163(j)]
+both married individuals must sign the return. An unsigned return cannot                  •    Section 174A Amortization Adjustment for research and devel-
+be processed.                                                                                  opment expensing [I.R.S. Code 174A]
+   Any paid preparer who prepares a taxpayer’s return must also sign as                   •    Depreciation of business assets [I.R.S. Code 179(b)]
+“preparer”. If a firm or corporation prepares the return, it should be signed             •    Qualified sound recording production deduction [I.R.S.Code
+in the name of the firm or corporation.                                                        181]
+   If you wish to allow the Tax Division to contact your paid preparer should
+questions arise about your return, check the appropriate box located below          See page I-12 of these instructions for more information about each of these
+the preparer’s information.                                                         provisions.
+
+
+NET OPERATING LOSS DEDUCTIONS                                                       TUITION SAVINGS PROGRAM – SECTION 529
+  The Rhode Island Personal Income Tax law relating to Net Operating Loss               A modification decreasing federal adjusted gross income may be claimed
+deduction (NOL) has been amended by enactment of R.I. Gen. Laws § 44-               for contributions made to a Rhode Island “qualified tuition program" under
+30-2.8 and R.I. Gen. Laws § 44-30-87.1.                                             section 529 of the Internal Revenue Code, 26 U.S.C. §529. The maximum
+   Under the provisions of R.I. Gen. Laws § 44-30-87.1, for losses incurred         modification shall not exceed $500, $1,000 if a joint return, regardless of the
+for taxable years beginning on or after January 1, 2002, an NOL deduction           number of accounts. Taxpayers should claim the modification on Schedule
+may not be carried back for Rhode Island personal income tax purposes,              M - page 1, line 1g.
+but will only be allowed as a carry forward for the number of succeeding                 If the funds are rolled over to a Tuition Savings Plan of another state or
+years as provided in IRS §172. A carry forward can only be used on the              are an unqualified withdrawal, recapture is required.
+Rhode Island return to the extent that the carry forward is used on the federal         Taxpayers may also take a modification decreasing federal adjusted gross
+return.                                                                             income in the amount of any qualified withdrawal or distribution from the “Tu-
+   Should you have any questions regarding this matter, please call the Per-        ition Saving Program” which is included in federal adjusted gross income.
+sonal Income Tax Section at (401) 574-8829, option #3.                              Taxpayers should claim the modification on Schedule M - page 1, line 1g.
+
+
+BONUS DEPRECIATION
+   A bill passed disallowing the federal bonus depreciation for Rhode Island
+                                                                                    RHODE ISLAND TAX CREDITS
+tax purposes. When filing a Rhode Island tax return any bonus depreciation        Rhode Island law provides special Rhode Island tax credits which may
+taken for federal purposes must be added back to income as a modification      be  applied against the Rhode Island income tax. Before claiming any cred-
+on RI Schedule M - page 2, line 2d for Rhode Island purposes. In subse-        its, taxpayers should refer to the Rhode Island law and/or regulations for
+quent years, when federal depreciation is less than what previously would      specific requirements for each credit such as carry over provisions and the
+have been allowed, the difference may be deducted from income as a mod-        order in which the credits must be used. Taxpayers claiming credits must
+                                                                          Page I-3
+attach RI Schedule CR and the proper form(s) and other documentation to              USE OF FEDERAL INCOME TAX INFORMATION
+the return; failure to do so will result in disallowance of the credit. A list of      All amounts reported from the Federal Forms 1040, 1040NR and 1040-
+allowable Rhode Island credits is available on RI Schedule CR.                       SR, as well as those reported on Form RI-1040, are subject to verification
+   If a particular credit is not listed on RI Schedule CR that means the credit      and audit by the Rhode Island Division of Taxation.
+is no longer allowed against personal income tax.                                      The Rhode Island Division of Taxation and the Internal Revenue Service
+   See page I-8 of these instructions for more information.                          exchange income tax information to verify the accuracy of the information
+                                                                                     reported on Federal and Rhode Island income tax returns.
+
+INTEREST
+   Any tax not paid when due, including failure to pay adequate estimated            AMENDED RETURNS
+tax, is subject to interest at the rate of 12% (0.1200) per annum.                      Report any changes to your original filing on Form RI-1040, and check
+   Interest on refunds of tax overpayments will be paid if the refund is not         the Amended checkbox. Using the Supplement to Individual Income Tax
+paid within ninety (90) days of the due date or the date the completed return        Return, provide an explanation of changes to your income, deductions or
+was filed, whichever is later. The interest rate for tax overpayments is 7.25%       credits. Attach the supplement to your amended return along with all sched-
+(0.0725) per annum.                                                                  ules that are part of your return, not just those that were changed because
+                                                                                     of the amendment. In addition provide any documents required to support
+                                                                                     those schedules that are a part of your return. The Supplement can be found
+PENALTIES                                                                            on page 25 of the Resident Booklet or on the Division of Taxation’s website:
+   The law provides for penalties in the following circumstances:                       https://tax.ri.gov/forms/individual-tax-forms/personal-income-tax-forms
+   •Failure to file an income tax return by the due date. A late filing penalty
+will be assessed at 5% (0.0500) per month on the unpaid tax for each month
+or part of a month the return is late. The maximum late filing penalty is 25%        OTHER QUESTIONS
+(0.2500).                                                                                Obviously the foregoing general instructions and the specific instructions
+  •Failure to pay any tax due by the due date. A late payment penalty will           for completing the return form(s) which follow will not answer all questions
+be assessed at 1/2% (0.0050) per month on the unpaid tax for each month              that may arise. If you have any doubt regarding completion of your return,
+or part of a month the tax remains unpaid. The maximum late payment                  further assistance may be obtained at the Division of Taxation, One Capitol
+penalty is 25% (0.2500).                                                             Hill, Providence RI 02908-5801 or by calling the Personal Income Tax Sec-
+  •Preparing or filing a fraudulent income tax return.                               tion at (401) 574-8829, option #3.
+
+Regulation 280-RICR-20-55-4 implements the state law enacted in 2013
+which establishes civil and criminal penalties for paid preparers who prepare
+Rhode Island personal income tax returns with the intent to wrongfully evade
+or reduce a tax obligation.
+
+
+                                          SPECIFIC LINE INSTRUCTIONS
+NAME AND ADDRESS                                                                       Taxpayers using the filing status of Qualifying Surviving Spouse on their
+   Complete the identification portion of the return, including your name and        Federal return should use the filing status of Qualifying Widow(er) on their
+social security number, your spouse’s name and social security number (if            Rhode Island return.
+applicable), address, daytime telephone number and your city or town of
+legal residence.
+
+ELECTORAL SYSTEM CONTRIBUTION                                                                             INCOME, TAX AND CREDITS
+   You may designate a contribution of five dollars ($5) or ten dollars ($10)
+if married and filing a joint return, to the account for the public financing of
+the electoral system. The first two dollars ($2) or four dollars ($4) if married
+and filing a joint return, up to a total of two hundred thousand dollars             Line 1 – Federal Adjusted Gross Income: Enter your federal adjusted
+($200,000) collectively for all parties and the nonpartisan account, shall be        gross income from Federal Form 1040 or Federal Form 1040-SR, line 11a.
+allocated only to political parties which at the preceding general election,
+nominated a candidate for governor and such candidate polled at least 5              Line 2 – Modifications: Enter your net modifications from RI Schedule M -
+percent of the entire vote cast in the state for governor. The remaining funds       page 2, line 3. If you are claiming a modification, you must attach RI Sched-
+shall be allocated for the public financing of campaigns for governor.               ule M along with supporting documentation to your return.
+   An electoral system contribution will NOT increase your tax due or reduce
+your refund.                                                                         RI Schedule M is discussed further beginning on page I-9 of these instruc-
+                                                                                     tions.
+DESIGNATION OF POLITICAL PARTY
+    If you don’t name a political party, your contribution will by credited to the   Line 3 – Modified Federal Adjusted Gross Income: Determine your mod-
+nonpartisan general account or you can check the box and designate a po-             ified federal adjusted gross income by combining the amount on line 1 with
+litical party. If you designate:                                                     the amount on line 2.
+     (1) a political party which did not receive at least 5 percent of the entire
+     vote for Governor in the preceding general election,                            Line 4 – Deductions: Enter your Rhode Island standard deduction from the
+     (2) a non-existent political party,                                             list in the next column. Rhode Island does not allow the use of federal
+     (3) a particular office,                                                        itemized deductions.
+     (4) an individual officeholder or political figure, or
+                                                                                                        Single     $10,900
+     (5) a national party which is not a state party, your electoral system
+                                                                                                  Married Joint    $21,800
+     contribution will be credited to the nonpartisan general account.
+                                                                                          Qualifying Widow(er)     $21,800
+    If you designate more than one political party, your contribution will be
+                                                                                            Married Separate       $10,900
+credited to the first political party named.
+                                                                                           Head of Household       $16,350
+FILING STATUS                                                                        However, if line 3 is more than $254,250 see the Exemption Worksheet on
+    Check the appropriate box to indicate your filing status. Generally your         the inside of the back cover to compute your exemption amount.
+filing status for Rhode Island income tax purposes is the same as for Federal
+income tax purposes.                                                                 Line 5 - Subtract line 4 from line 3. If zero or less, enter zero.
+                                                                               Page I-4
+Line 6 – Exemptions: Complete RI Schedule E (found on page 5 of the RI-             tial coverage, you must complete Form IND-HEALTH and the Shared Re-
+1040 Resident booklet) listing the name, social security number, date of birth      sponsibility Worksheet to determine the amount of your Individual Mandate
+and relationship to you of each dependent for whom you are claiming an ex-          Penalty. (See pages 7 and 8 of the RI-1040 Resident booklet.)
+emption. Enter the number of Exemptions from RI Schedule E, line 5 in the
+box on line 6. Attach RI Schedule E to your RI-1040 tax return.                     For more information refer to the Instructions for the Individual Healthcare
+                                                                                    Mandate for Rhode Island Residents - Individual Healthcare Form and
+RI Schedule E is discussed further on page I-7 of these instructions.               Shared Responsibility Worksheet. (See pages IND-1 - IND-11 of the RI-
+                                                                                    1040 Resident booklet.)
+Exemption Amount: Multiply the number of exemptions in the box by
+$5,100.                                                                             These forms and instructions can also be found on the Division of Taxation’s
+                                                                                    website at:
+However, if line 3 is more than $254,250 see the Exemption Worksheet on               https://tax.ri.gov/forms/individual-tax-forms/personal-income-tax-forms
+the inside of the back cover to compute your exemption amount.
+                                                                                    Line 13a – Total Rhode Island Tax and Checkoff Contributions: Add
+NOTE: If someone else can claim you on their return, your exemption                 lines 10a, 10b, 11, 12a and 12b.
+amount is zero.
+                                                                                    Line 13b - Enter the amount from line 13a.
+Line 7 – Rhode Island Taxable Income: Subtract line 6 from line 5. If zero
+or less, enter zero.
+
+Line 8 – Rhode Island Income Tax: Enter the RI income tax from the RI
+Tax Table or Computation Worksheet.                                                        PAYMENTS AND PROPERTY TAX RELIEF CREDIT
+
+Line 9a – Rhode Island Percentage of Allowable Federal Credit: Enter
+the amount of allowable federal credit from page 3, RI Schedule I, line 22.         Line 14a – Rhode Island Income Tax Withheld: Enter total amount of
+                                                                                    Rhode Island 2025 income tax withheld from RI Schedule W, line 16. (Attach
+Line 9b – Credit for Taxes Paid to Other States: Enter amount of credit             state copy of all forms W-2, 1099s, etc. to the front of the return). Credit for
+for taxes paid to other states from page 3, RI Schedule II, line 29. If credit      Rhode Island income tax withheld will be allowed only for those amounts
+is claimed for taxes paid to more than one state, make a separate calculation       supported by attached W-2s, 1099s, etc.
+of each state using Form RI-1040MU which can be found on page 11 of the
+RI-1040 Resident booklet.                                                           RI Schedule W, along with your W-2s, 1099s, etc. must be attached to your
+                                                                                    return in order to receive credit for Rhode Island income tax withheld.
+Form RI-1040MU is discussed further on page I-6 of these instructions.
+                                                                                    Withholding from a pass-through entity and tax elected to be paid on an in-
+   NOTE: You must attach a signed copy of each state return for which you           dividual’s behalf as a member, partner or beneficiary of a pass-through entity
+are claiming credit. Failure to attach copies could result in the credit being      by a pass-through entity reported on RI Schedule K-1 should be entered on
+disallowed.                                                                         Schedule W and included in the amount for Line 14a.
+
+Line 9c - Other Rhode Island Credits: Enter amount of Other Rhode Island            RI Schedule K-1(s) showing the pass-through withholding and/or the
+Credits from RI Schedule CR, line 9. Attach RI Schedule CR and your orig-           tax elected to be paid on the individual’s behalf must be attached to
+inal certificate(s) or a carry-forward schedule to your RI-1040.                    your return.
+
+   NOTE: All credits require the original certificate be attached to the return     RI Schedule W is discussed further on page I-7 of these instructions.
+unless the credit amount is a carry forward from a prior year. Failure to at-
+tach the original certificate will result in the disallowance of the credit until   NOTE: You can not claim Rhode Island Temporary Disability Insurance
+the original is provided.                                                           payments (RI TDI or SDI) as income tax withheld. These amounts are
+                                                                                    non-refundable on Form RI-1040.
+RI Schedule CR is discussed further on page I-8 of these instructions.
+                                                                                    Line 14b – 2025 Estimated Payments and Amount Applied from 2024
+Line 9d - Total Rhode Island Credits: Add lines 9a, 9b and 9c.                      Return: Enter the amount of estimated payments paid in 2025 using Form
+                                                                                    RI-1040ES and the amount of overpayment applied from your 2024 return.
+Line 10a – Rhode Island Income Tax after Credits: Subtract line 9d from
+line 8. If zero or less, enter zero.                                                Line 14c – Property Tax Relief Credit: Enter the amount of allowable prop-
+                                                                                    erty tax relief credit from Form RI-1040H, line 13. If you are filing a Rhode
+Line 10b - Recapture of Prior Year Other Rhode Island Credits: Enter                Island Form RI-1040, attach Form RI-1040H to your RI-1040. However, if
+amount of Credit Recapture from page 6, RI Schedule CR, line 12.                    you are not required to file a Form RI-1040 or if you are filing an extension
+                                                                                    for your RI-1040, you may file Form RI-1040H separately to claim your prop-
+Line 11 – Rhode Island Checkoff Contributions: Enter the amount of                  erty tax relief credit. Filing an extension of time to file Form RI-1040 does
+checkoff contributions from page 3, RI Checkoff Contributions Schedule, line        NOT extend the time to file Form RI-1040H.
+38. A list of the checkoff contributions can be found on page I-7 of these in-
+structions. These checkoff contributions will increase your tax due or reduce       Form RI-1040H, Rhode Island Property Tax Relief Claim, must be filed
+your refund.                                                                        by April 15, 2026.
+
+Line 12a – Use/Sales Tax Due: Enter the amount of Use/Sales Tax from                Form RI-1040H and its instructions can be found on pages 13 - 15 of the
+Schedule U, line 4 or line 8, whichever applies.                                    RI-1040 Resident booklet or on the Division of Taxation’s website:
+                                                                                      https://tax.ri.gov/forms/individual-tax-forms/personal-income-tax-forms
+RI Schedule U is discussed further on page I-11 of these instructions.
+                                                                                    Line 14d – RI Earned Income Credit: Enter amount from page 3, RI Sched-
+Line 12b – Individual Mandate Penalty: Enter the amount of your individual          ule EIC, line 41. If you are claiming a Rhode Island earned income credit,
+mandate penalty from the 2025 Shared Responsibility Worksheet, line 15.             you must complete and attach RI Schedule EIC located on page 3 to your
+                                                                                    RI-1040.
+If you and all members of your tax household had minimum essential health
+coverage for all of 2025, check the checkbox next to line 12b.             Line 14e - RI Residential Lead Paint Credit: Enter the amount from Form
+                                                                           RI-6238, line 7. You must attach Form RI-6238 to your RI-1040. However,
+If you and all members of your tax household did not have minimum essen-   if you are not required to file a Form RI-1040 or if you are filing an extension
+                                                                      Page I-5
+for your RI-1040, you may file Form RI-6238 separately to claim your RI         Line 20 – Credit for Child and Dependent Care Expenses: Enter the
+Residential Lead Paint Credit. Filing an extension of time to file Form RI-     amount from Federal Form 1040 or Federal Form 1040-SR, Schedule 3, line
+1040 does NOT extend the time to file Form RI-6238.                             2.
+
+Form RI-6238, Rhode Island Residential Lead Paint Credit, must be filed         Line 21 – Multiply the amount on line 20 by 25%
+by April 15, 2026.
+                                                                                Line 22 - Maximum Credit: Enter the amount from line 19 or 21, whichever
+Form RI-6238 can be found on the Division of Taxation’s website:                is less. Enter here and on form RI-1040, page 1, line 9a.
+  https://tax.ri.gov/forms/individual-tax-forms/personal-income-tax-forms
+
+Line 14f – Other Payments: Enter the total amount of any other payments
+and any advance payments made with your application for an automatic ex-                             RI SCHEDULE II
+tension of time to file (Form RI-4868). Attach a copy of Form RI-4868 to             CREDIT FOR INCOME TAXES PAID TO ANOTHER STATE
+your return.
+
+Any pass-through withholding or Pass-through Entity Election Tax                       R.I. Gen. Laws § 44-30-18
+from RI Schedule K-1 must be entered on RI Schedule W and not in-                      If you are claiming credit for income taxes paid to more than one
+cluded in “Other Payments’ on this line. RI Schedule K-1(s) must be             state, use Form RI-1040MU, Credit for Income Taxes Paid to Multiple
+attached to your return.                                                        States. Enter the applicable amounts from Form(s) RI-1040MU onto this
+                                                                                schedule.
+Line 14g – Total Payments and Credits: Add lines 14a through 14f.
+                                                                                Line 23 – Rhode Island Income Tax: Enter the amount from page 1, line 8
+Line 14h - Previously Issued Overpayments: If filing an amended return,         less allowable federal credit from page 3, RI Schedule I, line 22.
+enter the amount of any prior overpayments for this tax period (whether re-
+funded or carried forward previously).                                          Line 24 – Income from Other State(s): Enter the amount of income derived
+                                                                                from other state.
+Line 14i - Net Payments: Subtract line 14h from line 14g.
+                                                                                Income from more than one other state?
+Line 15a – Balance Due: If the amount on line 13b is greater than the           If state income tax has been paid to more than one other state, prepare a
+amount of line 14i. SUBTRACT line 14i from line 13b and enter the balance       separate calculation for each state on Form RI-1040MU. Enter the amount
+due on this line. This is the amount you owe.                                   of income from other states from Form RI-1040MU, line 29.
+
+Line 15b – Underestimating Interest Due: Complete Form RI-2210 or               If you need to use more than one Form RI-1040MU, add all of the Form RI-
+Form RI-2210A. Enter the amount of interest due from Form RI-2210, line         1040MU, line 29 amounts together and enter the total amount on line 24.
+12 or line 22 or Form RI-2210A, line 12 on this line. This amount should be
+added to line 15a or subtracted from line 16, whichever applies.                Out-of-state gross income is determined in the same manner as that which
+                                                                                would be used for Federal purposes and generally includes the net amounts
+Form RI-2210A can be found on page 17 of the RI-1040 Resident Booklet           of income that appear on the face of the other state's return or what would
+or on the Division of Taxation’s website along with Form RI-2210:               be comparable to the face of the Federal Income Tax Return.
+   https://tax.ri.gov/forms/individual-tax-forms/personal-income-tax-forms
+                                                                                Line 25 – Modified Federal AGI: Enter amount from page 1, line 3.
+Line 15c – Total Amount Due: Add lines 15a and 15b. This amount is
+payable in full with your return. Complete Form RI-1040V. Send payment          Line 26 – Divide line 24 by line 25. If greater than 1.0000, enter 1.0000.
+and Form RI-1040V with your return. An amount due of less than five dollars
+($5) need not be paid.                                                          Line 27 – Tentative Credit: Multiply the amount on line 23 by the percent-
+                                                                                age on line 26.
+Line 16 – Overpayment: If the amount on line 14g is greater than the
+amount on line 13b then SUBTRACT line 13b from line 14i and enter the           Line 28 – Tax Due and Paid to Other State: Enter the amount of income
+overpayment on line 16.                                                         tax due and paid to the other state and write the abbreviation for the name
+                                                                                of the state in the space provided.
+If there is an amount due on line 15b for underestimating interest, subtract
+line 15b from line 16.                                                          Income tax paid to more than one other state?
+                                                                                If state income tax has been paid to more than one other state, prepare a
+If the amount of underestimating interest on line 15b is more than the amount   separate calculation for each state, on Form RI-1040MU. Enter the amount
+of overpayment from line 16, subtract line 16 from line 15b and enter the re-   of credit from Form RI-1040MU, line 30.
+sult on line 15c.
+                                                                                If you need to use more than one Form RI-1040MU, add all of the Form RI-
+Line 17 – Refund: Enter the amount of the overpayment from line 16 that         1040MU line 30 amounts together and enter the total amount on line 28.
+is to be refunded. Refunds of less than $5.00 will not be paid unless specif-
+ically requested.                                                               In the space provided for the abbreviation for the name of state to which in-
+                                                                                come taxes were due and paid enter “MU”.
+Line 18 - Overpayment to be applied to 2026:
+Enter the amount of overpayment from line 16 which is to be applied to your     NOTE: You must attach a signed copy of the return filed with the other
+2026 estimated tax. (See General Instructions on page I-3)                      state(s). If you owe no tax to the other state(s) and are to be refunded
+                                                                                all the taxes withheld or paid to the other state(s), enter $0.00 on line
+                                                                                28. If included on a composite filing in another state(s), you must at-
+                                                                                tach a copy of the composite filing(s) showing your income and the
+                       RI SCHEDULE I                                            taxes paid on your behalf. Do not just attach just a RI Schedule K-1.
+                 ALLOWABLE FEDERAL CREDIT
+                                                                                Line 29 – Maximum Credit for Tax Paid to Another State: Enter the
+                                                                                amount from line 23, line 27 or line 28, whichever is the smallest. Enter here
+                                                                                and on page 1, line 9b.
+Line 19 – Rhode Island Income Tax: Enter the amount from Form RI-1040,
+page 1, line 8.
+
+
+                                                                          Page I-6
+                                                                                along with all RI Schedule K-1(s) and/or not providing all of your RI
+                        RI CHECK-OFF                                            Schedule K-1(s) with your personal income tax return may delay the
+                   CONTRIBUTIONS SCHEDULE                                       processing of your return.
+
+                                                                                Column C: For each W-2, 1099, etc. being entered, enter the name of the
+                                                                                employer or payer.
+     These checkoff contributions will increase your tax due or re-
+duce your refund. All checkoff contributions are voluntary.
+                                                                                Column D: For each W-2, enter the employer’s state identification number
+                                                                                from box 15 of the W-2.
+Lines 30 through 37 – Contributions: A contribution to the following pro-
+grams may be made by checking the appropriate box(es) or by entering the
+                                                                                NOTE: The state identification number may be different than the employer’s
+amount you want to contribute. All such contributions are deposited as gen-
+                                                                                federal identification number. Be sure to enter the identification number from
+eral revenues.
+                                                                                box 15, rather than box b of the W-2.
+(30)    Drug Program Account
+(31)    Olympic Contribution
+                                                                                For each form that is not a W-2, enter the payer’s federal identification num-
+(32)    Rhode Island Organ Transplant Fund
+                                                                                ber.
+(33)    Rhode Island Council on the Arts
+(34)    Rhode Island Non-game Wildlife Appropriation
+                                                                                DO NOT ENTER MORE THAN 9 DIGITS FOR THE ID NUMBER. IF “00”
+(35)    Childhood Disease Victims’ Fund
+                                                                                FOLLOWS THE 9 DIGIT ID NUMBER, DO NOT ENTER THE “00”.
+(36)    RI Military Family Relief Fund
+(37)    Behavioral Health Education, Training and Coordination Fund             Column E: For each W-2, 1099, etc. enter the amount of Rhode Island with-
+                                                                                holding as shown on each form. See the chart on the bottom of RI Schedule
+Line 38 – Total Contributions: Add lines 30 through 37. Enter the total         W for box reference.
+here and on page 1, line 11.
+                                                                                Line 16 - Total Rhode Island Income Tax Withheld. Add the amounts from
+                                                                                Column E, lines 1 through 15. Enter the total here and on RI-1040, line 14a.
+
+                        RI SCHEDULE EIC                                         Line 17 - Enter the number of W-2s, 1099s and other forms entered on lines
+                     EARNED INCOME CREDIT                                       1-15 showing Rhode Island income tax withheld.
+
+                                                                                Schedule W plus all W-2s, 1099s, etc. with Rhode Island withholding must
+Line 39 – Federal Earned Income Credit: Enter the amount of Federal             be attached to your Rhode Island return in order to receive credit for your
+Earned Income Credit from Federal Form 1040 or Federal Form 1040-SR,            Rhode Island withholding tax amount.
+line 27a.
+                                                                                For those taxpayers claiming payments from RI Schedule K-1(s) from Form
+                                                                                RI-1041, RI-1065 or RI-1120 with RI Schedule PTE and/or RI Schedule
+Line 40 – The Rhode Island percentage is 16%.
+                                                                                PTW, attach a copy of RI Schedule K-1(s) showing the amount of Rhode Is-
+                                                                                land source income earned from, and Rhode Island tax or withholding paid
+Line 41 – Rhode Island Earned Income Credit: Multiply line 39 by line 40.
+                                                                                on your behalf by, the pass-through entity.
+Enter here and on page 1, line 14d.
+                                                                                If you are filing your tax return electronically, RI Schedule K-1(s) should be
+                                                                                uploaded as an attachment to your return.
+                     SCHEDULE W
+        RHODE ISLAND WITHHOLDING INFORMATION                                    Those claiming a credit from RI Schedule PTE must also enter the amount
+                                                                                of tax paid on your and/or your spouse’s, if applicable, behalf as a modifica-
+RI Schedule W can be found on page 4 of the RI-1040 Resident booklet or         tion increasing federal adjusted gross income on RI Schedule M, line 2h.
+on the Division of Taxation’s website:
+  https://tax.ri.gov/forms/individual-tax-forms/personal-income-tax-forms
+
+If claiming Rhode Island income tax withheld on Form RI-1040, page 1, line                               RI SCHEDULE E
+14a, RI Schedule W must be completed and attached along with the actual                               DEPENDENT SCHEDULE
+form W-2 or 1099 showing the Rhode Island tax withheld amount.
+                                                                                RI Schedule E can be found on page 5 of the RI-1040 Resident booklet or
+Do not include any nonresident real estate withholding on RI Schedule W.        on the Division of Taxation’s website:
+                                                                                  https://tax.ri.gov/forms/individual-tax-forms/personal-income-tax-forms
+Lines 1 - 15:
+Please complete columns A, B, C, D and E for each W-2, 1099, etc. showing       Unless you can be claimed as a dependent by someone else, complete
+Rhode Island withholding.                                                       Schedule E listing all dependents in your household.
+
+Column A: For each W-2, 1099, etc. being entered, leave blank if the W-2,       You cannot claim a person as a dependent unless that person is your
+1099, etc. is for you. Enter an “S” if the form belongs to your spouse.         qualifying child or qualifying relative. Refer to IRS Publication 501
+                                                                                (2025) for further guidance.
+Column B: For each W-2, 1099, etc. being entered, leave blank if the infor-
+mation being entered is from a W-2. For all other forms being entered, refer    If a dependent was born and died in 2025 prior to receiving a social se-
+to the chart on RI Schedule W and enter the applicable letter code.             curity number, enter the social security number as all zeros in column
+                                                                                B. Information is subject to validation.
+Pass-through Entity Election
+If you and/or your spouse, if applicable, are a member or partner of a pass-    Line 1a - Check the “Yourself’ checkbox.
+through entity that has elected to pay Rhode Island tax on RI Schedule PTE,
+enter the amount of credit you are eligible to take (calculated at 90% of the   Line 1b - If filing a joint return, also check the “Spouse’ checkbox.
+tax paid on behalf of you and/or your spouse, if applicable, by that pass-
+through entity) on RI Schedule W along with the identification number of the    Lines 2a - 2m - Use pages 17 - 22 of the IRS 1040 Instructions to determine
+pass-through entity. In column B enter the letter code “E”.                     eligible dependents that may be claimed as exemptions on your RI-1040.
+
+Not filing Form RI-1041, RI-1065 or RI-1120S with RI Schedule PTE               Column A - List the full name of your dependent.
+
+                                                                          Page I-7
+Column B - List the social security number of your dependent.                          Line 3 - Historic Structures - Tax Credit (Historic Preservation Invest-
+                                                                                       ment Tax Credit) or Historic Preservation Tax Credits 2013 - RI-286B –
+Column C - List the date of birth of your dependent using this format:                 for approved rehabilitation of certified historic structures. The original cer-
+                      MMDDYYYY                                                         tificate must be attached to the return. The tax credit certificate can first
+                                                                                       be used for the tax year in which the Project was Placed in Service (as indi-
+                      01012025                                                         cated on the tax credit certificate itself). Any unused credit amount may be
+                                                                                       carried forward for the ten (10) years subsequent to the year in which the
+Column D - List the relationship of your dependent to you. For example:                Project was Placed in Service. R.I. Gen. Laws § 44-33.2 and R.I. Gen. Laws
+daughter, son, mother, father, grandmother, grandfather, niece, nephew.                § 44-33.6
+
+Line 3 - Enter the number of boxes from lines 1a and 1b that are checked.              NOTE: This credit is for holders of a Historic Preservation Investment
+                                                                                       Tax Credit certificate received under the state’s Historic Structure or
+Line 4a - Enter the number of children from lines 2a - 2m who lived with you.          Historic Preservation Tax Credits 2013 programs only. This credit is
+                                                                                       NOT for owners of historic residences who qualified under the Historic
+Line 4b - Enter the number of children from lines 2a - 2m who did not live             Homeownership Assistance Act - R.I. Gen. Laws § 44-33.1.
+with you due to divorce or separation.
+                                                                                       Those taxpayers with unused Historic Homeownership Assistance Act
+Line 4c - Enter the number of other dependents from lines 2a - 2m not in-              credit should refer to the instructions on line 1 of this schedule.
+cluded on lines 4a or 4b.
+                                                                                       Line 4 - Low Income Housing Tax Credits - RI-5442 - For eligible taxpay-
+Line 5 - Add the numbers from lines 3 - 4c. Enter here and in the box on               ers having an ownership interest in a qualified low-income housing Rhode
+RI-1040, page 1, line 6.                                                               Island project that has been certified by, and received a tax credit certificate
+                                                                                       from, the Rhode Island Department of Housing. The original certificate must
+                                                                                       be attached to the return. Any unused credit amount may be carried forward
+                                                                                       for four (4) years. R.I. Gen. Laws § 44-71.
+                             RI SCHEDULE CR
+                            OTHER RI CREDITS                                           Line 5 - Rhode Island New Qualified Jobs Incentive Act 2015 - RI-6754
+                                                                                       - For Rhode Island businesses creating new full-time jobs that did not pre-
+RI Schedule CR can be found on page 6 of the RI-1040 Resident booklet or               viously exist in this state. The Rhode Island business must be approved by
+on the Division of Taxation’s website:                                                 the Rhode Island Commerce Corporation and must possess a tax credit cer-
+   https://tax.ri.gov/forms/individual-tax-forms/personal-income-tax-forms             tificate issued by the Rhode Island Division of Taxation. The original cer-
+                                                                                       tificate must be attached to the return. Any unused credit amount may
+                CURRENT YEAR OTHER RI CREDITS:                                         be carried forward for the Any unused amounts may be carried forward for
+                                                                                       four (4) years. R.I. Gen. Laws § 44-48.3
+This credit schedule details “Other Rhode Island Credits” being used on your
+RI-1040. Each Rhode Island credit has its own line. On the appropriate                 Line 6 - Rebuild Rhode Island Tax Credit - RI-7253 - For Rhode Island
+line, enter the dollar amount of the credit being taken. The total of all credits      businesses demonstrating that even though the business has committed
+will be entered on Form RI-1040, page 1, line 9c.                                      capital investment or owner equity of at least 20% of the total project cost
+                                                                                       there exists a project financing gap which will likely cause the project not to
+Proper documentation must be submitted for each credit you are using                   be completed. The Rhode Island business must be approved by the Rhode
+or carrying forward.                                                                   Island Commerce Corporation and must possess a tax credit certificate is-
+                                                                                       sued by the Rhode Island Division of Taxation. The original certificate
+If you are using amounts carried forward from prior years, attach a schedule           must be attached to the return. Any unused amounts may be carried for-
+showing the year of credit origination and any amounts used to date.                   ward for four (4) years. R.I. Gen. Laws § 42-64.20
+Missing or incomplete documentation will cause a delay in processing your
+return.                                                                                Line 7 - Motion Picture Production Tax Credits or Musical and Theatri-
+                                                                                       cal Production Tax Credits - RI-8201 - For certified production costs as
+      Pursuant to R.I. Gen. Laws § 44-30-2.6(c)(3)(E), only the following              determined by the Rhode Island Film and Television Office or the Division
+credits are allowed as credits against Rhode Island Personal Income                    of Taxation. The original certificate must be attached to the return. The
+Tax. No other credits can be allowed. This also pertains to any carry                  tax credit certificate can first be used for the tax year in which the Production
+forward of a credit that is not listed in this section.                                was completed (as indicated on the tax credit certificate itself). Any unused
+                                                                                       credit amount may be carried forward for three (3) years. R.I. Gen. Laws §
+If the credit you are trying to claim is not listed on lines 1 through 8, the credit   44-31.2 and R.I. Gen. Laws § 44-31.3.
+is no longer allowed against personal income tax. Entering an amount for an
+ineligible credit on one of these lines or on an attached statement will delay         Line 8 - Stay Invested in RI Wavemaker Fellowship Tax Credits -
+the processing of your return and result in the disallowance of the credit.            RI-9283 - For eligible graduates working for a Rhode Island based employer
+                                                                                       in the field of life, natural or environmental sciences; computer, information
+Line 1 - Historic Residence Credit - RI-0715 – for approved residence re-              or software technology; advanced mathematics or finance; engineering; in-
+habilitation. Effective for tax year 2017 and thereafter for unused carryfor-          dustrial or other commercially related design; or medicine or medical device
+ward amounts only. No new credits are authorized. In order to claim any                technology. The graduate must be approved by the Rhode Island Com-
+unused credit, you must attach a copy of the original certification from the           merce Corporation and must possess a tax credit certificate issued by the
+Rhode Island Historical Preservation & Heritage Commission, as well as a               Rhode Island Division of Taxation. The original certificate must be at-
+carryforward schedule showing the original amount of certified credit, the             tached to the return. Any unused amounts may be carried forward for four
+year of certification and the amount of credit used since certification. The           (4) years. R.I. Gen. Laws § 42-64.26.
+credit used since certification should be listed by year and amount of usage.
+Any unused credit may be carried forward until used. R.I. Gen. Laws § 44-              Line 9 - TOTAL CREDITS - Add lines 1 through 8. Enter the total here and
+33.1                                                                                   on Form RI-1040, page 1, line 9c.
+
+Line 2 - Tax Credits for Contributions to Scholarship Organizations -
+RI-2276 - for business entities that make contributions to qualified scholar-                         RECAPTURE OF OTHER RI CREDITS:
+ship organizations. The entity must apply for approval of the tax credit and
+will receive a tax credit certificate issued by the Division of Taxation. The
+original certificate must be attached to the return. The credit must be                If a Rhode Island credit amount must be recaptured, enter the credit num-
+used in the tax year that the entity made the contribution. Unused amounts             ber, the credit name, and the amount of the credit to be recaptured in the
+CANNOT be carried forward. R.I. Gen. Laws § 44-62                                      space provided on lines 10 and 11.
+
+                                                                                 Page I-8
+Line 12 - TOTAL AMOUNT OF CREDIT TO BE RECAPTURED - Add                                 Laws § 44-61-1.1. (See General Instructions on page I-3 for more details).
+lines 10 and 11. Enter here and on Form RI-1040, page 1, line 10b.
+                                                                                        Line 1k – Allowable modification for performance based compensation re-
+                                                                                        alized by an eligible employee under the Rhode Island Jobs Growth Act
+                                                                                        under R.I. Gen. Laws § 42-64.11-4.
+                          RI SCHEDULE M
+                   RI MODIFICATIONS TO FEDERAL                                          Line 1l – Modification for exclusion for qualifying option under R.I. Gen.
+                      ADJUSTED GROSS INCOME                                             Laws § 44-39.3 AND modification for exclusion for qualifying securities or
+RI Schedule M can be found on pages 9 and 10 of the RI-1040 Resident                    investments under R.I. Gen. Laws § 44-43-8.
+booklet or on the Division of Taxation’s website:
+  https://tax.ri.gov/forms/individual-tax-forms/personal-income-tax-forms               Line 1m – Modification for Tax Incentives for Employers under R.I. Gen.
+                                                                                        Laws § 44-55-4.1. Attach Form RI-107.
+    A complete list of modifications is available on RI Schedule M.
+                                                                                        Line 1n – Tax credit income claimed on Federal return exempt for Rhode
+1) Modification amounts must be entered on the appropriate modifi-                      Island purposes: Historic Structures - Tax Credit income under R.I. Gen.
+cation line.                                                                            Laws § 44-33.2-3(e)(2), Historic Preservation Tax Credits 2013 income
+2) You must attach all supporting schedules to any modification                         under R.I. Gen. Laws § 44-33.6-3(f), Motion Picture Production Company
+claimed.                                                                                Tax Credit income under R.I. Gen. Laws § 44-31.2-9(c), Musical and The-
+3) If modification amounts are not listed properly on this schedule                     atrical Production Tax Credit income under R.I. Gen. Laws § 44-31.3-2(b)(6),
+and/or supporting documents are not attached, the processing of your                    Rebuild Rhode Island Tax Credit under R.I. Gen. Laws § 44-64.20-5(m),
+return will be delayed.                                                                 Rhode Island New Qualified Jobs Incentive Act 2015 under R.I. Gen. Laws
+                                                                                        § 44-48.3-8(c), and Stay Invested in RI Wavemaker Fellowship under R.I.
+                                                                                        Gen. Laws § 42-64.26-8(d).
+               Modifications Decreasing Federal AGI:
+                                                                                        Line 1o – Active duty military pay of Nonresidents stationed in Rhode Island,
+                                                                                        as well as the income of their nonresident spouses for services performed
+Line 1a – Income from obligations of the United States Government to the
+                                                                                        in Rhode Island. Income for services performed by the servicemember’s
+extent included in adjusted gross income for federal tax purposes but exempt
+                                                                                        spouse in Rhode Island would be exempt from Rhode Island income tax
+for state purposes. However, this amount shall be reduced by any invest-
+                                                                                        only if the servicemember’s spouse moves to Rhode Island solely to be with
+ment interest incurred or continued on the obligation which has been taken
+                                                                                        the servicemember complying with military orders sending him/her to Rhode
+as a federal itemized deduction. Example – US Government Series E bond
+                                                                                        Island. The servicemember and the servicemember’s spouse must also
+interest. Taxpayers claiming these modifications must submit a schedule
+                                                                                        share the same non-Rhode Island domicile.
+showing the source and amount of income claimed to be exempt. R.I. Gen.
+Laws § 44-30-12(c)(1)                                                                   Not all income earned by the servicemember or his/her spouse is exempt
+                                                                                        from Rhode Island income tax. Non-military pay of the servicemember, as
+Line 1b – Rhode Island fiduciary adjustment under R.I. Gen. Laws § 44-30-               well as business income, gambling winnings or income from the ownership
+17. A fiduciary adjustment is allowed for a beneficiary for income that maintains       or disposition of real or tangible property earned from Rhode Island by either
+its character as it flows from the fiduciary. For example, if the estate or trust has   the servicemember or his/her spouse is still subject to Rhode Island income tax.
+tax exempt interest, the beneficiary would be allowed an adjustment for the tax
+exempt interest and would list that fiduciary adjustment on this line.                  Note: The military servicemember and/or his/her spouse may be asked to
+                                                                                        submit proof of residency to support taking this modification.
+Line 1c – Elective deduction for new research and development facilities
+under R.I. Gen. Laws § 44-32-1.                                                         Line 1p – Contributions to a Scituate Medical Savings Account deemed tax-
+                                                                                        able under the Internal Revenue Code, but tax exempt under R.I. Gen. Laws
+Line 1d – Under the Federal 1974 Railroad Retirement Act, the entire                    § 44-30-25.1(d)(1).
+amount of Railroad Retirement benefits included in gross income for federal
+income tax purposes are exempt from state income taxes.                                 Line 1q - Amounts of insurance benefits for dependents and domestic part-
+                                                                                        ners included in Federal adjusted gross income pursuant to chapter 12 under
+Line 1e – Qualifying investment in a certified venture capital partnership              title 36 under R.I. Gen. Laws § 44-30-12(c)(6).
+under R.I. Gen. Laws § 44-43-2.
+                                                                                        Line 1r - Rhode Island full-year residents only. Up to $10,000 in unreim-
+Line 1f – Family Education Accounts under R.I. Gen. Laws § 44-30-25(f).                 bursed expenses for travel, lodging and lost wages incurred by an individual
+                                                                                        as a result of the individual donating one or more of his/her organs to another
+Line 1g – Tuition Saving Program (section 529 accounts) R.I. Gen. Laws                  human being for organ transplantation under R.I. Gen. Laws § 44-30-
+§ 44-30-12(c)(4) - A modification decreasing federal adjusted gross income              12(c)(7). Modification can only be taken once during the lifetime of the indi-
+may be claimed for any contributions made to a Rhode Island account under               vidual and is taken in the year that the human organ transplantation occurs.
+the tuition savings program. The maximum modification shall not exceed
+$500, $1,000 if a joint return. (See General Instructions on pg I-3 for more            Line 1s - Taxable Social Security income under R.I. Gen. Laws § 44-30-
+details).                                                                               12(c)(8). For those taxpayers who have reached full retirement age, use
+                                                                                        the Social Security Modification worksheet on page 18 of the RI-1040 Res-
+Line 1h – Exemptions from tax on profit or gain for writers, composers and              ident booklet to determine the amount of taxable social security income al-
+artists residing within a section of the defined Economic Development Zone              lowed as a decreasing modification. Enter your date of birth, and if
+as defined in R.I. Gen. Laws § 44-30-1.1 within the cities of Newport, Prov-            applicable, your spouse’s date of birth, in the space provided on line 1s.
+idence, Pawtucket, Woonsocket or Warwick, or the Towns of Little Compton,
+Tiverton, Warren or Westerly and creating artistic works while a resident of            This worksheet can also be found on the Division of Taxation’s website:
+the Zone. Taxpayers claiming these modifications must submit a schedule                   https://tax.ri.gov/forms/individual-tax-forms/personal-income-tax-forms
+showing the source and amount of income claimed to be exempt.
+                                                                                        Line 1t - Modification up to $50,000 for taxable retirement income from cer-
+Line 1i – Depreciation that has not been taken for federal purposes because             tain pension plans or annuities under R.I. Gen. Laws § 44-30-12(c)(9). For
+of the bonus depreciation that must be subtracted from Rhode Island income              those taxpayers who have reached full retirement age, if you answer YES
+- R.I. Gen. Laws § 44-61-1. (See General Instructions on page I-3 for more              to the following two questions, complete the table on the next page to deter-
+details)                                                                                mine how much taxable pension income you can deduct.
+Line 1j – Depreciation that has not been taken for federal purposes because             1) Were you or your spouse (if applicable) born on or before March 1, 1959?
+of the increased section 179 depreciation was not taken originally - R.I. Gen.
+
+                                                                                  Page I-9
+NOTE: Only retirement income received by the taxpayer born on or before            claim a decreasing modification in tax year 2025 IF the individual taxpayer
+March 1, 1959 qualifies for this modification.                                     previously accounted for the tax year 2024 refund as part of the payments
+                                                                                   made in calendar year 2024 AND properly claimed the payments as an in-
+                                     AND                                           creasing modification in tax year 2024. If any part of the 2024 overpay-
+                                                                                   ment was due to payments made within calendar year 2025, the individual
+2) Is your Federal AGI less than or equal to the amount listed below for your      taxpayer should not have accounted for those payments as part of the
+filing status?                                                                     2024 increasing modification because the payments were made within 2025.
+
+                   Single $107,000                                                 Line 1v - For tax years beginning on or after January 1, 2023, there is a
+             Married Joint $133,750                                                modification reducing federal adjusted gross income for taxpayers receiving
+     Qualifying Widow(er) $133,750                                                 military service pension benefits as defined in 20 C.F.R. § 212.2. R.I. Gen.
+       Married Separate $107,000                                                   Laws § 44-30-12(c)(11). Enter the amount from Federal Form 1040 or Fed-
+      Head of Household $107,000                                                   eral Form 1040-SR, line 5b pertaining to a military service pension benefit
+                                                                                   as defined in 20 C.F.R. § 212.2.
+If you answered YES to Question 1 AND Question 2, continue to the table
+below and enter ONLY the information pertaining to the taxpayer born on or         Line 1w - Modification for taxpayers licensed under R.I. Gen. Laws § 21-
+before March 1, 1959, as well as ONLY those amounts from Federal Form              28.6 and/or R.I. Gen. Laws § 21-28.11 for the amount of any expenditure
+1040 or Federal Form 1040-SR, line 5b pertaining to pensions and annuities.        eligible to be claimed as a federal income tax deduction but disallowed under
+                                                                                   26 U.S.C. § 280E. R.I. Gen. Laws § 44-30-12(c)(13)
+NOTES:
+Railroad Retirement Benefits                                                       Line 1x - Section 174A Amortization Adjustment for research and experi-
+Do not include amounts related to Railroad Retirement benefits included in         mental expenditures [I.R.S. Code 174A]
+your gross income for federal tax purposes on this line. These amounts
+should be reported on line 1d.                                                     If you reported an addback for research and experiental expenditures in a
+                                                                                   prior tax year, you are allowed a maximum twenty percent deduction of the
+Military Service Pension                                                           amount that was carried forward from a prior tax year.
+Pursuant to R.I. Gen. Laws § 44-30-12(c)(11), beginning with tax year 2023,
+there is a decreasing modification solely for reporting a military service pen-    Sole proprietor:
+sion. Accordingly, do not include any amount related to a military service         If you are a sole proprietor who reported and addback of research and ex-
+pension on this line. These amounts should be reported on line 1v (see that        perimental expenditures, you are allowed to up to a twenty percent deduction
+specific line in these instructions for details).                                  for the amount that was carried forward from the prior year. You will need
+                                                                                   to complete RI Schedule 174A to determine the deduction amount. Include
+This decreasing modification amount should NOT include any amounts for             RI Schedule 174A with your return whether filed on paper or electronically.
+IRAs listed on line 4b of your Federal Form 1040 or Federal Form 1040-SR.
+                                                                                   Enter the amount from RI Schedule 174A, Part 2, line 5.
+                                        (a) Primary          (b) Spouse
+                                                                                   Member of a pass-through entity:
+1) Date of birth                                                                   If you are a member of a pass-through entity, the pass-through entity must
+                                                                                   issue you a RI Schedule K-1 indicating the amount you are allowed to
+2) For each column, if the date
+                                                                                   deduct.
+   of birth on line 1 is on or be-
+   fore March 1, 1959, enter the
+                                                                                   Enter the amount from RI Schedule K-1, Section III, line 9.
+   amount from Federal Form
+   1040 or Federal 1040-SR, line
+                                                                                   See the instructions for RI Schedule 174A on page I-12 for more information.
+   5b attributable to that person
+   AND ONLY attributable to
+                                                                                   Line 1y – Total Modifications Decreasing Federal Adjusted Gross Income:
+   pensions and annuities.
+                                                                                   Add lines 1a through 1x. Enter as a negative number.
+   DO NOT include any amounts
+   relating to IRAs included on
+   Federal Form 1040 or Federal
+                                                                                                    Modifications INCREASING Federal AGI:
+   Form 1040-SR, line 4b.
+3) For each person, enter the
+                                                                                   Line 2a – Income from obligations of any state or its political subdivision,
+   amount from line 2 or
+                                                                                   other than Rhode Island under R.I. Gen. Laws § 44-30-12(b)(1) and § 44-
+   $50,000, whichever is less.
+                                                                                   30-12(b)(2).
+4) Add the amounts from lines
+   3a and 3b together. Enter this                                                  Line 2b – Rhode Island fiduciary adjustment under R.I. Gen. Laws § 44-30-
+   amount and date(s) of birth on                                                  17. A fiduciary adjustment would be required for a beneficiary for income that
+   Schedule M, line 1t.                                                            maintains its character as it flows from the fiduciary. For example, if the estate
+For more information, read the Rhode Island Retirement Income Tax                  or trust has municipal bond interest from a state other than Rhode Island, the
+Guide published annually by the RI Division of Taxation.                           beneficiary would be allowed an adjustment for that municipal bond interest and
+                                                                                   would list that fiduciary adjustment on this line.
+Publications for the current tax year and prior tax years can be found at:
+   https://tax.ri.gov/guidance/publications                                        Line 2c – Recapture of Family Education Account Modifications under R.I.
+                                                                                   Gen. Laws § 44-30-25(g).
+Line 1u - Cash Basis Only - Deduction for Pass-Through Entity Tax
+claimed in the prior year - a portion of which was refunded to the entity.         Line 2d – Bonus depreciation that has been taken for federal purposes that
+                                                                                   must be added back to Rhode Island income under R.I. Gen. Laws § 44-61-
+This modification only applies if the entity is a cash basis entity as shown       1 (See General Instructions on page I-3 for more details).
+on the entity’s federal return and there was an overpayment related to the
+pass-through entity tax for tax year 2024 that was refunded to the entity.         Line 2e – Recapture of Tuition Savings Program modifications (section 529
+                                                                                   accounts) under R.I. Gen. Laws § 44-30-12(b)(4) (See General Instructions
+Tax Year 2024 Overpayment Refunded to the Entity                                   on page I-3 for more details).
+If the pass-through entity’s tax year 2024 overpayment was refunded to
+the entity, the entity would be expected to include that refund as income          Line 2f – Recapture of tax credit income previously claimed as a modifica-
+on its tax year 2025 corporate filings enabling the individual taxpayer to         tion decreasing Federal AGI for Historic Structures - Tax Credit income under
+                                                                             Page I-10
+R.I. Gen. Laws § 44-33.2-3(e)(2), Historic Preservation Tax Credits 2013 in-    regarding the tax on clothing and footwear.
+come under R.I. Gen. Laws § 44-33.6-3(f), Motion Picture Production Com-
+pany Tax Credit income under R.I. Gen. Laws § 44-31.2-9(5), Musical and         Pursuant to R.I. Gen. Laws § 44-30-100, when reporting the amount of use
+Theatrical Production Tax Credit income under R.I. Gen. Laws § 44-31.3-2,       tax obligation on the Rhode Island personal income return, the taxpayer shall
+Rebuild Rhode Island Tax Credit under R.I. Gen. Laws § 44-64.20-5(m), and       list either the actual amount (from books, records, and other sources), or an
+Rhode Island New Qualified Jobs Incentive Act 2015 under R.I. Gen. Laws         amount using a lookup table established by the tax administrator.
+§ 44-48.3-8(c).
+                                                                                The tax administrator shall create the lookup table with reference to a tax-
+Line 2g – Recapture of Scituate Medical Savings Account modifications           payer's federal adjusted gross income (AGI) as listed on the Rhode Island
+under R.I. Gen. Laws § 44-30-25.1(d)(3)(i).                                     personal income tax return before modifications, adjustments, or other
+                                                                                changes. To determine the amount of use tax from the lookup table, the tax-
+Line 2h – If you and/or your spouse, if applicable, are a member or partner     payer shall multiply 0.0008 by the amount of the taxpayer's federal AGI as
+of a pass-through entity that has elected to pay Rhode Island tax on RI         listed on the Rhode Island personal income tax return before modifications,
+Schedule PTE, enter the amount of tax paid on your behalf by that pass-         adjustments, or other changes.
+through entity. The amount of tax paid on your behalf must be added back
+to your Federal Adjusted Gross Income. You cannot claim the amount paid         If a taxpayer uses the lookup table, the taxpayer shall list on the return not
+on you and/or your spouse’s, if applicable, behalf unless that same amount      only the result from the lookup table, but also the actual amount of each sin-
+is also taken as a modification increasing federal adjusted gross income.       gle purchase whose purchase price equals or exceeds one thousand dollars
+                                                                                ($1,000).
+Line 2i – Unemployment Compensation received but not included in fed-
+eral adjusted gross income under R.I. Gen. Laws § 44-30-12(b)(6).               Instructions for the personal income tax form shall indicate that the use of
+                                                                                the lookup table as described in this section is, for the taxpayer, a "safe har-
+Line 2j – Taxable portion of Paycheck Protection Loan amount under R.I.         bor" alternative to listing the actual amount of the taxpayer's use tax obligation.
+Gen. Laws § 44-30-12(b)(8).                                                     When completing and filing a Rhode Island personal income tax return, the
+                                                                                taxpayer shall check a box attesting to the amount of use tax listed on the
+Line 2k - Add back of Federal P.L. 119-021, H.R.1 Provisions from 2025          return. The tax administrator shall direct computer software providers to re-
+RI Schedule HR1 - Individual, line 1f.                                          quire the taxpayer or the taxpayer's preparer to proactively check the box;
+                                                                                software providers shall not program an automatically checked attestation
+See page I-12 of these instructions for more information.                       box.
+
+Line 2l – Reserved for future use. Leave this space blank.                      NOTE: When reporting the amount of use tax obligation on the Rhode
+                                                                                Island personal income tax return. The taxpayer shall list either the ac-
+Line 2m - Total Modifications Increasing Federal Adjusted Gross In-             tual amount of use tax due, or an amount using the Rhode Island Use
+come: Add lines 2a through 2l.                                                  Tax Lookup Table below. If you know the actual amount of all pur-
+                                                                                chases made that are subject to the use tax, use Option #1. Otherwise,
+                                                                                use Option #2. Be sure to check the box on page 1 of your return at-
+                   NET Modifications to Federal AGI:                            testing to the amount of use tax listed on your return.
+
+Line 1 – Total Modifications Decreasing Federal AGI. Enter the amount           Option #1: Actual Use Tax Due
+from Schedule M, page 1, line 1y.                                               Use if the actual amount of all purchases is known.
+
+Line 2 – Total Modifications Increasing Federal AGI. Enter the amount           Line 1 - Enter the total price of all purchases subject to the use tax.
+from Schedule M, page 2, line 2m.
+                                                                                Line 2 - Multiply line 1 by 7% (0.07). This is the amount of use tax due.
+Line 3 – Net Modifications to Federal AGI: Combine lines 1 and 2. Enter
+the amount here and on RI-1040, page 1, line 2.                                 Line 3 - Enter the amount of sales tax paid on line 1 purchases in other
+                                                                                states.
+                                                                                Line 4 - Net use tax due. Subtract line 3 from line 2. Enter the result on
+                                                                                this line and on RI-1040, page 1, line 12.
+                          RI SCHEDULE U
+                        INDIVIDUAL USE TAX                                      Option #2: Rhode Island Use Tax Lookup Table
+                                                                                Use if the actual amount of all purchases is not known. This method
+                                                                                is also a “safe harbor" alternative to listing the actual amount of the
+RI Schedule U can be found on page 12 of the RI-1040 Resident booklet or        taxpayer's use tax obligation.
+on the Division of Taxation’s website:
+  https://tax.ri.gov/forms/individual-tax-forms/personal-income-tax-forms       Line 5 - Enter your 2025 Federal AGI from Form RI-1040, page 1, line1.
+   WHAT IS A USE TAX? A Use Tax is a tax on the use of tangible personal        Line 6 - Multiply line 5 by 0.0008 or use the amount from the Use Tax Table
+property in a state where the property has not been subject to the sales tax.   found on Schedule U.
+Rhode Island Use Tax applies when merchandise purchased outside of
+Rhode Island is brought into Rhode Island. Sales and use taxes are com-         Lines 7a through 7d - For each single purchase greater than or equal to
+plementary taxes and are assessed at the same rate. In Rhode Island the         $1,000, enter the product purchased, product cost, tax due, sales tax paid
+sales and use tax rate is 7%. The Rhode Island Use Tax is most often due        to another state and the sales tax due.
+when merchandise subject to the sales tax in Rhode Island is purchased
+from an out-of-state vendor who did not collect the Rhode Island tax and the    Line 7e - Add the net use tax due on all single purchases greater than or
+property is subsequently used in this state. Common examples of transac-        equal to $1,000. Add lines 7a, 7b, 7c and 7d.
+tions from which use tax liability may arise are mail-order catalog, out-of-
+state purchases, toll-free “800” purchases and purchases made over the          Line 8 - Use tax due. Add lines 6 and 7e. Enter the result on this line and
+internet.                                                                       on RI-1040, page 1, line 12.
+   WHAT IS TAXABLE? The same items that are subject to the Rhode Is-
+land Sales Tax are subject to the use tax. Some typical examples of taxable
+items are jewelry, computers, electronic equipment, Software as a Service
+and specified digital products. Clothing and footwear costing $250 or less
+are not taxable. Refer to RI Reg. 280-RICR-20-70-6 for more information
+
+                                                                         Page I-11
+                                                                                  assets under 26 U.S.C § 179(b) than what was allowed prior to the enact-
+                RI SCHEDULE HR1 - INDIVIDUAL
+                                                                                  ment of H.R.1, then that additional depreciation amount must be added back
+               ADDBACK OF FEDERAL P. L. 119-21,                                   on RI Schedule HR1-Individual form.
+                      H.R.1 PROVISIONS
+RI Schedule HR1 - Individual can be found on page 19 of the RI-1040 Res-          Sole proprietor:
+ident booklet or on the Division of Taxation’s website:                           If you are a sole proprietor the additional deduction for depreciation of assets
+   https://tax.ri.gov/forms/individual-tax-forms/personal-income-tax-forms        will be reflected on Federal Form 4562 and then reported on Schedule C,
+                                                                                  line 13.
+With the passage of P. L. 119-21, H.R.1, 119th Cong. (2025) the following         Enter that additional amount that is included on Federal Form 1040, Sched-
+items taken as deductions on your Federal return are to be added back in          ule C, line 13.
+order to determine your Rhode Island Modified Federal AGI.
+                                                                                  Member of a pass-through entity:
+Whether you are a sole proprietor or a member of a pass-through entity, you       If you are a member of a pass-through entity, the pass-through entity must
+are required to add back any of these deductions that are included on your        issue you a RI Schedule K-1 indicating the addition depreciation amount
+Federal 1040.                                                                     that must be added back.
+
+Line 1a - Interest expense deduction [I.R.S. Code 163(j)]                         Enter that additional amount from RI Schedule K-1, Section II, line 7.
+For Rhode Island income tax purposes, the interest expense deduction will
+remain limited to the amount allowable prior to the passage of P.L. 119-21,       Line 1d - Qualified sound recording production deduction [I.R.S.Code
+H.R.1 119th Cong. (2025).                                                         181]
+                                                                                  If your Federal return includes an additional deduction of qualified sound
+If your Federal 1040 includes a deduction for the business interest expense       recording production equipment under 26 U.S.C § 181 than what was al-
+that is more than what was allowed prior to the enactment of P.L. 119-21,         lowed prior to the enactment of H.R.1, then that additional deduction must
+H.R.1 119th Cong. (2025), you must add back that additional amount of busi-       be added back on RI Schedule HR1-Individual form.
+ness interest expense.
+                                                                                  Sole proprietor:
+Sole proprietor:                                                                  If you are a sole proprietor this additional deduction amount will be reflected
+If you are sole proprietor the additional business interest expense will be re-   on Federal Form 4562 and then reported on Schedule C, line 13 or line 27a
+flected on Federal Form 8990 and then reported on Schedule C, line 16.            for sole proprietors.
+
+Enter that additional amount that is included on Federal Form 1040, Sched-        Enter that additional deduction amount that is included on Federal Form
+ule C, line 16.                                                                   1040, Schedule C, line 13 or 27a.
+
+Member of a pass-through entity:                                                  Member of a pass-through entity:
+If you are a member of a pass-through entity, the pass-through entity must        If you are a member of a pass-through entity, the pass-through entity must
+issue you a RI Schedule K-1 indicating the amount of additional business          issue you a RI Schedule K-1 indicating the addition depreciation amount
+interest expense that must be added back.                                         that must be added back.
+
+Enter that additional amount from RI Schedule K-1, Section II, line 5.            Enter that additional deduction amount from RI Schedule K-1, Section II, line 8.
+
+Line 1b - Section 174A Amortization Adjustment for research and                   Line 1e - Reserved for future use
+experimental expensing [I.R.S. Code 174A]                                         Leave this line blank.
+Research and experimental expenditures must still be amortized for Rhode
+Island income tax purposes.                                                       Line 1f - Total amount of P. L. 119-21, H.R.1 deductions.
+   A separate amortization schedule must be maintained for Rhode Island           Add lines 1a - 1e. Enter here and on RI Schedule M, line 2k.
+purposes using RI Schedule 174A. Complete RI Schedule 174A to deter-
+mine the amount of research and experimental expenditures that must be
+added back to Federal AGI. Enter the amount from RI Schedule 174A, line                              RI SCHEDULE 174A
+4. Any amount not allowed as a deduction for the a given tax year may be
+                                                                                          AMORTIZATION ADJUSTMENT FOR RESEARCH
+carried forward.
+                                                                                             AND EXPERIMENTAL EXPENDITURES
+Future amortization deductions may not exceed twenty percent of the initial       RI Schedule 174A can be found on the Division of Taxation’s website:
+addback each subsequent year a deduction is taken as allowed by law.                https://tax.ri.gov/forms/individual-tax-forms/personal-income-tax-forms
+
+Sole proprietor:                                                                  RI Schedule 174A must be filed with Form RI-1040 if:
+If you are a sole proprietor and your Federal 1040 reports accelerated amor-      •    A sole proprietor files Federal Form 1040 reporting accelerated amor-
+tization of research and experimental expenditures, you will be required to            tization of research and experimental expenditures (RI Schedule HR-
+complete RI Schedule 174A and include it with your return whether filed on             1 Individual must also be filed.)
+paper or electronically.                                                          •    A sole proprietor reported an addback for research and experimental
+                                                                                       expending in a prior year.
+Enter that additional amount that is included on Federal Form 1040, Sched-
+ule C, line 16.                                                                   If you are a member of a pass-through entity, the amortization adjustment
+                                                                                  amount from RI Schedule 174A will be reported on RI Schedule K-1 issued
+Member of a pass-through entity:                                                  to you by the pass-through entity. If your RI Schedule K-1 includes an
+If you are a member of a pass-through entity, the pass-through entity must        amount on Schedule III, line 9, enter that amount on RI Schedule M, line 1x.
+issue you a RI Schedule K-1 indicating the amortization adjustment amount
+that must be added back.                                                          For tax year 2025, indicate whether or not the sole proprietorship made an
+                                                                                  election to amortize Section 174A research and experimental expenditures.
+Enter that additional amount from RI Schedule K-1, Section II, line 6.
+                                                                                  If yes, mark the “Yes” checkbox, and stop there. Include RI Schedule 174A
+See the instructions for RI Schedule 174A starting in the next column for         with your Form RI-1040.
+more information.
+                                                                                  If no, mark the “No” checkbox and complete the schedule.
+Line 1c - Depreciation of business assets [I.R.S. Code 179(b)]
+If your Federal return includes an additional deduction for depreciation of       NOTE: If you do not make the election to amortize, you will be required to
+                                                                           Page I-12
+maintain a separate amortization schedule for Rhode Island purposes.            For each year allowable, enter the Amortization %, the Amortizable Amount
+                                                                                and the Annual Rhode Island Amount.
+Part 1: Amortization Schedule
+Line 1 - Enter the amount of Section 174A research and experimental ex-         Amortization %: Enter the amortization percentage for the Section 174A re-
+penditures claimed on the sole proprietor’s Federal return.                     search and experimental expenditures for the year.
+
+Line 2 - Complete the Amortization Schedule by reporting in the columns         Amortizable Amount: Enter tha total cost of the research and experimental
+provided: the Description of Costs, the Date Amortization Begins, the Amor-     expenditures that you incurred and started to amortize
+tizable Amount, the applicable Code Section, the Period or Percentage, and      Annual Rhode Island Amount: Enter the amount of research and experimen-
+the Amortization for the Year.                                                  tal expenditures allowed to be amortized for Rhode island purposes for tax
+                                                                                year 2025.
+If you have multiple research and experimental expenditures that you in-
+curred and started to amortize in tax year 2025, break them out in the sched-   Line 5 - Rhode Island Amortization Deduction Amount. Add the Annual
+ule provided.                                                                   Rhode Island Amounts for all years. Enter here and on RI Schedule M, line
+                                                                                1x.
+Column (a) - Description of Costs: Enter a brief description of the research
+and experimental expenditures that you incurred and started to amortize in
+tax year 2025.
+                                                                                                AMENDED SUPPLEMENT
+Column (b) - Date Amortization Begins: Enter the date that you began to               SUPPLEMENT TO INDIVIDUAL INCOME TAX RETURN
+amortize the costs in tax year 2025.
+                                                                                The Amended Supplement can be found on page 25 of the RI-1040 Resident
+Column (c) - Amortizable Amount: Enter tha total cost of the research and       booklet or on the Division of Taxation’s website:
+experimental expenditures that you incurred and started to amortize in tax        https://tax.ri.gov/forms/individual-tax-forms/personal-income-tax-forms
+year 2025.
+                                                                                Did you receive a W-2 after you filed Form RI-1040?
+Column (d) - Code Section: Enter 174A.                                          Did you forget to include a 1099?
+                                                                                Did you forget to include a RI Schedule K-1?
+Column (e) - Period / %: Enter the amortization term.                           Was there an error on your return?
+                                                                                Did you receive an adjustment from the IRS or another state?
+Column (f) - Amortization for the Year - Enter the amount of research and       Did you receive a Federal Audit Change?
+experimental expenditures allowed to be amortized for Rhode island pur-
+poses for tax year 2025. Divide the Amortizable Amount from Column (c)          The above are just a few examples of why you may need to file an Amended
+by the Amortization term from Column (e) provided in years or multiply the      RI-1040.
+Amortizable Amount from Column (c) by the Amortization term from Column
+(e) provided as a percentage.                                                   If you need to file an amended return, you must attach the Supplement to
+                                                                                Individual Income Tax Return to your Form RI-1040.
+Line 3 - Enter the total amount allowable to be amortized for tax year 2025
+for Rhode Island purposes.                                                      Check the “Amended Return” checkbox on top of page 1 and attach a com-
+                                                                                pleted Supplement to Individual Income Tax Return along with all schedules
+Line 4 - Amount required to be added back on Form RI-1040. Subtract the         that are part of your return. You must include all schedules and not just
+amount on line 3 from line 1. Enter here and on line 1b of RI Schedule HR1-     those that are changing with the amended filing.
+Individual.
+                                                                                NOTE: An Amended return cannot be filed to claim a Property Tax Relief
+Part 2: Rhode Island Amortization Deduction Amount                              credit on Form RI-1040H, or a Residential Lead Abatement Credit on Form
+If you are an eligible small business taxpayer with annual gross revenues of    RI-6238 after April 15, 2026. Form RI-1040H and Form RI-6238 MUST be
+$31 million or less. [H.R. 1 P.L. 119-21 § 70302(f)] and you began amortizing   filed on or before April 15, 2026.
+Section 174A research and experimental expenditures in tax year 2022,
+2023 and/or 2024, you are allowed a deduction for Rhode Island purposes.
+
+All others are allowed a deduction for Rhode island purposes for tax year
+2025 for amortizing Section 174A research and experimental expenditures
+in tax year 2025
+
+
+
+
+RHODE ISLAND TAX COMPUTATION WORKSHEET
+Use for all filing status types                                                                                                           TAX
+ If Taxable Income-                                                (b)                       (c)                  (d)
+                                           (a)                                                                                   Subtract (d) from (c)
+ RI-1040, line 7 or                                           Multiplication          Multiply (a) by (b)     Subtraction
+                                  Enter the amount from                                                                           Enter here and on
+ RI-1040NR, line 7 is:                                          amount                                         amount
+                                    RI-1040, line 7 or                                                                            RI-1040, line 8 or
+                                    RI-1040NR, line 7                                                                             RI-1040NR, line 8
+ Over           But not over
+
+ $0             $79,900                                         3.75%                                          $0.00
+$79,900         $181,650                                        4.75%                                         $799.00
+ Over $181,650                                                  5.99%                                       $3,051.46
+
+
+
+                                                                          Page I-13
+
