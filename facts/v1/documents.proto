@@ -98,6 +98,7 @@ import "taxprotos/us/state/ca/v1/form_540/form_540.proto";
 import "taxprotos/us/state/ca/v1/form_540/schedule_ca.proto";
 import "taxprotos/us/state/co/v1/form_dr0104/form_dr0104.proto";
 import "taxprotos/us/state/il/v1/form_il1040/form_il1040.proto";
+import "taxprotos/us/state/ma/v1/form_1/form_1.proto";
 import "taxprotos/us/state/nc/v1/form_d400/form_d400.proto";
 import "taxprotos/us/state/or/v1/form_or40/form_or40.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
@@ -244,6 +245,9 @@ message Document {
 
     // A filed Arizona return.
     ArizonaReturn arizona_return = 51;
+
+    // A filed Massachusetts return.
+    MassachusettsReturn massachusetts_return = 67;
   }
 }
 
@@ -726,4 +730,10 @@ message ColoradoReturn {
 message ArizonaReturn {
   // Form 140.
   us.state.az.v1.Form140 form_140 = 1;
+}
+
+// A Massachusetts resident return: Form 1.
+message MassachusettsReturn {
+  // Form 1.
+  us.state.ma.v1.FormMA1 form_1 = 1;
 }

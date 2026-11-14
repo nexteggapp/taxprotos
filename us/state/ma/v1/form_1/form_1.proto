@@ -1,0 +1,210 @@
+// Form 1, Massachusetts Resident Income Tax Return.
+//
+// Part-year residents and non-residents file Form 1-NR/PY instead. Only the
+// full-year resident's return is modelled here.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form 1; testdata holds
+// the text extracted from the published PDF and coverage_test.go asserts every
+// line a mapping claims appears on it.
+//
+// # Income in classes
+//
+// Massachusetts does not start from federal adjusted gross income. It sorts
+// income into classes: Part B "5.0% income" (wages, pensions, business and
+// rental income) on lines 3 to 19, Part A interest and dividends from
+// Schedule B on line 20, short-term gains at 8.5% and collectibles gains at
+// 12% on line 23, and Part C long-term gains from Schedule D on line 24. The
+// exemptions on line 2 come off the 5.0% income.
+//
+// # The surtax
+//
+// Since 2023 a further 4% falls on taxable income above a threshold indexed
+// for inflation ($1,083,150 for 2025), figured on Schedule 4% Surtax and
+// carried to line 28b.
+//
+// # What is not modelled
+//
+// The amended-return lines (36 and 42) and the six voluntary fund lines, of
+// which only the total on line 33 is kept.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.ma.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/ma/v1/form_1;form1";
+
+// FilingStatus is the status the return is filed under, line 1.
+//
+// The form has no qualifying surviving spouse status.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+}
+
+// FormMA1 is what a Massachusetts Form 1 states.
+message FormMA1 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // Federal Form 1040 lines 9 and 11a, copied to the top of page 1.
+  nexteggapp.taxprotos.common.v1.Money total_federal_income = 5 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 6 [(common.v1.fdx_absent) = true];
+
+  // The exemption for the filer and spouse, set by filing status.
+  nexteggapp.taxprotos.common.v1.Money personal_exemption = 7 [(common.v1.fdx_absent) = true];
+
+  // Dependents, $1,000 each.
+  int32 dependents = 8 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money dependent_exemption = 9 [(common.v1.fdx_absent) = true];
+
+  // The filer and spouse who were 65 or older before 2026, $1,700 each.
+  int32 age_65_or_older = 10 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money age_65_exemption = 11 [(common.v1.fdx_absent) = true];
+
+  // The filer and spouse who are blind, $2,200 each.
+  int32 blind = 12 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money blind_exemption = 13 [(common.v1.fdx_absent) = true];
+
+  // Medical and dental expenses over the federal floor (U.S. Schedule A line 4).
+  nexteggapp.taxprotos.common.v1.Money medical_dental_exemption = 14 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money adoption_exemption = 15 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_exemptions = 16 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money wages = 17 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money taxable_pensions_and_annuities = 18 [(common.v1.fdx_absent) = true];
+
+  // Interest from Massachusetts banks, the one kind of interest taxed at 5.0%
+  // on this line rather than on Schedule B.
+  nexteggapp.taxprotos.common.v1.Money massachusetts_bank_interest = 19 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money business_income = 20 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money farm_income = 21 [(common.v1.fdx_absent) = true];
+
+  // Rental, royalty, REMIC, partnership, S corporation and trust income, from
+  // Schedule E.
+  nexteggapp.taxprotos.common.v1.Money rental_royalty_partnership_income = 22 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money unemployment_compensation = 23 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money lottery_winnings = 24 [(common.v1.fdx_absent) = true];
+
+  // From Schedule X.
+  nexteggapp.taxprotos.common.v1.Money other_income = 25 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_income = 26 [(common.v1.fdx_absent) = true];
+
+  // Social Security, Medicare and public retirement contributions, at most
+  // $2,000 each for the filer and the spouse.
+  nexteggapp.taxprotos.common.v1.Money taxpayer_retirement_contributions = 27 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money spouse_retirement_contributions = 28 [(common.v1.fdx_absent) = true];
+
+  // Rent paid on a principal residence in Massachusetts, half of which is
+  // deducted, up to $4,000.
+  nexteggapp.taxprotos.common.v1.Money rent_paid = 29 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money rental_deduction = 30 [(common.v1.fdx_absent) = true];
+
+  // From Schedule Y.
+  nexteggapp.taxprotos.common.v1.Money other_deductions = 31 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_deductions = 32 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money income_after_deductions = 33 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money exemption_amount = 34 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money income_after_exemptions = 35 [(common.v1.fdx_absent) = true];
+
+  // Interest (other than from Massachusetts banks) and dividends, from
+  // Schedule B.
+  nexteggapp.taxprotos.common.v1.Money interest_and_dividend_income = 36 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 37 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax_on_taxable_income = 38 [(common.v1.fdx_absent) = true];
+
+  // Short-term gains taxed at 8.5%, from Schedule B.
+  nexteggapp.taxprotos.common.v1.Money short_term_gain_income = 39 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money short_term_gain_tax = 40 [(common.v1.fdx_absent) = true];
+
+  // Long-term gains on collectibles and certain installment sales taxed at
+  // 12%, from Schedule B.
+  nexteggapp.taxprotos.common.v1.Money twelve_percent_income = 41 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money twelve_percent_tax = 42 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money schedule_b_tax = 43 [(common.v1.fdx_absent) = true];
+
+  // Tax on long-term capital gains, from Schedule D.
+  nexteggapp.taxprotos.common.v1.Money long_term_capital_gains_tax = 44 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money credit_recapture = 45 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money installment_sales_tax = 46 [(common.v1.fdx_absent) = true];
+
+  // No Tax Status, line 27: the tax on line 28 is then zero.
+  bool no_tax_status = 47 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money income_tax = 48 [(common.v1.fdx_absent) = true];
+
+  // From Schedule 4% Surtax, line 7.
+  nexteggapp.taxprotos.common.v1.Money surtax = 49 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_tax = 50 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money limited_income_credit = 51 [(common.v1.fdx_absent) = true];
+
+  // Credit for income tax due to another state or jurisdiction, Schedule OJC.
+  nexteggapp.taxprotos.common.v1.Money other_jurisdiction_credit = 52 [(common.v1.fdx_absent) = true];
+
+  // From Schedule CMS.
+  nexteggapp.taxprotos.common.v1.Money other_credits = 53 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money income_tax_after_credits = 54 [(common.v1.fdx_absent) = true];
+
+  // The total of the voluntary fund contributions on lines 33a to 33f.
+  nexteggapp.taxprotos.common.v1.Money voluntary_contributions = 55 [(common.v1.fdx_absent) = true];
+
+  // Use tax on purchases from out of state.
+  nexteggapp.taxprotos.common.v1.Money use_tax = 56 [(common.v1.fdx_absent) = true];
+
+  // From Schedule HC.
+  nexteggapp.taxprotos.common.v1.Money health_care_penalty = 57 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_tax_and_penalty = 58 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money w2_withholding = 59 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money form_1099_withholding = 60 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money other_withholding = 61 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money massachusetts_tax_withheld = 62 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money prior_year_overpayment_applied = 63 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 64 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money extension_payments = 65 [(common.v1.fdx_absent) = true];
+
+  // Refundable credits.
+  nexteggapp.taxprotos.common.v1.Money earned_income_credit = 66 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money senior_circuit_breaker_credit = 67 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money child_and_family_tax_credit = 68 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money other_refundable_credits = 69 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_refundable_credits = 70 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money excess_paid_family_leave_withholding = 71 [(common.v1.fdx_absent) = true];
+
+  // Withheld on a non-resident's sale of Massachusetts real estate.
+  nexteggapp.taxprotos.common.v1.Money real_estate_withholding = 72 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_payments = 73 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money overpayment = 74 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money credited_forward = 75 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money refund = 76 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money amount_owed = 77 [(common.v1.fdx_absent) = true];
+}
