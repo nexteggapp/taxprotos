@@ -1,0 +1,144 @@
+// Form D-40, District of Columbia Individual Income Tax Return.
+//
+// Part-year residents file the same form, entering the income of the months
+// they lived elsewhere on line 8 and prorating the deduction on Schedule S.
+// Only the full-year resident's return is modelled here.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form D-40; testdata
+// holds the text extracted from the published booklet and coverage_test.go
+// asserts every line a mapping claims appears on it.
+//
+// # Graduated rates on DC taxable income
+//
+// The District starts from federal adjusted gross income, adds and subtracts
+// to reach DC adjusted gross income on line 16, takes off a standard or
+// itemized deduction on line 18 and taxes the rest at graduated rates on line
+// 20. Since 2025 the District sets its own standard deduction rather than
+// following the federal one.
+//
+// # Credits that are refunded
+//
+// The earned income credit, the property tax credit (Schedule H) and the
+// credits on Schedule U, Part 1b, come after the total tax, on lines 27 to 30,
+// beside the payments: they are refunded where they exceed the tax.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.dc.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/dc/v1/form_d40;formd40";
+
+// FilingStatus is the status the return is filed under.
+//
+// The District follows the federal status, and treats registered domestic
+// partners as spouses. Line 1 also offers "dependent claimed by someone
+// else", which this schema records as claimed_as_dependent beside the status,
+// and filing separately on the same return, which is not modelled.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+  FILING_STATUS_QUALIFYING_SURVIVING_SPOUSE = 5;
+}
+
+// FormD40 is what a Form D-40 states.
+message FormD40 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // Someone else can claim the filer as a dependent, one of line 1's choices.
+  bool claimed_as_dependent = 5 [(common.v1.fdx_absent) = true];
+
+  // The income information above line 4, copied from the federal return.
+  nexteggapp.taxprotos.common.v1.Money wages = 6 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money business_income = 7 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money capital_gain = 8 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money rental_royalty_and_partnership_income = 9 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 10 [(common.v1.fdx_absent) = true];
+
+  // Franchise tax deducted on federal forms, which the District adds back.
+  nexteggapp.taxprotos.common.v1.Money franchise_tax_deducted = 11 [(common.v1.fdx_absent) = true];
+  // Other additions, from Schedule I, Calculation A.
+  nexteggapp.taxprotos.common.v1.Money other_additions = 12 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money income_with_additions = 13 [(common.v1.fdx_absent) = true];
+
+  // Income received while a part-year resident lived elsewhere.
+  nexteggapp.taxprotos.common.v1.Money nonresident_period_income = 14 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money state_income_tax_refunds = 15 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money taxable_social_security_and_railroad_retirement = 16 [(common.v1.fdx_absent) = true];
+  // Income already taxed on a DC franchise or fiduciary return.
+  nexteggapp.taxprotos.common.v1.Money income_taxed_on_franchise_or_fiduciary_return = 17 [(common.v1.fdx_absent) = true];
+  // DC and federal government survivor benefits, for a survivor aged 62 or more.
+  nexteggapp.taxprotos.common.v1.Money government_survivor_benefits = 18 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money unemployment_compensation = 19 [(common.v1.fdx_absent) = true];
+  // Other subtractions, from Schedule I, Calculation B.
+  nexteggapp.taxprotos.common.v1.Money other_subtractions = 20 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_subtractions = 21 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money dc_adjusted_gross_income = 22 [(common.v1.fdx_absent) = true];
+
+  // The filer itemizes, as on the federal return; otherwise the standard
+  // deduction.
+  bool itemizes_deductions = 23 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money deduction = 24 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 25 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax = 26 [(common.v1.fdx_absent) = true];
+
+  // The federal child and dependent care credit, which line 21 multiplies by
+  // 32%.
+  nexteggapp.taxprotos.common.v1.Money federal_child_and_dependent_care_credit = 27 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money child_and_dependent_care_credit = 28 [(common.v1.fdx_absent) = true];
+  // Non-refundable credits from Schedule U, Part 1a.
+  nexteggapp.taxprotos.common.v1.Money other_nonrefundable_credits = 29 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_nonrefundable_credits = 30 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax_after_nonrefundable_credits = 31 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money health_care_shared_responsibility = 32 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_tax = 33 [(common.v1.fdx_absent) = true];
+
+  int32 earned_income_credit_qualifying_children = 34 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money earned_income = 35 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money federal_earned_income_credit = 36 [(common.v1.fdx_absent) = true];
+  // The DC earned income credit for a filer with qualifying children.
+  nexteggapp.taxprotos.common.v1.Money earned_income_credit_with_children = 37 [(common.v1.fdx_absent) = true];
+  // The DC earned income credit for a filer without qualifying children.
+  nexteggapp.taxprotos.common.v1.Money earned_income_credit_without_children = 38 [(common.v1.fdx_absent) = true];
+  // The property tax credit, from Schedule H.
+  nexteggapp.taxprotos.common.v1.Money property_tax_credit = 39 [(common.v1.fdx_absent) = true];
+  // Refundable credits from Schedule U, Part 1b.
+  nexteggapp.taxprotos.common.v1.Money other_refundable_credits = 40 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_refundable_credits = 41 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money dc_tax_withheld = 42 [(common.v1.fdx_absent) = true];
+  // Estimated payments, including last year's overpayment applied to this year.
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 43 [(common.v1.fdx_absent) = true];
+  // Paid with Form FR-127, the extension of time to file.
+  nexteggapp.taxprotos.common.v1.Money extension_payment = 44 [(common.v1.fdx_absent) = true];
+  // On an amended return, what was paid with the original.
+  nexteggapp.taxprotos.common.v1.Money original_return_payments = 45 [(common.v1.fdx_absent) = true];
+  // On an amended return, the refund the original asked for.
+  nexteggapp.taxprotos.common.v1.Money original_return_refunds = 46 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_payments_and_refundable_credits = 47 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_due = 48 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money overpayment = 49 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money applied_to_next_year_estimated_tax = 50 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money underpayment_interest = 51 [(common.v1.fdx_absent) = true];
+  // Contributions from Schedule U, Part II.
+  nexteggapp.taxprotos.common.v1.Money contributions = 52 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_amount_due = 53 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money refund = 54 [(common.v1.fdx_absent) = true];
+}

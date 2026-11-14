@@ -453,6 +453,8 @@ message PriorYearReturn {
     AlabamaReturn alabama = 19;
     // A South Carolina return.
     SouthCarolinaReturn south_carolina = 49;
+    // A District of Columbia return.
+    DistrictOfColumbiaReturn district_of_columbia = 23;
   }
 
   // Where the return came from, when it is here.

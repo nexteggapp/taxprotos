@@ -103,6 +103,7 @@ import "taxprotos/us/state/co/v1/form_dr0104/form_dr0104.proto";
 import "taxprotos/us/state/ga/v1/form_500/form_500.proto";
 import "taxprotos/us/state/ia/v1/form_ia1040/form_ia1040.proto";
 import "taxprotos/us/state/ks/v1/form_k40/form_k40.proto";
+import "taxprotos/us/state/dc/v1/form_d40/form_d40.proto";
 import "taxprotos/us/state/il/v1/form_il1040/form_il1040.proto";
 import "taxprotos/us/state/mi/v1/form_mi1040/form_mi1040.proto";
 import "taxprotos/us/state/ky/v1/form_740/form_740.proto";
@@ -331,6 +332,8 @@ message Document {
     AlabamaReturn alabama_return = 52;
     // A filed South Carolina return.
     SouthCarolinaReturn south_carolina_return = 82;
+    // A filed District of Columbia return.
+    DistrictOfColumbiaReturn district_of_columbia_return = 56;
   }
 }
 
@@ -944,4 +947,8 @@ message VirginiaReturn {
 message SouthCarolinaReturn {
   // The SC1040.
   us.state.sc.v1.FormSC1040 form_sc1040 = 1;
+// A District of Columbia resident return: Form D-40.
+message DistrictOfColumbiaReturn {
+  // Form D-40.
+  us.state.dc.v1.FormD40 form_d40 = 1;
 }
