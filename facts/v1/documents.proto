@@ -358,10 +358,12 @@ message Document {
 
     // A filed Vermont return.
     VermontReturn vermont_return = 84;
-    // A filed Connecticut return.
-    ConnecticutReturn connecticut_return = 54;
+
     // A filed Rhode Island return.
     RhodeIslandReturn rhode_island_return = 81;
+
+    // A filed Connecticut return.
+    ConnecticutReturn connecticut_return = 54;
   }
 }
 
@@ -1013,12 +1015,16 @@ message HawaiiReturn {
 message VermontReturn {
   // Form IN-111.
   us.state.vt.v1.FormIN111 form_in111 = 1;
-// A Connecticut resident return: Form CT-1040.
-message ConnecticutReturn {
-  // Form CT-1040.
-  us.state.ct.v1.FormCT1040 form_ct1040 = 1;
+}
+
 // A Rhode Island resident return: Form RI-1040.
 message RhodeIslandReturn {
   // Form RI-1040.
   us.state.ri.v1.FormRI1040 form_ri1040 = 1;
+}
+
+// A Connecticut resident return: Form CT-1040.
+message ConnecticutReturn {
+  // Form CT-1040.
+  us.state.ct.v1.FormCT1040 form_ct1040 = 1;
 }

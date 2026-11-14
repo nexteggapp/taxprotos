@@ -60,9 +60,7 @@ messages are used directly. These have messages of their own:
 | `Receipt` | A receipt |
 | `FormW4` | An employee's withholding certificate, as filled in |
 | `PaymentConfirmation` | A confirmation of an estimated, balance-due or extension payment |
-| `FederalReturn`, `AlabamaReturn`, `ArizonaReturn`, `ArkansasReturn`, `CaliforniaReturn`, `ColoradoReturn`, `DelawareReturn`, `DistrictOfColumbiaReturn`, `GeorgiaReturn`, `HawaiiReturn`, `IdahoReturn`, `IllinoisReturn`, `IndianaReturn`, `IowaReturn`, `KansasReturn`, `KentuckyReturn`, `LouisianaReturn`, `MaineReturn`, `MichiganReturn`, `MississippiReturn`, `MissouriReturn`, `MontanaReturn`, `NebraskaReturn`, `NewMexicoReturn`, `NorthCarolinaReturn`, `NorthDakotaReturn`, `OklahomaReturn`, `OregonReturn`, `PennsylvaniaReturn`, `SouthCarolinaReturn`, `UtahReturn`, `VermontReturn`, `VirginiaReturn`, `WashingtonReturn`, `WestVirginiaReturn` | A filed return with its schedules |
-| `FederalReturn`, `ArizonaReturn`, `CaliforniaReturn`, `ColoradoReturn`, `ConnecticutReturn`, `IllinoisReturn`, `NorthCarolinaReturn`, `OregonReturn` | A filed return with its schedules |
-| `FederalReturn`, `ArizonaReturn`, `CaliforniaReturn`, `ColoradoReturn`, `IllinoisReturn`, `NorthCarolinaReturn`, `OregonReturn`, `RhodeIslandReturn` | A filed return with its schedules |
+| `FederalReturn`, `AlabamaReturn`, `ArizonaReturn`, `ArkansasReturn`, `CaliforniaReturn`, `ColoradoReturn`, `ConnecticutReturn`, `DelawareReturn`, `DistrictOfColumbiaReturn`, `GeorgiaReturn`, `HawaiiReturn`, `IdahoReturn`, `IllinoisReturn`, `IndianaReturn`, `IowaReturn`, `KansasReturn`, `KentuckyReturn`, `LouisianaReturn`, `MaineReturn`, `MichiganReturn`, `MississippiReturn`, `MissouriReturn`, `MontanaReturn`, `NebraskaReturn`, `NewMexicoReturn`, `NorthCarolinaReturn`, `NorthDakotaReturn`, `OklahomaReturn`, `OregonReturn`, `PennsylvaniaReturn`, `RhodeIslandReturn`, `SouthCarolinaReturn`, `UtahReturn`, `VermontReturn`, `VirginiaReturn`, `WashingtonReturn`, `WestVirginiaReturn` | A filed return with its schedules |
 
 `Document` pairs one of these, or a form message, with a `DocumentRef`.
 
