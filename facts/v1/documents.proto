@@ -123,6 +123,7 @@ import "taxprotos/us/state/or/v1/form_or40/schedule_or_asc.proto";
 import "taxprotos/us/state/ut/v1/form_tc40/form_tc40.proto";
 import "taxprotos/us/state/wa/v1/capital_gains/capital_gains_return.proto";
 import "taxprotos/us/state/va/v1/form_760/form_760.proto";
+import "taxprotos/us/state/sc/v1/form_sc1040/form_sc1040.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/facts/v1;factsv1";
 
@@ -328,6 +329,8 @@ message Document {
 
     // A filed Alabama return.
     AlabamaReturn alabama_return = 52;
+    // A filed South Carolina return.
+    SouthCarolinaReturn south_carolina_return = 82;
   }
 }
 
@@ -937,4 +940,8 @@ message NebraskaReturn {
 message VirginiaReturn {
   // Form 760.
   us.state.va.v1.Form760 form_760 = 1;
+// A South Carolina resident return: the SC1040.
+message SouthCarolinaReturn {
+  // The SC1040.
+  us.state.sc.v1.FormSC1040 form_sc1040 = 1;
 }

@@ -451,6 +451,8 @@ message PriorYearReturn {
 
     // An Alabama return.
     AlabamaReturn alabama = 19;
+    // A South Carolina return.
+    SouthCarolinaReturn south_carolina = 49;
   }
 
   // Where the return came from, when it is here.

@@ -1,0 +1,292 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What the SC1040 calls each concept, per tax year.
+#
+# Lines come from the 2025 SC1040 as the South Carolina Department of Revenue
+# publishes it. There are no amount codes: IRS Publication 1220 covers the
+# information returns the IRS receives electronically, and a state return is not
+# one of them.
+#
+# The additions and subtractions are lettered a to w, between numbered lines 1
+# to 4; the letters are mapped as printed.
+
+form: "SC1040"
+message_name: "nexteggapp.taxprotos.us.state.sc.v1.FormSC1040"
+tax_years: 2025
+
+concepts {
+  concept: "filing_status"
+  years {
+    tax_year: 2025
+    irs_box: "(1)"
+    note: "Federal filing status checkboxes (1) to (5): single, married filing jointly, married filing separately, head of household, qualifying surviving spouse."
+  }
+}
+concepts {
+  concept: "federal_taxable_income"
+  years { tax_year: 2025 irs_box: "1" }
+}
+concepts {
+  concept: "state_tax_addback"
+  years { tax_year: 2025 irs_box: "a" }
+}
+concepts {
+  concept: "out_of_state_losses"
+  years { tax_year: 2025 irs_box: "b" }
+}
+concepts {
+  concept: "national_guard_and_reserve_expenses"
+  years { tax_year: 2025 irs_box: "c" }
+}
+concepts {
+  concept: "other_state_obligation_interest"
+  years { tax_year: 2025 irs_box: "d" }
+}
+concepts {
+  concept: "other_additions"
+  years { tax_year: 2025 irs_box: "e" }
+}
+concepts {
+  concept: "total_additions"
+  years { tax_year: 2025 irs_box: "2" }
+}
+concepts {
+  concept: "income_with_additions"
+  years { tax_year: 2025 irs_box: "3" }
+}
+concepts {
+  concept: "state_tax_refund"
+  years { tax_year: 2025 irs_box: "f" }
+}
+concepts {
+  concept: "disability_retirement_income"
+  years { tax_year: 2025 irs_box: "g" }
+}
+concepts {
+  concept: "out_of_state_income"
+  years { tax_year: 2025 irs_box: "h" }
+}
+concepts {
+  concept: "capital_gain_deduction"
+  years { tax_year: 2025 irs_box: "i" }
+}
+concepts {
+  concept: "volunteer_deduction"
+  years { tax_year: 2025 irs_box: "j" }
+}
+concepts {
+  concept: "tuition_savings_contributions"
+  years { tax_year: 2025 irs_box: "k" }
+}
+concepts {
+  concept: "active_trade_or_business_income_deduction"
+  years { tax_year: 2025 irs_box: "l" }
+}
+concepts {
+  concept: "us_obligation_interest"
+  years { tax_year: 2025 irs_box: "m" }
+}
+concepts {
+  concept: "national_guard_and_reserve_pay"
+  years { tax_year: 2025 irs_box: "n" }
+}
+concepts {
+  concept: "social_security_and_railroad_retirement"
+  years { tax_year: 2025 irs_box: "o" }
+}
+concepts {
+  concept: "retirement_deduction_taxpayer"
+  years { tax_year: 2025 irs_box: "p-1" }
+}
+concepts {
+  concept: "retirement_deduction_spouse"
+  years { tax_year: 2025 irs_box: "p-2" }
+}
+concepts {
+  concept: "retirement_deduction_surviving_spouse"
+  years { tax_year: 2025 irs_box: "p-3" }
+}
+concepts {
+  concept: "military_retirement_deduction_taxpayer"
+  years { tax_year: 2025 irs_box: "p-4" }
+}
+concepts {
+  concept: "military_retirement_deduction_spouse"
+  years { tax_year: 2025 irs_box: "p-5" }
+}
+concepts {
+  concept: "military_retirement_deduction_surviving_spouse"
+  years { tax_year: 2025 irs_box: "p-6" }
+}
+concepts {
+  concept: "age_65_deduction_taxpayer"
+  years { tax_year: 2025 irs_box: "q-1" }
+}
+concepts {
+  concept: "age_65_deduction_spouse"
+  years { tax_year: 2025 irs_box: "q-2" }
+}
+concepts {
+  concept: "negative_federal_taxable_income"
+  years { tax_year: 2025 irs_box: "r" }
+}
+concepts {
+  concept: "subsistence_allowance"
+  years { tax_year: 2025 irs_box: "s" }
+}
+concepts {
+  concept: "young_dependents_deduction"
+  years { tax_year: 2025 irs_box: "t" }
+}
+concepts {
+  concept: "consumer_protection_services"
+  years { tax_year: 2025 irs_box: "u" }
+}
+concepts {
+  concept: "other_subtractions"
+  years { tax_year: 2025 irs_box: "v" }
+}
+concepts {
+  concept: "dependent_exemption"
+  years { tax_year: 2025 irs_box: "w" }
+}
+concepts {
+  concept: "total_subtractions"
+  years { tax_year: 2025 irs_box: "4" }
+}
+concepts {
+  concept: "income_subject_to_tax"
+  years { tax_year: 2025 irs_box: "5" }
+}
+concepts {
+  concept: "tax"
+  years { tax_year: 2025 irs_box: "6" }
+}
+concepts {
+  concept: "lump_sum_distribution_tax"
+  years { tax_year: 2025 irs_box: "7" }
+}
+concepts {
+  concept: "active_trade_or_business_income_tax"
+  years { tax_year: 2025 irs_box: "8" }
+}
+concepts {
+  concept: "catastrophe_savings_withdrawal_tax"
+  years { tax_year: 2025 irs_box: "9" }
+}
+concepts {
+  concept: "total_tax"
+  years { tax_year: 2025 irs_box: "10" }
+}
+concepts {
+  concept: "child_and_dependent_care_credit"
+  years { tax_year: 2025 irs_box: "11" }
+}
+concepts {
+  concept: "two_wage_earner_credit"
+  years { tax_year: 2025 irs_box: "12" }
+}
+concepts {
+  concept: "other_nonrefundable_credits"
+  years { tax_year: 2025 irs_box: "13" }
+}
+concepts {
+  concept: "total_nonrefundable_credits"
+  years { tax_year: 2025 irs_box: "14" }
+}
+concepts {
+  concept: "tax_after_nonrefundable_credits"
+  years { tax_year: 2025 irs_box: "15" }
+}
+concepts {
+  concept: "south_carolina_tax_withheld"
+  years { tax_year: 2025 irs_box: "16" }
+}
+concepts {
+  concept: "estimated_tax_payments"
+  years { tax_year: 2025 irs_box: "17" }
+}
+concepts {
+  concept: "extension_payment"
+  years { tax_year: 2025 irs_box: "18" }
+}
+concepts {
+  concept: "nonresident_real_estate_withholding"
+  years { tax_year: 2025 irs_box: "19" }
+}
+concepts {
+  concept: "other_south_carolina_withholding"
+  years { tax_year: 2025 irs_box: "20" }
+}
+concepts {
+  concept: "tuition_tax_credit"
+  years { tax_year: 2025 irs_box: "21" }
+}
+concepts {
+  concept: "anhydrous_ammonia_credit"
+  years { tax_year: 2025 irs_box: "22a" }
+}
+concepts {
+  concept: "milk_credit"
+  years { tax_year: 2025 irs_box: "22b" }
+}
+concepts {
+  concept: "classroom_teacher_expenses_credit"
+  years { tax_year: 2025 irs_box: "22c" }
+}
+concepts {
+  concept: "parental_refundable_credit"
+  years { tax_year: 2025 irs_box: "22d" }
+}
+concepts {
+  concept: "total_refundable_credits"
+  years { tax_year: 2025 irs_box: "22" }
+}
+concepts {
+  concept: "total_payments"
+  years { tax_year: 2025 irs_box: "23" }
+}
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "24" }
+}
+concepts {
+  concept: "amount_due"
+  years { tax_year: 2025 irs_box: "25" }
+}
+concepts {
+  concept: "use_tax"
+  years { tax_year: 2025 irs_box: "26" }
+}
+concepts {
+  concept: "credited_to_estimated_tax"
+  years { tax_year: 2025 irs_box: "27" }
+}
+concepts {
+  concept: "check_off_contributions"
+  years { tax_year: 2025 irs_box: "28" }
+}
+concepts {
+  concept: "use_tax_credit_forward_and_contributions"
+  years { tax_year: 2025 irs_box: "29" }
+}
+concepts {
+  concept: "refund"
+  years { tax_year: 2025 irs_box: "30" }
+}
+concepts {
+  concept: "tax_due"
+  years { tax_year: 2025 irs_box: "31" }
+}
+concepts {
+  concept: "late_filing_penalties_and_interest"
+  years { tax_year: 2025 irs_box: "32" }
+}
+concepts {
+  concept: "estimated_tax_penalty"
+  years { tax_year: 2025 irs_box: "33" }
+}
+concepts {
+  concept: "balance_due"
+  years { tax_year: 2025 irs_box: "34" }
+}

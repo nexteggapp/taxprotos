@@ -1,0 +1,184 @@
+          1350
+
+
+                                                                          STATE OF SOUTH CAROLINA                                                      SC1040
+                                                                    DEPARTMENT OF REVENUE                                                              (Rev. 4/21/25)
+       dor.sc.gov                            2025 INDIVIDUAL INCOME TAX RETURN                                                                             3075
+
+
+
+         Your Social Security Number
+                                               Check if
+                                               deceased
+
+
+       Spouse's Social Security Number
+                                               Check if
+                                               deceased
+
+
+
+
+For the year January 1 - December 31, 2025, or fiscal tax year beginning __________, 2025 and ending __________, 2026
+First name and middle initial                                         Last name                                                                            Suffix
+
+Spouse's first name, if married filing jointly                                   Last name                                                                 Suffix
+
+
+Check if                 Mailing address (number and street, PO Box)                                                                                       County code
+new address
+City                                                                             State     ZIP                           Daytime phone number with area code
+
+
+Check if address         Foreign country address including postal code
+is outside US
+
+• Amended Return: Check this box if this is an Amended Return. (Attach Schedule AMD). . . . . . . . . . . . . . . . . . . . . . .
+• Part-Year/Nonresident: Check this box if you are a part-year or nonresident filing an SC Schedule NR . . . . . . . . .
+• Composite: Check this box only if you are filing a composite return on behalf of a Partnership or S Corporation.
+  Do not check this box if you are an individual . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+• Extension: Check this box if you have filed a federal or state extension . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+• Military: Check this box if you served in a military combat zone during the filing period. . . . . . . . . . . . . . . . . . . . . . . . . . .
+  Name of the combat zone:
+
+
+ CHECK YOUR                            (1)       Single                    (3)       Married filing separately - enter spouse's SSN: __________________
+ FEDERAL FILING STATUS (2)                       Married filing jointly    (4)       Head of household        (5)       Qualifying surviving spouse
+
+
+
+Number of dependents claimed on your 2025 federal return . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Number of dependents claimed that were under the age of 6 years as of December 31, 2025 . . . . . . . . .
+Number of taxpayers age 65 or older as of December 31, 2025 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+DEPENDENTS
+First name                       Last name                            Social Security Number           Relationship                       Date of birth (MM/DD/YYYY)
+
+
+
+
+         30751259
+                                                                                                                                                        Page 2 of 3
+
+
+INCOME AND ADJUSTMENTS                                                                  Your SSN _____________                                               2025
+1 Enter federal taxable income from your federal form. If zero or less, enter zero here                                                            Dollars
+   Nonresident filers: complete Schedule NR and enter total from line 48 on line 5 below . . . . . . . . . . .    1                                             00
+ADDITIONS TO FEDERAL TAXABLE INCOME
+   a State tax addback, if itemizing on federal return (see instructions) . . . . . . .      a                 00
+    b Out-of-state losses          Type: _________________ . . . . . . . . . . . . . . . . . . . .              b                       00
+    c Expenses related to National Guard and Military Reserve Income . . . . . . .                              c                           00
+  d Interest income on obligations of states and political subdivisions other than South Carolina             d                             00
+  e Other additions to income (attach explanation - see instructions) . . . . . . . .                         e                             00
+2 Total additions (add line a through line e) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        2                00
+3 Add line 1 and line 2 and enter the total here . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3                00
+SUBTRACTIONS FROM FEDERAL TAXABLE INCOME
+  f State tax refund, if included on your federal return . . . . . . . . . . . . . . . . . . . .              f                             00
+  g Total and permanent disability retirement income, if taxed on your federal return                         g                             00
+  h Out-of-state income/gain (do not include personal service income)
+      Check type of income/gain:          Rental      Business Other ___________                            h                          00
+   i 44% of net capital gains held for more than one year. . . . . . . . . . . . . . . . . .                 i                         00
+   j Volunteer deductions (see instructions) Type: _____________________                                     j                         00
+   k Contributions to the SC College Investment Program (Future Scholar)
+      or the SC Tuition Prepayment Program . . . . . . . . . . . . . . . . . . . . . . . . . . . .          k                          00
+   l Active Trade or Business Income deduction (see instructions) . . . . . . . . . .                        l                         00
+   m Interest income from obligations of the US government . . . . . . . . . . . . . . . .                 m                           00
+   n Certain nontaxable National Guard or Reserve pay . . . . . . . . . . . . . . . . . . .                 n                          00
+   o Social Security and/or railroad retirement, if taxed on your federal return . .                        o                          00
+   p Retirement Deduction (see instructions)
+      p-1 Taxpayer (date of birth: _____________) . . . . . . . . . . . . . . . . . . . . . . .           p-1                          00
+      p-2 Spouse (date of birth: _____________) . . . . . . . . . . . . . . . . . . . . . . . .           p-2                          00
+      p-3 Surviving spouse (date of birth of deceased spouse: _____________)                              p-3                          00
+      Military Retirement Deduction (see instructions)
+      p-4 Taxpayer (date of birth: _____________) . . . . . . . . . . . . . . . . . . . . . . .           p-4                          00
+      p-5 Spouse (date of birth: _____________) . . . . . . . . . . . . . . . . . . . . . . . .           p-5                          00
+      p-6 Surviving spouse (date of birth of deceased spouse: _____________)                              p-6                          00
+   q Age 65 and older deduction (see instructions)
+      q-1 Taxpayer (date of birth: _____________) . . . . . . . . . . . . . . . . . . . . . . .           q-1                          00
+      q-2 Spouse (date of birth: _____________) . . . . . . . . . . . . . . . . . . . . . . . .           q-2                          00
+   r Negative amount of federal taxable income . . . . . . . . . . . . . . . . . . . . . . . . .          r                            00
+   s Subsistence allowance (multiply ______ days by $16) . . . . . . . . . . . . . . . .                  s                            00
+   t Dependents under the age of 6 years on December 31 of the tax year . . . .                           t                            00
+   u Consumer Protection Services . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   u                            00
+   v Other subtractions (see instructions) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    v                            00
+   w South Carolina Dependent Exemption (see instructions) . . . . . . . . . . . . . . .                  w                            00
+4 Total subtractions (add line f through line w) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    4 <                   00 >
+5 Residents: subtract line 4 from line 3 and enter the difference. Nonresidents: enter amount from Schedule NR
+   line 48. If less than zero, enter zero here. This is your SOUTH CAROLINA INCOME SUBJECT TO TAX                                         5                     00
+6 TAX on your South Carolina Income Subject to Tax (see SC1040TT) . . . . . . .                           6                            00
+7 TAX on Lump Sum Distribution (attach SC4972) . . . . . . . . . . . . . . . . . . . . . . .              7                            00
+8 TAX on Active Trade or Business Income (attach I-335) . . . . . . . . . . . . . . . . .                 8                            00
+9 TAX on excess withdrawals from Catastrophe Savings Accounts . . . . . . . . . .                         9                            00
+10 Add line 6 through line 9 and enter the total here. This is your TOTAL SOUTH CAROLINA TAX . . . . . . . 10                                                   00
+
+
+
+        30752257
+                                                                                                                                                                   Page 3 of 3
+                                                                                                          Your SSN _____________                                            2025
+NON-REFUNDABLE CREDITS
+11 Child and Dependent Care (see instructions) . . . . . . . . . . . . . . . . . . . . . . . . . .             11                      00
+12 Two Wage Earner Credit (see instructions) . . . . . . . . . . . . . . . . . . . . . . . . . . .             12                      00
+13 Other nonrefundable credits. Attach SC1040TC and other state returns . . . . .                              13                      00
+14 Total nonrefundable credits (add line 11 through line 13) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14                                       00
+15 Subtract line 14 from line 10 and enter the difference. If less than zero, enter zero here . . . . . . . . . . . . . . 15                                                  00
+PAYMENTS AND REFUNDABLE CREDITS
+16 SC income tax withheld (attach W-2 or SC41) . . . . . . . . . . . . . . . . . . . . . . . . .               16                      00
+17 2025 Estimated Tax payments . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       17                      00
+18 Amount paid with extension . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    18                      00
+19 Nonresident sale of real estate (paid on I-290) . . . . . . . . . . . . . . . . . . . . . . . . .           19                      00
+20 Other SC withholding (attach 1099) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        20                      00
+21 Tuition tax credit (attach I-319) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21                      00
+22 Other refundable credits:
+   22a Anhydrous Ammonia (attach I-333) . . . . . . . . . . . . . . . . . . . . . . . . . . . . .              22a                     00
+   22b Milk Credit (attach I-334) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    22b                     00
+   22c Classroom Teacher Expenses (attach I-360) . . . . . . . . . . . . . . . . . . . . . .                   22c                     00
+   22d Parental Refundable Credit (attach I-361) . . . . . . . . . . . . . . . . . . . . . . . .               22d                     00
+   22e Reserved for future use . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     22e                     00
+   Total refundable credits (add line 22a through line 22d) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .           22                                00
+   AMENDED RETURN: Use Schedule AMD for line 23 calculation.
+23 Add line 16 through line 22 and enter the total here . . . . . . . . . . These are your TOTAL PAYMENTS                                   23                                00
+24 If line 23 is larger than line 15, subtract line 15 from line 23 and enter the overpayment . . . . . . . . . . . . . . 24                                                  00
+25 If line 15 is larger than line 23, subtract line 23 from line 15 and enter the amount due . . . . . . . . . . . . . . . 25                                                 00
+   AMENDED RETURN: Enter the amount from line 24 on line 30. Enter the amount from line 25 on line 31.
+26 USE TAX due on online, mail-order, or out-of-state purchases . . . . . . . . . . . .                        26                      00
+   Use Tax is based on your county's Sales Tax rate. See instructions for more information.
+   If you certify that no Use Tax is due, check here . . . .
+27 Amount of line 24 to be credited to your 2026 Estimated Tax . . . . . . . . . . . . .                       27                      00
+28 Total Contributions for Check-offs (attach I-330) . . . . . . . . . . . . . . . . . . . . . . .             28                      00
+29 Add line 26 through line 28 and enter the total here . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29                                00
+30 If line 29 is larger than line 24, go to line 31. Otherwise, subtract line 29 from line 24 and enter the
+   amount to be refunded to you (line 35 check box entry is required) . . . . . . . . . . . . . . . . . . . REFUND                          30                                00
+31 Add line 25 and line 29. If line 29 is larger than line 24, subtract line 24 from line 29, enter the total. This is your tax due 31                                        00
+32 Late filing and/or late payment: Penalties___________ Interest __________ . . . . . . Enter total here                                   32                                00
+33 Penalty for Underpayment of Estimated Tax (attach SC2210)
+   Enter exception code from instructions here if applicable ______ . . . . . . . . . . . . . . . . . . . . . . . . . . . . .               33                                00
+34 Add line 31 through line 33 and enter your balance due (select payment option on line 36) BALANCE DUE                                    34                                00
+   REFUND OPTIONS Getting a refund? Direct deposit is fast, accurate, and secure!
+35 Select one:    Direct Deposit (line 37 required) (for US accounts only)                   Paper Check
+   PAYMENT OPTIONS Have a balance due? Pay electronically! It's quick and easy!
+36 Select one:     MyDORWAY (pay at dor.sc.gov/pay)       ACH Debit (enter your US bank information on line 37)
+    For payments only:           Withdrawal Date                                                Withdrawal Amount                              00
+37 Type of Account:                  Checking                Savings
+   Routing                                                                                          Bank Account                                                             1-17
+                                                          Must be 9 digits. The first two numbers
+   Number (RTN)                                           of the RTN must be 01 through 32.
+                                                                                                    Number (BAN)                                                             digits
+
+I declare that this return and all attachments are true, correct, and complete to the best of my knowledge. If prepared by a person other
+than the taxpayer, this declaration is based on all information of which the preparer has any knowledge.
+Your signature                                                              Date                           Spouse's signature (if married filing jointly, BOTH must sign)
+
+I authorize the Director of the SCDOR or delegate to discuss this return,                                  Preparer's printed name
+attachments, and related tax matters with the preparer.
+                                                                              Yes             No
+Paid             Preparer                                                   Date                           Check if self-       PTIN
+Preparer's       signature                                                                                 employed
+Use              Firm name (or yours if self-                                                                                   FEIN
+Only             employed), address, ZIP                                                                                        Phone
+
+                 REFUNDS OR ZERO TAX DUE: SC1040 Processing Center, PO Box 101100, Columbia, SC 29211-0100
+MAIL TO:
+                 BALANCE DUE: Taxable Processing Center, PO Box 101105, Columbia, SC 29211-0105
+        30753255
+

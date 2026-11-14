@@ -65,6 +65,7 @@ go_proto_library(
         "//go/us/state/ut/v1/form_tc40",
         "//go/us/state/wa/v1/capital_gains",
         "//go/us/state/va/v1/form_760",
+        "//go/us/state/sc/v1/form_sc1040",
     ],
 )
 
