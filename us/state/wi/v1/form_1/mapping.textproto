@@ -1,0 +1,221 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Wisconsin Form 1 calls each concept, per tax year.
+#
+# Lines come from the 2025 Form 1 as the Wisconsin Department of Revenue
+# publishes it. There are no amount codes: IRS Publication 1220 covers the
+# information returns the IRS receives electronically, and a state return is not
+# one of them.
+
+form: "1"
+message_name: "nexteggapp.taxprotos.us.state.wi.v1.Form1"
+tax_years: 2025
+
+concepts {
+  concept: "filing_status"
+  years { tax_year: 2025 note: "The filing status boxes on page 1 carry no line number." }
+}
+concepts {
+  concept: "exemption_count"
+  years { tax_year: 2025 irs_box: "10a" note: "The number of exemptions, beside the amount." }
+}
+concepts {
+  concept: "age_65_count"
+  years { tax_year: 2025 irs_box: "10b" note: "The number of boxes checked, beside the amount." }
+}
+concepts {
+  concept: "federal_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "1" note: "Federal adjusted gross income, Form 1040 line 11." }
+}
+concepts {
+  concept: "schedule_i_adjustments"
+  years { tax_year: 2025 irs_box: "2" note: "Adjustments from Schedule I, line 3." }
+}
+concepts {
+  concept: "wisconsin_federal_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "3" note: "Federal AGI for Wisconsin purposes: lines 1 plus 2." }
+}
+concepts {
+  concept: "additions"
+  years { tax_year: 2025 irs_box: "4" note: "Total additions from Schedule AD, line 33." }
+}
+concepts {
+  concept: "income_before_subtractions"
+  years { tax_year: 2025 irs_box: "5" note: "Lines 3 plus 4." }
+}
+concepts {
+  concept: "subtractions"
+  years { tax_year: 2025 irs_box: "6" note: "Total subtractions from Schedule SB, line 50." }
+}
+concepts {
+  concept: "wisconsin_income"
+  years { tax_year: 2025 irs_box: "7" note: "Wisconsin income: line 5 less line 6." }
+}
+concepts {
+  concept: "standard_deduction"
+  years { tax_year: 2025 irs_box: "8" note: "The sliding-scale standard deduction." }
+}
+concepts {
+  concept: "income_after_standard_deduction"
+  years { tax_year: 2025 irs_box: "9" note: "Line 7 less line 8, not below zero." }
+}
+concepts {
+  concept: "personal_exemptions"
+  years { tax_year: 2025 irs_box: "10a" note: "$700 for each exemption." }
+}
+concepts {
+  concept: "age_65_exemptions"
+  years { tax_year: 2025 irs_box: "10b" note: "$250 for each filer 65 or older." }
+}
+concepts {
+  concept: "total_exemptions"
+  years { tax_year: 2025 irs_box: "10c" note: "Lines 10a plus 10b." }
+}
+concepts {
+  concept: "taxable_income"
+  years { tax_year: 2025 irs_box: "11" note: "Line 9 less line 10c, not below zero." }
+}
+concepts {
+  concept: "tax"
+  years { tax_year: 2025 irs_box: "12" note: "From the tax table or the tax computation worksheet." }
+}
+concepts {
+  concept: "itemized_deduction_credit"
+  years { tax_year: 2025 irs_box: "13" note: "From Schedule 1." }
+}
+concepts {
+  concept: "child_and_dependent_care_credit"
+  years { tax_year: 2025 irs_box: "14" note: "Additional child and dependent care tax credit, Schedule WI-2441." }
+}
+concepts {
+  concept: "blind_worker_transportation_credit"
+  years { tax_year: 2025 irs_box: "15" note: "Half of qualifying expenses." }
+}
+concepts {
+  concept: "school_property_tax_credit_rent"
+  years { tax_year: 2025 irs_box: "16a" note: "School property tax credit on rent." }
+}
+concepts {
+  concept: "school_property_tax_credit_property_taxes"
+  years { tax_year: 2025 irs_box: "16b" note: "School property tax credit on property taxes." }
+}
+concepts {
+  concept: "working_families_credit"
+  years { tax_year: 2025 irs_box: "17" note: "Working families tax credit." }
+}
+concepts {
+  concept: "married_couple_credit"
+  years { tax_year: 2025 irs_box: "18" note: "From Schedule 2." }
+}
+concepts {
+  concept: "schedule_cr_nonrefundable_credits"
+  years { tax_year: 2025 irs_box: "19" note: "Schedule CR line 34." }
+}
+concepts {
+  concept: "other_state_tax_credit"
+  years { tax_year: 2025 irs_box: "20" note: "Net income tax paid to another state, Schedule OS." }
+}
+concepts {
+  concept: "total_nonrefundable_credits"
+  years { tax_year: 2025 irs_box: "21" note: "Lines 13 through 20." }
+}
+concepts {
+  concept: "net_tax"
+  years { tax_year: 2025 irs_box: "22" note: "Line 12 less line 21, not below zero." }
+}
+concepts {
+  concept: "sales_and_use_tax"
+  years { tax_year: 2025 irs_box: "23" note: "Use tax due on out-of-state purchases." }
+}
+concepts {
+  concept: "donations"
+  years { tax_year: 2025 irs_box: "24" note: "From Schedule 3, Part I." }
+}
+concepts {
+  concept: "retirement_plan_penalties"
+  years { tax_year: 2025 irs_box: "25" note: "33% of the federal penalty." }
+}
+concepts {
+  concept: "other_penalties"
+  years { tax_year: 2025 irs_box: "26" note: "Other penalties." }
+}
+concepts {
+  concept: "total_tax"
+  years { tax_year: 2025 irs_box: "27" note: "Lines 22 through 26." }
+}
+concepts {
+  concept: "wisconsin_tax_withheld"
+  years { tax_year: 2025 irs_box: "28" note: "Wisconsin tax withheld." }
+}
+concepts {
+  concept: "estimated_tax_payments"
+  years { tax_year: 2025 irs_box: "29" note: "Including the amount applied from the prior year's return." }
+}
+concepts {
+  concept: "earned_income_credit"
+  years { tax_year: 2025 irs_box: "30" note: "A percentage of the federal credit by number of qualifying children." }
+}
+concepts {
+  concept: "farmland_preservation_credit"
+  years { tax_year: 2025 irs_box: "31a" note: "Schedule FC, line 17." }
+}
+concepts {
+  concept: "farmland_preservation_credit_agricultural"
+  years { tax_year: 2025 irs_box: "31b" note: "Schedule FC-A, line 13." }
+}
+concepts {
+  concept: "repayment_credit"
+  years { tax_year: 2025 irs_box: "32" note: "Repayment credit." }
+}
+concepts {
+  concept: "homestead_credit"
+  years { tax_year: 2025 irs_box: "33" note: "Schedule H or H-EZ." }
+}
+concepts {
+  concept: "veterans_property_tax_credit"
+  years { tax_year: 2025 irs_box: "34" note: "Eligible veterans and surviving spouses property tax credit." }
+}
+concepts {
+  concept: "schedule_cr_refundable_credits"
+  years { tax_year: 2025 irs_box: "35" note: "Schedule CR line 40." }
+}
+concepts {
+  concept: "amounts_previously_paid"
+  years { tax_year: 2025 irs_box: "36" note: "Amended returns only." }
+}
+concepts {
+  concept: "total_payments_and_credits"
+  years { tax_year: 2025 irs_box: "37" note: "Lines 28 through 36." }
+}
+concepts {
+  concept: "amounts_previously_refunded"
+  years { tax_year: 2025 irs_box: "38" note: "Amended returns only." }
+}
+concepts {
+  concept: "net_payments"
+  years { tax_year: 2025 irs_box: "39" note: "Line 37 less line 38." }
+}
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "40" note: "Line 39 less line 27 when line 39 is larger." }
+}
+concepts {
+  concept: "refund"
+  years { tax_year: 2025 irs_box: "41" note: "The part of line 40 refunded." }
+}
+concepts {
+  concept: "applied_to_next_year_estimated_tax"
+  years { tax_year: 2025 irs_box: "42" note: "The part of line 40 applied to 2026 estimated tax." }
+}
+concepts {
+  concept: "underpayment"
+  years { tax_year: 2025 irs_box: "43" note: "Line 27 less line 39 when line 39 is smaller." }
+}
+concepts {
+  concept: "underpayment_interest"
+  years { tax_year: 2025 irs_box: "44" note: "From Schedule U." }
+}
+concepts {
+  concept: "amount_owed"
+  years { tax_year: 2025 irs_box: "45" note: "Lines 43 plus 44." }
+}

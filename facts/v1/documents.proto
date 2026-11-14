@@ -133,6 +133,7 @@ import "taxprotos/us/state/va/v1/form_760/form_760.proto";
 import "taxprotos/us/state/sc/v1/form_sc1040/form_sc1040.proto";
 import "taxprotos/us/state/wv/v1/form_it140/form_it140.proto";
 import "taxprotos/us/state/vt/v1/form_in111/form_in111.proto";
+import "taxprotos/us/state/wi/v1/form_1/form_1.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/facts/v1;factsv1";
 
@@ -367,6 +368,8 @@ message Document {
     ConnecticutReturn connecticut_return = 54;
     // A filed Ohio return.
     OhioReturn ohio_return = 78;
+    // A filed Wisconsin return.
+    WisconsinReturn wisconsin_return = 87;
   }
 }
 
@@ -1034,4 +1037,8 @@ message ConnecticutReturn {
 message OhioReturn {
   // Ohio IT 1040.
   us.state.oh.v1.FormIT1040 form_it1040 = 1;
+// A Wisconsin resident return: Form 1.
+message WisconsinReturn {
+  // Form 1.
+  us.state.wi.v1.Form1 form_1 = 1;
 }

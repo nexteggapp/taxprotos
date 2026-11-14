@@ -81,6 +81,7 @@ proto_library(
         "//us/state/wv/v1/form_it140:form_it140_proto",
         "//us/state/vt/v1/form_in111:form_in111_proto",
         "//us/state/ri/v1/form_ri1040:form_ri1040_proto",
+        "//us/state/wi/v1/form_1:form_1_proto",
     ],
 )
 

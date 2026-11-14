@@ -480,6 +480,8 @@ message PriorYearReturn {
     ConnecticutReturn connecticut = 21;
     // An Ohio return.
     OhioReturn ohio = 45;
+    // A Wisconsin return.
+    WisconsinReturn wisconsin = 54;
   }
 
   // Where the return came from, when it is here.
