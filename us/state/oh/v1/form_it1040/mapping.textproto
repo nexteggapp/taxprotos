@@ -1,0 +1,139 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What the Ohio IT 1040 calls each concept, per tax year.
+#
+# Lines come from the 2025 Ohio IT 1040 as the Ohio Department of Taxation
+# publishes it. There are no amount codes: IRS Publication 1220 covers the
+# information returns the IRS receives electronically, and a state return is not
+# one of them.
+#
+# The donation total is printed as "25g" run into its leader dots, so it is
+# mapped to line 25 with a note.
+
+form: "IT 1040"
+message_name: "nexteggapp.taxprotos.us.state.oh.v1.FormIT1040"
+tax_years: 2025
+concepts {
+  concept: "filing_status"
+  years { tax_year: 2025 note: "Filing Status: single, head of household or qualifying surviving spouse; married filing jointly; married filing separately." }
+}
+concepts {
+  concept: "federal_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "1" note: "Federal Form 1040 line 11a." }
+}
+concepts {
+  concept: "additions"
+  years { tax_year: 2025 irs_box: "2a" note: "Ohio Schedule of Adjustments line 12." }
+}
+concepts {
+  concept: "deductions"
+  years { tax_year: 2025 irs_box: "2b" note: "Ohio Schedule of Adjustments line 47." }
+}
+concepts {
+  concept: "ohio_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "3" }
+}
+concepts {
+  concept: "exemption_count"
+  years { tax_year: 2025 irs_box: "4" note: "The number of exemptions printed beside line 4." }
+}
+concepts {
+  concept: "exemption_amount"
+  years { tax_year: 2025 irs_box: "4" note: "The amount on line 4." }
+}
+concepts {
+  concept: "income_tax_base"
+  years { tax_year: 2025 irs_box: "5" }
+}
+concepts {
+  concept: "taxable_business_income"
+  years { tax_year: 2025 irs_box: "6" note: "Ohio Schedule of Business Income line 15." }
+}
+concepts {
+  concept: "taxable_nonbusiness_income"
+  years { tax_year: 2025 irs_box: "7" note: "Repeated on page 2 as line 7a." }
+}
+concepts {
+  concept: "nonbusiness_income_tax"
+  years { tax_year: 2025 irs_box: "8a" }
+}
+concepts {
+  concept: "business_income_tax"
+  years { tax_year: 2025 irs_box: "8b" note: "Ohio Schedule of Business Income line 16." }
+}
+concepts {
+  concept: "tax_before_credits"
+  years { tax_year: 2025 irs_box: "8c" }
+}
+concepts {
+  concept: "nonrefundable_credits"
+  years { tax_year: 2025 irs_box: "9" note: "Ohio Schedule of Credits line 40." }
+}
+concepts {
+  concept: "tax_after_nonrefundable_credits"
+  years { tax_year: 2025 irs_box: "10" }
+}
+concepts {
+  concept: "estimated_tax_interest_penalty"
+  years { tax_year: 2025 irs_box: "11" note: "Ohio IT/SD 2210." }
+}
+concepts {
+  concept: "use_tax"
+  years { tax_year: 2025 irs_box: "12" }
+}
+concepts {
+  concept: "total_tax"
+  years { tax_year: 2025 irs_box: "13" }
+}
+concepts {
+  concept: "ohio_tax_withheld"
+  years { tax_year: 2025 irs_box: "14" note: "Schedule of Ohio Withholding part A line 1." }
+}
+concepts {
+  concept: "estimated_and_extension_payments"
+  years { tax_year: 2025 irs_box: "15" }
+}
+concepts {
+  concept: "refundable_credits"
+  years { tax_year: 2025 irs_box: "16" note: "Ohio Schedule of Credits line 47." }
+}
+concepts {
+  concept: "total_payments"
+  years { tax_year: 2025 irs_box: "17" }
+}
+concepts {
+  concept: "overpayment_previously_requested"
+  years { tax_year: 2025 irs_box: "18" note: "Amended returns only." }
+}
+concepts {
+  concept: "net_payments"
+  years { tax_year: 2025 irs_box: "19" }
+}
+concepts {
+  concept: "tax_due"
+  years { tax_year: 2025 irs_box: "20" }
+}
+concepts {
+  concept: "late_payment_interest"
+  years { tax_year: 2025 irs_box: "21" }
+}
+concepts {
+  concept: "amount_due"
+  years { tax_year: 2025 irs_box: "22" }
+}
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "23" }
+}
+concepts {
+  concept: "credited_forward"
+  years { tax_year: 2025 irs_box: "24" }
+}
+concepts {
+  concept: "donations"
+  years { tax_year: 2025 irs_box: "25" note: "The total of lines 25a to 25f, printed as 25g." }
+}
+concepts {
+  concept: "refund"
+  years { tax_year: 2025 irs_box: "26" }
+}
