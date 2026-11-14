@@ -1,0 +1,143 @@
+// Form CT-1040, Connecticut Resident Income Tax Return.
+//
+// Part-year residents and non-residents file Form CT-1040NR/PY instead. Only
+// the full-year resident's return is modelled here.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form CT-1040 (Rev.
+// 12/25); testdata holds the text extracted from the published PDF and
+// coverage_test.go asserts every line a mapping claims appears on it.
+//
+// # A graduated tax with its allowances folded in
+//
+// Connecticut starts from federal adjusted gross income, adjusts it on
+// Schedule 1 to Connecticut adjusted gross income on line 5, and reads the
+// tax for line 6 from tables or the Tax Calculation Schedule in the
+// instructions. That one figure has the personal exemption, the graduated
+// rates, the phase-out of the 2% rate, the benefit recapture and the personal
+// tax credit inside it; the form prints none of them.
+//
+// # Credits that are refunded
+//
+// The earned income tax credit and the Pass-Through Entity Tax Credit come
+// after the tax, on lines 20a and 20c, as payments.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.ct.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/ct/v1/form_ct1040;formct1040";
+
+// FilingStatus is the status the return is filed under.
+//
+// Connecticut requires the federal status, as box 1 of the form lists it.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+  FILING_STATUS_SURVIVING_SPOUSE = 5;
+}
+
+// FormCT1040 is what a Form CT-1040 states.
+message FormCT1040 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 5 [(common.v1.fdx_absent) = true];
+
+  // From Schedule 1, line 38.
+  nexteggapp.taxprotos.common.v1.Money additions = 6 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money income_with_additions = 7 [(common.v1.fdx_absent) = true];
+
+  // From Schedule 1, line 50.
+  nexteggapp.taxprotos.common.v1.Money subtractions = 8 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money connecticut_adjusted_gross_income = 9 [(common.v1.fdx_absent) = true];
+
+  // From the tax tables or the Tax Calculation Schedule, after the personal
+  // exemption, the 3% phase-out, the benefit recapture and the personal tax
+  // credit.
+  nexteggapp.taxprotos.common.v1.Money income_tax_before_credits = 10 [(common.v1.fdx_absent) = true];
+
+  // From Schedule 2, line 59.
+  nexteggapp.taxprotos.common.v1.Money credit_for_tax_paid_to_other_jurisdictions = 11 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_after_other_jurisdictions_credit = 12 [(common.v1.fdx_absent) = true];
+
+  // From Form CT-6251.
+  nexteggapp.taxprotos.common.v1.Money alternative_minimum_tax = 13 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_with_alternative_minimum_tax = 14 [(common.v1.fdx_absent) = true];
+
+  // From Schedule 3, line 68.
+  nexteggapp.taxprotos.common.v1.Money property_tax_credit = 15 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_after_property_tax_credit = 16 [(common.v1.fdx_absent) = true];
+
+  // From Schedule CT-IT Credit, Part 1, line 10.
+  nexteggapp.taxprotos.common.v1.Money other_credits = 17 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money income_tax = 18 [(common.v1.fdx_absent) = true];
+
+  // From Schedule 4, line 69.
+  nexteggapp.taxprotos.common.v1.Money use_tax = 19 [(common.v1.fdx_absent) = true];
+
+  // Line 17 repeats it.
+  nexteggapp.taxprotos.common.v1.Money total_tax = 20 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money withholding = 21 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money estimated_payments = 22 [(common.v1.fdx_absent) = true];
+
+  // Paid with Form CT-1040 EXT.
+  nexteggapp.taxprotos.common.v1.Money extension_payment = 23 [(common.v1.fdx_absent) = true];
+
+  // From Schedule CT-EITC, refunded where it exceeds the tax.
+  nexteggapp.taxprotos.common.v1.Money earned_income_tax_credit = 24 [(common.v1.fdx_absent) = true];
+
+  // From Form CT-1040 CRC.
+  nexteggapp.taxprotos.common.v1.Money claim_of_right_credit = 25 [(common.v1.fdx_absent) = true];
+
+  // From Schedule CT-PE.
+  nexteggapp.taxprotos.common.v1.Money pass_through_entity_tax_credit = 26 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money historic_home_rehabilitation_credit = 27 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_payments = 28 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money overpayment = 29 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money overpayment_applied_to_estimated_tax = 30 [(common.v1.fdx_absent) = true];
+
+  // Overpayment given to the Connecticut Higher Education Trust (CHET).
+  nexteggapp.taxprotos.common.v1.Money higher_education_trust_contribution = 31 [(common.v1.fdx_absent) = true];
+
+  // From Schedule 5, line 70.
+  nexteggapp.taxprotos.common.v1.Money charitable_contributions = 32 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money refund = 33 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_due = 34 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money late_filing_penalty = 35 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money late_filing_interest = 36 [(common.v1.fdx_absent) = true];
+
+  // From Form CT-2210.
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_interest = 37 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_amount_due = 38 [(common.v1.fdx_absent) = true];
+}
