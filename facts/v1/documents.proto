@@ -128,6 +128,7 @@ import "taxprotos/us/state/wa/v1/capital_gains/capital_gains_return.proto";
 import "taxprotos/us/state/va/v1/form_760/form_760.proto";
 import "taxprotos/us/state/sc/v1/form_sc1040/form_sc1040.proto";
 import "taxprotos/us/state/wv/v1/form_it140/form_it140.proto";
+import "taxprotos/us/state/vt/v1/form_in111/form_in111.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/facts/v1;factsv1";
 
@@ -347,6 +348,8 @@ message Document {
     WestVirginiaReturn west_virginia_return = 86;
     // A filed Hawaii return.
     HawaiiReturn hawaii_return = 58;
+    // A filed Vermont return.
+    VermontReturn vermont_return = 84;
   }
 }
 
@@ -984,4 +987,8 @@ message WestVirginiaReturn {
 message HawaiiReturn {
   // Form N-11.
   us.state.hi.v1.FormN11 form_n11 = 1;
+// A Vermont resident return: Form IN-111.
+message VermontReturn {
+  // Form IN-111.
+  us.state.vt.v1.FormIN111 form_in111 = 1;
 }

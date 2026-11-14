@@ -1,0 +1,205 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form IN-111 calls each concept, per tax year.
+#
+# Lines come from the 2025 Form IN-111 as the Vermont Department of Taxes
+# publishes it. There are no amount codes: IRS Publication 1220 covers the
+# information returns the IRS receives electronically, and a state return is not
+# one of them.
+
+form: "IN-111"
+message_name: "nexteggapp.taxprotos.us.state.vt.v1.FormIN111"
+tax_years: 2025
+
+concepts {
+  concept: "filing_status"
+  years {
+    tax_year: 2025
+    irs_box: "Filing Status"
+    note: "Filing status section: single, married/CU filing jointly, married/CU filing separately, head of household, qualifying widow(er)."
+  }
+}
+concepts {
+  concept: "federal_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "1" note: "Federal Form 1040 line 11a." }
+}
+concepts {
+  concept: "net_modifications"
+  years { tax_year: 2025 irs_box: "2" note: "From Schedule IN-112, Part I, line 19." }
+}
+concepts {
+  concept: "modified_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "3" }
+}
+concepts {
+  concept: "standard_deduction"
+  years { tax_year: 2025 irs_box: "4" }
+}
+concepts {
+  concept: "taxpayer_exemption"
+  years { tax_year: 2025 irs_box: "5a" }
+}
+concepts {
+  concept: "spouse_exemption"
+  years { tax_year: 2025 irs_box: "5b" }
+}
+concepts {
+  concept: "dependent_exemptions"
+  years { tax_year: 2025 irs_box: "5c" }
+}
+concepts {
+  concept: "total_exemptions"
+  years { tax_year: 2025 irs_box: "5d" }
+}
+concepts {
+  concept: "personal_exemption_amount"
+  years { tax_year: 2025 irs_box: "5e" }
+}
+concepts {
+  concept: "deductions_and_exemptions"
+  years { tax_year: 2025 irs_box: "6" }
+}
+concepts {
+  concept: "taxable_income"
+  years { tax_year: 2025 irs_box: "7" }
+}
+concepts {
+  concept: "income_tax"
+  years { tax_year: 2025 irs_box: "8" }
+}
+concepts {
+  concept: "net_tax_adjustment"
+  years { tax_year: 2025 irs_box: "9" note: "From Schedule IN-119, Part I, line 15." }
+}
+concepts {
+  concept: "income_tax_with_adjustment"
+  years { tax_year: 2025 irs_box: "10" }
+}
+concepts {
+  concept: "charitable_contributions"
+  years { tax_year: 2025 irs_box: "11" }
+}
+concepts {
+  concept: "charitable_contributions_at_rate"
+  years { tax_year: 2025 irs_box: "12" }
+}
+concepts {
+  concept: "charitable_contribution_credit"
+  years { tax_year: 2025 irs_box: "13" }
+}
+concepts {
+  concept: "income_tax_after_charitable_credit"
+  years { tax_year: 2025 irs_box: "14" }
+}
+concepts {
+  concept: "income_adjustment_millionths"
+  years { tax_year: 2025 irs_box: "15" note: "From Schedule IN-113, line 35; 100.0000% for a full-year resident." }
+}
+concepts {
+  concept: "adjusted_income_tax"
+  years { tax_year: 2025 irs_box: "16" }
+}
+concepts {
+  concept: "other_state_credit"
+  years { tax_year: 2025 irs_box: "17" note: "From Schedule IN-117, line 21." }
+}
+concepts {
+  concept: "vermont_tax_credits"
+  years { tax_year: 2025 irs_box: "18" note: "From Schedule IN-119, Part II." }
+}
+concepts {
+  concept: "total_credits"
+  years { tax_year: 2025 irs_box: "19" }
+}
+concepts {
+  concept: "income_tax_after_credits"
+  years { tax_year: 2025 irs_box: "20" }
+}
+concepts {
+  concept: "child_care_contribution"
+  years { tax_year: 2025 irs_box: "21" }
+}
+concepts {
+  concept: "use_tax"
+  years { tax_year: 2025 irs_box: "22" }
+}
+concepts {
+  concept: "total_taxes"
+  years { tax_year: 2025 irs_box: "23" }
+}
+concepts {
+  concept: "veterans_fund_contribution"
+  years { tax_year: 2025 irs_box: "24a" }
+}
+concepts {
+  concept: "green_up_contribution"
+  years { tax_year: 2025 irs_box: "24b" }
+}
+concepts {
+  concept: "nongame_wildlife_contribution"
+  years { tax_year: 2025 irs_box: "24c" }
+}
+concepts {
+  concept: "childrens_trust_contribution"
+  years { tax_year: 2025 irs_box: "24d" }
+}
+concepts {
+  concept: "total_contributions"
+  years { tax_year: 2025 irs_box: "24e" }
+}
+concepts {
+  concept: "total_taxes_and_contributions"
+  years { tax_year: 2025 irs_box: "25" }
+}
+concepts {
+  concept: "vermont_tax_withheld"
+  years { tax_year: 2025 irs_box: "26a" }
+}
+concepts {
+  concept: "estimated_tax_payments"
+  years { tax_year: 2025 irs_box: "26b" }
+}
+concepts {
+  concept: "refundable_credits"
+  years { tax_year: 2025 irs_box: "26c" note: "From Schedule IN-112, Part II." }
+}
+concepts {
+  concept: "real_estate_withholding"
+  years { tax_year: 2025 irs_box: "26d" note: "From Form RW-171." }
+}
+concepts {
+  concept: "nonresident_withholding"
+  years { tax_year: 2025 irs_box: "26e" note: "From Schedule K-1VT, line 30." }
+}
+concepts {
+  concept: "total_payments"
+  years { tax_year: 2025 irs_box: "26f" }
+}
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "27" }
+}
+concepts {
+  concept: "credited_to_estimated_tax"
+  years { tax_year: 2025 irs_box: "28a" }
+}
+concepts {
+  concept: "credited_to_property_tax"
+  years { tax_year: 2025 irs_box: "28b" }
+}
+concepts {
+  concept: "refund"
+  years { tax_year: 2025 irs_box: "29" }
+}
+concepts {
+  concept: "tax_due"
+  years { tax_year: 2025 irs_box: "30" }
+}
+concepts {
+  concept: "estimated_tax_interest_and_penalty"
+  years { tax_year: 2025 irs_box: "31" note: "From Worksheet IN-152 or IN-152A." }
+}
+concepts {
+  concept: "amount_due"
+  years { tax_year: 2025 irs_box: "32" }
+}

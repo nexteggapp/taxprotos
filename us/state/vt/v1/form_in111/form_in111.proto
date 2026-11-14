@@ -1,0 +1,163 @@
+// Form IN-111, Vermont Income Tax Return.
+//
+// Part-year residents and non-residents file the same form with Schedule
+// IN-113, whose percentage goes on line 15. Only the full-year resident's
+// return is modelled here.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form IN-111; testdata
+// holds the text extracted from the published PDF and coverage_test.go asserts
+// every line a mapping claims appears on it.
+//
+// # Graduated tax on income after a deduction and exemptions
+//
+// Vermont starts from federal adjusted gross income, applies the net
+// modifications of Schedule IN-112, takes off a standard deduction and a
+// personal exemption for each person on line 6, and taxes the rest by table
+// or rate schedule on line 8. Above $150,000 of federal AGI, line 8 is at
+// least 3% of that AGI.
+//
+// # A credit for giving
+//
+// Lines 11 to 13 give every filer a credit of 5% of charitable contributions,
+// up to $1,000, whether or not they itemize federally.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.vt.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/vt/v1/form_in111;formin111";
+
+// FilingStatus is the status the return is filed under.
+//
+// Vermont generally requires the federal status; civil union partners file as
+// married.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+  FILING_STATUS_QUALIFYING_WIDOW = 5;
+}
+
+// FormIN111 is what a Form IN-111 states.
+message FormIN111 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // Federal adjusted gross income, from federal Form 1040 line 11a.
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 10 [(common.v1.fdx_absent) = true];
+  // Net modifications to federal AGI, from Schedule IN-112 Part I.
+  nexteggapp.taxprotos.common.v1.Money net_modifications = 11 [(common.v1.fdx_absent) = true];
+  // Federal AGI with the modifications added.
+  nexteggapp.taxprotos.common.v1.Money modified_adjusted_gross_income = 12 [(common.v1.fdx_absent) = true];
+  // The Vermont standard deduction for the filing status, with the
+  // additional amounts for age and blindness.
+  nexteggapp.taxprotos.common.v1.Money standard_deduction = 13 [(common.v1.fdx_absent) = true];
+
+  // One if no one can claim the filer as a dependent.
+  int32 taxpayer_exemption = 14 [(common.v1.fdx_absent) = true];
+  // One for a joint spouse whom no one can claim as a dependent.
+  int32 spouse_exemption = 15 [(common.v1.fdx_absent) = true];
+  // The number of other dependents claimed on the federal return.
+  int32 dependent_exemptions = 16 [(common.v1.fdx_absent) = true];
+  // The total number of exemptions.
+  int32 total_exemptions = 17 [(common.v1.fdx_absent) = true];
+  // The total exemptions multiplied by the personal exemption amount.
+  nexteggapp.taxprotos.common.v1.Money personal_exemption_amount = 18 [(common.v1.fdx_absent) = true];
+
+  // The standard deduction plus the personal exemptions.
+  nexteggapp.taxprotos.common.v1.Money deductions_and_exemptions = 19 [(common.v1.fdx_absent) = true];
+  // Vermont taxable income.
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 20 [(common.v1.fdx_absent) = true];
+  // Vermont income tax from the tax table or rate schedule, or the 3%
+  // minimum tax when federal AGI is over $150,000.
+  nexteggapp.taxprotos.common.v1.Money income_tax = 21 [(common.v1.fdx_absent) = true];
+  // Net adjustment to Vermont tax, from Schedule IN-119 Part I.
+  nexteggapp.taxprotos.common.v1.Money net_tax_adjustment = 22 [(common.v1.fdx_absent) = true];
+  // Vermont income tax with the adjustment, not below zero.
+  nexteggapp.taxprotos.common.v1.Money income_tax_with_adjustment = 23 [(common.v1.fdx_absent) = true];
+
+  // Tax-deductible charitable contributions made in the year.
+  nexteggapp.taxprotos.common.v1.Money charitable_contributions = 24 [(common.v1.fdx_absent) = true];
+  // Five percent of the charitable contributions.
+  nexteggapp.taxprotos.common.v1.Money charitable_contributions_at_rate = 25 [(common.v1.fdx_absent) = true];
+  // The charitable contribution credit: the lesser of five percent and $1,000.
+  nexteggapp.taxprotos.common.v1.Money charitable_contribution_credit = 26 [(common.v1.fdx_absent) = true];
+
+  // Vermont income tax after the charitable contribution credit.
+  nexteggapp.taxprotos.common.v1.Money income_tax_after_charitable_credit = 27 [(common.v1.fdx_absent) = true];
+  // The income adjustment percentage from Schedule IN-113, in millionths:
+  // 1000000 is 100.0000%.
+  int32 income_adjustment_millionths = 28 [(common.v1.fdx_absent) = true];
+  // Adjusted Vermont income tax: the tax multiplied by the income adjustment.
+  nexteggapp.taxprotos.common.v1.Money adjusted_income_tax = 29 [(common.v1.fdx_absent) = true];
+
+  // Credit for income tax paid to another state, from Schedule IN-117.
+  nexteggapp.taxprotos.common.v1.Money other_state_credit = 30 [(common.v1.fdx_absent) = true];
+  // Vermont tax credits, from Schedule IN-119 Part II.
+  nexteggapp.taxprotos.common.v1.Money vermont_tax_credits = 31 [(common.v1.fdx_absent) = true];
+  // Total Vermont credits.
+  nexteggapp.taxprotos.common.v1.Money total_credits = 32 [(common.v1.fdx_absent) = true];
+  // Vermont income tax after credits.
+  nexteggapp.taxprotos.common.v1.Money income_tax_after_credits = 33 [(common.v1.fdx_absent) = true];
+  // Child care contribution on Vermont self-employment income.
+  nexteggapp.taxprotos.common.v1.Money child_care_contribution = 34 [(common.v1.fdx_absent) = true];
+  // Use tax on taxable purchases on which no sales tax was charged.
+  nexteggapp.taxprotos.common.v1.Money use_tax = 35 [(common.v1.fdx_absent) = true];
+  // Total Vermont taxes.
+  nexteggapp.taxprotos.common.v1.Money total_taxes = 36 [(common.v1.fdx_absent) = true];
+
+  // Contribution to the Vermont Veterans Fund.
+  nexteggapp.taxprotos.common.v1.Money veterans_fund_contribution = 37 [(common.v1.fdx_absent) = true];
+  // Contribution to Green Up Vermont.
+  nexteggapp.taxprotos.common.v1.Money green_up_contribution = 38 [(common.v1.fdx_absent) = true];
+  // Contribution to the Nongame Wildlife Fund.
+  nexteggapp.taxprotos.common.v1.Money nongame_wildlife_contribution = 39 [(common.v1.fdx_absent) = true];
+  // Contribution to the Vermont Children's Trust Foundation.
+  nexteggapp.taxprotos.common.v1.Money childrens_trust_contribution = 40 [(common.v1.fdx_absent) = true];
+  // Total voluntary contributions.
+  nexteggapp.taxprotos.common.v1.Money total_contributions = 41 [(common.v1.fdx_absent) = true];
+  // Total Vermont taxes and voluntary contributions.
+  nexteggapp.taxprotos.common.v1.Money total_taxes_and_contributions = 42 [(common.v1.fdx_absent) = true];
+
+  // Vermont tax withheld on Forms W-2 and 1099.
+  nexteggapp.taxprotos.common.v1.Money vermont_tax_withheld = 43 [(common.v1.fdx_absent) = true];
+  // Estimated tax payments, the amount carried forward from the prior year
+  // and any payment made with an extension.
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 44 [(common.v1.fdx_absent) = true];
+  // Refundable credits, from Schedule IN-112 Part II.
+  nexteggapp.taxprotos.common.v1.Money refundable_credits = 45 [(common.v1.fdx_absent) = true];
+  // Real estate withholding from Form RW-171.
+  nexteggapp.taxprotos.common.v1.Money real_estate_withholding = 46 [(common.v1.fdx_absent) = true];
+  // Nonresident estimated payments allocated on Schedule K-1VT.
+  nexteggapp.taxprotos.common.v1.Money nonresident_withholding = 47 [(common.v1.fdx_absent) = true];
+  // Total payments and credits.
+  nexteggapp.taxprotos.common.v1.Money total_payments = 48 [(common.v1.fdx_absent) = true];
+
+  // Overpayment.
+  nexteggapp.taxprotos.common.v1.Money overpayment = 49 [(common.v1.fdx_absent) = true];
+  // Part of the overpayment credited to next year's estimated tax.
+  nexteggapp.taxprotos.common.v1.Money credited_to_estimated_tax = 50 [(common.v1.fdx_absent) = true];
+  // Part of the overpayment credited to next year's property tax bill.
+  nexteggapp.taxprotos.common.v1.Money credited_to_property_tax = 51 [(common.v1.fdx_absent) = true];
+  // Refund.
+  nexteggapp.taxprotos.common.v1.Money refund = 52 [(common.v1.fdx_absent) = true];
+  // Tax due before interest and penalty.
+  nexteggapp.taxprotos.common.v1.Money tax_due = 53 [(common.v1.fdx_absent) = true];
+  // Interest and penalty on underpaid estimated tax, from IN-152 or IN-152A.
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_interest_and_penalty = 54 [(common.v1.fdx_absent) = true];
+  // Amount due.
+  nexteggapp.taxprotos.common.v1.Money amount_due = 55 [(common.v1.fdx_absent) = true];
+}

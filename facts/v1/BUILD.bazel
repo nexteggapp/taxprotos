@@ -76,6 +76,7 @@ proto_library(
         "//us/state/va/v1/form_760:form_760_proto",
         "//us/state/sc/v1/form_sc1040:form_sc1040_proto",
         "//us/state/wv/v1/form_it140:form_it140_proto",
+        "//us/state/vt/v1/form_in111:form_in111_proto",
     ],
 )
 
