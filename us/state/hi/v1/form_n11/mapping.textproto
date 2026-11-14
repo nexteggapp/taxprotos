@@ -1,0 +1,213 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form N-11 calls each concept, per tax year.
+#
+# Lines come from the 2025 Form N-11 as the Hawaii Department of Taxation
+# publishes it. There are no amount codes: IRS Publication 1220 covers the
+# information returns the IRS receives electronically, and a state return is not
+# one of them.
+
+form: "N-11"
+message_name: "nexteggapp.taxprotos.us.state.hi.v1.FormN11"
+tax_years: 2025
+
+concepts {
+  concept: "filing_status"
+  years { tax_year: 2025 irs_box: "1" note: "Boxes 1 to 5: single, married filing joint, married filing separate, head of household, qualifying surviving spouse." }
+}
+concepts {
+  concept: "exemptions_claimed"
+  years { tax_year: 2025 irs_box: "6e" }
+}
+concepts {
+  concept: "federal_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "7" }
+}
+concepts {
+  concept: "cola_ers_wage_difference"
+  years { tax_year: 2025 irs_box: "8" }
+}
+concepts {
+  concept: "out_of_state_bond_interest"
+  years { tax_year: 2025 irs_box: "9" }
+}
+concepts {
+  concept: "other_additions"
+  years { tax_year: 2025 irs_box: "10" }
+}
+concepts {
+  concept: "total_additions"
+  years { tax_year: 2025 irs_box: "11" }
+}
+concepts {
+  concept: "federal_agi_plus_additions"
+  years { tax_year: 2025 irs_box: "12" }
+}
+concepts {
+  concept: "pensions_not_taxed"
+  years { tax_year: 2025 irs_box: "13" }
+}
+concepts {
+  concept: "social_security_benefits"
+  years { tax_year: 2025 irs_box: "14" }
+}
+concepts {
+  concept: "military_reserve_pay"
+  years { tax_year: 2025 irs_box: "15" }
+}
+concepts {
+  concept: "individual_housing_account"
+  years { tax_year: 2025 irs_box: "16" }
+}
+concepts {
+  concept: "exceptional_trees"
+  years { tax_year: 2025 irs_box: "17" }
+}
+concepts {
+  concept: "other_subtractions"
+  years { tax_year: 2025 irs_box: "18" }
+}
+concepts {
+  concept: "total_subtractions"
+  years { tax_year: 2025 irs_box: "19" }
+}
+concepts {
+  concept: "hawaii_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "20" }
+}
+concepts {
+  concept: "medical_and_dental_expenses"
+  years { tax_year: 2025 irs_box: "21a" }
+}
+concepts {
+  concept: "taxes_paid"
+  years { tax_year: 2025 irs_box: "21b" }
+}
+concepts {
+  concept: "interest_expense"
+  years { tax_year: 2025 irs_box: "21c" }
+}
+concepts {
+  concept: "contributions"
+  years { tax_year: 2025 irs_box: "21d" }
+}
+concepts {
+  concept: "casualty_and_theft_losses"
+  years { tax_year: 2025 irs_box: "21e" }
+}
+concepts {
+  concept: "miscellaneous_deductions"
+  years { tax_year: 2025 irs_box: "21f" }
+}
+concepts {
+  concept: "itemized_deductions"
+  years { tax_year: 2025 irs_box: "22" }
+}
+concepts {
+  concept: "standard_deduction"
+  years { tax_year: 2025 irs_box: "23" }
+}
+concepts {
+  concept: "income_after_deductions"
+  years { tax_year: 2025 irs_box: "24" }
+}
+concepts {
+  concept: "exemptions"
+  years { tax_year: 2025 irs_box: "25" }
+}
+concepts {
+  concept: "taxable_income"
+  years { tax_year: 2025 irs_box: "26" }
+}
+concepts {
+  concept: "tax"
+  years { tax_year: 2025 irs_box: "27" }
+}
+concepts {
+  concept: "net_capital_gain"
+  years { tax_year: 2025 irs_box: "27a" }
+}
+concepts {
+  concept: "food_excise_tax_credit"
+  years { tax_year: 2025 irs_box: "28" }
+}
+concepts {
+  concept: "low_income_renters_credit"
+  years { tax_year: 2025 irs_box: "29" }
+}
+concepts {
+  concept: "child_and_dependent_care_credit"
+  years { tax_year: 2025 irs_box: "30" }
+}
+concepts {
+  concept: "child_passenger_restraint_credit"
+  years { tax_year: 2025 irs_box: "31" }
+}
+concepts {
+  concept: "schedule_cr_refundable_credits"
+  years { tax_year: 2025 irs_box: "32" }
+}
+concepts {
+  concept: "total_refundable_credits"
+  years { tax_year: 2025 irs_box: "33" }
+}
+concepts {
+  concept: "adjusted_tax_liability"
+  years { tax_year: 2025 irs_box: "34" }
+}
+concepts {
+  concept: "nonrefundable_credits"
+  years { tax_year: 2025 irs_box: "35" }
+}
+concepts {
+  concept: "balance"
+  years { tax_year: 2025 irs_box: "36" }
+}
+concepts {
+  concept: "hawaii_tax_withheld"
+  years { tax_year: 2025 irs_box: "37" }
+}
+concepts {
+  concept: "estimated_tax_payments"
+  years { tax_year: 2025 irs_box: "38" }
+}
+concepts {
+  concept: "prior_year_overpayment_applied"
+  years { tax_year: 2025 irs_box: "39" }
+}
+concepts {
+  concept: "extension_payment"
+  years { tax_year: 2025 irs_box: "40" }
+}
+concepts {
+  concept: "total_payments"
+  years { tax_year: 2025 irs_box: "41" }
+}
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "42" }
+}
+concepts {
+  concept: "contributions_to_funds"
+  years { tax_year: 2025 irs_box: "44" }
+}
+concepts {
+  concept: "overpayment_after_contributions"
+  years { tax_year: 2025 irs_box: "45" }
+}
+concepts {
+  concept: "credited_to_next_year"
+  years { tax_year: 2025 irs_box: "46" }
+}
+concepts {
+  concept: "refund"
+  years { tax_year: 2025 irs_box: "47a" }
+}
+concepts {
+  concept: "amount_owed"
+  years { tax_year: 2025 irs_box: "48" }
+}
+concepts {
+  concept: "estimated_tax_penalty"
+  years { tax_year: 2025 irs_box: "50" }
+}

@@ -1,0 +1,693 @@
+PRINT FORM                                                                                                                                                                                                                                       RESET FORM
+
+
+                                          FORM                                 STATE OF HAWAII — DEPARTMENT OF TAXATION                                                                   DO NOT WRITE IN THIS AREA
+                                         N-11
+                                         (Rev. 2025)
+                                                                                   Individual Income Tax Return
+                                                                                             RESIDENT
+                                                                                          Calendar Year 2025
+                                                                                                                      OR
+                                         N11_F 2025A 01 VID01
+                                                                    Fiscal Year                                                    and
+                                                                    Beginning                                                     Ending
+
+                                                                                                                                                   INSTRUCTIONS
+                                                                                                                                                   - You can save the form's data by using Adobe Reader XI or higher. You must print,
+                                                  AMENDED Return                          FOR OFFICE USE ONLY
+                                                                                                                                                                                   THIS
+                                                                                                                                                   sign and mail the forms to the Hawaii Department of Taxation. Don't forget to attach
+                                                  NOL Carryback                                                                                    all required forms.
+                                                                                                                                                   - Use the blue Print Form button at the top of this page to print the form. If you are not
+                                                  IRS Adjustment                                                                                   claiming any credits on Schedule CR or Schedule X, you do not need to print them.
+                                                  First Time Filer                                                                                 - This form uses a 2D barcode on the first page of the form to gather all the forms
+
+                                                                                                                                                                                  SPACE
+                                                                                                                                                   data. If you print the form and need to make changes, then type in the changes and
+                                                                                                                                                   re-print the entire form. Do not make changes to the return data using a pen or pencil.
+                                                                                                                                                   - Click on the red Reset button at the top of this page to clear all of the form data and
+                                                                                                                                                   start over.
+                                                      Do NOT Submit a Photocopy!!
+                                                                                                                                                                                RESERVED
+                                                                                                                                                   - Use the Tab key to move forward between fields, Shift+Tab to move backwards
+                                                                                                                                                   between fields, or use your mouse pointer to click on the field you want.
+                                                                                                                                                   - To mark a checkbox either click on it using your mouse pointer, or press the space
+                                                                                                                                                   key.
+
+
+                                               Your First Name                                      M.I.     Your Last Name                                 Suffix
+
+                                                                                                                                                                              u IMPORTANT — Complete this Section u
+  • ATTACH COPY 2 OF FORM W-2 HERE •
+
+
+
+
+                                                                                                                                                                        Enter the first four letters
+                                               Spouse’s First Name                                  M.I.     Spouse’s Last Name                             Suffix
+                                                                                                                                                                        of your last name.
+                                                                                                                                                                        Use ALL CAPITAL letters
+
+                                                                                                                                                                        Your Social
+                                               Care Of (See Instructions, page 7.)                                                                                      Security Number
+
+
+                                                                                                                                                                        Deceased               Date of Death
+                                               Present mailing or home address (Number and street, including Rural Route)
+                                                                                                                                                                        Enter the first four letters
+                                                                                                                                                                        of your Spouse’s last name.
+                                                                                                                                                                        Use ALL CAPITAL letters
+                                               City, town or post office                                             State    Postal/ZIP code
+                                                                                                                                                                        Spouse's Social
+                                                                                                                                                                        Security Number
+
+
+                                               If Foreign address, enter Province and/or State                                Country                                   Deceased               Date of Death
+
+
+
+
+                                                                                           (Place an X in only ONE box)
+                                              1             Single                                                                                    4              Head of household (with qualifying person). If the qualifying
+                                              2             Married filing joint return (even if only one had income).                                               person is a child but not your dependent, enter the child’s full
+                                              3             Married filing separate return. Enter spouse’s SSN and                                                   name.
+                                                                                                                                                                               
+  • ATTACH CHECK OR MONEY ORDER HERE •
+
+
+
+
+                                                            the first four letters of last name above. Enter spouse’s full                                                     __________________________________
+                                                            name here. _____________________________________                                          5              Qualifying surviving spouse (see page 8 of the Instructions)
+
+                                                   CAUTION: If you can be claimed as a dependent on another person’s tax return (such as your parents’), DO NOT place an X on line 6a, but be sure to place an X above line 21.
+
+                                            6a
+                                            6b
+                                                            Yourself .............................................
+                                                            Spouse .............................................
+                                                                                                                              Age 65 or over ........................................................
+                                                                                                                              Age 65 or over ........................................................   }   Enter the number of Xs
+                                                                                                                                                                                                            on 6a and 6b .................   Â
+                                                    If you placed an X on lines 3 and 6b above, see the Instructions on page 9 and if your spouse meets the qualifications, place an X here
+
+                                            6c Dependents:                          If more than 6 dependents                     2. Dependent’s social
+                                           and 1. First and last name                     use attachment                             security number                       3. Relationship
+
+                                            6d                                                                                                                                                              Enter number of
+                                                                                                                                                                                                            your children listed... 6c       Â
+                                                                                                                                                                                                            Enter number of
+                                                                                                                                                                                                            other dependents..... 6d         Â
+
+                                                            6e      Total number of exemptions claimed. Add numbers entered in boxes 6a thru 6d above ..............................................6e                                       Â
+                                         N111N4X7                                                                             ID NO 01                                                                             FORM N-11 (REV. 2025)
+        Form N-11 (Rev. 2025)                                                                                                                                                               Page 2 of 4
+                                                                              Your Social Security Number                                                Your Spouse’s SSN
+
+
+
+
+                                                                    Name(s) as shown on return
+N11_F 2025A 02 VID01
+
+
+                                                                                                                                                              ROUND TO THE NEAREST DOLLAR
+                                                                                                                                                              ▼   IF NEGATIVE, PLACE MINUS SIGN
+
+    7     Federal adjusted gross income (AGI) (see page 11 of the Instructions) .......................................                                   7
+    8     Difference in state/federal wages due to COLA, ERS,
+          etc. (see page 11 of the Instructions) ...................................8
+    9     Interest on out-of-state bonds
+          (including municipal bonds) ..................................................9
+  10      Other Hawaii additions to federal AGI
+          (see page 11 of the Instructions) ........................................10
+
+
+   11     Add lines 8 through 10 .................. Total Hawaii additions to federal AGI                                   11
+                                                                                                                                                              ▼   IF NEGATIVE, PLACE MINUS SIGN
+  12      Add lines 7 and 11 .........................................................................................................................   12
+  13      Pensions taxed federally but not taxed by Hawaii
+          (see page 13 of the Instructions) ........................................13
+
+
+  14      Social security benefits taxed on federal return .................14
+  15      First $8,636 of military reserve or Hawaii national
+          guard duty pay....................................................................15
+
+
+  16      Payments to an individual housing account .......................16
+  17      Exceptional trees deduction (attach affidavit)
+          (see page 14 of the Instructions) ........................................17
+  18      Other Hawaii subtractions from federal AGI
+          (see page 14 of the Instructions) ........................................18
+  19      Add lines 13 through 18
+           ............................................Total Hawaii subtractions from federal AGI                           19
+                                                                                                                                                              ▼   IF NEGATIVE, PLACE MINUS SIGN
+  20      Line 12 minus line 19 ............................................................................................ Hawaii AGI  20
+
+CAUTION:          If you can be claimed as a dependent on another person’s return, see the Instructions on page 15, and place an X here.
+  21      If you do not itemize your deductions, go to line 23 below. Otherwise go to page 15 of the Instructions
+          and enter your itemized deductions here.
+ 21a      Medical and dental expenses
+          (from Worksheet A-1) .......................................................21a
+
+                                                                                                                                                                          TOTAL ITEMIZED
+ 21b      Taxes (from Worksheet A-2) ............................................ 21b
+                                                                                                                                                                           DEDUCTIONS
+                                                                                                                                                                     22 Add lines 21a through 21f.
+ 21c      Interest expense (from Worksheet A-3) ............................21c                                                                                         If your Hawaii adjusted gross
+                                                                                                                                                                        income is above a certain
+                                                                                                                                                                        amount, you may not be
+ 21d      Contributions (from Worksheet A-4) ................................ 21d                                                                                       able to deduct all of your
+                                                                                                                                                                        itemized deductions. See the
+                                                                                                                                                                        Instructions on page 19. Enter
+ 21e      Casualty and theft losses (from Worksheet A-5) ..............21e                                                                                              total here and go to line 24.
+
+
+  21f     Miscellaneous deductions (from Worksheet A-6) ............. 21f
+
+
+  23      If you checked filing status box: 1 or 3 enter $4,400;
+          2 or 5 enter $8,800; 4 enter $6,424 ........................................................Standard Deduction  23
+                                                                                                                                                              ▼   IF NEGATIVE, PLACE MINUS SIGN
+               24 Line 20 minus line 22 or 23, whichever applies. (This line MUST be filled in) ..................                                       24
+
+
+
+
+N112N4X7                                                                                ID NO 01                                                                          FORM N-11 (REV. 2025)
+       Form N-11 (Rev. 2025)                                                                                                                                                        Page 3 of 4
+                                                                         Your Social Security Number                                              Your Spouse’s SSN
+
+
+
+
+                                                                Name(s) as shown on return
+N11_F 2025A 03 VID01
+
+   25    Multiply $1,144 by the total number of exemptions claimed on line 6e.
+         If you and/or your spouse are blind, deaf, or disabled, place an X in the applicable box(es),
+         and see page 20 of the Instructions.
+               Yourself               Spouse ...............................................................................................      25
+
+
+  26     Taxable Income. Line 24 minus line 25 (but not less than zero) .................. Taxable Income  26
+  27     Tax. Place an X if from           Tax Table;      Tax Rate Schedule; or                  Capital Gains Tax
+         Worksheet on page 33 of the Instructions.
+         (          Place an X if tax from Forms N-2, N-103, N-152, N-168, N-312, N-325, N-338,
+         N-344, N-348, N-405, N-586, N-615, or N-814 is included.) .............................................. Tax  27
+ 27a     If tax is from the Capital Gains Tax Worksheet, enter
+         the net capital gain from line 14 of that worksheet ...........27a
+
+
+
+  28     Refundable Food/Excise Tax Credit
+         (attach Form N-311) DHS, etc. exemptions                              ....28
+  29     Credit for Low-Income Household
+         Renters (attach Schedule X) ..............................................29
+  30     Credit for Child and Dependent
+         Care Expenses (attach Schedule X) ..................................30
+  31     Credit for Child Passenger Restraint
+         System(s) (attach a copy of the invoice) ............................31
+  32     Total refundable tax credits from
+         Schedule CR (attach Schedule CR) ...................................32
+
+
+  33     Add lines 28 through 32 .................................................................Total Refundable Credits  33
+                                                                                                                                                       ▼   IF NEGATIVE, PLACE MINUS SIGN
+  34     Line 27 minus line 33. If line 34 is zero or less, see Instructions. ....... Adjusted Tax Liability  34
+
+
+  35     Total nonrefundable tax credits (attach Schedule CR) ..................................................................                  35
+                                                                                                                                                       ▼   IF NEGATIVE, PLACE MINUS SIGN
+  36     Line 34 minus line 35 ................................................................................................. Balance  36
+  37     Hawaii State Income tax withheld (attach W-2s)
+          (see page 22 of the Instructions for other attachments) ...................37
+
+
+  38     2025 estimated tax payments ............................................38
+
+
+  39     Amount of estimated tax applied from 2024 return ............39
+
+
+  40     Amount paid with extension ...............................................40
+
+
+  41     Add lines 37 through 40 .................................................................................Total Payments  41
+
+
+
+  42     If line 41 is larger than line 36, enter the amount OVERPAID (line 41 minus line 36) (see Instructions) .                                42
+  43     Contributions to (see page 22 of the Instructions): ........................         Yourself Spouse
+         43a Hawaii Schools Repairs and Maintenance Fund .....................                     $2        $2
+         43b Hawaii Public Libraries Fund ...................................................      $5        $5
+         43c Domestic and Sexual Violence / Child Abuse and Neglect Funds .............            $5        $5
+  44     Add the amounts of the Xs on lines 43a through 43c and enter the total here .............................                                44
+
+
+              45 Line 42 minus line 44 ........................................................................................................   45
+
+
+
+N113N4X7                                                                            ID NO 01                                                                       FORM N-11 (REV. 2025)
+             Form N-11 (Rev. 2025)                                                                                                                                                              Page 4 of 4
+                                                                              Your Social Security Number                                           Your Spouse’s SSN
+
+
+
+
+                                                                     Name(s) as shown on return
+N11_F 2025A 04 VID01
+46           Amount of line 45 to be applied to your
+              2026 ESTIMATED TAX ......................................................46
+47a           Amount to be REFUNDED TO YOU (line 45 minus line 46) If filing late,
+              see page 23 of Instructions ........................................................................................................... 47a
+
+
+                     Place an X in this box if this refund will ultimately be deposited to a foreign (non-U.S.) bank. Do not complete lines 47b, 47c, or 47d.
+
+47b           Routing number                                                                 47c Type:                 Checking                   Savings
+
+
+47d           Account number
+ 48           AMOUNT YOU OWE (line 36 minus line 41). ...............................................................................               48
+ 49           PAYMENT AMOUNT Submit payment online at hitax.hawaii.gov or attach check or
+              money order payable to “Hawaii State Tax Collector.” ..................................................................               49
+  50          Estimated tax penalty. (See page 23 of
+              Instructions.) Do not include on line 42 or 48. Place an X in
+              this box if Form N-210 is attached            .....................50
+
+
+
+51 Did you file a federal Schedule C?                                Yes             No             If yes, enter Hawaii gross receipts
+   your main business activity:                                                      ,
+   your main business product:                                                       , AND your HI Tax I.D. No. for this activity GE
+
+
+52 Did you file a federal Schedule E                                                               If yes, enter Hawaii gross rents received
+   for any rental activity?                                          Yes             No
+                                                                                          AND your HI Tax I.D. No. for this activity GE
+
+
+53 Did you file a federal Schedule F?                               Yes             No              If yes, enter Hawaii gross receipts
+   your main business activity:                                                      ,
+   your main business product:                                                       , AND your HI Tax I.D. No. for this activity GE
+
+
+                If designating another person to discuss this return with the Hawaii Department of Taxation, complete the following. This is not a full power of
+  DESIGNEE
+
+
+
+
+                attorney. See page 25 of the Instructions.
+      Designee’s name                                                                      Phone no.                                               Identification number 
+  HAWAII ELECTION                                  Indicate if you want $3 to go to the Hawaii Election Campaign Fund.                                    Yes
+  CAMPAIGN FUND
+ (See page 25 of the Instructions)
+                                              Â    If joint return, indicate if your spouse designates $3 to the fund.                                    Yes
+                                                                                                                                                                     Note: Placing an X in the “Yes” box
+                                                                                                                                                                     will not change your tax or refund.
+         DECLARATION — I declare, under the penalties set forth in section 231-36, HRS, that this return (including accompanying schedules or statements) has been examined by me and, to the best
+         of my knowledge and belief, is a true, correct, and complete return, made in good faith, for the taxable year stated, pursuant to the Hawaii Income Tax Law, Chapter 235, HRS.
+                    Your signature                                                    Date                                  Spouse’s signature (if filing jointly, BOTH must sign)   Date
+
+               Please print & sign. Do not use e-Signature.                                                           
+                    Your Occupation                                                   Daytime Phone Number                  Your Spouse’s Occupation                                 Daytime Phone Number
+ SIGN HERE
+  PLEASE
+
+
+
+
+                             Preparer’s                                                                                       Date                       Preparer Tax Identification Number (PTIN)
+                             Signature 
+               Paid                                                                                                                                      Federal Employer Identification Number (FEIN)
+                             Print
+               Preparer’s    Preparer’s Name 
+               Information
+                             Firm’s name (or yours                                                                                                       Telephone Number
+                             if self-employed),    
+                             Address, and ZIP Code
+
+
+
+
+N114N4X7                                                                                ID NO 01                                                                          FORM N-11 (REV. 2025)
+SCHEDULE CR                                                              STATE OF HAWAII—DEPARTMENT OF TAXATION                                                                             TAX YEAR
+
+                                                                                                                                                                                            2025
+(REV. 2025)
+                                                          SCHEDULE OF TAX CREDITS
+                               or other tax year beginning                                                               and ending
+                                                      Attach this schedule directly behind Form N-11, N-15,
+SCHCR_F 2025A 01 VID01
+                                                                      N-30, N-40 or N-70NP
+Name(s) as shown on return                                                                                                                                          SSN(s) or Federal Employer I.D. No.
+
+
+
+     PART I                 Refundable Tax Credits
+
+1     Capital Goods Excise Tax Credit (attach Form N-312) .................................................................................                                                                1
+
+
+2     Fuel Tax Credit for Commercial Fishers (attach Form N-163) .......................................................................                                                                   2
+
+
+3     Motion Picture, Digital Media, and Film Production Income Tax Credit (attach Form N-340) .......................                                                                                     3
+
+
+4     Place an X in the appropriate box for the type of energy system installed and placed in service:                                                                            Solar           Wind
+      Renewable Energy Technologies Income Tax Credit (For Systems Installed and
+      Placed in Service on or After July 1, 2009) (attach all Form(s) N-342) .........................................................                                                                    4
+
+
+5     Important Agricultural Land Qualified Agricultural Cost Tax Credit (attach Form N-344) ..............................                                                                               5
+
+
+6     Tax Credit for Research Activities (attach Form N-346) ................................................................................                                                             6
+
+
+7     Renewable Fuels Production Tax Credit for Tax Years After December 31, 2021 (attach Form N-360) .......                                                                                             7
+
+
+8     Earned Income Tax Credit (attach Form N-356) ...........................................................................................                                                            8
+
+
+9 Claim of Right Tax Credit (attach Form N-364) .............................................................................................                                                             9
+10 Other refundable credits
+   a. Pro rata share of taxes withheld and paid by a
+       partnership or S corporation on the
+       sale of Hawaii real property interests ............................ 10a
+
+
+      b.     Credit From a Regulated Investment Company ............ 10b
+      c.     Add lines 10a and 10b...........................................................................................................................                                         10c
+11    Total Refundable Credits. Add lines 1 through 9 and line 10c. Enter here and on Form N-11, line 32;
+      N-15, line 49; N-30, line 12; N-40, Schedule G, line 2; or N-70NP, line 18.
+      Attach this schedule directly behind your Form N-11, N-15, N-30, N-40 or N-70NP. ...................................                                                                                11
+
+     PART II                Nonrefundable Tax Credits
+12    Income tax paid to another state or foreign country (N-11, N-15, N-40, and N-70NP filers) (Attach
+      copy of tax return(s) from other state(s) or federal Form(s) 1116. See Instructions for Schedule CR
+      for more information.) ....................................................................................................................................                                         12
+
+
+13    Enterprise Zone Tax Credit (attach Form N-756) ..........................................................................................                                                           13
+
+                                                                   Column (a)                                             Column (c)                                           Column (d)
+                                                            Total Unused Carryover                                    Total Credit Applied                              Unused Credit to Carryover
+                                                           Credit from Prior Tax Year                                  to 2025 Tax Year                                     to 2026 Tax Year
+
+
+14    Carryover of the Credit for Energy Conservation (attach Form N-323)
+
+
+                                                                                                                                                                                                          14
+
+
+
+
+SCR1N4X7                                                                                 ID NO 01                                                                      SCHEDULE CR (REV. 2025)
+SCHEDULE CR                                                                                                                        Page 2
+(REV. 2025)
+                     Name(s) as shown on return                                                            SSN(s) or Federal Employer I.D. No.
+
+
+
+
+                                                 Column (a)                         Column (c)                         Column (d)
+SCHCR_F 2025A 02 VID01                    Total Unused Carryover                Total Credit Applied            Unused Credit to Carryover
+                                         Credit from Prior Tax Year              to 2025 Tax Year                   to 2026 Tax Year
+
+15   Carryover of the High Technology Business Investment Tax Credit (attach Form N-323)
+
+
+                                                                                                                                                 15
+
+
+16   Carryover of the Cesspool Upgrade, Conversion or Connection Income Tax Credit (attach Form N-323)
+
+
+                                                                                                                                                 16
+
+
+17   Carryover of the Technology Infrastructure Renovation Tax Credit (attach Form N-323)
+
+
+                                                                                                                                                 17
+
+
+18   Carryover of the Hotel Construction and Remodeling Tax Credit (attach Form N-323)
+
+
+                                                                                                                                                 18
+
+
+19   Carryover of the Residential Construction and Remodeling Tax Credit (attach Form N-323)
+
+
+                                                                                                                                                 19
+
+
+20   Carryover Renewable Energy Technologies Income Tax Credit (For Systems Installed & Placed in Service Before July 1, 2009) (attach Form N-323)
+
+
+                                                                                                                                                 20
+
+
+21   Carryover of the Organic Foods Production Tax Credit (attach Form N-323)
+
+
+                                                                                                                                                 21
+
+
+22   Carryover of the Renewable Fuels Production Tax Credit (For Tax Years Before January 1, 2022) (attach Form N-323)
+
+
+                                                                                                                                                 22
+
+
+23   Carryover of the Capital Infrastructure Tax Credit (attach Form N-348)
+
+
+                                                                                                                                                 23
+
+
+24   Carryover of the Earned Income Tax Credit (attach Form N-356)
+
+
+                                                                                                                                                 24
+
+             Column (a)                         Column (b)                          Column (c)                         Column (d)
+      Total Unused Carryover             Total New Credit Claimed               Total Credit Applied            Unused Credit to Carryover
+     Credit from Prior Tax Year              for 2025 Tax Year                   to 2025 Tax Year                   to 2026 Tax Year
+
+
+25   Tax Credit for Low-Income Housing (attach Form N-586)
+
+
+                                                                                                                                                 25
+
+
+26   Credit for Employment of Vocational Rehabilitation Referrals (attach Form N-884)
+
+
+                                                                                                                                                 26
+
+
+
+SCR2N4X7                                                     ID NO 01                                          SCHEDULE CR (REV. 2025)
+SCHEDULE CR                                                                                                                          Page 3
+(REV. 2025)
+                     Name(s) as shown on return                                                              SSN(s) or Federal Employer I.D. No.
+
+
+
+
+SCHCR_F 2025A 03 VID01
+
+             Column (a)                        Column (b)                          Column (c)                           Column (d)
+      Total Unused Carryover            Total New Credit Claimed               Total Credit Applied              Unused Credit to Carryover
+     Credit from Prior Tax Year             for 2025 Tax Year                   to 2025 Tax Year                     to 2026 Tax Year
+
+27   Credit for School Repair and Maintenance (attach Form N-330)
+
+
+                                                                                                                                                     27
+
+
+28   Nonrefundable Renewable Energy Technologies (For systems Installed and Placed in Service on or After July 1, 2009) (attach all Form(s) N-342)
+     Place an X in the appropriate box for the type of energy system installed and placed in service:                      Solar             Wind
+
+                                                                                                                                                     28
+
+
+29   Healthcare Preceptor Income Tax Credit (attach Form N-358)
+
+
+                                                                                                                                                     29
+
+
+30   Historic Preservation Income Tax Credit (attach Form N-325)
+
+
+                                                                                                                                                     30
+
+
+31   Nonrefundable Renewable Fuels Production Tax Credit (For Tax Years Beginning After December 31, 2021) (attach Form N-360)
+
+
+                                                                                                                                                     31
+
+
+32   Pass-Through Entity Tax Credit (attach Form N-362)
+
+
+                                                                                                                                                     32
+
+
+
+33   Total Nonrefundable Credits. Add lines 12 and 13 and Column (c) of lines 14 through 32.
+     Enter here and on Form N-11, line 35; N-15, line 52; N-30, line 14; N-40, Schedule G, line 4; or
+     N-70NP, line 20. Attach this schedule directly behind your Form N-11, N-15, N-30, N-40 or N-70NP.                                        33
+
+
+
+
+SCR3N4X7                                                   ID NO 01                                             SCHEDULE CR (REV. 2025)
+SCHEDULE X                                                                   STATE OF HAWAII — DEPARTMENT OF TAXATION
+(FORM N-11/N-15)
+(REV. 2025)                                                TAX CREDITS FOR HAWAII RESIDENTS                                                                                                             2025
+                                                                           Both pages of Schedule X must be attached
+                                                                                    to Form N-11 or N-15
+
+
+SCHX_I 2025A 01 VID01
+
+Name(s) as shown on Form N-11 or N-15                                                                                                                                               Your social security number
+
+
+PART I: CREDIT FOR LOW-INCOME HOUSEHOLD RENTERS
+ 1 Is your adjusted gross income (Form N-11, line 20; or Form N-15, line 35, Column A) less than $30,000?
+   If “No,” STOP. You cannot claim this credit. If “Yes,” go to line 2.
+ 2 Are you a resident who was present in Hawaii more than nine months in 2025? If “No,” STOP. You cannot claim this credit. If “Yes,” go to line 3.
+ 3 Can you be claimed as a dependent by another taxpayer? If “Yes,” STOP. You cannot claim this credit. If “No,” go to line 4.
+ 4 Enter required information for each rental unit that was fully subject to real property tax. Do not list rental units that were wholly or partially exempt from real property tax. If you occupied
+   more than one qualified unit, submit the required information for each additional unit on a separate sheet. If you shared the unit with others, enter only your share of the rent.
+   Address (give Apt. No., if any)
+   Occupied From                                                 , 2025, To                                               , 2025. Total rent paid for this period. $ ______________
+                                       month                                                    month
+     Owned by (or agent for owner)                                                                                                                                     GE __ __ __ - __ __ __ - __ __ __ __ - __ __
+                                                          name                                           address                                                                  (Hawaii Tax I.D. No.)
+
+ 5 Add up your share of rent paid during the taxable year for all the units you have listed. ............................................. 5
+ 6 Enter the amount of your exclusions (e.g., utilities, parking stalls, ground rent, rental subsidies such as public assistance). .....   6
+ 7 Line 5 minus line 6. If this amount is $1,000, or less, STOP. You cannot claim this credit.........................................     7
+ 8 List YOURSELF, YOUR SPOUSE, AND YOUR DEPENDENTS that meet all of the following: a) Resident of Hawaii, b) Present
+   in Hawaii for more than nine months in 2025, and c) Cannot be claimed as a dependent by another taxpayer.
+   Include minor children receiving more than half of their support from public agencies which you can claim as dependents.
+
+ 8                                             Name                                            Relationship                                               Name                                               Relationship
+                                                                                                   Self
+                                                                                                Spouse
+
+
+   Enter the number of qualified persons listed above................................................................................................................................. 8
+ 9 If you are a qualified exemption and you are age 65 or over, enter 1. Otherwise, enter -0-. ................................................................... 9
+10 If you are married filing jointly or married filing separately where your spouse is not filing a Hawaii
+   return, had no income, and was not the dependent of someone else; and your spouse is a qualified
+   exemption; and your spouse is age 65 or over; enter 1. Otherwise, enter -0-. ................................................................................................. 10
+11 Add lines 8 through 10. ............................................................................................................................................................................ 11
+12 Multiply the number of exemptions on line 11 by $50 and enter the result here and on Form N-11, line 29;
+   or Form N-15, line 46. This is your credit for low-income household renters. (Whole dollars only).............................. 12                                                                               00
+PART II: CREDIT FOR CHILD AND DEPENDENT CARE EXPENSES
+You cannot claim a credit for child and dependent care expenses if your filing status is married filing separately unless you meet the requirements listed
+in the instructions under “Married Persons Filing Separately.” If you meet these requirements, check this box.
+Section A:           Care Provider Information
+Complete line 1 columns (a) through (e) for each person or organization that provided the care. If you do not give the information asked for in each column,
+or if the information you give is not correct, your credit and, if applicable, the exclusion of employer-provided dependent care benefits may be disallowed.
+ 1         (a) Care                              (b) Address                        (c) Identification number      (d) Hawaii Tax           (e) Amount paid
+       provider’s name       (number, street, city, state, and Postal/ZIP code)           (SSN or FEIN)                I.D. No.
+
+
+                                                                                                                                                 GE __ __ __ - __ __ __ - __ __ __ __ - __ __
+
+
+
+                                                                                                                                                 GE __ __ __ - __ __ __ - __ __ __ __ - __ __
+
+Section B:    Dependent Care Benefits — (If you did not receive dependent care benefits, skip to line 21)
+ 2 Enter the total amount of dependent care benefits you received in 2025. Amounts you received as an employee
+   should be shown in Box 10 of your federal Form(s) W-2. If you were self-employed or a partner, include amounts
+   you received under a dependent care assistance program from your sole proprietorship or partnership. ...................                                                        2
+ 3 Enter the amount, if any, you carried over from 2024 and used in 2025 during the grace period. ...............................                                                  3
+ 4 Enter the amount, if any, you forfeited or carried forward to 2026. (See the Instructions)............................................                                          4      (                             )
+ 5 Combine lines 2 through 4. ...........................................................................................................................................          5
+SCX1N4X7                                                                               ID NO 01                                                                             SCHEDULE X (REV. 2025)
+SCHEDULE X (FORM N-11/N-15) (REV. 2025)                                                                                                                                                                            PAGE 2
+
+                              Name(s) as shown on Form N-11 or N-15                                                                                                                        Your social security number
+
+
+
+SCHX_I 2025A 02 VID01
+
+
+ 6 Enter the total amount of qualified expenses incurred in 2025 for the care of the qualifying person(s). ...                              6
+ 7 Enter the smaller of line 5 or 6. .....................................................................................                  7
+ 8 Enter your earned income. (See the Instructions) ........................................................                                8
+ 9 If married filing jointly, enter your spouse’s earned income (if you or your spouse
+   was a student or disabled, see the Instructions); if married filing separately,
+   see the Instructions; all others, enter the amount from line 8. ......................................                                   9
+10 Enter the smallest of line 7, 8, or 9. ..............................................................................                  10
+11 Enter $5,000 ($2,500 if married filing separately and you were required to enter your
+   spouse’s earned income on line 9). ..............................................................................                      11
+12 Is any amount on line 2 from your sole proprietorship or partnership?
+   No. Enter -0-.
+   Yes. Enter the amount here. ..............................................................................................................................................                12
+13 Line 5 minus line 12 ......................................................................................................            13
+14 Deductible benefits. Enter the smallest of line 10, 11, or 12. Also, include this amount on the appropriate line(s) of
+   your return. ........................................................................................................................................................................     14
+15 Excluded benefits. If line 12 is zero, enter the smaller of line 10 or 11. Otherwise, subtract line 14 from the smaller of
+   line 10 or 11. If zero or less, enter -0-. ...............................................................................................................................                15
+16 Taxable benefits. Line 13 minus line 15. If zero or less, enter -0-. Also, include this amount on Form N-15, line 7.
+   On the dotted line next to line 7, write “DCB.” (Form N-11 filers, see the Instructions) .....................................................                                            16
+17 Enter $10,000 ($20,000 if two or more qualifying persons) ...............................................................................................                                 17
+18 Add lines 14 and 15. .........................................................................................................................................................            18
+19 Line 17 minus line 18. If zero or less, STOP. You cannot take the credit. Exception. If you paid 2024 expenses in
+   2025, see the Instructions for line 28. ................................................................................................................................                  19
+20 Complete line 21. Do not include in column (e) any benefits shown on line 18. Then, add the amounts in column (e)
+   and enter the total here...................................................................................................................................................... 20
+Section C: Credit for Child and Dependent Care Expenses — (Generally, married persons must file a joint return to claim the tax credit.)
+                                                                                                                                                                                     (e) Qualified expenses
+21            (a) Qualifying person’s name                                        (b) Date of Birth                  (c) Grade            (d) Qualifying person’s social              you incurred and paid
+                                                                                    (mm/dd/yyyy)                   (pre-K to 12)                    security number                  in 2025 for the person
+                                                                                                                                                                                       listed in column (a)
+
+
+
+
+22 Add the amounts in column (e) of line 21. Do not enter more than $10,000 for one qualifying person or $20,000 for two
+   or more persons. If you completed Section B, enter the smaller of line 19 or 20. ....................................................................                                     22
+23 Enter your earned income. (See the Instructions) .............................................................................................................                            23
+24 If married filing jointly, enter your spouse’s earned income (if you or your spouse was a student or disabled,
+   see the Instructions); all others, enter the amount from line 23 .........................................................................................                                24
+25 Enter the smallest of line 22, 23, or 24. .............................................................................................................................                   25
+26 Enter your adjusted gross income from Form N-11, line 20; or Form N-15, line 35,
+   Column A ...................................................................................................................... 26
+27 Enter on line 27 the decimal amount shown below that applies to the amount on line 26.
+     If line 26 is:                   Decimal amount is:                   If line 26 is:                  Decimal amount is:
+         Under $25,001                      .25                            $40,001 – 45,000                      .21
+     $25,001 – 30,000                       .24                            $45,001 – 50,000                      .20
+     $30,001 – 35,000                       .23                            $50,001 and over                      .15
+     $35,001 – 40,000                       .22
+                                                                                                                                                                                             27                X
+28 Multiply line 25 by the decimal amount on line 27. If you paid 2024 expenses in 2025, see the Instructions.
+   Enter the result here and on Form N-11, line 30; or Form N-15, line 47. This is your credit for child and
+   dependent care expenses. (Whole dollars only)................................................................................................................                             28                      00
+
+SCX2N4X7                                                                                   ID NO 01                                                                               SCHEDULE X (REV. 2025)
+

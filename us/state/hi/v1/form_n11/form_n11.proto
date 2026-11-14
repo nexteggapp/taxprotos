@@ -1,0 +1,141 @@
+// Form N-11, Hawaii Individual Income Tax Return, Resident.
+//
+// Part-year residents and non-residents file Form N-15. Only the full-year
+// resident's return is modelled here.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form N-11; testdata
+// holds the text extracted from the published PDF and coverage_test.go asserts
+// every line a mapping claims appears on it.
+//
+// # Graduated rates on Hawaii taxable income
+//
+// Hawaii starts from federal adjusted gross income, adjusts it to Hawaii
+// adjusted gross income on line 20, takes off its own standard or itemized
+// deduction and $1,144 for each exemption, and taxes the rest at graduated
+// rates from 1.4% to 11%.
+//
+// # Refundable credits before nonrefundable ones
+//
+// The refundable credits on lines 28 to 33 come off the tax first, so the
+// adjusted tax liability on line 34, and the balance on line 36, may be
+// negative. A negative balance is refunded through line 42.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.hi.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/hi/v1/form_n11;formn11";
+
+// FilingStatus is the status the return is filed under, boxes 1 to 5.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+  FILING_STATUS_QUALIFYING_SURVIVING_SPOUSE = 5;
+}
+
+// FormN11 is what a Form N-11 states.
+message FormN11 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // The number of exemptions claimed, line 6e: the filer and spouse, each
+  // again at 65 or over, and every dependent.
+  int32 exemptions_claimed = 5 [(common.v1.fdx_absent) = true];
+
+  // Federal adjusted gross income, Form 1040 line 11.
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 6 [(common.v1.fdx_absent) = true];
+
+  // Wages Hawaii taxes differently from the federal return, such as COLA and ERS contributions.
+  nexteggapp.taxprotos.common.v1.Money cola_ers_wage_difference = 7 [(common.v1.fdx_absent) = true];
+
+  // Interest on bonds of other states, which Hawaii taxes.
+  nexteggapp.taxprotos.common.v1.Money out_of_state_bond_interest = 8 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money other_additions = 9 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_additions = 10 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money federal_agi_plus_additions = 11 [(common.v1.fdx_absent) = true];
+  // Pensions taxed federally that Hawaii exempts.
+  nexteggapp.taxprotos.common.v1.Money pensions_not_taxed = 12 [(common.v1.fdx_absent) = true];
+
+  // Social security benefits taxed on the federal return, which Hawaii exempts.
+  nexteggapp.taxprotos.common.v1.Money social_security_benefits = 13 [(common.v1.fdx_absent) = true];
+
+  // Up to $8,636 of reserve or Hawaii national guard duty pay.
+  nexteggapp.taxprotos.common.v1.Money military_reserve_pay = 14 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money individual_housing_account = 15 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money exceptional_trees = 16 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money other_subtractions = 17 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_subtractions = 18 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money hawaii_adjusted_gross_income = 19 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money medical_and_dental_expenses = 20 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money taxes_paid = 21 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money interest_expense = 22 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money contributions = 23 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money casualty_and_theft_losses = 24 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money miscellaneous_deductions = 25 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money itemized_deductions = 26 [(common.v1.fdx_absent) = true];
+  // $4,400 single or married filing separately, $8,800 joint or surviving spouse, $6,424 head of household.
+  nexteggapp.taxprotos.common.v1.Money standard_deduction = 27 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money income_after_deductions = 28 [(common.v1.fdx_absent) = true];
+  // $1,144 for each exemption on line 6e.
+  nexteggapp.taxprotos.common.v1.Money exemptions = 29 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 30 [(common.v1.fdx_absent) = true];
+  // From the tax table below $100,000, the rate schedules above it.
+  nexteggapp.taxprotos.common.v1.Money tax = 31 [(common.v1.fdx_absent) = true];
+
+  // The net capital gain the capital gains tax worksheet taxes at 7.25%.
+  nexteggapp.taxprotos.common.v1.Money net_capital_gain = 32 [(common.v1.fdx_absent) = true];
+
+  // Form N-311.
+  nexteggapp.taxprotos.common.v1.Money food_excise_tax_credit = 33 [(common.v1.fdx_absent) = true];
+
+  // Schedule X.
+  nexteggapp.taxprotos.common.v1.Money low_income_renters_credit = 34 [(common.v1.fdx_absent) = true];
+
+  // Schedule X.
+  nexteggapp.taxprotos.common.v1.Money child_and_dependent_care_credit = 35 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money child_passenger_restraint_credit = 36 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money schedule_cr_refundable_credits = 37 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_refundable_credits = 38 [(common.v1.fdx_absent) = true];
+  // Line 27 less line 33. It may be negative.
+  nexteggapp.taxprotos.common.v1.Money adjusted_tax_liability = 39 [(common.v1.fdx_absent) = true];
+
+  // Schedule CR.
+  nexteggapp.taxprotos.common.v1.Money nonrefundable_credits = 40 [(common.v1.fdx_absent) = true];
+
+  // Line 34 less line 35. It may be negative.
+  nexteggapp.taxprotos.common.v1.Money balance = 41 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money hawaii_tax_withheld = 42 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 43 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money prior_year_overpayment_applied = 44 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money extension_payment = 45 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_payments = 46 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money overpayment = 47 [(common.v1.fdx_absent) = true];
+  // Lines 43a to 43c.
+  nexteggapp.taxprotos.common.v1.Money contributions_to_funds = 48 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money overpayment_after_contributions = 49 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money credited_to_next_year = 50 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money refund = 51 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money amount_owed = 52 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_penalty = 53 [(common.v1.fdx_absent) = true];
+}
