@@ -98,6 +98,7 @@ import "taxprotos/us/state/ca/v1/form_540/form_540.proto";
 import "taxprotos/us/state/ca/v1/form_540/schedule_ca.proto";
 import "taxprotos/us/state/co/v1/form_dr0104/form_dr0104.proto";
 import "taxprotos/us/state/il/v1/form_il1040/form_il1040.proto";
+import "taxprotos/us/state/me/v1/form_1040me/form_1040me.proto";
 import "taxprotos/us/state/nc/v1/form_d400/form_d400.proto";
 import "taxprotos/us/state/or/v1/form_or40/form_or40.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
@@ -238,6 +239,9 @@ message Document {
 
     // A filed North Carolina return.
     NorthCarolinaReturn north_carolina_return = 49;
+
+    // A filed Maine return.
+    MaineReturn maine_return = 65;
 
     // A filed Colorado return.
     ColoradoReturn colorado_return = 50;
@@ -702,6 +706,12 @@ message OregonReturn {
 
   // Schedule OR-ASC, other additions, subtractions and credits.
   us.state.or.v1.ScheduleORASC schedule_or_asc = 3;
+}
+
+// A Maine resident return: Form 1040ME.
+message MaineReturn {
+  // Form 1040ME.
+  us.state.me.v1.Form1040ME form_1040me = 1;
 }
 
 // An Illinois resident return: Form IL-1040.
