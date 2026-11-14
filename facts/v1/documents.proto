@@ -120,6 +120,7 @@ import "taxprotos/us/state/ok/v1/form_511/form_511.proto";
 import "taxprotos/us/state/nm/v1/form_pit1/form_pit1.proto";
 import "taxprotos/us/state/nd/v1/form_nd1/form_nd1.proto";
 import "taxprotos/us/state/ne/v1/form_1040n/form_1040n.proto";
+import "taxprotos/us/state/ct/v1/form_ct1040/form_ct1040.proto";
 import "taxprotos/us/state/or/v1/form_or40/form_or40.proto";
 import "taxprotos/us/state/pa/v1/form_pa40/form_pa40.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
@@ -356,6 +357,8 @@ message Document {
 
     // A filed Vermont return.
     VermontReturn vermont_return = 84;
+    // A filed Connecticut return.
+    ConnecticutReturn connecticut_return = 54;
   }
 }
 
@@ -1007,4 +1010,8 @@ message HawaiiReturn {
 message VermontReturn {
   // Form IN-111.
   us.state.vt.v1.FormIN111 form_in111 = 1;
+// A Connecticut resident return: Form CT-1040.
+message ConnecticutReturn {
+  // Form CT-1040.
+  us.state.ct.v1.FormCT1040 form_ct1040 = 1;
 }
