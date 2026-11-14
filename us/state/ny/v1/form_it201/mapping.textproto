@@ -1,0 +1,385 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form IT-201 calls each concept, per tax year.
+#
+# Lines come from the 2025 Form IT-201 as the New York State Department of
+# Taxation and Finance publishes it. There are no amount codes: IRS
+# Publication 1220 covers the information returns the IRS receives
+# electronically, and a state return is not one of them.
+
+form: "IT-201"
+message_name: "nexteggapp.taxprotos.us.state.ny.v1.FormIT201"
+tax_years: 2025
+
+concepts {
+  concept: "filing_status"
+  years { tax_year: 2025 irs_box: "A" }
+}
+concepts {
+  concept: "claimed_as_dependent"
+  years { tax_year: 2025 irs_box: "C" }
+}
+concepts {
+  concept: "new_york_city_resident"
+  years { tax_year: 2025 irs_box: "F" note: "Item F: twelve months lived in New York City." }
+}
+concepts {
+  concept: "dependents"
+  years { tax_year: 2025 irs_box: "H" }
+}
+concepts {
+  concept: "itemized"
+  years { tax_year: 2025 irs_box: "34" note: "The box marking line 34 as the itemized deduction." }
+}
+concepts {
+  concept: "wages"
+  years { tax_year: 2025 irs_box: "1" }
+}
+concepts {
+  concept: "taxable_interest"
+  years { tax_year: 2025 irs_box: "2" }
+}
+concepts {
+  concept: "ordinary_dividends"
+  years { tax_year: 2025 irs_box: "3" }
+}
+concepts {
+  concept: "taxable_state_and_local_refunds"
+  years { tax_year: 2025 irs_box: "4" }
+}
+concepts {
+  concept: "alimony_received"
+  years { tax_year: 2025 irs_box: "5" }
+}
+concepts {
+  concept: "business_income"
+  years { tax_year: 2025 irs_box: "6" }
+}
+concepts {
+  concept: "capital_gain"
+  years { tax_year: 2025 irs_box: "7" }
+}
+concepts {
+  concept: "other_gains"
+  years { tax_year: 2025 irs_box: "8" }
+}
+concepts {
+  concept: "ira_distributions_taxable"
+  years { tax_year: 2025 irs_box: "9" }
+}
+concepts {
+  concept: "pensions_and_annuities_taxable"
+  years { tax_year: 2025 irs_box: "10" }
+}
+concepts {
+  concept: "rental_partnership_s_corporation_and_trust_income"
+  years { tax_year: 2025 irs_box: "11" }
+}
+concepts {
+  concept: "rental_real_estate_income"
+  years { tax_year: 2025 irs_box: "12" }
+}
+concepts {
+  concept: "farm_income"
+  years { tax_year: 2025 irs_box: "13" }
+}
+concepts {
+  concept: "unemployment_compensation"
+  years { tax_year: 2025 irs_box: "14" }
+}
+concepts {
+  concept: "social_security_benefits_taxable"
+  years { tax_year: 2025 irs_box: "15" }
+}
+concepts {
+  concept: "other_income"
+  years { tax_year: 2025 irs_box: "16" }
+}
+concepts {
+  concept: "total_federal_income"
+  years { tax_year: 2025 irs_box: "17" }
+}
+concepts {
+  concept: "federal_adjustments_to_income"
+  years { tax_year: 2025 irs_box: "18" }
+}
+concepts {
+  concept: "federal_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "19" }
+}
+concepts {
+  concept: "other_state_and_local_bond_interest"
+  years { tax_year: 2025 irs_box: "20" }
+}
+concepts {
+  concept: "public_employee_414h_contributions"
+  years { tax_year: 2025 irs_box: "21" }
+}
+concepts {
+  concept: "ny_529_distributions"
+  years { tax_year: 2025 irs_box: "22" }
+}
+concepts {
+  concept: "other_additions"
+  years { tax_year: 2025 irs_box: "23" }
+}
+concepts {
+  concept: "income_with_additions"
+  years { tax_year: 2025 irs_box: "24" }
+}
+concepts {
+  concept: "state_and_local_refunds_subtracted"
+  years { tax_year: 2025 irs_box: "25" }
+}
+concepts {
+  concept: "government_pensions"
+  years { tax_year: 2025 irs_box: "26" }
+}
+concepts {
+  concept: "social_security_benefits_subtracted"
+  years { tax_year: 2025 irs_box: "27" }
+}
+concepts {
+  concept: "us_government_bond_interest"
+  years { tax_year: 2025 irs_box: "28" }
+}
+concepts {
+  concept: "pension_and_annuity_exclusion"
+  years { tax_year: 2025 irs_box: "29" }
+}
+concepts {
+  concept: "ny_529_deduction"
+  years { tax_year: 2025 irs_box: "30" }
+}
+concepts {
+  concept: "other_subtractions"
+  years { tax_year: 2025 irs_box: "31" }
+}
+concepts {
+  concept: "total_subtractions"
+  years { tax_year: 2025 irs_box: "32" }
+}
+concepts {
+  concept: "new_york_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "33" }
+}
+concepts {
+  concept: "deduction"
+  years { tax_year: 2025 irs_box: "34" note: "The amount on line 34." }
+}
+concepts {
+  concept: "income_after_deduction"
+  years { tax_year: 2025 irs_box: "35" }
+}
+concepts {
+  concept: "dependent_exemption"
+  years { tax_year: 2025 irs_box: "36" }
+}
+concepts {
+  concept: "taxable_income"
+  years { tax_year: 2025 irs_box: "37" }
+}
+concepts {
+  concept: "new_york_state_tax"
+  years { tax_year: 2025 irs_box: "39" }
+}
+concepts {
+  concept: "nys_household_credit"
+  years { tax_year: 2025 irs_box: "40" }
+}
+concepts {
+  concept: "resident_credit"
+  years { tax_year: 2025 irs_box: "41" }
+}
+concepts {
+  concept: "other_nys_nonrefundable_credits"
+  years { tax_year: 2025 irs_box: "42" }
+}
+concepts {
+  concept: "total_nys_nonrefundable_credits"
+  years { tax_year: 2025 irs_box: "43" }
+}
+concepts {
+  concept: "nys_tax_after_credits"
+  years { tax_year: 2025 irs_box: "44" }
+}
+concepts {
+  concept: "net_other_nys_taxes"
+  years { tax_year: 2025 irs_box: "45" }
+}
+concepts {
+  concept: "total_new_york_state_taxes"
+  years { tax_year: 2025 irs_box: "46" }
+}
+concepts {
+  concept: "nyc_taxable_income"
+  years { tax_year: 2025 irs_box: "47" }
+}
+concepts {
+  concept: "nyc_resident_tax"
+  years { tax_year: 2025 irs_box: "47a" }
+}
+concepts {
+  concept: "nyc_household_credit"
+  years { tax_year: 2025 irs_box: "48" }
+}
+concepts {
+  concept: "nyc_tax_after_household_credit"
+  years { tax_year: 2025 irs_box: "49" }
+}
+concepts {
+  concept: "part_year_nyc_resident_tax"
+  years { tax_year: 2025 irs_box: "50" }
+}
+concepts {
+  concept: "other_nyc_taxes"
+  years { tax_year: 2025 irs_box: "51" }
+}
+concepts {
+  concept: "nyc_taxes_before_credits"
+  years { tax_year: 2025 irs_box: "52" }
+}
+concepts {
+  concept: "nyc_nonrefundable_credits"
+  years { tax_year: 2025 irs_box: "53" }
+}
+concepts {
+  concept: "nyc_tax_after_credits"
+  years { tax_year: 2025 irs_box: "54" }
+}
+concepts {
+  concept: "mctmt_zone_1_base"
+  years { tax_year: 2025 irs_box: "54a" }
+}
+concepts {
+  concept: "mctmt_zone_2_base"
+  years { tax_year: 2025 irs_box: "54b" }
+}
+concepts {
+  concept: "mctmt_zone_1"
+  years { tax_year: 2025 irs_box: "54c" }
+}
+concepts {
+  concept: "mctmt_zone_2"
+  years { tax_year: 2025 irs_box: "54d" }
+}
+concepts {
+  concept: "total_mctmt"
+  years { tax_year: 2025 irs_box: "54e" }
+}
+concepts {
+  concept: "yonkers_resident_surcharge"
+  years { tax_year: 2025 irs_box: "55" }
+}
+concepts {
+  concept: "yonkers_nonresident_earnings_tax"
+  years { tax_year: 2025 irs_box: "56" }
+}
+concepts {
+  concept: "part_year_yonkers_surcharge"
+  years { tax_year: 2025 irs_box: "57" }
+}
+concepts {
+  concept: "total_nyc_and_yonkers_taxes"
+  years { tax_year: 2025 irs_box: "58" }
+}
+concepts {
+  concept: "sales_or_use_tax"
+  years { tax_year: 2025 irs_box: "59" }
+}
+concepts {
+  concept: "voluntary_contributions"
+  years { tax_year: 2025 irs_box: "60" }
+}
+concepts {
+  concept: "total_taxes"
+  years { tax_year: 2025 irs_box: "61" }
+}
+concepts {
+  concept: "empire_state_child_credit"
+  years { tax_year: 2025 irs_box: "63" }
+}
+concepts {
+  concept: "child_and_dependent_care_credit"
+  years { tax_year: 2025 irs_box: "64" }
+}
+concepts {
+  concept: "earned_income_credit"
+  years { tax_year: 2025 irs_box: "65" }
+}
+concepts {
+  concept: "noncustodial_parent_earned_income_credit"
+  years { tax_year: 2025 irs_box: "66" }
+}
+concepts {
+  concept: "real_property_tax_credit"
+  years { tax_year: 2025 irs_box: "67" }
+}
+concepts {
+  concept: "college_tuition_credit"
+  years { tax_year: 2025 irs_box: "68" }
+}
+concepts {
+  concept: "nyc_school_tax_credit_fixed"
+  years { tax_year: 2025 irs_box: "69" }
+}
+concepts {
+  concept: "nyc_school_tax_credit_rate_reduction"
+  years { tax_year: 2025 irs_box: "69a" }
+}
+concepts {
+  concept: "nyc_earned_income_credit"
+  years { tax_year: 2025 irs_box: "70" }
+}
+concepts {
+  concept: "nyc_income_tax_elimination_credit"
+  years { tax_year: 2025 irs_box: "70a" }
+}
+concepts {
+  concept: "other_refundable_credits"
+  years { tax_year: 2025 irs_box: "71" }
+}
+concepts {
+  concept: "nys_tax_withheld"
+  years { tax_year: 2025 irs_box: "72" }
+}
+concepts {
+  concept: "nyc_tax_withheld"
+  years { tax_year: 2025 irs_box: "73" }
+}
+concepts {
+  concept: "yonkers_tax_withheld"
+  years { tax_year: 2025 irs_box: "74" }
+}
+concepts {
+  concept: "estimated_tax_payments"
+  years { tax_year: 2025 irs_box: "75" }
+}
+concepts {
+  concept: "total_payments"
+  years { tax_year: 2025 irs_box: "76" }
+}
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "77" }
+}
+concepts {
+  concept: "refund"
+  years { tax_year: 2025 irs_box: "78" }
+}
+concepts {
+  concept: "refund_to_529_account"
+  years { tax_year: 2025 irs_box: "78a" }
+}
+concepts {
+  concept: "refund_after_529_deposit"
+  years { tax_year: 2025 irs_box: "78b" }
+}
+concepts {
+  concept: "applied_to_next_year"
+  years { tax_year: 2025 irs_box: "79" }
+}
+concepts {
+  concept: "amount_owed"
+  years { tax_year: 2025 irs_box: "80" }
+}
