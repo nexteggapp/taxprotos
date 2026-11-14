@@ -1,0 +1,151 @@
+// Form M1, Minnesota Individual Income Tax.
+//
+// Part-year residents and nonresidents file the same form with Schedule M1NR,
+// which fills lines 13, 13a and 13b. Only the full-year resident's return is
+// modelled here.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form M1; testdata holds
+// the text extracted from the published PDF and coverage_test.go asserts every
+// line a mapping claims appears on it.
+//
+// # Graduated rates on federal adjusted gross income
+//
+// Minnesota starts from federal adjusted gross income, adds and subtracts the
+// Schedule M1M modifications, takes its own standard or itemized deduction
+// (Schedule M1SA) and dependent exemptions, and taxes the rest at four rates
+// from 5.35% to 9.85%.
+//
+// # Credits that are refunded
+//
+// The Child and Working Family Credits (Schedule M1CWFC) and the other
+// refundable credits come in on line 22, from Schedule M1REF, as payments.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.mn.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/mn/v1/form_m1;formm1";
+
+// FilingStatus is the status the return is filed under.
+//
+// Minnesota uses the federal status.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+  FILING_STATUS_QUALIFYING_SURVIVING_SPOUSE = 5;
+}
+
+// FormM1 is what a Form M1 states.
+message FormM1 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // Line 4 is itemized deductions from Schedule M1SA rather than the standard
+  // deduction.
+  bool itemized = 5 [(common.v1.fdx_absent) = true];
+
+
+  // Wages, salaries and tips from the federal return.
+  nexteggapp.taxprotos.common.v1.Money wages = 6 [(common.v1.fdx_absent) = true];
+
+  // Taxable IRA distributions, pensions and annuities from the federal return.
+  nexteggapp.taxprotos.common.v1.Money ira_pensions_and_annuities = 7 [(common.v1.fdx_absent) = true];
+
+  // Unemployment compensation from the federal return.
+  nexteggapp.taxprotos.common.v1.Money unemployment_compensation = 8 [(common.v1.fdx_absent) = true];
+
+  // Federal taxable income.
+  nexteggapp.taxprotos.common.v1.Money federal_taxable_income = 9 [(common.v1.fdx_absent) = true];
+
+  // Social security benefits received, taxable or not.
+  nexteggapp.taxprotos.common.v1.Money social_security_benefits = 10 [(common.v1.fdx_absent) = true];
+
+  // The part of the social security benefits taxed federally.
+  nexteggapp.taxprotos.common.v1.Money taxable_social_security_benefits = 11 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 12 [(common.v1.fdx_absent) = true];
+
+  // Additions to income from Schedule M1M (and Schedule M1MB).
+  nexteggapp.taxprotos.common.v1.Money additions = 13 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money income_with_additions = 14 [(common.v1.fdx_absent) = true];
+
+  // Itemized deductions from Schedule M1SA, or the standard deduction.
+  nexteggapp.taxprotos.common.v1.Money deduction = 15 [(common.v1.fdx_absent) = true];
+
+  // Exemptions for dependents, from the worksheet for line 5.
+  nexteggapp.taxprotos.common.v1.Money dependent_exemptions = 16 [(common.v1.fdx_absent) = true];
+
+  // A state income tax refund counted as income federally.
+  nexteggapp.taxprotos.common.v1.Money state_income_tax_refund = 17 [(common.v1.fdx_absent) = true];
+
+  // Subtractions from Schedule M1M (and Schedule M1MB).
+  nexteggapp.taxprotos.common.v1.Money subtractions = 18 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_subtractions = 19 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 20 [(common.v1.fdx_absent) = true];
+
+  // Tax from the tax table or the rate schedules.
+  nexteggapp.taxprotos.common.v1.Money tax = 21 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money alternative_minimum_tax = 22 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_with_alternative_minimum_tax = 23 [(common.v1.fdx_absent) = true];
+
+  // Line 12 again for a full-year resident.
+  nexteggapp.taxprotos.common.v1.Money tax_before_other_taxes = 24 [(common.v1.fdx_absent) = true];
+
+  // Recapture amounts, tax on lump-sum distributions and the like.
+  nexteggapp.taxprotos.common.v1.Money other_taxes = 25 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money advance_child_tax_credit_repayment = 26 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_before_credits = 27 [(common.v1.fdx_absent) = true];
+
+  // Nonrefundable credits from Schedule M1C.
+  nexteggapp.taxprotos.common.v1.Money nonrefundable_credits = 28 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_after_nonrefundable_credits = 29 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money nongame_wildlife_contribution = 30 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_tax = 31 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money minnesota_tax_withheld = 32 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money estimated_and_extension_payments = 33 [(common.v1.fdx_absent) = true];
+
+  // Refundable credits from Schedule M1REF, among them the Child and Working Family Credits.
+  nexteggapp.taxprotos.common.v1.Money refundable_credits = 34 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_payments = 35 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money refund = 36 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money amount_owed = 37 [(common.v1.fdx_absent) = true];
+
+  // Penalty from Schedule M15.
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_penalty = 38 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money penalty_and_interest = 39 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money refund_paid_to_you = 40 [(common.v1.fdx_absent) = true];
+
+  // The part of the refund applied to next year's estimated tax.
+  nexteggapp.taxprotos.common.v1.Money refund_applied_to_estimated_tax = 41 [(common.v1.fdx_absent) = true];
+}
