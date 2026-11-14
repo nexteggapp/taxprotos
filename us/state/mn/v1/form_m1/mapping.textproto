@@ -1,0 +1,172 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form M1 calls each concept, per tax year.
+#
+# Lines come from the 2025 Form M1 as the Minnesota Department of Revenue
+# publishes it. There are no amount codes: IRS Publication 1220 covers the
+# information returns the IRS receives electronically, and a state return is not
+# one of them.
+#
+# Items A to F, copied from the federal return, are lettered rather than
+# numbered.
+
+form: "M1"
+message_name: "nexteggapp.taxprotos.us.state.mn.v1.FormM1"
+tax_years: 2025
+
+concepts {
+  concept: "itemized"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+    note: "Whether line 4 is itemized deductions rather than the standard deduction."
+  }
+}
+concepts {
+  concept: "wages"
+  years { tax_year: 2025 irs_box: "A" }
+}
+concepts {
+  concept: "ira_pensions_and_annuities"
+  years { tax_year: 2025 irs_box: "B" }
+}
+concepts {
+  concept: "unemployment_compensation"
+  years { tax_year: 2025 irs_box: "C" }
+}
+concepts {
+  concept: "federal_taxable_income"
+  years { tax_year: 2025 irs_box: "D" }
+}
+concepts {
+  concept: "social_security_benefits"
+  years { tax_year: 2025 irs_box: "E" }
+}
+concepts {
+  concept: "taxable_social_security_benefits"
+  years { tax_year: 2025 irs_box: "F" }
+}
+concepts {
+  concept: "federal_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "1" }
+}
+concepts {
+  concept: "additions"
+  years { tax_year: 2025 irs_box: "2" }
+}
+concepts {
+  concept: "income_with_additions"
+  years { tax_year: 2025 irs_box: "3" }
+}
+concepts {
+  concept: "deduction"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+    note: "The amount on line 4, itemized or standard."
+  }
+}
+concepts {
+  concept: "dependent_exemptions"
+  years { tax_year: 2025 irs_box: "5" }
+}
+concepts {
+  concept: "state_income_tax_refund"
+  years { tax_year: 2025 irs_box: "6" }
+}
+concepts {
+  concept: "subtractions"
+  years { tax_year: 2025 irs_box: "7" }
+}
+concepts {
+  concept: "total_subtractions"
+  years { tax_year: 2025 irs_box: "8" }
+}
+concepts {
+  concept: "taxable_income"
+  years { tax_year: 2025 irs_box: "9" }
+}
+concepts {
+  concept: "tax"
+  years { tax_year: 2025 irs_box: "10" }
+}
+concepts {
+  concept: "alternative_minimum_tax"
+  years { tax_year: 2025 irs_box: "11" }
+}
+concepts {
+  concept: "tax_with_alternative_minimum_tax"
+  years { tax_year: 2025 irs_box: "12" }
+}
+concepts {
+  concept: "tax_before_other_taxes"
+  years { tax_year: 2025 irs_box: "13" }
+}
+concepts {
+  concept: "other_taxes"
+  years { tax_year: 2025 irs_box: "14a" }
+}
+concepts {
+  concept: "advance_child_tax_credit_repayment"
+  years { tax_year: 2025 irs_box: "14b" }
+}
+concepts {
+  concept: "tax_before_credits"
+  years { tax_year: 2025 irs_box: "15" }
+}
+concepts {
+  concept: "nonrefundable_credits"
+  years { tax_year: 2025 irs_box: "16" }
+}
+concepts {
+  concept: "tax_after_nonrefundable_credits"
+  years { tax_year: 2025 irs_box: "17" }
+}
+concepts {
+  concept: "nongame_wildlife_contribution"
+  years { tax_year: 2025 irs_box: "18" }
+}
+concepts {
+  concept: "total_tax"
+  years { tax_year: 2025 irs_box: "19" }
+}
+concepts {
+  concept: "minnesota_tax_withheld"
+  years { tax_year: 2025 irs_box: "20" }
+}
+concepts {
+  concept: "estimated_and_extension_payments"
+  years { tax_year: 2025 irs_box: "21" }
+}
+concepts {
+  concept: "refundable_credits"
+  years { tax_year: 2025 irs_box: "22" }
+}
+concepts {
+  concept: "total_payments"
+  years { tax_year: 2025 irs_box: "23" }
+}
+concepts {
+  concept: "refund"
+  years { tax_year: 2025 irs_box: "24" }
+}
+concepts {
+  concept: "amount_owed"
+  years { tax_year: 2025 irs_box: "26" }
+}
+concepts {
+  concept: "estimated_tax_penalty"
+  years { tax_year: 2025 irs_box: "27" }
+}
+concepts {
+  concept: "penalty_and_interest"
+  years { tax_year: 2025 irs_box: "28" }
+}
+concepts {
+  concept: "refund_paid_to_you"
+  years { tax_year: 2025 irs_box: "29" }
+}
+concepts {
+  concept: "refund_applied_to_estimated_tax"
+  years { tax_year: 2025 irs_box: "30" }
+}
