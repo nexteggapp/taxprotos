@@ -104,6 +104,7 @@ import "taxprotos/us/state/ga/v1/form_500/form_500.proto";
 import "taxprotos/us/state/ia/v1/form_ia1040/form_ia1040.proto";
 import "taxprotos/us/state/ks/v1/form_k40/form_k40.proto";
 import "taxprotos/us/state/dc/v1/form_d40/form_d40.proto";
+import "taxprotos/us/state/hi/v1/form_n11/form_n11.proto";
 import "taxprotos/us/state/il/v1/form_il1040/form_il1040.proto";
 import "taxprotos/us/state/mi/v1/form_mi1040/form_mi1040.proto";
 import "taxprotos/us/state/ky/v1/form_740/form_740.proto";
@@ -344,6 +345,8 @@ message Document {
 
     // A filed West Virginia return.
     WestVirginiaReturn west_virginia_return = 86;
+    // A filed Hawaii return.
+    HawaiiReturn hawaii_return = 58;
   }
 }
 
@@ -977,4 +980,8 @@ message SouthCarolinaReturn {
 message WestVirginiaReturn {
   // Form IT-140.
   us.state.wv.v1.FormIT140 form_it140 = 1;
+// A Hawaii resident return: Form N-11.
+message HawaiiReturn {
+  // Form N-11.
+  us.state.hi.v1.FormN11 form_n11 = 1;
 }

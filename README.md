@@ -7,6 +7,9 @@ Indiana, Iowa, Kansas, Kentucky, Louisiana, Maine, Michigan, Mississippi,
 Missouri, Montana, Nebraska, New Mexico, North Carolina, North Dakota, Oklahoma,
 Oregon, Pennsylvania, South Carolina, Utah, Virginia, Washington and West
 Virginia, and `TaxYearFacts`, a household's own facts for one tax year.
+receives, the Form 1040 it files, the state returns for Arizona, California,
+Colorado, Hawaii, Illinois, North Carolina, Oregon and Washington, and `TaxYearFacts`, a
+household's own facts for one tax year.
 
 A schema holds what the form prints and nothing else. It has no confidence
 scores, page coordinates or other traces of how a document was read. Software
@@ -194,6 +197,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 ### State returns — what thirty-one states want as well
 ### State returns — what eight jurisdictions want as well
 ### State returns — what thirty-one states want as well
+### State returns — what eight states want as well
 
 | Form | Schema | Reports |
 |---|---|---|
@@ -207,6 +211,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [K-40](https://www.ksrevenue.gov/pdf/k-4025.pdf) | [`form_k40.proto`](us/state/ks/v1/form_k40/form_k40.proto) | The Kansas resident return |
 | [40](https://www.revenue.alabama.gov/wp-content/uploads/2026/01/25f40blk.pdf) | [`form_40.proto`](us/state/al/v1/form_40/form_40.proto) | The Alabama resident return |
 | [D-40](https://otr.cfo.dc.gov/sites/default/files/dc/sites/otr/publication/attachments/2025_D40_Book_082026_v1.pdf) | [`form_d40.proto`](us/state/dc/v1/form_d40/form_d40.proto) | The District of Columbia resident return |
+| [N-11](https://files.hawaii.gov/tax/forms/2025/n11_f.pdf) | [`form_n11.proto`](us/state/hi/v1/form_n11/form_n11.proto) | The Hawaii resident return |
 | [IL-1040](https://tax.illinois.gov/content/dam/soi/en/web/tax/forms/incometax/documents/currentyear/individual/il-1040.pdf) | [`form_il1040.proto`](us/state/il/v1/form_il1040/form_il1040.proto) | The Illinois resident return |
 | [MI-1040](https://www.michigan.gov/taxes/-/media/Project/Websites/taxes/Forms/IIT/TY2025/MI-1040.pdf) | [`form_mi1040.proto`](us/state/mi/v1/form_mi1040/form_mi1040.proto) | The Michigan resident return |
 | [740](https://revenue.ky.gov/Forms/740%20(2025).pdf) | [`form_740.proto`](us/state/ky/v1/form_740/form_740.proto) | The Kentucky resident return |

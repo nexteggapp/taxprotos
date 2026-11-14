@@ -463,6 +463,8 @@ message PriorYearReturn {
 
     // A West Virginia return.
     WestVirginiaReturn west_virginia = 53;
+    // A Hawaii return.
+    HawaiiReturn hawaii = 25;
   }
 
   // Where the return came from, when it is here.
