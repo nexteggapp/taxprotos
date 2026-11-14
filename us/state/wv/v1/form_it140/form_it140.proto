@@ -1,0 +1,117 @@
+// Form IT-140, West Virginia Personal Income Tax Return.
+//
+// Only the full-year resident return is modelled. A nonresident or part-year
+// resident completes Schedule A as well, which is not modelled here.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form IT-140; testdata
+// holds the text extracted from the published PDF and coverage_test.go asserts
+// every line a mapping claims appears on it.
+//
+// # West Virginia starts from federal adjusted gross income
+//
+// Lines 2 and 3 carry the totals of Schedule M, additions and subtractions.
+// Two Schedule M subtractions are kept here as their own fields because they
+// depend on the federal return: Social Security benefits (line 34) and the
+// senior citizen or disability modification (line 47). Line 4 is West
+// Virginia adjusted gross income; the low-income earned income exclusion and
+// $2,000 for each exemption come off it to give taxable income on line 7.
+//
+// # Graduated rates
+//
+// Line 8 is the tax from the Tax Table or Rate Schedule I, or Rate Schedule II
+// for married filing separately: 2.22% to 4.82% for 2025.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.wv.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/wv/v1/form_it140;formit140";
+
+// FilingStatus is the status the return is filed under, boxes 1 to 5.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 2;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 3;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 4;
+  FILING_STATUS_WIDOW_WITH_DEPENDENT_CHILD = 5;
+}
+
+// FormIT140 is what a Form IT-140 states.
+message FormIT140 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // Exemption boxes (a) to (e). Box (a) is blank when someone else can claim
+  // the filer as a dependent.
+  int32 exemption_self = 5 [(common.v1.fdx_absent) = true];
+  int32 exemption_spouse = 6 [(common.v1.fdx_absent) = true];
+  int32 exemption_dependents = 7 [(common.v1.fdx_absent) = true];
+  int32 exemption_surviving_spouse = 8 [(common.v1.fdx_absent) = true];
+  int32 total_exemptions = 9 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 10 [(common.v1.fdx_absent) = true];
+
+  // Total additions from Schedule M.
+  nexteggapp.taxprotos.common.v1.Money additions = 11 [(common.v1.fdx_absent) = true];
+
+  // Total subtractions from Schedule M.
+  nexteggapp.taxprotos.common.v1.Money subtractions = 12 [(common.v1.fdx_absent) = true];
+
+  // Schedule M line 34: federally taxable Social Security benefits, both columns.
+  nexteggapp.taxprotos.common.v1.Money social_security_subtraction = 13 [(common.v1.fdx_absent) = true];
+
+  // Schedule M line 47: the senior citizen or disability modification, both columns.
+  nexteggapp.taxprotos.common.v1.Money senior_citizen_modification = 14 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money west_virginia_adjusted_gross_income = 15 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money low_income_earned_income_exclusion = 16 [(common.v1.fdx_absent) = true];
+
+  // $2,000 for each exemption, or $500 when there are none.
+  nexteggapp.taxprotos.common.v1.Money exemption_amount = 17 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 18 [(common.v1.fdx_absent) = true];
+
+  // From the Tax Table or a Rate Schedule.
+  nexteggapp.taxprotos.common.v1.Money income_tax = 19 [(common.v1.fdx_absent) = true];
+
+  // Total from the Tax Credit Recap Schedule.
+  nexteggapp.taxprotos.common.v1.Money credits = 20 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_income_tax_due = 21 [(common.v1.fdx_absent) = true];
+
+  // Amended returns only.
+  nexteggapp.taxprotos.common.v1.Money overpayment_previously_refunded = 22 [(common.v1.fdx_absent) = true];
+
+  // From Form IT-210.
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_penalty = 23 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money use_tax = 24 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_amount_due = 25 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money west_virginia_tax_withheld = 26 [(common.v1.fdx_absent) = true];
+
+  // Includes payments with Schedule 4868.
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 27 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money non_family_adoption_credit = 28 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money senior_citizen_tax_credit = 29 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money homestead_excess_property_tax_credit = 30 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money build_wv_property_value_adjustment_credit = 31 [(common.v1.fdx_absent) = true];
+
+  // Motor vehicle, disabled veteran and small business property tax credits.
+  nexteggapp.taxprotos.common.v1.Money property_tax_adjustment_credits = 32 [(common.v1.fdx_absent) = true];
+
+  // Amended returns only.
+  nexteggapp.taxprotos.common.v1.Money amount_paid_with_original_return = 33 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_payments_and_refundable_credits = 34 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money balance_due = 35 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money overpayment = 36 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money donations = 37 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money credited_to_next_year = 38 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money refund = 39 [(common.v1.fdx_absent) = true];
+}

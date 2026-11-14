@@ -1,0 +1,28 @@
+# gazelle:ignore
+
+load("@protobuf//bazel:proto_library.bzl", "proto_library")
+
+# Form IT-140: the return a full-year West Virginia resident files.
+proto_library(
+    name = "form_it140_proto",
+    # Imported as taxprotos/..., so consumers import these files by that path.
+    import_prefix = "taxprotos",
+    srcs = [
+        "form_it140.proto",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//common/v1:common_proto",
+    ],
+)
+
+# The mapping and the form extract it is checked against, for
+# //go/us/state/wv/v1/form_it140.
+filegroup(
+    name = "test_oracles",
+    srcs = glob([
+        "mapping.textproto",
+        "testdata/**",
+    ]),
+    visibility = ["//go/us/state/wv/v1/form_it140:__pkg__"],
+)
