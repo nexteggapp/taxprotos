@@ -455,6 +455,8 @@ message PriorYearReturn {
     SouthCarolinaReturn south_carolina = 49;
     // A District of Columbia return.
     DistrictOfColumbiaReturn district_of_columbia = 23;
+    // A West Virginia return.
+    WestVirginiaReturn west_virginia = 53;
   }
 
   // Where the return came from, when it is here.

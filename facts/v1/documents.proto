@@ -125,6 +125,7 @@ import "taxprotos/us/state/ut/v1/form_tc40/form_tc40.proto";
 import "taxprotos/us/state/wa/v1/capital_gains/capital_gains_return.proto";
 import "taxprotos/us/state/va/v1/form_760/form_760.proto";
 import "taxprotos/us/state/sc/v1/form_sc1040/form_sc1040.proto";
+import "taxprotos/us/state/wv/v1/form_it140/form_it140.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/facts/v1;factsv1";
 
@@ -334,6 +335,8 @@ message Document {
     SouthCarolinaReturn south_carolina_return = 82;
     // A filed District of Columbia return.
     DistrictOfColumbiaReturn district_of_columbia_return = 56;
+    // A filed West Virginia return.
+    WestVirginiaReturn west_virginia_return = 86;
   }
 }
 
@@ -951,4 +954,8 @@ message SouthCarolinaReturn {
 message DistrictOfColumbiaReturn {
   // Form D-40.
   us.state.dc.v1.FormD40 form_d40 = 1;
+// A West Virginia resident return: Form IT-140.
+message WestVirginiaReturn {
+  // Form IT-140.
+  us.state.wv.v1.FormIT140 form_it140 = 1;
 }
