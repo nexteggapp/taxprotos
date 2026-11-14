@@ -70,6 +70,7 @@ go_proto_library(
         "//go/us/state/ct/v1/form_ct1040",
         "//go/us/state/oh/v1/form_it1040",
         "//go/us/state/ny/v1/form_it201",
+        "//go/us/state/nj/v1/form_nj1040",
         "//go/us/state/or/v1/form_or40",
         "//go/us/state/ut/v1/form_tc40",
         "//go/us/state/wa/v1/capital_gains",

@@ -488,6 +488,8 @@ message PriorYearReturn {
     MarylandReturn maryland = 33;
     // A New York return.
     NewYorkReturn new_york = 43;
+    // A New Jersey return.
+    NewJerseyReturn new_jersey = 41;
   }
 
   // Where the return came from, when it is here.

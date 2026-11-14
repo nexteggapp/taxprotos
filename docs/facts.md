@@ -66,6 +66,7 @@ messages are used directly. These have messages of their own:
 | `FederalReturn`, `ArizonaReturn`, `CaliforniaReturn`, `ColoradoReturn`, `IllinoisReturn`, `MinnesotaReturn`, `NorthCarolinaReturn`, `OregonReturn` | A filed return with its schedules |
 | `FederalReturn`, `ArizonaReturn`, `CaliforniaReturn`, `ColoradoReturn`, `IllinoisReturn`, `MarylandReturn`, `NorthCarolinaReturn`, `OregonReturn` | A filed return with its schedules |
 | `FederalReturn`, `ArizonaReturn`, `CaliforniaReturn`, `ColoradoReturn`, `IllinoisReturn`, `NewYorkReturn`, `NorthCarolinaReturn`, `OregonReturn` | A filed return with its schedules |
+| `FederalReturn`, `ArizonaReturn`, `CaliforniaReturn`, `ColoradoReturn`, `IllinoisReturn`, `NewJerseyReturn`, `NorthCarolinaReturn`, `OregonReturn` | A filed return with its schedules |
 
 `Document` pairs one of these, or a form message, with a `DocumentRef`.
 
