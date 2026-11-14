@@ -201,6 +201,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [OR-40](https://www.oregon.gov/dor/forms/FormsPubs/form-or-40_101-040_2025.pdf) | [`form_or40.proto`](us/state/or/v1/form_or40/form_or40.proto) | The Oregon resident return |
 | [Schedule OR-A](https://www.oregon.gov/dor/forms/FormsPubs/schedule-or-a_101-007_2025.pdf) | [`schedule_or_a.proto`](us/state/or/v1/form_or40/schedule_or_a.proto) | Oregon itemized deductions |
 | [Schedule OR-ASC](https://www.oregon.gov/dor/forms/FormsPubs/schedule-or-asc_101-063_2025.pdf) | [`schedule_or_asc.proto`](us/state/or/v1/form_or40/schedule_or_asc.proto) | Oregon additions, subtractions and credits |
+| [Form 1](https://www.revenue.wi.gov/TaxForms2025/2025-Form1f.pdf) | [`form_1.proto`](us/state/wi/v1/form_1/form_1.proto) | The Wisconsin resident return |
 | [Capital gains](https://app.leg.wa.gov/rcw/default.aspx?cite=82.87) | [`capital_gains_return.proto`](us/state/wa/v1/capital_gains/capital_gains_return.proto) | Washington's excise tax on long-term gains |
 
 Washington levies no personal income tax, so `us/state/wa` has no income tax
