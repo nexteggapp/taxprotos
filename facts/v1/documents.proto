@@ -112,6 +112,7 @@ import "taxprotos/us/state/la/v1/form_it540/form_it540.proto";
 import "taxprotos/us/state/ms/v1/form_80105/form_80105.proto";
 import "taxprotos/us/state/mo/v1/form_mo1040/form_mo1040.proto";
 import "taxprotos/us/state/mt/v1/form_2/form_2.proto";
+import "taxprotos/us/state/me/v1/form_1040me/form_1040me.proto";
 import "taxprotos/us/state/nc/v1/form_d400/form_d400.proto";
 import "taxprotos/us/state/ok/v1/form_511/form_511.proto";
 import "taxprotos/us/state/nm/v1/form_pit1/form_pit1.proto";
@@ -268,6 +269,9 @@ message Document {
 
     // A filed North Carolina return.
     NorthCarolinaReturn north_carolina_return = 49;
+
+    // A filed Maine return.
+    MaineReturn maine_return = 65;
 
     // A filed Colorado return.
     ColoradoReturn colorado_return = 50;
@@ -801,6 +805,10 @@ message OregonReturn {
 message AlabamaReturn {
   // Form 40.
   us.state.al.v1.FormAL40 form_40 = 1;
+// A Maine resident return: Form 1040ME.
+message MaineReturn {
+  // Form 1040ME.
+  us.state.me.v1.Form1040ME form_1040me = 1;
 }
 
 // An Illinois resident return: Form IL-1040.

@@ -1,0 +1,139 @@
+// Form 1040ME, Maine Individual Income Tax return.
+//
+// Part-year residents, nonresidents and safe harbor residents file the same
+// form with Schedule NR or NRH, whose credit goes on line 21. Only the
+// full-year resident's return is modelled here.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form 1040ME; testdata
+// holds the text extracted from the published PDF and coverage_test.go asserts
+// every line a mapping claims appears on it.
+//
+// # Graduated rates on Maine taxable income
+//
+// Maine starts from federal adjusted gross income, adds and subtracts the
+// modifications of Schedules 1A and 1S to reach Maine adjusted gross income on
+// line 16, takes off a standard or itemized deduction on line 17 and a personal
+// exemption on line 18, and taxes the rest on three graduated rates on line 20.
+// Both the deduction and the exemption phase out at higher incomes, by
+// worksheets in the instructions.
+//
+// # Credits
+//
+// Nonrefundable credits come from Schedule A on line 23. Refundable credits
+// from Schedule A, and the property and sales tax fairness credits, are
+// payments on lines 25c to 25e.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.me.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/me/v1/form_1040me;form1040me";
+
+// FilingStatus is the status the return is filed under, lines 3 to 7.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+  FILING_STATUS_QUALIFYING_SURVIVING_SPOUSE = 5;
+}
+
+// Form1040ME is what a Form 1040ME states.
+message Form1040ME {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // The filer and spouse who are 65 or over, and who are blind, lines 12a to
+  // 12d. Each box adds to the standard deduction.
+  int32 age_65_or_older = 5 [(common.v1.fdx_absent) = true];
+  int32 blind = 6 [(common.v1.fdx_absent) = true];
+
+  // The personal exemptions claimed for the filer and spouse.
+  int32 exemptions = 7 [(common.v1.fdx_absent) = true];
+
+  // The children and dependents for whom the federal child tax credit or
+  // credit for other dependents can be claimed.
+  int32 qualifying_children_and_dependents = 8 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 9 [(common.v1.fdx_absent) = true];
+
+  // From Schedule 1A.
+  nexteggapp.taxprotos.common.v1.Money income_addition_modifications = 10 [(common.v1.fdx_absent) = true];
+
+  // From Schedule 1S.
+  nexteggapp.taxprotos.common.v1.Money income_subtraction_modifications = 11 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money maine_adjusted_gross_income = 12 [(common.v1.fdx_absent) = true];
+
+  // The standard deduction, or the itemized deductions of Schedule 2, after
+  // the phase-out worksheet.
+  nexteggapp.taxprotos.common.v1.Money deduction = 13 [(common.v1.fdx_absent) = true];
+
+  // The filer itemized deductions on the federal return.
+  bool itemized_on_federal_return = 14 [(common.v1.fdx_absent) = true];
+
+  // The personal exemption after the phase-out worksheet.
+  nexteggapp.taxprotos.common.v1.Money exemption = 15 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 16 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money income_tax = 17 [(common.v1.fdx_absent) = true];
+
+  // Credits used in earlier years and now taken back.
+  nexteggapp.taxprotos.common.v1.Money tax_credit_recapture = 18 [(common.v1.fdx_absent) = true];
+
+  // From Schedule NR or NRH, for those who are not full-year residents.
+  nexteggapp.taxprotos.common.v1.Money nonresident_credit = 19 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_tax = 20 [(common.v1.fdx_absent) = true];
+
+  // From Schedule A.
+  nexteggapp.taxprotos.common.v1.Money nonrefundable_credits = 21 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money net_tax = 22 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money maine_income_tax_withheld = 23 [(common.v1.fdx_absent) = true];
+
+  // Estimated payments, last year's overpayment carried forward, extension
+  // payments and real estate withholding.
+  nexteggapp.taxprotos.common.v1.Money estimated_and_other_payments = 24 [(common.v1.fdx_absent) = true];
+
+  // From Schedule A.
+  nexteggapp.taxprotos.common.v1.Money refundable_credits = 25 [(common.v1.fdx_absent) = true];
+
+  // From Schedule PTFC/STFC.
+  nexteggapp.taxprotos.common.v1.Money property_tax_fairness_credit = 26 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money sales_tax_fairness_credit = 27 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_payments = 28 [(common.v1.fdx_absent) = true];
+
+  // On an amended return, the overpayment on the original.
+  nexteggapp.taxprotos.common.v1.Money overpayment_on_original_return = 29 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money payments_less_original_overpayment = 30 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money overpaid = 31 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money underpaid = 32 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money use_tax = 33 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money casual_rental_sales_tax = 34 [(common.v1.fdx_absent) = true];
+
+  // From Schedule CP: contributions and park passes.
+  nexteggapp.taxprotos.common.v1.Money charitable_contributions = 35 [(common.v1.fdx_absent) = true];
+
+  // From Form 2210ME.
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_penalty = 36 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money net_overpayment = 37 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money credited_to_next_year = 38 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money refund = 39 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money amount_due = 40 [(common.v1.fdx_absent) = true];
+}

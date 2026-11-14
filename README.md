@@ -10,6 +10,7 @@ year.
 receives, the Form 1040 it files, the state returns for Arizona, California,
 Colorado, Illinois, North Carolina, Oregon, South Carolina and Washington, and `TaxYearFacts`, a
 Colorado, Illinois, North Carolina, Oregon, Washington and West Virginia, and `TaxYearFacts`, a
+Colorado, Illinois, Maine, North Carolina, Oregon and Washington, and `TaxYearFacts`, a
 household's own facts for one tax year.
 Colorado, the District of Columbia, Illinois, North Carolina, Oregon and
 Washington, and `TaxYearFacts`, a household's own facts for one tax year.
@@ -225,6 +226,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [2](https://revenuefiles.mt.gov/files/Forms/Montana-Individual-Income-Tax-Return-Form-2/2025_Montana_Individual_Income_Tax_Return_Form_2.pdf) | [`form_2.proto`](us/state/mt/v1/form_2/form_2.proto) | The Montana resident return |
 | [1040N](https://revenue.nebraska.gov/sites/default/files/doc/tax-forms/2025/f_1040N.pdf) | [`form_1040n.proto`](us/state/ne/v1/form_1040n/form_1040n.proto) | The Nebraska resident return |
 | [760](https://www.tax.virginia.gov/sites/default/files/taxforms/individual-income-tax/2025/760-2025.pdf) | [`form_760.proto`](us/state/va/v1/form_760/form_760.proto) | The Virginia resident return |
+| [1040ME](https://www.maine.gov/revenue/sites/maine.gov.revenue/files/inline-files/25_1040ME_fillable.pdf) | [`form_1040me.proto`](us/state/me/v1/form_1040me/form_1040me.proto) | The Maine resident return |
 | [D-400](https://www.ncdor.gov/2025-d-400-web-filled-version/open) | [`form_d400.proto`](us/state/nc/v1/form_d400/form_d400.proto) | The North Carolina resident return |
 | [511](https://oklahoma.gov/content/dam/ok/en/tax/documents/forms/individuals/current/511-Pkt.pdf) | [`form_511.proto`](us/state/ok/v1/form_511/form_511.proto) | The Oklahoma resident return |
 | [ND-1](https://www.tax.nd.gov/sites/www/files/documents/forms/individual/2025-iit/28702-form-nd-1-2025.pdf) | [`form_nd1.proto`](us/state/nd/v1/form_nd1/form_nd1.proto) | The North Dakota resident return |

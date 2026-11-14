@@ -1,0 +1,28 @@
+# gazelle:ignore
+
+load("@protobuf//bazel:proto_library.bzl", "proto_library")
+
+# Form 1040ME: the return a full-year Maine resident files.
+proto_library(
+    name = "form_1040me_proto",
+    # Imported as taxprotos/..., so consumers import these files by that path.
+    import_prefix = "taxprotos",
+    srcs = [
+        "form_1040me.proto",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//common/v1:common_proto",
+    ],
+)
+
+# The mapping and the form extract it is checked against, for
+# //go/us/state/me/v1/form_1040me.
+filegroup(
+    name = "test_oracles",
+    srcs = glob([
+        "mapping.textproto",
+        "testdata/**",
+    ]),
+    visibility = ["//go/us/state/me/v1/form_1040me:__pkg__"],
+)
