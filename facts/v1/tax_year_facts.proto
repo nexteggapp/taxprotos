@@ -467,6 +467,8 @@ message PriorYearReturn {
     HawaiiReturn hawaii = 25;
     // A Vermont return.
     VermontReturn vermont = 51;
+    // A Delaware return.
+    DelawareReturn delaware = 22;
   }
 
   // Where the return came from, when it is here.

@@ -63,6 +63,7 @@ messages are used directly. These have messages of their own:
 | `FederalReturn`, `AlabamaReturn`, `ArizonaReturn`, `ArkansasReturn`, `CaliforniaReturn`, `ColoradoReturn`, `DistrictOfColumbiaReturn`, `GeorgiaReturn`, `IdahoReturn`, `IllinoisReturn`, `IndianaReturn`, `IowaReturn`, `KansasReturn`, `KentuckyReturn`, `LouisianaReturn`, `MaineReturn`, `MichiganReturn`, `MississippiReturn`, `MissouriReturn`, `MontanaReturn`, `NebraskaReturn`, `NewMexicoReturn`, `NorthCarolinaReturn`, `NorthDakotaReturn`, `OklahomaReturn`, `OregonReturn`, `PennsylvaniaReturn`, `SouthCarolinaReturn`, `UtahReturn`, `VirginiaReturn`, `WashingtonReturn`, `WestVirginiaReturn` | A filed return with its schedules |
 | `FederalReturn`, `ArizonaReturn`, `CaliforniaReturn`, `ColoradoReturn`, `HawaiiReturn`, `IllinoisReturn`, `NorthCarolinaReturn`, `OregonReturn` | A filed return with its schedules |
 | `FederalReturn`, `ArizonaReturn`, `CaliforniaReturn`, `ColoradoReturn`, `IllinoisReturn`, `NorthCarolinaReturn`, `OregonReturn`, `VermontReturn` | A filed return with its schedules |
+| `FederalReturn`, `ArizonaReturn`, `CaliforniaReturn`, `ColoradoReturn`, `DelawareReturn`, `IllinoisReturn`, `NorthCarolinaReturn`, `OregonReturn` | A filed return with its schedules |
 
 `Document` pairs one of these, or a form message, with a `DocumentRef`.
 

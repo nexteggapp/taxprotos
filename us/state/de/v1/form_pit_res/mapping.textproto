@@ -1,0 +1,243 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form PIT-RES calls each concept, per tax year.
+#
+# Lines come from the 2025 Form PIT-RES as the Delaware Division of Revenue
+# publishes it, Column B. There are no amount codes: IRS Publication 1220
+# covers the information returns the IRS receives electronically, and a state
+# return is not one of them.
+
+form: "PIT-RES"
+message_name: "nexteggapp.taxprotos.us.state.de.v1.FormPITRES"
+tax_years: 2025
+
+concepts {
+  concept: "filing_status"
+  years {
+    tax_year: 2025
+    note: "Unnumbered filing status boxes 1 to 5 at the top of page 1."
+  }
+}
+concepts {
+  concept: "claimed_as_dependent"
+  years {
+    tax_year: 2025
+    note: "Unnumbered box at the top of page 1: claimed as a dependent on someone else's return."
+  }
+}
+concepts {
+  concept: "federal_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "1" note: "Federal Form 1040 line 11a." }
+}
+concepts {
+  concept: "other_state_obligation_interest"
+  years { tax_year: 2025 irs_box: "2" }
+}
+concepts {
+  concept: "fiduciary_adjustment_and_oil_depletion"
+  years { tax_year: 2025 irs_box: "3" }
+}
+concepts {
+  concept: "total_income"
+  years { tax_year: 2025 irs_box: "4" }
+}
+concepts {
+  concept: "us_obligation_interest"
+  years { tax_year: 2025 irs_box: "5" }
+}
+concepts {
+  concept: "pension_exclusion"
+  years { tax_year: 2025 irs_box: "6" }
+}
+concepts {
+  concept: "other_subtractions"
+  years { tax_year: 2025 irs_box: "7" }
+}
+concepts {
+  concept: "social_security_and_other_exclusions"
+  years { tax_year: 2025 irs_box: "8a" }
+}
+concepts {
+  concept: "tuition_and_able_contributions"
+  years { tax_year: 2025 irs_box: "8b" }
+}
+concepts {
+  concept: "total_subtractions"
+  years { tax_year: 2025 irs_box: "9" }
+}
+concepts {
+  concept: "income_after_subtractions"
+  years { tax_year: 2025 irs_box: "10" }
+}
+concepts {
+  concept: "elderly_or_disabled_exclusion"
+  years { tax_year: 2025 irs_box: "11" }
+}
+concepts {
+  concept: "delaware_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "12" }
+}
+concepts {
+  concept: "schedule_a_itemized_deductions"
+  years { tax_year: 2025 irs_box: "13" note: "From Schedule PIT-RSA." }
+}
+concepts {
+  concept: "foreign_taxes_paid"
+  years { tax_year: 2025 irs_box: "14" }
+}
+concepts {
+  concept: "charitable_mileage_deduction"
+  years { tax_year: 2025 irs_box: "15" }
+}
+concepts {
+  concept: "labor_organization_dues"
+  years { tax_year: 2025 irs_box: "16" }
+}
+concepts {
+  concept: "itemized_deductions_subtotal"
+  years { tax_year: 2025 irs_box: "17" }
+}
+concepts {
+  concept: "credit_adjustment"
+  years { tax_year: 2025 irs_box: "18" note: "From Form PIT-CRS." }
+}
+concepts {
+  concept: "net_itemized_deductions"
+  years { tax_year: 2025 irs_box: "19" }
+}
+concepts {
+  concept: "itemizes"
+  years { tax_year: 2025 irs_box: "20" note: "The box for itemized deductions (b) rather than the standard deduction (a)." }
+}
+concepts {
+  concept: "deduction"
+  years { tax_year: 2025 irs_box: "20" note: "The amount: the standard deduction or line 19." }
+}
+concepts {
+  concept: "additional_standard_deduction_boxes"
+  years { tax_year: 2025 irs_box: "21" note: "The number of 65 or over and blind boxes checked in Column B." }
+}
+concepts {
+  concept: "additional_standard_deduction"
+  years { tax_year: 2025 irs_box: "21" note: "The amount: the boxes times $2,500." }
+}
+concepts {
+  concept: "total_deductions"
+  years { tax_year: 2025 irs_box: "22" }
+}
+concepts {
+  concept: "taxable_income"
+  years { tax_year: 2025 irs_box: "23" }
+}
+concepts {
+  concept: "tax"
+  years { tax_year: 2025 irs_box: "24" }
+}
+concepts {
+  concept: "lump_sum_distribution_tax"
+  years { tax_year: 2025 irs_box: "25" note: "From Form PIT-STC." }
+}
+concepts {
+  concept: "total_tax"
+  years { tax_year: 2025 irs_box: "26" }
+}
+concepts {
+  concept: "personal_credit_exemptions"
+  years { tax_year: 2025 irs_box: "27a" note: "The number of exemptions." }
+}
+concepts {
+  concept: "personal_credits"
+  years { tax_year: 2025 irs_box: "27a" note: "The amount: the exemptions times $110." }
+}
+concepts {
+  concept: "age_60_or_over_boxes"
+  years { tax_year: 2025 irs_box: "27b" note: "The number of 60 or over boxes checked." }
+}
+concepts {
+  concept: "additional_personal_credits"
+  years { tax_year: 2025 irs_box: "27b" note: "The amount: the boxes times $110." }
+}
+concepts {
+  concept: "credit_for_tax_paid_to_other_states"
+  years { tax_year: 2025 irs_box: "28" }
+}
+concepts {
+  concept: "volunteer_firefighter_credit"
+  years { tax_year: 2025 irs_box: "29" }
+}
+concepts {
+  concept: "other_nonrefundable_credits"
+  years { tax_year: 2025 irs_box: "30" note: "From Form PIT-CRS." }
+}
+concepts {
+  concept: "child_care_credit"
+  years { tax_year: 2025 irs_box: "31" note: "Half the federal credit, Form 2441 line 11." }
+}
+concepts {
+  concept: "total_nonrefundable_credits"
+  years { tax_year: 2025 irs_box: "32" }
+}
+concepts {
+  concept: "tax_after_credits"
+  years { tax_year: 2025 irs_box: "33" }
+}
+concepts {
+  concept: "earned_income_credit"
+  years { tax_year: 2025 irs_box: "34" note: "The amount, from Schedule II of Form PIT-RSS." }
+}
+concepts {
+  concept: "earned_income_credit_refundable"
+  years { tax_year: 2025 irs_box: "34" note: "The box: refundable rather than non-refundable." }
+}
+concepts {
+  concept: "delaware_tax_withheld"
+  years { tax_year: 2025 irs_box: "35" }
+}
+concepts {
+  concept: "estimated_tax_payments"
+  years { tax_year: 2025 irs_box: "36" }
+}
+concepts {
+  concept: "s_corporation_payments"
+  years { tax_year: 2025 irs_box: "37" }
+}
+concepts {
+  concept: "refundable_business_credits"
+  years { tax_year: 2025 irs_box: "38" }
+}
+concepts {
+  concept: "capital_gains_tax_payments"
+  years { tax_year: 2025 irs_box: "39" note: "From Form REW-EST." }
+}
+concepts {
+  concept: "total_refundable_credits"
+  years { tax_year: 2025 irs_box: "40" }
+}
+concepts {
+  concept: "balance_due"
+  years { tax_year: 2025 irs_box: "41" }
+}
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "42" }
+}
+concepts {
+  concept: "special_fund_contributions"
+  years { tax_year: 2025 irs_box: "43" note: "From Schedule III of Form PIT-RSS." }
+}
+concepts {
+  concept: "credited_forward"
+  years { tax_year: 2025 irs_box: "44" }
+}
+concepts {
+  concept: "penalties_and_interest"
+  years { tax_year: 2025 irs_box: "45" }
+}
+concepts {
+  concept: "amount_owed"
+  years { tax_year: 2025 irs_box: "46" }
+}
+concepts {
+  concept: "refund"
+  years { tax_year: 2025 irs_box: "47" }
+}

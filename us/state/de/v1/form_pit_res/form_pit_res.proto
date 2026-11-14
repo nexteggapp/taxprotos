@@ -1,0 +1,184 @@
+// Form PIT-RES, Delaware Individual Resident Income Tax Return.
+//
+// Part-year residents may file the same form, and nonresidents file PIT-NON.
+// Only the full-year resident's original return is modelled here: lines 48 to
+// 62, which only an amended return completes, are left out.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form PIT-RES; testdata
+// holds the text extracted from the published PDF and coverage_test.go asserts
+// every line a mapping claims appears on it.
+//
+// # Two columns
+//
+// Every amount line has two columns. Column A holds the spouse's figures under
+// filing status 4, married filing a combined separate return; every other
+// filing status uses Column B alone. The fields here are Column B, which is
+// the whole return for every filing status but 4.
+//
+// # Credits against the tax
+//
+// The personal credits on lines 27a and 27b, $110 each, come off the tax
+// rather than off income. The earned income tax credit on line 34 is either
+// refundable or not, whichever is larger for the filer.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.de.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/de/v1/form_pit_res;formpitres";
+
+// FilingStatus is the status the return is filed under, numbered as the form
+// numbers it.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  // Single, divorced, widow(er).
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_JOINT = 2;
+  // Married filing separate forms.
+  FILING_STATUS_MARRIED_FILING_SEPARATE_FORMS = 3;
+  // Married filing combined separate on this form, using both columns.
+  FILING_STATUS_MARRIED_FILING_COMBINED_SEPARATE = 4;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 5;
+}
+
+// FormPITRES is what a Form PIT-RES states, in Column B.
+message FormPITRES {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // Someone else can claim the filer as a dependent, which takes away the
+  // personal credit.
+  bool claimed_as_dependent = 5 [(common.v1.fdx_absent) = true];
+
+  // Section A: additions.
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 6 [(common.v1.fdx_absent) = true];
+
+  // Interest on obligations of states and localities other than Delaware.
+  nexteggapp.taxprotos.common.v1.Money other_state_obligation_interest = 7 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money fiduciary_adjustment_and_oil_depletion = 8 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_income = 9 [(common.v1.fdx_absent) = true];
+
+  // Section B: subtractions.
+  nexteggapp.taxprotos.common.v1.Money us_obligation_interest = 10 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money pension_exclusion = 11 [(common.v1.fdx_absent) = true];
+
+  // A Delaware refund in federal income, a fiduciary adjustment, the wages
+  // disallowed federally by the work opportunity credit, a Delaware net
+  // operating loss carried forward, and the like.
+  nexteggapp.taxprotos.common.v1.Money other_subtractions = 12 [(common.v1.fdx_absent) = true];
+
+  // Taxable social security and railroad retirement benefits, the higher
+  // education exclusion and certain lump-sum distributions.
+  nexteggapp.taxprotos.common.v1.Money social_security_and_other_exclusions = 13 [(common.v1.fdx_absent) = true];
+
+  // Contributions to Delaware's 529 tuition program or an ABLE account.
+  nexteggapp.taxprotos.common.v1.Money tuition_and_able_contributions = 14 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_subtractions = 15 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money income_after_subtractions = 16 [(common.v1.fdx_absent) = true];
+
+  // The exclusion for people 60 or over, or disabled, with little earned
+  // income.
+  nexteggapp.taxprotos.common.v1.Money elderly_or_disabled_exclusion = 17 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money delaware_adjusted_gross_income = 18 [(common.v1.fdx_absent) = true];
+
+  // Section C: deductions, from Schedule PIT-RSA.
+  nexteggapp.taxprotos.common.v1.Money schedule_a_itemized_deductions = 19 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money foreign_taxes_paid = 20 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money charitable_mileage_deduction = 21 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money labor_organization_dues = 22 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money itemized_deductions_subtotal = 23 [(common.v1.fdx_absent) = true];
+
+  // Itemized deductions for the contributions a PIT-CRS credit is taken for.
+  nexteggapp.taxprotos.common.v1.Money credit_adjustment = 24 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money net_itemized_deductions = 25 [(common.v1.fdx_absent) = true];
+
+  // The filer elects itemized deductions on line 20 rather than the standard
+  // deduction.
+  bool itemizes = 26 [(common.v1.fdx_absent) = true];
+
+  // The standard deduction, or the net itemized deductions.
+  nexteggapp.taxprotos.common.v1.Money deduction = 27 [(common.v1.fdx_absent) = true];
+
+  // The boxes checked for 65 or over and blind, each worth $2,500.
+  int32 additional_standard_deduction_boxes = 28 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money additional_standard_deduction = 29 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_deductions = 30 [(common.v1.fdx_absent) = true];
+
+  // Section D: calculations.
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 31 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax = 32 [(common.v1.fdx_absent) = true];
+
+  // From Form PIT-STC.
+  nexteggapp.taxprotos.common.v1.Money lump_sum_distribution_tax = 33 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_tax = 34 [(common.v1.fdx_absent) = true];
+
+  // The exemptions, one for each person on the federal return, each worth
+  // $110.
+  int32 personal_credit_exemptions = 35 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money personal_credits = 36 [(common.v1.fdx_absent) = true];
+
+  // The boxes checked for 60 or over, each worth $110.
+  int32 age_60_or_over_boxes = 37 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money additional_personal_credits = 38 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money credit_for_tax_paid_to_other_states = 39 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money volunteer_firefighter_credit = 40 [(common.v1.fdx_absent) = true];
+
+  // From Form PIT-CRS.
+  nexteggapp.taxprotos.common.v1.Money other_nonrefundable_credits = 41 [(common.v1.fdx_absent) = true];
+
+  // Half the federal child and dependent care credit.
+  nexteggapp.taxprotos.common.v1.Money child_care_credit = 42 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_nonrefundable_credits = 43 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax_after_credits = 44 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money earned_income_credit = 45 [(common.v1.fdx_absent) = true];
+
+  // The earned income credit on line 34 is the refundable one, 4.5% of the
+  // federal credit, rather than the non-refundable 20%.
+  bool earned_income_credit_refundable = 46 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money delaware_tax_withheld = 47 [(common.v1.fdx_absent) = true];
+
+  // Estimated tax paid, and payments with an extension.
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 48 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money s_corporation_payments = 49 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money refundable_business_credits = 50 [(common.v1.fdx_absent) = true];
+
+  // Paid on the sale of Delaware real estate, from Form REW-EST.
+  nexteggapp.taxprotos.common.v1.Money capital_gains_tax_payments = 51 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_refundable_credits = 52 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money balance_due = 53 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money overpayment = 54 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money special_fund_contributions = 55 [(common.v1.fdx_absent) = true];
+
+  // The part of the overpayment applied to next year's estimated tax.
+  nexteggapp.taxprotos.common.v1.Money credited_forward = 56 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money penalties_and_interest = 57 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money amount_owed = 58 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money refund = 59 [(common.v1.fdx_absent) = true];
+}
