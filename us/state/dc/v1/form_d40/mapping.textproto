@@ -1,0 +1,235 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form D-40 calls each concept, per tax year.
+#
+# Lines come from the 2025 Form D-40 as the District of Columbia Office of Tax
+# and Revenue publishes it in the 2025 D-40 booklet. There are no amount codes:
+# IRS Publication 1220 covers the information returns the IRS receives
+# electronically, and a state return is not one of them.
+#
+# The income information above line 4 is printed as unnumbered lines a to d.
+
+form: "D-40"
+message_name: "nexteggapp.taxprotos.us.state.dc.v1.FormD40"
+tax_years: 2025
+
+concepts {
+  concept: "filing_status"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+    note: "Line 1: single, married filing jointly, married filing separately, dependent claimed by someone else, head of household, qualifying widow(er)."
+  }
+}
+concepts {
+  concept: "claimed_as_dependent"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+    note: "Line 1's choice of dependent claimed by someone else, beside the filing status."
+  }
+}
+concepts {
+  concept: "wages"
+  years { tax_year: 2025 irs_box: "a" }
+}
+concepts {
+  concept: "business_income"
+  years { tax_year: 2025 irs_box: "b" }
+}
+concepts {
+  concept: "capital_gain"
+  years { tax_year: 2025 irs_box: "c" }
+}
+concepts {
+  concept: "rental_royalty_and_partnership_income"
+  years { tax_year: 2025 irs_box: "d" }
+}
+concepts {
+  concept: "federal_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "4" }
+}
+concepts {
+  concept: "franchise_tax_deducted"
+  years { tax_year: 2025 irs_box: "5" }
+}
+concepts {
+  concept: "other_additions"
+  years { tax_year: 2025 irs_box: "6" }
+}
+concepts {
+  concept: "income_with_additions"
+  years { tax_year: 2025 irs_box: "7" }
+}
+concepts {
+  concept: "nonresident_period_income"
+  years { tax_year: 2025 irs_box: "8" }
+}
+concepts {
+  concept: "state_income_tax_refunds"
+  years { tax_year: 2025 irs_box: "9" }
+}
+concepts {
+  concept: "taxable_social_security_and_railroad_retirement"
+  years { tax_year: 2025 irs_box: "10" }
+}
+concepts {
+  concept: "income_taxed_on_franchise_or_fiduciary_return"
+  years { tax_year: 2025 irs_box: "11" }
+}
+concepts {
+  concept: "government_survivor_benefits"
+  years { tax_year: 2025 irs_box: "12" }
+}
+concepts {
+  concept: "unemployment_compensation"
+  years { tax_year: 2025 irs_box: "13" }
+}
+concepts {
+  concept: "other_subtractions"
+  years { tax_year: 2025 irs_box: "14" }
+}
+concepts {
+  concept: "total_subtractions"
+  years { tax_year: 2025 irs_box: "15" }
+}
+concepts {
+  concept: "dc_adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "16" }
+}
+concepts {
+  concept: "itemizes_deductions"
+  years { tax_year: 2025 irs_box: "17" }
+}
+concepts {
+  concept: "deduction"
+  years { tax_year: 2025 irs_box: "18" }
+}
+concepts {
+  concept: "taxable_income"
+  years { tax_year: 2025 irs_box: "19" }
+}
+concepts {
+  concept: "tax"
+  years { tax_year: 2025 irs_box: "20" }
+}
+concepts {
+  concept: "federal_child_and_dependent_care_credit"
+  years {
+    tax_year: 2025
+    irs_box: "21"
+    note: "The federal credit printed inside line 21, before it is multiplied by .32."
+  }
+}
+concepts {
+  concept: "child_and_dependent_care_credit"
+  years {
+    tax_year: 2025
+    irs_box: "21"
+    note: "The DC credit: the federal credit times .32."
+  }
+}
+concepts {
+  concept: "other_nonrefundable_credits"
+  years { tax_year: 2025 irs_box: "22" }
+}
+concepts {
+  concept: "total_nonrefundable_credits"
+  years { tax_year: 2025 irs_box: "23" }
+}
+concepts {
+  concept: "tax_after_nonrefundable_credits"
+  years { tax_year: 2025 irs_box: "24" }
+}
+concepts {
+  concept: "health_care_shared_responsibility"
+  years { tax_year: 2025 irs_box: "25" }
+}
+concepts {
+  concept: "total_tax"
+  years { tax_year: 2025 irs_box: "26" }
+}
+concepts {
+  concept: "earned_income_credit_qualifying_children"
+  years { tax_year: 2025 irs_box: "27a" }
+}
+concepts {
+  concept: "earned_income"
+  years { tax_year: 2025 irs_box: "27b" }
+}
+concepts {
+  concept: "federal_earned_income_credit"
+  years { tax_year: 2025 irs_box: "27c" }
+}
+concepts {
+  concept: "earned_income_credit_with_children"
+  years { tax_year: 2025 irs_box: "27d" }
+}
+concepts {
+  concept: "earned_income_credit_without_children"
+  years { tax_year: 2025 irs_box: "27e" }
+}
+concepts {
+  concept: "property_tax_credit"
+  years { tax_year: 2025 irs_box: "28" }
+}
+concepts {
+  concept: "other_refundable_credits"
+  years { tax_year: 2025 irs_box: "29" }
+}
+concepts {
+  concept: "total_refundable_credits"
+  years { tax_year: 2025 irs_box: "30" }
+}
+concepts {
+  concept: "dc_tax_withheld"
+  years { tax_year: 2025 irs_box: "31" }
+}
+concepts {
+  concept: "estimated_tax_payments"
+  years { tax_year: 2025 irs_box: "32" }
+}
+concepts {
+  concept: "extension_payment"
+  years { tax_year: 2025 irs_box: "33" }
+}
+concepts {
+  concept: "original_return_payments"
+  years { tax_year: 2025 irs_box: "34" }
+}
+concepts {
+  concept: "original_return_refunds"
+  years { tax_year: 2025 irs_box: "35" }
+}
+concepts {
+  concept: "total_payments_and_refundable_credits"
+  years { tax_year: 2025 irs_box: "36" }
+}
+concepts {
+  concept: "tax_due"
+  years { tax_year: 2025 irs_box: "37" }
+}
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "38" }
+}
+concepts {
+  concept: "applied_to_next_year_estimated_tax"
+  years { tax_year: 2025 irs_box: "39" }
+}
+concepts {
+  concept: "underpayment_interest"
+  years { tax_year: 2025 irs_box: "40" }
+}
+concepts {
+  concept: "contributions"
+  years { tax_year: 2025 irs_box: "41" }
+}
+concepts {
+  concept: "total_amount_due"
+  years { tax_year: 2025 irs_box: "42" }
+}
+concepts {
+  concept: "refund"
+  years { tax_year: 2025 irs_box: "43" }
+}

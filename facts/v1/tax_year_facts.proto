@@ -388,6 +388,9 @@ message PriorYearReturn {
 
     // An Arizona return.
     ArizonaReturn arizona = 18;
+
+    // A District of Columbia return.
+    DistrictOfColumbiaReturn district_of_columbia = 23;
   }
 
   // Where the return came from, when it is here.
