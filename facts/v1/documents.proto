@@ -335,10 +335,13 @@ message Document {
 
     // A filed Alabama return.
     AlabamaReturn alabama_return = 52;
-    // A filed South Carolina return.
-    SouthCarolinaReturn south_carolina_return = 82;
+
     // A filed District of Columbia return.
     DistrictOfColumbiaReturn district_of_columbia_return = 56;
+
+    // A filed South Carolina return.
+    SouthCarolinaReturn south_carolina_return = 82;
+
     // A filed West Virginia return.
     WestVirginiaReturn west_virginia_return = 86;
   }
@@ -805,6 +808,8 @@ message OregonReturn {
 message AlabamaReturn {
   // Form 40.
   us.state.al.v1.FormAL40 form_40 = 1;
+}
+
 // A Maine resident return: Form 1040ME.
 message MaineReturn {
   // Form 1040ME.
@@ -954,14 +959,20 @@ message NebraskaReturn {
 message VirginiaReturn {
   // Form 760.
   us.state.va.v1.Form760 form_760 = 1;
-// A South Carolina resident return: the SC1040.
-message SouthCarolinaReturn {
-  // The SC1040.
-  us.state.sc.v1.FormSC1040 form_sc1040 = 1;
+}
+
 // A District of Columbia resident return: Form D-40.
 message DistrictOfColumbiaReturn {
   // Form D-40.
   us.state.dc.v1.FormD40 form_d40 = 1;
+}
+
+// A South Carolina resident return: the SC1040.
+message SouthCarolinaReturn {
+  // The SC1040.
+  us.state.sc.v1.FormSC1040 form_sc1040 = 1;
+}
+
 // A West Virginia resident return: Form IT-140.
 message WestVirginiaReturn {
   // Form IT-140.

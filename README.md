@@ -2,18 +2,11 @@
 
 Protobuf schemas for US tax documents: the W-2 and 1099 forms a household
 receives, the Form 1040 it files, the state returns for Alabama, Arizona,
-Arkansas, California, Colorado, Georgia, Idaho, Illinois, Indiana, Iowa, Kansas,
-Kentucky, Louisiana, Michigan, Mississippi, Missouri, Montana, Nebraska, New
-Mexico, North Carolina, North Dakota, Oklahoma, Oregon, Pennsylvania, Utah,
-Virginia and Washington, and `TaxYearFacts`, a household's own facts for one tax
-year.
-receives, the Form 1040 it files, the state returns for Arizona, California,
-Colorado, Illinois, North Carolina, Oregon, South Carolina and Washington, and `TaxYearFacts`, a
-Colorado, Illinois, North Carolina, Oregon, Washington and West Virginia, and `TaxYearFacts`, a
-Colorado, Illinois, Maine, North Carolina, Oregon and Washington, and `TaxYearFacts`, a
-household's own facts for one tax year.
-Colorado, the District of Columbia, Illinois, North Carolina, Oregon and
-Washington, and `TaxYearFacts`, a household's own facts for one tax year.
+Arkansas, California, Colorado, District Of Columbia, Georgia, Idaho, Illinois,
+Indiana, Iowa, Kansas, Kentucky, Louisiana, Maine, Michigan, Mississippi,
+Missouri, Montana, Nebraska, New Mexico, North Carolina, North Dakota, Oklahoma,
+Oregon, Pennsylvania, South Carolina, Utah, Virginia, Washington and West
+Virginia, and `TaxYearFacts`, a household's own facts for one tax year.
 
 A schema holds what the form prints and nothing else. It has no confidence
 scores, page coordinates or other traces of how a document was read. Software
@@ -198,10 +191,9 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [8995](https://www.irs.gov/pub/irs-pdf/f8995.pdf) | [`form_8995.proto`](us/federal/v1/form_1040/form_8995.proto) | Qualified business income deduction, simplified computation |
 | [8995-A](https://www.irs.gov/pub/irs-pdf/f8995a.pdf) | [`form_8995_a.proto`](us/federal/v1/form_1040/form_8995_a.proto) | Qualified business income deduction |
 
-### State returns — what twenty-seven states want as well
-### State returns — what eight states want as well
+### State returns — what thirty-one states want as well
 ### State returns — what eight jurisdictions want as well
-### State returns — what eight states want as well
+### State returns — what thirty-one states want as well
 
 | Form | Schema | Reports |
 |---|---|---|
