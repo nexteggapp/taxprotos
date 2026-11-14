@@ -4,18 +4,11 @@ Protobuf schemas for US tax documents: the W-2 and 1099 forms a household
 receives, the Form 1040 it files, the state returns for Alabama, Arizona,
 Arkansas, California, Colorado, Connecticut, Delaware, District of Columbia,
 Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,
-Maine, Michigan, Mississippi, Missouri, Montana, Nebraska, New Mexico, North
-Carolina, North Dakota, Oklahoma, Oregon, Pennsylvania, Rhode Island, South
-Carolina, Utah, Vermont, Virginia, Washington and West Virginia, and
-`TaxYearFacts`, a household's own facts for one tax year.
-receives, the Form 1040 it files, the state returns for Arizona, California,
-Colorado, Illinois, North Carolina, Ohio, Oregon and Washington, and `TaxYearFacts`, a
-Colorado, Illinois, Minnesota, North Carolina, Oregon and Washington, and
-`TaxYearFacts`, a
-Colorado, Illinois, Maryland, North Carolina, Oregon and Washington, and `TaxYearFacts`, a
-Colorado, Illinois, New York, North Carolina, Oregon and Washington, and `TaxYearFacts`, a
-Colorado, Illinois, New Jersey, North Carolina, Oregon and Washington, and `TaxYearFacts`, a
-household's own facts for one tax year.
+Maine, Maryland, Michigan, Minnesota, Mississippi, Missouri, Montana, Nebraska,
+New Jersey, New Mexico, New York, North Carolina, North Dakota, Ohio, Oklahoma,
+Oregon, Pennsylvania, Rhode Island, South Carolina, Utah, Vermont, Virginia,
+Washington, West Virginia and Wisconsin, and `TaxYearFacts`, a household's own
+facts for one tax year.
 
 A schema holds what the form prints and nothing else. It has no confidence
 scores, page coordinates or other traces of how a document was read. Software
@@ -200,10 +193,9 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [8995](https://www.irs.gov/pub/irs-pdf/f8995.pdf) | [`form_8995.proto`](us/federal/v1/form_1040/form_8995.proto) | Qualified business income deduction, simplified computation |
 | [8995-A](https://www.irs.gov/pub/irs-pdf/f8995a.pdf) | [`form_8995_a.proto`](us/federal/v1/form_1040/form_8995_a.proto) | Qualified business income deduction |
 
-### State returns — what thirty-six states want as well
+### State returns — what forty-two states want as well
 ### State returns — what eight jurisdictions want as well
-### State returns — what thirty-six states want as well
-### State returns — what eight states want as well
+### State returns — what forty-two states want as well
 
 | Form | Schema | Reports |
 |---|---|---|
