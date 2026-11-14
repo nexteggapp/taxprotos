@@ -72,6 +72,7 @@ proto_library(
         "//us/state/nd/v1/form_nd1:form_nd1_proto",
         "//us/state/ne/v1/form_1040n:form_1040n_proto",
         "//us/state/ct/v1/form_ct1040:form_ct1040_proto",
+        "//us/state/oh/v1/form_it1040:form_it1040_proto",
         "//us/state/or/v1/form_or40:form_or40_proto",
         "//us/state/ut/v1/form_tc40:form_tc40_proto",
         "//us/state/wa/v1/capital_gains:capital_gains_proto",

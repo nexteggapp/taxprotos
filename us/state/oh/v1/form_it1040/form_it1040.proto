@@ -1,0 +1,144 @@
+// Ohio IT 1040, Individual Income Tax Return.
+//
+// Part-year residents and non-residents file the same form and take a credit
+// on the Schedule of Credits for income earned outside Ohio. Only the full-year
+// resident's return is modelled here. The school district return (SD 100) and
+// municipal income taxes are separate returns.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Ohio IT 1040; testdata
+// holds the text extracted from the published PDF and coverage_test.go asserts
+// every line a mapping claims appears on it.
+//
+// # Business and nonbusiness income
+//
+// Ohio starts from federal adjusted gross income, adjusts it on the Schedule
+// of Adjustments to Ohio adjusted gross income on line 3, and takes off an
+// exemption for each person that shrinks as income rises. What is left is
+// split: business income is taxed at a flat rate on the Schedule of Business
+// Income, and nonbusiness income on graduated brackets.
+//
+// # Credits
+//
+// Nonrefundable credits come from the Schedule of Credits on line 9, before
+// payments; refundable ones on line 16, as payments.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.oh.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/oh/v1/form_it1040;formit1040";
+
+// FilingStatus is the status the return is filed under.
+//
+// Ohio follows the federal status but prints three boxes: single, head of
+// household and qualifying surviving spouse share one.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE_HEAD_OF_HOUSEHOLD_OR_SURVIVING_SPOUSE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+}
+
+// FormIT1040 is what an Ohio IT 1040 states.
+message FormIT1040 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // Someone else can claim the filer, or the spouse on a joint return, as a
+  // dependent. Such a filer takes no exemption for themself.
+  bool claimed_as_dependent = 5 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 6 [(common.v1.fdx_absent) = true];
+
+  // Additions to federal adjusted gross income, from the Schedule of
+  // Adjustments.
+  nexteggapp.taxprotos.common.v1.Money additions = 7 [(common.v1.fdx_absent) = true];
+
+  // Deductions from federal adjusted gross income, from the Schedule of
+  // Adjustments, including the business income deduction.
+  nexteggapp.taxprotos.common.v1.Money deductions = 8 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money ohio_adjusted_gross_income = 9 [(common.v1.fdx_absent) = true];
+
+  // How many exemptions: the filer, a joint spouse and each dependent.
+  int32 exemption_count = 10 [(common.v1.fdx_absent) = true];
+
+  // The exemptions, each worth an amount that depends on modified adjusted
+  // gross income.
+  nexteggapp.taxprotos.common.v1.Money exemption_amount = 11 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money income_tax_base = 12 [(common.v1.fdx_absent) = true];
+
+  // Business income left after the business income deduction, from the
+  // Schedule of Business Income.
+  nexteggapp.taxprotos.common.v1.Money taxable_business_income = 13 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money taxable_nonbusiness_income = 14 [(common.v1.fdx_absent) = true];
+
+  // Tax on nonbusiness income from the graduated brackets.
+  nexteggapp.taxprotos.common.v1.Money nonbusiness_income_tax = 15 [(common.v1.fdx_absent) = true];
+
+  // Tax on business income at the flat rate, from the Schedule of Business
+  // Income.
+  nexteggapp.taxprotos.common.v1.Money business_income_tax = 16 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_before_credits = 17 [(common.v1.fdx_absent) = true];
+
+  // Nonrefundable credits from the Schedule of Credits.
+  nexteggapp.taxprotos.common.v1.Money nonrefundable_credits = 18 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_after_nonrefundable_credits = 19 [(common.v1.fdx_absent) = true];
+
+  // Interest penalty on underpaid estimated tax, from Ohio IT/SD 2210.
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_interest_penalty = 20 [(common.v1.fdx_absent) = true];
+
+  // Use tax owed on purchases no sales tax was collected on.
+  nexteggapp.taxprotos.common.v1.Money use_tax = 21 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_tax = 22 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money ohio_tax_withheld = 23 [(common.v1.fdx_absent) = true];
+
+  // Estimated and extension payments, last year's overpayment carried
+  // forward, and anything paid with an earlier 2025 return.
+  nexteggapp.taxprotos.common.v1.Money estimated_and_extension_payments = 24 [(common.v1.fdx_absent) = true];
+
+  // Refundable credits from the Schedule of Credits.
+  nexteggapp.taxprotos.common.v1.Money refundable_credits = 25 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_payments = 26 [(common.v1.fdx_absent) = true];
+
+  // On an amended return, the overpayment the earlier return asked for.
+  nexteggapp.taxprotos.common.v1.Money overpayment_previously_requested = 27 [(common.v1.fdx_absent) = true];
+
+  // Payments less any overpayment previously requested; negative when that
+  // overpayment was larger.
+  nexteggapp.taxprotos.common.v1.Money net_payments = 28 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tax_due = 29 [(common.v1.fdx_absent) = true];
+
+  // Interest on tax paid after the due date.
+  nexteggapp.taxprotos.common.v1.Money late_payment_interest = 30 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money amount_due = 31 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money overpayment = 32 [(common.v1.fdx_absent) = true];
+
+  // The part of the overpayment applied to next year's tax.
+  nexteggapp.taxprotos.common.v1.Money credited_forward = 33 [(common.v1.fdx_absent) = true];
+
+  // The part of the overpayment given to the funds the form lists.
+  nexteggapp.taxprotos.common.v1.Money donations = 34 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money refund = 35 [(common.v1.fdx_absent) = true];
+}

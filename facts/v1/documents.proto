@@ -122,6 +122,7 @@ import "taxprotos/us/state/nm/v1/form_pit1/form_pit1.proto";
 import "taxprotos/us/state/nd/v1/form_nd1/form_nd1.proto";
 import "taxprotos/us/state/ne/v1/form_1040n/form_1040n.proto";
 import "taxprotos/us/state/ct/v1/form_ct1040/form_ct1040.proto";
+import "taxprotos/us/state/oh/v1/form_it1040/form_it1040.proto";
 import "taxprotos/us/state/or/v1/form_or40/form_or40.proto";
 import "taxprotos/us/state/pa/v1/form_pa40/form_pa40.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
@@ -364,6 +365,8 @@ message Document {
 
     // A filed Connecticut return.
     ConnecticutReturn connecticut_return = 54;
+    // A filed Ohio return.
+    OhioReturn ohio_return = 78;
   }
 }
 
@@ -1027,4 +1030,8 @@ message RhodeIslandReturn {
 message ConnecticutReturn {
   // Form CT-1040.
   us.state.ct.v1.FormCT1040 form_ct1040 = 1;
+// An Ohio resident return: Ohio IT 1040.
+message OhioReturn {
+  // Ohio IT 1040.
+  us.state.oh.v1.FormIT1040 form_it1040 = 1;
 }

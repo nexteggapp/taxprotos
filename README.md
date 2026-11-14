@@ -8,6 +8,9 @@ Maine, Michigan, Mississippi, Missouri, Montana, Nebraska, New Mexico, North
 Carolina, North Dakota, Oklahoma, Oregon, Pennsylvania, Rhode Island, South
 Carolina, Utah, Vermont, Virginia, Washington and West Virginia, and
 `TaxYearFacts`, a household's own facts for one tax year.
+receives, the Form 1040 it files, the state returns for Arizona, California,
+Colorado, Illinois, North Carolina, Ohio, Oregon and Washington, and `TaxYearFacts`, a
+household's own facts for one tax year.
 
 A schema holds what the form prints and nothing else. It has no confidence
 scores, page coordinates or other traces of how a document was read. Software
@@ -228,6 +231,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [ND-1](https://www.tax.nd.gov/sites/www/files/documents/forms/individual/2025-iit/28702-form-nd-1-2025.pdf) | [`form_nd1.proto`](us/state/nd/v1/form_nd1/form_nd1.proto) | The North Dakota resident return |
 | [SC1040](https://dor.sc.gov/sites/dor/files/forms/SC1040_2025.pdf) | [`form_sc1040.proto`](us/state/sc/v1/form_sc1040/form_sc1040.proto) | The South Carolina resident return |
 | [IN-111](https://tax.vermont.gov/sites/tax/files/documents/IN-111-2025.pdf) | [`form_in111.proto`](us/state/vt/v1/form_in111/form_in111.proto) | The Vermont resident return |
+| [IT 1040](https://dam.assets.ohio.gov/image/upload/tax.ohio.gov/forms/ohio_individual/individual/2025/1040-bundle.pdf) | [`form_it1040.proto`](us/state/oh/v1/form_it1040/form_it1040.proto) | The Ohio resident return |
 | [540](https://www.ftb.ca.gov/forms/2025/2025-540.pdf) | [`form_540.proto`](us/state/ca/v1/form_540/form_540.proto) | The California resident return |
 | [Schedule CA](https://www.ftb.ca.gov/forms/2025/2025-540-ca.pdf) | [`schedule_ca.proto`](us/state/ca/v1/form_540/schedule_ca.proto) | How a federal return becomes a Californian one |
 | [OR-40](https://www.oregon.gov/dor/forms/FormsPubs/form-or-40_101-040_2025.pdf) | [`form_or40.proto`](us/state/or/v1/form_or40/form_or40.proto) | The Oregon resident return |
