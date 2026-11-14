@@ -10,6 +10,7 @@ Washington and West Virginia, and `TaxYearFacts`, a household's own facts for
 one tax year.
 receives, the Form 1040 it files, the state returns for Arizona, California,
 Colorado, Connecticut, Illinois, North Carolina, Oregon and Washington, and `TaxYearFacts`, a
+Colorado, Illinois, North Carolina, Oregon, Rhode Island and Washington, and `TaxYearFacts`, a
 household's own facts for one tax year.
 
 A schema holds what the form prints and nothing else. It has no confidence
@@ -198,6 +199,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 ### State returns — what thirty-four states want as well
 ### State returns — what eight jurisdictions want as well
 ### State returns — what thirty-four states want as well
+### State returns — what eight states want as well
 
 | Form | Schema | Reports |
 |---|---|---|
@@ -238,6 +240,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [Schedule OR-ASC](https://www.oregon.gov/dor/forms/FormsPubs/schedule-or-asc_101-063_2025.pdf) | [`schedule_or_asc.proto`](us/state/or/v1/form_or40/schedule_or_asc.proto) | Oregon additions, subtractions and credits |
 | [TC-40](https://files.tax.utah.gov/tax/forms/current/tc-40.pdf) | [`form_tc40.proto`](us/state/ut/v1/form_tc40/form_tc40.proto) | The Utah resident return |
 | [PA-40](https://www.pa.gov/content/dam/copapwp-pagov/en/revenue/documents/formsandpublications/formsforindividuals/pit/documents/2025/2025_pa-40.pdf) | [`form_pa40.proto`](us/state/pa/v1/form_pa40/form_pa40.proto) | The Pennsylvania resident return |
+| [RI-1040 instructions](https://tax.ri.gov/sites/g/files/xkgbur541/files/2025-12/2025%201040R%20Instructions%20122025.pdf) | [`form_ri1040.proto`](us/state/ri/v1/form_ri1040/form_ri1040.proto) | The Rhode Island resident return |
 | [Capital gains](https://app.leg.wa.gov/rcw/default.aspx?cite=82.87) | [`capital_gains_return.proto`](us/state/wa/v1/capital_gains/capital_gains_return.proto) | Washington's excise tax on long-term gains |
 
 Washington levies no personal income tax, so `us/state/wa` has no income tax

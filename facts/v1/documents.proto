@@ -115,6 +115,7 @@ import "taxprotos/us/state/ms/v1/form_80105/form_80105.proto";
 import "taxprotos/us/state/mo/v1/form_mo1040/form_mo1040.proto";
 import "taxprotos/us/state/mt/v1/form_2/form_2.proto";
 import "taxprotos/us/state/me/v1/form_1040me/form_1040me.proto";
+import "taxprotos/us/state/ri/v1/form_ri1040/form_ri1040.proto";
 import "taxprotos/us/state/nc/v1/form_d400/form_d400.proto";
 import "taxprotos/us/state/ok/v1/form_511/form_511.proto";
 import "taxprotos/us/state/nm/v1/form_pit1/form_pit1.proto";
@@ -359,6 +360,8 @@ message Document {
     VermontReturn vermont_return = 84;
     // A filed Connecticut return.
     ConnecticutReturn connecticut_return = 54;
+    // A filed Rhode Island return.
+    RhodeIslandReturn rhode_island_return = 81;
   }
 }
 
@@ -1014,4 +1017,8 @@ message VermontReturn {
 message ConnecticutReturn {
   // Form CT-1040.
   us.state.ct.v1.FormCT1040 form_ct1040 = 1;
+// A Rhode Island resident return: Form RI-1040.
+message RhodeIslandReturn {
+  // Form RI-1040.
+  us.state.ri.v1.FormRI1040 form_ri1040 = 1;
 }

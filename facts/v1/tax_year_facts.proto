@@ -474,6 +474,8 @@ message PriorYearReturn {
     VermontReturn vermont = 51;
     // A Connecticut return.
     ConnecticutReturn connecticut = 21;
+    // A Rhode Island return.
+    RhodeIslandReturn rhode_island = 48;
   }
 
   // Where the return came from, when it is here.
