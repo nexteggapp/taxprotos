@@ -1,0 +1,137 @@
+// Form RI-1040, Rhode Island Resident Individual Income Tax Return.
+//
+// Non-residents and part-year residents file Form RI-1040NR. Only the
+// full-year resident's return is modelled here.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 RI-1040 instructions;
+// testdata holds the text extracted from the published PDF and
+// coverage_test.go asserts every line a mapping claims appears in it.
+//
+// # Graduated rates on modified federal AGI
+//
+// Rhode Island starts from federal adjusted gross income, adjusts it by
+// Schedule M on line 2, takes off its own standard deduction on line 4 and
+// exemptions on line 6, and taxes the rest at 3.75%, 4.75% and 5.99% on
+// line 8. Federal itemized deductions are not allowed.
+//
+// # Credits that are refunded
+//
+// The property tax relief, earned income and residential lead paint credits
+// come after the total tax, on lines 14c to 14e, as payments.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.ri.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/ri/v1/form_ri1040;formri1040";
+
+// FilingStatus is the status the return is filed under.
+//
+// Rhode Island generally follows the federal status.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+  FILING_STATUS_QUALIFYING_WIDOW = 5;
+}
+
+// FormRI1040 is what a Form RI-1040 states.
+message FormRI1040 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // Someone else can claim the filer as a dependent, which makes the
+  // exemption amount on line 6 zero.
+  bool claimed_as_dependent = 5 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 6 [(common.v1.fdx_absent) = true];
+
+  // Net modifications from RI Schedule M: additions less subtractions.
+  nexteggapp.taxprotos.common.v1.Money net_modifications = 7 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money modified_federal_adjusted_gross_income = 8 [(common.v1.fdx_absent) = true];
+
+  // Rhode Island's own standard deduction, phased out at high income.
+  nexteggapp.taxprotos.common.v1.Money standard_deduction = 9 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money income_after_deduction = 10 [(common.v1.fdx_absent) = true];
+
+  // The number of exemptions, from RI Schedule E line 5.
+  int32 exemptions = 11 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money exemption_amount = 12 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 13 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money income_tax = 14 [(common.v1.fdx_absent) = true];
+
+  // Rhode Island's percentage of allowable federal credits, from RI Schedule I.
+  nexteggapp.taxprotos.common.v1.Money allowable_federal_credit = 15 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money credit_for_taxes_paid_to_other_states = 16 [(common.v1.fdx_absent) = true];
+
+  // From RI Schedule CR.
+  nexteggapp.taxprotos.common.v1.Money other_rhode_island_credits = 17 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_credits = 18 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax_after_credits = 19 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money recapture_of_prior_year_credits = 20 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money checkoff_contributions = 21 [(common.v1.fdx_absent) = true];
+
+  // Use tax on purchases from out of state, from RI Schedule U.
+  nexteggapp.taxprotos.common.v1.Money use_tax = 22 [(common.v1.fdx_absent) = true];
+
+  // The penalty for going without minimum essential health coverage.
+  nexteggapp.taxprotos.common.v1.Money individual_mandate_penalty = 23 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_tax_and_contributions = 24 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money rhode_island_tax_withheld = 25 [(common.v1.fdx_absent) = true];
+
+  // Estimated payments for the year and the overpayment applied from the
+  // year before.
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 26 [(common.v1.fdx_absent) = true];
+
+  // From Form RI-1040H.
+  nexteggapp.taxprotos.common.v1.Money property_tax_relief_credit = 27 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money earned_income_credit = 28 [(common.v1.fdx_absent) = true];
+
+  // From Form RI-6238.
+  nexteggapp.taxprotos.common.v1.Money residential_lead_paint_credit = 29 [(common.v1.fdx_absent) = true];
+
+  // Payments made with an extension, and any others.
+  nexteggapp.taxprotos.common.v1.Money other_payments = 30 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_payments = 31 [(common.v1.fdx_absent) = true];
+
+  // On an amended return, overpayments already refunded or carried forward.
+  nexteggapp.taxprotos.common.v1.Money previously_issued_overpayments = 32 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money net_payments = 33 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money balance_due = 34 [(common.v1.fdx_absent) = true];
+
+  // Interest for underpaying estimated tax, from Form RI-2210 or RI-2210A.
+  nexteggapp.taxprotos.common.v1.Money underestimating_interest = 35 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_amount_due = 36 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money overpayment = 37 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money refund = 38 [(common.v1.fdx_absent) = true];
+
+  // The overpayment applied to next year's estimated tax.
+  nexteggapp.taxprotos.common.v1.Money applied_to_next_year = 39 [(common.v1.fdx_absent) = true];
+}

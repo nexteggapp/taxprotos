@@ -2,7 +2,7 @@
 
 Protobuf schemas for US tax documents: the W-2 and 1099 forms a household
 receives, the Form 1040 it files, the state returns for Arizona, California,
-Colorado, Illinois, North Carolina, Oregon and Washington, and `TaxYearFacts`, a
+Colorado, Illinois, North Carolina, Oregon, Rhode Island and Washington, and `TaxYearFacts`, a
 household's own facts for one tax year.
 
 A schema holds what the form prints and nothing else. It has no confidence
@@ -188,7 +188,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [8995](https://www.irs.gov/pub/irs-pdf/f8995.pdf) | [`form_8995.proto`](us/federal/v1/form_1040/form_8995.proto) | Qualified business income deduction, simplified computation |
 | [8995-A](https://www.irs.gov/pub/irs-pdf/f8995a.pdf) | [`form_8995_a.proto`](us/federal/v1/form_1040/form_8995_a.proto) | Qualified business income deduction |
 
-### State returns — what seven states want as well
+### State returns — what eight states want as well
 
 | Form | Schema | Reports |
 |---|---|---|
@@ -201,6 +201,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [OR-40](https://www.oregon.gov/dor/forms/FormsPubs/form-or-40_101-040_2025.pdf) | [`form_or40.proto`](us/state/or/v1/form_or40/form_or40.proto) | The Oregon resident return |
 | [Schedule OR-A](https://www.oregon.gov/dor/forms/FormsPubs/schedule-or-a_101-007_2025.pdf) | [`schedule_or_a.proto`](us/state/or/v1/form_or40/schedule_or_a.proto) | Oregon itemized deductions |
 | [Schedule OR-ASC](https://www.oregon.gov/dor/forms/FormsPubs/schedule-or-asc_101-063_2025.pdf) | [`schedule_or_asc.proto`](us/state/or/v1/form_or40/schedule_or_asc.proto) | Oregon additions, subtractions and credits |
+| [RI-1040 instructions](https://tax.ri.gov/sites/g/files/xkgbur541/files/2025-12/2025%201040R%20Instructions%20122025.pdf) | [`form_ri1040.proto`](us/state/ri/v1/form_ri1040/form_ri1040.proto) | The Rhode Island resident return |
 | [Capital gains](https://app.leg.wa.gov/rcw/default.aspx?cite=82.87) | [`capital_gains_return.proto`](us/state/wa/v1/capital_gains/capital_gains_return.proto) | Washington's excise tax on long-term gains |
 
 Washington levies no personal income tax, so `us/state/wa` has no income tax
