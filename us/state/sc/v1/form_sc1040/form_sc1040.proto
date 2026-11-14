@@ -1,0 +1,184 @@
+// Form SC1040, South Carolina Individual Income Tax Return.
+//
+// Part-year residents and nonresidents file the same form with Schedule NR,
+// which replaces line 5. Only the full-year resident's return is modelled
+// here.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 SC1040; testdata holds
+// the text extracted from the published PDF and coverage_test.go asserts every
+// line a mapping claims appears on it.
+//
+// # Starting from federal taxable income
+//
+// South Carolina starts from federal taxable income on line 1, so the federal
+// standard or itemized deduction carries over. Additions are lettered a to e
+// and subtractions f to w; line 5 is the income subject to tax, and line 6 the
+// tax on it from the SC1040TT tables or rate schedule.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.sc.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/sc/v1/form_sc1040;formsc1040";
+
+// FilingStatus is the status the return is filed under.
+//
+// South Carolina requires the federal status.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+  FILING_STATUS_QUALIFYING_SURVIVING_SPOUSE = 5;
+}
+
+// FormSC1040 is what an SC1040 states.
+message FormSC1040 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // Dependents claimed on the federal return.
+  int32 dependents = 5 [(common.v1.fdx_absent) = true];
+
+  // Dependents claimed who were under age 6 on December 31.
+  int32 dependents_under_6 = 6 [(common.v1.fdx_absent) = true];
+
+  // Taxpayers age 65 or older on December 31.
+  int32 taxpayers_65_or_older = 7 [(common.v1.fdx_absent) = true];
+
+  // Federal taxable income, not below zero.
+  nexteggapp.taxprotos.common.v1.Money federal_taxable_income = 10 [(common.v1.fdx_absent) = true];
+
+  // State income tax deducted on a federal itemized return.
+  nexteggapp.taxprotos.common.v1.Money state_tax_addback = 11 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money out_of_state_losses = 12 [(common.v1.fdx_absent) = true];
+  // Expenses related to National Guard and Military Reserve income.
+  nexteggapp.taxprotos.common.v1.Money national_guard_and_reserve_expenses = 13 [(common.v1.fdx_absent) = true];
+
+  // Interest on obligations of states and political subdivisions other than South Carolina.
+  nexteggapp.taxprotos.common.v1.Money other_state_obligation_interest = 14 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money other_additions = 15 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_additions = 16 [(common.v1.fdx_absent) = true];
+  // Federal taxable income plus the additions.
+  nexteggapp.taxprotos.common.v1.Money income_with_additions = 17 [(common.v1.fdx_absent) = true];
+
+  // A state income tax refund counted federally.
+  nexteggapp.taxprotos.common.v1.Money state_tax_refund = 18 [(common.v1.fdx_absent) = true];
+
+  // Total and permanent disability retirement income taxed federally.
+  nexteggapp.taxprotos.common.v1.Money disability_retirement_income = 19 [(common.v1.fdx_absent) = true];
+
+  // Out-of-state income or gain, other than personal service income.
+  nexteggapp.taxprotos.common.v1.Money out_of_state_income = 20 [(common.v1.fdx_absent) = true];
+
+  // 44% of net capital gain on assets held more than a year.
+  nexteggapp.taxprotos.common.v1.Money capital_gain_deduction = 21 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money volunteer_deduction = 22 [(common.v1.fdx_absent) = true];
+  // Contributions to the SC College Investment Program or the SC Tuition Prepayment Program.
+  nexteggapp.taxprotos.common.v1.Money tuition_savings_contributions = 23 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money active_trade_or_business_income_deduction = 24 [(common.v1.fdx_absent) = true];
+  // Interest from obligations of the US government.
+  nexteggapp.taxprotos.common.v1.Money us_obligation_interest = 25 [(common.v1.fdx_absent) = true];
+
+  // Certain nontaxable National Guard or Reserve pay.
+  nexteggapp.taxprotos.common.v1.Money national_guard_and_reserve_pay = 26 [(common.v1.fdx_absent) = true];
+
+  // Social Security and railroad retirement taxed federally, which South Carolina does not tax.
+  nexteggapp.taxprotos.common.v1.Money social_security_and_railroad_retirement = 27 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money retirement_deduction_taxpayer = 28 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money retirement_deduction_spouse = 29 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money retirement_deduction_surviving_spouse = 30 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money military_retirement_deduction_taxpayer = 31 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money military_retirement_deduction_spouse = 32 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money military_retirement_deduction_surviving_spouse = 33 [(common.v1.fdx_absent) = true];
+  // The age 65 and older deduction, less the taxpayer's retirement deductions.
+  nexteggapp.taxprotos.common.v1.Money age_65_deduction_taxpayer = 34 [(common.v1.fdx_absent) = true];
+
+  // The age 65 and older deduction, less the spouse's retirement deductions.
+  nexteggapp.taxprotos.common.v1.Money age_65_deduction_spouse = 35 [(common.v1.fdx_absent) = true];
+
+  // Federal taxable income below zero, as a positive amount.
+  nexteggapp.taxprotos.common.v1.Money negative_federal_taxable_income = 36 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money subsistence_allowance = 37 [(common.v1.fdx_absent) = true];
+  // The deduction for dependents under age 6 on December 31.
+  nexteggapp.taxprotos.common.v1.Money young_dependents_deduction = 38 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money consumer_protection_services = 39 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money other_subtractions = 40 [(common.v1.fdx_absent) = true];
+  // The South Carolina dependent exemption, for each dependent.
+  nexteggapp.taxprotos.common.v1.Money dependent_exemption = 41 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_subtractions = 42 [(common.v1.fdx_absent) = true];
+  // South Carolina income subject to tax.
+  nexteggapp.taxprotos.common.v1.Money income_subject_to_tax = 43 [(common.v1.fdx_absent) = true];
+
+  // Tax from the SC1040TT tax tables or rate schedule.
+  nexteggapp.taxprotos.common.v1.Money tax = 44 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money lump_sum_distribution_tax = 45 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money active_trade_or_business_income_tax = 46 [(common.v1.fdx_absent) = true];
+  // Tax on excess withdrawals from Catastrophe Savings Accounts.
+  nexteggapp.taxprotos.common.v1.Money catastrophe_savings_withdrawal_tax = 47 [(common.v1.fdx_absent) = true];
+
+  // Total South Carolina tax.
+  nexteggapp.taxprotos.common.v1.Money total_tax = 48 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money child_and_dependent_care_credit = 49 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money two_wage_earner_credit = 50 [(common.v1.fdx_absent) = true];
+  // From SC1040TC.
+  nexteggapp.taxprotos.common.v1.Money other_nonrefundable_credits = 51 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_nonrefundable_credits = 52 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax_after_nonrefundable_credits = 53 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money south_carolina_tax_withheld = 54 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 55 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money extension_payment = 56 [(common.v1.fdx_absent) = true];
+  // Paid on I-290.
+  nexteggapp.taxprotos.common.v1.Money nonresident_real_estate_withholding = 57 [(common.v1.fdx_absent) = true];
+
+  // From 1099s.
+  nexteggapp.taxprotos.common.v1.Money other_south_carolina_withholding = 58 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money tuition_tax_credit = 59 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money anhydrous_ammonia_credit = 60 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money milk_credit = 61 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money classroom_teacher_expenses_credit = 62 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money parental_refundable_credit = 63 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_refundable_credits = 64 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money total_payments = 65 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money overpayment = 66 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money amount_due = 67 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money use_tax = 68 [(common.v1.fdx_absent) = true];
+  // Overpayment credited to next year's estimated tax.
+  nexteggapp.taxprotos.common.v1.Money credited_to_estimated_tax = 69 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money check_off_contributions = 70 [(common.v1.fdx_absent) = true];
+  // Lines 26 through 28 added.
+  nexteggapp.taxprotos.common.v1.Money use_tax_credit_forward_and_contributions = 71 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money refund = 72 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money tax_due = 73 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Money late_filing_penalties_and_interest = 74 [(common.v1.fdx_absent) = true];
+  // Penalty for underpayment of estimated tax, from SC2210.
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_penalty = 75 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money balance_due = 76 [(common.v1.fdx_absent) = true];
+}
