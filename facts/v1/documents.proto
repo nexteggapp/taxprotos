@@ -125,6 +125,7 @@ import "taxprotos/us/state/nd/v1/form_nd1/form_nd1.proto";
 import "taxprotos/us/state/ne/v1/form_1040n/form_1040n.proto";
 import "taxprotos/us/state/ct/v1/form_ct1040/form_ct1040.proto";
 import "taxprotos/us/state/oh/v1/form_it1040/form_it1040.proto";
+import "taxprotos/us/state/ny/v1/form_it201/form_it201.proto";
 import "taxprotos/us/state/or/v1/form_or40/form_or40.proto";
 import "taxprotos/us/state/pa/v1/form_pa40/form_pa40.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
@@ -376,6 +377,8 @@ message Document {
     MinnesotaReturn minnesota_return = 69;
     // A filed Maryland return.
     MarylandReturn maryland_return = 66;
+    // A filed New York return.
+    NewYorkReturn new_york_return = 76;
   }
 }
 
@@ -1055,4 +1058,8 @@ message MinnesotaReturn {
 message MarylandReturn {
   // Form 502.
   us.state.md.v1.Form502 form_502 = 1;
+// A New York resident return: Form IT-201.
+message NewYorkReturn {
+  // Form IT-201.
+  us.state.ny.v1.FormIT201 form_it201 = 1;
 }

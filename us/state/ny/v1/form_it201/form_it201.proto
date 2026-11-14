@@ -1,0 +1,266 @@
+// Form IT-201, New York Resident Income Tax Return.
+//
+// Nonresidents and part-year residents file Form IT-203. Only the full-year
+// resident's return is modelled here.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form IT-201; testdata
+// holds the text extracted from the published PDF and coverage_test.go asserts
+// every line a mapping claims appears on it.
+//
+// # Three taxes on one return
+//
+// The return starts from federal adjusted gross income (lines 1 to 19), adds
+// and subtracts New York modifications to reach New York AGI on line 33, and
+// takes the standard or itemized deduction and $1,000 per dependent to reach
+// taxable income on line 38. New York State tax is line 39. A New York City
+// resident adds City tax on the same taxable income on line 47a, and a
+// Yonkers resident a surcharge on line 55.
+//
+// # Recapture above $107,650
+//
+// Above $107,650 of New York AGI the benefit of the lower brackets is
+// recaptured, so line 39 comes from the tax computation worksheets rather
+// than the rate schedule. Above $25,000,000 all taxable income is taxed at the
+// top rate.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.ny.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/ny/v1/form_it201;formit201";
+
+// FilingStatus is the status the return is filed under, item A on the form.
+//
+// New York generally requires the federal status.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+  FILING_STATUS_QUALIFYING_SURVIVING_SPOUSE = 5;
+}
+
+// FormIT201 is what a Form IT-201 states.
+message FormIT201 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // Item C: someone else can claim the filer as a dependent. It lowers a
+  // single filer's standard deduction and bars the household credits.
+  bool claimed_as_dependent = 5 [(common.v1.fdx_absent) = true];
+
+  // Item F: the filer lived in New York City for all of the year.
+  bool new_york_city_resident = 6 [(common.v1.fdx_absent) = true];
+
+  // Item H: the number of dependents listed.
+  int32 dependents = 7 [(common.v1.fdx_absent) = true];
+
+  // Line 34 is the itemized deduction from Form IT-196, not the standard one.
+  bool itemized = 8 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money wages = 10 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money taxable_interest = 11 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money ordinary_dividends = 12 [(common.v1.fdx_absent) = true];
+
+  // Also entered on line 25, where it is subtracted.
+  nexteggapp.taxprotos.common.v1.Money taxable_state_and_local_refunds = 13 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money alimony_received = 14 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money business_income = 15 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money capital_gain = 16 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money other_gains = 17 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money ira_distributions_taxable = 18 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money pensions_and_annuities_taxable = 19 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money rental_partnership_s_corporation_and_trust_income = 20 [(common.v1.fdx_absent) = true];
+
+  // Part of line 11, shown separately; it is not added again on line 17.
+  nexteggapp.taxprotos.common.v1.Money rental_real_estate_income = 21 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money farm_income = 22 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money unemployment_compensation = 23 [(common.v1.fdx_absent) = true];
+
+  // Also entered on line 27, where it is subtracted.
+  nexteggapp.taxprotos.common.v1.Money social_security_benefits_taxable = 24 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money other_income = 25 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_federal_income = 26 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money federal_adjustments_to_income = 27 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 28 [(common.v1.fdx_absent) = true];
+
+  // Interest on bonds of other states and their local governments, which New York taxes.
+  nexteggapp.taxprotos.common.v1.Money other_state_and_local_bond_interest = 29 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money public_employee_414h_contributions = 30 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money ny_529_distributions = 31 [(common.v1.fdx_absent) = true];
+
+  // From Form IT-225.
+  nexteggapp.taxprotos.common.v1.Money other_additions = 32 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money income_with_additions = 33 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money state_and_local_refunds_subtracted = 34 [(common.v1.fdx_absent) = true];
+
+  // Pensions of New York State, its local governments and the federal government.
+  nexteggapp.taxprotos.common.v1.Money government_pensions = 35 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money social_security_benefits_subtracted = 36 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money us_government_bond_interest = 37 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money pension_and_annuity_exclusion = 38 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money ny_529_deduction = 39 [(common.v1.fdx_absent) = true];
+
+  // From Form IT-225.
+  nexteggapp.taxprotos.common.v1.Money other_subtractions = 40 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_subtractions = 41 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money new_york_adjusted_gross_income = 42 [(common.v1.fdx_absent) = true];
+
+  // The standard deduction, or the itemized deduction from Form IT-196.
+  nexteggapp.taxprotos.common.v1.Money deduction = 43 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money income_after_deduction = 44 [(common.v1.fdx_absent) = true];
+
+  // $1,000 for each dependent listed in item H.
+  nexteggapp.taxprotos.common.v1.Money dependent_exemption = 45 [(common.v1.fdx_absent) = true];
+
+  // Repeated on line 38.
+  nexteggapp.taxprotos.common.v1.Money taxable_income = 46 [(common.v1.fdx_absent) = true];
+
+  // From the tax table or rate schedule, or the tax computation worksheets above $107,650 of New York AGI.
+  nexteggapp.taxprotos.common.v1.Money new_york_state_tax = 47 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money nys_household_credit = 48 [(common.v1.fdx_absent) = true];
+
+  // For tax paid to another state, from Form IT-112-R.
+  nexteggapp.taxprotos.common.v1.Money resident_credit = 49 [(common.v1.fdx_absent) = true];
+
+  // From Form IT-201-ATT.
+  nexteggapp.taxprotos.common.v1.Money other_nys_nonrefundable_credits = 50 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_nys_nonrefundable_credits = 51 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money nys_tax_after_credits = 52 [(common.v1.fdx_absent) = true];
+
+  // From Form IT-201-ATT.
+  nexteggapp.taxprotos.common.v1.Money net_other_nys_taxes = 53 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_new_york_state_taxes = 54 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money nyc_taxable_income = 55 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money nyc_resident_tax = 56 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money nyc_household_credit = 57 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money nyc_tax_after_household_credit = 58 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money part_year_nyc_resident_tax = 59 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money other_nyc_taxes = 60 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money nyc_taxes_before_credits = 61 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money nyc_nonrefundable_credits = 62 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money nyc_tax_after_credits = 63 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money mctmt_zone_1_base = 64 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money mctmt_zone_2_base = 65 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money mctmt_zone_1 = 66 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money mctmt_zone_2 = 67 [(common.v1.fdx_absent) = true];
+
+  // Metropolitan commuter transportation mobility tax.
+  nexteggapp.taxprotos.common.v1.Money total_mctmt = 68 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money yonkers_resident_surcharge = 69 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money yonkers_nonresident_earnings_tax = 70 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money part_year_yonkers_surcharge = 71 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_nyc_and_yonkers_taxes = 72 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money sales_or_use_tax = 73 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money voluntary_contributions = 74 [(common.v1.fdx_absent) = true];
+
+  // Repeated on line 62.
+  nexteggapp.taxprotos.common.v1.Money total_taxes = 75 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money empire_state_child_credit = 76 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money child_and_dependent_care_credit = 77 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money earned_income_credit = 78 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money noncustodial_parent_earned_income_credit = 79 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money real_property_tax_credit = 80 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money college_tuition_credit = 81 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money nyc_school_tax_credit_fixed = 82 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money nyc_school_tax_credit_rate_reduction = 83 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money nyc_earned_income_credit = 84 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money nyc_income_tax_elimination_credit = 85 [(common.v1.fdx_absent) = true];
+
+  // From Form IT-201-ATT.
+  nexteggapp.taxprotos.common.v1.Money other_refundable_credits = 86 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money nys_tax_withheld = 87 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money nyc_tax_withheld = 88 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money yonkers_tax_withheld = 89 [(common.v1.fdx_absent) = true];
+
+  // Including any amount paid with Form IT-370.
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 90 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_payments = 91 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money overpayment = 92 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money refund = 93 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money refund_to_529_account = 94 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money refund_after_529_deposit = 95 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money applied_to_next_year = 96 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money amount_owed = 97 [(common.v1.fdx_absent) = true];
+}
