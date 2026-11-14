@@ -448,6 +448,8 @@ message PriorYearReturn {
 
     // An Alabama return.
     AlabamaReturn alabama = 19;
+    // A New Mexico return.
+    NewMexicoReturn new_mexico = 42;
   }
 
   // Where the return came from, when it is here.
