@@ -97,6 +97,7 @@ import "taxprotos/us/state/az/v1/form_140/form_140.proto";
 import "taxprotos/us/state/ca/v1/form_540/form_540.proto";
 import "taxprotos/us/state/ca/v1/form_540/schedule_ca.proto";
 import "taxprotos/us/state/co/v1/form_dr0104/form_dr0104.proto";
+import "taxprotos/us/state/de/v1/form_pit_res/form_pit_res.proto";
 import "taxprotos/us/state/il/v1/form_il1040/form_il1040.proto";
 import "taxprotos/us/state/nc/v1/form_d400/form_d400.proto";
 import "taxprotos/us/state/or/v1/form_or40/form_or40.proto";
@@ -244,6 +245,9 @@ message Document {
 
     // A filed Arizona return.
     ArizonaReturn arizona_return = 51;
+
+    // A filed Delaware return.
+    DelawareReturn delaware_return = 55;
   }
 }
 
@@ -702,6 +706,12 @@ message OregonReturn {
 
   // Schedule OR-ASC, other additions, subtractions and credits.
   us.state.or.v1.ScheduleORASC schedule_or_asc = 3;
+}
+
+// A Delaware resident return: Form PIT-RES.
+message DelawareReturn {
+  // Form PIT-RES.
+  us.state.de.v1.FormPITRES form_pit_res = 1;
 }
 
 // An Illinois resident return: Form IL-1040.

@@ -1,0 +1,28 @@
+# gazelle:ignore
+
+load("@protobuf//bazel:proto_library.bzl", "proto_library")
+
+# Form PIT-RES: the return a full-year Delaware resident files.
+proto_library(
+    name = "form_pit_res_proto",
+    # Imported as taxprotos/..., so consumers import these files by that path.
+    import_prefix = "taxprotos",
+    srcs = [
+        "form_pit_res.proto",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//common/v1:common_proto",
+    ],
+)
+
+# The mapping and the form extract it is checked against, for
+# //go/us/state/de/v1/form_pit_res.
+filegroup(
+    name = "test_oracles",
+    srcs = glob([
+        "mapping.textproto",
+        "testdata/**",
+    ]),
+    visibility = ["//go/us/state/de/v1/form_pit_res:__pkg__"],
+)
