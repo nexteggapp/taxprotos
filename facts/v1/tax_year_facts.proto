@@ -484,6 +484,8 @@ message PriorYearReturn {
     WisconsinReturn wisconsin = 54;
     // A Minnesota return.
     MinnesotaReturn minnesota = 36;
+    // A Maryland return.
+    MarylandReturn maryland = 33;
   }
 
   // Where the return came from, when it is here.

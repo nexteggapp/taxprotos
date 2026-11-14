@@ -117,6 +117,7 @@ import "taxprotos/us/state/mt/v1/form_2/form_2.proto";
 import "taxprotos/us/state/me/v1/form_1040me/form_1040me.proto";
 import "taxprotos/us/state/ri/v1/form_ri1040/form_ri1040.proto";
 import "taxprotos/us/state/mn/v1/form_m1/form_m1.proto";
+import "taxprotos/us/state/md/v1/form_502/form_502.proto";
 import "taxprotos/us/state/nc/v1/form_d400/form_d400.proto";
 import "taxprotos/us/state/ok/v1/form_511/form_511.proto";
 import "taxprotos/us/state/nm/v1/form_pit1/form_pit1.proto";
@@ -373,6 +374,8 @@ message Document {
     WisconsinReturn wisconsin_return = 87;
     // A filed Minnesota return.
     MinnesotaReturn minnesota_return = 69;
+    // A filed Maryland return.
+    MarylandReturn maryland_return = 66;
   }
 }
 
@@ -1048,4 +1051,8 @@ message WisconsinReturn {
 message MinnesotaReturn {
   // Form M1.
   us.state.mn.v1.FormM1 form_m1 = 1;
+// A Maryland resident return: Form 502.
+message MarylandReturn {
+  // Form 502.
+  us.state.md.v1.Form502 form_502 = 1;
 }

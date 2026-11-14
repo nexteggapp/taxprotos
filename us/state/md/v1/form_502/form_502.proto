@@ -1,0 +1,212 @@
+// Form 502, Maryland Resident Income Tax Return.
+//
+// Part-year residents file the same form with lines 12 and 17 prorated; only
+// the full-year resident's return is modelled here.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 Form 502; testdata
+// holds the text extracted from the published PDF and coverage_test.go asserts
+// every line a mapping claims appears on it.
+//
+// # State and local tax on one form
+//
+// Maryland taxes taxable net income (line 20) twice: at the state's graduated
+// rates on line 21, and at the rate of the county or Baltimore City the filer
+// lives in on line 28. Both are paid with this return.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.md.v1;
+
+import "taxprotos/common/v1/annotations.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/party.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/md/v1/form_502;form502";
+
+// FilingStatus is the status the return is filed under.
+enum FilingStatus {
+  FILING_STATUS_UNSPECIFIED = 0;
+  FILING_STATUS_SINGLE = 1;
+  FILING_STATUS_MARRIED_FILING_JOINTLY = 2;
+  FILING_STATUS_MARRIED_FILING_SEPARATELY = 3;
+  FILING_STATUS_HEAD_OF_HOUSEHOLD = 4;
+  FILING_STATUS_QUALIFYING_SURVIVING_SPOUSE = 5;
+  // A filer someone else can claim as a dependent.
+  FILING_STATUS_DEPENDENT_TAXPAYER = 6;
+}
+
+// Form502 is what a Form 502 states.
+message Form502 {
+  option (common.v1.fdx_entity) = "";
+  option (common.v1.fdx_version) = "5.0";
+
+  int32 tax_year = 1 [(common.v1.fdx_field) = "taxYear"];
+
+  nexteggapp.taxprotos.common.v1.Party taxpayer = 2 [(common.v1.fdx_absent) = true];
+  nexteggapp.taxprotos.common.v1.Party spouse = 3 [(common.v1.fdx_absent) = true];
+
+  FilingStatus filing_status = 4 [(common.v1.fdx_absent) = true];
+
+  // The four-digit political subdivision code of the Maryland address on
+  // December 31.
+  string political_subdivision_code = 5 [(common.v1.fdx_absent) = true];
+
+  // The county or Baltimore City named on the form.
+  string maryland_county = 6 [(common.v1.fdx_absent) = true];
+
+  // The local tax rate printed on line 28, in basis points (3.20% is 320).
+  int32 local_tax_rate_bp = 7 [(common.v1.fdx_absent) = true];
+
+  // Exemptions claimed in boxes A, B and C.
+  int32 personal_exemption_count = 8 [(common.v1.fdx_absent) = true];
+  int32 age_and_blind_exemption_count = 9 [(common.v1.fdx_absent) = true];
+  int32 dependent_exemption_count = 10 [(common.v1.fdx_absent) = true];
+
+  // The itemized deduction method was chosen instead of the standard one.
+  bool itemized = 11 [(common.v1.fdx_absent) = true];
+
+
+  // The exemption for the filer and spouse, which shrinks as federal adjusted gross income rises.
+  nexteggapp.taxprotos.common.v1.Money personal_exemption = 20 [(common.v1.fdx_absent) = true];
+
+  // $1,000 for each filer or spouse who is 65 or older or blind.
+  nexteggapp.taxprotos.common.v1.Money age_and_blind_exemption = 21 [(common.v1.fdx_absent) = true];
+
+  // The exemption for dependents, from Form 502B.
+  nexteggapp.taxprotos.common.v1.Money dependent_exemption = 22 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_exemptions = 23 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money federal_adjusted_gross_income = 24 [(common.v1.fdx_absent) = true];
+
+  // Wages, salaries and tips, reported for information.
+  nexteggapp.taxprotos.common.v1.Money wages = 25 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money earned_income = 26 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money capital_gain_or_loss = 27 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money taxable_pensions_and_annuities = 28 [(common.v1.fdx_absent) = true];
+
+  // Interest on other states' and localities' bonds, which Maryland taxes.
+  nexteggapp.taxprotos.common.v1.Money non_maryland_bond_interest = 29 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money state_retirement_pickup = 30 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money lump_sum_distributions = 31 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money other_additions = 32 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_additions = 33 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money income_with_additions = 34 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money state_refunds_in_federal_income = 35 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money child_and_dependent_care_expenses = 36 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money pension_exclusion = 37 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money ranger_pension_exclusion = 38 [(common.v1.fdx_absent) = true];
+
+  // Taxable social security and railroad retirement benefits, which Maryland does not tax.
+  nexteggapp.taxprotos.common.v1.Money social_security_benefits = 39 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money nonresident_period_income = 40 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money form_502su_subtractions = 41 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money two_income_subtraction = 42 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_subtractions = 43 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money maryland_adjusted_gross_income = 44 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money federal_itemized_deductions = 45 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money state_and_local_income_taxes = 46 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money itemized_deduction_phaseout = 47 [(common.v1.fdx_absent) = true];
+
+  // The standard deduction, or the itemized deductions less lines 17b and 17c.
+  nexteggapp.taxprotos.common.v1.Money deduction = 48 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money net_income = 49 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money exemption_amount = 50 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money taxable_net_income = 51 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money net_capital_gain_subject_to_additional_tax = 52 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money maryland_tax = 53 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money recaptured_credit = 54 [(common.v1.fdx_absent) = true];
+
+  // 2% of line 20a.
+  nexteggapp.taxprotos.common.v1.Money capital_gain_additional_tax = 55 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money earned_income_credit = 56 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money poverty_level_credit = 57 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money other_income_tax_credits = 58 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_state_credits = 59 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money state_tax_after_credits = 60 [(common.v1.fdx_absent) = true];
+
+  // Line 20 multiplied by the county or Baltimore City rate.
+  nexteggapp.taxprotos.common.v1.Money local_tax = 61 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money local_earned_income_credit = 62 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money local_poverty_level_credit = 63 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money local_tax_credit = 64 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_local_credits = 65 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money local_tax_after_credits = 66 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_maryland_and_local_tax = 67 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money chesapeake_bay_contribution = 68 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money developmental_disabilities_contribution = 69 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money cancer_fund_contribution = 70 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money fair_campaign_financing_contribution = 71 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money veterans_trust_fund_contribution = 72 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_tax_and_contributions = 73 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money maryland_and_local_tax_withheld = 74 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money mw506nrs_withholding = 75 [(common.v1.fdx_absent) = true];
+
+  // Estimated payments, last year's overpayment applied, and payment with an extension request.
+  nexteggapp.taxprotos.common.v1.Money estimated_tax_payments = 76 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money refundable_earned_income_credit = 77 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money refundable_credits = 78 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_payments_and_credits = 79 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money balance_due = 80 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money overpayment = 81 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money applied_to_next_year_estimated_tax = 82 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money refund = 83 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money interest_charges = 84 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money homebuyer_withdrawal_penalty = 85 [(common.v1.fdx_absent) = true];
+
+  nexteggapp.taxprotos.common.v1.Money total_amount_due = 86 [(common.v1.fdx_absent) = true];
+}
