@@ -3,12 +3,10 @@
 Protobuf schemas for US tax documents: the W-2 and 1099 forms a household
 receives, the Form 1040 it files, the state returns for Alabama, Arizona,
 Arkansas, California, Colorado, Georgia, Idaho, Illinois, Indiana, Iowa, Kansas,
-Kentucky, Louisiana, Michigan, Mississippi, Missouri, Montana, Nebraska, North
-Carolina, North Dakota, Oklahoma, Oregon, Pennsylvania, Utah, Virginia and
-Washington, and `TaxYearFacts`, a household's own facts for one tax year.
-receives, the Form 1040 it files, the state returns for Arizona, California,
-Colorado, Illinois, New Mexico, North Carolina, Oregon and Washington, and `TaxYearFacts`, a
-household's own facts for one tax year.
+Kentucky, Louisiana, Michigan, Mississippi, Missouri, Montana, Nebraska, New
+Mexico, North Carolina, North Dakota, Oklahoma, Oregon, Pennsylvania, Utah,
+Virginia and Washington, and `TaxYearFacts`, a household's own facts for one tax
+year.
 
 A schema holds what the form prints and nothing else. It has no confidence
 scores, page coordinates or other traces of how a document was read. Software
@@ -193,7 +191,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [8995](https://www.irs.gov/pub/irs-pdf/f8995.pdf) | [`form_8995.proto`](us/federal/v1/form_1040/form_8995.proto) | Qualified business income deduction, simplified computation |
 | [8995-A](https://www.irs.gov/pub/irs-pdf/f8995a.pdf) | [`form_8995_a.proto`](us/federal/v1/form_1040/form_8995_a.proto) | Qualified business income deduction |
 
-### State returns — what twenty-six states want as well
+### State returns — what twenty-seven states want as well
 
 | Form | Schema | Reports |
 |---|---|---|
@@ -212,10 +210,10 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [IT-540](https://dam.ldr.la.gov/taxforms/IT540WEB-BC(2025)%20F.pdf) | [`form_it540.proto`](us/state/la/v1/form_it540/form_it540.proto) | The Louisiana resident return |
 | [80-105](https://www.dor.ms.gov/sites/default/files/tax-forms/individual/80105258%201.pdf) | [`form_80105.proto`](us/state/ms/v1/form_80105/form_80105.proto) | The Mississippi resident return |
 | [MO-1040](https://dor.mo.gov/forms/MO-1040%20Fillable%20Calculating_2025.pdf) | [`form_mo1040.proto`](us/state/mo/v1/form_mo1040/form_mo1040.proto) | The Missouri resident return |
+| [PIT-1](https://realfile.tax.newmexico.gov/2025pit-1.pdf) | [`form_pit1.proto`](us/state/nm/v1/form_pit1/form_pit1.proto) | The New Mexico resident return |
 | [2](https://revenuefiles.mt.gov/files/Forms/Montana-Individual-Income-Tax-Return-Form-2/2025_Montana_Individual_Income_Tax_Return_Form_2.pdf) | [`form_2.proto`](us/state/mt/v1/form_2/form_2.proto) | The Montana resident return |
 | [1040N](https://revenue.nebraska.gov/sites/default/files/doc/tax-forms/2025/f_1040N.pdf) | [`form_1040n.proto`](us/state/ne/v1/form_1040n/form_1040n.proto) | The Nebraska resident return |
 | [760](https://www.tax.virginia.gov/sites/default/files/taxforms/individual-income-tax/2025/760-2025.pdf) | [`form_760.proto`](us/state/va/v1/form_760/form_760.proto) | The Virginia resident return |
-| [PIT-1](https://realfile.tax.newmexico.gov/2025pit-1.pdf) | [`form_pit1.proto`](us/state/nm/v1/form_pit1/form_pit1.proto) | The New Mexico resident return |
 | [D-400](https://www.ncdor.gov/2025-d-400-web-filled-version/open) | [`form_d400.proto`](us/state/nc/v1/form_d400/form_d400.proto) | The North Carolina resident return |
 | [511](https://oklahoma.gov/content/dam/ok/en/tax/documents/forms/individuals/current/511-Pkt.pdf) | [`form_511.proto`](us/state/ok/v1/form_511/form_511.proto) | The Oklahoma resident return |
 | [ND-1](https://www.tax.nd.gov/sites/www/files/documents/forms/individual/2025-iit/28702-form-nd-1-2025.pdf) | [`form_nd1.proto`](us/state/nd/v1/form_nd1/form_nd1.proto) | The North Dakota resident return |

@@ -113,9 +113,9 @@ import "taxprotos/us/state/mo/v1/form_mo1040/form_mo1040.proto";
 import "taxprotos/us/state/mt/v1/form_2/form_2.proto";
 import "taxprotos/us/state/nc/v1/form_d400/form_d400.proto";
 import "taxprotos/us/state/ok/v1/form_511/form_511.proto";
+import "taxprotos/us/state/nm/v1/form_pit1/form_pit1.proto";
 import "taxprotos/us/state/nd/v1/form_nd1/form_nd1.proto";
 import "taxprotos/us/state/ne/v1/form_1040n/form_1040n.proto";
-import "taxprotos/us/state/nm/v1/form_pit1/form_pit1.proto";
 import "taxprotos/us/state/or/v1/form_or40/form_or40.proto";
 import "taxprotos/us/state/pa/v1/form_pa40/form_pa40.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
@@ -314,6 +314,9 @@ message Document {
     // A filed Arkansas return.
     ArkansasReturn arkansas_return = 53;
 
+    // A filed New Mexico return.
+    NewMexicoReturn new_mexico_return = 75;
+
     // A filed North Dakota return.
     NorthDakotaReturn north_dakota_return = 77;
 
@@ -325,8 +328,6 @@ message Document {
 
     // A filed Alabama return.
     AlabamaReturn alabama_return = 52;
-    // A filed New Mexico return.
-    NewMexicoReturn new_mexico_return = 75;
   }
 }
 
@@ -914,6 +915,12 @@ message ArkansasReturn {
   us.state.ar.v1.FormAR1000F form_ar1000f = 1;
 }
 
+// A New Mexico resident return: Form PIT-1.
+message NewMexicoReturn {
+  // Form PIT-1.
+  us.state.nm.v1.FormPIT1 form_pit1 = 1;
+}
+
 // A North Dakota resident return: Form ND-1.
 message NorthDakotaReturn {
   // Form ND-1.
@@ -930,8 +937,4 @@ message NebraskaReturn {
 message VirginiaReturn {
   // Form 760.
   us.state.va.v1.Form760 form_760 = 1;
-// A New Mexico resident return: Form PIT-1.
-message NewMexicoReturn {
-  // Form PIT-1.
-  us.state.nm.v1.FormPIT1 form_pit1 = 1;
 }
