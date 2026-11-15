@@ -105,6 +105,7 @@ go_test(
         "//us/federal/v1/form_1040:form_1040_x.proto",
         "//us/federal/v1/form_1040:form_1116.proto",
         "//us/federal/v1/form_1040:form_2210.proto",
+        "//us/federal/v1/form_1040:form_2210_f.proto",
         "//us/federal/v1/form_1040:form_2441.proto",
         "//us/federal/v1/form_1040:form_2555.proto",
         "//us/federal/v1/form_1040:form_4562.proto",

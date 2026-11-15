@@ -66,6 +66,7 @@ var checked = []string{
 	"taxprotos/us/federal/v1/form_1040/form_1040_x.proto",
 	"taxprotos/us/federal/v1/form_1040/form_1116.proto",
 	"taxprotos/us/federal/v1/form_1040/form_2210.proto",
+	"taxprotos/us/federal/v1/form_1040/form_2210_f.proto",
 	"taxprotos/us/federal/v1/form_1040/form_2441.proto",
 	"taxprotos/us/federal/v1/form_1040/form_2555.proto",
 	"taxprotos/us/federal/v1/form_1040/form_4562.proto",

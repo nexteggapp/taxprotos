@@ -19,6 +19,7 @@ import "taxprotos/us/federal/v1/form_1040/form_1040.proto";
 import "taxprotos/us/federal/v1/form_1040/form_1040_x.proto";
 import "taxprotos/us/federal/v1/form_1040/form_1116.proto";
 import "taxprotos/us/federal/v1/form_1040/form_2210.proto";
+import "taxprotos/us/federal/v1/form_1040/form_2210_f.proto";
 import "taxprotos/us/federal/v1/form_1040/form_2441.proto";
 import "taxprotos/us/federal/v1/form_1040/form_2555.proto";
 import "taxprotos/us/federal/v1/form_1040/form_4562.proto";
@@ -829,6 +830,9 @@ message FederalReturn {
   // Form 8995-A: qualified business income deduction, for filers who cannot
   // use the simplified Form 8995.
   us.federal.v1.Form8995A form_8995_a = 49;
+
+  // Form 2210-F: underpayment of estimated tax by farmers and fishers.
+  us.federal.v1.Form2210F form_2210_f = 50;
 }
 
 // A California resident return: Form 540 and Schedule CA.

@@ -161,6 +161,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [Schedule SE](https://www.irs.gov/pub/irs-pdf/f1040sse.pdf) | [`schedule_se.proto`](us/federal/v1/form_1040/schedule_se.proto) | Self-employment tax |
 | [1116](https://www.irs.gov/pub/irs-pdf/f1116.pdf) | [`form_1116.proto`](us/federal/v1/form_1040/form_1116.proto) | Foreign tax credit |
 | [2210](https://www.irs.gov/pub/irs-pdf/f2210.pdf) | [`form_2210.proto`](us/federal/v1/form_1040/form_2210.proto) | Underpayment of estimated tax |
+| [2210-F](https://www.irs.gov/pub/irs-pdf/f2210f.pdf) | [`form_2210_f.proto`](us/federal/v1/form_1040/form_2210_f.proto) | Underpayment of estimated tax by farmers and fishers |
 | [2441](https://www.irs.gov/pub/irs-pdf/f2441.pdf) | [`form_2441.proto`](us/federal/v1/form_1040/form_2441.proto) | Child and dependent care expenses |
 | [2555](https://www.irs.gov/pub/irs-pdf/f2555.pdf) | [`form_2555.proto`](us/federal/v1/form_1040/form_2555.proto) | Foreign earned income |
 | [4562](https://www.irs.gov/pub/irs-pdf/f4562.pdf) | [`form_4562.proto`](us/federal/v1/form_1040/form_4562.proto) | Depreciation and amortization |

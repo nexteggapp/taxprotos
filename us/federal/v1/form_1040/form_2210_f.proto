@@ -1,0 +1,97 @@
+// Form 2210-F, Underpayment of Estimated Tax by Farmers and Fishers.
+//
+// Used by a qualified farmer or fisher to figure whether a penalty is owed for
+// underpaying estimated tax and, if so, its amount. A qualified farmer or
+// fisher has one required installment, due January 15 of the following year,
+// so the form has no payment columns and no annualized income method.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.federal.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/federal/v1/form_1040;form1040";
+
+// Form2210F reports the reasons for filing (Part I), the underpayment (Part
+// II), and the penalty (Part III). Line 5 is printed as "Reserved for future
+// use" and has no field.
+message Form2210F {
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on tax return.
+  string filer_name = 2;
+
+  // Identifying number (SSN or EIN).
+  string filer_tin = 3;
+
+  // -- Part I: Reasons for Filing ------------------------------------------
+
+  // Box A: "You request a waiver." The IRS may waive all or part of the
+  // penalty in certain circumstances.
+  bool requests_waiver = 4;
+
+  // Box B: A joint return was filed for the prior year or the current year
+  // but not both, and line 10 is smaller than line 7.
+  bool joint_return_in_only_one_year = 5;
+
+  // -- Part II: Figure Your Underpayment -----------------------------------
+
+  // Line 1: Tax after credits from Form 1040, 1040-SR, or 1040-NR line 22; or
+  // Form 1041, Schedule G, line 3.
+  common.v1.Money current_year_tax_after_credits = 6;
+
+  // Line 2: Other taxes, including self-employment tax and, if applicable,
+  // Additional Medicare Tax and Net Investment Income Tax.
+  common.v1.Money other_taxes = 7;
+
+  // Line 3: Lines 1 and 2 added. Under $1,000 means no penalty is owed.
+  common.v1.Money total_tax_before_refundable_credits = 8;
+
+  // Line 4: Refundable credits.
+  common.v1.Money refundable_credits = 9;
+
+  // Line 6: Current year tax. Line 3 minus line 4. Under $1,000 means no
+  // penalty is owed.
+  common.v1.Money total_current_year_tax = 10;
+
+  // Line 7: Line 6 multiplied by 66 2/3% (0.667).
+  common.v1.Money current_year_safe_harbor_tax = 11;
+
+  // Line 8: Withholding taxes, excluding any estimated tax payments.
+  common.v1.Money total_tax_withheld = 12;
+
+  // Line 9: Line 6 minus line 8. Under $1,000 means no penalty is owed.
+  common.v1.Money net_tax_after_withholding = 13;
+
+  // Line 10: The tax shown on the prior year's return.
+  common.v1.Money prior_year_tax = 14;
+
+  // Line 11: Required annual payment. The smaller of line 7 or line 10.
+  common.v1.Money required_annual_payment = 15;
+
+  // Line 12: Estimated tax payments made by January 15 of the following year,
+  // plus federal income tax and excess social security or tier 1 railroad
+  // retirement tax withheld during the tax year.
+  common.v1.Money estimated_tax_paid_and_withheld = 16;
+
+  // Line 13: Underpayment. Line 11 minus line 12. Zero or less means no
+  // penalty is owed.
+  common.v1.Money underpayment = 17;
+
+  // -- Part III: Figure the Penalty ----------------------------------------
+
+  // Line 14: The date the line 13 amount was paid, or April 15 of the
+  // following year, whichever is earlier.
+  common.v1.Date underpayment_paid_date = 18;
+
+  // Line 15: Number of days from January 15 of the following year to the date
+  // on line 14.
+  int32 days_underpayment_unpaid = 19;
+
+  // Line 16: Penalty. Line 13 multiplied by line 15 over 365, multiplied by
+  // the rate the form prints. Carries to Form 1040, 1040-SR, or 1040-NR line
+  // 38, or Form 1041 line 27.
+  common.v1.Money estimated_tax_penalty = 20;
+}

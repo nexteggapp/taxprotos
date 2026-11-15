@@ -58,6 +58,7 @@ var forms = []struct {
 	{"mapping_form1040x.textproto", "f1040x-2025.txt"},
 	{"mapping_form1116.textproto", "f1116-2025.txt"},
 	{"mapping_form2210.textproto", "f2210-2025.txt"},
+	{"mapping_form2210f.textproto", "f2210f-2025.txt"},
 	{"mapping_form2441.textproto", "f2441-2025.txt"},
 	{"mapping_form2555.textproto", "f2555-2025.txt"},
 	{"mapping_form4562.textproto", "f4562-2025.txt"},
