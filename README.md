@@ -239,6 +239,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [760](https://www.tax.virginia.gov/sites/default/files/taxforms/individual-income-tax/2025/760-2025.pdf) | [`form_760.proto`](us/state/va/v1/form_760/form_760.proto) | The Virginia resident return |
 | [1040ME](https://www.maine.gov/revenue/sites/maine.gov.revenue/files/inline-files/25_1040ME_fillable.pdf) | [`form_1040me.proto`](us/state/me/v1/form_1040me/form_1040me.proto) | The Maine resident return |
 | [Form 1](https://www.mass.gov/doc/2025-form-1-massachusetts-resident-income-tax-return/download) | [`form_1.proto`](us/state/ma/v1/form_1/form_1.proto) | The Massachusetts resident return |
+| [M-2210](https://www.mass.gov/doc/2025-form-m-2210-underpayment-of-massachusetts-estimated-income-tax/download) | [`form_m_2210.proto`](us/state/ma/v1/form_m_2210/form_m_2210.proto) | Underpayment of Massachusetts estimated income tax |
 | [502](https://www.marylandcomptroller.gov/content/dam/mdcomp/tax/forms/2025/502.pdf) | [`form_502.proto`](us/state/md/v1/form_502/form_502.proto) | The Maryland resident return |
 | [NJ-1040](https://www.nj.gov/treasury/taxation/pdf/current/1040.pdf) | [`form_nj1040.proto`](us/state/nj/v1/form_nj1040/form_nj1040.proto) | The New Jersey resident return |
 | [D-400](https://www.ncdor.gov/2025-d-400-web-filled-version/open) | [`form_d400.proto`](us/state/nc/v1/form_d400/form_d400.proto) | The North Carolina resident return |
