@@ -1,0 +1,309 @@
+// Form NJ-2210, Underpayment of Estimated Tax by Individuals, Estates, or
+// Trusts.
+//
+// A filer of Form NJ-1040 uses it to figure whether interest is owed for
+// underpaying estimated New Jersey gross income tax and, if so, how much.
+// Part I figures each period's underpayment against the lesser of 80% of
+// this year's tax and 100% of last year's, a quarter by each due date; Part
+// II tests four exceptions that each take the interest off a period; the
+// worksheets on page 2 figure Exceptions II to IV; and Calculating the
+// Interest on page 3 charges what no exception excuses, by Option 1's
+// quarterly table or Option 2's months at the scheduled rate.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year.
+// Verified against the 2025 Form NJ-2210; testdata holds the text extracted
+// from the published PDF.
+//
+// # Where it departs from federal Form 2210
+//
+// Four exceptions each excuse a period whose payments to its date reach
+// them, a different one for each period if need be: last year's tax, the tax
+// on last year's income at this year's exemptions and rates, 20%, 40% and
+// 60% of the tax on annualized income, and 90% of the tax on the income to
+// date (lines 15 to 18; N.J.S.A. 54A:9-6(d)). Interest is charged for each
+// month or part of a month an underpayment stays unpaid, at three points
+// over the prime rate (Option 2; N.J.S.A. 54:49-3), not by the day.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.nj.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/quantity.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/nj/v1/form_nj_2210;formnj2210";
+
+// FormNj2210 is what a Form NJ-2210 states: Parts I and II, the worksheets
+// for Exceptions II to IV, and the interest.
+message FormNj2210 {
+  // PaymentPeriod is one column of Part I, lines 5 to 13, and of Part II,
+  // lines 14 to 18: one payment due date.
+  message PaymentPeriod {
+    // The column: 1 through 4, A through D on the form, for the April, June,
+    // September and January due dates.
+    int32 period = 1;
+
+    // The column's due date, as the heading Payment Due Dates gives it.
+    common.v1.Date due_date = 2;
+
+    // Line 5: The lesser of line 4a or line 4b, divided by four.
+    common.v1.Money required_installment = 3;
+
+    // Line 6: Estimated tax paid and tax withheld per period, with the tax
+    // withheld and the credits of line 2 counted a quarter on each due date
+    // unless shown otherwise, and last year's overpayment credited in column
+    // B (Line 6 instructions).
+    common.v1.Money estimated_tax_paid_and_withheld = 4;
+
+    // Line 7: The overpayment, line 13, from the previous column.
+    common.v1.Money prior_overpayment = 5;
+
+    // Line 8: Lines 6 and 7 added.
+    common.v1.Money total_payments = 6;
+
+    // Line 9: The total underpayment, lines 11 and 12 added, from the
+    // previous column.
+    common.v1.Money prior_underpayment = 7;
+
+    // Line 10: Line 8 less line 9; if zero or less, zero.
+    common.v1.Money net_payments = 8;
+
+    // Line 11: Remaining underpayment from the previous period. When line 10
+    // is zero, line 9 less line 8; otherwise zero.
+    common.v1.Money remaining_underpayment = 9;
+
+    // Line 12: Underpayment. Line 5 less line 10, when line 5 is the
+    // greater.
+    common.v1.Money underpayment = 10;
+
+    // Line 13: Overpayment. Line 10 less line 5, when line 10 is the
+    // greater.
+    common.v1.Money overpayment = 11;
+
+    // Line 14: The total amount paid and withheld from January 1 through the
+    // payment due date, from line 6, with no withholding after December 31.
+    common.v1.Money total_paid_to_date = 12;
+
+    // Line 15: Exception 1, 25%, 50%, 75% and 100% of last year's tax, from a
+    // return covering a full 12-month period, or zero when no return was
+    // required. Unset when the exception is not figured.
+    common.v1.Money exception_1 = 13;
+
+    // Line 16: Exception 2, 25%, 50%, 75% and 100% of the tax on last year's
+    // gross income at this year's exemptions and rates, from the Exception II
+    // worksheet. Unset when the exception is not figured.
+    common.v1.Money exception_2 = 14;
+
+    // Line 17: Exception 3, 20%, 40% and 60% of the tax on annualized
+    // income, from the Exception III worksheet. The form prints nothing in
+    // the fourth column. Unset when the exception is not figured.
+    common.v1.Money exception_3 = 15;
+
+    // Line 18: Exception 4, 90% of the tax on the actual income over the 3,
+    // 5 and 8 months, from the Exception IV worksheet. The form prints
+    // nothing in the fourth column. Unset when the exception is not figured.
+    common.v1.Money exception_4 = 16;
+  }
+
+  // PriorYearIncomeWorksheet is the Exception II worksheet: the tax on last
+  // year's gross income using this year's exemptions and tax rates.
+  message PriorYearIncomeWorksheet {
+    // Line 1: Last year's New Jersey gross income, line 29 of last year's
+    // Form NJ-1040.
+    common.v1.Money prior_year_gross_income = 1;
+
+    // Line 2: This year's total exemptions, line 30 of Form NJ-1040.
+    common.v1.Money exemptions = 2;
+
+    // Line 3: Line 1 less line 2.
+    common.v1.Money income_less_exemptions = 3;
+
+    // Line 4: The tax on line 3 at this year's rates.
+    common.v1.Money tax = 4;
+
+    // Line 5: The credit for income taxes paid to other jurisdictions, line
+    // 44 of Form NJ-1040.
+    common.v1.Money other_jurisdiction_credit = 5;
+
+    // Line 6: Line 4 less line 5. Its applicable percentage goes on line 16.
+    common.v1.Money tax_less_credit = 6;
+  }
+
+  // AnnualizationPeriod is one column of the Exception III worksheet, the
+  // tax on annualized income: January 1 to March 31, May 31 or August 31.
+  message AnnualizationPeriod {
+    // The column: 1 through 3.
+    int32 period = 1;
+
+    // The last day of the period the column covers.
+    common.v1.Date end_date = 2;
+
+    // Line 1: The portion of New Jersey gross income, line 29 of Form
+    // NJ-1040, applicable to the period.
+    common.v1.Money gross_income = 3;
+
+    // Line 2: The annualization amount the form prints: 4, 2.4 and 1.5 (6,
+    // 3 and 1.7143 for estates and trusts).
+    common.v1.Quantity annualization_amount = 4;
+
+    // Line 3: Annualized income. Line 1 multiplied by line 2.
+    common.v1.Money annualized_income = 5;
+
+    // Line 4: Total exemptions, line 30 of Form NJ-1040.
+    common.v1.Money exemptions = 6;
+
+    // Line 5: Line 3 less line 4.
+    common.v1.Money taxable_annualized_income = 7;
+
+    // Line 6: The tax on line 5.
+    common.v1.Money tax = 8;
+
+    // Line 7: The portion of the credit for income taxes paid to other
+    // jurisdictions, line 44 of Form NJ-1040, applicable to the period.
+    common.v1.Money other_jurisdiction_credit = 9;
+
+    // Line 8: Line 6 less line 7. Its applicable percentage goes on line 17.
+    common.v1.Money tax_less_credit = 10;
+  }
+
+  // IncomeToDatePeriod is one column of the Exception IV worksheet, the tax
+  // on actual taxable income over 3, 5 and 8 months.
+  message IncomeToDatePeriod {
+    // The column: 1 through 3.
+    int32 period = 1;
+
+    // The last day of the period the column covers.
+    common.v1.Date end_date = 2;
+
+    // Line 1: The actual New Jersey taxable income, line 42 of Form NJ-1040,
+    // applicable to the period.
+    common.v1.Money taxable_income = 3;
+
+    // Line 2: The tax on line 1.
+    common.v1.Money tax = 4;
+
+    // Line 3: The portion of the credit for income taxes paid to other
+    // jurisdictions, line 44 of Form NJ-1040, applicable to the period.
+    common.v1.Money other_jurisdiction_credit = 5;
+
+    // Line 4: Line 2 less line 3. 90% of it goes on line 18.
+    common.v1.Money tax_less_credit = 6;
+  }
+
+  // InterestQuarter is one quarter of Calculating the Interest: a row of
+  // Option 1's table, and the Option 2 computations that charge its balance.
+  message InterestQuarter {
+    // The quarter: 1 through 4.
+    int32 quarter = 1;
+
+    // The period the row covers, as the table prints it: from the due date
+    // to the next one, and the last to April 15 of the following year.
+    common.v1.Date period_start = 2;
+    common.v1.Date period_end = 3;
+
+    // Column A: Amount due, line 5.
+    common.v1.Money amount_due = 4;
+
+    // Column B: The balance due, column E, from the previous quarter.
+    // Negative when the previous quarter was overpaid.
+    common.v1.Money previous_balance = 5;
+
+    // Column C: Total due. Column A plus column B, or column A less column B
+    // when column B is negative.
+    common.v1.Money total_due = 6;
+
+    // Column D: The total estimated tax paid and withheld, line 6.
+    common.v1.Money total_paid = 7;
+
+    // Column E: Balance. Column C less column D.
+    common.v1.Money balance = 8;
+
+    // Column F: The multiplier the table prints, from the interest rates in
+    // effect during the quarter: .018, .027, .036 and .025 for 2025. Unset
+    // when the form for the year is not published.
+    common.v1.Quantity multiplier = 9;
+
+    // Column G: Interest. Column E multiplied by column F, or zero when
+    // column E is negative; or, under Option 2, the computations' interest
+    // added.
+    common.v1.Money interest = 10;
+
+    // Option 2: each charge on the quarter's balance, one for each payment
+    // that reduced it and one for any balance unpaid at the period's end.
+    // None when an exception excuses the quarter or nothing is due.
+    repeated InterestComputation computations = 11;
+  }
+
+  // InterestComputation is one Option 2 charge: an underpayment from the date
+  // it was incurred to the date it was satisfied or the original due date of
+  // the return, whichever is earlier, for each month or fraction of a month,
+  // at the annual rate of the Interest Rate Schedule.
+  message InterestComputation {
+    // The amount of the underpayment charged.
+    common.v1.Money underpayment = 1;
+
+    // The date the underpayment was incurred: the due date.
+    common.v1.Date from_date = 2;
+
+    // The date it was satisfied, or the period's end, whichever is earlier.
+    common.v1.Date to_date = 3;
+
+    // The months or fractions of a month charged.
+    int32 months = 4;
+
+    // The annual interest rate from the Interest Rate Schedule, as a
+    // fraction: 0.10 for 10.00%.
+    common.v1.Quantity annual_rate = 5;
+
+    // The interest: the underpayment times the annual rate for each month,
+    // a twelfth of it a month.
+    common.v1.Money interest = 6;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // The filer's name or names, as shown on Form NJ-1040.
+  string taxpayer_name = 2;
+
+  // The filer's Social Security Number.
+  string ssn = 3;
+
+  // Line 1: This year's tax, line 50 of Form NJ-1040.
+  common.v1.Money tax = 4;
+
+  // Line 2: The total of lines 55, 56, 58, 59, 60, 61, 62, 63, 64 and 65 of
+  // Form NJ-1040: tax withheld and the refundable credits and excess
+  // contributions.
+  common.v1.Money withholding_and_credits = 5;
+
+  // Line 3: Line 1 less line 2. Under $400, the rest of the form is not
+  // completed.
+  common.v1.Money tax_less_withholding_and_credits = 6;
+
+  // Line 4a: Line 1 multiplied by 80%, or two-thirds for qualified farmers.
+  common.v1.Money current_year_safe_harbor_tax = 7;
+
+  // Line 4b: Last year's tax, line 50 of last year's Form NJ-1040.
+  common.v1.Money prior_year_tax = 8;
+
+  // Lines 5 to 18, one entry per column.
+  repeated PaymentPeriod payment_periods = 9;
+
+  // Line 19: Total interest. Carries to Form NJ-1040 line 52.
+  common.v1.Money total_interest = 10;
+
+  // The Exception II worksheet. Unset when the exception is not figured.
+  PriorYearIncomeWorksheet prior_year_income_worksheet = 11;
+
+  // The Exception III worksheet, one entry per column. Empty when the
+  // exception is not figured.
+  repeated AnnualizationPeriod annualization_periods = 12;
+
+  // The Exception IV worksheet, one entry per column. Empty when the
+  // exception is not figured.
+  repeated IncomeToDatePeriod income_to_date_periods = 13;
+
+  // Calculating the Interest, one entry per quarter.
+  repeated InterestQuarter interest_quarters = 14;
+}

@@ -1,0 +1,134 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Ohio IT/SD 2210 calls each concept, per tax year.
+#
+# Lines come from the 2025 Ohio IT/SD 2210 as the Ohio Department of
+# Taxation publishes it, in testdata/. There are no amount codes: IRS
+# Publication 1220 covers the information returns the IRS receives
+# electronically, and a state form is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. Pages 2 and 3 number their lines alike, so each
+# concept's note names its page. The columns of lines 10 to 16 and page 3 are
+# messages whose fields name their lines in their comments.
+
+form: "IT/SD 2210"
+message_name: "nexteggapp.taxprotos.us.state.oh.v1.FormItSd2210"
+tax_years: 2025
+
+concepts {
+  concept: "total_interest_penalty"
+  years {
+    tax_year: 2025
+    irs_box: "17"
+    note: "Page 1, All Filers: Total Interest Penalty Due, from page 2 line 17 or page 3 line 14."
+  }
+}
+
+concepts {
+  concept: "taxes_paid"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+    note: "Page 2, Part I line 1."
+  }
+}
+
+concepts {
+  concept: "tax_liability"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+    note: "Page 2, Part I line 2."
+  }
+}
+
+concepts {
+  concept: "prior_year_tax_liability"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+    note: "Page 2, Part I line 3."
+  }
+}
+
+concepts {
+  concept: "current_year_safe_harbor_tax"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+    note: "Page 2, Part I line 4."
+  }
+}
+
+concepts {
+  concept: "paid_reaches_current_year"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+    note: "Page 2, Part I line 5."
+  }
+}
+
+concepts {
+  concept: "prior_year_return_timely"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+    note: "Page 2, Part I line 6."
+  }
+}
+
+concepts {
+  concept: "paid_reaches_prior_year"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+    note: "Page 2, Part I line 7."
+  }
+}
+
+concepts {
+  concept: "tax_less_withholding_at_most_threshold"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+    note: "Page 2, Part I line 8."
+  }
+}
+
+concepts {
+  concept: "required_annual_payment"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+    note: "Page 2, Part I line 9."
+  }
+}
+
+concepts {
+  concept: "payment_periods"
+  years {
+    tax_year: 2025
+    irs_box: "10"
+    note: "Page 2, Part II lines 10 to 16, one entry per column; each entry's fields name their own lines."
+  }
+}
+
+concepts {
+  concept: "total_penalty"
+  years {
+    tax_year: 2025
+    irs_box: "17"
+    note: "Page 2, Part II line 17."
+  }
+}
+
+concepts {
+  concept: "pass_through_entity"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+    note: "Page 3, for IT 1140 and IT 4738 filers, lines 1 to 14; its fields name their own lines."
+  }
+}

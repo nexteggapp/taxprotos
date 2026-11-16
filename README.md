@@ -248,6 +248,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [502](https://www.marylandcomptroller.gov/content/dam/mdcomp/tax/forms/2025/502.pdf) | [`form_502.proto`](us/state/md/v1/form_502/form_502.proto) | The Maryland resident return |
 | [502UP](https://www.marylandcomptroller.gov/content/dam/mdcomp/tax/forms/2025/502up.pdf) | [`form_502up.proto`](us/state/md/v1/form_502up/form_502up.proto) | Maryland underpayment of estimated income tax by individuals |
 | [NJ-1040](https://www.nj.gov/treasury/taxation/pdf/current/1040.pdf) | [`form_nj1040.proto`](us/state/nj/v1/form_nj1040/form_nj1040.proto) | The New Jersey resident return |
+| [NJ-2210](https://www.nj.gov/treasury/taxation/pdf/current/2210.pdf) | [`form_nj_2210.proto`](us/state/nj/v1/form_nj_2210/form_nj_2210.proto) | New Jersey underpayment of estimated tax by individuals, estates, or trusts |
 | [D-400](https://www.ncdor.gov/2025-d-400-web-filled-version/open) | [`form_d400.proto`](us/state/nc/v1/form_d400/form_d400.proto) | The North Carolina resident return |
 | [511](https://oklahoma.gov/content/dam/ok/en/tax/documents/forms/individuals/current/511-Pkt.pdf) | [`form_511.proto`](us/state/ok/v1/form_511/form_511.proto) | The Oklahoma resident return |
 | [ND-1](https://www.tax.nd.gov/sites/www/files/documents/forms/individual/2025-iit/28702-form-nd-1-2025.pdf) | [`form_nd1.proto`](us/state/nd/v1/form_nd1/form_nd1.proto) | The North Dakota resident return |
@@ -257,7 +258,9 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [IN-152](https://tax.vermont.gov/sites/tax/files/documents/IN-152-2025.pdf) | [`form_in_152.proto`](us/state/vt/v1/form_in_152/form_in_152.proto) | Vermont underpayment of estimated individual income tax |
 | [IN-152A](https://tax.vermont.gov/sites/tax/files/documents/IN-152A-2025.pdf) | [`form_in_152a.proto`](us/state/vt/v1/form_in_152a/form_in_152a.proto) | Vermont annualized underpayment of estimated tax |
 | [IT 1040](https://dam.assets.ohio.gov/image/upload/tax.ohio.gov/forms/ohio_individual/individual/2025/1040-bundle.pdf) | [`form_it1040.proto`](us/state/oh/v1/form_it1040/form_it1040.proto) | The Ohio resident return |
+| [IT/SD 2210](https://dam.assets.ohio.gov/image/upload/v1762982566/tax.ohio.gov/forms/ohio_individual/individual/2025/itsd2210-fi.pdf) | [`form_it_sd_2210.proto`](us/state/oh/v1/form_it_sd_2210/form_it_sd_2210.proto) | Ohio interest penalty on underpayment of tax |
 | [IT-201](https://www.tax.ny.gov/pdf/current_forms/it/it201_fill_in.pdf) | [`form_it201.proto`](us/state/ny/v1/form_it201/form_it201.proto) | The New York resident return |
+| [IT-2105.9](https://www.tax.ny.gov/pdf/2025/inc/it2105_9_2025_fill_in.pdf) | [`form_it_2105_9.proto`](us/state/ny/v1/form_it_2105_9/form_it_2105_9.proto) | New York underpayment of estimated tax by individuals and fiduciaries |
 | [540](https://www.ftb.ca.gov/forms/2025/2025-540.pdf) | [`form_540.proto`](us/state/ca/v1/form_540/form_540.proto) | The California resident return |
 | [Schedule CA](https://www.ftb.ca.gov/forms/2025/2025-540-ca.pdf) | [`schedule_ca.proto`](us/state/ca/v1/form_540/schedule_ca.proto) | How a federal return becomes a Californian one |
 | [FTB 5805](https://www.ftb.ca.gov/forms/2025/2025-5805.pdf) | [`form_ftb_5805.proto`](us/state/ca/v1/form_ftb_5805/form_ftb_5805.proto) | California underpayment of estimated tax |
