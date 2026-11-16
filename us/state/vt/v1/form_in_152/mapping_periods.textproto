@@ -1,0 +1,82 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for one column of Worksheet IN-152 lines 4 to 13.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the Vermont Department of Taxes publishes. The coverage test checks
+# every line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "IN-152"
+message_name: "nexteggapp.taxprotos.us.state.vt.v1.FormIn152.PaymentPeriod"
+tax_years: 2025
+
+concepts {
+  concept: "required_installment"
+  years { tax_year: 2025 irs_box: "4." }
+}
+
+concepts {
+  concept: "withholding"
+  years { tax_year: 2025 irs_box: "5a." }
+}
+
+concepts {
+  concept: "estimated_payments"
+  years { tax_year: 2025 irs_box: "5b." }
+}
+
+concepts {
+  concept: "total_payments"
+  years { tax_year: 2025 irs_box: "5c." }
+}
+
+concepts {
+  concept: "underpayment"
+  years { tax_year: 2025 irs_box: "6." }
+}
+
+concepts {
+  concept: "payment_date"
+  years { tax_year: 2025 irs_box: "7." }
+}
+
+concepts {
+  concept: "days_in_tax_year"
+  years { tax_year: 2025 irs_box: "8a." }
+}
+
+concepts {
+  concept: "days_in_next_year"
+  years { tax_year: 2025 irs_box: "8b." }
+}
+
+concepts {
+  concept: "interest_tax_year"
+  years { tax_year: 2025 irs_box: "9a." }
+}
+
+concepts {
+  concept: "interest_next_year"
+  years { tax_year: 2025 irs_box: "9b." }
+}
+
+concepts {
+  concept: "interest"
+  years { tax_year: 2025 irs_box: "10." }
+}
+
+concepts {
+  concept: "months"
+  years { tax_year: 2025 irs_box: "12." }
+}
+
+concepts {
+  concept: "penalty"
+  years { tax_year: 2025 irs_box: "13." }
+}

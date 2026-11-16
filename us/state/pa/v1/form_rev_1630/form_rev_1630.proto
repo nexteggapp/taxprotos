@@ -1,0 +1,216 @@
+// Form REV-1630, Underpayment of Estimated Tax by Individuals.
+//
+// A filer of Form PA-40 uses it to figure whether interest is owed for
+// underpaying estimated Pennsylvania tax and, if so, how much. Section I
+// figures each payment period's underpayment against 90% of the year's tax,
+// Section II tests the two exceptions that each take the interest off a
+// period, and Section III charges what no exception covers at a printed
+// daily factor.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year.
+// Verified against the 2025 REV-1630; testdata holds the text extracted from
+// the published PDF.
+//
+// # Where it departs from federal Form 2210
+//
+// The underpayment is always measured against 90% of this year's tax, with
+// withholding and credits spread evenly over the four periods (lines 2 to
+// 5). Last year's income at this year's rate (Exception 1, line 12) and 90%
+// of the tax on the income actually received to each period's end
+// (Exception 2, line 13) do not lower that amount: each takes the interest
+// off a period whose payments reach it. Interest is charged at a daily
+// factor for each calendar year, in whole dollars (lines 14a to 16). A filer
+// who owed no estimates the year before can have the periods before the
+// requirement arose excused, under the special exception.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.pa.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/pa/v1/form_rev_1630;formrev1630";
+
+// FormRev1630 is what a Form REV-1630 states: Sections I to III and the
+// special exception information.
+message FormRev1630 {
+  // PaymentPeriod is one column, a to d, of lines 5 to 16 and of the
+  // Exception 1 and Exception 2 worksheets: one estimated payment due date.
+  message PaymentPeriod {
+    // The column: 1 through 4, for columns a to d, the April, June,
+    // September and January due dates.
+    int32 period = 1;
+
+    // The column's due date, as the heading Estimated Payment Due Dates
+    // gives it.
+    common.v1.Date due_date = 2;
+
+    // Line 5: Line 4 divided by the number of payments required for the
+    // year, usually four.
+    common.v1.Money required_installment = 3;
+
+    // Line 6: Estimated tax paid for the period, including a carryover
+    // credit from the previous year in column a, and in column d the amount
+    // paid with a final return filed and paid by January 31. A payment after
+    // the due date is not included.
+    common.v1.Money estimated_tax_paid = 4;
+
+    // Line 7: Overpayment from a previous period, line 10 of the previous
+    // column. None in column a.
+    common.v1.Money prior_overpayment = 5;
+
+    // Line 8: Lines 6 and 7 added.
+    common.v1.Money total_payments = 6;
+
+    // Line 9: Underpayment. Line 8 subtracted from line 5, when line 5 is
+    // the greater.
+    common.v1.Money underpayment = 7;
+
+    // Line 10: Overpayment. Line 5 subtracted from line 8, when line 8 is
+    // the greater; carried to line 7 of the next column.
+    common.v1.Money overpayment = 8;
+
+    // Exception 1 Worksheet line A: Section I line 2 divided by 4.
+    common.v1.Money withholding_and_credits_share = 9;
+
+    // Exception 1 Worksheet line B: the estimated payments of Section I
+    // line 6, under the period in which they were paid.
+    common.v1.Money estimated_payments = 10;
+
+    // Exception 1 Worksheet line C: lines A and B added.
+    common.v1.Money period_credits = 11;
+
+    // Line 11: The Exception 1 Worksheet's line C of this column and every
+    // earlier column added.
+    common.v1.Money cumulative_credits = 12;
+
+    // Line 12: Exception 1, the tax on last year's income at this year's
+    // rate: last year's PA taxable income times this year's rate, less last
+    // year's Tax Forgiveness Credit, in column d, and 25%, 50% and 75% of it
+    // in columns a to c. Not figured when no return was filed for last year
+    // or it was filed as a part-year resident.
+    common.v1.Money exception_1 = 13;
+
+    // Exception 2 Worksheet line A: actual taxable income from January 1 to
+    // the end of the period: March 31, May 31, August 31 and December 31.
+    common.v1.Money income_to_date = 14;
+
+    // Exception 2 Worksheet line B: line A multiplied by the year's rate,
+    // 3.07% for 2025: the tax due.
+    common.v1.Money tax_on_income_to_date = 15;
+
+    // Line 13: Exception 2, 90% of Exception 2 Worksheet line B. Not
+    // figured when the worksheet is not used.
+    common.v1.Money exception_2 = 16;
+
+    // Lines 14a and 14b: the X placed in the column's box because an
+    // exception covers the period, and no interest is due on it.
+    bool exception_applies = 17;
+
+    // Lines 14a to 15c: each computation of interest on the column's line 9,
+    // one for each part of it a later payment reduced (Section III
+    // instructions) and one for any part unpaid. None when an exception
+    // covers the period or nothing is underpaid.
+    repeated InterestComputation computations = 18;
+  }
+
+  // InterestComputation is one computation of lines 14a to 15c on all or
+  // part of a column's line 9.
+  message InterestComputation {
+    // Line 9: The underpayment, or the part of it one payment reduced.
+    common.v1.Money underpayment = 1;
+
+    // The date of payment, or the date the interest stops: the date of the
+    // annual payment or April 15 of the next year, whichever is earlier.
+    common.v1.Date paid_date = 2;
+
+    // Line 14a: Days after the due date to and including the date of
+    // payment or December 31, whichever is earlier, for columns a to c.
+    int32 days_in_tax_year = 3;
+
+    // Line 14b: Days after the due date to and including the date of
+    // payment or April 15 of the next year, whichever is earlier, for
+    // column d.
+    int32 days_fourth_period = 4;
+
+    // Line 14c: Days after December 31 to and including the date of payment
+    // or April 15 of the next year, whichever is earlier, for columns a to
+    // c.
+    int32 days_after_tax_year = 5;
+
+    // Line 15a: The days on line 14a times the year's daily factor,
+    // 0.000192 for 2025, times the underpayment, in whole dollars.
+    common.v1.Money interest_in_tax_year = 6;
+
+    // Line 15b: The days on line 14b times the next year's daily factor
+    // times the underpayment, in whole dollars.
+    common.v1.Money interest_fourth_period = 7;
+
+    // Line 15c: The days on line 14c times the next year's daily factor
+    // times the underpayment, in whole dollars.
+    common.v1.Money interest_after_tax_year = 8;
+  }
+
+  // Special exception information line B: whether estimated payments began
+  // in the period in which it became known that income not subject to
+  // withholding would exceed the threshold.
+  enum PaymentsBeganWhenKnown {
+    // Not answered.
+    PAYMENTS_BEGAN_WHEN_KNOWN_UNSPECIFIED = 0;
+
+    // Yes.
+    PAYMENTS_BEGAN_WHEN_KNOWN_YES = 1;
+
+    // No.
+    PAYMENTS_BEGAN_WHEN_KNOWN_NO = 2;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // The name as shown on the PA-40.
+  string taxpayer_name = 2;
+
+  // The filer's Social Security Number.
+  string ssn = 3;
+
+  // Before You Begin: the filer qualified for 100 percent Tax Forgiveness
+  // in the previous year, so no underpayment penalty is owed and the form
+  // is not completed.
+  bool prior_year_full_tax_forgiveness = 4;
+
+  // Line 1a: The year's tax liability, Form PA-40 line 12.
+  common.v1.Money tax_liability = 5;
+
+  // Line 1b: Line 1a multiplied by 0.90.
+  common.v1.Money ninety_percent_of_tax = 6;
+
+  // Line 2: Form PA-40 lines 13, 17, 21, 22 and 23 added: PA tax withheld,
+  // nonresident tax withheld, the Tax Forgiveness Credit, the Resident
+  // Credit and total other credits.
+  common.v1.Money withholding_and_credits = 7;
+
+  // Line 3: Line 2 subtracted from line 1a. Under the year's threshold,
+  // $338 for 2025, no estimated tax was owed and the form stops.
+  common.v1.Money tax_less_withholding_and_credits = 8;
+
+  // Line 4: Line 2 subtracted from line 1b.
+  common.v1.Money required_after_withholding_and_credits = 9;
+
+  // Lines 5 to 15c and the Exception 1 and Exception 2 worksheets, one entry
+  // per column.
+  repeated PaymentPeriod payment_periods = 10;
+
+  // Line 16: Interest. Lines 15a, 15b and 15c of every column added.
+  // Included on Form PA-40 line 27.
+  common.v1.Money total_interest = 11;
+
+  // Special exception information line A: last year's PA tax liability,
+  // line 12 of last year's PA-40, less its lines 13, 17, 22 and 23. At or
+  // over the year's threshold, $338 for 2025, the special exception does
+  // not apply.
+  common.v1.Money prior_year_tax_less_credits = 12;
+
+  // Special exception information line B.
+  PaymentsBeganWhenKnown payments_began_when_known = 13;
+}

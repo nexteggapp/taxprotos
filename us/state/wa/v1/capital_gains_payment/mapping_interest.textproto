@@ -1,0 +1,38 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What the statute calls each concept of an interest period.
+#
+# Washington prints no form for its capital gains tax payment: the return is
+# filed electronically (RCW 82.87.110(1)(b)) and there are no line numbers.
+# As in capital_gains/mapping.textproto, irs_box is empty and the note cites
+# the statute that sets each concept. coverage_test.go checks every cited
+# section is in the extracts in testdata/.
+
+form: "Washington capital gains tax payment"
+message_name: "nexteggapp.taxprotos.us.state.wa.v1.CapitalGainsPayment.InterestPeriod"
+tax_years: 2026
+
+concepts {
+  concept: "principal"
+  years { tax_year: 2026 note: "RCW 82.32.050(1)(c)(ii): the tax still unpaid." }
+}
+concepts {
+  concept: "from"
+  years { tax_year: 2026 note: "RCW 82.32.050(1)(c)(ii): interest from the last day of April." }
+}
+concepts {
+  concept: "to"
+  years { tax_year: 2026 note: "RCW 82.32.050(1)(c)(ii): until the tax is paid." }
+}
+concepts {
+  concept: "days"
+  years { tax_year: 2026 note: "RCW 82.32.050(2): the days at the calendar year's rate." }
+}
+concepts {
+  concept: "annual_rate"
+  years { tax_year: 2026 note: "RCW 82.32.050(2): the rate for the calendar year." }
+}
+concepts {
+  concept: "interest"
+  years { tax_year: 2026 note: "RCW 82.32.050(2): the principal at the rate for the days." }
+}

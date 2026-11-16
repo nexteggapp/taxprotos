@@ -1,0 +1,82 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What the TC-546 Payment Worksheet calls each concept, per tax year.
+#
+# Lines 1 to 8 come from the Payment Worksheet of TC-546 (Rev. 10/26) as the
+# Utah State Tax Commission publishes it, in testdata/. The extension
+# penalty's steps have no line on any form: Publication 58 (Rev. 11/25),
+# Insufficient Prepayment (Extension Penalty), gives them as a formula, and
+# each is mapped with no line and a note naming the passage. There are no
+# amount codes: IRS Publication 1220 covers the information returns the IRS
+# receives electronically, and a state form is not one of them.
+
+form: "TC-546"
+message_name: "nexteggapp.taxprotos.us.state.ut.v1.FormTc546"
+tax_years: 2026
+
+concepts {
+  concept: "expected_tax"
+  years { tax_year: 2026 irs_box: "1" }
+}
+
+concepts {
+  concept: "minimum_of_this_year_tax"
+  years { tax_year: 2026 irs_box: "3" }
+}
+
+concepts {
+  concept: "prior_year_liability"
+  years { tax_year: 2026 irs_box: "4" }
+}
+
+concepts {
+  concept: "minimum_tax_due"
+  years { tax_year: 2026 irs_box: "5" }
+}
+
+concepts {
+  concept: "tax_withheld"
+  years { tax_year: 2026 irs_box: "6" }
+}
+
+concepts {
+  concept: "prepayments"
+  years { tax_year: 2026 irs_box: "7" }
+}
+
+concepts {
+  concept: "minimum_payment_due"
+  years { tax_year: 2026 irs_box: "8" }
+}
+
+concepts {
+  concept: "unpaid_tax"
+  years {
+    tax_year: 2026
+    note: "No line: the underpayment of Publication 58's Insufficient Prepayment (Extension Penalty), the tax unpaid on the original due date (TC-546, Penalties)."
+  }
+}
+
+concepts {
+  concept: "penalty_by_the_day"
+  years {
+    tax_year: 2026
+    note: "No line: Publication 58's (underpayment) x .24 x (number of days outstanding) / 365."
+  }
+}
+
+concepts {
+  concept: "penalty_cap"
+  years {
+    tax_year: 2026
+    note: "No line: Publication 58's six months, or 12 percent."
+  }
+}
+
+concepts {
+  concept: "extension_penalty"
+  years {
+    tax_year: 2026
+    note: "No line: the extension penalty, 2% a month of the unpaid tax (TC-546, Penalties; Publication 58)."
+  }
+}

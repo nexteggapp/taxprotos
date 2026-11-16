@@ -240,6 +240,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [2](https://revenuefiles.mt.gov/files/Forms/Montana-Individual-Income-Tax-Return-Form-2/2025_Montana_Individual_Income_Tax_Return_Form_2.pdf) | [`form_2.proto`](us/state/mt/v1/form_2/form_2.proto) | The Montana resident return |
 | [1040N](https://revenue.nebraska.gov/sites/default/files/doc/tax-forms/2025/f_1040N.pdf) | [`form_1040n.proto`](us/state/ne/v1/form_1040n/form_1040n.proto) | The Nebraska resident return |
 | [760](https://www.tax.virginia.gov/sites/default/files/taxforms/individual-income-tax/2025/760-2025.pdf) | [`form_760.proto`](us/state/va/v1/form_760/form_760.proto) | The Virginia resident return |
+| [760C](https://www.tax.virginia.gov/sites/default/files/taxforms/individual-income-tax/2025/760c-2025.pdf) | [`form_760c.proto`](us/state/va/v1/form_760c/form_760c.proto) | Virginia underpayment of estimated tax by individuals, estates and trusts |
 | [1040ME](https://www.maine.gov/revenue/sites/maine.gov.revenue/files/inline-files/25_1040ME_fillable.pdf) | [`form_1040me.proto`](us/state/me/v1/form_1040me/form_1040me.proto) | The Maine resident return |
 | [2210ME](https://www.maine.gov/revenue/sites/maine.gov.revenue/files/inline-files/25_form_2210_fillable.pdf) | [`form_2210me.proto`](us/state/me/v1/form_2210me/form_2210me.proto) | Maine underpayment of estimated tax by individuals, estates, or trusts |
 | [Form 1](https://www.mass.gov/doc/2025-form-1-massachusetts-resident-income-tax-return/download) | [`form_1.proto`](us/state/ma/v1/form_1/form_1.proto) | The Massachusetts resident return |
@@ -247,14 +248,19 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [502](https://www.marylandcomptroller.gov/content/dam/mdcomp/tax/forms/2025/502.pdf) | [`form_502.proto`](us/state/md/v1/form_502/form_502.proto) | The Maryland resident return |
 | [502UP](https://www.marylandcomptroller.gov/content/dam/mdcomp/tax/forms/2025/502up.pdf) | [`form_502up.proto`](us/state/md/v1/form_502up/form_502up.proto) | Maryland underpayment of estimated income tax by individuals |
 | [NJ-1040](https://www.nj.gov/treasury/taxation/pdf/current/1040.pdf) | [`form_nj1040.proto`](us/state/nj/v1/form_nj1040/form_nj1040.proto) | The New Jersey resident return |
+| [NJ-2210](https://www.nj.gov/treasury/taxation/pdf/current/2210.pdf) | [`form_nj_2210.proto`](us/state/nj/v1/form_nj_2210/form_nj_2210.proto) | New Jersey underpayment of estimated tax by individuals, estates, or trusts |
 | [D-400](https://www.ncdor.gov/2025-d-400-web-filled-version/open) | [`form_d400.proto`](us/state/nc/v1/form_d400/form_d400.proto) | The North Carolina resident return |
 | [511](https://oklahoma.gov/content/dam/ok/en/tax/documents/forms/individuals/current/511-Pkt.pdf) | [`form_511.proto`](us/state/ok/v1/form_511/form_511.proto) | The Oklahoma resident return |
 | [ND-1](https://www.tax.nd.gov/sites/www/files/documents/forms/individual/2025-iit/28702-form-nd-1-2025.pdf) | [`form_nd1.proto`](us/state/nd/v1/form_nd1/form_nd1.proto) | The North Dakota resident return |
 | [ND-1UT](https://www.tax.nd.gov/sites/www/files/documents/forms/individual/2025-iit/28704-schedule-nd-1ut-2025.pdf) | [`form_nd_1ut.proto`](us/state/nd/v1/form_nd_1ut/form_nd_1ut.proto) | North Dakota underpayment or late payment of estimated income tax |
 | [SC1040](https://dor.sc.gov/sites/dor/files/forms/SC1040_2025.pdf) | [`form_sc1040.proto`](us/state/sc/v1/form_sc1040/form_sc1040.proto) | The South Carolina resident return |
 | [IN-111](https://tax.vermont.gov/sites/tax/files/documents/IN-111-2025.pdf) | [`form_in111.proto`](us/state/vt/v1/form_in111/form_in111.proto) | The Vermont resident return |
+| [IN-152](https://tax.vermont.gov/sites/tax/files/documents/IN-152-2025.pdf) | [`form_in_152.proto`](us/state/vt/v1/form_in_152/form_in_152.proto) | Vermont underpayment of estimated individual income tax |
+| [IN-152A](https://tax.vermont.gov/sites/tax/files/documents/IN-152A-2025.pdf) | [`form_in_152a.proto`](us/state/vt/v1/form_in_152a/form_in_152a.proto) | Vermont annualized underpayment of estimated tax |
 | [IT 1040](https://dam.assets.ohio.gov/image/upload/tax.ohio.gov/forms/ohio_individual/individual/2025/1040-bundle.pdf) | [`form_it1040.proto`](us/state/oh/v1/form_it1040/form_it1040.proto) | The Ohio resident return |
+| [IT/SD 2210](https://dam.assets.ohio.gov/image/upload/v1762982566/tax.ohio.gov/forms/ohio_individual/individual/2025/itsd2210-fi.pdf) | [`form_it_sd_2210.proto`](us/state/oh/v1/form_it_sd_2210/form_it_sd_2210.proto) | Ohio interest penalty on underpayment of tax |
 | [IT-201](https://www.tax.ny.gov/pdf/current_forms/it/it201_fill_in.pdf) | [`form_it201.proto`](us/state/ny/v1/form_it201/form_it201.proto) | The New York resident return |
+| [IT-2105.9](https://www.tax.ny.gov/pdf/2025/inc/it2105_9_2025_fill_in.pdf) | [`form_it_2105_9.proto`](us/state/ny/v1/form_it_2105_9/form_it_2105_9.proto) | New York underpayment of estimated tax by individuals and fiduciaries |
 | [540](https://www.ftb.ca.gov/forms/2025/2025-540.pdf) | [`form_540.proto`](us/state/ca/v1/form_540/form_540.proto) | The California resident return |
 | [Schedule CA](https://www.ftb.ca.gov/forms/2025/2025-540-ca.pdf) | [`schedule_ca.proto`](us/state/ca/v1/form_540/schedule_ca.proto) | How a federal return becomes a Californian one |
 | [FTB 5805](https://www.ftb.ca.gov/forms/2025/2025-5805.pdf) | [`form_ftb_5805.proto`](us/state/ca/v1/form_ftb_5805/form_ftb_5805.proto) | California underpayment of estimated tax |
@@ -262,10 +268,14 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [Schedule OR-A](https://www.oregon.gov/dor/forms/FormsPubs/schedule-or-a_101-007_2025.pdf) | [`schedule_or_a.proto`](us/state/or/v1/form_or40/schedule_or_a.proto) | Oregon itemized deductions |
 | [Schedule OR-ASC](https://www.oregon.gov/dor/forms/FormsPubs/schedule-or-asc_101-063_2025.pdf) | [`schedule_or_asc.proto`](us/state/or/v1/form_or40/schedule_or_asc.proto) | Oregon additions, subtractions and credits |
 | [TC-40](https://files.tax.utah.gov/tax/forms/current/tc-40.pdf) | [`form_tc40.proto`](us/state/ut/v1/form_tc40/form_tc40.proto) | The Utah resident return |
+| [TC-546](https://files.tax.utah.gov/tax/forms/current/tc-546.pdf) | [`form_tc_546.proto`](us/state/ut/v1/form_tc_546/form_tc_546.proto) | Utah's prepayment test for an extended return, and its extension penalty |
 | [PA-40](https://www.pa.gov/content/dam/copapwp-pagov/en/revenue/documents/formsandpublications/formsforindividuals/pit/documents/2025/2025_pa-40.pdf) | [`form_pa40.proto`](us/state/pa/v1/form_pa40/form_pa40.proto) | The Pennsylvania resident return |
+| [REV-1630](https://www.pa.gov/content/dam/copapwp-pagov/en/revenue/documents/formsandpublications/formsforindividuals/pit/documents/2025/2025_rev-1630.pdf) | [`form_rev_1630.proto`](us/state/pa/v1/form_rev_1630/form_rev_1630.proto) | Pennsylvania underpayment of estimated tax by individuals |
 | [RI-1040 instructions](https://tax.ri.gov/sites/g/files/xkgbur541/files/2025-12/2025%201040R%20Instructions%20122025.pdf) | [`form_ri1040.proto`](us/state/ri/v1/form_ri1040/form_ri1040.proto) | The Rhode Island resident return |
 | [Form 1](https://www.revenue.wi.gov/TaxForms2025/2025-Form1f.pdf) | [`form_1.proto`](us/state/wi/v1/form_1/form_1.proto) | The Wisconsin resident return |
+| [Schedule U](https://www.revenue.wi.gov/TaxForms2025/2025-ScheduleU.pdf) | [`schedule_u.proto`](us/state/wi/v1/schedule_u/schedule_u.proto) | Wisconsin underpayment of estimated tax |
 | [Capital gains](https://app.leg.wa.gov/rcw/default.aspx?cite=82.87) | [`capital_gains_return.proto`](us/state/wa/v1/capital_gains/capital_gains_return.proto) | Washington's excise tax on long-term gains |
+| [Capital gains payment](https://app.leg.wa.gov/rcw/default.aspx?cite=82.87.110) | [`capital_gains_payment.proto`](us/state/wa/v1/capital_gains_payment/capital_gains_payment.proto) | Paying Washington's capital gains tax, and the late payment penalty and interest |
 
 Washington levies no personal income tax, so `us/state/wa` has no income tax
 return. Its capital gains return is filed electronically and has no printed

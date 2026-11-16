@@ -1,0 +1,34 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What the statute calls each concept of a step of the late payment penalty.
+#
+# Washington prints no form for its capital gains tax payment: the return is
+# filed electronically (RCW 82.87.110(1)(b)) and there are no line numbers.
+# As in capital_gains/mapping.textproto, irs_box is empty and the note cites
+# the statute that sets each concept. coverage_test.go checks every cited
+# section is in the extracts in testdata/.
+
+form: "Washington capital gains tax payment"
+message_name: "nexteggapp.taxprotos.us.state.wa.v1.CapitalGainsPayment.LatePaymentStep"
+tax_years: 2026
+
+concepts {
+  concept: "deadline"
+  years { tax_year: 2026 note: "RCW 82.32.090(1): the due date, and the last day of the first and second months after it, moved under RCW 1.12.070(3)." }
+}
+concepts {
+  concept: "total_rate"
+  years { tax_year: 2026 note: "RCW 82.32.090(1): nine, 19 or 29 percent." }
+}
+concepts {
+  concept: "rate"
+  years { tax_year: 2026 note: "RCW 82.32.090(1): what the step adds to the total before it." }
+}
+concepts {
+  concept: "unpaid"
+  years { tax_year: 2026 note: "RCW 82.32.090(1): the tax not received by the deadline." }
+}
+concepts {
+  concept: "penalty"
+  years { tax_year: 2026 note: "RCW 82.32.090(1): the unpaid tax times the rate; no penalty so added may be less than $5." }
+}

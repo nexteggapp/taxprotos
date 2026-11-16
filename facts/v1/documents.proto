@@ -147,19 +147,29 @@ import "taxprotos/us/state/ne/v1/form_1040n/form_1040n.proto";
 import "taxprotos/us/state/ct/v1/form_ct1040/form_ct1040.proto";
 import "taxprotos/us/state/ct/v1/form_ct_2210/form_ct_2210.proto";
 import "taxprotos/us/state/oh/v1/form_it1040/form_it1040.proto";
+import "taxprotos/us/state/oh/v1/form_it_sd_2210/form_it_sd_2210.proto";
 import "taxprotos/us/state/nj/v1/form_nj1040/form_nj1040.proto";
+import "taxprotos/us/state/nj/v1/form_nj_2210/form_nj_2210.proto";
 import "taxprotos/us/state/ny/v1/form_it201/form_it201.proto";
+import "taxprotos/us/state/ny/v1/form_it_2105_9/form_it_2105_9.proto";
 import "taxprotos/us/state/or/v1/form_or40/form_or40.proto";
 import "taxprotos/us/state/pa/v1/form_pa40/form_pa40.proto";
+import "taxprotos/us/state/pa/v1/form_rev_1630/form_rev_1630.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_asc.proto";
 import "taxprotos/us/state/ut/v1/form_tc40/form_tc40.proto";
+import "taxprotos/us/state/ut/v1/form_tc_546/form_tc_546.proto";
 import "taxprotos/us/state/wa/v1/capital_gains/capital_gains_return.proto";
+import "taxprotos/us/state/wa/v1/capital_gains_payment/capital_gains_payment.proto";
 import "taxprotos/us/state/va/v1/form_760/form_760.proto";
+import "taxprotos/us/state/va/v1/form_760c/form_760c.proto";
 import "taxprotos/us/state/sc/v1/form_sc1040/form_sc1040.proto";
 import "taxprotos/us/state/wv/v1/form_it140/form_it140.proto";
 import "taxprotos/us/state/vt/v1/form_in111/form_in111.proto";
+import "taxprotos/us/state/vt/v1/form_in_152/form_in_152.proto";
+import "taxprotos/us/state/vt/v1/form_in_152a/form_in_152a.proto";
 import "taxprotos/us/state/wi/v1/form_1/form_1.proto";
+import "taxprotos/us/state/wi/v1/schedule_u/schedule_u.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/facts/v1;factsv1";
 
@@ -989,6 +999,10 @@ message IdahoReturn {
 message UtahReturn {
   // Form TC-40.
   us.state.ut.v1.FormTC40 form_tc40 = 1;
+
+  // The TC-546 Payment Worksheet: the prepayment test for a return filed on
+  // the automatic extension, with its extension penalty.
+  us.state.ut.v1.FormTc546 form_tc_546 = 2;
 }
 
 // A Washington return: the capital gains excise tax return. Washington levies
@@ -996,6 +1010,10 @@ message UtahReturn {
 message WashingtonReturn {
   // The capital gains excise tax return.
   us.state.wa.v1.CapitalGainsReturn capital_gains = 1;
+
+  // The payment of the capital gains tax, with its late payment penalty and
+  // interest.
+  us.state.wa.v1.CapitalGainsPayment capital_gains_payment = 2;
 }
 
 // A Kentucky resident return: Form 740.
@@ -1008,6 +1026,9 @@ message KentuckyReturn {
 message PennsylvaniaReturn {
   // Form PA-40.
   us.state.pa.v1.FormPA40 form_pa40 = 1;
+
+  // Form REV-1630: underpayment of estimated tax by individuals.
+  us.state.pa.v1.FormRev1630 form_rev_1630 = 2;
 }
 
 // An Iowa resident return: Form IA 1040.
@@ -1083,6 +1104,10 @@ message NebraskaReturn {
 message VirginiaReturn {
   // Form 760.
   us.state.va.v1.Form760 form_760 = 1;
+
+  // Form 760C: underpayment of Virginia estimated tax by individuals,
+  // estates and trusts.
+  us.state.va.v1.Form760c form_760c = 2;
 }
 
 // A District of Columbia resident return: Form D-40.
@@ -1119,6 +1144,13 @@ message HawaiiReturn {
 message VermontReturn {
   // Form IN-111.
   us.state.vt.v1.FormIN111 form_in111 = 1;
+
+  // Worksheet IN-152: underpayment of estimated individual income tax.
+  us.state.vt.v1.FormIn152 form_in_152 = 2;
+
+  // Worksheet IN-152A: underpayment of estimated tax by the annualized
+  // income installment method.
+  us.state.vt.v1.FormIn152a form_in_152a = 3;
 }
 
 // A Rhode Island resident return: Form RI-1040.
@@ -1146,6 +1178,9 @@ message MinnesotaReturn {
 message WisconsinReturn {
   // Form 1.
   us.state.wi.v1.Form1 form_1 = 1;
+
+  // Schedule U: underpayment of estimated tax.
+  us.state.wi.v1.ScheduleU schedule_u = 2;
 }
 
 // A Massachusetts resident return: Form 1.
@@ -1170,16 +1205,27 @@ message MarylandReturn {
 message OhioReturn {
   // Ohio IT 1040.
   us.state.oh.v1.FormIT1040 form_it1040 = 1;
+
+  // Ohio IT/SD 2210: interest penalty on underpayment of tax.
+  us.state.oh.v1.FormItSd2210 form_it_sd_2210 = 2;
 }
 
 // A New Jersey resident return: Form NJ-1040.
 message NewJerseyReturn {
   // Form NJ-1040.
   us.state.nj.v1.FormNJ1040 form_nj1040 = 1;
+
+  // Form NJ-2210: underpayment of estimated tax by individuals, estates, or
+  // trusts.
+  us.state.nj.v1.FormNj2210 form_nj_2210 = 2;
 }
 
 // A New York resident return: Form IT-201.
 message NewYorkReturn {
   // Form IT-201.
   us.state.ny.v1.FormIT201 form_it201 = 1;
+
+  // Form IT-2105.9: underpayment of estimated tax by individuals and
+  // fiduciaries.
+  us.state.ny.v1.FormIt21059 form_it_2105_9 = 2;
 }
