@@ -1,0 +1,72 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for one column of AR2210A lines 31 to 45,
+# the underpayment and the penalty.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the Arkansas Department of Finance and
+# Administration publishes. The coverage test checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+#
+# Lines 40 to 44 are held for each computation, in penalty_computations. Line
+# 43 prints the daily factor, which the schema does not store.
+
+form: "AR2210A"
+message_name: "nexteggapp.taxprotos.us.state.ar.v1.FormAr2210a.PaymentPeriod"
+tax_years: 2025
+
+concepts {
+  concept: "required_installment"
+  years { tax_year: 2025 irs_box: "31" }
+}
+
+concepts {
+  concept: "estimated_tax_paid_and_withheld"
+  years { tax_year: 2025 irs_box: "32" }
+}
+
+concepts {
+  concept: "prior_period_overpayment"
+  years { tax_year: 2025 irs_box: "33" }
+}
+
+concepts {
+  concept: "payments_with_prior_overpayment"
+  years { tax_year: 2025 irs_box: "34" }
+}
+
+concepts {
+  concept: "prior_period_shortfall"
+  years { tax_year: 2025 irs_box: "35" }
+}
+
+concepts {
+  concept: "net_timely_payments"
+  years { tax_year: 2025 irs_box: "36" }
+}
+
+concepts {
+  concept: "shortfall_carried_forward"
+  years { tax_year: 2025 irs_box: "37" }
+}
+
+concepts {
+  concept: "underpayment"
+  years { tax_year: 2025 irs_box: "38" }
+}
+
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "39" }
+}
+
+concepts {
+  concept: "penalty"
+  years { tax_year: 2025 irs_box: "45" }
+}

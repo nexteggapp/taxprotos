@@ -1,0 +1,203 @@
+// Form AR2210A, Arkansas Individual Income Tax Annualized Penalty for
+// Underpayment of Estimated Income Tax.
+//
+// A filer whose income came unevenly uses it in place of Form AR2210, and
+// claims exception 6 on the return. Lines 1 to 30 figure each period's
+// required installment from the annualized tax; lines 31 to 39 apply the
+// payments to them; and lines 40 to 46 charge each underpayment at a printed
+// daily factor.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 form; testdata holds the
+// text extracted from the published PDF and coverage_test.go asserts every
+// line a mapping claims appears on it. The annualization amounts (lines 3
+// and 8), the applicable percentages (line 20) and the daily factor (line
+// 43) are preprinted and not stored.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.ar.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/ar/v1/form_ar2210a;formar2210a";
+
+// FormAr2210a holds the annualized installments (lines 1 to 30), the
+// underpayment for each due date (lines 31 to 39) and the penalty (lines 40
+// to 46).
+message FormAr2210a {
+  // AnnualizationPeriod is one column of lines 1 to 30: one period of the
+  // year, January 1 to March 31, May 31, August 31 and December 31.
+  message AnnualizationPeriod {
+    // The column: 1 through 4.
+    int32 period = 1;
+
+    // Line 1: Adjusted gross income for the period.
+    common.v1.Money adjusted_gross_income = 2;
+
+    // Line 2: Spouse's income, for filing status 4 only.
+    common.v1.Money spouse_income = 3;
+
+    // Line 4: Annualized income. Line 1 multiplied by line 3.
+    common.v1.Money annualized_income = 4;
+
+    // Line 5: Spouse's annualized income. Line 2 multiplied by line 3.
+    common.v1.Money spouse_annualized_income = 5;
+
+    // Line 6: Standard deduction or itemized deductions for the period.
+    common.v1.Money deductions = 6;
+
+    // Line 7: Spouse's standard deduction or itemized deductions for the
+    // period.
+    common.v1.Money spouse_deductions = 7;
+
+    // Line 9: Annualized deductions. Line 6 multiplied by line 8.
+    common.v1.Money annualized_deductions = 8;
+
+    // Line 10: Spouse's annualized deductions. Line 7 multiplied by line 8.
+    common.v1.Money spouse_annualized_deductions = 9;
+
+    // Line 11: Line 4 minus line 9.
+    common.v1.Money taxable_income = 10;
+
+    // Line 12: Line 5 minus line 10.
+    common.v1.Money spouse_taxable_income = 11;
+
+    // Line 13: Tax on line 11, from the regular tax table.
+    common.v1.Money tax = 12;
+
+    // Line 14: Tax on line 12, from the regular tax table.
+    common.v1.Money spouse_tax = 13;
+
+    // Line 15: Lines 13 and 14 added.
+    common.v1.Money combined_tax = 14;
+
+    // Line 16: Other amounts due for the period, as on Form AR1000F or
+    // AR1000NR lines 31 and 32.
+    common.v1.Money other_amounts = 15;
+
+    // Line 17: Total tax. Lines 15 and 16 added.
+    common.v1.Money total_tax = 16;
+
+    // Line 18: Total credits for the period.
+    common.v1.Money credits = 17;
+
+    // Line 19: Line 17 minus line 18, not less than zero.
+    common.v1.Money tax_after_credits = 18;
+
+    // Line 21: Line 19 multiplied by the applicable percentage on line 20.
+    common.v1.Money applicable_tax = 19;
+
+    // Line 22: Line 30 of all preceding columns added.
+    common.v1.Money prior_installments = 20;
+
+    // Line 23: Line 21 minus line 22, not less than zero.
+    common.v1.Money annualized_installment = 21;
+
+    // Line 24: The year's net tax.
+    common.v1.Money net_tax = 22;
+
+    // Line 25: Line 24 multiplied by 90%.
+    common.v1.Money current_year_safe_harbor_tax = 23;
+
+    // Line 26: Line 25 divided by four.
+    common.v1.Money regular_installment = 24;
+
+    // Line 27: Line 29 of the preceding column.
+    common.v1.Money prior_regular_installment_excess = 25;
+
+    // Line 28: Lines 26 and 27 added.
+    common.v1.Money available_regular_installment = 26;
+
+    // Line 29: Line 28 minus line 23 when line 28 is more, otherwise zero.
+    common.v1.Money regular_installment_excess = 27;
+
+    // Line 30: The smaller of line 23 or line 28. Carries to line 31.
+    common.v1.Money required_installment = 28;
+  }
+
+  // PaymentPeriod is one column of lines 31 to 45: one payment due date, (A)
+  // April 15 through (D) January 15.
+  message PaymentPeriod {
+    // PenaltyComputation is one computation of lines 40 to 45: the penalty on
+    // line 38, or on the part of it one payment paid, from the due date to
+    // the day it was paid.
+    message PenaltyComputation {
+      // Line 40: The due date of the payment.
+      common.v1.Date due_date = 1;
+
+      // Line 41: The date the payment was made, or April 15 of the next year,
+      // whichever is earlier.
+      common.v1.Date paid_date = 2;
+
+      // Line 42: Number of days between the dates on lines 40 and 41.
+      int32 days = 3;
+
+      // Line 44: The amount charged: line 38, or the part of it one payment
+      // paid.
+      common.v1.Money underpayment = 4;
+
+      // Line 45: Line 44 multiplied by the percentage on line 43, the days
+      // multiplied by the printed daily factor.
+      common.v1.Money penalty = 5;
+    }
+
+    // The column: 1 through 4 for (A) through (D).
+    int32 period = 1;
+
+    // Line 31: Line 30 for the period.
+    common.v1.Money required_installment = 2;
+
+    // Line 32: Estimated tax paid and tax withheld.
+    common.v1.Money estimated_tax_paid_and_withheld = 3;
+
+    // Line 33: Line 39 of the previous column.
+    common.v1.Money prior_period_overpayment = 4;
+
+    // Line 34: Lines 32 and 33 added.
+    common.v1.Money payments_with_prior_overpayment = 5;
+
+    // Line 35: Lines 37 and 38 of the previous column added.
+    common.v1.Money prior_period_shortfall = 6;
+
+    // Line 36: Line 34 minus line 35, not less than zero. Column (A) holds
+    // line 32.
+    common.v1.Money net_timely_payments = 7;
+
+    // Line 37: Line 35 minus line 34 when line 36 is zero, otherwise zero.
+    common.v1.Money shortfall_carried_forward = 8;
+
+    // Line 38: Underpayment. Line 31 minus line 36 when line 31 is at least
+    // line 36.
+    common.v1.Money underpayment = 9;
+
+    // Line 39: Overpayment. Line 36 minus line 31 when line 36 is more.
+    common.v1.Money overpayment = 10;
+
+    // Lines 40 to 45, one computation for each part of the underpayment a
+    // payment paid.
+    repeated PenaltyComputation penalty_computations = 11;
+
+    // Line 45: The column's penalty, the computations added.
+    common.v1.Money penalty = 12;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Primary's legal name.
+  string filer_name = 2;
+
+  // Primary's social security number.
+  string filer_tin = 3;
+
+  // Lines 1 through 30: One entry per annualization period.
+  repeated AnnualizationPeriod annualization_periods = 4;
+
+  // Lines 31 through 45: One entry per payment due date.
+  repeated PaymentPeriod payment_periods = 5;
+
+  // Line 46: Penalty. Line 45 of every column added. Carries to Form AR1000F
+  // or AR1000NR line 52B.
+  common.v1.Money estimated_tax_penalty = 6;
+}

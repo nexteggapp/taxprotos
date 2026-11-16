@@ -1,0 +1,26 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for AR2210A.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the Arkansas Department of Finance and
+# Administration publishes. The coverage test checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+#
+# Each column is mapped in mapping_annualization.textproto (lines 1 to 30) and
+# mapping_payments.textproto (lines 31 to 45).
+
+form: "AR2210A"
+message_name: "nexteggapp.taxprotos.us.state.ar.v1.FormAr2210a"
+tax_years: 2025
+
+concepts {
+  concept: "estimated_tax_penalty"
+  years { tax_year: 2025 irs_box: "46" }
+}
