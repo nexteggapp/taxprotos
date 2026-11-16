@@ -158,6 +158,7 @@ import "taxprotos/us/state/ut/v1/form_tc40/form_tc40.proto";
 import "taxprotos/us/state/ut/v1/form_tc_546/form_tc_546.proto";
 import "taxprotos/us/state/wa/v1/capital_gains/capital_gains_return.proto";
 import "taxprotos/us/state/va/v1/form_760/form_760.proto";
+import "taxprotos/us/state/va/v1/form_760c/form_760c.proto";
 import "taxprotos/us/state/sc/v1/form_sc1040/form_sc1040.proto";
 import "taxprotos/us/state/wv/v1/form_it140/form_it140.proto";
 import "taxprotos/us/state/vt/v1/form_in111/form_in111.proto";
@@ -1092,6 +1093,10 @@ message NebraskaReturn {
 message VirginiaReturn {
   // Form 760.
   us.state.va.v1.Form760 form_760 = 1;
+
+  // Form 760C: underpayment of Virginia estimated tax by individuals,
+  // estates and trusts.
+  us.state.va.v1.Form760c form_760c = 2;
 }
 
 // A District of Columbia resident return: Form D-40.
