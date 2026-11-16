@@ -230,6 +230,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [IT-2210](https://forms.in.gov/Download.aspx?id=16926) | [`form_it_2210.proto`](us/state/in/v1/form_it_2210/form_it_2210.proto) | Indiana underpayment of estimated tax by individuals |
 | [IT-2210A](https://forms.in.gov/Download.aspx?id=16928) | [`form_it_2210a.proto`](us/state/in/v1/form_it_2210a/form_it_2210a.proto) | Indiana annualized underpayment of estimated tax |
 | [IT-540](https://dam.ldr.la.gov/taxforms/IT540WEB-BC(2025)%20F.pdf) | [`form_it540.proto`](us/state/la/v1/form_it540/form_it540.proto) | The Louisiana resident return |
+| [R-210R](https://dam.ldr.la.gov/taxforms/210R-1-26-F.pdf) | [`form_r_210r.proto`](us/state/la/v1/form_r_210r/form_r_210r.proto) | Louisiana underpayment of individual income tax penalty |
 | [80-105](https://www.dor.ms.gov/sites/default/files/tax-forms/individual/80105258%201.pdf) | [`form_80105.proto`](us/state/ms/v1/form_80105/form_80105.proto) | The Mississippi resident return |
 | [MO-1040](https://dor.mo.gov/forms/MO-1040%20Fillable%20Calculating_2025.pdf) | [`form_mo1040.proto`](us/state/mo/v1/form_mo1040/form_mo1040.proto) | The Missouri resident return |
 | [PIT-1](https://realfile.tax.newmexico.gov/2025pit-1.pdf) | [`form_pit1.proto`](us/state/nm/v1/form_pit1/form_pit1.proto) | The New Mexico resident return |

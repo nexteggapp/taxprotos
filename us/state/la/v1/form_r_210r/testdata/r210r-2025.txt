@@ -1,0 +1,69 @@
+R-210R (1/26)                                                                                                                    2025
+                                          Underpayment of Individual Income Tax
+                                                                                                          Attach Form R-210R to
+                                          Penalty Computation 2025 Taxable Year
+                                                                                                             your Form IT-540.
+                                                          Resident Filers
+
+
+
+                                                                                                              PLEASE PRINT OR TYPE
+                 Name as Shown in the Order on Tax Return                                            Social Security Number
+ Yours                                                                                 Yours
+
+
+
+ Spouse’s                                                                              Spouse’s
+
+
+
+ Section 1 – Required Annual Payment Computation
+ 1    2025 tax liability - See instructions.                                                                                            00
+
+ 2    2024 tax liability - See instructions.                                                                                            00
+
+      Enter the smaller of Line 1 or Line 2. If no return was fled for 2024 or you
+ 3                                                                                                                                      00
+      fled as a part year-resident for 2024, use the amount from Line 1.
+ 4    Number of payments required for year
+ Section 2 – Underpayment Computation                            04/15/25            06/15/25            09/15/25         01/15/26
+      Required payment – From Section 1, divide amount
+ 5                                                                          00                  00                  00                  00
+      on Line 3 by the amount on Line 4. See instructions.
+ 6    Amount paid for each period – See instructions.                       00                  00                  00                  00
+
+      Carryforward – Overpayment or underpayment from
+      the previous period shown on Line 9 of each column.
+      Carryforward amounts from the previous period can
+ 7    be a positive number or a negative number.                                                00                  00                  00
+
+      Note: No carryforward amount can be shown for
+      the frst period. See instructions.
+ 8    Amount available for period. Add Lines 6 and 7.                       00                  00                  00                  00
+
+      Underpayment or overpayment – Subtract Line
+      5 from Line 8. A positive number indicates an
+ 9    overpayment. A negative number indicates an                           00                  00                  00                  00
+      underpayment. Move the number on this line to
+      Line 7 in next column.
+ Section 3 – Exceptions
+      Exception 1 – See worksheet on page 3 of the instructions. If you meet this exception, you do not owe an underpayment
+10
+      penalty. STOP – You do not need to fle this form. If you fled as a part-year resident in 2024, exceptions 2 and 3 do not apply.
+11    Exception 2 – prior year’s tax liability
+
+12    Exception 3 – prior year’s income
+                                                                                                                         no exception
+ 13   Exception 4 – annualized income                                                                                      available
+14    Exception 5 – installment period income
+ Section 4 – Penalty Computation
+15    Amount of underpayment (from Line 9 above)                            00                  00                  00                  00
+
+16    Date of payment – See instructions.
+17    Number of days from due date of installment
+18    Penalty – See instructions.                                           00                  00                  00                  00
+
+      Underpayment penalty – Add amounts on Line 18. Enter the total here and on Form IT-540, Line 33, if you
+19                                                                                                                                      00
+      have an overpayment. Enter the total here and on Form IT-540, Line 46, if you have a balance due.
+

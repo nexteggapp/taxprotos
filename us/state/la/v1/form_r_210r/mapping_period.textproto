@@ -1,0 +1,84 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for one column of Form R-210R
+# Sections 2 to 4: the underpayment, the exceptions and the penalty.
+#
+# Lines come from the 2025 form (R-210R (1/26)) in testdata/, which is
+# pdftotext -layout over the PDF the Louisiana Department of Revenue
+# publishes. The coverage test checks every line named here against that
+# extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a state form is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "R-210R"
+message_name: "nexteggapp.taxprotos.us.state.la.v1.FormR210r.Period"
+tax_years: 2025
+
+concepts {
+  concept: "required_payment"
+  years { tax_year: 2025 irs_box: "5" }
+}
+
+concepts {
+  concept: "amount_paid"
+  years { tax_year: 2025 irs_box: "6" }
+}
+
+concepts {
+  concept: "carryforward"
+  years { tax_year: 2025 irs_box: "7" }
+}
+
+concepts {
+  concept: "amount_available"
+  years { tax_year: 2025 irs_box: "8" }
+}
+
+concepts {
+  concept: "overpayment_or_underpayment"
+  years { tax_year: 2025 irs_box: "9" }
+}
+
+concepts {
+  concept: "prior_year_tax_exception"
+  years { tax_year: 2025 irs_box: "11" }
+}
+
+concepts {
+  concept: "prior_year_income_exception"
+  years { tax_year: 2025 irs_box: "12" }
+}
+
+concepts {
+  concept: "annualized_income_exception"
+  years { tax_year: 2025 irs_box: "13" }
+}
+
+concepts {
+  concept: "installment_period_income_exception"
+  years { tax_year: 2025 irs_box: "14" }
+}
+
+concepts {
+  concept: "underpayment"
+  years { tax_year: 2025 irs_box: "15" }
+}
+
+concepts {
+  concept: "payment_date"
+  years { tax_year: 2025 irs_box: "16" }
+}
+
+concepts {
+  concept: "days_late"
+  years { tax_year: 2025 irs_box: "17" }
+}
+
+concepts {
+  concept: "penalty"
+  years { tax_year: 2025 irs_box: "18" }
+}

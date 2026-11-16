@@ -123,6 +123,7 @@ import "taxprotos/us/state/in/v1/form_it40/form_it40.proto";
 import "taxprotos/us/state/in/v1/form_it_2210/form_it_2210.proto";
 import "taxprotos/us/state/in/v1/form_it_2210a/form_it_2210a.proto";
 import "taxprotos/us/state/la/v1/form_it540/form_it540.proto";
+import "taxprotos/us/state/la/v1/form_r_210r/form_r_210r.proto";
 import "taxprotos/us/state/ms/v1/form_80105/form_80105.proto";
 import "taxprotos/us/state/mo/v1/form_mo1040/form_mo1040.proto";
 import "taxprotos/us/state/mt/v1/form_2/form_2.proto";
@@ -1003,6 +1004,9 @@ message IowaReturn {
 message LouisianaReturn {
   // Form IT-540.
   us.state.la.v1.FormIT540 form_it540 = 1;
+
+  // Form R-210R: underpayment of individual income tax penalty computation.
+  us.state.la.v1.FormR210r form_r_210r = 2;
 }
 
 // A Mississippi resident return: Form 80-105.
