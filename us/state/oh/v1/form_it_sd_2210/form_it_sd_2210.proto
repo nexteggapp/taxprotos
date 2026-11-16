@@ -1,0 +1,195 @@
+// Ohio IT/SD 2210, Interest Penalty on Underpayment of Tax.
+//
+// A filer of the Ohio IT 1040 or SD 100, and the other filers page 1 names,
+// uses it to figure whether the interest penalty is owed for underpaying
+// estimated tax and, if so, how much. Page 2 serves IT 1040, SD 100, SD 100E,
+// IT 1041 and IT 4708 filers: Part I first tests the whole year (lines 1 to
+// 8) and sets the required annual payment (line 9), and Part II compares
+// what is required by each due date with what was paid by it (lines 10 to
+// 14) and charges each shortfall at one printed rate for its column (lines
+// 15 to 17). Page 3 does the same for IT 1140 and IT 4738 filers.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year.
+// Verified against the 2025 Ohio IT/SD 2210; testdata holds the text
+// extracted from the published PDF.
+//
+// # Where it departs from federal Form 2210
+//
+// Withholding and timely payments that reach the target over the whole year
+// mean no penalty however they were spread (lines 5 and 7). Last year's tax
+// counts only after a timely return (line 6). Each column compares running
+// totals, so an amount still unpaid carries into the next column, and each is
+// charged once at a rate printed for its span, the statutory rate times the
+// days to the next due date over 365.25 (line 15), not by the day the
+// payment was made.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.oh.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/quantity.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/oh/v1/form_it_sd_2210;formitsd2210";
+
+// FormItSd2210 is what an Ohio IT/SD 2210 states: the total on page 1, Parts
+// I and II of page 2, and page 3 for the pass-through entity filers.
+message FormItSd2210 {
+  // PaymentPeriod is one column of page 2, Part II, lines 10 to 16: one
+  // payment due date.
+  message PaymentPeriod {
+    // The column: 1 through 4, A through D on the form.
+    int32 period = 1;
+
+    // The column's due date, as its heading gives it.
+    common.v1.Date due_date = 2;
+
+    // Line 10: Line 9 multiplied by the column's percentage: 25%, 50%, 75%
+    // and 100%.
+    common.v1.Money required_to_date = 3;
+
+    // Line 11: The total tax withheld from compensation multiplied by the
+    // column's percentage.
+    common.v1.Money withholding_to_date = 4;
+
+    // Line 12: Total cumulative estimated tax paid, including any credit
+    // carryforwards, by the column's date.
+    common.v1.Money estimated_tax_paid_to_date = 5;
+
+    // Line 13: Lines 11 and 12 added.
+    common.v1.Money total_paid_to_date = 6;
+
+    // Line 14: Underpayment subject to interest penalty. Line 10 less line
+    // 13; if negative, zero.
+    common.v1.Money underpayment = 7;
+
+    // Line 15: The rate for calendar year filers printed for the column: the
+    // statutory interest rate times the days late divided by 365.25, to six
+    // places. Unset when no day of the column's span has a published rate.
+    common.v1.Quantity rate = 8;
+
+    // Line 16: Line 14 multiplied by line 15.
+    common.v1.Money penalty = 9;
+  }
+
+  // PassThroughEntity is page 3, for IT 1140 and IT 4738 filers.
+  message PassThroughEntity {
+    // EntityPeriod is one column of page 3, Part II, lines 9 to 13.
+    message EntityPeriod {
+      // The column: 1 through 4, A through D on the form.
+      int32 period = 1;
+
+      // The column's due date, as its heading gives it.
+      common.v1.Date due_date = 2;
+
+      // Line 9: Line 8 multiplied by the column's percentage.
+      common.v1.Money required_to_date = 3;
+
+      // Line 10: Total estimated tax, including any credit carryforwards,
+      // paid by the column's date.
+      common.v1.Money estimated_tax_paid_to_date = 4;
+
+      // Line 11: Underpayment subject to interest penalty. Line 9 less line
+      // 10; if negative, zero.
+      common.v1.Money underpayment = 5;
+
+      // Line 12: The rate for calendar year filers printed for the column.
+      common.v1.Quantity rate = 6;
+
+      // Line 13: Line 11 multiplied by line 12.
+      common.v1.Money penalty = 7;
+    }
+
+    // Line 1: This year's Ohio taxes paid: timely estimated payments plus
+    // last year's credit carryforward.
+    common.v1.Money taxes_paid = 1;
+
+    // Line 2: This year's Ohio tax liability.
+    common.v1.Money tax_liability = 2;
+
+    // Line 3: Last year's Ohio tax liability.
+    common.v1.Money prior_year_tax_liability = 3;
+
+    // Line 4: Line 2 multiplied by 90%.
+    common.v1.Money current_year_safe_harbor_tax = 4;
+
+    // Line 5: Line 1 is at least line 4, so there is no penalty.
+    bool paid_reaches_current_year = 5;
+
+    // Line 6: Last year's IT 1140 or IT 4738 was filed on time.
+    bool prior_year_return_timely = 6;
+
+    // Line 7: Line 1 is at least line 3, so there is no penalty.
+    bool paid_reaches_prior_year = 7;
+
+    // Line 8: The lesser of line 3 or line 4 after a timely return on line
+    // 6, otherwise line 4.
+    common.v1.Money required_annual_payment = 8;
+
+    // Lines 9 to 13, one entry per column.
+    repeated EntityPeriod payment_periods = 9;
+
+    // Line 14: Total interest penalty due. Line 13 of every column added.
+    common.v1.Money total_penalty = 10;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // The primary taxpayer's name and Social Security Number.
+  string taxpayer_name = 2;
+  string ssn = 3;
+
+  // The spouse's name and Social Security Number, if filing jointly.
+  string spouse_name = 4;
+  string spouse_ssn = 5;
+
+  // For a pass-through entity, trust or estate: its FEIN and name.
+  string fein = 6;
+  string entity_name = 7;
+
+  // Page 1: Total interest penalty due, from page 2 line 17 or page 3 line
+  // 14.
+  common.v1.Money total_interest_penalty = 8;
+
+  // Line 1: This year's Ohio income taxes paid: timely estimated payments,
+  // withholding and last year's credit carryforward.
+  common.v1.Money taxes_paid = 9;
+
+  // Line 2: This year's Ohio income tax liability, total tax less total
+  // credits.
+  common.v1.Money tax_liability = 10;
+
+  // Line 3: Last year's Ohio income tax liability, total tax less total
+  // credits.
+  common.v1.Money prior_year_tax_liability = 11;
+
+  // Line 4: Line 2 multiplied by 90%.
+  common.v1.Money current_year_safe_harbor_tax = 12;
+
+  // Line 5: Line 1 is at least line 4, so there is no interest penalty.
+  bool paid_reaches_current_year = 13;
+
+  // Line 6: Last year's Ohio income tax return was filed on time.
+  bool prior_year_return_timely = 14;
+
+  // Line 7: Line 1 is at least line 3, so there is no interest penalty.
+  bool paid_reaches_prior_year = 15;
+
+  // Line 8: Line 2 less any withholding is $500 or less, so there is no
+  // interest penalty.
+  bool tax_less_withholding_at_most_threshold = 16;
+
+  // Line 9: The lesser of line 3 or line 4 after a timely return on line 6,
+  // otherwise line 4.
+  common.v1.Money required_annual_payment = 17;
+
+  // Lines 10 to 16, one entry per column.
+  repeated PaymentPeriod payment_periods = 18;
+
+  // Line 17: Total interest penalty due. Line 16 of every column added.
+  common.v1.Money total_penalty = 19;
+
+  // Page 3, for IT 1140 and IT 4738 filers. Unset for the page 2 filers.
+  PassThroughEntity pass_through_entity = 20;
+}

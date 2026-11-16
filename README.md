@@ -255,6 +255,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [SC1040](https://dor.sc.gov/sites/dor/files/forms/SC1040_2025.pdf) | [`form_sc1040.proto`](us/state/sc/v1/form_sc1040/form_sc1040.proto) | The South Carolina resident return |
 | [IN-111](https://tax.vermont.gov/sites/tax/files/documents/IN-111-2025.pdf) | [`form_in111.proto`](us/state/vt/v1/form_in111/form_in111.proto) | The Vermont resident return |
 | [IT 1040](https://dam.assets.ohio.gov/image/upload/tax.ohio.gov/forms/ohio_individual/individual/2025/1040-bundle.pdf) | [`form_it1040.proto`](us/state/oh/v1/form_it1040/form_it1040.proto) | The Ohio resident return |
+| [IT/SD 2210](https://dam.assets.ohio.gov/image/upload/v1762982566/tax.ohio.gov/forms/ohio_individual/individual/2025/itsd2210-fi.pdf) | [`form_it_sd_2210.proto`](us/state/oh/v1/form_it_sd_2210/form_it_sd_2210.proto) | Ohio interest penalty on underpayment of tax |
 | [IT-201](https://www.tax.ny.gov/pdf/current_forms/it/it201_fill_in.pdf) | [`form_it201.proto`](us/state/ny/v1/form_it201/form_it201.proto) | The New York resident return |
 | [IT-2105.9](https://www.tax.ny.gov/pdf/2025/inc/it2105_9_2025_fill_in.pdf) | [`form_it_2105_9.proto`](us/state/ny/v1/form_it_2105_9/form_it_2105_9.proto) | New York underpayment of estimated tax by individuals and fiduciaries |
 | [540](https://www.ftb.ca.gov/forms/2025/2025-540.pdf) | [`form_540.proto`](us/state/ca/v1/form_540/form_540.proto) | The California resident return |

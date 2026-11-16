@@ -1,0 +1,28 @@
+# gazelle:ignore
+
+load("@protobuf//bazel:proto_library.bzl", "proto_library")
+
+# Ohio IT/SD 2210: interest penalty on underpayment of tax.
+proto_library(
+    name = "form_it_sd_2210_proto",
+    # Imported as taxprotos/..., so consumers import these files by that path.
+    import_prefix = "taxprotos",
+    srcs = [
+        "form_it_sd_2210.proto",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//common/v1:common_proto",
+    ],
+)
+
+# The mapping and the form extract it is checked against, for
+# //go/us/state/oh/v1/form_it_sd_2210.
+filegroup(
+    name = "test_oracles",
+    srcs = glob([
+        "mapping.textproto",
+        "testdata/**",
+    ]),
+    visibility = ["//go/us/state/oh/v1/form_it_sd_2210:__pkg__"],
+)
