@@ -256,6 +256,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [IN-111](https://tax.vermont.gov/sites/tax/files/documents/IN-111-2025.pdf) | [`form_in111.proto`](us/state/vt/v1/form_in111/form_in111.proto) | The Vermont resident return |
 | [IT 1040](https://dam.assets.ohio.gov/image/upload/tax.ohio.gov/forms/ohio_individual/individual/2025/1040-bundle.pdf) | [`form_it1040.proto`](us/state/oh/v1/form_it1040/form_it1040.proto) | The Ohio resident return |
 | [IT-201](https://www.tax.ny.gov/pdf/current_forms/it/it201_fill_in.pdf) | [`form_it201.proto`](us/state/ny/v1/form_it201/form_it201.proto) | The New York resident return |
+| [IT-2105.9](https://www.tax.ny.gov/pdf/2025/inc/it2105_9_2025_fill_in.pdf) | [`form_it_2105_9.proto`](us/state/ny/v1/form_it_2105_9/form_it_2105_9.proto) | New York underpayment of estimated tax by individuals and fiduciaries |
 | [540](https://www.ftb.ca.gov/forms/2025/2025-540.pdf) | [`form_540.proto`](us/state/ca/v1/form_540/form_540.proto) | The California resident return |
 | [Schedule CA](https://www.ftb.ca.gov/forms/2025/2025-540-ca.pdf) | [`schedule_ca.proto`](us/state/ca/v1/form_540/schedule_ca.proto) | How a federal return becomes a Californian one |
 | [FTB 5805](https://www.ftb.ca.gov/forms/2025/2025-5805.pdf) | [`form_ftb_5805.proto`](us/state/ca/v1/form_ftb_5805/form_ftb_5805.proto) | California underpayment of estimated tax |

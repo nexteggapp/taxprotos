@@ -1,0 +1,170 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form IT-2105.9 calls each concept, per tax year.
+#
+# Lines come from the 2025 Form IT-2105.9 as the New York State Department of
+# Taxation and Finance publishes it, in testdata/. There are no amount codes:
+# IRS Publication 1220 covers the information returns the IRS receives
+# electronically, and a state form is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. The columns of lines 25 to 38 and Worksheet 1 of the
+# instructions are repeated messages whose fields name their lines in their
+# comments.
+
+form: "IT-2105.9"
+message_name: "nexteggapp.taxprotos.us.state.ny.v1.FormIt21059"
+tax_years: 2025
+
+concepts {
+  concept: "total_tax"
+  years { tax_year: 2025 irs_box: "1" }
+}
+
+concepts {
+  concept: "empire_state_child_credit"
+  years { tax_year: 2025 irs_box: "2" }
+}
+
+concepts {
+  concept: "child_and_dependent_care_credit"
+  years { tax_year: 2025 irs_box: "3" }
+}
+
+concepts {
+  concept: "earned_income_credit"
+  years { tax_year: 2025 irs_box: "4" }
+}
+
+concepts {
+  concept: "noncustodial_parent_earned_income_credit"
+  years { tax_year: 2025 irs_box: "5" }
+}
+
+concepts {
+  concept: "real_property_tax_credit"
+  years { tax_year: 2025 irs_box: "6" }
+}
+
+concepts {
+  concept: "college_tuition_credit"
+  years { tax_year: 2025 irs_box: "7" }
+}
+
+concepts {
+  concept: "star_credit"
+  years { tax_year: 2025 irs_box: "7a" }
+}
+
+concepts {
+  concept: "nyc_school_tax_credit"
+  years { tax_year: 2025 irs_box: "8" }
+}
+
+concepts {
+  concept: "nyc_earned_income_credit"
+  years { tax_year: 2025 irs_box: "9" }
+}
+
+concepts {
+  concept: "nyc_income_tax_elimination_credit"
+  years { tax_year: 2025 irs_box: "9a" }
+}
+
+concepts {
+  concept: "other_refundable_credits"
+  years { tax_year: 2025 irs_box: "10" }
+}
+
+concepts {
+  concept: "total_credits"
+  years { tax_year: 2025 irs_box: "11" }
+}
+
+concepts {
+  concept: "current_year_tax"
+  years { tax_year: 2025 irs_box: "12" }
+}
+
+concepts {
+  concept: "current_year_safe_harbor_tax"
+  years { tax_year: 2025 irs_box: "13" }
+}
+
+concepts {
+  concept: "tax_withheld"
+  years { tax_year: 2025 irs_box: "14" }
+}
+
+concepts {
+  concept: "tax_less_withholding"
+  years { tax_year: 2025 irs_box: "15" }
+}
+
+concepts {
+  concept: "prior_year_tax"
+  years { tax_year: 2025 irs_box: "16" }
+}
+
+concepts {
+  concept: "required_annual_payment"
+  years { tax_year: 2025 irs_box: "17" }
+}
+
+concepts {
+  concept: "short_method_withholding"
+  years { tax_year: 2025 irs_box: "18" }
+}
+
+concepts {
+  concept: "short_method_estimated_tax_payments"
+  years { tax_year: 2025 irs_box: "19" }
+}
+
+concepts {
+  concept: "short_method_total_payments"
+  years { tax_year: 2025 irs_box: "20" }
+}
+
+concepts {
+  concept: "short_method_underpayment"
+  years { tax_year: 2025 irs_box: "21" }
+}
+
+concepts {
+  concept: "short_method_full_penalty"
+  years { tax_year: 2025 irs_box: "22" }
+}
+
+concepts {
+  concept: "short_method_early_payment_reduction"
+  years { tax_year: 2025 irs_box: "23" }
+}
+
+concepts {
+  concept: "short_method_penalty"
+  years { tax_year: 2025 irs_box: "24" }
+}
+
+concepts {
+  concept: "payment_periods"
+  years {
+    tax_year: 2025
+    irs_box: "25"
+    note: "Lines 25 to 38, one entry per column; each entry's fields name their own lines."
+  }
+}
+
+concepts {
+  concept: "total_penalty"
+  years { tax_year: 2025 irs_box: "39" }
+}
+
+concepts {
+  concept: "annualization_periods"
+  years {
+    tax_year: 2025
+    irs_box: "25"
+    note: "Worksheet 1 of the instructions, which sets line 25 under the annualized income installment method, one entry per column; each entry's fields name the worksheet's lines."
+  }
+}

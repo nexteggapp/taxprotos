@@ -1,0 +1,332 @@
+// Form IT-2105.9, Underpayment of Estimated Tax By Individuals and
+// Fiduciaries: New York State, New York City, Yonkers and MCTMT.
+//
+// A filer of Form IT-201, IT-203 or IT-205 uses it to figure whether a
+// penalty is owed for underpaying estimated tax and, if so, how much. Part 1
+// figures the required annual payment from the four taxes together; Part 2,
+// the short method, charges the year's underpayment at one printed factor
+// when the payments were even; and Part 3, the regular method, figures each
+// installment's underpayment (Schedule A) and charges it by the day at the
+// rate in effect (Schedule B). Worksheet 1 of the instructions, the
+// annualized income installment for New York State, with Worksheets 2, 3 and
+// 4a to 4c for New York City, Yonkers and the MCTMT, can lower line 25.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year.
+// Verified against the 2025 Form IT-2105.9; testdata holds the text extracted
+// from the published PDF.
+//
+// # Where it departs from federal Form 2210
+//
+// Four taxes are figured together: New York State, New York City, Yonkers and
+// the MCTMT. The threshold on line 15 is $300 for each of the state, City and
+// Yonkers taxes the filer owes, and Schedule B charges each period's
+// underpayment at New York's own rate, set each quarter under Tax Law §
+// 697(j).
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.ny.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/quantity.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/ny/v1/form_it_2105_9;formit21059";
+
+// FormIt21059 is what a Form IT-2105.9 states: Parts 1 to 3, and Worksheet 1
+// of its instructions.
+message FormIt21059 {
+  // PaymentPeriod is one column of Part 3, Schedules A and B: lines 25 to 30
+  // and the column's line of lines 31 to 38.
+  message PaymentPeriod {
+    // The column: 1 through 4, A through D on the form, for the April, June,
+    // September and January due dates.
+    int32 period = 1;
+
+    // The column's due date, as the heading Payment due dates gives it.
+    common.v1.Date due_date = 2;
+
+    // Line 25: Required installments. A quarter of line 17, or Worksheet 1
+    // line 26 under the annualized income installment method.
+    common.v1.Money required_installment = 3;
+
+    // Line 26: Estimated tax paid and tax withheld for the period, the four
+    // taxes together, with withholding counted in four equal parts on the
+    // due dates unless shown otherwise.
+    common.v1.Money estimated_tax_paid_and_withheld = 4;
+
+    // Line 27: The overpayment from the prior period, line 29 of the previous
+    // column. Unset in column A.
+    common.v1.Money prior_overpayment = 5;
+
+    // Line 27: The underpayment from the prior period, line 29 of the
+    // previous column. Unset in column A.
+    common.v1.Money prior_underpayment = 6;
+
+    // Line 28: Line 26 plus an overpayment on line 27, or less an
+    // underpayment. Negative when the underpayment is the greater.
+    common.v1.Money net_payments = 7;
+
+    // Line 29: Underpayment. Line 25 less line 28, when line 25 is the
+    // greater.
+    common.v1.Money underpayment = 8;
+
+    // Line 29: Overpayment. Line 28 less line 25, when line 28 is the
+    // greater.
+    common.v1.Money overpayment = 9;
+
+    // Line 30: Amount of underpayment, from line 29.
+    common.v1.Money penalty_underpayment = 10;
+
+    // Lines 31, 33, 35 and 37: the factor for the column's penalty period,
+    // the days unpaid ÷ 365 times the rate, carried to five places, when one
+    // factor covers the period. Unset when the underpayment is charged in
+    // parts.
+    common.v1.Quantity factor = 11;
+
+    // Lines 32, 34, 36 and 38: the penalty for the column's penalty period,
+    // line 30 by the factor, or the parts' penalties added.
+    common.v1.Money penalty = 12;
+
+    // The computations behind the column's penalty: one for each part of the
+    // underpayment a payment reduced and each rate in effect.
+    repeated PenaltyComputation computations = 13;
+  }
+
+  // PenaltyComputation is one computation of Schedule B: an amount unpaid
+  // for some days of a penalty period at one rate.
+  message PenaltyComputation {
+    // The amount of underpayment charged.
+    common.v1.Money underpayment = 1;
+
+    // The day the days are counted from, and the last day counted.
+    common.v1.Date from_date = 2;
+    common.v1.Date to_date = 3;
+
+    // The number of days.
+    int32 days = 4;
+
+    // The annual rate, as a fraction: 0.095 for 9.5%.
+    common.v1.Quantity rate = 5;
+
+    // The penalty: the underpayment times the days ÷ 365 times the rate.
+    common.v1.Money penalty = 6;
+  }
+
+  // AnnualizationPeriod is one column of Worksheet 1 of the instructions,
+  // the annualized income installment for New York State: January 1 to
+  // March 31, May 31, August 31 and December 31.
+  message AnnualizationPeriod {
+    // The column: 1 through 4, a through d.
+    int32 period = 1;
+
+    // The last day of the period the column covers.
+    common.v1.Date end_date = 2;
+
+    // Line 1: New York adjusted gross income for the period.
+    common.v1.Money new_york_agi = 3;
+
+    // Line 2: The annualization amount: 4, 2.4, 1.5 and 1.
+    common.v1.Quantity annualization_amount = 4;
+
+    // Line 3: Annualized New York adjusted gross income. Line 1 by line 2.
+    common.v1.Money annualized_agi = 5;
+
+    // Line 4: Itemized deductions for the period.
+    common.v1.Money itemized_deductions = 6;
+
+    // Line 5: The annualization amount for line 4.
+    common.v1.Quantity deduction_annualization_amount = 7;
+
+    // Line 6: Line 4 by line 5.
+    common.v1.Money annualized_itemized_deductions = 8;
+
+    // Line 7: The standard deduction.
+    common.v1.Money standard_deduction = 9;
+
+    // Line 8: Line 3 less line 6 or line 7.
+    common.v1.Money agi_less_deductions = 10;
+
+    // Line 9: $1,000 times the number of dependent exemptions.
+    common.v1.Money dependent_exemptions = 11;
+
+    // Line 10: Annualized taxable income. Line 8 less line 9.
+    common.v1.Money annualized_taxable_income = 12;
+
+    // Line 11: For residents, the tax on line 10.
+    common.v1.Money resident_tax = 13;
+
+    // Line 11a: For nonresidents and part-year residents, the tax on line 10.
+    common.v1.Money nonresident_tax = 14;
+
+    // Line 11b: The applicable portion of the credits on Form IT-203 lines
+    // 39, 41 and 43.
+    common.v1.Money nonresident_credits = 15;
+
+    // Line 11c: Line 11a less line 11b.
+    common.v1.Money nonresident_tax_less_credits = 16;
+
+    // Line 11d: The income percentage for the period.
+    common.v1.Quantity income_percentage = 17;
+
+    // Line 11e: Line 11c by line 11d.
+    common.v1.Money nonresident_allocated_tax = 18;
+
+    // Line 12: The applicable portion of the credits on Form IT-201 line 43,
+    // IT-203 line 47 or IT-205 line 10.
+    common.v1.Money credits = 19;
+
+    // Line 13: Line 11 or 11e less line 12.
+    common.v1.Money tax_less_credits = 20;
+
+    // Line 14: Other New York State taxes for the period.
+    common.v1.Money other_taxes = 21;
+
+    // Line 15: Lines 13 and 14 added.
+    common.v1.Money total_tax = 22;
+
+    // Line 16: Refundable credits.
+    common.v1.Money refundable_credits = 23;
+
+    // Line 17: Total annualized tax. Line 15 less line 16.
+    common.v1.Money annualized_tax = 24;
+
+    // Line 18: The percentage: 22.5%, 45%, 67.5% and 90%.
+    common.v1.Quantity percentage = 25;
+
+    // Line 19: Line 17 by line 18.
+    common.v1.Money applicable_tax = 26;
+
+    // Line 20: The New York City, Yonkers and MCTMT amounts, from Worksheet
+    // 2 line 25, Worksheet 3 line 9 and Worksheet 4c line 5.
+    common.v1.Money other_jurisdictions_tax = 27;
+
+    // Line 21: Lines 19 and 20 added.
+    common.v1.Money combined_applicable_tax = 28;
+
+    // Line 22: Line 26 of all preceding columns added.
+    common.v1.Money prior_installments = 29;
+
+    // Line 23: Line 21 less line 22, not below zero.
+    common.v1.Money annualized_installment = 30;
+
+    // Line 24: A quarter of Form IT-2105.9 line 17, plus line 25 of the
+    // preceding column.
+    common.v1.Money available_regular_installment = 31;
+
+    // Line 25: Line 24 less line 23, when line 24 is the greater; otherwise
+    // zero.
+    common.v1.Money regular_installment_excess = 32;
+
+    // Line 26: Required installments. The smaller of line 23 or line 24,
+    // carried to Form IT-2105.9 line 25.
+    common.v1.Money required_installment = 33;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // The filer's name or names, as shown on the return.
+  string taxpayer_name = 2;
+
+  // The filer's identification number, an SSN or EIN.
+  string identification_number = 3;
+
+  // Line 1: Total tax from this year's return before withholding and
+  // estimated tax payments.
+  common.v1.Money total_tax = 4;
+
+  // Line 2: Empire State child credit, Form IT-201 line 63.
+  common.v1.Money empire_state_child_credit = 5;
+
+  // Line 3: NYS/NYC child and dependent care credit, Form IT-201 line 64.
+  common.v1.Money child_and_dependent_care_credit = 6;
+
+  // Line 4: New York State earned income credit, Form IT-201 line 65.
+  common.v1.Money earned_income_credit = 7;
+
+  // Line 5: New York State noncustodial parent EIC, Form IT-201 line 66.
+  common.v1.Money noncustodial_parent_earned_income_credit = 8;
+
+  // Line 6: Real property tax credit, Form IT-201 line 67.
+  common.v1.Money real_property_tax_credit = 9;
+
+  // Line 7: College tuition credit, Form IT-201 line 68.
+  common.v1.Money college_tuition_credit = 10;
+
+  // Line 7a: The total STAR credit received.
+  common.v1.Money star_credit = 11;
+
+  // Line 8: New York City school tax credit, Form IT-201 lines 69 and 69a or
+  // Form IT-203 lines 60 and 60a.
+  common.v1.Money nyc_school_tax_credit = 12;
+
+  // Line 9: New York City earned income credit, Form IT-201 line 70.
+  common.v1.Money nyc_earned_income_credit = 13;
+
+  // Line 9a: New York City income tax elimination credit, Form IT-201 line
+  // 70a or Form IT-203 line 60b.
+  common.v1.Money nyc_income_tax_elimination_credit = 14;
+
+  // Line 10: Other refundable credits, Form IT-201 line 71, IT-203 line 61 or
+  // IT-205 line 33.
+  common.v1.Money other_refundable_credits = 15;
+
+  // Line 11: Lines 2 through 10 added.
+  common.v1.Money total_credits = 16;
+
+  // Line 12: Current year tax. Line 1 less line 11.
+  common.v1.Money current_year_tax = 17;
+
+  // Line 13: Line 12 multiplied by 90%.
+  common.v1.Money current_year_safe_harbor_tax = 18;
+
+  // Line 14: Income taxes withheld.
+  common.v1.Money tax_withheld = 19;
+
+  // Line 15: Line 12 less line 14. Under $300, or under $300 for each of the
+  // state, City and Yonkers taxes owed (the Line 15 worksheet), the rest of
+  // the form is not completed.
+  common.v1.Money tax_less_withholding = 20;
+
+  // Line 16: Last year's tax, 110% of it above $150,000 of last year's New
+  // York AGI or MCTD self-employment earnings ($75,000 married filing
+  // separately). Skipped for no return or a short year.
+  common.v1.Money prior_year_tax = 21;
+
+  // Line 17: The smaller of line 13 or line 16.
+  common.v1.Money required_annual_payment = 22;
+
+  // Line 18: Part 2, the short method. The withholding from line 14.
+  common.v1.Money short_method_withholding = 23;
+
+  // Line 19: The total estimated tax payments made.
+  common.v1.Money short_method_estimated_tax_payments = 24;
+
+  // Line 20: Lines 18 and 19 added.
+  common.v1.Money short_method_total_payments = 25;
+
+  // Line 21: Total underpayment for the year. Line 17 less line 20.
+  common.v1.Money short_method_underpayment = 26;
+
+  // Line 22: Line 21 by the factor the form prints, .06313 for 2025.
+  common.v1.Money short_method_full_penalty = 27;
+
+  // Line 23: For line 21 paid before April 15 of the following year, line 21
+  // times the days paid early times the daily factor the form prints,
+  // .00026 for 2025; otherwise zero.
+  common.v1.Money short_method_early_payment_reduction = 28;
+
+  // Line 24: Penalty. Line 22 less line 23.
+  common.v1.Money short_method_penalty = 29;
+
+  // Lines 25 to 38, one entry per column.
+  repeated PaymentPeriod payment_periods = 30;
+
+  // Line 39: Penalty. Lines 32, 34, 36 and 38 added. Carries to Form IT-201
+  // line 81, IT-203 line 71 or IT-205 line 42.
+  common.v1.Money total_penalty = 31;
+
+  // Worksheet 1 of the instructions, one entry per column, when the
+  // annualized income installment method sets line 25. Empty otherwise.
+  repeated AnnualizationPeriod annualization_periods = 32;
+}
