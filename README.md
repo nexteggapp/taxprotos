@@ -211,13 +211,16 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [IA 1040](https://revenue.iowa.gov/media/4401/download?inline) | [`form_ia1040.proto`](us/state/ia/v1/form_ia1040/form_ia1040.proto) | The Iowa resident return |
 | [K-40](https://www.ksrevenue.gov/pdf/k-4025.pdf) | [`form_k40.proto`](us/state/ks/v1/form_k40/form_k40.proto) | The Kansas resident return |
 | [PIT-RES](https://revenuefiles.delaware.gov/2025/PITForms_Instructions/PIT-RES_2025-01_PaperInteractiveIPM.pdf) | [`form_pit_res.proto`](us/state/de/v1/form_pit_res/form_pit_res.proto) | The Delaware resident return |
+| [PIT-UND](https://revenuefiles.delaware.gov/2025/PITForms_Instructions/PIT-UND_2025-01_PaperInteractiveIPM.pdf) | [`form_pit_und.proto`](us/state/de/v1/form_pit_und/form_pit_und.proto) | The penalty for underpaying Delaware estimated tax |
 | [40](https://www.revenue.alabama.gov/wp-content/uploads/2026/01/25f40blk.pdf) | [`form_40.proto`](us/state/al/v1/form_40/form_40.proto) | The Alabama resident return |
 | [D-40](https://otr.cfo.dc.gov/sites/default/files/dc/sites/otr/publication/attachments/2025_D40_Book_082026_v1.pdf) | [`form_d40.proto`](us/state/dc/v1/form_d40/form_d40.proto) | The District of Columbia resident return |
 | [D-2210](https://otr.cfo.dc.gov/sites/default/files/dc/sites/otr/publication/attachments/2025_D-2210_021226.pdf) | [`form_d_2210.proto`](us/state/dc/v1/form_d_2210/form_d_2210.proto) | District of Columbia underpayment of estimated income tax |
 | [N-11](https://files.hawaii.gov/tax/forms/2025/n11_f.pdf) | [`form_n11.proto`](us/state/hi/v1/form_n11/form_n11.proto) | The Hawaii resident return |
+| [N-210](https://files.hawaii.gov/tax/forms/2025/n210_i.pdf) | [`form_n_210.proto`](us/state/hi/v1/form_n_210/form_n_210.proto) | The penalty for underpaying Hawaii estimated tax |
 | [CT-1040](https://portal.ct.gov/-/media/drs/forms/2025/income/ct-1040_1225.pdf) | [`form_ct1040.proto`](us/state/ct/v1/form_ct1040/form_ct1040.proto) | The Connecticut resident return |
 | [M1](https://www.revenue.state.mn.us/sites/default/files/2026-03/m1-25.pdf) | [`form_m1.proto`](us/state/mn/v1/form_m1/form_m1.proto) | The Minnesota resident return |
 | [IL-1040](https://tax.illinois.gov/content/dam/soi/en/web/tax/forms/incometax/documents/currentyear/individual/il-1040.pdf) | [`form_il1040.proto`](us/state/il/v1/form_il1040/form_il1040.proto) | The Illinois resident return |
+| [IL-2210](https://tax.illinois.gov/content/dam/soi/en/web/tax/forms/incometax/documents/currentyear/individual/il-2210.pdf) | [`form_il_2210.proto`](us/state/il/v1/form_il_2210/form_il_2210.proto) | The penalties for underpaying Illinois estimated tax, paying late and filing late |
 | [MI-1040](https://www.michigan.gov/taxes/-/media/Project/Websites/taxes/Forms/IIT/TY2025/MI-1040.pdf) | [`form_mi1040.proto`](us/state/mi/v1/form_mi1040/form_mi1040.proto) | The Michigan resident return |
 | [740](https://revenue.ky.gov/Forms/740%20(2025).pdf) | [`form_740.proto`](us/state/ky/v1/form_740/form_740.proto) | The Kentucky resident return |
 | [IT-40](https://forms.in.gov/Download.aspx?id=16914) | [`form_it40.proto`](us/state/in/v1/form_it40/form_it40.proto) | The Indiana resident return |

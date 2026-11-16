@@ -1,0 +1,244 @@
+// Form N-210, Underpayment of Estimated Tax by Individuals, Estates, and
+// Trusts.
+//
+// A Hawaii filer figures the penalty for underpaying estimated tax on this
+// form, attached to Form N-11, N-15 or N-40. Line numbers are in
+// mapping.textproto beside this file, keyed by tax year, per
+// docs/form-schemas.md. Verified against Form N-210 (Rev. 2025); testdata
+// holds the text extracted from the published PDF and coverage_test.go
+// asserts every line a mapping claims appears on it.
+//
+// # By the month, not by the day
+//
+// Part IV charges each column's underpayment .00667 for each month or part
+// of a month from the payment due date until it is paid, or until April 20 of
+// the next year, a month running from the 21st to the 20th (line 19). That
+// is HRS § 235-97(f)'s two-thirds of one percent a month, rounded as the form
+// prints it. The due dates are the 20th of April, June, September and the
+// next January.
+//
+// The annualization amounts and applicable percentages the form prints in
+// Schedule A (lines 2, 5 and 17) are not stored.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.hi.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/hi/v1/form_n_210;formn210";
+
+// FormN210 is what a Form N-210 states.
+message FormN210 {
+  // PaymentPeriod is one column of Parts III and IV: one payment due date,
+  // and the penalty on that installment's underpayment.
+  message PaymentPeriod {
+    // The column: 1 through 4 for (a) through (d), due April 20, June 20,
+    // September 20 and January 20 of the next year.
+    int32 period = 1;
+
+    // -- Part III: Figure Your Underpayment ---------------------------------
+
+    // Line 9: Required installment. Schedule A line 24 under the annualized
+    // income installment method; for farmers and fishermen, line 8 in column
+    // (d) only; for everyone else, a quarter of line 8.
+    common.v1.Money required_installment = 2;
+
+    // Line 10: Estimated and other tax payments made, with Hawaii income tax
+    // withheld counted in equal amounts on the due dates, or when it was
+    // actually withheld under box D.
+    common.v1.Money payments = 3;
+
+    // Line 11: Line 17 of the previous column. Blank in column (a).
+    common.v1.Money prior_period_overpayment = 4;
+
+    // Line 12: Lines 10 and 11 added. Blank in column (a).
+    common.v1.Money payments_with_prior_overpayment = 5;
+
+    // Line 13: Lines 15 and 16 of the previous column added. Blank in column
+    // (a).
+    common.v1.Money prior_period_shortfall = 6;
+
+    // Line 14: Line 12 minus line 13, not below zero. Column (a) holds line
+    // 10.
+    common.v1.Money net_timely_payments = 7;
+
+    // Line 15: Line 13 minus line 12 when line 14 is zero, otherwise zero.
+    common.v1.Money shortfall_carried_forward = 8;
+
+    // Line 16: Underpayment. Line 9 minus line 14 when line 9 is equal to or
+    // more than line 14.
+    common.v1.Money underpayment = 9;
+
+    // Line 17: Overpayment. Line 14 minus line 9 when line 14 is more.
+    common.v1.Money overpayment = 10;
+
+    // -- Part IV: Figuring the Penalty --------------------------------------
+
+    // Line 18: The date the underpayment on line 16 was paid, or April 20 of
+    // the next year, whichever is earlier. Where it was paid in parts, the
+    // date of the last part.
+    common.v1.Date paid_on = 11;
+
+    // Line 19: The number of months from the payment due date through the
+    // date on line 18, a part of a month counting as a whole month and a
+    // month running from the 21st to the 20th. Where the underpayment was
+    // paid in parts, the months to the last part; each part is charged for
+    // its own months, and line 20 holds the total.
+    int32 months = 12;
+
+    // Line 20: The months on line 19 times .00667 times the underpayment on
+    // line 16, or, for an underpayment paid in parts, the total of each
+    // part's own charge.
+    common.v1.Money penalty = 13;
+  }
+
+  // AnnualizationPeriod is one column of Schedule A, the Annualized Income
+  // Installment Method: the income from January 1 to the end of one period.
+  message AnnualizationPeriod {
+    // The column: 1 through 4 for (a) through (d), the periods ending March
+    // 31, May 31, August 31 and December 31.
+    int32 period = 1;
+
+    // Line 1: Adjusted gross income for the period.
+    common.v1.Money adjusted_gross_income = 2;
+
+    // Line 3: Annualized income. Line 1 multiplied by the line 2
+    // annualization amount (4, 2.4, 1.5 and 1).
+    common.v1.Money annualized_income = 3;
+
+    // Line 4: Itemized deductions for the period; zero for a filer who
+    // doesn't itemize.
+    common.v1.Money itemized_deductions = 4;
+
+    // Line 6: Line 4 multiplied by the line 5 annualization amount.
+    common.v1.Money annualized_itemized_deductions = 5;
+
+    // Line 7: The full standard deduction, the same in every column; zero for
+    // a filer who itemizes.
+    common.v1.Money standard_deduction = 6;
+
+    // Line 8: The larger of line 6 or line 7.
+    common.v1.Money deduction = 7;
+
+    // Line 9: Line 3 minus line 8.
+    common.v1.Money income_less_deductions = 8;
+
+    // Line 10: $1,144 times the exemptions claimed, or the personal
+    // exemption for disabled persons.
+    common.v1.Money exemptions = 9;
+
+    // Line 11: Line 9 minus line 10, not below zero.
+    common.v1.Money taxable_income = 10;
+
+    // Line 12: The tax on line 11.
+    common.v1.Money tax = 11;
+
+    // Line 13: Other taxes for the period.
+    common.v1.Money other_taxes = 12;
+
+    // Line 14: Total tax. Lines 12 and 13 added.
+    common.v1.Money total_tax = 13;
+
+    // Line 15: Credits of the kinds allowed on Part II line 2.
+    common.v1.Money credits = 14;
+
+    // Line 16: Total tax after credits. Line 14 minus line 15, not below
+    // zero.
+    common.v1.Money tax_after_credits = 15;
+
+    // Line 18: Line 16 multiplied by the line 17 applicable percentage (15%,
+    // 30%, 45% and 60%).
+    common.v1.Money applicable_tax = 16;
+
+    // Line 19: Line 24 of every previous column added.
+    common.v1.Money prior_installments = 17;
+
+    // Line 20: Line 18 minus line 19, not below zero.
+    common.v1.Money annualized_installment = 18;
+
+    // Line 21: A quarter of Part II line 8.
+    common.v1.Money regular_installment = 19;
+
+    // Line 22: Line 23 minus line 24, both of the previous column.
+    common.v1.Money prior_regular_installment_excess = 20;
+
+    // Line 23: Lines 21 and 22 added.
+    common.v1.Money available_regular_installment = 21;
+
+    // Line 24: The smaller of line 20 or line 23. Carries to Part III line
+    // 9.
+    common.v1.Money required_installment = 22;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) as shown on the tax return.
+  string filer_name = 2;
+
+  // Social security number or FEIN.
+  string filer_tin = 3;
+
+  // -- Part I: Reasons For Filing --------------------------------------------
+
+  // Box A: A full-year Hawaii resident last year, with no tax liability for
+  // a twelve-month year; no penalty is owed.
+  bool no_liability_last_year = 4;
+
+  // Box B: Requests a waiver of all or part of the penalty.
+  bool requests_waiver = 5;
+
+  // Box C: Uses the annualized income installment method (Schedule A).
+  bool uses_annualized_income_method = 6;
+
+  // Box D: Treats Hawaii income tax withheld from wages as paid when it was
+  // actually withheld, rather than in equal amounts on the due dates.
+  bool treats_withholding_as_paid_when_withheld = 7;
+
+  // Box E: A required installment is based on last year's tax, and a joint
+  // return was filed for last year or this year but not both.
+  bool joint_return_in_only_one_year = 8;
+
+  // -- Part II: Required Annual Payment --------------------------------------
+
+  // Line 1: This year's tax liability.
+  common.v1.Money tax_liability = 9;
+
+  // Line 2: Total credits.
+  common.v1.Money total_credits = 10;
+
+  // Line 3: Balance. Line 1 minus line 2.
+  common.v1.Money tax_after_credits = 11;
+
+  // Line 4: Hawaii income taxes withheld.
+  common.v1.Money tax_withheld = 12;
+
+  // Line 5: Balance. Line 3 minus line 4. Under $500 no penalty is owed and
+  // the form is not filed.
+  common.v1.Money tax_less_withholding = 13;
+
+  // Line 6: Line 3 multiplied by 60%.
+  common.v1.Money current_year_safe_harbor_tax = 14;
+
+  // Line 7: The tax from last year's income tax return.
+  common.v1.Money prior_year_safe_harbor_tax = 15;
+
+  // Line 8: Required annual payment. The smaller of line 6 or line 7.
+  common.v1.Money required_annual_payment = 16;
+
+  // -- Parts III and IV: Underpayment and the Penalty ------------------------
+
+  // Lines 9 to 20: One entry per payment due date.
+  repeated PaymentPeriod payment_periods = 17;
+
+  // Line 21: Penalty. Line 20 of every column added. Carries to Form N-11
+  // line 50, Form N-15 line 67 or Form N-40 Schedule G line 8.
+  common.v1.Money penalty = 18;
+
+  // -- Schedule A: Annualized Income Installment Method ----------------------
+
+  // Lines 1 to 24: One entry per annualization period, for a filer who uses
+  // the method.
+  repeated AnnualizationPeriod annualization_periods = 19;
+}

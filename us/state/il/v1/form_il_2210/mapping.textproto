@@ -1,0 +1,394 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form IL-2210 calls each concept, per tax year.
+#
+# Lines come from the 2025 Form IL-2210 (R-12/25) as the Illinois Department
+# of Revenue publishes it, in testdata/, which is pdftotext -layout over the
+# PDF. The coverage test beside the Go package checks every line named here
+# against that extract. Lines 1 to 3 have two columns, A for this year and B
+# for the prior year, each its own concept. The quarters of lines 9a to 13,
+# the payments of line 20, the rows of the penalty worksheets and the columns
+# of Step 6 are repeated messages, whose lines their fields' comments name.
+#
+# There are no amount codes: IRS Publication 1220 covers the information
+# returns the IRS receives electronically, and a state form is not one of
+# them.
+
+form: "IL-2210"
+message_name: "nexteggapp.taxprotos.us.state.il.v1.FormIl2210"
+tax_years: 2025
+
+concepts {
+  concept: "filer_name"
+  years {
+    tax_year: 2025
+    note: "Step 1: Your name as shown on Form IL-1040."
+  }
+}
+
+concepts {
+  concept: "filer_ssn"
+  years {
+    tax_year: 2025
+    note: "Step 1: Your Social Security number."
+  }
+}
+
+concepts {
+  concept: "prior_year_ssn"
+  years {
+    tax_year: 2025
+    note: "Step 1: the number the prior year's return was filed under, if different."
+  }
+}
+
+concepts {
+  concept: "total_tax"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+    note: "Step 2, Column A"
+  }
+}
+
+concepts {
+  concept: "prior_year_total_tax"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+    note: "Step 2, Column B"
+  }
+}
+
+concepts {
+  concept: "credits"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+    note: "Step 2, Column A"
+  }
+}
+
+concepts {
+  concept: "prior_year_credits"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+    note: "Step 2, Column B"
+  }
+}
+
+concepts {
+  concept: "tax_after_credits"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+    note: "Step 2, Column A"
+  }
+}
+
+concepts {
+  concept: "prior_year_tax_after_credits"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+    note: "Step 2, Column B"
+  }
+}
+
+concepts {
+  concept: "illinois_withholding"
+  years {
+    tax_year: 2025
+    irs_box: "4a"
+    note: "Step 2"
+  }
+}
+
+concepts {
+  concept: "pass_through_withholding"
+  years {
+    tax_year: 2025
+    irs_box: "4b"
+    note: "Step 2"
+  }
+}
+
+concepts {
+  concept: "total_withholding"
+  years {
+    tax_year: 2025
+    irs_box: "4c"
+    note: "Step 2"
+  }
+}
+
+concepts {
+  concept: "tax_less_withholding"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+    note: "Step 2"
+  }
+}
+
+concepts {
+  concept: "current_year_safe_harbor_tax"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+    note: "Step 2"
+  }
+}
+
+concepts {
+  concept: "required_annual_payment"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+    note: "Step 2"
+  }
+}
+
+concepts {
+  concept: "regular_installment"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+    note: "Step 2"
+  }
+}
+
+concepts {
+  concept: "quarters"
+  years {
+    tax_year: 2025
+    irs_box: "9a"
+    note: "Step 2, lines 9a to 13, one entry per quarter; line 9a is the first."
+  }
+}
+
+concepts {
+  concept: "unpaid_tax_base"
+  years {
+    tax_year: 2025
+    irs_box: "14"
+    note: "Step 3"
+  }
+}
+
+concepts {
+  concept: "household_employment_tax"
+  years {
+    tax_year: 2025
+    irs_box: "15"
+    note: "Step 3"
+  }
+}
+
+concepts {
+  concept: "use_tax"
+  years {
+    tax_year: 2025
+    irs_box: "16"
+    note: "Step 3"
+  }
+}
+
+concepts {
+  concept: "total_liability"
+  years {
+    tax_year: 2025
+    irs_box: "17"
+    note: "Step 3"
+  }
+}
+
+concepts {
+  concept: "payments_by_due_date"
+  years {
+    tax_year: 2025
+    irs_box: "18"
+    note: "Step 3"
+  }
+}
+
+concepts {
+  concept: "unpaid_tax"
+  years {
+    tax_year: 2025
+    irs_box: "19"
+    note: "Step 3"
+  }
+}
+
+concepts {
+  concept: "payments"
+  years {
+    tax_year: 2025
+    irs_box: "20"
+    note: "Step 4, one entry per payment."
+  }
+}
+
+concepts {
+  concept: "underpayment_rows"
+  years {
+    tax_year: 2025
+    irs_box: "21"
+    note: "Penalty Worksheet 1, one entry per row."
+  }
+}
+
+concepts {
+  concept: "underpayment_penalty"
+  years {
+    tax_year: 2025
+    irs_box: "22"
+    note: "Penalty Worksheet 1"
+  }
+}
+
+concepts {
+  concept: "unpaid_tax_rows"
+  years {
+    tax_year: 2025
+    irs_box: "23"
+    note: "Penalty Worksheet 2, one entry per row."
+  }
+}
+
+concepts {
+  concept: "unpaid_tax_penalty"
+  years {
+    tax_year: 2025
+    irs_box: "24"
+    note: "Penalty Worksheet 2"
+  }
+}
+
+concepts {
+  concept: "late_filing_tax"
+  years {
+    tax_year: 2025
+    irs_box: "25"
+    note: "Step 5"
+  }
+}
+
+concepts {
+  concept: "late_filing_household_employment_tax"
+  years {
+    tax_year: 2025
+    irs_box: "26"
+    note: "Step 5"
+  }
+}
+
+concepts {
+  concept: "late_filing_use_tax"
+  years {
+    tax_year: 2025
+    irs_box: "27"
+    note: "Step 5"
+  }
+}
+
+concepts {
+  concept: "late_filing_surcharges"
+  years {
+    tax_year: 2025
+    irs_box: "28"
+    note: "Step 5"
+  }
+}
+
+concepts {
+  concept: "late_filing_total"
+  years {
+    tax_year: 2025
+    irs_box: "29"
+    note: "Step 5"
+  }
+}
+
+concepts {
+  concept: "late_filing_credits_and_payments"
+  years {
+    tax_year: 2025
+    irs_box: "30"
+    note: "Step 5"
+  }
+}
+
+concepts {
+  concept: "late_filing_unpaid"
+  years {
+    tax_year: 2025
+    irs_box: "31"
+    note: "Step 5"
+  }
+}
+
+concepts {
+  concept: "late_filing_charge"
+  years {
+    tax_year: 2025
+    irs_box: "32"
+    note: "Step 5"
+  }
+}
+
+concepts {
+  concept: "late_filing_penalty"
+  years {
+    tax_year: 2025
+    irs_box: "33"
+    note: "Step 5"
+  }
+}
+
+concepts {
+  concept: "owed_unpaid_tax_penalty"
+  years {
+    tax_year: 2025
+    irs_box: "34"
+    note: "Step 5"
+  }
+}
+
+concepts {
+  concept: "owed_late_filing_penalty"
+  years {
+    tax_year: 2025
+    irs_box: "35"
+    note: "Step 5"
+  }
+}
+
+concepts {
+  concept: "return_balance"
+  years {
+    tax_year: 2025
+    irs_box: "36"
+    note: "Step 5"
+  }
+}
+
+concepts {
+  concept: "amount_owed"
+  years {
+    tax_year: 2025
+    irs_box: "37"
+    note: "Step 5"
+  }
+}
+
+concepts {
+  concept: "annualization_periods"
+  years {
+    tax_year: 2025
+    irs_box: "38"
+    note: "Step 6, lines 38 to 56, one entry per column; line 38 is the first."
+  }
+}

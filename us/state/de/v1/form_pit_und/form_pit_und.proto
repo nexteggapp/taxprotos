@@ -1,0 +1,290 @@
+// Form PIT-UND, Delaware Underpayment of Estimated Taxes.
+//
+// A Delaware filer figures the penalty for underpaying estimated tax on this
+// form, not on federal Form 2210, which the Division of Revenue does not
+// accept in its place. Line numbers are in mapping.textproto beside this
+// file, keyed by tax year, per docs/form-schemas.md. Verified against the
+// 2025 Form PIT-UND (revision 20250724); testdata holds the text extracted
+// from the published PDF and coverage_test.go asserts every line a mapping
+// claims appears on it.
+//
+// # Five parts, two of them lettered
+//
+// Part 1 (lines A to E) is the required annual payment, and Part 2 (lines F
+// to L) the optional Short Method, a single charge of 12% of the year's
+// underpayment. Parts 3 to 5 are numbered 1 to 43 and set out in four
+// columns: Part 3 annualises income over the periods January 1 to March 31,
+// May 31, August 31 and December 31; Parts 4 and 5 credit payments and
+// charge the penalty for the four payment periods, which end on April 30,
+// June 15, September 15 and January 15 of the next year.
+//
+// # By the day, not by the month
+//
+// Part 5 charges each column's underpayment 0.0005 a day (line 41) from the
+// date line 39 prints until it is paid, or until the return's due date,
+// April 30 of the next year. The multipliers the form prints in Part 3 (lines
+// 3, 6 and 19) are not stored.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.de.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/quantity.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/de/v1/form_pit_und;formpitund";
+
+// FormPitUnd is what a Form PIT-UND states.
+message FormPitUnd {
+  // AnnualizationPeriod is one column of Part 3, the Annualized Installment
+  // Method: the income from January 1 to the end of one period.
+  message AnnualizationPeriod {
+    // The column: 1 through 4, for the periods ending March 31, May 31,
+    // August 31 and December 31.
+    int32 period = 1;
+
+    // Line 2: Delaware AGI for the period, from Form PIT-RES line 12 or Form
+    // PIT-NON line 38.
+    common.v1.Money delaware_agi = 2;
+
+    // Line 4: Annualized AGI. Line 2 multiplied by the line 3 multiplier
+    // (4, 2.4, 1.5 and 1).
+    common.v1.Money annualized_agi = 3;
+
+    // Line 5: Delaware itemized deductions for the period, from Form PIT-RES
+    // line 20 or Form PIT-NON line 40. Zero for a filer who didn't itemize.
+    common.v1.Money itemized_deductions = 4;
+
+    // Line 7: Annualized itemized deductions. Line 5 multiplied by the line 6
+    // multiplier (4, 2.4, 1.5 and 1).
+    common.v1.Money annualized_itemized_deductions = 5;
+
+    // Line 8: The full annual Delaware standard deduction, with any
+    // additional standard deduction, the same in every column. Zero for a
+    // filer who itemized.
+    common.v1.Money standard_deduction = 6;
+
+    // Line 9: Delaware deductions. Line 7 for a filer who itemized, line 8
+    // otherwise.
+    common.v1.Money deductions = 7;
+
+    // Line 10: Delaware taxable income. Line 4 minus line 9.
+    common.v1.Money taxable_income = 8;
+
+    // Line 11: Tax liability. The tax on line 10 from the tax table or tax
+    // schedule.
+    common.v1.Money tax_liability = 9;
+
+    // Line 12: Tax on a lump sum distribution, residents only, as the Form
+    // PIT-RES instructions for its line 25 figure it.
+    common.v1.Money lump_sum_tax = 10;
+
+    // Line 13: Total tax. Lines 11 and 12 added.
+    common.v1.Money total_tax = 11;
+
+    // Line 14: Nonresident filers only. Line 13 multiplied by the proration
+    // percentage on Form PIT-NON line 43.
+    common.v1.Money nonresident_prorated_tax = 12;
+
+    // Line 15: The total personal credit amount, including any personal
+    // credits for being 60 or over.
+    common.v1.Money personal_credits = 13;
+
+    // Line 16: Nonresident filers only. Line 15 multiplied by the proration
+    // percentage on Form PIT-NON line 44.
+    common.v1.Money nonresident_prorated_personal_credits = 14;
+
+    // Line 17: Other nonrefundable credits. Form PIT-RES lines 28, 29, 30, 31
+    // and 34 (if nonrefundable) added, or Form PIT-NON lines 45 and 46.
+    common.v1.Money other_nonrefundable_credits = 15;
+
+    // Line 18: Line 13 minus lines 15 and 17 for a resident; line 14 minus
+    // lines 16 and 17 for a nonresident.
+    common.v1.Money tax_after_credits = 16;
+
+    // Line 20: Line 18 multiplied by the line 19 multiplier (.225, .450, .675
+    // and .900).
+    common.v1.Money applicable_tax = 17;
+
+    // Line 21: Line 27 of every previous column added. Blank in column 1.
+    common.v1.Money prior_installments = 18;
+
+    // Line 22: Line 20 minus line 21. Zero if that is zero or less.
+    common.v1.Money annualized_installment = 19;
+
+    // Line 23: A quarter of the required annual amount on Part 1 line C, the
+    // same in every column.
+    common.v1.Money regular_installment = 20;
+
+    // Line 24: Line 26 of the previous column. Blank in column 1.
+    common.v1.Money prior_regular_installment_excess = 21;
+
+    // Line 25: Lines 23 and 24 added.
+    common.v1.Money available_regular_installment = 22;
+
+    // Line 26: Line 25 minus line 22. Zero if that is zero or less.
+    common.v1.Money regular_installment_excess = 23;
+
+    // Line 27: The smaller of line 22 or line 25. Carries to Part 4 line 28.
+    common.v1.Money required_installment = 24;
+  }
+
+  // PaymentPeriod is one column of Parts 4 and 5: the payment period ending
+  // on one due date, and the penalty on that installment's underpayment.
+  message PaymentPeriod {
+    // The column: 1 through 4, for the periods ending April 30, June 15,
+    // September 15 and January 15 of the next year.
+    int32 period = 1;
+
+    // -- Part 4: Computing the Over/Under Payment ---------------------------
+
+    // Line 28: The installment required, from Part 3 line 27, or a quarter
+    // of Part 1 line C for a filer who doesn't annualise.
+    common.v1.Money required_installment = 2;
+
+    // Line 29: Estimated, S corporation and capital gain tax payments, and
+    // refundable business credits, made on the filer's behalf in the period
+    // only, by its payment due date. S corporation payments and refundable
+    // business credits are applied evenly, a quarter to each period rounded
+    // to the nearest dollar, the fourth adjusted so the four add up.
+    common.v1.Money payments = 3;
+
+    // Line 30: Delaware withholding in the period only: January 1 to March
+    // 31, April 1 to May 31, June 1 to August 31, or September 1 to December
+    // 31.
+    common.v1.Money delaware_withholding = 4;
+
+    // Line 31: Lines 29 and 30 added.
+    common.v1.Money total_payments = 5;
+
+    // Line 32: Line 38 of the previous column. Blank in column 1.
+    common.v1.Money prior_period_overpayment = 6;
+
+    // Line 33: Lines 31 and 32 added. Blank in column 1.
+    common.v1.Money payments_with_prior_overpayment = 7;
+
+    // Line 34: Lines 36 and 37 of the previous column added. Blank in column
+    // 1.
+    common.v1.Money prior_period_shortfall = 8;
+
+    // Line 35: Line 33 minus line 34, not below zero. Column 1 holds line 31.
+    common.v1.Money net_timely_payments = 9;
+
+    // Line 36: Line 34 minus line 33 when line 35 is zero, otherwise zero.
+    // Blank in columns 1 and 4.
+    common.v1.Money shortfall_carried_forward = 10;
+
+    // Line 37: Underpayment. Line 28 minus line 35 when line 28 is equal to
+    // or larger than line 35.
+    common.v1.Money underpayment = 11;
+
+    // Line 38: Overpayment. Line 35 minus line 28 when line 35 is larger.
+    common.v1.Money overpayment = 12;
+
+    // -- Part 5: Computing the Penalty --------------------------------------
+
+    // Line 39: The date the form prints for the installment, which the days
+    // on line 40 are counted from: the day after April 30 for column 1, and
+    // the due date for the others.
+    common.v1.Date penalty_start = 13;
+
+    // Line 40: The number of days from the date on line 39 to the day the
+    // underpayment on line 37 was paid, or the return's due date of April 30
+    // of the next year, whichever is earlier. Where it was paid in parts,
+    // the days to the last part; each part is charged for its own days on a
+    // separate sheet, and line 42 holds the total.
+    int32 days = 14;
+
+    // Line 41: Line 40 multiplied by .0005, to four decimal places.
+    common.v1.Quantity penalty_rate = 15;
+
+    // Line 42: Penalty for the period. Line 37 multiplied by line 41, or, for
+    // an underpayment paid in parts, the total of each part's own penalty.
+    common.v1.Money penalty = 16;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name, as printed at the top of each page.
+  string filer_name = 2;
+
+  // Taxpayer ID.
+  string filer_tin = 3;
+
+  // The box "Taxpayer is a farmer or fisherman" on page 1: at least two
+  // thirds of gross income is from farming or fishing, and the farmer's
+  // exception is claimed.
+  bool farmer_or_fisherman = 4;
+
+  // The box "Taxpayer is using the annualization of income method" on page
+  // 1: Part 3 sets the installments.
+  bool uses_annualization_method = 5;
+
+  // The box "Check here if you used a non-resident return" in Part 5: the
+  // figures come from Form PIT-NON, and Part 3 uses lines 14 and 16.
+  bool nonresident_return = 6;
+
+  // -- Part 1: Required Annual Payment ---------------------------------------
+
+  // Line A: 90% of this year's Delaware tax liability, Form PIT-RES line 33
+  // minus line 34, or Form PIT-NON line 48.
+  common.v1.Money current_year_safe_harbor_tax = 7;
+
+  // Line B: 100% of last year's Delaware tax liability, or 110% when last
+  // year's Delaware AGI was more than $150,000 ($75,000 married filing
+  // separate returns, filing status 3).
+  common.v1.Money prior_year_safe_harbor_tax = 8;
+
+  // Line C: The required annual amount. The smaller of line A or line B.
+  common.v1.Money required_annual_payment = 9;
+
+  // Line D: Delaware withholding for the year.
+  common.v1.Money delaware_withholding = 10;
+
+  // Line E: Line C minus line D. At $800 or less no penalty is owed and the
+  // form stops here.
+  common.v1.Money required_payment_less_withholding = 11;
+
+  // -- Part 2: Short Method --------------------------------------------------
+
+  // Line F: Estimated tax payments, S corporation payments and refundable
+  // business credits for the year.
+  common.v1.Money short_method_payments = 12;
+
+  // Line G: Delaware withholding for the year.
+  common.v1.Money short_method_withholding = 13;
+
+  // Line H: Lines F and G added.
+  common.v1.Money short_method_total_payments = 14;
+
+  // Line I: Total underpayment. Line C minus line H; at zero or less the
+  // form stops here.
+  common.v1.Money total_underpayment = 15;
+
+  // Line J: Line I multiplied by 12%.
+  common.v1.Money short_method_charge = 16;
+
+  // Line K: For an underpayment paid before April 30 of the next year, the
+  // days before April 30 it was paid, times .0005, times line I; zero when
+  // it was paid on or after April 30.
+  common.v1.Money early_payment_reduction = 17;
+
+  // Line L: Estimated penalty under the Short Method. Line J minus line K.
+  common.v1.Money short_method_penalty = 18;
+
+  // -- Part 3: Annualized Installment Method ---------------------------------
+
+  // Lines 2 to 27: One entry per annualization period, for a filer who
+  // annualises.
+  repeated AnnualizationPeriod annualization_periods = 19;
+
+  // -- Parts 4 and 5: Over/Under Payment and the Penalty ---------------------
+
+  // Lines 28 to 42: One entry per payment period.
+  repeated PaymentPeriod payment_periods = 20;
+
+  // Line 43: Total penalty. Line 42 of every column added. Carries to Form
+  // PIT-RES line 45 or Form PIT-NON line 59.
+  common.v1.Money total_penalty = 21;
+}
