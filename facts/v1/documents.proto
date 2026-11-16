@@ -151,6 +151,7 @@ import "taxprotos/us/state/nj/v1/form_nj1040/form_nj1040.proto";
 import "taxprotos/us/state/ny/v1/form_it201/form_it201.proto";
 import "taxprotos/us/state/or/v1/form_or40/form_or40.proto";
 import "taxprotos/us/state/pa/v1/form_pa40/form_pa40.proto";
+import "taxprotos/us/state/pa/v1/form_rev_1630/form_rev_1630.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_asc.proto";
 import "taxprotos/us/state/ut/v1/form_tc40/form_tc40.proto";
@@ -1008,6 +1009,9 @@ message KentuckyReturn {
 message PennsylvaniaReturn {
   // Form PA-40.
   us.state.pa.v1.FormPA40 form_pa40 = 1;
+
+  // Form REV-1630: underpayment of estimated tax by individuals.
+  us.state.pa.v1.FormRev1630 form_rev_1630 = 2;
 }
 
 // An Iowa resident return: Form IA 1040.
