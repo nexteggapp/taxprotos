@@ -225,6 +225,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [IL-1040](https://tax.illinois.gov/content/dam/soi/en/web/tax/forms/incometax/documents/currentyear/individual/il-1040.pdf) | [`form_il1040.proto`](us/state/il/v1/form_il1040/form_il1040.proto) | The Illinois resident return |
 | [IL-2210](https://tax.illinois.gov/content/dam/soi/en/web/tax/forms/incometax/documents/currentyear/individual/il-2210.pdf) | [`form_il_2210.proto`](us/state/il/v1/form_il_2210/form_il_2210.proto) | The penalties for underpaying Illinois estimated tax, paying late and filing late |
 | [MI-1040](https://www.michigan.gov/taxes/-/media/Project/Websites/taxes/Forms/IIT/TY2025/MI-1040.pdf) | [`form_mi1040.proto`](us/state/mi/v1/form_mi1040/form_mi1040.proto) | The Michigan resident return |
+| [MI-2210](https://www.michigan.gov/taxes/-/media/Project/Websites/taxes/Forms/IIT/TY2025/MI-2210.pdf) | [`form_mi_2210.proto`](us/state/mi/v1/form_mi_2210/form_mi_2210.proto) | Michigan underpayment of estimated income tax |
 | [740](https://revenue.ky.gov/Forms/740%20(2025).pdf) | [`form_740.proto`](us/state/ky/v1/form_740/form_740.proto) | The Kentucky resident return |
 | [IT-40](https://forms.in.gov/Download.aspx?id=16914) | [`form_it40.proto`](us/state/in/v1/form_it40/form_it40.proto) | The Indiana resident return |
 | [IT-540](https://dam.ldr.la.gov/taxforms/IT540WEB-BC(2025)%20F.pdf) | [`form_it540.proto`](us/state/la/v1/form_it540/form_it540.proto) | The Louisiana resident return |

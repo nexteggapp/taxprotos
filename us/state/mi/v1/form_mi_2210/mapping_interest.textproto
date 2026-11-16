@@ -1,0 +1,24 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for one computation of MI-2210 line 18.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the Michigan Department of Treasury publishes. The coverage test
+# checks every line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+#
+# Lines 19 to 21 are rate periods, in mapping_rate_periods.textproto.
+
+form: "MI-2210"
+message_name: "nexteggapp.taxprotos.us.state.mi.v1.FormMi2210.InterestComputation"
+tax_years: 2025
+
+concepts {
+  concept: "underpayment"
+  years { tax_year: 2025 irs_box: "18." }
+}

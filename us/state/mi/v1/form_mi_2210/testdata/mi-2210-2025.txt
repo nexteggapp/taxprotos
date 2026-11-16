@@ -1,0 +1,150 @@
+                                                                                                                                                                                              Reset Form
+
+Michigan Department of Treasury (Rev. 10-25), Page 1 of 2                                                                                                                           Issued under authority of
+                                                                                                                                                                                    Public Act 281 of 1967,
+2025 MICHIGAN Underpayment of Estimated Income Tax MI-2210                                                                                                                          as amended.
+Include with Form MI-1040 or MI-1041. Round all money items to whole dollars. Type or print in blue or black ink.
+                                                                                         Year (YYYY)                                            Month-Year (MM-YYYY)
+
+ 1. For calendar year 2025 or taxable year beginning:                                                                    and ending:
+                                                                                                                                                                                     Attachment 12
+ 2. Filer’s Name Shown on Tax Return                                                                                                    3. Identifying Number
+
+
+
+
+PART 1: ESTIMATED TAX REQUIRED FOR THE YEAR
+    4. Enter 2024 tax. Subtract the sum of MI-1040 lines 25, 26, 27b, 28 and 29 from line 20 (see instructions).........................                                       4.                         00
+    5. Enter 2025 tax. Subtract the sum of MI-1040 lines 26, 27, 28b, 29 and 30 from line 21 (Fiduciaries, see instructions). .....                                            5.                         00
+    6. Multiply amount on line 5 by 90% (0.9). ......................................................................................................................          6.                         00
+    7. Enter the smaller of lines 4 or 6....................................................................................................................................   7.                         00
+    8.       Check this box if you use the annualized income installment method. If your income varied during the year,
+             this method may reduce the amount of one or more required installments.
+
+         PAYMENT DUE DATES                                                                                     A                           B                             C                      D
+         NOTE: Complete lines 10 through 21 one column at a time.                                       April 15, 2025               June 16, 2025                Sept. 15, 2025          Jan. 15, 2026
+
+    9. Divide the amount on line 7 by four. Enter in each column.
+       CAUTION: If annualizing, enter amount from Worksheet line 16.
+  10. Estimated tax paid and withheld. (For column A only, enter
+      amount from line 10 on line 14.)
+
+  11. Enter amount, if any, from line 17 of the previous column.
+
+
+  12. Add lines 10 and 11.
+
+  13. Add lines 15 and 16 of the previous column and enter the
+      result here.
+  14. Subtract line 13 from line 12. If less than zero, enter “0”
+      (For column A only, enter the amount from line 10.)
+  15. Remaining underpayment from previous period. If amount on
+      line 14 is zero, subtract line 12 from line 13 and enter result here.
+      Otherwise, go to line 16.
+
+  16. UNDERPAYMENT. If line 9 is greater than or equal to line 14,
+      subtract line 14 from line 9 and enter the result here. Then go
+      to line 10 of the next column. Otherwise, go to line 17.
+
+  17. OVERPAYMENT. If line 14 is greater than line 9, subtract line 9
+      from line 14 and enter here. Then go to line 10 of next column.
+
+PART 2: FIGURING THE INTEREST
+
+  18. Underpayment from line 16.
+
+  19. a. Rate Period 1: 9.47%. April 15, 2025 - June 30, 2025
+                                                                                                         April 15, 2025               June 16, 2025
+         Computation starting date for this period:
+
+         b. Number of days from date on line 19a to the date line 18
+            was paid or June 30, 2025, whichever is earlier. If June 30 is
+            earlier, enter 76 and 14 respectively.
+
+         c. 0.0002595 x days on line 19b x underpayment on line 18.
+
+  20. a. Rate Period 2: 8.66%. July 1, 2025 - Dec. 31, 2025
+         Computation starting date for this period:                                                      June 30, 2025                June 30, 2025               Sept. 15, 2025
+
+         b. Number of days from date on line 20a to the date line 18
+            was paid or Dec. 31, 2025, whichever is earlier. If Dec. 31 is
+            earlier, enter 184, 184 and 107 respectively.
+
+         c. 0.0002373 x days on line 20b x underpayment on line 18.
+
+
+
+
+                                                                                                                                                  Continue on page 2. This form cannot be
++ 0000 2025 53 01 27 7                                                                                                                   processed if page 2 is not completed and included.
+2025 MI-2210, Page 2 of 2
+                                                                                                       Identifying Number
+
+
+
+  21.     a. Rate Period 3: 8.48%. Jan. 1, 2026 - June 30, 2026
+                                                                                                        Dec. 31, 2025          Dec. 31, 2025           Dec. 31, 2025    Jan. 15, 2026
+             Computation starting date for this period:
+          b. Number of days from date on line 21a to the date line 18
+             was paid or April 15, 2026, whichever is earlier. If April 15 is
+             earlier, enter 105, 105, 105 and 90 respectively.
+
+          c. 0.0002324 x days on line 21b x underpayment on line 18.
+
+  22.     TOTAL INTEREST. Add amounts on lines 19c, 20c and 21c in all columns. Enter the total interest here
+          and on the appropriate line on your MI-1040 or MI-1041 ...................................................................................    22.                              00
+
+PART 3: FIGURING THE                                                                                    A                       B                      C                     D
+PENALTY                                                                                          April 15, 2025           June 16, 2025         Sept. 15, 2025         Jan. 15, 2026
+
+
+  23. Underpayment (see instructions).........................                         23.                        00                      00                     00                      00
+
+
+  24. Enter 25% (0.25) or 10% (0.10) (see instructions)                                24.                        %                       %                      %                       %
+
+  25.     Multiply amount on line 23 by line 24. .................                     25.                        00                      00                     00                      00
+
+
+  26.     TOTAL PENALTY. Add line 25, columns A through D. Enter the total penalty here
+          and on the appropriate line on your MI-1040 or MI-1041 ................................................................................ 26.                                    00
+
+  27. Add lines 22 and 26. This is your total penalty and interest to be added to your tax due. ............................. 27.                     00
+ This form computes penalty and interest for estimate vouchers to the date of payment or April 15, 2026, whichever is earlier. Additional penalty and
+ interest for late filing accrues on your annual return from April 15 to the date of payment.
+                                                                      ANNUALIZED INCOME WORKSHEET
+Complete one column at a time. Line numbers refer to this Worksheet unless another form is listed.
+Estates and trusts: Use the following period ending dates: 2/28/25, 4/30/25, 7/31/25 and 11/30/25.
+Do not use the dates in the column headings below.
+                                                                                                              A                     B                   C                     D
+                                                                                                       First 3 months        First 5 months      First 8 months          12 months
+                                                                                                       1-1 to 3-31-25        1-1 to 5-31-25      1-1 to 8-31-25        1-1 to 12-31-25
+ 1. Enter total income subject to tax (reported on 2025
+    MI-1040, line 14) that is attributable to each period in the
+    corresponding column .............................................................            1.
+ 2. Annualization amounts (Fiduciaries, see instructions) ..........                              2.          4                    2.4                    1.5                 1
+ 3. Annualized total income. Multiply line 1 by line 2 ..............                             3.
+ 4. Enter total exemption allowance (MI-1040, line 15) ..............                             4.
+ 5. Subtract line 4 from line 3......................................................             5.
+ 6. Multiply line 5 by 2025 tax rate 4.25% (0.0425) ....................                          6.
+ 7. Enter the sum of your 2025 MI-1040 credits from lines 18b,
+    19b, 26, 27, 28b, 29 and 30 in each column ..........................                         7.
+ 8. Tax after credits. Subtract line 7 from line 6 (if less than zero,
+    enter “0”)................................................................................    8.
+                                                                                                       (line 8 x 22.5%)       (line 8 x 45%)     (line 8 x 67.5%)       (line 8 x 90%)
+ 9. Multiply line 8 by 22.5% (1st period), 45% (2nd period),
+    67.5% (3rd period) and 90% (4th period). Enter the results in
+    each column ...........................................................................       9.
+10. Enter combined amounts from line 16 of all previous
+    columns ..................................................................................   10.
+11. Subtract line 10 from line 9 (if less than zero, enter “0”)........                          11.
+12. Required quarterly payment. Divide the amount on MI-2210,
+    line 7, page 1, by four and enter the result in each column ...                              12.
+13. Enter the amount from line 15 of the previous column ..........                              13.
+14. Add lines 12 and 13...............................................................           14.
+15. Subtract line 11 from line 14 (if less than zero, enter “0”)......                           15.
+16. Required installments. Enter the smaller of lines 14 or 11
+    here and on MI-2210, line 9, page 1.......................................                   16.
+
+
++ 0000 2025 53 02 27 5

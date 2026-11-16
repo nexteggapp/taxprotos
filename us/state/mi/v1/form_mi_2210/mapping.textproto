@@ -1,0 +1,56 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for Form MI-2210.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the Michigan Department of Treasury publishes. The coverage test checks
+# every line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+#
+# The columns of lines 9 to 25 are in mapping_periods.textproto, lines 18 to
+# 21 in mapping_interest.textproto and mapping_rate_periods.textproto, and
+# the Annualized Income Worksheet in mapping_annualization.textproto.
+
+form: "MI-2210"
+message_name: "nexteggapp.taxprotos.us.state.mi.v1.FormMi2210"
+tax_years: 2025
+
+concepts {
+  concept: "prior_year_tax"
+  years { tax_year: 2025 irs_box: "4." }
+}
+
+concepts {
+  concept: "tax"
+  years { tax_year: 2025 irs_box: "5." }
+}
+
+concepts {
+  concept: "current_year_safe_harbor_tax"
+  years { tax_year: 2025 irs_box: "6." }
+}
+
+concepts {
+  concept: "required_annual_payment"
+  years { tax_year: 2025 irs_box: "7." }
+}
+
+concepts {
+  concept: "total_interest"
+  years { tax_year: 2025 irs_box: "22." }
+}
+
+concepts {
+  concept: "total_penalty"
+  years { tax_year: 2025 irs_box: "26." }
+}
+
+concepts {
+  concept: "total_penalty_and_interest"
+  years { tax_year: 2025 irs_box: "27." }
+}

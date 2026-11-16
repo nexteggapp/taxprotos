@@ -1,0 +1,78 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for one column of Form MI-2210
+# lines 9 to 25.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the Michigan Department of Treasury publishes. The coverage test checks
+# every line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "MI-2210"
+message_name: "nexteggapp.taxprotos.us.state.mi.v1.FormMi2210.PaymentPeriod"
+tax_years: 2025
+
+concepts {
+  concept: "required_installment"
+  years { tax_year: 2025 irs_box: "9." }
+}
+
+concepts {
+  concept: "estimated_tax_paid_and_withheld"
+  years { tax_year: 2025 irs_box: "10." }
+}
+
+concepts {
+  concept: "prior_overpayment"
+  years { tax_year: 2025 irs_box: "11." }
+}
+
+concepts {
+  concept: "total_payments"
+  years { tax_year: 2025 irs_box: "12." }
+}
+
+concepts {
+  concept: "prior_underpayments"
+  years { tax_year: 2025 irs_box: "13." }
+}
+
+concepts {
+  concept: "available_payments"
+  years { tax_year: 2025 irs_box: "14." }
+}
+
+concepts {
+  concept: "remaining_underpayment"
+  years { tax_year: 2025 irs_box: "15." }
+}
+
+concepts {
+  concept: "underpayment"
+  years { tax_year: 2025 irs_box: "16." }
+}
+
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "17." }
+}
+
+concepts {
+  concept: "penalty_underpayment"
+  years { tax_year: 2025 irs_box: "23." }
+}
+
+concepts {
+  concept: "penalty_rate"
+  years { tax_year: 2025 irs_box: "24." }
+}
+
+concepts {
+  concept: "penalty"
+  years { tax_year: 2025 irs_box: "25." }
+}
