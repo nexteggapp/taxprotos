@@ -125,6 +125,7 @@ import "taxprotos/us/state/ms/v1/form_80105/form_80105.proto";
 import "taxprotos/us/state/mo/v1/form_mo1040/form_mo1040.proto";
 import "taxprotos/us/state/mt/v1/form_2/form_2.proto";
 import "taxprotos/us/state/me/v1/form_1040me/form_1040me.proto";
+import "taxprotos/us/state/me/v1/form_2210me/form_2210me.proto";
 import "taxprotos/us/state/ri/v1/form_ri1040/form_ri1040.proto";
 import "taxprotos/us/state/mn/v1/form_m1/form_m1.proto";
 import "taxprotos/us/state/ma/v1/form_1/form_1.proto";
@@ -889,6 +890,9 @@ message AlabamaReturn {
 message MaineReturn {
   // Form 1040ME.
   us.state.me.v1.Form1040ME form_1040me = 1;
+
+  // Form 2210ME: underpayment of estimated tax by individuals, estates, or trusts.
+  us.state.me.v1.Form2210me form_2210me = 2;
 }
 
 // An Illinois resident return: Form IL-1040.
