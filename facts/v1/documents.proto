@@ -155,6 +155,7 @@ import "taxprotos/us/state/pa/v1/form_rev_1630/form_rev_1630.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_asc.proto";
 import "taxprotos/us/state/ut/v1/form_tc40/form_tc40.proto";
+import "taxprotos/us/state/ut/v1/form_tc_546/form_tc_546.proto";
 import "taxprotos/us/state/wa/v1/capital_gains/capital_gains_return.proto";
 import "taxprotos/us/state/va/v1/form_760/form_760.proto";
 import "taxprotos/us/state/sc/v1/form_sc1040/form_sc1040.proto";
@@ -990,6 +991,10 @@ message IdahoReturn {
 message UtahReturn {
   // Form TC-40.
   us.state.ut.v1.FormTC40 form_tc40 = 1;
+
+  // The TC-546 Payment Worksheet: the prepayment test for a return filed on
+  // the automatic extension, with its extension penalty.
+  us.state.ut.v1.FormTc546 form_tc_546 = 2;
 }
 
 // A Washington return: the capital gains excise tax return. Washington levies
