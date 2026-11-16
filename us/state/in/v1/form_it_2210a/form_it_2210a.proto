@@ -1,0 +1,182 @@
+// Schedule IT-2210A, Annualized Income Schedule for the Underpayment of
+// Estimated Tax by Individuals.
+//
+// A filer whose income came unevenly encloses it with Form IT-40 or
+// IT-40PNR in place of Schedule IT-2210. Section 2 figures the required
+// annual payment as IT-2210 Section C does; Section 3 annualizes the income
+// of each period (lines 1 to 12), sets each period's installment from it
+// (lines 12a to 19), applies the payments to it (lines 20 to 25), and
+// charges a flat 10% of the underpayments (lines 26 and 27).
+//
+// Line numbers are in mapping.textproto and mapping_period.textproto beside
+// this file, keyed by tax year, per docs/form-schemas.md. Verified against
+// the 2025 schedule (R25 / 9-25); testdata holds the text extracted from the
+// published PDF and coverage_test.go asserts every line a mapping claims
+// appears on it. The annualization amounts (line 2), the 3% state rate
+// (line 6) and the applicable installment percentages (line 11) are
+// preprinted and not stored.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.in.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/in/v1/form_it_2210a;formit2210a";
+
+// FormIt2210a holds the early filer's box (Section 1), the required annual
+// payment (Section 2) and the annualized method, column by column (Section
+// 3).
+message FormIt2210a {
+  // Period is one column of Section 3: the period from January 1 to March
+  // 31, May 31, August 31 or December 31, and the installment due at its
+  // end. Lines 13 to 25 are completed column by column.
+  message Period {
+    // The column: 1 through 4 for A through D.
+    int32 period = 1;
+
+    // Line 1: Indiana adjusted income for the period, from January 1, out
+    // of Form IT-40 or IT-40PNR line 5.
+    common.v1.Money indiana_adjusted_income = 2;
+
+    // Line 3: Annualized income. Line 1 multiplied by the line 2
+    // annualization amount.
+    common.v1.Money annualized_income = 3;
+
+    // Line 4: Exemptions, from line 6 of Form IT-40 or IT-40PNR.
+    common.v1.Money exemptions = 4;
+
+    // Line 5: Annualized state taxable income. Line 3 minus line 4.
+    common.v1.Money annualized_taxable_income = 5;
+
+    // Line 6: State income tax. Line 5 multiplied by 3%.
+    common.v1.Money state_income_tax = 6;
+
+    // Line 7: County income tax: line 5 multiplied by the county tax rate,
+    // as the instructions direct.
+    common.v1.Money county_income_tax = 7;
+
+    // Line 8: Annualized total tax. Lines 6 and 7 added.
+    common.v1.Money annualized_total_tax = 8;
+
+    // Line 9: Credits: the portion of the credits that applies to the
+    // period.
+    common.v1.Money credits = 9;
+
+    // Line 10: Annualized tax. Line 8 minus line 9, not less than zero.
+    common.v1.Money annualized_tax = 10;
+
+    // Line 12: Installment amount due. Line 10 multiplied by the line 11
+    // applicable installment percentage. Line 12a carries it to the second
+    // page.
+    common.v1.Money installment_amount_due = 11;
+
+    // Line 13: Line 19 of all preceding columns added. Blank in Column A.
+    common.v1.Money prior_installments = 12;
+
+    // Line 14: Total tax. Line 12a minus line 13, blank when less than zero.
+    common.v1.Money total_tax = 13;
+
+    // Line 15: Minimum tax due. 25% of line H.
+    common.v1.Money minimum_tax_due = 14;
+
+    // Line 16: Line 18 of the preceding column. Blank in Column A.
+    common.v1.Money prior_tax_carryover = 15;
+
+    // Line 17: Total minimum tax. Lines 15 and 16 added.
+    common.v1.Money total_minimum_tax = 16;
+
+    // Line 18: Line 17 minus line 14, blank when less than zero.
+    common.v1.Money tax_carryover = 17;
+
+    // Line 19: Actual estimated tax due. The lesser of line 14 or line 17.
+    common.v1.Money required_installment = 18;
+
+    // Line 20: Indiana state income tax withheld and PTET: a quarter of
+    // Schedule 5 or Schedule F lines 1 and 3, or the change in the period
+    // when withholding changed during the year.
+    common.v1.Money state_withholding_and_ptet = 19;
+
+    // Line 21: Indiana county income tax withheld: a quarter of Schedule 5
+    // or Schedule F line 2, or the change in the period.
+    common.v1.Money county_withholding = 20;
+
+    // Line 22: Estimated tax payments made in the installment period, plus
+    // the previous column's line 24 left after subtracting any earlier
+    // underpayments on line 25. An early filer includes in Column D the
+    // tax paid with the return.
+    common.v1.Money estimated_tax_payments = 21;
+
+    // Line 23: Total amount paid. Lines 20 through 22 added.
+    common.v1.Money total_paid = 22;
+
+    // Line 24: Overpayment. Line 23 minus line 19 when line 23 is greater.
+    common.v1.Money overpayment = 23;
+
+    // Line 25: Underpayment. Line 19 minus line 23 when line 19 is greater.
+    common.v1.Money underpayment = 24;
+  }
+
+  // The tax year the schedule applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on Form IT-40 or Form IT-40PNR.
+  string filer_name = 2;
+
+  // Your Social Security Number.
+  string filer_ssn = 3;
+
+  // -- Section 1: Early Filers ----------------------------------------------
+
+  // Section 1: The box checked when the return was filed and the total tax
+  // paid by the date printed, which excuses the fourth installment.
+  bool filed_and_paid_early = 4;
+
+  // -- Section 2: Required Annual Payment -----------------------------------
+
+  // Line A: Tax. State adjusted gross income tax and county income tax from
+  // Form IT-40 or IT-40PNR lines 8 and 9, with the credit recaptures and
+  // nonresident professional team member's county tax the instructions
+  // name.
+  common.v1.Money total_tax = 5;
+
+  // Line B: Credits, not including withholding credits, PTET credits or
+  // estimated tax.
+  common.v1.Money credits = 6;
+
+  // Line C: Line A minus line B.
+  common.v1.Money tax_after_credits = 7;
+
+  // Line D: Line C multiplied by 90%.
+  common.v1.Money current_year_safe_harbor_tax = 8;
+
+  // Line E: Withholding tax and PTET credit.
+  common.v1.Money withholding_and_ptet = 9;
+
+  // Line F: Line C minus line E. Less than $1,000 means no penalty is owed.
+  common.v1.Money tax_less_withholding = 10;
+
+  // Line G: Prior year's tax, as Schedule IT-2210 line 7 figures it. "N/A"
+  // when no return was filed for last year; see prior_year_not_filed.
+  common.v1.Money prior_year_tax = 11;
+
+  // Line G: Entered as "N/A" because no return was filed for last year, so
+  // line H takes line D.
+  bool prior_year_not_filed = 12;
+
+  // Line H: Minimum required annual payment. The lesser of line D or line
+  // G, or line D when line G is N/A. No penalty is owed when it is no more
+  // than line E.
+  common.v1.Money required_annual_payment = 13;
+
+  // -- Section 3: Annualized Method -----------------------------------------
+
+  // Lines 1 to 25: one entry per period, Columns A to D.
+  repeated Period periods = 14;
+
+  // Line 26: Line 25 of Columns A to D added.
+  common.v1.Money total_underpayment = 15;
+
+  // Line 27: Penalty due. Line 26 multiplied by 10%. Carries to Form IT-40
+  // or IT-40PNR line 20.
+  common.v1.Money underpayment_penalty = 16;
+}

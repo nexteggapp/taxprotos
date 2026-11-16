@@ -1,0 +1,96 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for Schedule IT-2210.
+#
+# Lines come from the 2025 schedule (R27 / 9-25) in testdata/, which is
+# pdftotext -layout over the PDF the Indiana Department of Revenue
+# publishes. The coverage test checks every line named here against that
+# extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a state schedule is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+#
+# Sections A and B have no line numbers, so they are not mapped. The
+# columns of Section E are mapped in mapping_section_e.textproto.
+
+form: "IT-2210"
+message_name: "nexteggapp.taxprotos.us.state.in.v1.FormIt2210"
+tax_years: 2025
+
+concepts {
+  concept: "total_tax"
+  years { tax_year: 2025 irs_box: "1" }
+}
+
+concepts {
+  concept: "credits"
+  years { tax_year: 2025 irs_box: "2" }
+}
+
+concepts {
+  concept: "tax_after_credits"
+  years { tax_year: 2025 irs_box: "3" }
+}
+
+concepts {
+  concept: "current_year_safe_harbor_tax"
+  years { tax_year: 2025 irs_box: "4" }
+}
+
+concepts {
+  concept: "withholding_and_ptet"
+  years { tax_year: 2025 irs_box: "5" }
+}
+
+concepts {
+  concept: "tax_less_withholding"
+  years { tax_year: 2025 irs_box: "6" }
+}
+
+concepts {
+  concept: "prior_year_tax"
+  years { tax_year: 2025 irs_box: "7" }
+}
+
+concepts {
+  concept: "required_annual_payment"
+  years { tax_year: 2025 irs_box: "8" }
+}
+
+concepts {
+  concept: "short_method_withholding_and_ptet"
+  years { tax_year: 2025 irs_box: "9" }
+}
+
+concepts {
+  concept: "short_method_estimated_tax_paid"
+  years { tax_year: 2025 irs_box: "10" }
+}
+
+concepts {
+  concept: "short_method_total_payments"
+  years { tax_year: 2025 irs_box: "11" }
+}
+
+concepts {
+  concept: "short_method_underpayment"
+  years { tax_year: 2025 irs_box: "12" }
+}
+
+concepts {
+  concept: "short_method_penalty"
+  years { tax_year: 2025 irs_box: "13" }
+}
+
+concepts {
+  concept: "total_underpayment"
+  years { tax_year: 2025 irs_box: "20" }
+}
+
+concepts {
+  concept: "underpayment_penalty"
+  years { tax_year: 2025 irs_box: "21" }
+}

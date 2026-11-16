@@ -63,6 +63,8 @@ go_proto_library(
         "//go/us/state/mi/v1/form_mi1040",
         "//go/us/state/ky/v1/form_740",
         "//go/us/state/in/v1/form_it40",
+        "//go/us/state/in/v1/form_it_2210",
+        "//go/us/state/in/v1/form_it_2210a",
         "//go/us/state/pa/v1/form_pa40",
         "//go/us/state/la/v1/form_it540",
         "//go/us/state/ms/v1/form_80105",

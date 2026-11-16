@@ -120,6 +120,8 @@ import "taxprotos/us/state/il/v1/form_il_2210/form_il_2210.proto";
 import "taxprotos/us/state/mi/v1/form_mi1040/form_mi1040.proto";
 import "taxprotos/us/state/ky/v1/form_740/form_740.proto";
 import "taxprotos/us/state/in/v1/form_it40/form_it40.proto";
+import "taxprotos/us/state/in/v1/form_it_2210/form_it_2210.proto";
+import "taxprotos/us/state/in/v1/form_it_2210a/form_it_2210a.proto";
 import "taxprotos/us/state/la/v1/form_it540/form_it540.proto";
 import "taxprotos/us/state/ms/v1/form_80105/form_80105.proto";
 import "taxprotos/us/state/mo/v1/form_mo1040/form_mo1040.proto";
@@ -909,6 +911,13 @@ message MichiganReturn {
 message IndianaReturn {
   // Form IT-40.
   us.state.in.v1.FormIT40 form_it40 = 1;
+
+  // Schedule IT-2210: underpayment of estimated tax by individuals.
+  us.state.in.v1.FormIt2210 form_it_2210 = 2;
+
+  // Schedule IT-2210A: underpayment of estimated tax by the annualized
+  // income method.
+  us.state.in.v1.FormIt2210a form_it_2210a = 3;
 }
 
 // A Missouri resident return: Form MO-1040.

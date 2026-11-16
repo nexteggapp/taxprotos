@@ -1,0 +1,189 @@
+// Schedule IT-2210, Underpayment of Estimated Tax by Individuals.
+//
+// Enclosed with Form IT-40 or IT-40PNR to figure the penalty for underpaying
+// Indiana estimated tax, or to show none is owed: the farmer and fisherman
+// test (Section A), the early filer's box (Section B), the required annual
+// payment (Section C), and the penalty by the short method (Section D) or
+// column by column (Section E). A filer who annualizes income files Schedule
+// IT-2210A instead, modelled in form_it_2210a.
+//
+// Line numbers are in mapping.textproto and mapping_section_e.textproto
+// beside this file, keyed by tax year, per docs/form-schemas.md. Verified
+// against the 2025 schedule (R27 / 9-25); testdata holds the text extracted
+// from the published PDF and coverage_test.go asserts every line a mapping
+// claims appears on it.
+//
+// # Not Form 2210
+//
+// The penalty is a flat 10% of each installment period's underpayment,
+// however late it is paid (lines 19 to 21), not interest by the day. Every
+// figure counts state and county tax together. A payment after a due date
+// counts in the next column (line 16), and an overpayment carries forward
+// only after making up earlier underpayments, without reducing the penalty
+// on them (line 18). A part-year resident divides the required annual
+// payment by the installment periods of residence, not by four (line 14).
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.in.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/in/v1/form_it_2210;formit2210";
+
+// FormIt2210 holds the farmer and fisherman test (Section A), the early
+// filer's box (Section B), the required annual payment (Section C), the short
+// method (Section D) and the regular method (Section E).
+message FormIt2210 {
+  // FarmIncome is one row of Section A: one of the two years whose gross
+  // income the two-thirds test reads.
+  message FarmIncome {
+    // The year of the row: the year before the tax year, or the tax year.
+    int32 tax_year = 1;
+
+    // Annual gross income from all sources.
+    common.v1.Money gross_income = 2;
+
+    // Two-thirds of gross income: gross income multiplied by 66.7%.
+    common.v1.Money two_thirds_of_gross_income = 3;
+
+    // Gross income from farming and fishing.
+    common.v1.Money farming_and_fishing_income = 4;
+  }
+
+  // InstallmentPeriod is one column of Section E: one installment, A (April
+  // 15) through D (January 15 of the next year). Its lines are completed
+  // column by column, lines 16 to 19 before the next column.
+  message InstallmentPeriod {
+    // The column: 1 through 4 for A through D.
+    int32 period = 1;
+
+    // The installment's due date, as printed above the column: the 15th day
+    // of the 4th, 6th and 9th months of the tax year and of the 1st month
+    // after it, moved past a weekend.
+    common.v1.Date due_date = 2;
+
+    // Line 14: Minimum required installment payment. Line 8 divided by four,
+    // or for a part-year resident by the number of installment periods of
+    // Indiana residence, in the periods of residence.
+    common.v1.Money required_installment = 3;
+
+    // Line 15: Withholding and PTET. Line 5 divided by four, or, under
+    // Information Bulletin #3, the withholding of the installment period
+    // when it did not occur evenly.
+    common.v1.Money withholding_and_ptet = 4;
+
+    // Line 16: Estimated taxes paid per period: the estimated tax timely
+    // paid for the installment period, a payment after a due date reported
+    // in the next column, plus the previous column's line 18 left after
+    // subtracting any earlier underpayments on line 19. An early filer
+    // includes in Column D the tax paid with the return.
+    common.v1.Money estimated_tax_paid = 5;
+
+    // Line 17: Total installment payments. Lines 15 and 16 added.
+    common.v1.Money total_installment_payments = 6;
+
+    // Line 18: Installment period overpayment. Line 17 minus line 14 when
+    // line 17 is more.
+    common.v1.Money overpayment = 7;
+
+    // Line 19: Installment period underpayment. Line 14 minus line 17 when
+    // line 17 is less.
+    common.v1.Money underpayment = 8;
+  }
+
+  // The tax year the schedule applies to.
+  int32 tax_year = 1;
+
+  // Name(s) shown on Form IT-40 or Form IT-40PNR.
+  string filer_name = 2;
+
+  // Your Social Security Number.
+  string filer_ssn = 3;
+
+  // -- Section A: Farmers and Fishermen Only --------------------------------
+
+  // Section A: the year before the tax year and the tax year, one row each.
+  // At least two-thirds of gross income from farming or fishing in either
+  // year leaves one due date, January 15.
+  repeated FarmIncome farm_income = 4;
+
+  // -- Section B: Early Filers ----------------------------------------------
+
+  // Section B: The box checked when the return was filed and the total tax
+  // paid by the date printed, which excuses the fourth installment.
+  bool filed_and_paid_early = 5;
+
+  // -- Section C: Required Annual Payment -----------------------------------
+
+  // Line 1: Tax. State adjusted gross income tax and county income tax from
+  // Form IT-40 or IT-40PNR lines 8 and 9, with the credit recaptures and
+  // nonresident professional team member's county tax the instructions
+  // name.
+  common.v1.Money total_tax = 6;
+
+  // Line 2: Credits, not including withholding credits, PTET credits or
+  // estimated tax payments.
+  common.v1.Money credits = 7;
+
+  // Line 3: Line 1 minus line 2.
+  common.v1.Money tax_after_credits = 8;
+
+  // Line 4: Line 3 multiplied by 90%, or by 66.7% for a farmer or
+  // fisherman.
+  common.v1.Money current_year_safe_harbor_tax = 9;
+
+  // Line 5: Withholding tax and PTET credit: state and county withholding,
+  // and the pass-through entity tax credit from Schedule 5 or Schedule F.
+  common.v1.Money withholding_and_ptet = 10;
+
+  // Line 6: Line 3 minus line 5. Less than $1,000 means no penalty is owed.
+  common.v1.Money tax_less_withholding = 11;
+
+  // Line 7: Prior year's tax: last year's tax after credits, 110% of it
+  // when last year's federal adjusted gross income was more than $150,000
+  // ($75,000 married filing separately), and for a part-year resident last
+  // year the tax on an annualized basis. "N/A" when no return was filed for
+  // last year; see prior_year_not_filed.
+  common.v1.Money prior_year_tax = 12;
+
+  // Line 7: Entered as "N/A" because no return was filed for last year, so
+  // line 8 takes line 4.
+  bool prior_year_not_filed = 13;
+
+  // Line 8: Minimum required annual payment. The lesser of line 4 or line
+  // 7, or line 4 when line 7 is N/A. No penalty is owed when it is no more
+  // than line 5.
+  common.v1.Money required_annual_payment = 14;
+
+  // -- Section D: Short Method ----------------------------------------------
+
+  // Line 9: The withholding tax and PTET credit from line 5.
+  common.v1.Money short_method_withholding_and_ptet = 15;
+
+  // Line 10: The estimated tax payments made for the tax year.
+  common.v1.Money short_method_estimated_tax_paid = 16;
+
+  // Line 11: Lines 9 and 10 added.
+  common.v1.Money short_method_total_payments = 17;
+
+  // Line 12: Total underpayment. Line 8 minus line 11; zero or less means
+  // no penalty is owed.
+  common.v1.Money short_method_underpayment = 18;
+
+  // Line 13: Line 12 multiplied by 10%. Carries to Form IT-40 or IT-40PNR
+  // line 20.
+  common.v1.Money short_method_penalty = 19;
+
+  // -- Section E: Regular Method --------------------------------------------
+
+  // Lines 14 to 19: one entry per installment period, Columns A to D.
+  repeated InstallmentPeriod installment_periods = 20;
+
+  // Line 20: Total underpayment. Line 19 of Columns A to D added.
+  common.v1.Money total_underpayment = 21;
+
+  // Line 21: Underpayment penalty. Line 20 multiplied by 10%. Carries to
+  // Form IT-40 or IT-40PNR line 20.
+  common.v1.Money underpayment_penalty = 22;
+}
