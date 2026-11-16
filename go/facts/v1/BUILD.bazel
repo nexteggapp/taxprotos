@@ -104,6 +104,7 @@ go_proto_library(
         "//go/us/state/vt/v1/form_in_152a",
         "//go/us/state/ri/v1/form_ri1040",
         "//go/us/state/wi/v1/form_1",
+        "//go/us/state/wi/v1/schedule_u",
     ],
 )
 

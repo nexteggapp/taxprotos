@@ -1,0 +1,72 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for one column of Schedule U Part III.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the Wisconsin Department of Revenue publishes. The coverage test checks
+# every line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "Schedule U"
+message_name: "nexteggapp.taxprotos.us.state.wi.v1.ScheduleU.PaymentPeriod"
+tax_years: 2025
+
+concepts {
+  concept: "required_installment"
+  years { tax_year: 2025 irs_box: "16" }
+}
+
+concepts {
+  concept: "estimated_tax_paid"
+  years { tax_year: 2025 irs_box: "17" }
+}
+
+concepts {
+  concept: "tax_withheld"
+  years { tax_year: 2025 irs_box: "18" }
+}
+
+concepts {
+  concept: "total_payment"
+  years { tax_year: 2025 irs_box: "19" }
+}
+
+concepts {
+  concept: "underpayment"
+  years { tax_year: 2025 irs_box: "20" }
+}
+
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "21" }
+}
+
+concepts {
+  concept: "carryback"
+  years { tax_year: 2025 irs_box: "22" }
+}
+
+concepts {
+  concept: "carryforward"
+  years { tax_year: 2025 irs_box: "23" }
+}
+
+concepts {
+  concept: "net_underpayment"
+  years { tax_year: 2025 irs_box: "24" }
+}
+
+concepts {
+  concept: "days_to_balance_paid"
+  years { tax_year: 2025 irs_box: "26" }
+}
+
+concepts {
+  concept: "net_underpayment_interest"
+  years { tax_year: 2025 irs_box: "28" }
+}

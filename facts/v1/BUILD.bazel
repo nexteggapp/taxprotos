@@ -110,6 +110,7 @@ proto_library(
         "//us/state/vt/v1/form_in_152a:form_in_152a_proto",
         "//us/state/ri/v1/form_ri1040:form_ri1040_proto",
         "//us/state/wi/v1/form_1:form_1_proto",
+        "//us/state/wi/v1/schedule_u:schedule_u_proto",
     ],
 )
 

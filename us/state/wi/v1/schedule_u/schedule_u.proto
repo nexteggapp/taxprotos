@@ -1,0 +1,251 @@
+// Schedule U, Underpayment of Estimated Tax by Individuals, Partnerships, and
+// Fiduciaries.
+//
+// A Wisconsin filer includes it with Form 1, 1NPR, 2 or 3 to figure the
+// underpayment interest owed for underpaying estimated tax. Part I, lines 1
+// to 8, sets the required annual payment; Part II, lines 9 to 15, is a short
+// method for a filer who paid nothing or paid four equal amounts on time;
+// Part III, lines 16 to 29, is the regular method, charging 12% a year on
+// each installment's underpayment by the day; Part IV, lines 30 to 50, is
+// the annualized income installment method, which can lower the required
+// installments on line 16.
+//
+// Line numbers are in the mapping files beside this file, keyed by tax year.
+// Verified against the 2025 Schedule U (D-104, R. 05-25); testdata holds the
+// text extracted from the published PDF. The 12% and the 365 of lines 27
+// and 28, the factors of lines 13 and 14, and the annualization amounts and
+// applicable percentages of lines 31 and 42 are preprinted; lines 31 and 42
+// are stored, the rest are not.
+//
+// # Where it departs from federal Form 2210
+//
+// A payment counts first toward the installment of the period it was made
+// in (lines 17 to 21). Only an overpayment goes back to an earlier
+// underpayment, the most recent first (line 22), and what remains goes
+// forward (line 23); a payment after the last due date goes to the last
+// underpayment first. Form 2210 instead pays the oldest underpayment first.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.wi.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/wi/v1/schedule_u;scheduleu";
+
+// ScheduleU is what a Schedule U states.
+message ScheduleU {
+  // Carryback is one amount on line 22 of a column: an overpayment of a later
+  // period or a late payment that paid part of the column's underpayment,
+  // with lines 25 and 27 for it.
+  message Carryback {
+    // Line 22: The amount carried back or paid late.
+    common.v1.Money amount = 1;
+
+    // The day the amount was paid.
+    common.v1.Date paid_on = 2;
+
+    // Line 25: Number of days from the due date of the installment to the
+    // date the carryback amount was paid.
+    int32 days = 3;
+
+    // Line 27: Interest. Line 25 divided by 365, multiplied by 12%, then by
+    // the amount on line 22.
+    common.v1.Money interest = 4;
+  }
+
+  // PaymentPeriod is one column of Part III, lines 16 to 28: one due date.
+  message PaymentPeriod {
+    // The column: 1 through 4, for columns (a) to (d).
+    int32 period = 1;
+
+    // The column's due date, as the heading, Due Dates of Installments, gives
+    // it.
+    common.v1.Date due_date = 2;
+
+    // Line 16: Line 8 divided by four, or Part IV line 50 under the
+    // annualized method.
+    common.v1.Money required_installment = 3;
+
+    // Line 17: Estimated tax paid in the column's period: after the previous
+    // due date up to and including this one.
+    common.v1.Money estimated_tax_paid = 4;
+
+    // Line 18: Tax withheld credited to the column: a quarter of the year's
+    // withholding, or what was actually withheld in the period by election.
+    common.v1.Money tax_withheld = 5;
+
+    // Line 19: Lines 17 and 18 added: the total payment.
+    common.v1.Money total_payment = 6;
+
+    // Line 20: Line 16 less line 19 when line 19 is smaller: the
+    // underpayment.
+    common.v1.Money underpayment = 7;
+
+    // Line 21: Line 19 less line 16 when line 19 is larger: the overpayment.
+    common.v1.Money overpayment = 8;
+
+    // Line 22: Carryback of overpayment or late payment: the amounts in
+    // carrybacks added.
+    common.v1.Money carryback = 9;
+
+    // Line 23: Carryforward of overpayment from an earlier column.
+    common.v1.Money carryforward = 10;
+
+    // Line 24: Line 20 less lines 22 and 23: the net underpayment.
+    common.v1.Money net_underpayment = 11;
+
+    // Lines 22, 25 and 27 for each amount carried back or paid late.
+    repeated Carryback carrybacks = 12;
+
+    // Line 26: Number of days from the due date of the installment to the
+    // date the balance due on the return was paid, or April 15 of the next
+    // year, whichever is earlier.
+    int32 days_to_balance_paid = 13;
+
+    // Line 28: Interest. Line 26 divided by 365, multiplied by 12%, then by
+    // line 24.
+    common.v1.Money net_underpayment_interest = 14;
+  }
+
+  // AnnualizationPeriod is one column of the Part IV worksheet, lines 30 to
+  // 50.
+  message AnnualizationPeriod {
+    // The column: 1 through 4, for the periods ending March 31, May 31,
+    // August 31 and December 31.
+    int32 period = 1;
+
+    // Line 30: Wisconsin income for the period.
+    common.v1.Money income = 2;
+
+    // Line 31: Annualization amount: 4, 2.4, 1.5 and 1 (6, 3, 1.71429 and
+    // 1.09091 for estates and trusts).
+    double annualization_amount = 3;
+
+    // Line 32: Annualized income. Line 30 multiplied by line 31.
+    common.v1.Money annualized_income = 4;
+
+    // Line 33: Standard deduction and net operating loss.
+    common.v1.Money standard_deduction = 5;
+
+    // Line 34: Line 32 less line 33.
+    common.v1.Money income_less_deduction = 6;
+
+    // Line 35: Deduction for exemptions.
+    common.v1.Money exemptions = 7;
+
+    // Line 36: Line 34 less line 35.
+    common.v1.Money taxable_income = 8;
+
+    // Line 37: Tax on the amount on line 36.
+    common.v1.Money tax = 9;
+
+    // Line 38: Nonrefundable credits.
+    common.v1.Money nonrefundable_credits = 10;
+
+    // Line 39: Line 37 less line 38, and zero if less.
+    common.v1.Money tax_after_nonrefundable_credits = 11;
+
+    // Line 40: Refundable credits.
+    common.v1.Money refundable_credits = 12;
+
+    // Line 41: Line 39 less line 40, and zero if less.
+    common.v1.Money tax_after_credits = 13;
+
+    // Line 42: Applicable percentage: 22.5%, 45%, 67.5% or 90%, as a
+    // fraction.
+    double applicable_percentage = 14;
+
+    // Line 43: Line 41 multiplied by line 42.
+    common.v1.Money applicable_tax = 15;
+
+    // Line 44: Line 50 of all preceding columns added.
+    common.v1.Money prior_installments = 16;
+
+    // Line 45: Line 43 less line 44, and zero if less.
+    common.v1.Money annualized_installment = 17;
+
+    // Line 46: Line 8 divided by four.
+    common.v1.Money regular_installment = 18;
+
+    // Line 47: Line 49 of the preceding column.
+    common.v1.Money prior_regular_installment_excess = 19;
+
+    // Line 48: Lines 46 and 47 added.
+    common.v1.Money available_regular_installment = 20;
+
+    // Line 49: Line 48 less line 45, and zero if less.
+    common.v1.Money regular_installment_excess = 21;
+
+    // Line 50: The smaller of line 45 or line 48; carries to line 16.
+    common.v1.Money required_installment = 22;
+  }
+
+  // The tax year the schedule applies to.
+  int32 tax_year = 1;
+
+  // Legal name(s) shown on the tax return.
+  string filer_name = 2;
+
+  // Identifying number.
+  string identifying_number = 3;
+
+  // Line 1: The year's net tax, from Form 1 line 22, Form 1NPR line 52, Form
+  // 2 line 10 or Form 3 line 1.
+  common.v1.Money net_tax = 4;
+
+  // Line 2: Other credits, excluding withholding and estimated payments.
+  common.v1.Money other_credits = 5;
+
+  // Line 3: Line 1 less line 2.
+  common.v1.Money tax_after_credits = 6;
+
+  // Line 4: Line 3 multiplied by 90%.
+  common.v1.Money current_year_safe_harbor_tax = 7;
+
+  // Line 5: Wisconsin tax withheld for the year.
+  common.v1.Money tax_withheld = 8;
+
+  // Line 6: Line 3 less line 5. Under $500, the form is not completed.
+  common.v1.Money tax_less_withholding = 9;
+
+  // Line 7: The prior year's tax.
+  common.v1.Money prior_year_tax = 10;
+
+  // Line 8: Required annual payment: the smaller of line 4 or line 7.
+  common.v1.Money required_annual_payment = 11;
+
+  // Line 9: The withholding from line 5, for the short method.
+  common.v1.Money short_method_withholding = 12;
+
+  // Line 10: The estimated tax payments made, for the short method.
+  common.v1.Money short_method_estimated_payments = 13;
+
+  // Line 11: Lines 9 and 10 added.
+  common.v1.Money short_method_total_payments = 14;
+
+  // Line 12: Total underpayment for the year: line 8 less line 11.
+  common.v1.Money short_method_underpayment = 15;
+
+  // Line 13: Line 12 multiplied by the printed factor.
+  common.v1.Money short_method_charge = 16;
+
+  // Line 14: The reduction for an amount on line 12 paid before April 15 of
+  // the next year: the amount × the days paid early × the printed daily
+  // factor.
+  common.v1.Money short_method_early_payment = 17;
+
+  // Line 15: Underpayment interest under the short method: line 13 less line
+  // 14.
+  common.v1.Money short_method_interest = 18;
+
+  // Part III, lines 16 to 28, one entry per column.
+  repeated PaymentPeriod payment_periods = 19;
+
+  // Line 29: Underpayment interest: every amount on lines 27 and 28 added.
+  common.v1.Money underpayment_interest = 20;
+
+  // The Part IV worksheet, one entry per column; empty when the annualized
+  // method is not used.
+  repeated AnnualizationPeriod annualization_periods = 21;
+}
