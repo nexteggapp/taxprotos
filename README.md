@@ -209,6 +209,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [IA 1040](https://revenue.iowa.gov/media/4401/download?inline) | [`form_ia1040.proto`](us/state/ia/v1/form_ia1040/form_ia1040.proto) | The Iowa resident return |
 | [K-40](https://www.ksrevenue.gov/pdf/k-4025.pdf) | [`form_k40.proto`](us/state/ks/v1/form_k40/form_k40.proto) | The Kansas resident return |
 | [PIT-RES](https://revenuefiles.delaware.gov/2025/PITForms_Instructions/PIT-RES_2025-01_PaperInteractiveIPM.pdf) | [`form_pit_res.proto`](us/state/de/v1/form_pit_res/form_pit_res.proto) | The Delaware resident return |
+| [PIT-UND](https://revenuefiles.delaware.gov/2025/PITForms_Instructions/PIT-UND_2025-01_PaperInteractiveIPM.pdf) | [`form_pit_und.proto`](us/state/de/v1/form_pit_und/form_pit_und.proto) | The penalty for underpaying Delaware estimated tax |
 | [40](https://www.revenue.alabama.gov/wp-content/uploads/2026/01/25f40blk.pdf) | [`form_40.proto`](us/state/al/v1/form_40/form_40.proto) | The Alabama resident return |
 | [D-40](https://otr.cfo.dc.gov/sites/default/files/dc/sites/otr/publication/attachments/2025_D40_Book_082026_v1.pdf) | [`form_d40.proto`](us/state/dc/v1/form_d40/form_d40.proto) | The District of Columbia resident return |
 | [N-11](https://files.hawaii.gov/tax/forms/2025/n11_f.pdf) | [`form_n11.proto`](us/state/hi/v1/form_n11/form_n11.proto) | The Hawaii resident return |

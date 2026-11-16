@@ -1,0 +1,177 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form PIT-UND calls each concept, per tax year.
+#
+# Lines come from the 2025 Form PIT-UND (revision 20250724) as the Delaware
+# Division of Revenue publishes it, in testdata/, which is pdftotext -layout
+# over the PDF. The coverage test beside the Go package checks every line
+# named here against that extract. Parts 1 and 2 letter their lines A to L;
+# Parts 3 to 5 number theirs 1 to 43. The columns of Parts 3 to 5 are
+# repeated messages, whose lines their fields' comments name.
+#
+# There are no amount codes: IRS Publication 1220 covers the information
+# returns the IRS receives electronically, and a state form is not one of
+# them.
+
+form: "PIT-UND"
+message_name: "nexteggapp.taxprotos.us.state.de.v1.FormPitUnd"
+tax_years: 2025
+
+concepts {
+  concept: "farmer_or_fisherman"
+  years {
+    tax_year: 2025
+    note: "Unnumbered box at the top of page 1: Taxpayer is a farmer or fisherman."
+  }
+}
+
+concepts {
+  concept: "uses_annualization_method"
+  years {
+    tax_year: 2025
+    note: "Unnumbered box at the top of page 1: Taxpayer is using the annualization of income method."
+  }
+}
+
+concepts {
+  concept: "nonresident_return"
+  years {
+    tax_year: 2025
+    note: "Unnumbered box below Part 5 line 43: Check here if you used a non-resident return."
+  }
+}
+
+concepts {
+  concept: "current_year_safe_harbor_tax"
+  years {
+    tax_year: 2025
+    irs_box: "A"
+    note: "Part 1"
+  }
+}
+
+concepts {
+  concept: "prior_year_safe_harbor_tax"
+  years {
+    tax_year: 2025
+    irs_box: "B"
+    note: "Part 1"
+  }
+}
+
+concepts {
+  concept: "required_annual_payment"
+  years {
+    tax_year: 2025
+    irs_box: "C"
+    note: "Part 1"
+  }
+}
+
+concepts {
+  concept: "delaware_withholding"
+  years {
+    tax_year: 2025
+    irs_box: "D"
+    note: "Part 1"
+  }
+}
+
+concepts {
+  concept: "required_payment_less_withholding"
+  years {
+    tax_year: 2025
+    irs_box: "E"
+    note: "Part 1"
+  }
+}
+
+concepts {
+  concept: "short_method_payments"
+  years {
+    tax_year: 2025
+    irs_box: "F"
+    note: "Part 2"
+  }
+}
+
+concepts {
+  concept: "short_method_withholding"
+  years {
+    tax_year: 2025
+    irs_box: "G"
+    note: "Part 2"
+  }
+}
+
+concepts {
+  concept: "short_method_total_payments"
+  years {
+    tax_year: 2025
+    irs_box: "H"
+    note: "Part 2"
+  }
+}
+
+concepts {
+  concept: "total_underpayment"
+  years {
+    tax_year: 2025
+    irs_box: "I"
+    note: "Part 2"
+  }
+}
+
+concepts {
+  concept: "short_method_charge"
+  years {
+    tax_year: 2025
+    irs_box: "J"
+    note: "Part 2"
+  }
+}
+
+concepts {
+  concept: "early_payment_reduction"
+  years {
+    tax_year: 2025
+    irs_box: "K"
+    note: "Part 2"
+  }
+}
+
+concepts {
+  concept: "short_method_penalty"
+  years {
+    tax_year: 2025
+    irs_box: "L"
+    note: "Part 2"
+  }
+}
+
+concepts {
+  concept: "annualization_periods"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+    note: "Part 3, lines 2 to 27, one entry per column; line 2 is the first line with an amount."
+  }
+}
+
+concepts {
+  concept: "payment_periods"
+  years {
+    tax_year: 2025
+    irs_box: "28"
+    note: "Parts 4 and 5, lines 28 to 42, one entry per column; line 28 is the first."
+  }
+}
+
+concepts {
+  concept: "total_penalty"
+  years {
+    tax_year: 2025
+    irs_box: "43"
+    note: "Part 5"
+  }
+}
