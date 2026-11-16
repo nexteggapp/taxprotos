@@ -1,0 +1,136 @@
+// Form 2210ME, Underpayment of Estimated Tax by Individuals, Estates, or
+// Trusts.
+//
+// A Maine filer encloses it with Form 1040ME or 1041ME to see whether enough
+// estimated tax was paid on time and, if not, to figure the penalty. Part I,
+// lines 1 to 11, finds each installment's underpayment; Part II, lines 12 to
+// 16, charges the penalty on it; line 17 marks the annualized income
+// installment method.
+//
+// Line numbers are in mapping.textproto and mapping_periods.textproto beside
+// this file, keyed by tax year. Verified against Form 2210ME for 2025;
+// testdata holds the text extracted from the published PDF.
+//
+// # Where it departs from federal Form 2210
+//
+// No 110% figure: line 6 is the lesser of 90% of this year's tax and 100% of
+// last year's. Withholding is always 25% in each column (line 10a), with no
+// election to show the dates withheld. The penalty is interest under 36
+// M.R.S. § 186 by the month, a part of a month counting as a whole one,
+// compounded monthly: line 14 takes a rate from a printed table by the
+// number of months on line 13.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.me.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/me/v1/form_2210me;form2210me";
+
+// Form2210me is what a Form 2210ME states.
+message Form2210me {
+  // PaymentPeriod is one column of lines 8 to 15: one installment due date.
+  message PaymentPeriod {
+    // The column: 1 through 4, for columns A to D.
+    int32 period = 1;
+
+    // Line 8: Due date for the estimated tax payment.
+    common.v1.Date due_date = 2;
+
+    // Line 9: Estimated tax due: line 7, or line 25 of the annualized
+    // worksheet under the due date.
+    common.v1.Money estimated_tax_due = 3;
+
+    // Line 10a: Tax withheld, 25% of line 3 in each column.
+    common.v1.Money tax_withheld = 4;
+
+    // Line 10b: Estimated tax paid by the due date on line 8, since the
+    // previous due date.
+    common.v1.Money estimated_tax_paid = 5;
+
+    // Line 10c: Amount carried forward (overpaid) from line 11b of the
+    // previous column; for column A, the credit carried forward from the
+    // previous tax year.
+    common.v1.Money prior_overpayment = 6;
+
+    // Line 10d: Total. Lines 10a, 10b and 10c added.
+    common.v1.Money total_payments = 7;
+
+    // Line 11: Line 9 less line 10d. May be negative.
+    common.v1.Money balance = 8;
+
+    // Line 11a: The underpayment, when line 9 is larger than line 10d.
+    common.v1.Money underpayment = 9;
+
+    // Line 11b: The overpayment, when line 10d is larger than line 9. It
+    // carries to line 10c of the next column.
+    common.v1.Money overpayment = 10;
+
+    // Line 12: The date the amount on line 11a was paid, or the 15th day of
+    // the fourth month after the close of the taxable year, whichever is
+    // earlier. Unset for a column with no underpayment.
+    common.v1.Date paid_date = 11;
+
+    // Line 13: The number of months from the due date on line 8 to the date
+    // on line 12, a part of a month counting as a whole month.
+    int32 months = 12;
+
+    // Line 14: The rate from the table on the instructions page for the
+    // months on line 13, as a fraction (0.0075 for .75%).
+    double rate = 13;
+
+    // Line 15: Underpayment penalty. Line 11a multiplied by line 14.
+    common.v1.Money penalty = 14;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // A fiscal year's first day; unset for a calendar year.
+  common.v1.Date fiscal_year_start = 2;
+
+  // A fiscal year's last day; unset for a calendar year.
+  common.v1.Date fiscal_year_end = 3;
+
+  // Name(s) as shown on Form 1040ME or 1041ME.
+  string name = 4;
+
+  // The filer's SSN or EIN.
+  string ssn_or_ein = 5;
+
+  // Line 1: The year's tax: Form 1040ME line 24 less lines 25c, 25d and 25e,
+  // or Form 1041ME line 6 less any refundable credit on line 7c.
+  common.v1.Money tax = 6;
+
+  // Line 2: Line 1 multiplied by 90% (66 2/3% for farmers and persons who
+  // fish commercially).
+  common.v1.Money current_year_safe_harbor_tax = 7;
+
+  // Line 3: Maine income tax withheld, Form 1040ME line 25a or Form 1041ME
+  // line 7a.
+  common.v1.Money tax_withheld = 8;
+
+  // Line 4: Line 1 less line 3. Under $1,000, the form is not completed.
+  common.v1.Money tax_less_withholding = 9;
+
+  // Line 5: Last year's tax, figured as line 1 is, or line 2 for a short
+  // year. Under $1,000, the form is not completed.
+  common.v1.Money prior_year_tax = 10;
+
+  // Line 6: The lesser of line 2 or line 5.
+  common.v1.Money required_annual_payment = 11;
+
+  // Line 7: Line 6 multiplied by .25: the amount for line 9.
+  common.v1.Money regular_installment = 12;
+
+  // Lines 8 to 15, one entry per column.
+  repeated PaymentPeriod payment_periods = 13;
+
+  // Line 16: The amounts on line 15 added. Carries to Form 1040ME line 32 or
+  // Form 1041ME line 10b.
+  common.v1.Money total_penalty = 14;
+
+  // Line 17: The box for the annualized income installment method.
+  bool uses_annualized_income_method = 15;
+}

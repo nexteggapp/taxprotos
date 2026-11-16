@@ -1,0 +1,68 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for Form 2210ME.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF Maine Revenue Services publishes. The coverage test checks
+# every line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+#
+# The columns of lines 8 to 15 are in mapping_periods.textproto.
+
+form: "2210ME"
+message_name: "nexteggapp.taxprotos.us.state.me.v1.Form2210me"
+tax_years: 2025
+
+concepts {
+  concept: "tax"
+  years { tax_year: 2025 irs_box: "1." }
+}
+
+concepts {
+  concept: "current_year_safe_harbor_tax"
+  years { tax_year: 2025 irs_box: "2." }
+}
+
+concepts {
+  concept: "tax_withheld"
+  years { tax_year: 2025 irs_box: "3." }
+}
+
+concepts {
+  concept: "tax_less_withholding"
+  years { tax_year: 2025 irs_box: "4." }
+}
+
+concepts {
+  concept: "prior_year_tax"
+  years { tax_year: 2025 irs_box: "5." }
+}
+
+concepts {
+  concept: "required_annual_payment"
+  years { tax_year: 2025 irs_box: "6." }
+}
+
+concepts {
+  concept: "regular_installment"
+  years { tax_year: 2025 irs_box: "7." }
+}
+
+concepts {
+  concept: "payment_periods"
+  years {
+    tax_year: 2025
+    irs_box: "8."
+    note: "Lines 8 to 15, one entry per column; mapping_periods.textproto names the line of each field."
+  }
+}
+
+concepts {
+  concept: "total_penalty"
+  years { tax_year: 2025 irs_box: "16." }
+}

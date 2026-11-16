@@ -1,0 +1,29 @@
+# gazelle:ignore
+
+load("@protobuf//bazel:proto_library.bzl", "proto_library")
+
+# Form 2210ME: the underpayment of estimated tax form a Maine filer encloses
+# with Form 1040ME or 1041ME.
+proto_library(
+    name = "form_2210me_proto",
+    # Imported as taxprotos/..., so consumers import these files by that path.
+    import_prefix = "taxprotos",
+    srcs = [
+        "form_2210me.proto",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//common/v1:common_proto",
+    ],
+)
+
+# The mappings and the form extract they are checked against, for
+# //go/us/state/me/v1/form_2210me.
+filegroup(
+    name = "test_oracles",
+    srcs = glob([
+        "mapping*.textproto",
+        "testdata/**",
+    ]),
+    visibility = ["//go/us/state/me/v1/form_2210me:__pkg__"],
+)

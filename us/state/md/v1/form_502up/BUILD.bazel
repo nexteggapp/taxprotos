@@ -1,0 +1,29 @@
+# gazelle:ignore
+
+load("@protobuf//bazel:proto_library.bzl", "proto_library")
+
+# Form 502UP: the underpayment of estimated income tax form a Maryland filer
+# attaches to Form 502, 505 or 515.
+proto_library(
+    name = "form_502up_proto",
+    # Imported as taxprotos/..., so consumers import these files by that path.
+    import_prefix = "taxprotos",
+    srcs = [
+        "form_502up.proto",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//common/v1:common_proto",
+    ],
+)
+
+# The mappings and the form extract they are checked against, for
+# //go/us/state/md/v1/form_502up.
+filegroup(
+    name = "test_oracles",
+    srcs = glob([
+        "mapping*.textproto",
+        "testdata/**",
+    ]),
+    visibility = ["//go/us/state/md/v1/form_502up:__pkg__"],
+)

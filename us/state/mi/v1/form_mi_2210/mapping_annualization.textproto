@@ -1,0 +1,98 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for one column of the MI-2210 Annualized Income
+# Worksheet.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the Michigan Department of Treasury publishes. The coverage test
+# checks every line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "MI-2210"
+message_name: "nexteggapp.taxprotos.us.state.mi.v1.FormMi2210.AnnualizationPeriod"
+tax_years: 2025
+
+concepts {
+  concept: "income"
+  years { tax_year: 2025 irs_box: "1." }
+}
+
+concepts {
+  concept: "annualization_amount"
+  years { tax_year: 2025 irs_box: "2." }
+}
+
+concepts {
+  concept: "annualized_income"
+  years { tax_year: 2025 irs_box: "3." }
+}
+
+concepts {
+  concept: "exemption_allowance"
+  years { tax_year: 2025 irs_box: "4." }
+}
+
+concepts {
+  concept: "taxable_annualized_income"
+  years { tax_year: 2025 irs_box: "5." }
+}
+
+concepts {
+  concept: "tax"
+  years { tax_year: 2025 irs_box: "6." }
+}
+
+concepts {
+  concept: "credits"
+  years { tax_year: 2025 irs_box: "7." }
+}
+
+concepts {
+  concept: "tax_after_credits"
+  years { tax_year: 2025 irs_box: "8." }
+}
+
+concepts {
+  concept: "applicable_tax"
+  years { tax_year: 2025 irs_box: "9." }
+}
+
+concepts {
+  concept: "prior_installments"
+  years { tax_year: 2025 irs_box: "10." }
+}
+
+concepts {
+  concept: "annualized_installment"
+  years { tax_year: 2025 irs_box: "11." }
+}
+
+concepts {
+  concept: "regular_installment"
+  years { tax_year: 2025 irs_box: "12." }
+}
+
+concepts {
+  concept: "prior_regular_installment_excess"
+  years { tax_year: 2025 irs_box: "13." }
+}
+
+concepts {
+  concept: "available_regular_installment"
+  years { tax_year: 2025 irs_box: "14." }
+}
+
+concepts {
+  concept: "regular_installment_excess"
+  years { tax_year: 2025 irs_box: "15." }
+}
+
+concepts {
+  concept: "required_installment"
+  years { tax_year: 2025 irs_box: "16." }
+}

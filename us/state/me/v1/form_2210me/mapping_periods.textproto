@@ -1,0 +1,84 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for one column of Form 2210ME
+# lines 8 to 15.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF Maine Revenue Services publishes. The coverage test checks
+# every line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+#
+# Line 10b and line 10d print their numbers run into the dot leaders, so they
+# are mapped by the letter that begins their lines, "b." and "d.".
+
+form: "2210ME"
+message_name: "nexteggapp.taxprotos.us.state.me.v1.Form2210me.PaymentPeriod"
+tax_years: 2025
+
+concepts {
+  concept: "estimated_tax_due"
+  years { tax_year: 2025 irs_box: "9." }
+}
+
+concepts {
+  concept: "tax_withheld"
+  years { tax_year: 2025 irs_box: "10a." }
+}
+
+concepts {
+  concept: "estimated_tax_paid"
+  years {
+    tax_year: 2025
+    irs_box: "b."
+    note: "Line 10b, whose number is run into its dot leaders; mapped by its letter."
+  }
+}
+
+concepts {
+  concept: "prior_overpayment"
+  years { tax_year: 2025 irs_box: "10c." }
+}
+
+concepts {
+  concept: "total_payments"
+  years {
+    tax_year: 2025
+    irs_box: "d."
+    note: "Line 10d, whose number is run into its dot leaders; mapped by its letter."
+  }
+}
+
+concepts {
+  concept: "balance"
+  years { tax_year: 2025 irs_box: "11." }
+}
+
+concepts {
+  concept: "underpayment"
+  years { tax_year: 2025 irs_box: "11a." }
+}
+
+concepts {
+  concept: "overpayment"
+  years { tax_year: 2025 irs_box: "11b." }
+}
+
+concepts {
+  concept: "months"
+  years { tax_year: 2025 irs_box: "13." }
+}
+
+concepts {
+  concept: "rate"
+  years { tax_year: 2025 irs_box: "14." }
+}
+
+concepts {
+  concept: "penalty"
+  years { tax_year: 2025 irs_box: "15." }
+}
