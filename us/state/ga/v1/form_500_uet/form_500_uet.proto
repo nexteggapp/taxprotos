@@ -1,0 +1,156 @@
+// Form 500 UET, Underpayment of Estimated Tax by Individuals/Fiduciary.
+//
+// A filer of Form 500 or 501 uses it to figure whether a penalty is owed for
+// underpaying estimated Georgia tax and, if so, how much. Lines 1 to 8 figure
+// each installment; lines 9 to 12 apply the payments; lines 13 to 16 test
+// three exceptions that excuse an installment; and lines 17 to 21 charge
+// what no exception excuses, at 9% a year.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year.
+// Verified against Form 500 UET (Rev. 07/15/25), "For tax years 2025 and
+// later"; testdata holds the text extracted from the published PDF.
+//
+// # Where it departs from federal Form 2210
+//
+// Each payment goes first to the installment of its own period, and only
+// what is left over pays an earlier shortfall (lines 9 to 12, Instruction E).
+// Three exceptions each excuse an installment when the payments to its date
+// reach them (lines 13 to 16, Instruction D). The penalty is a fixed 9% a
+// year (line 20).
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.ga.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/ga/v1/form_500_uet;form500uet";
+
+// Form500Uet is what a Form 500 UET states.
+message Form500Uet {
+  // PaymentPeriod is one column of lines 6 to 20: one installment due date.
+  message PaymentPeriod {
+    // The column: 1 through 4, for the April, June, September and January
+    // installments.
+    int32 period = 1;
+
+    // The column's due date, as the form's heading, Due Date of
+    // Installments, gives it.
+    common.v1.Date due_date = 2;
+
+    // Line 6: Line 4 divided by the number of installments required for the
+    // year (Instruction B), in each column they are due.
+    common.v1.Money prior_year_installment = 3;
+
+    // Line 7: Line 5 divided by the number of installments required for the
+    // year, in each column they are due.
+    common.v1.Money current_year_installment = 4;
+
+    // Line 8: The lesser of line 6 or line 7: the installment required.
+    common.v1.Money required_installment = 5;
+
+    // Line 9: Amounts paid on estimate for the period and tax withheld, with
+    // withholding treated as paid equally each quarter.
+    common.v1.Money estimated_tax_paid_and_withheld = 6;
+
+    // Line 10: Overpayment of the previous installment (Instruction E).
+    common.v1.Money prior_period_overpayment = 7;
+
+    // Line 11: Lines 9 and 10 added.
+    common.v1.Money total_payments = 8;
+
+    // Line 12: Underpayment. Line 8 minus line 11, after any part of line 11
+    // left over from this period's installment has paid an earlier one.
+    common.v1.Money underpayment = 9;
+
+    // Line 12: Overpayment. Line 11 minus line 8, after any part of it has
+    // paid an earlier installment's underpayment. Carries to line 10 of the
+    // next column.
+    common.v1.Money overpayment = 10;
+
+    // Line 13: Total amount paid and withheld from January 1 through the
+    // installment date, with withholding treated as paid equally each
+    // quarter.
+    common.v1.Money total_paid_to_date = 11;
+
+    // Line 14: Exception 1. Tax on the prior year's income at the current
+    // year's rates and exemptions, by the installments due so far. Unset when
+    // the exception is not figured.
+    common.v1.Money exception_1 = 12;
+
+    // Line 15: Exception 2. Tax on annualized current year income, at 70%,
+    // by the installments due so far. Unset when the exception is not
+    // figured.
+    common.v1.Money exception_2 = 13;
+
+    // Line 16: Exception 3. 90% of the tax on the current year's income for
+    // the 3, 5 and 8 months before the installment's month. The form prints
+    // "Not Applicable" in the fourth column. Unset when the exception is not
+    // figured.
+    common.v1.Money exception_3 = 14;
+
+    // Lines 17 to 20: each computation of penalty on the column's
+    // underpayment, one for each payment that reduced it and one for any
+    // balance unpaid at the end. None when an exception excuses the
+    // installment or nothing is underpaid.
+    repeated PenaltyComputation computations = 15;
+  }
+
+  // PenaltyComputation is one computation of lines 17 to 20.
+  message PenaltyComputation {
+    // Line 17: Amount of underpayment from line 12, or the part of it a
+    // payment reduced.
+    common.v1.Money underpayment = 1;
+
+    // Line 18: The date of payment, or April 15 of the following year,
+    // whichever is earlier (Instruction F).
+    common.v1.Date paid_date = 2;
+
+    // Line 19: The number of days from the installment's due date to the date
+    // on line 18.
+    int32 days = 3;
+
+    // Line 20: Penalty. 9% a year on line 17 for the days on line 19.
+    common.v1.Money penalty = 4;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // The filer's first name.
+  string first_name = 2;
+
+  // The filer's last name.
+  string last_name = 3;
+
+  // Social Security or identification number.
+  string ssn_or_id = 4;
+
+  // The box for an estate of a decedent or a testamentary trust that meets
+  // Exception 4.
+  bool meets_exception_4 = 5;
+
+  // Line 1: Tax, from Form 500 line 16 or Form 501 line 8.
+  common.v1.Money tax = 6;
+
+  // Line 2: Credits used, from Form 500 lines 22 and 27 or Form 501 lines 9c
+  // and 11c.
+  common.v1.Money credits = 7;
+
+  // Line 3: Balance due. Line 1 minus line 2.
+  common.v1.Money tax_after_credits = 8;
+
+  // Line 4: 100% of the immediately preceding year's tax, from a return for
+  // a 12-month period.
+  common.v1.Money prior_year_tax = 9;
+
+  // Line 5: 70% of line 3.
+  common.v1.Money current_year_safe_harbor_tax = 10;
+
+  // Lines 6 to 20, one entry per column.
+  repeated PaymentPeriod payment_periods = 11;
+
+  // Line 21: Penalty. The amounts on line 20 added. Carries to Form 500 or
+  // 501.
+  common.v1.Money total_penalty = 12;
+}

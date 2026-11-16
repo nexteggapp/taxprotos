@@ -1,0 +1,56 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form 500 UET calls each concept, per tax year.
+#
+# Lines come from Form 500 UET (Rev. 07/15/25), "For tax years 2025 and
+# later", as the Georgia Department of Revenue publishes it, in testdata/.
+# There are no amount codes: IRS Publication 1220 covers the information
+# returns the IRS receives electronically, and a state form is not one of
+# them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. The columns of lines 6 to 20 are repeated messages
+# whose fields name their lines in their comments.
+
+form: "500 UET"
+message_name: "nexteggapp.taxprotos.us.state.ga.v1.Form500Uet"
+tax_years: 2025
+
+concepts {
+  concept: "tax"
+  years { tax_year: 2025 irs_box: "1" }
+}
+
+concepts {
+  concept: "credits"
+  years { tax_year: 2025 irs_box: "2" }
+}
+
+concepts {
+  concept: "tax_after_credits"
+  years { tax_year: 2025 irs_box: "3" }
+}
+
+concepts {
+  concept: "prior_year_tax"
+  years { tax_year: 2025 irs_box: "4" }
+}
+
+concepts {
+  concept: "current_year_safe_harbor_tax"
+  years { tax_year: 2025 irs_box: "5" }
+}
+
+concepts {
+  concept: "payment_periods"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+    note: "Lines 6 to 20, one entry per column; each entry's fields name their own lines."
+  }
+}
+
+concepts {
+  concept: "total_penalty"
+  years { tax_year: 2025 irs_box: "21" }
+}
