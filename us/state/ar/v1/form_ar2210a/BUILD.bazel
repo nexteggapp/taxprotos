@@ -1,0 +1,29 @@
+# gazelle:ignore
+
+load("@protobuf//bazel:proto_library.bzl", "proto_library")
+
+# Form AR2210A: the annualized penalty for underpayment of estimated tax, which
+# an Arkansas filer with uneven income files in place of Form AR2210.
+proto_library(
+    name = "form_ar2210a_proto",
+    # Imported as taxprotos/..., so consumers import these files by that path.
+    import_prefix = "taxprotos",
+    srcs = [
+        "form_ar2210a.proto",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//common/v1:common_proto",
+    ],
+)
+
+# The mappings and the form extract they are checked against, for
+# //go/us/state/ar/v1/form_ar2210a.
+filegroup(
+    name = "test_oracles",
+    srcs = glob([
+        "mapping*.textproto",
+        "testdata/**",
+    ]),
+    visibility = ["//go/us/state/ar/v1/form_ar2210a:__pkg__"],
+)

@@ -1,0 +1,157 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for one column of AR2210A lines 1 to 30,
+# the annualized installments.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the Arkansas Department of Finance and
+# Administration publishes. The coverage test checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+#
+# Lines 3, 8 and 20 print the annualization amounts and the applicable
+# percentages, which the schema does not store.
+
+form: "AR2210A"
+message_name: "nexteggapp.taxprotos.us.state.ar.v1.FormAr2210a.AnnualizationPeriod"
+tax_years: 2025
+
+concepts {
+  concept: "adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "1" }
+}
+
+concepts {
+  concept: "spouse_income"
+  years { tax_year: 2025 irs_box: "2" }
+}
+
+concepts {
+  concept: "annualized_income"
+  years { tax_year: 2025 irs_box: "4" }
+}
+
+concepts {
+  concept: "spouse_annualized_income"
+  years { tax_year: 2025 irs_box: "5" }
+}
+
+concepts {
+  concept: "deductions"
+  years { tax_year: 2025 irs_box: "6" }
+}
+
+concepts {
+  concept: "spouse_deductions"
+  years { tax_year: 2025 irs_box: "7" }
+}
+
+concepts {
+  concept: "annualized_deductions"
+  years { tax_year: 2025 irs_box: "9" }
+}
+
+concepts {
+  concept: "spouse_annualized_deductions"
+  years { tax_year: 2025 irs_box: "10" }
+}
+
+concepts {
+  concept: "taxable_income"
+  years { tax_year: 2025 irs_box: "11" }
+}
+
+concepts {
+  concept: "spouse_taxable_income"
+  years { tax_year: 2025 irs_box: "12" }
+}
+
+concepts {
+  concept: "tax"
+  years { tax_year: 2025 irs_box: "13" }
+}
+
+concepts {
+  concept: "spouse_tax"
+  years { tax_year: 2025 irs_box: "14" }
+}
+
+concepts {
+  concept: "combined_tax"
+  years { tax_year: 2025 irs_box: "15" }
+}
+
+concepts {
+  concept: "other_amounts"
+  years { tax_year: 2025 irs_box: "16" }
+}
+
+concepts {
+  concept: "total_tax"
+  years { tax_year: 2025 irs_box: "17" }
+}
+
+concepts {
+  concept: "credits"
+  years { tax_year: 2025 irs_box: "18" }
+}
+
+concepts {
+  concept: "tax_after_credits"
+  years { tax_year: 2025 irs_box: "19" }
+}
+
+concepts {
+  concept: "applicable_tax"
+  years { tax_year: 2025 irs_box: "21" }
+}
+
+concepts {
+  concept: "prior_installments"
+  years { tax_year: 2025 irs_box: "22" }
+}
+
+concepts {
+  concept: "annualized_installment"
+  years { tax_year: 2025 irs_box: "23" }
+}
+
+concepts {
+  concept: "net_tax"
+  years { tax_year: 2025 irs_box: "24" }
+}
+
+concepts {
+  concept: "current_year_safe_harbor_tax"
+  years { tax_year: 2025 irs_box: "25" }
+}
+
+concepts {
+  concept: "regular_installment"
+  years { tax_year: 2025 irs_box: "26" }
+}
+
+concepts {
+  concept: "prior_regular_installment_excess"
+  years { tax_year: 2025 irs_box: "27" }
+}
+
+concepts {
+  concept: "available_regular_installment"
+  years { tax_year: 2025 irs_box: "28" }
+}
+
+concepts {
+  concept: "regular_installment_excess"
+  years { tax_year: 2025 irs_box: "29" }
+}
+
+concepts {
+  concept: "required_installment"
+  years { tax_year: 2025 irs_box: "30" }
+}

@@ -1,0 +1,71 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for Schedule IT-2210A.
+#
+# Lines come from the 2025 schedule (R25 / 9-25) in testdata/, which is
+# pdftotext -layout over the PDF the Indiana Department of Revenue
+# publishes. The coverage test checks every line named here against that
+# extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a state schedule is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+#
+# Section 1 has no line number, so it is not mapped. Each column of Section 3
+# is mapped in mapping_period.textproto.
+
+form: "IT-2210A"
+message_name: "nexteggapp.taxprotos.us.state.in.v1.FormIt2210a"
+tax_years: 2025
+
+concepts {
+  concept: "total_tax"
+  years { tax_year: 2025 irs_box: "A" }
+}
+
+concepts {
+  concept: "credits"
+  years { tax_year: 2025 irs_box: "B" }
+}
+
+concepts {
+  concept: "tax_after_credits"
+  years { tax_year: 2025 irs_box: "C" }
+}
+
+concepts {
+  concept: "current_year_safe_harbor_tax"
+  years { tax_year: 2025 irs_box: "D" }
+}
+
+concepts {
+  concept: "withholding_and_ptet"
+  years { tax_year: 2025 irs_box: "E" }
+}
+
+concepts {
+  concept: "tax_less_withholding"
+  years { tax_year: 2025 irs_box: "F" }
+}
+
+concepts {
+  concept: "prior_year_tax"
+  years { tax_year: 2025 irs_box: "G" }
+}
+
+concepts {
+  concept: "required_annual_payment"
+  years { tax_year: 2025 irs_box: "H" }
+}
+
+concepts {
+  concept: "total_underpayment"
+  years { tax_year: 2025 irs_box: "26" }
+}
+
+concepts {
+  concept: "underpayment_penalty"
+  years { tax_year: 2025 irs_box: "27" }
+}

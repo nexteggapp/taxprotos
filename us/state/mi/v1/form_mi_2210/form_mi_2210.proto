@@ -1,0 +1,225 @@
+// Form MI-2210, Underpayment of Estimated Income Tax.
+//
+// A Michigan filer includes it with Form MI-1040 or MI-1041 to figure the
+// interest and the penalty owed for underpaying estimated income tax. Part 1,
+// lines 4 to 17, finds each quarter's underpayment; Part 2, lines 18 to 22,
+// charges interest on it by the day; Part 3, lines 23 to 27, adds a flat
+// penalty. The Annualized Income Worksheet on page 2 can lower the required
+// installments on line 9.
+//
+// Line numbers are in the mapping files beside this file, keyed by tax year.
+// Verified against the 2025 MI-2210 (Rev. 10-25); testdata holds the text
+// extracted from the published PDF.
+//
+// # Where it departs from federal Form 2210
+//
+// Two charges on each quarter, each figured on its own underpayment: interest
+// by the day at a factor Treasury prints for each half-year, in whole
+// dollars, with every payment applied to the oldest underpayment first (Part
+// 2); and a flat penalty of 25% (at least $25) for a quarter with nothing
+// paid or 10% (at least $10) for one paid short, counting a payment only in
+// the quarter it arrives (Part 3).
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.mi.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/mi/v1/form_mi_2210;formmi2210";
+
+// FormMi2210 is what a Form MI-2210 states.
+message FormMi2210 {
+  // PaymentPeriod is one column of lines 9 to 25: one payment due date.
+  message PaymentPeriod {
+    // The column: 1 through 4, for columns A to D.
+    int32 period = 1;
+
+    // The column's due date, as the form's heading, Payment Due Dates,
+    // gives it.
+    common.v1.Date due_date = 2;
+
+    // Line 9: Line 7 divided by four, or Annualized Income Worksheet line 16.
+    common.v1.Money required_installment = 3;
+
+    // Line 10: Estimated tax paid and withheld in the column's quarter: by
+    // the first due date in column A, and after the previous due date
+    // through this one in the others.
+    common.v1.Money estimated_tax_paid_and_withheld = 4;
+
+    // Line 11: Line 17 of the previous column.
+    common.v1.Money prior_overpayment = 5;
+
+    // Line 12: Lines 10 and 11 added.
+    common.v1.Money total_payments = 6;
+
+    // Line 13: Lines 15 and 16 of the previous column added.
+    common.v1.Money prior_underpayments = 7;
+
+    // Line 14: Line 12 less line 13, and zero if less than zero; line 10 in
+    // column A.
+    common.v1.Money available_payments = 8;
+
+    // Line 15: Remaining underpayment from the previous period: line 13 less
+    // line 12 when line 14 is zero.
+    common.v1.Money remaining_underpayment = 9;
+
+    // Line 16: Underpayment. Line 9 less line 14 when line 9 is greater than
+    // or equal to line 14.
+    common.v1.Money underpayment = 10;
+
+    // Line 17: Overpayment. Line 14 less line 9 when line 14 is greater.
+    common.v1.Money overpayment = 11;
+
+    // Lines 18 to 21: each computation of interest on the column's
+    // underpayment, one for each payment that reduced it and one for any
+    // balance unpaid at the end.
+    repeated InterestComputation interest_computations = 12;
+
+    // Line 23: Underpayment for the penalty, figured as for interest but
+    // counting a payment only in the quarter it is received. Not less than
+    // zero.
+    common.v1.Money penalty_underpayment = 13;
+
+    // Line 24: 25% if no estimated payment was made for the quarter, or 10%
+    // if it was underpaid, as a fraction (0.25 or 0.10).
+    double penalty_rate = 14;
+
+    // Line 25: Line 23 multiplied by line 24, at least $25 at 25% or $10 at
+    // 10%.
+    common.v1.Money penalty = 15;
+  }
+
+  // InterestComputation is one computation of lines 18 to 21.
+  message InterestComputation {
+    // Line 18: Underpayment from line 16, or the part of it a payment
+    // reduced.
+    common.v1.Money underpayment = 1;
+
+    // Lines 19 to 21: one entry per rate period the underpayment ran in.
+    repeated RatePeriod rate_periods = 2;
+  }
+
+  // RatePeriod is one of lines 19, 20 and 21: a rate period, with its rate
+  // and daily factor printed on the form.
+  message RatePeriod {
+    // Line a: Computation starting date for this period.
+    common.v1.Date starting_date = 1;
+
+    // Line b: Number of days from the date on line a to the date line 18
+    // was paid or the period's end, whichever is earlier.
+    int32 days = 2;
+
+    // Line c: The period's daily factor × the days on line b × the
+    // underpayment on line 18.
+    common.v1.Money interest = 3;
+  }
+
+  // AnnualizationPeriod is one column of the Annualized Income Worksheet.
+  message AnnualizationPeriod {
+    // The column: 1 through 4, for the first 3, 5 and 8 months and the year.
+    int32 period = 1;
+
+    // Line 1: Total income subject to tax attributable to the period, from
+    // January 1.
+    common.v1.Money income = 2;
+
+    // Line 2: Annualization amount: 4, 2.4, 1.5 and 1 (6, 3, 1.71429 and
+    // 1.09091 for fiduciaries).
+    double annualization_amount = 3;
+
+    // Line 3: Annualized total income. Line 1 multiplied by line 2.
+    common.v1.Money annualized_income = 4;
+
+    // Line 4: Total exemption allowance (MI-1040 line 15).
+    common.v1.Money exemption_allowance = 5;
+
+    // Line 5: Line 3 less line 4.
+    common.v1.Money taxable_annualized_income = 6;
+
+    // Line 6: Line 5 multiplied by the year's tax rate.
+    common.v1.Money tax = 7;
+
+    // Line 7: The sum of the year's MI-1040 credits the line names.
+    common.v1.Money credits = 8;
+
+    // Line 8: Tax after credits. Line 6 less line 7, and zero if less.
+    common.v1.Money tax_after_credits = 9;
+
+    // Line 9: Line 8 multiplied by 22.5%, 45%, 67.5% or 90%.
+    common.v1.Money applicable_tax = 10;
+
+    // Line 10: Line 16 of all previous columns added.
+    common.v1.Money prior_installments = 11;
+
+    // Line 11: Line 9 less line 10, and zero if less.
+    common.v1.Money annualized_installment = 12;
+
+    // Line 12: Required quarterly payment: MI-2210 line 7 divided by four.
+    common.v1.Money regular_installment = 13;
+
+    // Line 13: Line 15 of the previous column.
+    common.v1.Money prior_regular_installment_excess = 14;
+
+    // Line 14: Lines 12 and 13 added.
+    common.v1.Money available_regular_installment = 15;
+
+    // Line 15: Line 14 less line 11, and zero if less.
+    common.v1.Money regular_installment_excess = 16;
+
+    // Line 16: Required installment. The smaller of line 14 or line 11;
+    // carries to MI-2210 line 9.
+    common.v1.Money required_installment = 17;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Line 1: The first month of a taxable year other than the calendar year;
+  // unset for a calendar year.
+  common.v1.Date taxable_year_start = 2;
+
+  // Line 1: The last month of that taxable year; unset for a calendar year.
+  common.v1.Date taxable_year_end = 3;
+
+  // Line 2: Filer's name shown on the tax return.
+  string filer_name = 4;
+
+  // Line 3: Identifying number: the filer's Social Security number, or an
+  // estate's or trust's FEIN.
+  string identifying_number = 5;
+
+  // Line 4: Last year's tax, MI-1040 line 20 less lines 25, 26, 27b, 28 and
+  // 29 of last year's return, or 110% of it when last year's AGI was more
+  // than $150,000 ($75,000 married filing separately).
+  common.v1.Money prior_year_tax = 6;
+
+  // Line 5: The year's tax, MI-1040 line 21 less lines 26, 27, 28b, 29 and
+  // 30.
+  common.v1.Money tax = 7;
+
+  // Line 6: Line 5 multiplied by 90%.
+  common.v1.Money current_year_safe_harbor_tax = 8;
+
+  // Line 7: The smaller of line 4 or line 6.
+  common.v1.Money required_annual_payment = 9;
+
+  // Line 8: The box for the annualized income installment method.
+  bool uses_annualized_income_method = 10;
+
+  // Lines 9 to 25, one entry per column.
+  repeated PaymentPeriod payment_periods = 11;
+
+  // Line 22: Total interest. Lines 19c, 20c and 21c of every column added.
+  common.v1.Money total_interest = 12;
+
+  // Line 26: Total penalty. Line 25 of columns A to D added.
+  common.v1.Money total_penalty = 13;
+
+  // Line 27: Lines 22 and 26 added: the total penalty and interest.
+  common.v1.Money total_penalty_and_interest = 14;
+
+  // The Annualized Income Worksheet, one entry per column; empty when the
+  // method is not used.
+  repeated AnnualizationPeriod annualization_periods = 15;
+}

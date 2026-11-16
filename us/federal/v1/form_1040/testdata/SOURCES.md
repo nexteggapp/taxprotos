@@ -24,6 +24,7 @@ each file is the whole form.
 | `f1040x-2025.txt` | [f1040x--2025.pdf](https://www.irs.gov/pub/irs-prior/f1040x--2025.pdf) | `e4d8d7df37209218...` |
 | `f1116-2025.txt` | [f1116--2025.pdf](https://www.irs.gov/pub/irs-prior/f1116--2025.pdf) | `2575162f86c37297...` |
 | `f2210-2025.txt` | [f2210--2025.pdf](https://www.irs.gov/pub/irs-prior/f2210--2025.pdf) | `6899ce672648b280...` |
+| `f2210f-2025.txt` | [f2210f.pdf](https://www.irs.gov/pub/irs-pdf/f2210f.pdf) | `d02c73f9f75ef345...` |
 | `f2441-2025.txt` | [f2441--2025.pdf](https://www.irs.gov/pub/irs-prior/f2441--2025.pdf) | `6c3c2d19163fa4c4...` |
 | `f2555-2025.txt` | [f2555--2025.pdf](https://www.irs.gov/pub/irs-prior/f2555--2025.pdf) | `979a90f0f83723a4...` |
 | `f4562-2025.txt` | [f4562--2025.pdf](https://www.irs.gov/pub/irs-prior/f4562--2025.pdf) | `c05f9d1f5e26b1b2...` |
@@ -65,6 +66,10 @@ way. By then the IRS had moved the 2025 revisions to `irs-prior/`, which keeps
 each year's form at a fixed URL. Form 7203 has no yearly revision; the December
 2022 revision is the one in use for 2025, taken from `irs-pdf/`. Form 8936
 Schedule A is a separate PDF, extracted beside Form 8936.
+
+Form 2210-F was retrieved 2026-11-15, the same way, from `irs-pdf/`. That
+copy is the 2025 revision: its footer reads "Form 2210-F (2025) Created
+12/12/25".
 
 ```bash
 curl -o f1040.pdf https://www.irs.gov/pub/irs-pdf/f1040.pdf

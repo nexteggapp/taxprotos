@@ -1,0 +1,350 @@
+// Form IL-2210, Computation of Penalties for Individuals.
+//
+// An Illinois filer figures the late-payment penalty for underpaying
+// estimated tax on this form, attached to Form IL-1040, together with the
+// late-payment penalty for tax unpaid at the return's due date and the
+// late-filing penalty. Line numbers are in mapping.textproto beside this
+// file, keyed by tax year, per docs/form-schemas.md. Verified against the
+// 2025 Form IL-2210 (R-12/25); testdata holds the text extracted from the
+// published PDF and coverage_test.go asserts every line a mapping claims
+// appears on it.
+//
+// # A flat charge, not interest
+//
+// Penalty Worksheet 1 charges each amount paid late once: 2% of it when it
+// is paid 1 to 30 days late, and 10% when it is paid 31 or more days late
+// (35 ILCS 735/3-3(b-25)(1)). Each quarter's withholding comes off that
+// quarter's installment first (Step 2, lines 10a to 13), and each estimated
+// payment then goes to the oldest quarter still unpaid.
+//
+// # Six steps and two worksheets
+//
+// Step 2 sets the required installments, in two columns for lines 1 to 3:
+// A for this year and B for the prior year. Step 3 figures the tax unpaid at
+// the return's due date, which Penalty Worksheet 2 charges, and Step 5 the
+// late-filing penalty and the amount owed. Step 6 annualises income. The
+// annualization factors and applicable percentages the form prints in Step 6
+// (lines 39 and 48) and the penalty rates beside Penalty Worksheet 1 are not
+// stored.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.il.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/quantity.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/il/v1/form_il_2210;formil2210";
+
+// FormIl2210 is what a Form IL-2210 states.
+message FormIl2210 {
+  // Quarter is one column of Step 2, lines 9a to 13: one installment, and
+  // the withholding that comes off it.
+  message Quarter {
+    // The column: 1 through 4 for Quarters 1 to 4.
+    int32 quarter = 1;
+
+    // Line 9a: The installment due date: the 15th day of the 4th, 6th and 9th
+    // months of the tax year and of the 1st month after it, moved past a
+    // weekend or holiday.
+    common.v1.Date due_date = 2;
+
+    // Line 9b: The required installment: line 8, or Step 6 line 56 under the
+    // annualized income installment method.
+    common.v1.Money required_installment = 3;
+
+    // Line 10a: Illinois tax withheld: a quarter of line 4a, or the amount
+    // actually withheld in the quarter where pay stubs or an employer letter
+    // show it.
+    common.v1.Money withholding = 4;
+
+    // Line 10b: Pass-through withholding, in full in the quarter whose due
+    // date is the first on or after the last day of the entity's tax year.
+    common.v1.Money pass_through_withholding = 5;
+
+    // Line 10c: Lines 10a and 10b added.
+    common.v1.Money total_withholding = 6;
+
+    // Line 11: Line 9b minus line 10c, negative when the withholding is more.
+    common.v1.Money installment_less_withholding = 7;
+
+    // Line 12: Line 13 of the previous quarter as a positive amount when it
+    // is negative, otherwise zero. Skipped for Quarter 1.
+    common.v1.Money prior_quarter_excess = 8;
+
+    // Line 13: Line 11 minus line 12, negative when withholding is left over.
+    // A positive amount is the unpaid amount Penalty Worksheet 1 column C
+    // takes.
+    common.v1.Money unpaid_installment = 9;
+  }
+
+  // Payment is one entry of Step 4 line 20: a payment made, including a
+  // credit carried forward from a prior year, and the day it was paid.
+  message Payment {
+    // The amount paid.
+    common.v1.Money amount = 1;
+
+    // The date paid.
+    common.v1.Date date_paid = 2;
+  }
+
+  // LatePayment is one row of Penalty Worksheet 1 (line 21) or 2 (line 23):
+  // one payment applied to one quarter's unpaid amount, or the amount never
+  // paid.
+  message LatePayment {
+    // Column A, Period: 1 through 4 for Quarters 1 to 4 on Penalty Worksheet
+    // 1; 0 for the return on Penalty Worksheet 2.
+    int32 period = 1;
+
+    // Column B: The due date: line 9a's for the quarter, or the original due
+    // date of the return.
+    common.v1.Date due_date = 2;
+
+    // Column C: The unpaid amount: line 13 on the quarter's first row, line
+    // 19 on Penalty Worksheet 2's, and column E of the row before on each
+    // later row.
+    common.v1.Money unpaid_amount = 3;
+
+    // Column D: The payment applied to it.
+    common.v1.Money payment_applied = 4;
+
+    // Column E: Balance due. Column C minus column D.
+    common.v1.Money balance_due = 5;
+
+    // Column F: The payment date, or for an amount not yet paid the date the
+    // penalty is figured to.
+    common.v1.Date payment_date = 6;
+
+    // Column G: The number of days late, from column B to column F.
+    int32 days_late = 7;
+
+    // Column H: The penalty rate: .02 for 1 to 30 days late, .10 for 31 or
+    // more.
+    common.v1.Quantity penalty_rate = 8;
+
+    // Column I: Penalty. Column D multiplied by column H.
+    common.v1.Money penalty = 9;
+  }
+
+  // AnnualizationPeriod is one column of Step 6, the annualization
+  // worksheet: the first 3, 5 or 8 months, or all 12.
+  message AnnualizationPeriod {
+    // The column: 1 through 4 for A to D.
+    int32 period = 1;
+
+    // Line 38: Illinois base income for the period.
+    common.v1.Money base_income = 2;
+
+    // Line 40: Annualized income. Line 38 multiplied by the line 39
+    // annualization factor (4, 2.4, 1.5 and 1).
+    common.v1.Money annualized_income = 3;
+
+    // Line 41: Exemptions.
+    common.v1.Money exemptions = 4;
+
+    // Line 42: Illinois net income. Line 40 minus line 41.
+    common.v1.Money net_income = 5;
+
+    // Line 43: Line 42 multiplied by 4.95%.
+    common.v1.Money tax = 6;
+
+    // Line 44: Compassionate use of medical cannabis and sale of assets by
+    // gaming licensee surcharges.
+    common.v1.Money surcharges = 7;
+
+    // Line 45: Lines 43 and 44 added.
+    common.v1.Money total_tax = 8;
+
+    // Line 46: The credits on Step 2 line 2, Column A.
+    common.v1.Money credits = 9;
+
+    // Line 47: Line 45 minus line 46, not below zero.
+    common.v1.Money tax_after_credits = 10;
+
+    // Line 49: The annualized installment. Line 47 multiplied by the line 48
+    // applicable percentage (22.5%, 45%, 67.5% and 90%).
+    common.v1.Money applicable_tax = 11;
+
+    // Line 50: Line 56 of every preceding column added. Skipped for column
+    // A.
+    common.v1.Money prior_installments = 12;
+
+    // Line 51: Line 49 minus line 50, not below zero.
+    common.v1.Money annualized_installment = 13;
+
+    // Line 52: The installment Step 2 line 9b would hold without
+    // annualizing.
+    common.v1.Money regular_installment = 14;
+
+    // Line 53: Line 55 of the preceding column. Skipped for column A.
+    common.v1.Money prior_regular_installment_excess = 15;
+
+    // Line 54: Lines 52 and 53 added.
+    common.v1.Money available_regular_installment = 16;
+
+    // Line 55: Line 54 minus line 51 when line 54 is greater, otherwise zero.
+    // Skipped for column D.
+    common.v1.Money regular_installment_excess = 17;
+
+    // Line 56: The required installment. The lesser of line 51 or line 54.
+    // Carries to Step 2 line 9b.
+    common.v1.Money required_installment = 18;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // -- Step 1: Provide the following information -----------------------------
+
+  // Your name as shown on Form IL-1040.
+  string filer_name = 2;
+
+  // Your social security number.
+  string filer_ssn = 3;
+
+  // The social security number the prior year's return was filed under, when
+  // it differs.
+  string prior_year_ssn = 4;
+
+  // -- Step 2: Figure your required installments -----------------------------
+
+  // Line 1, Column A: This year's total income tax, compassionate use of
+  // medical cannabis and sale of assets by gaming licensee surcharges.
+  common.v1.Money total_tax = 5;
+
+  // Line 1, Column B: The same for the prior year.
+  common.v1.Money prior_year_total_tax = 6;
+
+  // Line 2, Column A: This year's credits.
+  common.v1.Money credits = 7;
+
+  // Line 2, Column B: The prior year's credits.
+  common.v1.Money prior_year_credits = 8;
+
+  // Line 3, Column A: Line 1 minus line 2, not below zero.
+  common.v1.Money tax_after_credits = 9;
+
+  // Line 3, Column B: Line 1 minus line 2, not below zero, for the prior
+  // year: 100% of it is the prior-year measure line 7 takes.
+  common.v1.Money prior_year_tax_after_credits = 10;
+
+  // Line 4a: This year's Illinois withholding from W-2 and 1099 forms.
+  common.v1.Money illinois_withholding = 11;
+
+  // Line 4b: Pass-through withholding made on the filer's behalf.
+  common.v1.Money pass_through_withholding = 12;
+
+  // Line 4c: Lines 4a and 4b added.
+  common.v1.Money total_withholding = 13;
+
+  // Line 5: Line 3 minus line 4c.
+  common.v1.Money tax_less_withholding = 14;
+
+  // Line 6: Column A, line 3 multiplied by 90%.
+  common.v1.Money current_year_safe_harbor_tax = 15;
+
+  // Line 7: Zero when line 5 is $1,000 or less or no estimated payments are
+  // required; otherwise the lesser of Column A line 6 or Column B line 3.
+  common.v1.Money required_annual_payment = 16;
+
+  // Line 8: Line 7 divided by four, the amount of each required
+  // installment.
+  common.v1.Money regular_installment = 17;
+
+  // Lines 9a to 13: One entry per quarter.
+  repeated Quarter quarters = 18;
+
+  // -- Step 3: Figure your unpaid tax ----------------------------------------
+
+  // Line 14: Column A, line 3.
+  common.v1.Money unpaid_tax_base = 19;
+
+  // Line 15: Household employment tax, Form IL-1040 line 20.
+  common.v1.Money household_employment_tax = 20;
+
+  // Line 16: Use tax, Form IL-1040 line 21.
+  common.v1.Money use_tax = 21;
+
+  // Line 17: Lines 14 through 16 added.
+  common.v1.Money total_liability = 22;
+
+  // Line 18: The payments made by the return's original due date, or the
+  // total of line 9b, whichever is greater.
+  common.v1.Money payments_by_due_date = 23;
+
+  // Line 19: Line 17 minus line 18, negative when overpaid.
+  common.v1.Money unpaid_tax = 24;
+
+  // -- Step 4: Figure your late-payment penalty ------------------------------
+
+  // Line 20: Each payment made, with the date paid, including a credit
+  // carried forward from a prior year.
+  repeated Payment payments = 25;
+
+  // Line 21: Penalty Worksheet 1, the late-payment penalty for underpayment
+  // of estimated tax: one row for each payment applied to each quarter's
+  // unpaid amount, and one for any amount still unpaid.
+  repeated LatePayment underpayment_rows = 26;
+
+  // Line 22: Column I of Penalty Worksheet 1 added, the late-payment penalty
+  // for underpayment of estimated tax. Carries to Form IL-1040 line 34,
+  // rounded to whole dollars.
+  common.v1.Money underpayment_penalty = 27;
+
+  // Line 23: Penalty Worksheet 2, the late-payment penalty for unpaid tax:
+  // one row for each payment applied to line 19.
+  repeated LatePayment unpaid_tax_rows = 28;
+
+  // Line 24: Column I of Penalty Worksheet 2 added, the late-payment penalty
+  // for unpaid tax.
+  common.v1.Money unpaid_tax_penalty = 29;
+
+  // -- Step 5: Figure your late-filing penalty and the amount you owe --------
+
+  // Line 25: Form IL-1040 line 14.
+  common.v1.Money late_filing_tax = 30;
+
+  // Line 26: Household employment tax, Form IL-1040 line 20.
+  common.v1.Money late_filing_household_employment_tax = 31;
+
+  // Line 27: Use tax, Form IL-1040 line 21.
+  common.v1.Money late_filing_use_tax = 32;
+
+  // Line 28: Compassionate use of medical cannabis and sale of assets by
+  // gaming licensee surcharges, Form IL-1040 line 22.
+  common.v1.Money late_filing_surcharges = 33;
+
+  // Line 29: Lines 25 through 28 added.
+  common.v1.Money late_filing_total = 34;
+
+  // Line 30: Credits and payments made by the original due date.
+  common.v1.Money late_filing_credits_and_payments = 35;
+
+  // Line 31: Line 29 minus line 30.
+  common.v1.Money late_filing_unpaid = 36;
+
+  // Line 32: Line 31 multiplied by 2%.
+  common.v1.Money late_filing_charge = 37;
+
+  // Line 33: The late-filing penalty. The lesser of line 32 or $250.
+  common.v1.Money late_filing_penalty = 38;
+
+  // Line 34: The late-payment penalty for unpaid tax, from line 24.
+  common.v1.Money owed_unpaid_tax_penalty = 39;
+
+  // Line 35: The late-filing penalty, from line 33.
+  common.v1.Money owed_late_filing_penalty = 40;
+
+  // Line 36: Form IL-1040 line 37's overpayment as a negative amount, or
+  // line 41's amount due as a positive one.
+  common.v1.Money return_balance = 41;
+
+  // Line 37: Lines 34 through 36 added: the amount owed when positive, the
+  // amount overpaid when negative.
+  common.v1.Money amount_owed = 42;
+
+  // -- Step 6: Complete the annualization worksheet --------------------------
+
+  // Lines 38 to 56: One entry per period, for a filer who annualizes.
+  repeated AnnualizationPeriod annualization_periods = 43;
+}

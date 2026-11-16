@@ -1,0 +1,290 @@
+// Form CT-2210, Underpayment of Estimated Income Tax by Individuals, Trusts,
+// and Estates.
+//
+// A filer of Form CT-1040, CT-1040NR/PY or CT-1041 uses it to figure the
+// interest owed for underpaying estimated Connecticut income tax, or to lower
+// or eliminate it. Part 1 gives the reasons for filing; Part 2 the required
+// annual payment; Part 3 each quarter's underpayment, cumulatively, and its
+// interest; Schedule A the annualized income installment method; and
+// Schedule B the interest, month by month.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year.
+// Verified against the 2025 Form CT-2210 (Rev. 12/25); testdata holds the text
+// extracted from the published PDF.
+//
+// # Where it departs from federal Form 2210
+//
+// The charge is interest of 1% for each month or fraction of a month an
+// underpayment stays unpaid, a month running from the 16th to the 15th, not
+// interest by the day (Conn. Gen. Stat. § 12-722(a); Schedule B). Part 3
+// works in running totals: each column's underpayment is everything required
+// by its due date less everything paid by then. The Pass-Through Entity Tax
+// Credit counts like withholding, on lines of its own.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.ct.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/ct/v1/form_ct_2210;formct2210";
+
+// FormCt2210 is what a Form CT-2210 states: Parts 1 to 3, Schedule A and
+// Schedule B.
+message FormCt2210 {
+  // PaymentPeriod is one column of Part 3, A through D, with its Schedule B
+  // worksheet. Every amount but line 17's is a running total to the column's
+  // due date.
+  message PaymentPeriod {
+    // The column: 1 through 4 for A through D.
+    int32 period = 1;
+
+    // The column's installment due date, which its Schedule B worksheet
+    // starts from.
+    common.v1.Date due_date = 2;
+
+    // Line 8: The required annual payment from Part 2 line 6.
+    common.v1.Money required_annual_payment = 3;
+
+    // Line 10: Line 8 multiplied by the installment percentage on line 9, 25%,
+    // 50%, 75% or 100%; with Part 1 Box A checked, Schedule A line 22, 23, 24
+    // or 25.
+    common.v1.Money required_installments = 4;
+
+    // Line 11: The total Connecticut tax withheld, Part 2 line 3.
+    common.v1.Money total_withholding = 5;
+
+    // Line 11b: Line 11 multiplied by the withholding percentage on line 11a,
+    // or, with Part 1 Box C checked, the withholding actually withheld by the
+    // due date.
+    common.v1.Money withholding = 6;
+
+    // Line 12: The total PE Tax Credit, Part 2 line 3a.
+    common.v1.Money total_pe_tax_credit = 7;
+
+    // Line 12b: Line 12 multiplied by the PE Tax Credit percentage on line
+    // 12a.
+    common.v1.Money pe_tax_credit = 8;
+
+    // Line 13: Lines 11b and 12b added.
+    common.v1.Money credits = 9;
+
+    // Line 14: Line 10 minus line 13, not less than zero.
+    common.v1.Money required_less_credits = 10;
+
+    // Line 15: The estimated tax payments made by the due date.
+    common.v1.Money estimated_tax_payments = 11;
+
+    // Line 16: Underpayment. Line 14 minus line 15, not less than zero.
+    common.v1.Money underpayment = 12;
+
+    // Schedule B, the column's worksheet (A, B, C or D): one entry per month
+    // charged, in date order.
+    repeated InterestMonth interest_months = 13;
+
+    // Line 17: Interest. The column's Schedule B worksheet total: line e of
+    // Worksheet A, line g of Worksheets B and D, line i of Worksheet C.
+    common.v1.Money interest = 14;
+  }
+
+  // InterestMonth is one month of a Schedule B worksheet: the underpayment
+  // at its start, the 1% charged on it, and the payments made during it.
+  message InterestMonth {
+    // The month's first day, the 16th.
+    common.v1.Date start_date = 1;
+
+    // The month's last day, the 15th of the next month.
+    common.v1.Date end_date = 2;
+
+    // Line a, or the revised underpayment on line c, e or g: the
+    // underpayment still unpaid at the month's start.
+    common.v1.Money underpayment = 3;
+
+    // The month's interest: the underpayment multiplied by .01.
+    common.v1.Money interest = 4;
+
+    // Lines b, d, f and h: the late payments made during the month, each
+    // reducing the next month's underpayment.
+    repeated LatePayment late_payments = 5;
+  }
+
+  // LatePayment is one late payment on a Schedule B worksheet.
+  message LatePayment {
+    // The date paid.
+    common.v1.Date date = 1;
+
+    // The amount paid.
+    common.v1.Money amount = 2;
+  }
+
+  // AnnualizationPeriod is one column of Schedule A: one period of the year.
+  // The annualization amounts on line 2 and the applicable percentages on
+  // line 13 are printed in each column and not stored.
+  message AnnualizationPeriod {
+    // The column: 1 through 4, for January 1 to March 31, May 31, August 31
+    // and December 31.
+    int32 period = 1;
+
+    // Line 1: Connecticut adjusted gross income for the period.
+    common.v1.Money connecticut_adjusted_gross_income = 2;
+
+    // Line 3: Annualized income. Line 1 multiplied by line 2.
+    common.v1.Money annualized_income = 3;
+
+    // Line 4: The tax on line 3.
+    common.v1.Money tax = 4;
+
+    // Line 5: Credit for income taxes paid to qualifying jurisdictions.
+    common.v1.Money credit_for_taxes_paid = 5;
+
+    // Line 6: Line 4 minus line 5.
+    common.v1.Money tax_after_credit_for_taxes_paid = 6;
+
+    // Line 7: Connecticut alternative minimum tax.
+    common.v1.Money alternative_minimum_tax = 7;
+
+    // Line 8: Lines 6 and 7 added.
+    common.v1.Money total_tax = 8;
+
+    // Line 9: Credit for property taxes paid on a primary residence or motor
+    // vehicle.
+    common.v1.Money property_tax_credit = 9;
+
+    // Line 10: Line 8 minus line 9, not less than zero.
+    common.v1.Money tax_after_property_tax_credit = 10;
+
+    // Line 11: Allowable credits from Schedule CT-IT Credit, Part 1, line 10.
+    common.v1.Money allowable_credits = 11;
+
+    // Line 12: Line 10 minus line 11.
+    common.v1.Money tax_after_credits = 12;
+
+    // Line 14: Line 12 multiplied by the applicable percentage on line 13.
+    common.v1.Money applicable_tax = 13;
+
+    // Line 15: Line 21 of all preceding columns added.
+    common.v1.Money prior_installments = 14;
+
+    // Line 16: Annualized income installment. Line 14 minus line 15, not
+    // less than zero.
+    common.v1.Money annualized_installment = 15;
+
+    // Line 17: 25% of the required annual payment, Part 2 line 6.
+    common.v1.Money regular_installment = 16;
+
+    // Line 18: Line 20 of the preceding column.
+    common.v1.Money prior_regular_installment_excess = 17;
+
+    // Line 19: Lines 17 and 18 added.
+    common.v1.Money available_regular_installment = 18;
+
+    // Line 20: Line 19 minus line 16, not less than zero.
+    common.v1.Money regular_installment_excess = 19;
+
+    // Line 21: The smaller of line 16 or line 19.
+    common.v1.Money required_installment = 20;
+
+    // Lines 22 to 25: Line 21 of this column and every preceding one added.
+    // Carries to Part 3 line 10 of the same column.
+    common.v1.Money cumulative_required_installments = 21;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // The filer's first name, middle initial and last name, as on the
+  // Connecticut income tax return.
+  string filer_name = 2;
+
+  // The filer's Social Security Number.
+  string filer_ssn = 3;
+
+  // On a joint return, the spouse's first name, middle initial and last
+  // name.
+  string spouse_name = 4;
+
+  // On a joint return, the spouse's Social Security Number.
+  string spouse_ssn = 5;
+
+  // For a trust or estate, its name.
+  string estate_or_trust_name = 6;
+
+  // For a trust or estate, the fiduciary's name.
+  string fiduciary_name = 7;
+
+  // For a trust or estate, its Federal Employer Identification Number.
+  string fein = 8;
+
+  // -- Part 1: Reasons for Filing -------------------------------------------
+
+  // Box A: Income varied during the year, and the interest is reduced or
+  // eliminated by the annualized income installment method.
+  bool annualized_income_method = 9;
+
+  // Box B: The required annual payment is based on the prior year's tax, and
+  // a joint return was filed for one of the two years but not both.
+  bool joint_return_in_only_one_year = 10;
+
+  // Box C: Connecticut income tax withheld is treated as paid on the dates it
+  // was actually withheld instead of in equal amounts on the due dates.
+  bool withholding_as_withheld = 11;
+
+  // Box D: The filer is a farmer or fisherman as IRC § 6654(i)(2) defines
+  // one.
+  bool farmer_or_fisherman = 12;
+
+  // Box E: The prior year's tax can't be the basis of the required annual
+  // payment: a part-year resident or nonresident last year with no
+  // Connecticut-sourced income, who was not required to file.
+  bool prior_year_tax_unavailable = 13;
+
+  // Box F: A Connecticut resident for all of last year who filed no return
+  // because there was no Connecticut income tax liability.
+  bool resident_with_no_liability_last_year = 14;
+
+  // Box G: A part-year resident or nonresident last year, with
+  // Connecticut-sourced income, who filed no return because there was no
+  // Connecticut income tax liability.
+  bool nonresident_with_no_liability_last_year = 15;
+
+  // -- Part 2: Required Annual Payment -------------------------------------
+
+  // Line 1: The year's Connecticut income tax.
+  common.v1.Money tax = 16;
+
+  // Line 2: Line 1 multiplied by 90%, or 66 2/3% for a farmer or fisherman.
+  common.v1.Money current_year_safe_harbor_tax = 17;
+
+  // Line 3: Connecticut income tax withheld.
+  common.v1.Money tax_withheld = 18;
+
+  // Line 3a: Connecticut Pass-Through Entity Tax Credit.
+  common.v1.Money pe_tax_credit = 19;
+
+  // Line 4: Line 1 minus lines 3 and 3a. Less than $1,000 means no interest
+  // is owed.
+  common.v1.Money tax_less_credits = 20;
+
+  // Line 5: The prior year's Connecticut income tax.
+  common.v1.Money prior_year_tax = 21;
+
+  // Line 6: The smaller of line 2 or line 5: the required annual payment.
+  common.v1.Money required_annual_payment = 22;
+
+  // Line 7: Line 6 minus lines 3 and 3a. Zero or less means no interest is
+  // owed.
+  common.v1.Money required_payment_less_credits = 23;
+
+  // -- Part 3: Underpayment and Interest by Calendar Quarter ---------------
+
+  // Lines 8 to 17, one entry per column, A through D.
+  repeated PaymentPeriod payment_periods = 24;
+
+  // Line 17, Total column: the interest of columns A to D added. Carries to
+  // the Connecticut income tax return.
+  common.v1.Money total_interest = 25;
+
+  // Schedule A, one entry per column, or none when Part 1 Box A is not
+  // checked.
+  repeated AnnualizationPeriod annualization_periods = 26;
+}

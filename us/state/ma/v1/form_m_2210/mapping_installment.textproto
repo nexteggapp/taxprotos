@@ -1,0 +1,116 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for one column of Form M-2210 Parts 1 and 2:
+# the underpayment of one installment and its penalty.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the Massachusetts Department of Revenue publishes. The coverage
+# test checks every line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a state form is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "M-2210"
+message_name: "nexteggapp.taxprotos.us.state.ma.v1.FormM2210.Installment"
+tax_years: 2025
+
+concepts {
+  concept: "due_date"
+  years { tax_year: 2025 irs_box: "7" }
+}
+
+concepts {
+  concept: "required_installment"
+  years { tax_year: 2025 irs_box: "8" }
+}
+
+concepts {
+  concept: "estimated_tax_paid_and_withheld"
+  years { tax_year: 2025 irs_box: "9" }
+}
+
+concepts {
+  concept: "prior_installment_overpayment"
+  years { tax_year: 2025 irs_box: "10" }
+}
+
+concepts {
+  concept: "total_paid"
+  years { tax_year: 2025 irs_box: "11" }
+}
+
+concepts {
+  concept: "overpayment"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+    note: "The overpayment, line 11 less line 8."
+  }
+}
+
+concepts {
+  concept: "exception"
+  years {
+    tax_year: 2025
+    irs_box: "12"
+    note: "The Exception oval beside line 12."
+  }
+}
+
+concepts {
+  concept: "underpayment"
+  years { tax_year: 2025 irs_box: "13" }
+}
+
+concepts {
+  concept: "paid_date"
+  years { tax_year: 2025 irs_box: "14" }
+}
+
+concepts {
+  concept: "days_unpaid"
+  years { tax_year: 2025 irs_box: "15" }
+}
+
+concepts {
+  concept: "days_second_quarter"
+  years { tax_year: 2025 irs_box: "16" }
+}
+
+concepts {
+  concept: "days_third_quarter"
+  years { tax_year: 2025 irs_box: "17" }
+}
+
+concepts {
+  concept: "days_fourth_quarter"
+  years { tax_year: 2025 irs_box: "18" }
+}
+
+concepts {
+  concept: "days_next_year"
+  years { tax_year: 2025 irs_box: "19" }
+}
+
+concepts {
+  concept: "penalty_second_quarter"
+  years { tax_year: 2025 irs_box: "20" }
+}
+
+concepts {
+  concept: "penalty_third_quarter"
+  years { tax_year: 2025 irs_box: "21" }
+}
+
+concepts {
+  concept: "penalty_fourth_quarter"
+  years { tax_year: 2025 irs_box: "22" }
+}
+
+concepts {
+  concept: "penalty_next_year"
+  years { tax_year: 2025 irs_box: "23" }
+}

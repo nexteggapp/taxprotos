@@ -1,0 +1,101 @@
+// Form D-2210, Underpayment of Estimated Income Tax By Individuals, for the
+// District of Columbia.
+//
+// Figures the interest on underpaid DC estimated tax: the required payment
+// (lines 1 to 6), each period's running underpayment (lines 7 to 9), and the
+// interest at a printed factor for each period (lines 10 to 12).
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 form; testdata holds the
+// text extracted from the published PDF and coverage_test.go asserts every
+// line a mapping claims appears on it.
+//
+// # Not Form 2210
+//
+// Lines 7 and 8 are running totals: each period includes the amounts of the
+// periods before it. Line 9 is the running underpayment, and line 11
+// multiplies it by one factor the form prints for the whole span to the next
+// due date (line 10), not by the days. The prior-year test is always 110%,
+// and the annualized method prorates the required payment by income.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.dc.v1;
+
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/dc/v1/form_d_2210;formd2210";
+
+// FormD2210 holds the conditions that excuse the interest (items A and B),
+// the required payment (lines 1 to 6), each period's underpayment and
+// interest (lines 7 to 11), and the total (line 12).
+message FormD2210 {
+  // PaymentPeriod is one column of lines 7 to 11: one due date, the 1st
+  // (April 15) through the 4th (January 15) period.
+  message PaymentPeriod {
+    // The column: 1 through 4.
+    int32 period = 1;
+
+    // Line 7: The amount required by the period's due date: line 6, or the
+    // annualized income amount, for this and every earlier period.
+    common.v1.Money required_to_date = 2;
+
+    // Line 8: DC withholding and estimated tax paid by the period's due date,
+    // this and every earlier period's.
+    common.v1.Money paid_to_date = 3;
+
+    // Line 9: Underpayment. Line 7 minus line 8.
+    common.v1.Money underpayment = 4;
+
+    // Line 11: Line 9 multiplied by the period's factor on line 10.
+    common.v1.Money interest = 5;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Your first name, middle initial and last name.
+  string filer_name = 2;
+
+  // Taxpayer Identification Number (TIN).
+  string filer_tin = 3;
+
+  // Item A: The tax liability after DC withholding and credits is less than
+  // $100, so no interest is due.
+  bool tax_under_threshold = 4;
+
+  // Item B: Periodic estimated payments and withholding, made as required,
+  // reach 110% of last year's tax or 90% of this year's, so no interest is
+  // due.
+  bool payments_met_requirement = 5;
+
+  // Line 1: The year's DC tax liability: the return's line 24 minus line 30.
+  common.v1.Money current_year_tax = 6;
+
+  // Line 2: Line 1 multiplied by 90%.
+  common.v1.Money current_year_safe_harbor_tax = 7;
+
+  // Line 3: The prior year's DC tax liability: that return's line 24 minus
+  // line 30.
+  common.v1.Money prior_year_tax = 8;
+
+  // Line 4: Line 3 multiplied by 110%.
+  common.v1.Money prior_year_safe_harbor_tax = 9;
+
+  // Line 5: Minimum withholding and estimated tax payment required. The
+  // lesser of line 2 and line 4.
+  common.v1.Money required_annual_payment = 10;
+
+  // Line 6: Line 5 multiplied by 25%, the amount required for each periodic
+  // payment.
+  common.v1.Money periodic_payment = 11;
+
+  // The box checked when line 7 uses the "Annualized Income" method.
+  bool uses_annualized_income_method = 12;
+
+  // Lines 7 through 11: One entry per payment due date. The factors on line
+  // 10 are preprinted and not stored.
+  repeated PaymentPeriod payment_periods = 13;
+
+  // Line 12: Underpayment interest. Line 11 of every period added.
+  common.v1.Money estimated_tax_penalty = 14;
+}

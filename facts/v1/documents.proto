@@ -19,6 +19,7 @@ import "taxprotos/us/federal/v1/form_1040/form_1040.proto";
 import "taxprotos/us/federal/v1/form_1040/form_1040_x.proto";
 import "taxprotos/us/federal/v1/form_1040/form_1116.proto";
 import "taxprotos/us/federal/v1/form_1040/form_2210.proto";
+import "taxprotos/us/federal/v1/form_1040/form_2210_f.proto";
 import "taxprotos/us/federal/v1/form_1040/form_2441.proto";
 import "taxprotos/us/federal/v1/form_1040/form_2555.proto";
 import "taxprotos/us/federal/v1/form_1040/form_4562.proto";
@@ -94,37 +95,57 @@ import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1041.proto";
 import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1065.proto";
 import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1120_s.proto";
 import "taxprotos/us/state/ar/v1/form_ar1000f/form_ar1000f.proto";
+import "taxprotos/us/state/ar/v1/form_ar2210a/form_ar2210a.proto";
+import "taxprotos/us/state/ar/v1/form_ar2210/form_ar2210.proto";
 import "taxprotos/us/state/al/v1/form_40/form_40.proto";
 import "taxprotos/us/state/az/v1/form_140/form_140.proto";
+import "taxprotos/us/state/az/v1/form_221/form_221.proto";
 import "taxprotos/us/state/id/v1/form_40/form_40.proto";
 import "taxprotos/us/state/ca/v1/form_540/form_540.proto";
+import "taxprotos/us/state/ca/v1/form_ftb_5805/form_ftb_5805.proto";
 import "taxprotos/us/state/ca/v1/form_540/schedule_ca.proto";
 import "taxprotos/us/state/co/v1/form_dr0104/form_dr0104.proto";
 import "taxprotos/us/state/ga/v1/form_500/form_500.proto";
+import "taxprotos/us/state/ga/v1/form_500_uet/form_500_uet.proto";
 import "taxprotos/us/state/ia/v1/form_ia1040/form_ia1040.proto";
 import "taxprotos/us/state/ks/v1/form_k40/form_k40.proto";
 import "taxprotos/us/state/de/v1/form_pit_res/form_pit_res.proto";
+import "taxprotos/us/state/de/v1/form_pit_und/form_pit_und.proto";
 import "taxprotos/us/state/dc/v1/form_d40/form_d40.proto";
+import "taxprotos/us/state/dc/v1/form_d_2210/form_d_2210.proto";
 import "taxprotos/us/state/hi/v1/form_n11/form_n11.proto";
+import "taxprotos/us/state/hi/v1/form_n_210/form_n_210.proto";
 import "taxprotos/us/state/il/v1/form_il1040/form_il1040.proto";
+import "taxprotos/us/state/il/v1/form_il_2210/form_il_2210.proto";
 import "taxprotos/us/state/mi/v1/form_mi1040/form_mi1040.proto";
+import "taxprotos/us/state/mi/v1/form_mi_2210/form_mi_2210.proto";
 import "taxprotos/us/state/ky/v1/form_740/form_740.proto";
 import "taxprotos/us/state/in/v1/form_it40/form_it40.proto";
+import "taxprotos/us/state/in/v1/form_it_2210/form_it_2210.proto";
+import "taxprotos/us/state/in/v1/form_it_2210a/form_it_2210a.proto";
 import "taxprotos/us/state/la/v1/form_it540/form_it540.proto";
+import "taxprotos/us/state/la/v1/form_r_210r/form_r_210r.proto";
 import "taxprotos/us/state/ms/v1/form_80105/form_80105.proto";
+import "taxprotos/us/state/ms/v1/form_80_320/form_80_320.proto";
 import "taxprotos/us/state/mo/v1/form_mo1040/form_mo1040.proto";
+import "taxprotos/us/state/mo/v1/form_mo_2210/form_mo_2210.proto";
 import "taxprotos/us/state/mt/v1/form_2/form_2.proto";
 import "taxprotos/us/state/me/v1/form_1040me/form_1040me.proto";
+import "taxprotos/us/state/me/v1/form_2210me/form_2210me.proto";
 import "taxprotos/us/state/ri/v1/form_ri1040/form_ri1040.proto";
 import "taxprotos/us/state/mn/v1/form_m1/form_m1.proto";
 import "taxprotos/us/state/ma/v1/form_1/form_1.proto";
+import "taxprotos/us/state/ma/v1/form_m_2210/form_m_2210.proto";
 import "taxprotos/us/state/md/v1/form_502/form_502.proto";
+import "taxprotos/us/state/md/v1/form_502up/form_502up.proto";
 import "taxprotos/us/state/nc/v1/form_d400/form_d400.proto";
 import "taxprotos/us/state/ok/v1/form_511/form_511.proto";
 import "taxprotos/us/state/nm/v1/form_pit1/form_pit1.proto";
 import "taxprotos/us/state/nd/v1/form_nd1/form_nd1.proto";
+import "taxprotos/us/state/nd/v1/form_nd_1ut/form_nd_1ut.proto";
 import "taxprotos/us/state/ne/v1/form_1040n/form_1040n.proto";
 import "taxprotos/us/state/ct/v1/form_ct1040/form_ct1040.proto";
+import "taxprotos/us/state/ct/v1/form_ct_2210/form_ct_2210.proto";
 import "taxprotos/us/state/oh/v1/form_it1040/form_it1040.proto";
 import "taxprotos/us/state/nj/v1/form_nj1040/form_nj1040.proto";
 import "taxprotos/us/state/ny/v1/form_it201/form_it201.proto";
@@ -829,6 +850,9 @@ message FederalReturn {
   // Form 8995-A: qualified business income deduction, for filers who cannot
   // use the simplified Form 8995.
   us.federal.v1.Form8995A form_8995_a = 49;
+
+  // Form 2210-F: underpayment of estimated tax by farmers and fishers.
+  us.federal.v1.Form2210F form_2210_f = 50;
 }
 
 // A California resident return: Form 540 and Schedule CA.
@@ -838,6 +862,9 @@ message CaliforniaReturn {
 
   // Schedule CA (540), the California adjustments.
   us.state.ca.v1.ScheduleCA schedule_ca = 2;
+
+  // Form FTB 5805: underpayment of estimated tax by individuals and fiduciaries.
+  us.state.ca.v1.FormFtb5805 form_ftb_5805 = 3;
 }
 
 // An Oregon resident return: Form OR-40 and its schedules.
@@ -856,6 +883,9 @@ message OregonReturn {
 message DelawareReturn {
   // Form PIT-RES.
   us.state.de.v1.FormPITRES form_pit_res = 1;
+
+  // Form PIT-UND: underpayment of estimated taxes.
+  us.state.de.v1.FormPitUnd form_pit_und = 2;
 }
 
 // An Alabama resident return: Form 40.
@@ -868,30 +898,49 @@ message AlabamaReturn {
 message MaineReturn {
   // Form 1040ME.
   us.state.me.v1.Form1040ME form_1040me = 1;
+
+  // Form 2210ME: underpayment of estimated tax by individuals, estates, or trusts.
+  us.state.me.v1.Form2210me form_2210me = 2;
 }
 
 // An Illinois resident return: Form IL-1040.
 message IllinoisReturn {
   // Form IL-1040.
   us.state.il.v1.FormIL1040 form_il1040 = 1;
+
+  // Form IL-2210: computation of penalties for individuals.
+  us.state.il.v1.FormIl2210 form_il_2210 = 2;
 }
 
 // A Michigan resident return: Form MI-1040.
 message MichiganReturn {
   // Form MI-1040.
   us.state.mi.v1.FormMI1040 form_mi1040 = 1;
+
+  // Form MI-2210: underpayment of estimated income tax.
+  us.state.mi.v1.FormMi2210 form_mi_2210 = 2;
 }
 
 // An Indiana resident return: Form IT-40.
 message IndianaReturn {
   // Form IT-40.
   us.state.in.v1.FormIT40 form_it40 = 1;
+
+  // Schedule IT-2210: underpayment of estimated tax by individuals.
+  us.state.in.v1.FormIt2210 form_it_2210 = 2;
+
+  // Schedule IT-2210A: underpayment of estimated tax by the annualized
+  // income method.
+  us.state.in.v1.FormIt2210a form_it_2210a = 3;
 }
 
 // A Missouri resident return: Form MO-1040.
 message MissouriReturn {
   // Form MO-1040.
   us.state.mo.v1.FormMO1040 form_mo1040 = 1;
+
+  // Form MO-2210: underpayment of estimated tax by individuals.
+  us.state.mo.v1.FormMo2210 form_mo_2210 = 2;
 }
 
 // A Montana resident return: Form 2.
@@ -916,12 +965,18 @@ message ColoradoReturn {
 message ArizonaReturn {
   // Form 140.
   us.state.az.v1.Form140 form_140 = 1;
+
+  // Form 221: underpayment of estimated tax by individuals.
+  us.state.az.v1.Form221 form_221 = 2;
 }
 
 // A Georgia resident return: Form 500.
 message GeorgiaReturn {
   // Form 500.
   us.state.ga.v1.Form500 form_500 = 1;
+
+  // Form 500 UET: underpayment of estimated tax by individuals and fiduciaries.
+  us.state.ga.v1.Form500Uet form_500_uet = 2;
 }
 
 // An Idaho resident return: Form 40.
@@ -965,12 +1020,18 @@ message IowaReturn {
 message LouisianaReturn {
   // Form IT-540.
   us.state.la.v1.FormIT540 form_it540 = 1;
+
+  // Form R-210R: underpayment of individual income tax penalty computation.
+  us.state.la.v1.FormR210r form_r_210r = 2;
 }
 
 // A Mississippi resident return: Form 80-105.
 message MississippiReturn {
   // Form 80-105.
   us.state.ms.v1.Form80105 form_80105 = 1;
+
+  // Form 80-320: the interest and penalty worksheet.
+  us.state.ms.v1.Form80320 form_80_320 = 2;
 }
 
 // A Kansas resident return: Form K-40.
@@ -989,6 +1050,12 @@ message OklahomaReturn {
 message ArkansasReturn {
   // Form AR1000F.
   us.state.ar.v1.FormAR1000F form_ar1000f = 1;
+
+  // Form AR2210: underpayment of estimated tax by individuals.
+  us.state.ar.v1.FormAr2210 form_ar2210 = 2;
+
+  // Form AR2210A: underpayment of estimated tax by the annualized method.
+  us.state.ar.v1.FormAr2210a form_ar2210a = 3;
 }
 
 // A New Mexico resident return: Form PIT-1.
@@ -1001,6 +1068,9 @@ message NewMexicoReturn {
 message NorthDakotaReturn {
   // Form ND-1.
   us.state.nd.v1.FormND1 form_nd1 = 1;
+
+  // Schedule ND-1UT: underpayment or late payment of estimated income tax.
+  us.state.nd.v1.FormNd1ut form_nd_1ut = 2;
 }
 
 // A Nebraska resident return: Form 1040N.
@@ -1019,6 +1089,9 @@ message VirginiaReturn {
 message DistrictOfColumbiaReturn {
   // Form D-40.
   us.state.dc.v1.FormD40 form_d40 = 1;
+
+  // Form D-2210: underpayment of estimated income tax by individuals.
+  us.state.dc.v1.FormD2210 form_d_2210 = 2;
 }
 
 // A South Carolina resident return: the SC1040.
@@ -1037,6 +1110,9 @@ message WestVirginiaReturn {
 message HawaiiReturn {
   // Form N-11.
   us.state.hi.v1.FormN11 form_n11 = 1;
+
+  // Form N-210: underpayment of estimated tax by individuals, estates, and trusts.
+  us.state.hi.v1.FormN210 form_n_210 = 2;
 }
 
 // A Vermont resident return: Form IN-111.
@@ -1055,6 +1131,9 @@ message RhodeIslandReturn {
 message ConnecticutReturn {
   // Form CT-1040.
   us.state.ct.v1.FormCT1040 form_ct1040 = 1;
+
+  // Form CT-2210: underpayment of estimated income tax.
+  us.state.ct.v1.FormCt2210 form_ct_2210 = 2;
 }
 
 // A Minnesota resident return: Form M1.
@@ -1073,12 +1152,18 @@ message WisconsinReturn {
 message MassachusettsReturn {
   // Form 1.
   us.state.ma.v1.FormMA1 form_1 = 1;
+
+  // Form M-2210: underpayment of Massachusetts estimated income tax.
+  us.state.ma.v1.FormM2210 form_m_2210 = 2;
 }
 
 // A Maryland resident return: Form 502.
 message MarylandReturn {
   // Form 502.
   us.state.md.v1.Form502 form_502 = 1;
+
+  // Form 502UP: underpayment of estimated income tax by individuals.
+  us.state.md.v1.Form502up form_502up = 2;
 }
 
 // An Ohio resident return: Ohio IT 1040.

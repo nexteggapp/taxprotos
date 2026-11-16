@@ -1,0 +1,50 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for one column of Form 502UP lines
+# 11 to 17.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the Comptroller of Maryland publishes. The coverage test checks
+# every line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+#
+# Line 16 prints the interest factors, which the schema does not store.
+
+form: "502UP"
+message_name: "nexteggapp.taxprotos.us.state.md.v1.Form502up.PaymentPeriod"
+tax_years: 2025
+
+concepts {
+  concept: "income_to_date"
+  years { tax_year: 2025 irs_box: "11." }
+}
+
+concepts {
+  concept: "income_share"
+  years { tax_year: 2025 irs_box: "12." }
+}
+
+concepts {
+  concept: "required_to_date"
+  years { tax_year: 2025 irs_box: "13." }
+}
+
+concepts {
+  concept: "paid_to_date"
+  years { tax_year: 2025 irs_box: "14." }
+}
+
+concepts {
+  concept: "underpayment"
+  years { tax_year: 2025 irs_box: "15." }
+}
+
+concepts {
+  concept: "interest"
+  years { tax_year: 2025 irs_box: "17." }
+}

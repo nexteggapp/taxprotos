@@ -1,0 +1,147 @@
+// Form AR2210, Arkansas Individual Income Tax Penalty for Underpayment of
+// Estimated Tax.
+//
+// Attached to Form AR1000F or AR1000NR to figure the penalty for underpaying
+// Arkansas estimated tax: the exception that excuses it (Part I), the
+// required annual payment (Part II) and the penalty, column by column (Part
+// III). A filer who uses the annualized method files Form AR2210A instead,
+// modelled in form_ar2210a.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 form; testdata holds the
+// text extracted from the published PDF and coverage_test.go asserts every
+// line a mapping claims appears on it.
+//
+// # Not Form 2210
+//
+// Line 8 counts withholding, and in the instructions' example the estimated
+// payments too, as paid in four equal parts on the due dates, whenever they
+// were made. Line 13 is the running underpayment: the column's own shortfall
+// plus what was still short from earlier columns (line 12). The penalty is a
+// fixed 10% a year over 365 days (line 16).
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.ar.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/ar/v1/form_ar2210;formar2210";
+
+// FormAr2210 holds the exception claimed (Part I), the required annual
+// payment (Part II), and the penalty computation (Part III).
+message FormAr2210 {
+  // PaymentPeriod is one column of Part III: one payment due date, A (April
+  // 15) through D (January 15).
+  message PaymentPeriod {
+    // UnderpaymentCharge is one computation of lines 15 and 16: the penalty
+    // on line 13, or on the part of it one payment paid, from the due date
+    // to the day it was paid. The instructions' example charges each part a
+    // payment paid on its own.
+    message UnderpaymentCharge {
+      // The due date the days are counted from.
+      common.v1.Date from = 1;
+
+      // The day the amount was paid, or April 15 of the next year, whichever
+      // is earlier.
+      common.v1.Date to = 2;
+
+      // Line 15: Number of days from the due date to the date on to.
+      int32 days = 3;
+
+      // The amount charged: line 13, or the part of it one payment paid.
+      common.v1.Money underpayment = 4;
+
+      // Line 16: The amount charged multiplied by the days over 365,
+      // multiplied by 10%.
+      common.v1.Money penalty = 5;
+    }
+
+    // The column: 1 through 4 for A through D.
+    int32 period = 1;
+
+    // Line 7: Required installment. A quarter of line 6.
+    common.v1.Money required_installment = 2;
+
+    // Line 8: Estimated tax paid and tax withheld. A quarter of line 3, and
+    // in the instructions' example a quarter of the estimated payments.
+    common.v1.Money estimated_tax_paid_and_withheld = 3;
+
+    // Line 9: Line 14 of the previous column.
+    common.v1.Money prior_period_overpayment = 4;
+
+    // Line 10: Lines 8 and 9 added.
+    common.v1.Money payments_with_prior_overpayment = 5;
+
+    // Line 11: Line 10 minus the previous column's line 13, not less than
+    // zero. Column A holds line 8.
+    common.v1.Money net_timely_payments = 6;
+
+    // Line 12: The previous column's line 13 minus line 10 when line 11 is
+    // zero, otherwise zero.
+    common.v1.Money shortfall_carried_forward = 7;
+
+    // Line 13: Underpayment. Line 7 minus line 11, plus line 12, when line 7
+    // is at least line 11.
+    common.v1.Money underpayment = 8;
+
+    // Line 14: Overpayment. Line 11 minus line 7 when line 11 is more.
+    common.v1.Money overpayment = 9;
+
+    // Line 15: Number of days from the due date to the date the amount on
+    // line 13 was paid, or April 15 of the next year, whichever is earlier.
+    // Where it was paid in parts, the days to the last of them.
+    int32 days_unpaid = 10;
+
+    // Line 16: The column's penalty, the charges added.
+    common.v1.Money penalty = 11;
+
+    // Lines 15 and 16, one computation for each part of the underpayment a
+    // payment paid.
+    repeated UnderpaymentCharge charges = 12;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Primary's legal name.
+  string filer_name = 2;
+
+  // Primary's social security number.
+  string filer_tin = 3;
+
+  // -- Part I: Exception ---------------------------------------------------
+
+  // The exception claimed, 1 through 5 from the list on the back of the
+  // form, or zero for none. Exception 6 is claimed on Form AR2210A.
+  int32 exception = 4;
+
+  // -- Part II: Required Annual Payment ------------------------------------
+
+  // Line 1: The year's net tax.
+  common.v1.Money current_year_net_tax = 5;
+
+  // Line 2: Line 1 multiplied by 90%.
+  common.v1.Money current_year_safe_harbor_tax = 6;
+
+  // Line 3: Arkansas income tax withheld.
+  common.v1.Money total_tax_withheld = 7;
+
+  // Line 4: Line 1 minus line 3. $1,000 or less means no penalty is owed.
+  common.v1.Money net_tax_after_withholding = 8;
+
+  // Line 5: The prior year's net tax.
+  common.v1.Money prior_year_net_tax = 9;
+
+  // Line 6: Required annual payment. The smaller of line 2 or line 5.
+  common.v1.Money required_annual_payment = 10;
+
+  // -- Part III: Computing the Penalty -------------------------------------
+
+  // Lines 7 through 16: One entry per payment due date.
+  repeated PaymentPeriod payment_periods = 11;
+
+  // Line 17: Penalty. Line 16 of every column added. Carries to Form
+  // AR1000F or AR1000NR line 52B.
+  common.v1.Money estimated_tax_penalty = 12;
+}

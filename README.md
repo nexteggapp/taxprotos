@@ -161,6 +161,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [Schedule SE](https://www.irs.gov/pub/irs-pdf/f1040sse.pdf) | [`schedule_se.proto`](us/federal/v1/form_1040/schedule_se.proto) | Self-employment tax |
 | [1116](https://www.irs.gov/pub/irs-pdf/f1116.pdf) | [`form_1116.proto`](us/federal/v1/form_1040/form_1116.proto) | Foreign tax credit |
 | [2210](https://www.irs.gov/pub/irs-pdf/f2210.pdf) | [`form_2210.proto`](us/federal/v1/form_1040/form_2210.proto) | Underpayment of estimated tax |
+| [2210-F](https://www.irs.gov/pub/irs-pdf/f2210f.pdf) | [`form_2210_f.proto`](us/federal/v1/form_1040/form_2210_f.proto) | Underpayment of estimated tax by farmers and fishers |
 | [2441](https://www.irs.gov/pub/irs-pdf/f2441.pdf) | [`form_2441.proto`](us/federal/v1/form_1040/form_2441.proto) | Child and dependent care expenses |
 | [2555](https://www.irs.gov/pub/irs-pdf/f2555.pdf) | [`form_2555.proto`](us/federal/v1/form_1040/form_2555.proto) | Foreign earned income |
 | [4562](https://www.irs.gov/pub/irs-pdf/f4562.pdf) | [`form_4562.proto`](us/federal/v1/form_1040/form_4562.proto) | Depreciation and amortization |
@@ -200,43 +201,63 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | Form | Schema | Reports |
 |---|---|---|
 | [140](https://azdor.gov/sites/default/files/document/FORMS_INDIVIDUAL_2025_140_f.pdf) | [`form_140.proto`](us/state/az/v1/form_140/form_140.proto) | The Arizona resident return |
+| [221](https://azdor.gov/sites/default/files/document/FORMS_INDIVIDUAL_2025_221_f.pdf) | [`form_221.proto`](us/state/az/v1/form_221/form_221.proto) | Arizona underpayment of estimated tax by individuals |
 | [40](https://tax.idaho.gov/wp-content/uploads/forms/EFO00089/EFO00089_03-02-2026.pdf) | [`form_40.proto`](us/state/id/v1/form_40/form_40.proto) | The Idaho resident return |
 | [AR1000F](https://www.dfa.arkansas.gov/wp-content/uploads/2025_AR1000F_FullYearResidentIndividualIncomeTaxReturn.pdf) | [`form_ar1000f.proto`](us/state/ar/v1/form_ar1000f/form_ar1000f.proto) | The Arkansas full-year resident return |
+| [AR2210](https://www.dfa.arkansas.gov/wp-content/uploads/2025_AR2210_Penalty_for_Underpayment_of_EstimatedTax_1.pdf) | [`form_ar2210.proto`](us/state/ar/v1/form_ar2210/form_ar2210.proto) | Arkansas penalty for underpayment of estimated tax |
+| [AR2210A](https://www.dfa.arkansas.gov/wp-content/uploads/2025_AR2210A_AnnualizedPenalty_for_Underpayment_of_EstimatedTax.pdf) | [`form_ar2210a.proto`](us/state/ar/v1/form_ar2210a/form_ar2210a.proto) | Arkansas annualized penalty for underpayment of estimated tax |
 | [IT-140](https://tax.wv.gov/Documents/PIT/2025/it140.PersonalIncomeTaxFormsAndInstructions.2025.pdf) | [`form_it140.proto`](us/state/wv/v1/form_it140/form_it140.proto) | The West Virginia resident return |
 | [DR 0104](https://tax.colorado.gov/sites/tax/files/documents/DR0104_2025.pdf) | [`form_dr0104.proto`](us/state/co/v1/form_dr0104/form_dr0104.proto) | The Colorado resident return |
 | [500](https://dor.georgia.gov/document/document/2025-it-511-individual-income-tax-booklet/download) | [`form_500.proto`](us/state/ga/v1/form_500/form_500.proto) | The Georgia resident return, printed in the IT-511 booklet |
+| [500 UET](https://dor.georgia.gov/document/document/beginning-or-after-january-1-2025-500-uet-underpayment-estimated-tax-individuals/download) | [`form_500_uet.proto`](us/state/ga/v1/form_500_uet/form_500_uet.proto) | Georgia underpayment of estimated tax by individuals and fiduciaries |
 | [IA 1040](https://revenue.iowa.gov/media/4401/download?inline) | [`form_ia1040.proto`](us/state/ia/v1/form_ia1040/form_ia1040.proto) | The Iowa resident return |
 | [K-40](https://www.ksrevenue.gov/pdf/k-4025.pdf) | [`form_k40.proto`](us/state/ks/v1/form_k40/form_k40.proto) | The Kansas resident return |
 | [PIT-RES](https://revenuefiles.delaware.gov/2025/PITForms_Instructions/PIT-RES_2025-01_PaperInteractiveIPM.pdf) | [`form_pit_res.proto`](us/state/de/v1/form_pit_res/form_pit_res.proto) | The Delaware resident return |
+| [PIT-UND](https://revenuefiles.delaware.gov/2025/PITForms_Instructions/PIT-UND_2025-01_PaperInteractiveIPM.pdf) | [`form_pit_und.proto`](us/state/de/v1/form_pit_und/form_pit_und.proto) | The penalty for underpaying Delaware estimated tax |
 | [40](https://www.revenue.alabama.gov/wp-content/uploads/2026/01/25f40blk.pdf) | [`form_40.proto`](us/state/al/v1/form_40/form_40.proto) | The Alabama resident return |
 | [D-40](https://otr.cfo.dc.gov/sites/default/files/dc/sites/otr/publication/attachments/2025_D40_Book_082026_v1.pdf) | [`form_d40.proto`](us/state/dc/v1/form_d40/form_d40.proto) | The District of Columbia resident return |
+| [D-2210](https://otr.cfo.dc.gov/sites/default/files/dc/sites/otr/publication/attachments/2025_D-2210_021226.pdf) | [`form_d_2210.proto`](us/state/dc/v1/form_d_2210/form_d_2210.proto) | District of Columbia underpayment of estimated income tax |
 | [N-11](https://files.hawaii.gov/tax/forms/2025/n11_f.pdf) | [`form_n11.proto`](us/state/hi/v1/form_n11/form_n11.proto) | The Hawaii resident return |
+| [N-210](https://files.hawaii.gov/tax/forms/2025/n210_i.pdf) | [`form_n_210.proto`](us/state/hi/v1/form_n_210/form_n_210.proto) | The penalty for underpaying Hawaii estimated tax |
 | [CT-1040](https://portal.ct.gov/-/media/drs/forms/2025/income/ct-1040_1225.pdf) | [`form_ct1040.proto`](us/state/ct/v1/form_ct1040/form_ct1040.proto) | The Connecticut resident return |
+| [CT-2210](https://portal.ct.gov/-/media/drs/forms/2025/income/ct-2210_1225.pdf) | [`form_ct_2210.proto`](us/state/ct/v1/form_ct_2210/form_ct_2210.proto) | Connecticut underpayment of estimated income tax |
 | [M1](https://www.revenue.state.mn.us/sites/default/files/2026-03/m1-25.pdf) | [`form_m1.proto`](us/state/mn/v1/form_m1/form_m1.proto) | The Minnesota resident return |
 | [IL-1040](https://tax.illinois.gov/content/dam/soi/en/web/tax/forms/incometax/documents/currentyear/individual/il-1040.pdf) | [`form_il1040.proto`](us/state/il/v1/form_il1040/form_il1040.proto) | The Illinois resident return |
+| [IL-2210](https://tax.illinois.gov/content/dam/soi/en/web/tax/forms/incometax/documents/currentyear/individual/il-2210.pdf) | [`form_il_2210.proto`](us/state/il/v1/form_il_2210/form_il_2210.proto) | The penalties for underpaying Illinois estimated tax, paying late and filing late |
 | [MI-1040](https://www.michigan.gov/taxes/-/media/Project/Websites/taxes/Forms/IIT/TY2025/MI-1040.pdf) | [`form_mi1040.proto`](us/state/mi/v1/form_mi1040/form_mi1040.proto) | The Michigan resident return |
+| [MI-2210](https://www.michigan.gov/taxes/-/media/Project/Websites/taxes/Forms/IIT/TY2025/MI-2210.pdf) | [`form_mi_2210.proto`](us/state/mi/v1/form_mi_2210/form_mi_2210.proto) | Michigan underpayment of estimated income tax |
 | [740](https://revenue.ky.gov/Forms/740%20(2025).pdf) | [`form_740.proto`](us/state/ky/v1/form_740/form_740.proto) | The Kentucky resident return |
 | [IT-40](https://forms.in.gov/Download.aspx?id=16914) | [`form_it40.proto`](us/state/in/v1/form_it40/form_it40.proto) | The Indiana resident return |
+| [IT-2210](https://forms.in.gov/Download.aspx?id=16926) | [`form_it_2210.proto`](us/state/in/v1/form_it_2210/form_it_2210.proto) | Indiana underpayment of estimated tax by individuals |
+| [IT-2210A](https://forms.in.gov/Download.aspx?id=16928) | [`form_it_2210a.proto`](us/state/in/v1/form_it_2210a/form_it_2210a.proto) | Indiana annualized underpayment of estimated tax |
 | [IT-540](https://dam.ldr.la.gov/taxforms/IT540WEB-BC(2025)%20F.pdf) | [`form_it540.proto`](us/state/la/v1/form_it540/form_it540.proto) | The Louisiana resident return |
+| [R-210R](https://dam.ldr.la.gov/taxforms/210R-1-26-F.pdf) | [`form_r_210r.proto`](us/state/la/v1/form_r_210r/form_r_210r.proto) | Louisiana underpayment of individual income tax penalty |
 | [80-105](https://www.dor.ms.gov/sites/default/files/tax-forms/individual/80105258%201.pdf) | [`form_80105.proto`](us/state/ms/v1/form_80105/form_80105.proto) | The Mississippi resident return |
+| [80-320](https://www.dor.ms.gov/sites/default/files/tax-forms/individual/80320258%201.pdf) | [`form_80_320.proto`](us/state/ms/v1/form_80_320/form_80_320.proto) | Mississippi interest on underpaid estimated tax, and the penalties on the return's balance |
 | [MO-1040](https://dor.mo.gov/forms/MO-1040%20Fillable%20Calculating_2025.pdf) | [`form_mo1040.proto`](us/state/mo/v1/form_mo1040/form_mo1040.proto) | The Missouri resident return |
+| [MO-2210](https://dor.mo.gov/forms/MO-2210_2025.pdf) | [`form_mo_2210.proto`](us/state/mo/v1/form_mo_2210/form_mo_2210.proto) | Missouri underpayment of estimated tax by individuals |
 | [PIT-1](https://realfile.tax.newmexico.gov/2025pit-1.pdf) | [`form_pit1.proto`](us/state/nm/v1/form_pit1/form_pit1.proto) | The New Mexico resident return |
 | [2](https://revenuefiles.mt.gov/files/Forms/Montana-Individual-Income-Tax-Return-Form-2/2025_Montana_Individual_Income_Tax_Return_Form_2.pdf) | [`form_2.proto`](us/state/mt/v1/form_2/form_2.proto) | The Montana resident return |
 | [1040N](https://revenue.nebraska.gov/sites/default/files/doc/tax-forms/2025/f_1040N.pdf) | [`form_1040n.proto`](us/state/ne/v1/form_1040n/form_1040n.proto) | The Nebraska resident return |
 | [760](https://www.tax.virginia.gov/sites/default/files/taxforms/individual-income-tax/2025/760-2025.pdf) | [`form_760.proto`](us/state/va/v1/form_760/form_760.proto) | The Virginia resident return |
 | [1040ME](https://www.maine.gov/revenue/sites/maine.gov.revenue/files/inline-files/25_1040ME_fillable.pdf) | [`form_1040me.proto`](us/state/me/v1/form_1040me/form_1040me.proto) | The Maine resident return |
+| [2210ME](https://www.maine.gov/revenue/sites/maine.gov.revenue/files/inline-files/25_form_2210_fillable.pdf) | [`form_2210me.proto`](us/state/me/v1/form_2210me/form_2210me.proto) | Maine underpayment of estimated tax by individuals, estates, or trusts |
 | [Form 1](https://www.mass.gov/doc/2025-form-1-massachusetts-resident-income-tax-return/download) | [`form_1.proto`](us/state/ma/v1/form_1/form_1.proto) | The Massachusetts resident return |
+| [M-2210](https://www.mass.gov/doc/2025-form-m-2210-underpayment-of-massachusetts-estimated-income-tax/download) | [`form_m_2210.proto`](us/state/ma/v1/form_m_2210/form_m_2210.proto) | Underpayment of Massachusetts estimated income tax |
 | [502](https://www.marylandcomptroller.gov/content/dam/mdcomp/tax/forms/2025/502.pdf) | [`form_502.proto`](us/state/md/v1/form_502/form_502.proto) | The Maryland resident return |
+| [502UP](https://www.marylandcomptroller.gov/content/dam/mdcomp/tax/forms/2025/502up.pdf) | [`form_502up.proto`](us/state/md/v1/form_502up/form_502up.proto) | Maryland underpayment of estimated income tax by individuals |
 | [NJ-1040](https://www.nj.gov/treasury/taxation/pdf/current/1040.pdf) | [`form_nj1040.proto`](us/state/nj/v1/form_nj1040/form_nj1040.proto) | The New Jersey resident return |
 | [D-400](https://www.ncdor.gov/2025-d-400-web-filled-version/open) | [`form_d400.proto`](us/state/nc/v1/form_d400/form_d400.proto) | The North Carolina resident return |
 | [511](https://oklahoma.gov/content/dam/ok/en/tax/documents/forms/individuals/current/511-Pkt.pdf) | [`form_511.proto`](us/state/ok/v1/form_511/form_511.proto) | The Oklahoma resident return |
 | [ND-1](https://www.tax.nd.gov/sites/www/files/documents/forms/individual/2025-iit/28702-form-nd-1-2025.pdf) | [`form_nd1.proto`](us/state/nd/v1/form_nd1/form_nd1.proto) | The North Dakota resident return |
+| [ND-1UT](https://www.tax.nd.gov/sites/www/files/documents/forms/individual/2025-iit/28704-schedule-nd-1ut-2025.pdf) | [`form_nd_1ut.proto`](us/state/nd/v1/form_nd_1ut/form_nd_1ut.proto) | North Dakota underpayment or late payment of estimated income tax |
 | [SC1040](https://dor.sc.gov/sites/dor/files/forms/SC1040_2025.pdf) | [`form_sc1040.proto`](us/state/sc/v1/form_sc1040/form_sc1040.proto) | The South Carolina resident return |
 | [IN-111](https://tax.vermont.gov/sites/tax/files/documents/IN-111-2025.pdf) | [`form_in111.proto`](us/state/vt/v1/form_in111/form_in111.proto) | The Vermont resident return |
 | [IT 1040](https://dam.assets.ohio.gov/image/upload/tax.ohio.gov/forms/ohio_individual/individual/2025/1040-bundle.pdf) | [`form_it1040.proto`](us/state/oh/v1/form_it1040/form_it1040.proto) | The Ohio resident return |
 | [IT-201](https://www.tax.ny.gov/pdf/current_forms/it/it201_fill_in.pdf) | [`form_it201.proto`](us/state/ny/v1/form_it201/form_it201.proto) | The New York resident return |
 | [540](https://www.ftb.ca.gov/forms/2025/2025-540.pdf) | [`form_540.proto`](us/state/ca/v1/form_540/form_540.proto) | The California resident return |
 | [Schedule CA](https://www.ftb.ca.gov/forms/2025/2025-540-ca.pdf) | [`schedule_ca.proto`](us/state/ca/v1/form_540/schedule_ca.proto) | How a federal return becomes a Californian one |
+| [FTB 5805](https://www.ftb.ca.gov/forms/2025/2025-5805.pdf) | [`form_ftb_5805.proto`](us/state/ca/v1/form_ftb_5805/form_ftb_5805.proto) | California underpayment of estimated tax |
 | [OR-40](https://www.oregon.gov/dor/forms/FormsPubs/form-or-40_101-040_2025.pdf) | [`form_or40.proto`](us/state/or/v1/form_or40/form_or40.proto) | The Oregon resident return |
 | [Schedule OR-A](https://www.oregon.gov/dor/forms/FormsPubs/schedule-or-a_101-007_2025.pdf) | [`schedule_or_a.proto`](us/state/or/v1/form_or40/schedule_or_a.proto) | Oregon itemized deductions |
 | [Schedule OR-ASC](https://www.oregon.gov/dor/forms/FormsPubs/schedule-or-asc_101-063_2025.pdf) | [`schedule_or_asc.proto`](us/state/or/v1/form_or40/schedule_or_asc.proto) | Oregon additions, subtractions and credits |

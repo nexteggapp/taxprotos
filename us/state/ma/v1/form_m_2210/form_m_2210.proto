@@ -1,0 +1,245 @@
+// Form M-2210, Underpayment of Massachusetts Estimated Income Tax.
+//
+// Enclosed with Form 1, 1-NR/PY, 3M, NRCR or 63D-ELT to figure the penalty
+// for underpaying Massachusetts estimated tax: the underpayment of each
+// installment (Part 1), simple interest on it at each quarter's rate (Part
+// 2), and the annualized income installment method (Part 3).
+//
+// Line numbers are in mapping.textproto, mapping_installment.textproto and
+// mapping_period.textproto beside this file, keyed by tax year, per
+// docs/form-schemas.md. Verified against the 2025 form; testdata holds the
+// text extracted from the published PDF and coverage_test.go asserts every
+// line a mapping claims appears on it. The annualization amounts (lines 2,
+// 6, 10 and 17), the 4% surtax threshold (line 15), the applicable
+// percentages (line 23) and the quarterly rates in lines 20 to 23 of Part 2
+// are preprinted and not stored.
+//
+// # Not Form 2210
+//
+// The shares are 80% of this year's tax and 100% of last year's, with no
+// higher figure at high income, and the annualized percentages 20%, 40%, 60%
+// and 80%. Part 3 figures each rate's income apart, the 5.0%, 8.5% and 12%
+// income, and the 4% surtax on income over its threshold on lines of its
+// own.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.ma.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/ma/v1/form_m_2210;formm2210";
+
+// FormM2210 holds the exceptions and the annualized method's oval, the
+// underpayment (Part 1), the penalty (Part 2) and the annualized income
+// installment method (Part 3).
+message FormM2210 {
+  // Installment is one column of Parts 1 and 2: one installment due date, a
+  // (April 15) through d (January 15 of the next year).
+  message Installment {
+    // The column: 1 through 4 for a through d.
+    int32 installment = 1;
+
+    // Line 7: The installment due date.
+    common.v1.Date due_date = 2;
+
+    // Line 8: Required installments. Part 3 line 31 under the annualized
+    // method, otherwise line 6 divided by the number of installments
+    // required for the year, in the appropriate columns.
+    common.v1.Money required_installment = 3;
+
+    // Line 9: Estimated taxes paid and taxes withheld for the installment:
+    // an equal part of the year's withholding, or what was withheld by the
+    // due date where its dates are shown.
+    common.v1.Money estimated_tax_paid_and_withheld = 4;
+
+    // Line 10: Overpayment of the previous installment, line 12 of the
+    // previous column.
+    common.v1.Money prior_installment_overpayment = 5;
+
+    // Line 11: Total. Lines 9 and 10 added.
+    common.v1.Money total_paid = 6;
+
+    // Line 12: Overpayment. Line 11 minus line 8, when more. It may pay an
+    // existing underpayment, which shortens the period charged rather than
+    // reducing the underpayment.
+    common.v1.Money overpayment = 7;
+
+    // Line 12: The "Exception" oval, filled when the payments by the due
+    // date reach the tax on last year's return divided among the four due
+    // dates.
+    bool exception = 8;
+
+    // Line 13: Underpayment. Line 8 minus line 11, when more.
+    common.v1.Money underpayment = 9;
+
+    // Line 14: The date the amount on line 13 was paid, or the 15th day of
+    // the fourth month after the close of the taxable year, whichever is
+    // earlier. Where it was paid in parts, the last of them.
+    common.v1.Date paid_date = 10;
+
+    // Line 15: Number of days from the due date of the installment to line
+    // 14.
+    int32 days_unpaid = 11;
+
+    // Line 16: The days in line 15 in the first rate period printed, after
+    // the first due date and before the third quarter.
+    int32 days_second_quarter = 12;
+
+    // Line 17: The days in line 15 in the third quarter.
+    int32 days_third_quarter = 13;
+
+    // Line 18: The days in line 15 in the fourth quarter.
+    int32 days_fourth_quarter = 14;
+
+    // Line 19: The days in line 15 after the year and before the 15th day
+    // of the fourth month after it.
+    int32 days_next_year = 15;
+
+    // Line 20: The underpayment on line 13 times the days on line 16 over
+    // 365, times the rate printed for them.
+    common.v1.Money penalty_second_quarter = 16;
+
+    // Line 21: The same for the days on line 17.
+    common.v1.Money penalty_third_quarter = 17;
+
+    // Line 22: The same for the days on line 18.
+    common.v1.Money penalty_fourth_quarter = 18;
+
+    // Line 23: The same for the days on line 19.
+    common.v1.Money penalty_next_year = 19;
+  }
+
+  // Period is one column of Part 3: the period from January 1 to March 31,
+  // May 31, August 31 or December 31.
+  message Period {
+    // The column: 1 through 4.
+    int32 period = 1;
+
+    // Line 1: Taxable 5.0% income for the period, including long-term
+    // capital gain income taxed at 5.0%.
+    common.v1.Money income_5_percent = 2;
+
+    // Line 3: Line 1 multiplied by the line 2 annualization amount.
+    common.v1.Money annualized_income_5_percent = 3;
+
+    // Line 4: Tax on line 3, at 5.0%.
+    common.v1.Money tax_5_percent = 4;
+
+    // Line 5: Taxable 8.5% income for the period.
+    common.v1.Money income_8_5_percent = 5;
+
+    // Line 7: Line 5 multiplied by the line 6 annualization amount.
+    common.v1.Money annualized_income_8_5_percent = 6;
+
+    // Line 8: Tax on line 7, at 8.5%.
+    common.v1.Money tax_8_5_percent = 7;
+
+    // Line 9: Taxable 12% income for the period.
+    common.v1.Money income_12_percent = 8;
+
+    // Line 11: Line 9 multiplied by the line 10 annualization amount.
+    common.v1.Money annualized_income_12_percent = 9;
+
+    // Line 12: Tax on line 11, at 12%.
+    common.v1.Money tax_12_percent = 10;
+
+    // Line 13: Total taxable income for the period. Lines 1, 5 and 9 added.
+    common.v1.Money total_taxable_income = 11;
+
+    // Line 14: Total tax on income for the period. Lines 4, 8 and 12 added.
+    common.v1.Money total_tax_on_income = 12;
+
+    // Line 16: Line 13 minus the line 15 surtax threshold, not less than
+    // zero.
+    common.v1.Money income_over_surtax_threshold = 13;
+
+    // Line 18: Line 16 multiplied by the line 17 annualization amount.
+    common.v1.Money annualized_income_over_surtax_threshold = 14;
+
+    // Line 19: 4% surtax on line 18.
+    common.v1.Money surtax = 15;
+
+    // Line 20: Total tax. Lines 14 and 19 added.
+    common.v1.Money total_tax = 16;
+
+    // Line 21: Total credits for the period.
+    common.v1.Money credits = 17;
+
+    // Line 22: Total tax after credits. Line 20 minus line 21.
+    common.v1.Money tax_after_credits = 18;
+
+    // Line 24: Line 22 multiplied by the line 23 applicable percentage.
+    common.v1.Money applicable_tax = 19;
+
+    // Line 25: Line 31 of all preceding periods added.
+    common.v1.Money prior_installments = 20;
+
+    // Line 26: Line 24 minus line 25, not less than zero.
+    common.v1.Money annualized_installment = 21;
+
+    // Line 27: Line 6 of the form divided by 4.
+    common.v1.Money regular_installment = 22;
+
+    // Line 28: Line 30 of the preceding column.
+    common.v1.Money prior_regular_installment_excess = 23;
+
+    // Line 29: Lines 27 and 28 added.
+    common.v1.Money available_regular_installment = 24;
+
+    // Line 30: Line 29 minus line 26 when line 29 is more, otherwise zero.
+    common.v1.Money regular_installment_excess = 25;
+
+    // Line 31: The smaller of line 26 or line 29. Carries to line 8.
+    common.v1.Money required_installment = 26;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) as shown on page 1 of the return.
+  string filer_name = 2;
+
+  // Social Security or Federal Identification number.
+  string filer_tin = 3;
+
+  // The annualized income installment method's oval, filled when Part 3
+  // reduces or eliminates the penalty.
+  bool uses_annualized_income_method = 4;
+
+  // -- Part 1: Figuring your underpayment -----------------------------------
+
+  // Line 1: Tax for the year.
+  common.v1.Money total_tax = 5;
+
+  // Line 2: Total credits.
+  common.v1.Money credits = 6;
+
+  // Line 3: Balance. Line 1 minus line 2, not less than zero.
+  common.v1.Money tax_after_credits = 7;
+
+  // Line 4: 80% of line 3, or 66.67% for a qualified farmer or fisherman.
+  common.v1.Money current_year_safe_harbor_tax = 8;
+
+  // Line 5: The prior year's tax liability after credits, for a return of a
+  // full 12 months; zero for a full-year resident not liable for tax; not
+  // completed with no such return.
+  common.v1.Money prior_year_tax = 9;
+
+  // Line 6: The smaller of line 4 or line 5, or line 4 when line 5 is not
+  // completed.
+  common.v1.Money required_annual_payment = 10;
+
+  // Lines 7 to 23: one entry per installment, columns a to d.
+  repeated Installment installments = 11;
+
+  // -- Part 2: Figuring your underpayment penalty ---------------------------
+
+  // Line 24: Penalty. Lines 20 to 23 of every column added.
+  common.v1.Money penalty = 12;
+
+  // -- Part 3: Annualized income installment method -------------------------
+
+  // Lines 1 to 31: one entry per period.
+  repeated Period periods = 13;
+}

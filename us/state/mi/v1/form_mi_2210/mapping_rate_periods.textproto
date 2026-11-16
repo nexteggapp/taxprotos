@@ -1,0 +1,31 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for one of MI-2210 lines 19, 20 and 21, whose
+# parts are lettered a to c.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the Michigan Department of Treasury publishes. The coverage test
+# checks every line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+#
+# Line a is the computation starting date, a date, and the rate and daily
+# factor are printed on the form and not stored.
+
+form: "MI-2210"
+message_name: "nexteggapp.taxprotos.us.state.mi.v1.FormMi2210.RatePeriod"
+tax_years: 2025
+
+concepts {
+  concept: "days"
+  years { tax_year: 2025 irs_box: "b." }
+}
+
+concepts {
+  concept: "interest"
+  years { tax_year: 2025 irs_box: "c." }
+}

@@ -1,0 +1,179 @@
+// Form R-210R, Underpayment of Individual Income Tax Penalty Computation,
+// Resident Filers.
+//
+// Attached to Form IT-540 to figure the penalty for underpaying Louisiana
+// estimated tax: the required annual payment (Section 1), each period's
+// underpayment with payments carried forward (Section 2), the exceptions that
+// excuse a period (Section 3), and the penalty at a printed daily rate
+// (Section 4). A nonresident or part-year resident files Form R-210NR,
+// which is not modelled here.
+//
+// Line numbers are in mapping.textproto and mapping_period.textproto beside
+// this file, keyed by tax year, per docs/form-schemas.md. Verified against
+// the 2025 form (R-210R (1/26)); testdata holds the text extracted from the
+// published PDF and coverage_test.go asserts every line a mapping claims
+// appears on it. The worksheets for lines 1, 2 and 10 and for Exceptions 2
+// to 5 are in the instructions, R-210R-i, and are not stored; the daily
+// penalty rate is preprinted there and not stored either.
+//
+// # Not Form 2210
+//
+// Each exception excuses a period on its own: once a period meets one, it has
+// no underpayment (lines 11 to 14). Line 9 carries an overpayment or an
+// underpayment, signed, to the next column (line 7). The penalty is a fixed
+// 12% a year, charged as 0.0329% a day (line 18).
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.la.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/la/v1/form_r_210r;formr210r";
+
+// FormR210r holds the required annual payment (Section 1), the
+// underpayment computation (Section 2), the exceptions (Section 3) and the
+// penalty computation (Section 4).
+message FormR210r {
+  // Period is one column of Sections 2 to 4: one installment due date, from
+  // April 15 to January 15 of the next year.
+  message Period {
+    // PenaltyCharge is one computation of lines 16 to 18 for the part of the
+    // underpayment one payment satisfied, from the due date to the day it was
+    // paid, or to the day the penalty stops.
+    message PenaltyCharge {
+      // The installment's due date the days are counted from.
+      common.v1.Date from = 1;
+
+      // The day the payment satisfied this part, or the day the penalty
+      // stops, whichever is earlier.
+      common.v1.Date to = 2;
+
+      // Line 17: Number of days from the due date to the date on to.
+      int32 days = 3;
+
+      // The part of line 15 this computation charges.
+      common.v1.Money underpayment = 4;
+
+      // Line 18: The part multiplied by the days and the daily rate.
+      common.v1.Money penalty = 5;
+    }
+
+    // The column: 1 through 4.
+    int32 period = 1;
+
+    // The installment's due date, printed at the top of the column.
+    common.v1.Date due_date = 2;
+
+    // Line 5: Required payment. Line 3 divided by line 4, rounded to the
+    // nearest dollar, in the columns for the payments required.
+    common.v1.Money required_payment = 3;
+
+    // Line 6: Amount paid for each period: estimated tax, withholding and
+    // credit carry forward, with an extension payment made on or before
+    // January 15 in the last period.
+    common.v1.Money amount_paid = 4;
+
+    // Line 7: Carryforward. Line 9 of the previous column, positive for an
+    // overpayment and negative for an underpayment. None in the first
+    // column.
+    common.v1.Money carryforward = 5;
+
+    // Line 8: Amount available for period. Lines 6 and 7 added.
+    common.v1.Money amount_available = 6;
+
+    // Line 9: Underpayment or overpayment. Line 8 minus line 5: positive for
+    // an overpayment, negative for an underpayment.
+    common.v1.Money overpayment_or_underpayment = 7;
+
+    // Line 11: "Exception" entered because the period meets Exception 2,
+    // prior year's tax liability.
+    bool prior_year_tax_exception = 8;
+
+    // Line 12: "Exception" entered because the period meets Exception 3,
+    // prior year's income.
+    bool prior_year_income_exception = 9;
+
+    // Line 13: "Exception" entered because the period meets Exception 4,
+    // annualized income. The form prints no exception available in the last
+    // column.
+    bool annualized_income_exception = 10;
+
+    // Line 14: "Exception" entered because the period meets Exception 5,
+    // installment period income.
+    bool installment_period_income_exception = 11;
+
+    // Line 15: Amount of underpayment, from line 9, for a period that met
+    // none of the exceptions.
+    common.v1.Money underpayment = 12;
+
+    // Line 16: Date of payment: the date the payment that satisfied the
+    // underpayment was made, which may be the date the return was filed.
+    // Where it was satisfied in parts, the last of them.
+    common.v1.Date payment_date = 13;
+
+    // Line 17: Number of days from the installment's due date to line 16,
+    // or to the day the penalty stops, whichever is earlier.
+    int32 days_late = 14;
+
+    // Line 18: Penalty. The underpayment multiplied by the days and the
+    // daily rate; the charges added.
+    common.v1.Money penalty = 15;
+
+    // Lines 16 to 18, one computation for each part of the underpayment a
+    // payment satisfied.
+    repeated PenaltyCharge charges = 16;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Your name as shown in the order on the tax return.
+  string filer_name = 2;
+
+  // Your Social Security Number.
+  string filer_ssn = 3;
+
+  // Spouse's name as shown in the order on the tax return.
+  string spouse_name = 4;
+
+  // Spouse's Social Security Number.
+  string spouse_ssn = 5;
+
+  // -- Section 1: Required Annual Payment Computation -----------------------
+
+  // Line 1: Tax liability for the year: the year's share, by the
+  // instructions' worksheet, of the Louisiana income tax less nonrefundable
+  // and refundable credits.
+  common.v1.Money current_year_tax_liability = 6;
+
+  // Line 2: The prior year's tax liability: its Louisiana income tax less
+  // nonrefundable and refundable credits.
+  common.v1.Money prior_year_tax_liability = 7;
+
+  // Line 3: The smaller of line 1 or line 2, or line 1 when no return was
+  // filed for the prior year or it was filed as a part-year resident.
+  common.v1.Money required_annual_payment = 8;
+
+  // Line 4: Number of payments required for the year, by when the
+  // requirement was first met.
+  int32 payments_required = 9;
+
+  // -- Sections 2 to 4: one column per installment --------------------------
+
+  // Lines 5 to 9 and 11 to 18: one entry per installment due date.
+  repeated Period periods = 10;
+
+  // -- Section 3: Exceptions ------------------------------------------------
+
+  // Line 10: Exception 1 is met: the year's tax less credits and payments is
+  // no more than the threshold for the filing status, so no penalty is owed
+  // and the form need not be filed.
+  bool below_threshold_exception = 11;
+
+  // -- Section 4: Penalty Computation ---------------------------------------
+
+  // Line 19: Underpayment penalty. Line 18 of every column added. Carries to
+  // Form IT-540 line 33 or line 46.
+  common.v1.Money underpayment_penalty = 12;
+}

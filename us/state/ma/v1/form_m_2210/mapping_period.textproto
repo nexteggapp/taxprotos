@@ -1,0 +1,143 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for one column of Form M-2210 Part 3, the
+# annualized income installment method.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the Massachusetts Department of Revenue publishes. The coverage
+# test checks every line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a state form is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+
+form: "M-2210"
+message_name: "nexteggapp.taxprotos.us.state.ma.v1.FormM2210.Period"
+tax_years: 2025
+
+concepts {
+  concept: "income_5_percent"
+  years { tax_year: 2025 irs_box: "1" }
+}
+
+concepts {
+  concept: "annualized_income_5_percent"
+  years { tax_year: 2025 irs_box: "3" }
+}
+
+concepts {
+  concept: "tax_5_percent"
+  years { tax_year: 2025 irs_box: "4" }
+}
+
+concepts {
+  concept: "income_8_5_percent"
+  years { tax_year: 2025 irs_box: "5" }
+}
+
+concepts {
+  concept: "annualized_income_8_5_percent"
+  years { tax_year: 2025 irs_box: "7" }
+}
+
+concepts {
+  concept: "tax_8_5_percent"
+  years { tax_year: 2025 irs_box: "8" }
+}
+
+concepts {
+  concept: "income_12_percent"
+  years { tax_year: 2025 irs_box: "9" }
+}
+
+concepts {
+  concept: "annualized_income_12_percent"
+  years { tax_year: 2025 irs_box: "11" }
+}
+
+concepts {
+  concept: "tax_12_percent"
+  years { tax_year: 2025 irs_box: "12" }
+}
+
+concepts {
+  concept: "total_taxable_income"
+  years { tax_year: 2025 irs_box: "13" }
+}
+
+concepts {
+  concept: "total_tax_on_income"
+  years { tax_year: 2025 irs_box: "14" }
+}
+
+concepts {
+  concept: "income_over_surtax_threshold"
+  years { tax_year: 2025 irs_box: "16" }
+}
+
+concepts {
+  concept: "annualized_income_over_surtax_threshold"
+  years { tax_year: 2025 irs_box: "18" }
+}
+
+concepts {
+  concept: "surtax"
+  years { tax_year: 2025 irs_box: "19" }
+}
+
+concepts {
+  concept: "total_tax"
+  years { tax_year: 2025 irs_box: "20" }
+}
+
+concepts {
+  concept: "credits"
+  years { tax_year: 2025 irs_box: "21" }
+}
+
+concepts {
+  concept: "tax_after_credits"
+  years { tax_year: 2025 irs_box: "22" }
+}
+
+concepts {
+  concept: "applicable_tax"
+  years { tax_year: 2025 irs_box: "24" }
+}
+
+concepts {
+  concept: "prior_installments"
+  years { tax_year: 2025 irs_box: "25" }
+}
+
+concepts {
+  concept: "annualized_installment"
+  years { tax_year: 2025 irs_box: "26" }
+}
+
+concepts {
+  concept: "regular_installment"
+  years { tax_year: 2025 irs_box: "27" }
+}
+
+concepts {
+  concept: "prior_regular_installment_excess"
+  years { tax_year: 2025 irs_box: "28" }
+}
+
+concepts {
+  concept: "available_regular_installment"
+  years { tax_year: 2025 irs_box: "29" }
+}
+
+concepts {
+  concept: "regular_installment_excess"
+  years { tax_year: 2025 irs_box: "30" }
+}
+
+concepts {
+  concept: "required_installment"
+  years { tax_year: 2025 irs_box: "31" }
+}

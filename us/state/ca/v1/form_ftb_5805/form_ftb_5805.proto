@@ -1,0 +1,358 @@
+// Form FTB 5805, Underpayment of Estimated Tax by Individuals and
+// Fiduciaries.
+//
+// Attached to Form 540, Form 540NR or Form 541 to figure whether a penalty is
+// owed for underpaying California estimated tax and, if so, how much. The
+// printed form has four parts: the questions (Part I), the required annual
+// payment and the short method (Part II), and the annualized income
+// installment method schedule (Part III). The instructions add two worksheets
+// the form sends the filer to: Worksheet I, which prorates a Form 540NR
+// filer's annualized tax to California, and Worksheet II, the regular method,
+// which figures each installment's underpayment and the penalty on it.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 form; testdata holds the
+// text extracted from the published PDF and coverage_test.go asserts every
+// line a mapping claims appears on it.
+//
+// # Not Form 2210
+//
+// California's installments are 30%, 40%, nothing and 30% of the required
+// annual payment, and withholding counts as paid in the same shares on the
+// due dates (Worksheet II, line 2). The annualized method's applicable
+// percentages are 27%, 63%, 63% and 90% (Part III, line 15). The preprinted
+// annualization amounts and percentages are not stored.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.ca.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/quantity.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/ca/v1/form_ftb_5805;formftb5805";
+
+// FormFtb5805 holds the questions (Part I), the required annual payment and
+// the short method (Part II), the annualized income installment method
+// (Part III), and the instructions' Worksheet I and Worksheet II.
+message FormFtb5805 {
+  // AnnualizationPeriod is one column of Part III: one period of the year,
+  // (a) January 1 to March 31 through (d) January 1 to December 31.
+  message AnnualizationPeriod {
+    // The column: 1 through 4 for (a) through (d).
+    int32 period = 1;
+
+    // Part III line 1: California AGI for the period. A Form 540NR filer
+    // enters total AGI from all sources.
+    common.v1.Money adjusted_gross_income = 2;
+
+    // Part III line 3: Annualized income. Line 1 multiplied by the
+    // annualization amount on line 2.
+    common.v1.Money annualized_income = 3;
+
+    // Part III line 4: Itemized deductions for the period, or zero for a
+    // filer who does not itemize.
+    common.v1.Money itemized_deductions = 4;
+
+    // Part III line 6: Annualized itemized deductions. Line 4 multiplied by
+    // the annualization amount on line 5, as limited at high income.
+    common.v1.Money annualized_itemized_deductions = 5;
+
+    // Part III line 7: The standard deduction from Form 540 or Form 540NR
+    // line 18, in full.
+    common.v1.Money standard_deduction = 6;
+
+    // Part III line 8: The larger of line 6 or line 7.
+    common.v1.Money deduction = 7;
+
+    // Part III line 9: Line 3 minus line 8.
+    common.v1.Money annualized_taxable_income = 8;
+
+    // Part III line 10: Tax on line 9, including any tax from form FTB 3803.
+    common.v1.Money tax = 9;
+
+    // Part III line 11: Exemption credits.
+    common.v1.Money exemption_credits = 10;
+
+    // Part III line 12: Line 10 minus line 11. A Form 540NR filer enters
+    // Worksheet I line P.
+    common.v1.Money tax_after_exemption_credits = 11;
+
+    // Part III line 13: Credits for events in the period. A Form 540NR filer
+    // refigures Form 540NR lines 51 to 62, prorating lines 51 to 53 by
+    // Worksheet I line N.
+    common.v1.Money credits = 12;
+
+    // Part III line 14a: Line 12 minus line 13, not less than zero.
+    common.v1.Money tax_after_credits = 13;
+
+    // Part III line 14b: Alternative minimum tax and behavioral health
+    // services tax for the period.
+    common.v1.Money other_taxes = 14;
+
+    // Part III line 14c: Lines 14a and 14b added.
+    common.v1.Money total_tax = 15;
+
+    // Part III line 16: Line 14c multiplied by the applicable percentage on
+    // line 15.
+    common.v1.Money applicable_tax = 16;
+
+    // Part III line 17: Line 23 of all preceding columns added.
+    common.v1.Money prior_installments = 17;
+
+    // Part III line 18: Line 16 minus line 17, not less than zero.
+    common.v1.Money annualized_installment = 18;
+
+    // Part III line 19: 30% of Part II line 6 in columns (a) and (d), 40% in
+    // column (b), and zero in column (c).
+    common.v1.Money regular_installment = 19;
+
+    // Part III line 20: Line 22 of the preceding column.
+    common.v1.Money prior_regular_installment_excess = 20;
+
+    // Part III line 21: Lines 19 and 20 added.
+    common.v1.Money available_regular_installment = 21;
+
+    // Part III line 22: Line 21 minus line 18, not less than zero.
+    common.v1.Money regular_installment_excess = 22;
+
+    // Part III line 23: The smaller of line 18 or line 21. Carries to
+    // Worksheet II line 1.
+    common.v1.Money required_installment = 23;
+  }
+
+  // ProratedTaxPeriod is one column of Worksheet I, Prorated Tax for Form
+  // 540NR Filers: one period of Part III, prorating its annualized tax to
+  // California. The annualization amounts on line E are not stored.
+  message ProratedTaxPeriod {
+    // The column: 1 through 4, as Part III's (a) through (d).
+    int32 period = 1;
+
+    // Line A: Tax on annualized total taxable income, from Part III line 10.
+    common.v1.Money tax_on_total_taxable_income = 2;
+
+    // Line B: Annualized total taxable income, from Part III line 9.
+    common.v1.Money total_taxable_income = 3;
+
+    // Line C: Annualized California tax rate. Line A divided by line B. The
+    // instructions name no number of decimal places.
+    common.v1.Quantity california_tax_rate = 4;
+
+    // Line D: California AGI for the period, from Schedule CA (540NR) Part IV
+    // line 1.
+    common.v1.Money california_adjusted_gross_income = 5;
+
+    // Line F: Annualized California AGI. Line D multiplied by the
+    // annualization amount on line E.
+    common.v1.Money annualized_california_adjusted_gross_income = 6;
+
+    // Line G: Annualized total AGI, from Part III line 3.
+    common.v1.Money annualized_total_adjusted_gross_income = 7;
+
+    // Line H: Annualized itemized or standard deduction rate. Line F divided
+    // by line G, not more than 1.0000.
+    common.v1.Quantity deduction_rate = 8;
+
+    // Line I: The deduction from Part III line 8.
+    common.v1.Money deduction = 9;
+
+    // Line J: Prorated standard deduction or annualized itemized deductions.
+    // Line I multiplied by line H.
+    common.v1.Money prorated_deduction = 10;
+
+    // Line K: Annualized California taxable income. Line F minus line J.
+    common.v1.Money annualized_california_taxable_income = 11;
+
+    // Line L: Annualized California prorated tax before exemption credits.
+    // Line K multiplied by line C.
+    common.v1.Money prorated_tax = 12;
+
+    // Line M: Exemption credits, from Part III line 11.
+    common.v1.Money exemption_credits = 13;
+
+    // Line N: Annualized credit rate. Line K divided by line B.
+    common.v1.Quantity credit_rate = 14;
+
+    // Line O: Annualized prorated exemption credits. Line M multiplied by
+    // line N.
+    common.v1.Money prorated_exemption_credits = 15;
+
+    // Line P: Annualized California tax after exemption credits. Line L minus
+    // line O. Carries to Part III line 12.
+    common.v1.Money tax_after_exemption_credits = 16;
+  }
+
+  // PaymentPeriod is one column of Worksheet II, Regular Method to Figure
+  // Your Underpayment and Penalty: one payment due date, (a) April 15
+  // through (d) January 15.
+  message PaymentPeriod {
+    // UnderpaymentCharge is one computation of Part II, lines 10 and 11 or
+    // lines 12 and 13: the penalty on line 8, or on the part of it one
+    // payment paid, for the days it stayed unpaid within one rate period.
+    // Where later payments paid line 8 in parts, each part is charged from
+    // the due date to the day it was paid, which comes to what the
+    // instructions' additional computations for subsequent payments give.
+    message UnderpaymentCharge {
+      // The day before the first day counted: the due date for the first
+      // rate period, or the last day of the rate period before.
+      common.v1.Date from = 1;
+
+      // The last day counted: the day the amount was paid, the end of the
+      // rate period, or the day the penalty stops, whichever is earliest.
+      common.v1.Date to = 2;
+
+      // Line 10 or line 12: Number of days after from, up to and including
+      // to.
+      int32 days = 3;
+
+      // The amount charged: line 8, or the part of it one payment paid.
+      common.v1.Money underpayment = 4;
+
+      // Line 11 or line 13: The amount charged multiplied by the days over
+      // the days in the year, multiplied by the period's rate.
+      common.v1.Money penalty = 5;
+    }
+
+    // The column: 1 through 4 for (a) through (d).
+    int32 period = 1;
+
+    // Part I line 1: Required installment. 30% of FTB 5805 Part II line 6 in
+    // columns (a) and (d), 40% in column (b) and zero in column (c), or Part
+    // III line 23 under the annualized method.
+    common.v1.Money required_installment = 2;
+
+    // Part I line 2: Estimated tax paid and tax withheld by the due date.
+    // Withholding counts 30%, 40%, zero and 30% unless the actual dates are
+    // shown under Part I, Question 3.
+    common.v1.Money estimated_tax_paid_and_withheld = 3;
+
+    // Part I line 3: Line 9 of the previous column.
+    common.v1.Money prior_period_overpayment = 4;
+
+    // Part I line 4: Lines 2 and 3 added.
+    common.v1.Money payments_with_prior_overpayment = 5;
+
+    // Part I line 5: Lines 7 and 8 of the previous column added.
+    common.v1.Money prior_period_shortfall = 6;
+
+    // Part I line 6: Line 4 minus line 5, not less than zero. Column (a)
+    // holds line 2.
+    common.v1.Money net_timely_payments = 7;
+
+    // Part I line 7: Line 5 minus line 4 when line 6 is zero, otherwise zero.
+    common.v1.Money shortfall_carried_forward = 8;
+
+    // Part I line 8: Underpayment. Line 1 minus line 6 when line 1 is at least
+    // line 6.
+    common.v1.Money underpayment = 9;
+
+    // Part I line 9: Overpayment. Line 6 minus line 1 when line 6 is more.
+    common.v1.Money overpayment = 10;
+
+    // Part II lines 10 to 13: The penalty on line 8, one computation for each
+    // rate period it ran into and each part of it a payment paid.
+    repeated UnderpaymentCharge charges = 11;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name(s) as shown on the return.
+  string filer_name = 2;
+
+  // SSN, ITIN, or FEIN.
+  string filer_tin = 3;
+
+  // -- Part I: Questions ---------------------------------------------------
+
+  // Question 1: Requests a waiver of the penalty.
+  bool requests_waiver = 4;
+
+  // Question 1: The explanation given for the waiver.
+  string waiver_explanation = 5;
+
+  // Question 2: Used the annualized income installment method (Part III).
+  bool uses_annualized_income_method = 6;
+
+  // Question 3: California withholding was not withheld in equal
+  // installments, and the actual amounts and dates withheld can be shown.
+  bool shows_actual_withholding = 7;
+
+  // Question 3: The amounts actually withheld by each due date, April 15,
+  // June 15, September 15 and January 15, when question 3 is answered yes.
+  repeated common.v1.Money actual_withholding = 8;
+
+  // Question 4: For an estate or trust, the date of death was less than two
+  // years from the end of the taxable year.
+  bool within_two_years_of_death = 9;
+
+  // -- Part II: Required Annual Payment ------------------------------------
+
+  // Line 1: Current year tax. The year's tax after credits.
+  common.v1.Money current_year_tax = 10;
+
+  // Line 2: Line 1 multiplied by 90%.
+  common.v1.Money current_year_safe_harbor_tax = 11;
+
+  // Line 3: Withholding taxes, excluding estimated tax payments.
+  common.v1.Money total_tax_withheld = 12;
+
+  // Line 4: Line 1 minus line 3. Under $500 ($250 married/RDP filing
+  // separately) means no penalty is owed.
+  common.v1.Money net_tax_after_withholding = 13;
+
+  // Line 5: The tax shown on the prior year's return, or 110% of it if the
+  // California AGI on that return was over $150,000 ($75,000 married/RDP
+  // filing separately).
+  common.v1.Money prior_year_safe_harbor_tax = 14;
+
+  // Line 6: Required annual payment. The smaller of line 2 or line 5, or
+  // line 2 at California AGI of $1,000,000 or more ($500,000 married/RDP
+  // filing separately).
+  common.v1.Money required_annual_payment = 15;
+
+  // -- Part II: Short Method -----------------------------------------------
+
+  // Line 7: The withholding from line 3.
+  common.v1.Money short_method_withholding = 16;
+
+  // Line 8: The total estimated tax payments made.
+  common.v1.Money short_method_estimated_payments = 17;
+
+  // Line 9: Lines 7 and 8 added.
+  common.v1.Money short_method_total_payments = 18;
+
+  // Line 10: Total underpayment for the year. Line 6 minus line 9. Zero or
+  // less means no penalty is owed.
+  common.v1.Money short_method_underpayment = 19;
+
+  // Line 11: Line 10 multiplied by the factor the form prints.
+  common.v1.Money short_method_charge = 20;
+
+  // Line 12: For an underpayment paid before April 15 of the next year, line
+  // 10 multiplied by the days it was paid early and by the daily factor the
+  // form prints; otherwise zero.
+  common.v1.Money short_method_early_payment_reduction = 21;
+
+  // Line 13: Penalty. Line 11 minus line 12 under the short method, or
+  // Worksheet II line 14 under the regular method. Carries to Form 540 line
+  // 113, Form 540NR line 123, or Form 541 line 45.
+  common.v1.Money estimated_tax_penalty = 22;
+
+  // -- Part III: Annualized Income Installment Method Schedule -------------
+
+  // Part III lines 1 through 23: One entry per annualization period.
+  repeated AnnualizationPeriod annualization_periods = 23;
+
+  // -- Worksheet I: Prorated Tax for Form 540NR Filers ---------------------
+
+  // Worksheet I lines A through P: One entry per annualization period, for a
+  // Form 540NR filer using the annualized method.
+  repeated ProratedTaxPeriod prorated_tax_periods = 24;
+
+  // -- Worksheet II: Regular Method to Figure Your Underpayment and Penalty -
+
+  // Worksheet II lines 1 through 13: One entry per payment due date. Line 14,
+  // the penalty, is estimated_tax_penalty.
+  repeated PaymentPeriod payment_periods = 25;
+}

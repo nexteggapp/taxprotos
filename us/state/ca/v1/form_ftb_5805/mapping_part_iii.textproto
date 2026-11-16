@@ -1,0 +1,131 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for one column of FTB 5805 Part
+# III, the annualized income installment method schedule.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the Franchise Tax Board publishes. The coverage test checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+#
+# Lines 2, 5 and 15 print the annualization amounts and the applicable
+# percentages, which the schema does not store.
+
+form: "FTB 5805"
+message_name: "nexteggapp.taxprotos.us.state.ca.v1.FormFtb5805.AnnualizationPeriod"
+tax_years: 2025
+
+concepts {
+  concept: "adjusted_gross_income"
+  years { tax_year: 2025 irs_box: "1" }
+}
+
+concepts {
+  concept: "annualized_income"
+  years { tax_year: 2025 irs_box: "3" }
+}
+
+concepts {
+  concept: "itemized_deductions"
+  years { tax_year: 2025 irs_box: "4" }
+}
+
+concepts {
+  concept: "annualized_itemized_deductions"
+  years { tax_year: 2025 irs_box: "6" }
+}
+
+concepts {
+  concept: "standard_deduction"
+  years { tax_year: 2025 irs_box: "7" }
+}
+
+concepts {
+  concept: "deduction"
+  years { tax_year: 2025 irs_box: "8" }
+}
+
+concepts {
+  concept: "annualized_taxable_income"
+  years { tax_year: 2025 irs_box: "9" }
+}
+
+concepts {
+  concept: "tax"
+  years { tax_year: 2025 irs_box: "10" }
+}
+
+concepts {
+  concept: "exemption_credits"
+  years { tax_year: 2025 irs_box: "11" }
+}
+
+concepts {
+  concept: "tax_after_exemption_credits"
+  years { tax_year: 2025 irs_box: "12" }
+}
+
+concepts {
+  concept: "credits"
+  years { tax_year: 2025 irs_box: "13" }
+}
+
+concepts {
+  concept: "tax_after_credits"
+  years { tax_year: 2025 irs_box: "14a" }
+}
+
+concepts {
+  concept: "other_taxes"
+  years { tax_year: 2025 irs_box: "14b" }
+}
+
+concepts {
+  concept: "total_tax"
+  years { tax_year: 2025 irs_box: "14c" }
+}
+
+concepts {
+  concept: "applicable_tax"
+  years { tax_year: 2025 irs_box: "16" }
+}
+
+concepts {
+  concept: "prior_installments"
+  years { tax_year: 2025 irs_box: "17" }
+}
+
+concepts {
+  concept: "annualized_installment"
+  years { tax_year: 2025 irs_box: "18" }
+}
+
+concepts {
+  concept: "regular_installment"
+  years { tax_year: 2025 irs_box: "19" }
+}
+
+concepts {
+  concept: "prior_regular_installment_excess"
+  years { tax_year: 2025 irs_box: "20" }
+}
+
+concepts {
+  concept: "available_regular_installment"
+  years { tax_year: 2025 irs_box: "21" }
+}
+
+concepts {
+  concept: "regular_installment_excess"
+  years { tax_year: 2025 irs_box: "22" }
+}
+
+concepts {
+  concept: "required_installment"
+  years { tax_year: 2025 irs_box: "23" }
+}

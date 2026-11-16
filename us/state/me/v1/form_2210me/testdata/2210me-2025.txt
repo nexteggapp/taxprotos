@@ -1,0 +1,79 @@
+        Clear                                                                                                                                                                                   Print
+       Form 2210ME                                                 Underpayment of Estimated Tax
+
+             2025                                                  by Individuals, Estates, or Trusts
+                                                                  Enclose with your Form 1040ME or Form 1041ME.
+                                                                                          (See instructions on back.)
+Attachment Sequence No.12
+
+For calendar year 2025 or fiscal year beginning ___________________________ , 2025 and ending _____________________________ , _________
+Name(s) as shown on Form 1040ME or 1041ME                                                                                                                 Your SSN or EIN (do not enter / or -)
+
+
+
+Part I — Calculating Your Underpayment
+1.     2025 tax. (Form 1040ME - line 24 minus lines 25c, 25d, and 25e or Form 1041ME - line 6 minus any refundable                                                                                    _
+       tax credit included on Form 1041ME, line 7c.)................................................................................................................................ 1._______________
+
+
+2.     Multiply tax on line 1 by 90% (66 2/3% for farmers and persons who fish commercially)............................................................... 2._______________
+
+
+3.     2025 Maine Income Tax Withheld. (Form 1040ME, line 25a, or Form 1041ME, line 7a.) .............................................................. 3._______________
+
+
+4.     Subtract line 3 from line 1. If the result is less than $1,000, do not complete or file this form......................................................... 4._______________
+
+
+5.     2024 tax. (2024 Form 1040ME, line 24 minus lines 25c, 25d, and 25e or 2024 Form 1041ME, line 6 minus any refundable tax credit
+       included on Form 1041ME, line 7c.) If short year, enter the amount from line 2. If less than $1,000, do not complete or file this form.... 5._______________
+
+
+6.     Enter line 2 or line 5, whichever is less........................................................................................................................................... 6._______________
+
+
+7.     Multiply the amount on line 6 by .25 (to compute the amount for line 9). Enter result here............................................................ 7._______________
+                                                                                                                                A               B                     C                       D
+                                                                                                                         April 15, 2025   June 16, 2025         Sept. 15, 2025          Jan. 15, 2026
+8.     Due dates for estimated tax payments...................................................... 8.
+
+9.     Estimated tax due. Enter amount from line 7 above or line 25 of
+       annualized worksheet under each payment due date................................ 9.
+10. Less tax payments.
+    a. Tax withheld. Enter 25% (0.25) of line 3 in each column.................... 10a.
+
+
+       b. Estimated tax paid by due date on line 8...........................................10b.
+
+  c. Amount carried forward (overpaid) from line 11b, previous column.
+		 For column A, enter credit carried forward from previous tax year....... 10c.
+
+
+       d. Total. Add lines 10a, 10b, and 10c.....................................................10d.
+
+
+11. Subtract line 10d from line 9 (may be a negative amount)....................... 11.
+
+
+       a. If line 9 is larger than line 10d, enter the underpayment here.......... 11a.
+
+
+       b. If line 10d is larger than line 9, enter overpayment here................... 11b.
+
+Part II — Calculating the Penalty — For Quarters with entries on line 11a
+
+12. For each column, enter the date the amount on line 11a was paid or
+    the 15th day of the fourth month after close of taxable year, whichever
+    is earlier.................................................................................................... 12.
+13. Number of months from due date of installment (line 8) to date shown
+    on line 12. A part of a month is considered a whole month...................... 13.
+
+14. Enter the rate from the table on next page............................................... 14.
+
+15. Underpayment Penalty — Multiply underpayment on line 11a by the
+    rate on line 14........................................................................................... 15.
+
+16. Total of amounts shown on line 15. Enter result here and on Form 1040ME, line 32 or Form 1041ME, line 10b........................ 16._______________
+    (If zero, do not file this form. However, if you used the annualized income installment method, you must file this form even if the penalty amount is zero.)
+
+17. Check here and on Form 1040ME, line 32 or Form 1041ME, line 10b, if you use the annualized income installment method...................... 17.
