@@ -155,6 +155,7 @@ import "taxprotos/us/state/or/v1/form_or40/schedule_or_a.proto";
 import "taxprotos/us/state/or/v1/form_or40/schedule_or_asc.proto";
 import "taxprotos/us/state/ut/v1/form_tc40/form_tc40.proto";
 import "taxprotos/us/state/wa/v1/capital_gains/capital_gains_return.proto";
+import "taxprotos/us/state/wa/v1/capital_gains_payment/capital_gains_payment.proto";
 import "taxprotos/us/state/va/v1/form_760/form_760.proto";
 import "taxprotos/us/state/sc/v1/form_sc1040/form_sc1040.proto";
 import "taxprotos/us/state/wv/v1/form_it140/form_it140.proto";
@@ -998,6 +999,10 @@ message UtahReturn {
 message WashingtonReturn {
   // The capital gains excise tax return.
   us.state.wa.v1.CapitalGainsReturn capital_gains = 1;
+
+  // The payment of the capital gains tax, with its late payment penalty and
+  // interest.
+  us.state.wa.v1.CapitalGainsPayment capital_gains_payment = 2;
 }
 
 // A Kentucky resident return: Form 740.

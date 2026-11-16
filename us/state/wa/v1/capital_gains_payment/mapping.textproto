@@ -1,0 +1,70 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What the statute calls each concept of the capital gains tax payment.
+#
+# Washington prints no form for its capital gains tax payment: the return is
+# filed electronically (RCW 82.87.110(1)(b)) and there are no line numbers.
+# As in capital_gains/mapping.textproto, irs_box is empty and the note cites
+# the statute that sets each concept. coverage_test.go checks every cited
+# section is in the extracts in testdata/.
+
+form: "Washington capital gains tax payment"
+message_name: "nexteggapp.taxprotos.us.state.wa.v1.CapitalGainsPayment"
+tax_years: 2026
+
+concepts {
+  concept: "tax"
+  years { tax_year: 2026 note: "RCW 82.87.040. The capital gains tax for the year." }
+}
+concepts {
+  concept: "due_date"
+  years { tax_year: 2026 note: "RCW 82.87.110(1)(a) and (3): the federal return's due date, whatever extension is granted, moved under RCW 1.12.070(3)." }
+}
+concepts {
+  concept: "first_payment_date"
+  years { tax_year: 2026 note: "RCW 82.87.115(1): six months before the due date." }
+}
+concepts {
+  concept: "paid_by_due_date"
+  years { tax_year: 2026 note: "RCW 82.87.110(3): the tax paid on or before the date fixed for filing the return." }
+}
+concepts {
+  concept: "unpaid_at_due_date"
+  years { tax_year: 2026 note: "RCW 82.87.110(3): the deficiency to which the interest and penalties of chapter 82.32 RCW apply." }
+}
+concepts {
+  concept: "extension"
+  years { tax_year: 2026 note: "RCW 82.87.110(5): the federal extension confirmed with the department." }
+}
+concepts {
+  concept: "low_estimate"
+  years { tax_year: 2026 note: "RCW 82.32.090(10): an estimated payment under 80% of the tax, at least $1,000 short." }
+}
+concepts {
+  concept: "low_estimate_penalty"
+  years { tax_year: 2026 note: "RCW 82.32.090(10): five percent of the amount of the actual tax due." }
+}
+concepts {
+  concept: "late_payment_steps"
+  years { tax_year: 2026 note: "RCW 82.32.090(1): nine percent, a total of 19 percent and a total of 29 percent." }
+}
+concepts {
+  concept: "late_payment_penalty"
+  years { tax_year: 2026 note: "RCW 82.32.090(1): the steps added, not less than $5." }
+}
+concepts {
+  concept: "interest_from"
+  years { tax_year: 2026 note: "RCW 82.32.050(1)(c)(ii): interest on capital gains tax from the last day of April after the due date." }
+}
+concepts {
+  concept: "interest_periods"
+  years { tax_year: 2026 note: "RCW 82.32.050(2): the rate for each calendar year." }
+}
+concepts {
+  concept: "interest"
+  years { tax_year: 2026 note: "RCW 82.32.050(1)(c)(ii) and (2): the periods' interest added." }
+}
+concepts {
+  concept: "total_penalty_and_interest"
+  years { tax_year: 2026 note: "RCW 82.32.090(1) and (10), and RCW 82.32.050: the penalties and interest added." }
+}
