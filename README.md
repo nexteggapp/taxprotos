@@ -201,6 +201,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | Form | Schema | Reports |
 |---|---|---|
 | [140](https://azdor.gov/sites/default/files/document/FORMS_INDIVIDUAL_2025_140_f.pdf) | [`form_140.proto`](us/state/az/v1/form_140/form_140.proto) | The Arizona resident return |
+| [221](https://azdor.gov/sites/default/files/document/FORMS_INDIVIDUAL_2025_221_f.pdf) | [`form_221.proto`](us/state/az/v1/form_221/form_221.proto) | Arizona underpayment of estimated tax by individuals |
 | [40](https://tax.idaho.gov/wp-content/uploads/forms/EFO00089/EFO00089_03-02-2026.pdf) | [`form_40.proto`](us/state/id/v1/form_40/form_40.proto) | The Idaho resident return |
 | [AR1000F](https://www.dfa.arkansas.gov/wp-content/uploads/2025_AR1000F_FullYearResidentIndividualIncomeTaxReturn.pdf) | [`form_ar1000f.proto`](us/state/ar/v1/form_ar1000f/form_ar1000f.proto) | The Arkansas full-year resident return |
 | [IT-140](https://tax.wv.gov/Documents/PIT/2025/it140.PersonalIncomeTaxFormsAndInstructions.2025.pdf) | [`form_it140.proto`](us/state/wv/v1/form_it140/form_it140.proto) | The West Virginia resident return |
