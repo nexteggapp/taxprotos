@@ -1,0 +1,29 @@
+# gazelle:ignore
+
+load("@protobuf//bazel:proto_library.bzl", "proto_library")
+
+# Form D-2210: the underpayment of estimated income tax form a District of
+# Columbia filer attaches to Form D-40.
+proto_library(
+    name = "form_d_2210_proto",
+    # Imported as taxprotos/..., so consumers import these files by that path.
+    import_prefix = "taxprotos",
+    srcs = [
+        "form_d_2210.proto",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//common/v1:common_proto",
+    ],
+)
+
+# The mappings and the form extract they are checked against, for
+# //go/us/state/dc/v1/form_d_2210.
+filegroup(
+    name = "test_oracles",
+    srcs = glob([
+        "mapping*.textproto",
+        "testdata/**",
+    ]),
+    visibility = ["//go/us/state/dc/v1/form_d_2210:__pkg__"],
+)

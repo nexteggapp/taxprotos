@@ -1,0 +1,40 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for one column of D-2210 lines 7 to 11.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the District of Columbia Office of Tax and
+# Revenue publishes. The coverage test checks every
+# line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live.
+#
+# Line 10 prints the interest factors, which the schema does not store.
+
+form: "D-2210"
+message_name: "nexteggapp.taxprotos.us.state.dc.v1.FormD2210.PaymentPeriod"
+tax_years: 2025
+
+concepts {
+  concept: "required_to_date"
+  years { tax_year: 2025 irs_box: "7" }
+}
+
+concepts {
+  concept: "paid_to_date"
+  years { tax_year: 2025 irs_box: "8" }
+}
+
+concepts {
+  concept: "underpayment"
+  years { tax_year: 2025 irs_box: "9" }
+}
+
+concepts {
+  concept: "interest"
+  years { tax_year: 2025 irs_box: "11" }
+}
