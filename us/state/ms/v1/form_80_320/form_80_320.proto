@@ -1,0 +1,171 @@
+// Form 80-320, Mississippi Individual Income Tax Interest and Penalty
+// Worksheet.
+//
+// A filer of Form 80-105 or 80-205 uses it to figure the interest on
+// underpaying estimated Mississippi tax, column by column (lines 1 to 11),
+// and the first-time home buyer penalty, the late filing penalty and the
+// late payment interest and penalty on the return's balance (lines 12 to
+// 19).
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year.
+// Verified against Form 80-320 (Rev. 09/25); testdata holds the text
+// extracted from the published PDF.
+//
+// # Where it departs from federal Form 2210
+//
+// The required amount is the lesser of 80% of this year's liability and 100%
+// of last year's (lines 2 to 4). All withholding counts in column A, on the
+// April installment, whenever it was withheld (line 6). Each column's
+// underestimate is a running total, an overpayment carrying forward as a
+// negative amount (lines 7 and 8), and it is charged ½% a month until paid
+// or the next due date (line 9; Miss. Code § 27-7-327(e)), not by the day.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.ms.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/ms/v1/form_80_320;form80320";
+
+// Form80320 is what a Form 80-320 states.
+message Form80320 {
+  // PaymentPeriod is one column of lines 5 to 10, A through D: one
+  // installment due date.
+  message PaymentPeriod {
+    // The column: 1 through 4 for A through D.
+    int32 period = 1;
+
+    // The column's due date, as the heading over the columns gives it.
+    common.v1.Date due_date = 2;
+
+    // Line 5: Required installments. A quarter of line 4.
+    common.v1.Money required_installment = 3;
+
+    // Line 6: In column A, the overpayment from the prior year, the
+    // estimated tax paid and all the year's income tax withheld as of the due
+    // date; in columns B to D, the estimated tax paid since the previous due
+    // date, as of this one.
+    common.v1.Money payments = 4;
+
+    // Line 7: The previous column's line 8 carried forward: an overpayment as
+    // a negative amount, an underpayment as a positive one. None in column A.
+    common.v1.Money carryforward = 5;
+
+    // Line 8: Underestimate subject to interest. Line 5 minus line 6 plus
+    // line 7; negative is an overpayment.
+    common.v1.Money underestimate = 6;
+
+    // Line 9: The percentage of interest, ½% for each month from the due date
+    // until paid or the next due date, whichever is earlier, in basis points:
+    // 0.015 is 150. Zero when line 8 is not positive, or when the
+    // underestimate was paid in parts, each with its own percentage in
+    // computations.
+    int32 interest_rate_basis_points = 7;
+
+    // The computation of lines 9 and 10 for each part of line 8 that a
+    // payment reduced before the next due date, and for any part unpaid by
+    // then, each with its own months. One when nothing was paid in between;
+    // none when line 8 is not positive.
+    repeated InterestComputation computations = 8;
+
+    // Line 10: Interest due. Line 8 multiplied by line 9, the computations'
+    // interest added; zero when line 8 is negative.
+    common.v1.Money interest = 9;
+  }
+
+  // InterestComputation is lines 9 and 10 for one part of a column's
+  // underestimate.
+  message InterestComputation {
+    // The part of line 8 charged.
+    common.v1.Money underestimate = 1;
+
+    // The day it was paid, or the next due date, whichever is earlier.
+    common.v1.Date paid_date = 2;
+
+    // The months charged from the due date to paid_date.
+    int32 months = 3;
+
+    // Line 9: ½% for each month, in basis points.
+    int32 interest_rate_basis_points = 4;
+
+    // Line 10: The part multiplied by the percentage.
+    common.v1.Money interest = 5;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // The filer's first name, initial and last name.
+  string taxpayer_name = 2;
+
+  // The filer's Social Security Number.
+  string ssn = 3;
+
+  // The spouse's first name, initial and last name.
+  string spouse_name = 4;
+
+  // The spouse's Social Security Number.
+  string spouse_ssn = 5;
+
+  // The box for farmers or fishermen: gross income from farming or fishing
+  // is at least two-thirds of total gross income, and the estimate was paid
+  // by January 15 or the return filed and the tax paid by March 1
+  // (Exceptions).
+  bool farmers_or_fishermen = 6;
+
+  // The box for filing requirements met after a due date: interest is
+  // figured only in the columns after it (Exceptions).
+  bool filing_requirements_met_after_due_date = 7;
+
+  // Line 1: This year's Mississippi income tax liability, Form 80-105 line
+  // 20 or Form 80-205 line 22. At $200 or less, no interest is due and the
+  // rest of the form is not completed.
+  common.v1.Money liability = 8;
+
+  // Line 2: Line 1 multiplied by 80%.
+  common.v1.Money current_year_safe_harbor_tax = 9;
+
+  // Line 3: Last year's Mississippi income tax liability, Form 80-105 line
+  // 21 or Form 80-205 line 23.
+  common.v1.Money prior_year_liability = 10;
+
+  // Line 4: The lesser of line 2 or line 3; line 2 when line 3 is zero, line
+  // 1 is over $200 and no estimated payments were made for the year.
+  common.v1.Money required_annual_payment = 11;
+
+  // Lines 5 to 10, one entry per column.
+  repeated PaymentPeriod payment_periods = 12;
+
+  // Line 11: Total underestimate interest due. Line 10 of columns A through
+  // D added.
+  common.v1.Money total_interest = 13;
+
+  // Line 12: The first-time home buyer penalty, 10% of withdrawals for
+  // unqualified expenses, Form 80-108 Part V Schedule N line 2.
+  common.v1.Money first_time_home_buyer_penalty = 14;
+
+  // Line 13: Balance due, Form 80-105 line 35 or Form 80-205 line 36.
+  common.v1.Money late_filing_balance_due = 15;
+
+  // Line 14: Late filing penalty. 5% a month from October 15 on line 13, not
+  // more than 25% in all, at least $100.
+  common.v1.Money late_filing_penalty = 16;
+
+  // Line 15: Balance due, Form 80-105 line 35 or Form 80-205 line 36.
+  common.v1.Money late_payment_balance_due = 17;
+
+  // Line 16: Late payment interest. ½% a month from April 15 on line 15.
+  common.v1.Money late_payment_interest = 18;
+
+  // Line 17: Late payment penalty. ½% a month from April 15 on line 15, not
+  // more than 25% in all.
+  common.v1.Money late_payment_penalty = 19;
+
+  // Line 18: Lines 16 and 17 added.
+  common.v1.Money total_late_payment_interest_and_penalty = 20;
+
+  // Line 19: Total interest and penalty. Lines 11, 12, 14 and 18 added.
+  // Carries to Form 80-105 line 36 or Form 80-205 line 37.
+  common.v1.Money total_interest_and_penalty = 21;
+}

@@ -122,6 +122,7 @@ import "taxprotos/us/state/ky/v1/form_740/form_740.proto";
 import "taxprotos/us/state/in/v1/form_it40/form_it40.proto";
 import "taxprotos/us/state/la/v1/form_it540/form_it540.proto";
 import "taxprotos/us/state/ms/v1/form_80105/form_80105.proto";
+import "taxprotos/us/state/ms/v1/form_80_320/form_80_320.proto";
 import "taxprotos/us/state/mo/v1/form_mo1040/form_mo1040.proto";
 import "taxprotos/us/state/mo/v1/form_mo_2210/form_mo_2210.proto";
 import "taxprotos/us/state/mt/v1/form_2/form_2.proto";
@@ -1004,6 +1005,9 @@ message LouisianaReturn {
 message MississippiReturn {
   // Form 80-105.
   us.state.ms.v1.Form80105 form_80105 = 1;
+
+  // Form 80-320: the interest and penalty worksheet.
+  us.state.ms.v1.Form80320 form_80_320 = 2;
 }
 
 // A Kansas resident return: Form K-40.
