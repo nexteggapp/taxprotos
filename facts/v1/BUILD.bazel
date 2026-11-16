@@ -73,6 +73,7 @@ proto_library(
         "//us/state/la/v1/form_it540:form_it540_proto",
         "//us/state/ms/v1/form_80105:form_80105_proto",
         "//us/state/mo/v1/form_mo1040:form_mo1040_proto",
+        "//us/state/mo/v1/form_mo_2210:form_mo_2210_proto",
         "//us/state/mt/v1/form_2:form_2_proto",
         "//us/state/me/v1/form_1040me:form_1040me_proto",
         "//us/state/mn/v1/form_m1:form_m1_proto",

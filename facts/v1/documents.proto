@@ -123,6 +123,7 @@ import "taxprotos/us/state/in/v1/form_it40/form_it40.proto";
 import "taxprotos/us/state/la/v1/form_it540/form_it540.proto";
 import "taxprotos/us/state/ms/v1/form_80105/form_80105.proto";
 import "taxprotos/us/state/mo/v1/form_mo1040/form_mo1040.proto";
+import "taxprotos/us/state/mo/v1/form_mo_2210/form_mo_2210.proto";
 import "taxprotos/us/state/mt/v1/form_2/form_2.proto";
 import "taxprotos/us/state/me/v1/form_1040me/form_1040me.proto";
 import "taxprotos/us/state/ri/v1/form_ri1040/form_ri1040.proto";
@@ -915,6 +916,9 @@ message IndianaReturn {
 message MissouriReturn {
   // Form MO-1040.
   us.state.mo.v1.FormMO1040 form_mo1040 = 1;
+
+  // Form MO-2210: underpayment of estimated tax by individuals.
+  us.state.mo.v1.FormMo2210 form_mo_2210 = 2;
 }
 
 // A Montana resident return: Form 2.
