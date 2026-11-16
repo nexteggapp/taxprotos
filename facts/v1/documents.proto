@@ -95,11 +95,14 @@ import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1041.proto";
 import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1065.proto";
 import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1120_s.proto";
 import "taxprotos/us/state/ar/v1/form_ar1000f/form_ar1000f.proto";
+import "taxprotos/us/state/ar/v1/form_ar2210a/form_ar2210a.proto";
+import "taxprotos/us/state/ar/v1/form_ar2210/form_ar2210.proto";
 import "taxprotos/us/state/al/v1/form_40/form_40.proto";
 import "taxprotos/us/state/az/v1/form_140/form_140.proto";
 import "taxprotos/us/state/az/v1/form_221/form_221.proto";
 import "taxprotos/us/state/id/v1/form_40/form_40.proto";
 import "taxprotos/us/state/ca/v1/form_540/form_540.proto";
+import "taxprotos/us/state/ca/v1/form_ftb_5805/form_ftb_5805.proto";
 import "taxprotos/us/state/ca/v1/form_540/schedule_ca.proto";
 import "taxprotos/us/state/co/v1/form_dr0104/form_dr0104.proto";
 import "taxprotos/us/state/ga/v1/form_500/form_500.proto";
@@ -107,9 +110,13 @@ import "taxprotos/us/state/ga/v1/form_500_uet/form_500_uet.proto";
 import "taxprotos/us/state/ia/v1/form_ia1040/form_ia1040.proto";
 import "taxprotos/us/state/ks/v1/form_k40/form_k40.proto";
 import "taxprotos/us/state/de/v1/form_pit_res/form_pit_res.proto";
+import "taxprotos/us/state/de/v1/form_pit_und/form_pit_und.proto";
 import "taxprotos/us/state/dc/v1/form_d40/form_d40.proto";
+import "taxprotos/us/state/dc/v1/form_d_2210/form_d_2210.proto";
 import "taxprotos/us/state/hi/v1/form_n11/form_n11.proto";
+import "taxprotos/us/state/hi/v1/form_n_210/form_n_210.proto";
 import "taxprotos/us/state/il/v1/form_il1040/form_il1040.proto";
+import "taxprotos/us/state/il/v1/form_il_2210/form_il_2210.proto";
 import "taxprotos/us/state/mi/v1/form_mi1040/form_mi1040.proto";
 import "taxprotos/us/state/ky/v1/form_740/form_740.proto";
 import "taxprotos/us/state/in/v1/form_it40/form_it40.proto";
@@ -845,6 +852,9 @@ message CaliforniaReturn {
 
   // Schedule CA (540), the California adjustments.
   us.state.ca.v1.ScheduleCA schedule_ca = 2;
+
+  // Form FTB 5805: underpayment of estimated tax by individuals and fiduciaries.
+  us.state.ca.v1.FormFtb5805 form_ftb_5805 = 3;
 }
 
 // An Oregon resident return: Form OR-40 and its schedules.
@@ -863,6 +873,9 @@ message OregonReturn {
 message DelawareReturn {
   // Form PIT-RES.
   us.state.de.v1.FormPITRES form_pit_res = 1;
+
+  // Form PIT-UND: underpayment of estimated taxes.
+  us.state.de.v1.FormPitUnd form_pit_und = 2;
 }
 
 // An Alabama resident return: Form 40.
@@ -881,6 +894,9 @@ message MaineReturn {
 message IllinoisReturn {
   // Form IL-1040.
   us.state.il.v1.FormIL1040 form_il1040 = 1;
+
+  // Form IL-2210: computation of penalties for individuals.
+  us.state.il.v1.FormIl2210 form_il_2210 = 2;
 }
 
 // A Michigan resident return: Form MI-1040.
@@ -1002,6 +1018,12 @@ message OklahomaReturn {
 message ArkansasReturn {
   // Form AR1000F.
   us.state.ar.v1.FormAR1000F form_ar1000f = 1;
+
+  // Form AR2210: underpayment of estimated tax by individuals.
+  us.state.ar.v1.FormAr2210 form_ar2210 = 2;
+
+  // Form AR2210A: underpayment of estimated tax by the annualized method.
+  us.state.ar.v1.FormAr2210a form_ar2210a = 3;
 }
 
 // A New Mexico resident return: Form PIT-1.
@@ -1032,6 +1054,9 @@ message VirginiaReturn {
 message DistrictOfColumbiaReturn {
   // Form D-40.
   us.state.dc.v1.FormD40 form_d40 = 1;
+
+  // Form D-2210: underpayment of estimated income tax by individuals.
+  us.state.dc.v1.FormD2210 form_d_2210 = 2;
 }
 
 // A South Carolina resident return: the SC1040.
@@ -1050,6 +1075,9 @@ message WestVirginiaReturn {
 message HawaiiReturn {
   // Form N-11.
   us.state.hi.v1.FormN11 form_n11 = 1;
+
+  // Form N-210: underpayment of estimated tax by individuals, estates, and trusts.
+  us.state.hi.v1.FormN210 form_n_210 = 2;
 }
 
 // A Vermont resident return: Form IN-111.
