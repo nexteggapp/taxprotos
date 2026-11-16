@@ -213,6 +213,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [40](https://www.revenue.alabama.gov/wp-content/uploads/2026/01/25f40blk.pdf) | [`form_40.proto`](us/state/al/v1/form_40/form_40.proto) | The Alabama resident return |
 | [D-40](https://otr.cfo.dc.gov/sites/default/files/dc/sites/otr/publication/attachments/2025_D40_Book_082026_v1.pdf) | [`form_d40.proto`](us/state/dc/v1/form_d40/form_d40.proto) | The District of Columbia resident return |
 | [N-11](https://files.hawaii.gov/tax/forms/2025/n11_f.pdf) | [`form_n11.proto`](us/state/hi/v1/form_n11/form_n11.proto) | The Hawaii resident return |
+| [N-210](https://files.hawaii.gov/tax/forms/2025/n210_i.pdf) | [`form_n_210.proto`](us/state/hi/v1/form_n_210/form_n_210.proto) | The penalty for underpaying Hawaii estimated tax |
 | [CT-1040](https://portal.ct.gov/-/media/drs/forms/2025/income/ct-1040_1225.pdf) | [`form_ct1040.proto`](us/state/ct/v1/form_ct1040/form_ct1040.proto) | The Connecticut resident return |
 | [M1](https://www.revenue.state.mn.us/sites/default/files/2026-03/m1-25.pdf) | [`form_m1.proto`](us/state/mn/v1/form_m1/form_m1.proto) | The Minnesota resident return |
 | [IL-1040](https://tax.illinois.gov/content/dam/soi/en/web/tax/forms/incometax/documents/currentyear/individual/il-1040.pdf) | [`form_il1040.proto`](us/state/il/v1/form_il1040/form_il1040.proto) | The Illinois resident return |

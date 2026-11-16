@@ -1,0 +1,161 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form N-210 calls each concept, per tax year.
+#
+# Lines come from Form N-210 (Rev. 2025) as the Hawaii Department of
+# Taxation publishes it, in testdata/, which is pdftotext -layout over the
+# PDF. The coverage test beside the Go package checks every line named here
+# against that extract. The columns of Parts III and IV and of Schedule A are
+# repeated messages, whose lines their fields' comments name.
+#
+# There are no amount codes: IRS Publication 1220 covers the information
+# returns the IRS receives electronically, and a state form is not one of
+# them.
+
+form: "N-210"
+message_name: "nexteggapp.taxprotos.us.state.hi.v1.FormN210"
+tax_years: 2025
+
+concepts {
+  concept: "no_liability_last_year"
+  years {
+    tax_year: 2025
+    irs_box: "A"
+    note: "Part I"
+  }
+}
+
+concepts {
+  concept: "requests_waiver"
+  years {
+    tax_year: 2025
+    irs_box: "B"
+    note: "Part I"
+  }
+}
+
+concepts {
+  concept: "uses_annualized_income_method"
+  years {
+    tax_year: 2025
+    irs_box: "C"
+    note: "Part I"
+  }
+}
+
+concepts {
+  concept: "treats_withholding_as_paid_when_withheld"
+  years {
+    tax_year: 2025
+    irs_box: "D"
+    note: "Part I"
+  }
+}
+
+concepts {
+  concept: "joint_return_in_only_one_year"
+  years {
+    tax_year: 2025
+    irs_box: "E"
+    note: "Part I"
+  }
+}
+
+concepts {
+  concept: "tax_liability"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+    note: "Part II"
+  }
+}
+
+concepts {
+  concept: "total_credits"
+  years {
+    tax_year: 2025
+    irs_box: "2"
+    note: "Part II"
+  }
+}
+
+concepts {
+  concept: "tax_after_credits"
+  years {
+    tax_year: 2025
+    irs_box: "3"
+    note: "Part II"
+  }
+}
+
+concepts {
+  concept: "tax_withheld"
+  years {
+    tax_year: 2025
+    irs_box: "4"
+    note: "Part II"
+  }
+}
+
+concepts {
+  concept: "tax_less_withholding"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+    note: "Part II"
+  }
+}
+
+concepts {
+  concept: "current_year_safe_harbor_tax"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+    note: "Part II"
+  }
+}
+
+concepts {
+  concept: "prior_year_safe_harbor_tax"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+    note: "Part II"
+  }
+}
+
+concepts {
+  concept: "required_annual_payment"
+  years {
+    tax_year: 2025
+    irs_box: "8"
+    note: "Part II"
+  }
+}
+
+concepts {
+  concept: "payment_periods"
+  years {
+    tax_year: 2025
+    irs_box: "9"
+    note: "Parts III and IV, lines 9 to 20, one entry per column; line 9 is the first."
+  }
+}
+
+concepts {
+  concept: "penalty"
+  years {
+    tax_year: 2025
+    irs_box: "21"
+    note: "Part IV"
+  }
+}
+
+concepts {
+  concept: "annualization_periods"
+  years {
+    tax_year: 2025
+    irs_box: "1"
+    note: "Schedule A, lines 1 to 24, one entry per column; Schedule A line 1 is the first, not Part II line 1."
+  }
+}
