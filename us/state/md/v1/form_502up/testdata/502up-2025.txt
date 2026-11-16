@@ -1,0 +1,67 @@
+              MARYLAND
+                FORM
+                                      UNDERPAYMENT OF                                                                                                          2025
+                                      ESTIMATED INCOME
+             502UP                    TAX BY INDIVIDUALS
+
+ATTACH THIS FORM TO FORM 502, 505 or 515.
+IMPORTANT: REVIEW THE INSTRUCTIONS BEFORE COMPLETING THIS FORM.
+SEE SPECIAL INSTRUCTIONS FOR FARMERS AND FISHERMEN OR IF YOUR INCOME IS TAXABLE BY ANOTHER STATE.
+
+
+
+First Name                                              MI      Last Name                                                                    Social Security Number
+
+
+
+
+Spouse's First Name                                     MI      Spouse's Last Name                                                           Spouse's Social Security Number
+
+EXCEPTIONS WHICH AVOID THE UNDERPAYMENT INTEREST
+No interest is due and this form should not be filed if:
+ A. The tax liability on gross income after deducting Maryland withholding is $500 or less, or,
+ B. You have made four quarterly payments as required, each equal to or more than one-fourth of either of the following:
+      (1) 110% of last year’s taxes, or (2) 90% of the current year’s taxes.
+COMPUTATION OF UNDERPAYMENT – LINES 1 THROUGH 15
+   1.   Total Maryland income (from Line 16 of Form 502 or Line 8 of Form 505NR). . . . . . . . . . . . . . . . 1.                                                    00
+   2.   2025 Maryland and local tax (from Line 34 of Form 502 or Line 37 of Form 505). . . . . . . . . . . . . . . . 2.                                               00
+   3.   Refundable earned income credit (from Line 44 of Form 502) . . . . . . . . 3.                                                 00
+   4.   Refundable income tax credits (from Line 45 of Form 502 or Line 48 of
+        Form 505). . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4.                           00
+   5.   Total tax developed on tax preference items. . . . . . . . . . . . . . . . . . . . 5.                                         00
+   6.   Total (Add Lines 3, 4 and 5) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6.                           00
+   7.   Balance (Subtract Line 6 from Line 2). . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7.                               00
+   8.   Multiply Line 7 by 90% (.90). . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8.                            00
+   9.   a. 2024 tax: Enter Line 34 of 2024 Form 502
+             or Line 37 of 2024 Form 505 (See Instructions.). . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9a.                                     00
+        b. Multiply Line 9a by 110% (1.10). . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9b.                                 00
+ 10.    Minimum withholding and/or estimated tax required (Enter the lesser of Line 8 or 9b.
+        If first-time filer, enter Line 8) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10.                        00
+
+                                                                      1st Period                  2nd Period                   3rd Period             4th Period
+                       DUE DATES OF INSTALLMENTS                     April 15, 2025             June 15, 2025               Sept 15, 2025            Jan 15, 2026
+                               INSTALLMENT PERIODS                  Jan 1 to Mar 31            Jan 1 to May 31             Jan 1 to Aug 31          Jan 1 to Dec 31
+11. Divide total Maryland income on Line 1 into
+    earnings per period (See Instructions.). . 11.                      00                            00                           00                                   00
+12. Divide earnings per period on Line 11 by
+    the amount on Line 1 to
+    determine the percent per period.
+    If less than zero, enter zero. . . . . . . . . .12.
+13. Payments required. Multiply the amount
+    on Line 10 by the percent on Line 12 for
+    each period.. . . . . . . . . . . . . . . . . . . . . 13.           00                            00                           00                                   00
+14. Estimated tax paid and tax withheld
+    per period (See Instructions.). . . . . . . . 14.                   00                            00                           00                                   00
+15. Underpayment per period (subtract Line 14
+    from Line 13). If less than zero, enter zero..15.                   00                            00                           00                                   00
+COMPUTATION OF INTEREST
+16. Interest factor . . . . . . . . . . . . . . . . . . . 16. 0.0192                      0.0289                        0.0381                               0.0266
+    Multiply underpayment on Line 15 by the
+    factor on Line 16 for each period. . . . . . 17.                    00                            00                           00                                   00
+18. Interest. Add amounts on Line 17. Place
+    total in appropriate box on Line 51 of Form
+    502 or Line 54 of Form 505 and include
+    amount in your total payment with return.. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18.                                    00
+
+
+             COM/RAD 017          09/25

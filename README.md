@@ -237,6 +237,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [1040ME](https://www.maine.gov/revenue/sites/maine.gov.revenue/files/inline-files/25_1040ME_fillable.pdf) | [`form_1040me.proto`](us/state/me/v1/form_1040me/form_1040me.proto) | The Maine resident return |
 | [Form 1](https://www.mass.gov/doc/2025-form-1-massachusetts-resident-income-tax-return/download) | [`form_1.proto`](us/state/ma/v1/form_1/form_1.proto) | The Massachusetts resident return |
 | [502](https://www.marylandcomptroller.gov/content/dam/mdcomp/tax/forms/2025/502.pdf) | [`form_502.proto`](us/state/md/v1/form_502/form_502.proto) | The Maryland resident return |
+| [502UP](https://www.marylandcomptroller.gov/content/dam/mdcomp/tax/forms/2025/502up.pdf) | [`form_502up.proto`](us/state/md/v1/form_502up/form_502up.proto) | Maryland underpayment of estimated income tax by individuals |
 | [NJ-1040](https://www.nj.gov/treasury/taxation/pdf/current/1040.pdf) | [`form_nj1040.proto`](us/state/nj/v1/form_nj1040/form_nj1040.proto) | The New Jersey resident return |
 | [D-400](https://www.ncdor.gov/2025-d-400-web-filled-version/open) | [`form_d400.proto`](us/state/nc/v1/form_d400/form_d400.proto) | The North Carolina resident return |
 | [511](https://oklahoma.gov/content/dam/ok/en/tax/documents/forms/individuals/current/511-Pkt.pdf) | [`form_511.proto`](us/state/ok/v1/form_511/form_511.proto) | The Oklahoma resident return |

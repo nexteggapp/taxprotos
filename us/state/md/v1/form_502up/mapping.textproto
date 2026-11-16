@@ -1,0 +1,87 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# Which printed line each concept sits on, for Form 502UP.
+#
+# Lines come from the 2025 form in testdata/, which is pdftotext -layout over
+# the PDF the Comptroller of Maryland publishes. The coverage test checks
+# every line named here against that extract.
+#
+# No amount codes: Publication 1220 covers the information returns the IRS
+# receives electronically, and a return is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. This file is where those live. The columns of lines
+# 11 to 17 are in mapping_periods.textproto.
+
+form: "502UP"
+message_name: "nexteggapp.taxprotos.us.state.md.v1.Form502up"
+tax_years: 2025
+
+concepts {
+  concept: "maryland_income"
+  years { tax_year: 2025 irs_box: "1." }
+}
+
+concepts {
+  concept: "tax"
+  years { tax_year: 2025 irs_box: "2." }
+}
+
+concepts {
+  concept: "refundable_earned_income_credit"
+  years { tax_year: 2025 irs_box: "3." }
+}
+
+concepts {
+  concept: "refundable_income_tax_credits"
+  years { tax_year: 2025 irs_box: "4." }
+}
+
+concepts {
+  concept: "tax_preference_items_tax"
+  years { tax_year: 2025 irs_box: "5." }
+}
+
+concepts {
+  concept: "credits_and_preference_tax"
+  years { tax_year: 2025 irs_box: "6." }
+}
+
+concepts {
+  concept: "tax_after_credits"
+  years { tax_year: 2025 irs_box: "7." }
+}
+
+concepts {
+  concept: "current_year_safe_harbor_tax"
+  years { tax_year: 2025 irs_box: "8." }
+}
+
+concepts {
+  concept: "prior_year_tax"
+  years { tax_year: 2025 irs_box: "9a." }
+}
+
+concepts {
+  concept: "prior_year_safe_harbor_tax"
+  years { tax_year: 2025 irs_box: "9b." }
+}
+
+concepts {
+  concept: "required_annual_payment"
+  years { tax_year: 2025 irs_box: "10." }
+}
+
+concepts {
+  concept: "payment_periods"
+  years {
+    tax_year: 2025
+    irs_box: "11."
+    note: "Lines 11 to 17, one entry per column; mapping_periods.textproto names the line of each field."
+  }
+}
+
+concepts {
+  concept: "total_interest"
+  years { tax_year: 2025 irs_box: "18." }
+}

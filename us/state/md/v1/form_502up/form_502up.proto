@@ -1,0 +1,156 @@
+// Form 502UP, Underpayment of Estimated Income Tax by Individuals.
+//
+// A Maryland filer attaches it to Form 502, 505 or 515 to figure the
+// interest owed for underpaying estimated Maryland and local income tax.
+// Lines 1 to 10 figure the minimum withholding and estimated tax required;
+// lines 11 to 15 spread it over the four installment periods and find each
+// period's underpayment; lines 16 to 18 charge interest on it.
+//
+// Line numbers are in mapping.textproto and mapping_periods.textproto beside
+// this file, keyed by tax year. Verified against Form 502UP for 2025 (COM/RAD
+// 017 09/25); testdata holds the text extracted from the published PDF.
+//
+// # Where it departs from federal Form 2210
+//
+// The columns are running totals: lines 11, 13 and 14 each include the
+// amounts of the columns before, so an underpayment still unpaid is charged
+// again in every later column. The required payment is spread by the share
+// of the year's income received by each period's end (lines 11 and 12), not
+// by annualising. The charge is interest at a factor printed for each period
+// (line 16), and a payment made late but before the next due date is charged
+// one-twelfth of the annual rate for each month or part of a month it was
+// late. The prior-year test is 110% at every income (line 9b).
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.md.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/md/v1/form_502up;form502up";
+
+// Form502up is what a Form 502UP states.
+message Form502up {
+  // PaymentPeriod is one column of lines 11 to 17: one installment period.
+  message PaymentPeriod {
+    // The column: 1 through 4, for the 1st to 4th Period.
+    int32 period = 1;
+
+    // The column's due date, as the form's heading, Due Dates of
+    // Installments, gives it.
+    common.v1.Date due_date = 2;
+
+    // The last day of the column's installment period, as the form's
+    // heading, Installment Periods, gives it: March 31, May 31, August 31 or
+    // December 31. Each period runs from January 1.
+    common.v1.Date period_end = 3;
+
+    // Line 11: Total Maryland income on line 1 divided into earnings per
+    // period: the income received from January 1 to the period's end, or
+    // one-fourth, one-half, three-fourths and all of line 1 when income was
+    // received evenly. Each column includes the amounts of the columns
+    // before.
+    common.v1.Money income_to_date = 4;
+
+    // Line 12: Line 11 divided by line 1, the percent per period, as a
+    // fraction (0.25 for 25%). Zero if less than zero.
+    double income_share = 5;
+
+    // Line 13: Payments required. Line 10 multiplied by the percent on line
+    // 12: what had to be paid by the column's due date, a running total.
+    common.v1.Money required_to_date = 6;
+
+    // Line 14: Estimated tax paid and Maryland tax withheld from the
+    // beginning of the year to the column's due date, including nonresident
+    // tax paid by pass-through entities on the filer's behalf. Each column
+    // includes the amounts of the columns before.
+    common.v1.Money paid_to_date = 7;
+
+    // Line 15: Underpayment per period. Line 13 less line 14, and zero if
+    // less than zero.
+    common.v1.Money underpayment = 8;
+
+    // Line 17: Line 15 multiplied by the factor on line 16 for the period, or
+    // by the adjusted factor for a payment made late but before the next due
+    // date: the interest for the column. Line 16's factors are printed on the
+    // form and not stored.
+    common.v1.Money interest = 9;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // The filer's first name.
+  string first_name = 2;
+
+  // The filer's middle initial.
+  string middle_initial = 3;
+
+  // The filer's last name.
+  string last_name = 4;
+
+  // The filer's Social Security number.
+  string ssn = 5;
+
+  // The spouse's first name.
+  string spouse_first_name = 6;
+
+  // The spouse's middle initial.
+  string spouse_middle_initial = 7;
+
+  // The spouse's last name.
+  string spouse_last_name = 8;
+
+  // The spouse's Social Security number.
+  string spouse_ssn = 9;
+
+  // Line 1: Total Maryland income, from line 16 of Form 502 or line 8 of
+  // Form 505NR; or, by election when itemizing, taxable net income from line
+  // 20 of Form 502 or net income from line 11 of Form 505NR.
+  common.v1.Money maryland_income = 10;
+
+  // Line 2: The year's Maryland and local tax, from line 34 of Form 502 or
+  // line 37 of Form 505.
+  common.v1.Money tax = 11;
+
+  // Line 3: Refundable earned income credit, from line 44 of Form 502.
+  common.v1.Money refundable_earned_income_credit = 12;
+
+  // Line 4: Refundable income tax credits, from line 45 of Form 502 or line
+  // 48 of Form 505.
+  common.v1.Money refundable_income_tax_credits = 13;
+
+  // Line 5: Total tax developed on tax preference items: line 5 of Form
+  // 502TP at the highest state rate used on the return, plus the same
+  // amount at the local (or special nonresident) rate.
+  common.v1.Money tax_preference_items_tax = 14;
+
+  // Line 6: Total. Lines 3, 4 and 5 added.
+  common.v1.Money credits_and_preference_tax = 15;
+
+  // Line 7: Balance. Line 2 less line 6.
+  common.v1.Money tax_after_credits = 16;
+
+  // Line 8: Line 7 multiplied by 90%.
+  common.v1.Money current_year_safe_harbor_tax = 17;
+
+  // Line 9a: Last year's tax, line 34 of last year's Form 502 or line 37 of
+  // last year's Form 505, reduced by the credits on line 9 of Part CC of
+  // Form 502CR (and, for Form 505, by line 45), with any additional tax from
+  // a corrected or amended return.
+  common.v1.Money prior_year_tax = 18;
+
+  // Line 9b: Line 9a multiplied by 110%.
+  common.v1.Money prior_year_safe_harbor_tax = 19;
+
+  // Line 10: Minimum withholding and/or estimated tax required. The lesser
+  // of line 8 or line 9b, or line 8 for a first-time filer.
+  common.v1.Money required_annual_payment = 20;
+
+  // Lines 11 to 17, one entry per column.
+  repeated PaymentPeriod payment_periods = 21;
+
+  // Line 18: Interest. The amounts on line 17 added. Carries to line 51 of
+  // Form 502 or line 54 of Form 505.
+  common.v1.Money total_interest = 22;
+}
