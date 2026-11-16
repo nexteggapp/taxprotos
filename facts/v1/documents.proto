@@ -97,11 +97,13 @@ import "taxprotos/us/federal/v1/schedule_k1/schedule_k1_1120_s.proto";
 import "taxprotos/us/state/ar/v1/form_ar1000f/form_ar1000f.proto";
 import "taxprotos/us/state/al/v1/form_40/form_40.proto";
 import "taxprotos/us/state/az/v1/form_140/form_140.proto";
+import "taxprotos/us/state/az/v1/form_221/form_221.proto";
 import "taxprotos/us/state/id/v1/form_40/form_40.proto";
 import "taxprotos/us/state/ca/v1/form_540/form_540.proto";
 import "taxprotos/us/state/ca/v1/form_540/schedule_ca.proto";
 import "taxprotos/us/state/co/v1/form_dr0104/form_dr0104.proto";
 import "taxprotos/us/state/ga/v1/form_500/form_500.proto";
+import "taxprotos/us/state/ga/v1/form_500_uet/form_500_uet.proto";
 import "taxprotos/us/state/ia/v1/form_ia1040/form_ia1040.proto";
 import "taxprotos/us/state/ks/v1/form_k40/form_k40.proto";
 import "taxprotos/us/state/de/v1/form_pit_res/form_pit_res.proto";
@@ -126,6 +128,7 @@ import "taxprotos/us/state/nm/v1/form_pit1/form_pit1.proto";
 import "taxprotos/us/state/nd/v1/form_nd1/form_nd1.proto";
 import "taxprotos/us/state/ne/v1/form_1040n/form_1040n.proto";
 import "taxprotos/us/state/ct/v1/form_ct1040/form_ct1040.proto";
+import "taxprotos/us/state/ct/v1/form_ct_2210/form_ct_2210.proto";
 import "taxprotos/us/state/oh/v1/form_it1040/form_it1040.proto";
 import "taxprotos/us/state/nj/v1/form_nj1040/form_nj1040.proto";
 import "taxprotos/us/state/ny/v1/form_it201/form_it201.proto";
@@ -920,12 +923,18 @@ message ColoradoReturn {
 message ArizonaReturn {
   // Form 140.
   us.state.az.v1.Form140 form_140 = 1;
+
+  // Form 221: underpayment of estimated tax by individuals.
+  us.state.az.v1.Form221 form_221 = 2;
 }
 
 // A Georgia resident return: Form 500.
 message GeorgiaReturn {
   // Form 500.
   us.state.ga.v1.Form500 form_500 = 1;
+
+  // Form 500 UET: underpayment of estimated tax by individuals and fiduciaries.
+  us.state.ga.v1.Form500Uet form_500_uet = 2;
 }
 
 // An Idaho resident return: Form 40.
@@ -1059,6 +1068,9 @@ message RhodeIslandReturn {
 message ConnecticutReturn {
   // Form CT-1040.
   us.state.ct.v1.FormCT1040 form_ct1040 = 1;
+
+  // Form CT-2210: underpayment of estimated income tax.
+  us.state.ct.v1.FormCt2210 form_ct_2210 = 2;
 }
 
 // A Minnesota resident return: Form M1.

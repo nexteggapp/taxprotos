@@ -201,6 +201,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | Form | Schema | Reports |
 |---|---|---|
 | [140](https://azdor.gov/sites/default/files/document/FORMS_INDIVIDUAL_2025_140_f.pdf) | [`form_140.proto`](us/state/az/v1/form_140/form_140.proto) | The Arizona resident return |
+| [221](https://azdor.gov/sites/default/files/document/FORMS_INDIVIDUAL_2025_221_f.pdf) | [`form_221.proto`](us/state/az/v1/form_221/form_221.proto) | Arizona underpayment of estimated tax by individuals |
 | [40](https://tax.idaho.gov/wp-content/uploads/forms/EFO00089/EFO00089_03-02-2026.pdf) | [`form_40.proto`](us/state/id/v1/form_40/form_40.proto) | The Idaho resident return |
 | [AR1000F](https://www.dfa.arkansas.gov/wp-content/uploads/2025_AR1000F_FullYearResidentIndividualIncomeTaxReturn.pdf) | [`form_ar1000f.proto`](us/state/ar/v1/form_ar1000f/form_ar1000f.proto) | The Arkansas full-year resident return |
 | [AR2210](https://www.dfa.arkansas.gov/wp-content/uploads/2025_AR2210_Penalty_for_Underpayment_of_EstimatedTax_1.pdf) | [`form_ar2210.proto`](us/state/ar/v1/form_ar2210/form_ar2210.proto) | Arkansas penalty for underpayment of estimated tax |
@@ -208,6 +209,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [IT-140](https://tax.wv.gov/Documents/PIT/2025/it140.PersonalIncomeTaxFormsAndInstructions.2025.pdf) | [`form_it140.proto`](us/state/wv/v1/form_it140/form_it140.proto) | The West Virginia resident return |
 | [DR 0104](https://tax.colorado.gov/sites/tax/files/documents/DR0104_2025.pdf) | [`form_dr0104.proto`](us/state/co/v1/form_dr0104/form_dr0104.proto) | The Colorado resident return |
 | [500](https://dor.georgia.gov/document/document/2025-it-511-individual-income-tax-booklet/download) | [`form_500.proto`](us/state/ga/v1/form_500/form_500.proto) | The Georgia resident return, printed in the IT-511 booklet |
+| [500 UET](https://dor.georgia.gov/document/document/beginning-or-after-january-1-2025-500-uet-underpayment-estimated-tax-individuals/download) | [`form_500_uet.proto`](us/state/ga/v1/form_500_uet/form_500_uet.proto) | Georgia underpayment of estimated tax by individuals and fiduciaries |
 | [IA 1040](https://revenue.iowa.gov/media/4401/download?inline) | [`form_ia1040.proto`](us/state/ia/v1/form_ia1040/form_ia1040.proto) | The Iowa resident return |
 | [K-40](https://www.ksrevenue.gov/pdf/k-4025.pdf) | [`form_k40.proto`](us/state/ks/v1/form_k40/form_k40.proto) | The Kansas resident return |
 | [PIT-RES](https://revenuefiles.delaware.gov/2025/PITForms_Instructions/PIT-RES_2025-01_PaperInteractiveIPM.pdf) | [`form_pit_res.proto`](us/state/de/v1/form_pit_res/form_pit_res.proto) | The Delaware resident return |
@@ -218,6 +220,7 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [N-11](https://files.hawaii.gov/tax/forms/2025/n11_f.pdf) | [`form_n11.proto`](us/state/hi/v1/form_n11/form_n11.proto) | The Hawaii resident return |
 | [N-210](https://files.hawaii.gov/tax/forms/2025/n210_i.pdf) | [`form_n_210.proto`](us/state/hi/v1/form_n_210/form_n_210.proto) | The penalty for underpaying Hawaii estimated tax |
 | [CT-1040](https://portal.ct.gov/-/media/drs/forms/2025/income/ct-1040_1225.pdf) | [`form_ct1040.proto`](us/state/ct/v1/form_ct1040/form_ct1040.proto) | The Connecticut resident return |
+| [CT-2210](https://portal.ct.gov/-/media/drs/forms/2025/income/ct-2210_1225.pdf) | [`form_ct_2210.proto`](us/state/ct/v1/form_ct_2210/form_ct_2210.proto) | Connecticut underpayment of estimated income tax |
 | [M1](https://www.revenue.state.mn.us/sites/default/files/2026-03/m1-25.pdf) | [`form_m1.proto`](us/state/mn/v1/form_m1/form_m1.proto) | The Minnesota resident return |
 | [IL-1040](https://tax.illinois.gov/content/dam/soi/en/web/tax/forms/incometax/documents/currentyear/individual/il-1040.pdf) | [`form_il1040.proto`](us/state/il/v1/form_il1040/form_il1040.proto) | The Illinois resident return |
 | [IL-2210](https://tax.illinois.gov/content/dam/soi/en/web/tax/forms/incometax/documents/currentyear/individual/il-2210.pdf) | [`form_il_2210.proto`](us/state/il/v1/form_il_2210/form_il_2210.proto) | The penalties for underpaying Illinois estimated tax, paying late and filing late |

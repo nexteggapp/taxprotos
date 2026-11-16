@@ -1,0 +1,256 @@
+// Form 221, Underpayment of Estimated Tax by Individuals.
+//
+// An Arizona filer of Form 140, 140PY or 140NR uses it to figure whether a
+// penalty is owed for underpaying estimated tax and, if so, how much. Part A
+// figures the required annual payment and each quarter's underpayment; Part B
+// charges each underpayment interest by the day, one rate period per calendar
+// quarter, and caps each quarter's penalty at 10% of its underpayment; page 2
+// is the Annualized Income Installment Worksheet.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year.
+// Verified against the 2025 Form 221; testdata holds the text extracted from
+// the published PDF.
+//
+// # Where it departs from federal Form 2210
+//
+// The penalty is interest at the department's rate, capped at 10% of each
+// underpayment (A.R.S. § 42-1125(Q); line 29), and penalty still unpaid on
+// January 1 is added to the principal it is charged on (§ 42-1123(B); line
+// 27). Whether estimated payments are required at all turns on Arizona gross
+// income in both years (§ 43-581(A)), which the form does not print but its
+// instructions test before line 1.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.az.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+import "taxprotos/common/v1/quantity.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/az/v1/form_221;form221";
+
+// Form221 is what a Form 221 states: Part A, Part B and the Annualized Income
+// Installment Worksheet.
+message Form221 {
+  // PaymentPeriod is one column of Part A lines 10 to 15 and Part B lines 16
+  // to 29: one payment due date.
+  message PaymentPeriod {
+    // The column: 1 through 4 for (a) through (d).
+    int32 period = 1;
+
+    // Line 10: Payment due date.
+    common.v1.Date due_date = 2;
+
+    // Line 11: Required installment. A quarter of line 9, or, when the box on
+    // line 11 is checked, the installment another method requires: line 23
+    // of the Annualized Income Installment Worksheet, or nothing in column
+    // (d) for a return filed and paid in full by the date the instructions
+    // give.
+    common.v1.Money required_installment = 3;
+
+    // Line 12: Estimated tax paid and Arizona income tax withheld for the
+    // column's period, with a quarter of the year's withholding in each
+    // column unless the filer shows when it was withheld.
+    common.v1.Money estimated_tax_paid_and_withheld = 4;
+
+    // Line 13: Overpayment carried forward from line 15b of the previous
+    // column.
+    common.v1.Money prior_period_overpayment = 5;
+
+    // Line 14: Lines 12 and 13 added.
+    common.v1.Money total_payments = 6;
+
+    // Line 15a: Underpayment. Line 11 minus line 14, after any part of line
+    // 14 the instructions let the filer apply to an earlier column's
+    // underpayment has been so applied.
+    common.v1.Money underpayment = 7;
+
+    // Line 15b: Overpayment. Line 14 minus line 11, after any part of line 14
+    // applied to an earlier column's underpayment.
+    common.v1.Money overpayment = 8;
+
+    // Lines 16 to 27: each computation of penalty on the column's
+    // underpayment, in date order. A rate period holds one computation for
+    // each payment that reduced the underpayment during it, and one for any
+    // balance still unpaid at its end.
+    repeated PenaltyComputation computations = 9;
+
+    // Line 28: Penalty. The computations on lines 18, 21, 24 and 27 added.
+    common.v1.Money penalty = 10;
+
+    // Line 29: Penalty limitation. The smaller of line 15a multiplied by 10%
+    // or line 28.
+    common.v1.Money limited_penalty = 11;
+  }
+
+  // PenaltyComputation is one computation of Part B: an amount charged at one
+  // rate period's rate for a number of days.
+  message PenaltyComputation {
+    // The rate period: 1 through 4, for lines 16 to 18, 19 to 21, 22 to 24
+    // and 25 to 27.
+    int32 rate_period = 1;
+
+    // Lines 16, 19, 22 and 25: Computation starting date for the period. The
+    // days counted start the day after it.
+    common.v1.Date start_date = 2;
+
+    // Lines 17, 20, 23 and 26: Number of days after the starting date through
+    // the date the amount was paid or the period's last day, whichever is
+    // earlier.
+    int32 days = 3;
+
+    // The amount charged: the underpayment on line 15a, or the part of it a
+    // payment reduced. On line 27, the underpayment plus any penalty from
+    // rate periods 1, 2 and 3 if the underpayment is unpaid on January 1.
+    common.v1.Money principal = 4;
+
+    // The period's rate as the form prints it, a percentage: 7% is units 7,
+    // scale 0.
+    common.v1.Quantity rate = 5;
+
+    // Lines 18, 21, 24 and 27: The amount, multiplied by the days over 365,
+    // multiplied by the rate. Not rounded to the whole dollar.
+    common.v1.Money penalty = 6;
+  }
+
+  // AnnualizationPeriod is one column of the Annualized Income Installment
+  // Worksheet: one period of the year. The annualization amounts on lines 2
+  // and 5 and the applicable percentages on line 15 are printed in each
+  // column and not stored.
+  message AnnualizationPeriod {
+    // The column: 1 through 4, for January 1 to March 31, May 31, August 31
+    // and December 31.
+    int32 period = 1;
+
+    // Line 1: Arizona adjusted gross income for the period, without the
+    // dependent, qualifying parent or grandparent, blind and age 65
+    // exemptions.
+    common.v1.Money arizona_adjusted_gross_income = 2;
+
+    // Line 3: Annualized income. Line 1 multiplied by line 2.
+    common.v1.Money annualized_income = 3;
+
+    // Line 4: Itemized deductions for the period, or zero for a filer who
+    // does not itemize.
+    common.v1.Money itemized_deductions = 4;
+
+    // Line 6: Annualized itemized deductions. Line 4 multiplied by line 5.
+    common.v1.Money annualized_itemized_deductions = 5;
+
+    // Line 7: Total standard deduction from Form 140, 140PY or 140NR.
+    common.v1.Money standard_deduction = 6;
+
+    // Line 8: The larger of line 6 or line 7.
+    common.v1.Money deduction = 7;
+
+    // Line 9: Line 3 minus line 8.
+    common.v1.Money income_less_deduction = 8;
+
+    // Line 10: The amount allowed for blind, over 65, qualifying parent or
+    // grandparent, and other exemptions claimed on the return.
+    common.v1.Money exemptions = 9;
+
+    // Line 11: Line 9 minus line 10.
+    common.v1.Money annualized_taxable_income = 10;
+
+    // Line 12: Line 11 multiplied by 2.5%.
+    common.v1.Money tax = 11;
+
+    // Line 13: Tax credits for the period, including the Dependent Tax
+    // Credit.
+    common.v1.Money credits = 12;
+
+    // Line 14: Line 12 minus line 13, not less than zero.
+    common.v1.Money tax_after_credits = 13;
+
+    // Line 16: Line 14 multiplied by the applicable percentage on line 15.
+    common.v1.Money applicable_tax = 14;
+
+    // Line 17: Line 23 of all preceding columns added.
+    common.v1.Money prior_installments = 15;
+
+    // Line 18: Line 16 minus line 17, not less than zero.
+    common.v1.Money annualized_installment = 16;
+
+    // Line 19: Line 9 of page 1 divided by four.
+    common.v1.Money regular_installment = 17;
+
+    // Line 20: Line 22 of the preceding column.
+    common.v1.Money prior_regular_installment_excess = 18;
+
+    // Line 21: Lines 19 and 20 added.
+    common.v1.Money available_regular_installment = 19;
+
+    // Line 22: Line 21 minus line 18 when line 21 is more, otherwise zero.
+    common.v1.Money regular_installment_excess = 20;
+
+    // Line 23: The smaller of line 18 or line 21. Carries to page 1, line 11.
+    common.v1.Money required_installment = 21;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // Name (first, middle initial, last), and the spouse's on a joint return.
+  string filer_name = 2;
+
+  // Social Security Number.
+  string filer_ssn = 3;
+
+  // -- Part A: Calculation of Underpayment ---------------------------------
+
+  // Line 1: The filer claims an exception from the penalty because they
+  // qualified for federal relief under IRC § 6654: no federal tax liability
+  // last year, or federal tax less federal withholding under $1,000 this
+  // year.
+  bool claims_federal_exception = 4;
+
+  // Line 2: Amount of tax for the year from Form 140, 140PY or 140NR.
+  common.v1.Money tax = 5;
+
+  // Line 3: Tax credits claimed on the year's Arizona return.
+  common.v1.Money tax_credits = 6;
+
+  // Line 4: Line 2 minus line 3.
+  common.v1.Money tax_after_credits = 7;
+
+  // Line 5: Arizona income tax withheld during the year, without estimated
+  // or extension payments.
+  common.v1.Money arizona_tax_withheld = 8;
+
+  // Line 6: Line 4 minus line 5. Under $1,000 means no penalty is owed.
+  common.v1.Money tax_less_withholding = 9;
+
+  // Line 7: Line 4 multiplied by 90%.
+  common.v1.Money current_year_safe_harbor_tax = 10;
+
+  // Line 8: The immediately preceding year's tax liability after tax
+  // credits, entered only if an Arizona return was filed for that year.
+  common.v1.Money prior_year_tax_after_credits = 11;
+
+  // Line 9: Required annual payment. The smaller of line 7 or line 8, or line
+  // 7 when line 8 is blank.
+  common.v1.Money required_annual_payment = 12;
+
+  // Line 11 box: the filer uses an installment method other than four equal
+  // installments, such as the annualized income installment method or
+  // filing and paying in full by January 31.
+  bool uses_other_installment_method = 13;
+
+  // Lines 10 to 29, one entry per column, (a) through (d).
+  repeated PaymentPeriod payment_periods = 14;
+
+  // Line 30a: Total penalty. Line 29, columns (a) through (d), added.
+  common.v1.Money total_penalty = 15;
+
+  // Line 30b: The penalty amount for which a waiver is requested.
+  common.v1.Money waiver_request = 16;
+
+  // Line 30c: Line 30a minus line 30b, rounded to the nearest whole dollar.
+  // Carries to Form 140 line 76, Form 140PY line 85 or Form 140NR line 83.
+  common.v1.Money penalty_after_waiver = 17;
+
+  // The Annualized Income Installment Worksheet, one entry per column, or
+  // none when the filer does not annualize.
+  repeated AnnualizationPeriod annualization_periods = 18;
+}
