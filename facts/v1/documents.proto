@@ -125,7 +125,9 @@ import "taxprotos/us/state/in/v1/form_it_2210a/form_it_2210a.proto";
 import "taxprotos/us/state/la/v1/form_it540/form_it540.proto";
 import "taxprotos/us/state/la/v1/form_r_210r/form_r_210r.proto";
 import "taxprotos/us/state/ms/v1/form_80105/form_80105.proto";
+import "taxprotos/us/state/ms/v1/form_80_320/form_80_320.proto";
 import "taxprotos/us/state/mo/v1/form_mo1040/form_mo1040.proto";
+import "taxprotos/us/state/mo/v1/form_mo_2210/form_mo_2210.proto";
 import "taxprotos/us/state/mt/v1/form_2/form_2.proto";
 import "taxprotos/us/state/me/v1/form_1040me/form_1040me.proto";
 import "taxprotos/us/state/ri/v1/form_ri1040/form_ri1040.proto";
@@ -137,6 +139,7 @@ import "taxprotos/us/state/nc/v1/form_d400/form_d400.proto";
 import "taxprotos/us/state/ok/v1/form_511/form_511.proto";
 import "taxprotos/us/state/nm/v1/form_pit1/form_pit1.proto";
 import "taxprotos/us/state/nd/v1/form_nd1/form_nd1.proto";
+import "taxprotos/us/state/nd/v1/form_nd_1ut/form_nd_1ut.proto";
 import "taxprotos/us/state/ne/v1/form_1040n/form_1040n.proto";
 import "taxprotos/us/state/ct/v1/form_ct1040/form_ct1040.proto";
 import "taxprotos/us/state/ct/v1/form_ct_2210/form_ct_2210.proto";
@@ -926,6 +929,9 @@ message IndianaReturn {
 message MissouriReturn {
   // Form MO-1040.
   us.state.mo.v1.FormMO1040 form_mo1040 = 1;
+
+  // Form MO-2210: underpayment of estimated tax by individuals.
+  us.state.mo.v1.FormMo2210 form_mo_2210 = 2;
 }
 
 // A Montana resident return: Form 2.
@@ -1014,6 +1020,9 @@ message LouisianaReturn {
 message MississippiReturn {
   // Form 80-105.
   us.state.ms.v1.Form80105 form_80105 = 1;
+
+  // Form 80-320: the interest and penalty worksheet.
+  us.state.ms.v1.Form80320 form_80_320 = 2;
 }
 
 // A Kansas resident return: Form K-40.
@@ -1050,6 +1059,9 @@ message NewMexicoReturn {
 message NorthDakotaReturn {
   // Form ND-1.
   us.state.nd.v1.FormND1 form_nd1 = 1;
+
+  // Schedule ND-1UT: underpayment or late payment of estimated income tax.
+  us.state.nd.v1.FormNd1ut form_nd_1ut = 2;
 }
 
 // A Nebraska resident return: Form 1040N.

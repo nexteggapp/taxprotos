@@ -1,0 +1,110 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Schedule ND-1UT calls each concept, per tax year.
+#
+# Lines come from the 2025 Schedule ND-1UT, SFN 28704 (12-2025), as the
+# North Dakota Office of State Tax Commissioner publishes it, in testdata/.
+# There are no amount codes: IRS Publication 1220 covers the information
+# returns the IRS receives electronically, and a state form is not one of
+# them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. The quarters' columns of lines 7 to 16e are repeated
+# messages whose fields name their lines in their comments.
+
+form: "ND-1UT"
+message_name: "nexteggapp.taxprotos.us.state.nd.v1.FormNd1ut"
+tax_years: 2025
+
+concepts {
+  concept: "qualified_farmer_exception"
+  years {
+    tax_year: 2025
+    irs_box: "A"
+    note: "Part 1, Item A."
+  }
+}
+
+concepts {
+  concept: "federal_annualized_exception"
+  years {
+    tax_year: 2025
+    irs_box: "B"
+    note: "Part 1, Item B."
+  }
+}
+
+concepts {
+  concept: "federal_fourth_quarter_exception"
+  years {
+    tax_year: 2025
+    irs_box: "C"
+    note: "Part 1, Item C."
+  }
+}
+
+concepts {
+  concept: "partial_year_exception"
+  years {
+    tax_year: 2025
+    irs_box: "D"
+    note: "Part 1, Item D."
+  }
+}
+
+concepts {
+  concept: "net_tax_liability"
+  years { tax_year: 2025 irs_box: "1" }
+}
+
+concepts {
+  concept: "current_year_safe_harbor_tax"
+  years { tax_year: 2025 irs_box: "2" }
+}
+
+concepts {
+  concept: "tax_withheld"
+  years { tax_year: 2025 irs_box: "3" }
+}
+
+concepts {
+  concept: "tax_less_withholding"
+  years { tax_year: 2025 irs_box: "4" }
+}
+
+concepts {
+  concept: "prior_year_net_tax_liability"
+  years { tax_year: 2025 irs_box: "5" }
+}
+
+concepts {
+  concept: "required_payment"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+    note: "Line 6, the required payment."
+  }
+}
+
+concepts {
+  concept: "moved_into_north_dakota"
+  years {
+    tax_year: 2025
+    irs_box: "6"
+    note: "Line 6, the circle for a filer who moved into North Dakota last year."
+  }
+}
+
+concepts {
+  concept: "payment_periods"
+  years {
+    tax_year: 2025
+    irs_box: "7"
+    note: "Lines 7 to 16e, one entry per quarter; each entry's fields name their own lines."
+  }
+}
+
+concepts {
+  concept: "total_interest"
+  years { tax_year: 2025 irs_box: "17" }
+}

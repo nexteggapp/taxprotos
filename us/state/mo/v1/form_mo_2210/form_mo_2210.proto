@@ -1,0 +1,233 @@
+// Form MO-2210, Underpayment of Estimated Tax by Individuals.
+//
+// A filer of Form MO-1040 uses it to figure whether a penalty is owed for
+// underpaying estimated Missouri tax and, if so, how much. Part I figures
+// the required annual payment; Part II, the Short Method, charges the year's
+// underpayment at one printed factor when every payment was made evenly;
+// and Part III, the Regular Method, figures each installment's underpayment
+// (Section A), tests four exceptions that each excuse an installment
+// (Section B), and charges what no exception excuses by the day (Section C).
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year.
+// Verified against the 2025 Form MO-2210; testdata holds the text extracted
+// from the published PDF.
+//
+// # Where it departs from federal Form 2210
+//
+// Four exceptions each excuse an installment whose payments to its date
+// reach them, a different one for each installment if need be: last year's
+// tax, the tax on last year's income at this year's rates, 90% of the tax on
+// annualized income, and 90% of the tax on the income to date (lines 20 to
+// 24; RSMo 143.761.4). Line 19d carries a running underpayment from column
+// to column, and Section C charges it from the due date until paid or the
+// next due date, at each calendar year's rate (lines 25 to 28c). A filer who
+// first meets the requirement late pays fewer, larger installments
+// (instruction B).
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.mo.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/mo/v1/form_mo_2210;formmo2210";
+
+// FormMo2210 is what a Form MO-2210 states: Parts I to III.
+message FormMo2210 {
+  // PaymentPeriod is one column of Part III, lines 15 to 28c: one
+  // installment due date.
+  message PaymentPeriod {
+    // The column: 1 through 4, for the April, June, September and January
+    // installments.
+    int32 period = 1;
+
+    // The column's due date, as the heading Due Dates of Installments gives
+    // it.
+    common.v1.Date due_date = 2;
+
+    // Line 15: Required installment payments. Line 14 divided by the number
+    // of required installments, four, or fewer for a requirement first met
+    // later in the year (instruction B), in each column one is due.
+    common.v1.Money required_installment = 3;
+
+    // Line 16: Estimated tax paid during the installment period, with the
+    // year's withholding counted in four equal parts on the due dates unless
+    // the dates it was withheld are established (instruction F).
+    common.v1.Money estimated_tax_paid = 4;
+
+    // Line 17: Overpayment of previous installments, line 19c of the
+    // previous column.
+    common.v1.Money prior_overpayment = 5;
+
+    // Line 18: Total payments. Lines 16 and 17 added.
+    common.v1.Money total_payments = 6;
+
+    // Line 19: Underpayment of current installment. Line 15 minus line 18,
+    // when line 15 is the greater.
+    common.v1.Money underpayment = 7;
+
+    // Line 19: "Exempt, combat zone", written for an installment due during
+    // service in a combat zone under conditions that qualified for hostile
+    // fire pay (instruction I).
+    bool combat_zone_exempt = 8;
+
+    // Line 19a: Overpayment of current installment. Line 18 minus line 15,
+    // when line 18 is the greater.
+    common.v1.Money overpayment = 9;
+
+    // Line 19b: Underpayment of previous installments, line 19d of the
+    // previous column.
+    common.v1.Money prior_underpayment = 10;
+
+    // Line 19c: Total overpayment. Line 19a minus line 19b, when line 19a is
+    // the greater.
+    common.v1.Money total_overpayment = 11;
+
+    // Line 19d: Total underpayment. Lines 19 and 19b added, or line 19b
+    // minus line 19a when line 19b is the greater.
+    common.v1.Money total_underpayment = 12;
+
+    // Line 20: Total amount paid and withheld from January 1 through the
+    // installment date.
+    common.v1.Money total_paid_to_date = 13;
+
+    // Line 21: Exception No. 1, prior year's tax: 25%, 50%, 75% and 100% of
+    // last year's tax, from a return covering 12 months and showing a tax
+    // liability. Unset when the exception is not figured.
+    common.v1.Money exception_1 = 14;
+
+    // Line 22: Exception No. 2, the tax on last year's income at this year's
+    // rates and exemptions: 25%, 50%, 75% and 100% of it. Unset when the
+    // exception is not figured.
+    common.v1.Money exception_2 = 15;
+
+    // Line 23: Exception No. 3, the tax on annualized income for the
+    // months before the installment's month: 22.5%, 45% and 67.5% of it. The
+    // form prints nothing in the fourth column. Unset when the exception is
+    // not figured.
+    common.v1.Money exception_3 = 16;
+
+    // Line 24: Exception No. 4, 90% of the tax on the income from January 1
+    // to the end of the month before the installment's month, figured as if
+    // it were the year's. The form prints nothing in the fourth column.
+    // Unset when the exception is not figured.
+    common.v1.Money exception_4 = 17;
+
+    // Lines 25 to 28c: each computation of penalty on the column's
+    // underpayment, one for each payment that reduced it (instruction H, line
+    // 26) and one for any balance unpaid at the next due date or April 15.
+    // None when an exception excuses the installment or nothing is underpaid.
+    repeated PenaltyComputation computations = 18;
+  }
+
+  // PenaltyComputation is one computation of lines 25 to 28c.
+  message PenaltyComputation {
+    // Line 25: Amount of underpayment, from line 19d, or the part of it a
+    // payment reduced.
+    common.v1.Money underpayment = 1;
+
+    // Line 26: The date of payment, the due date of the next installment, or
+    // April 15 of the following year, whichever is earlier.
+    common.v1.Date paid_date = 2;
+
+    // Line 27a: The number of days from the installment's due date to the
+    // date on line 26 or December 31 of the tax year, whichever is earlier.
+    int32 days_in_tax_year = 3;
+
+    // Line 27b: The number of days from January 1 of the following year, or
+    // the installment's due date if later, to the date on line 26.
+    int32 days_in_following_year = 4;
+
+    // Line 28a: The tax year's annual interest rate on line 25 for the days
+    // on line 27a, by the day ÷ 365.
+    common.v1.Money penalty_in_tax_year = 5;
+
+    // Line 28b: The following year's annual interest rate on line 25 for the
+    // days on line 27b, by the day ÷ 365.
+    common.v1.Money penalty_in_following_year = 6;
+
+    // Line 28c: Total penalty. Lines 28a and 28b added.
+    common.v1.Money penalty = 7;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // The filer's name.
+  string taxpayer_name = 2;
+
+  // The filer's Social Security Number.
+  string ssn = 3;
+
+  // The spouse's name.
+  string spouse_name = 4;
+
+  // The spouse's Social Security Number.
+  string spouse_ssn = 5;
+
+  // Line 1: "Exempt, farmer", written for a filer with two-thirds of
+  // Missouri gross income from farming who filed and paid by March 1 of the
+  // following year (instruction J).
+  bool farmer_exempt = 6;
+
+  // Line 1: The tax after credits, Form MO-1040 line 36 less the approved
+  // credits of line 42, the Property Tax Credit of line 43 and the Missouri
+  // Working Family Tax Credit of line 44.
+  common.v1.Money tax_after_credits = 7;
+
+  // Line 2: Line 1 multiplied by 90%, or 66 2/3% for a qualified farmer.
+  common.v1.Money current_year_safe_harbor_tax = 8;
+
+  // Line 3: Withholding taxes, with no estimated tax payments.
+  common.v1.Money tax_withheld = 9;
+
+  // Line 4: Line 1 minus line 3. Under $500, there is no penalty and the
+  // form is not completed.
+  common.v1.Money tax_less_withholding = 10;
+
+  // Line 5: The tax shown on last year's return. Skipped, with line 2
+  // carried to line 6, when no Missouri return or only a Property Tax Credit
+  // Claim was filed for last year.
+  common.v1.Money prior_year_tax = 11;
+
+  // Line 6: Required annual payment. The smaller of line 2 or line 5. When
+  // line 3 equals or exceeds it, there is no penalty.
+  common.v1.Money required_annual_payment = 12;
+
+  // Line 7: Part II, the Short Method. The withholding from line 3.
+  common.v1.Money short_method_withholding = 13;
+
+  // Line 8: The total of the year's estimated tax payments.
+  common.v1.Money short_method_estimated_tax_payments = 14;
+
+  // Line 9: Lines 7 and 8 added.
+  common.v1.Money short_method_total_payments = 15;
+
+  // Line 10: Total underpayment for the year. Line 6 minus line 9; zero or
+  // less, there is no penalty.
+  common.v1.Money short_method_underpayment = 16;
+
+  // Line 11: Line 10 multiplied by the factor the form prints, 0.05043 for
+  // 2025.
+  common.v1.Money short_method_full_penalty = 17;
+
+  // Line 12: For line 10 paid before April 15 of the following year, line
+  // 10 times the days it was paid before then times the daily factor the
+  // form prints, 0.0001918 for 2025; otherwise zero.
+  common.v1.Money short_method_early_payment_reduction = 18;
+
+  // Line 13: Penalty. Line 11 minus line 12. Carries to Form MO-1040 line
+  // 55.
+  common.v1.Money short_method_penalty = 19;
+
+  // Line 14: Part III, the Regular Method. The required annual payment from
+  // Part I line 6.
+  common.v1.Money regular_method_required_annual_payment = 20;
+
+  // Lines 15 to 28c, one entry per column.
+  repeated PaymentPeriod payment_periods = 21;
+
+  // Line 29: Total penalty. The amounts on line 28c added. Carries to Form
+  // MO-1040 line 55 as the underpayment of estimated tax penalty.
+  common.v1.Money total_penalty = 22;
+}
