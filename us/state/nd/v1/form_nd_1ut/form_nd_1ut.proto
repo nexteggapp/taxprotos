@@ -1,0 +1,176 @@
+// Schedule ND-1UT, Underpayment or Late Payment of Estimated Income Tax for
+// Individuals.
+//
+// A filer of Form ND-1 who was required to pay federal estimated tax uses it
+// to figure whether enough estimated North Dakota tax was paid by each due
+// date and, if not, the interest owed. Part 1 marks the exceptions to the
+// regular computation; Part 2 figures the required payment and each
+// quarter's underpayment; Part 3 figures the interest.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year.
+// Verified against the 2025 Schedule ND-1UT, SFN 28704 (12-2025); testdata
+// holds the text extracted from the published PDF.
+//
+// # Where it departs from federal Form 2210
+//
+// A quarter's payment goes first to that quarter, and only the excess pays an
+// earlier underpayment, as of that quarter's due date (lines 9 to 15 and the
+// Instructions for Part 3). The interest is a fixed 12% a year, with the
+// days divided by 365 and rounded to three decimal places before the rate is
+// applied, and the factor rounded to three places again (lines 16a to 16e).
+// Estimates are owed only by a filer who owes federal estimated tax, and
+// only when last year's North Dakota liability was $1,000 or more (line 5).
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.nd.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/nd/v1/form_nd_1ut;formnd1ut";
+
+// FormNd1ut is what a Schedule ND-1UT states: Parts 1 to 3.
+message FormNd1ut {
+  // PaymentPeriod is one quarter's column of lines 7 to 16e.
+  message PaymentPeriod {
+    // The column: 1 through 4 for the 1st to 4th quarter.
+    int32 period = 1;
+
+    // The quarter's payment due date, as the column heading gives it.
+    common.v1.Date due_date = 2;
+
+    // Line 7: 25% of line 6, or, when an exception in Part 1 applies, the
+    // amount the instructions to line 7 give: line 6 in the 4th quarter
+    // alone (Item A), the federal annualized installments (Item B), zero in
+    // the 4th quarter (Item C), or thirds, halves or all of line 6 from the
+    // quarter North Dakota income began (Item D).
+    common.v1.Money required_installment = 3;
+
+    // Line 8: Estimated tax paid and tax withheld for the quarter, with
+    // one-fourth of the year's withholding deemed withheld by each due date
+    // unless shown otherwise.
+    common.v1.Money payments = 4;
+
+    // Line 9: Line 13 of the previous column. Not applicable in the 1st
+    // quarter.
+    common.v1.Money prior_overpayment_carryover = 5;
+
+    // Line 10: Total paid. Lines 8 and 9 added.
+    common.v1.Money total_paid = 6;
+
+    // Line 11: Lines 14 and 15 of the previous column added. Not applicable
+    // in the 1st quarter.
+    common.v1.Money prior_underpayment = 7;
+
+    // Line 12: Overpayment. Line 10 minus line 7, when line 10 is greater;
+    // otherwise zero.
+    common.v1.Money overpayment = 8;
+
+    // Line 13: Overpayment carryover. Line 12 minus line 11, when line 12 is
+    // greater; otherwise zero.
+    common.v1.Money overpayment_carryover = 9;
+
+    // Line 14: Underpayment carryover. Line 11 minus line 12, when line 11 is
+    // greater; otherwise zero.
+    common.v1.Money underpayment_carryover = 10;
+
+    // Line 15: Underpayment. Line 7 minus line 10, when line 7 is greater;
+    // otherwise zero.
+    common.v1.Money underpayment = 11;
+
+    // Lines 16a to 16e for each part of line 15 paid on its own date: by a
+    // late payment, by a later quarter's overpayment as of that quarter's due
+    // date, or not at all by April 15 of the next year. The instructions
+    // allow a separate worksheet when more than one date applies.
+    repeated InterestComputation computations = 12;
+
+    // Line 16e: The column's interest, the computations' interest added.
+    common.v1.Money interest = 13;
+  }
+
+  // InterestComputation is lines 16a to 16e for one part of a quarter's
+  // underpayment.
+  message InterestComputation {
+    // The part of line 15 charged.
+    common.v1.Money underpayment = 1;
+
+    // Line 16a: The date of payment: the day a late payment paid it, the
+    // due date of the quarter whose overpayment offset it, or April 15 of the
+    // next year.
+    common.v1.Date payment_date = 2;
+
+    // Line 16b: The number of days from the payment due date to line 16a.
+    int32 days = 3;
+
+    // Line 16c: Line 16b divided by 365, rounded to three decimal places, in
+    // thousandths: 0.164 is 164.
+    int32 year_fraction_thousandths = 4;
+
+    // Line 16d: Line 16c multiplied by 12%, rounded to three decimal places,
+    // in thousandths: 0.020 is 20.
+    int32 factor_thousandths = 5;
+
+    // Line 16e: The part multiplied by line 16d.
+    common.v1.Money interest = 6;
+  }
+
+  // The tax year the schedule applies to.
+  int32 tax_year = 1;
+
+  // The taxpayer name as shown on the return.
+  string taxpayer_name = 2;
+
+  // The Social Security Number.
+  string ssn = 3;
+
+  // Part 1 Item A: Qualified farmer exception.
+  bool qualified_farmer_exception = 4;
+
+  // Part 1 Item B: Federal annualized income installment method exception,
+  // for a filer who used the method on the federal Form 2210.
+  bool federal_annualized_exception = 5;
+
+  // Part 1 Item C: Federal 4th quarter exception, for a filer who need not
+  // make the federal January installment, having filed the federal return
+  // and paid the federal tax by the federal date.
+  bool federal_fourth_quarter_exception = 6;
+
+  // Part 1 Item D: Partial year exception, for a nonresident or a filer who
+  // moved into North Dakota during the year with no North Dakota income until
+  // after April 15.
+  bool partial_year_exception = 7;
+
+  // Line 1: This year's net tax liability, Form ND-1 line 25 or Form ND-EZ
+  // line 2.
+  common.v1.Money net_tax_liability = 8;
+
+  // Line 2: Line 1 multiplied by 90%, or 66 2/3% for a qualified farmer.
+  common.v1.Money current_year_safe_harbor_tax = 9;
+
+  // Line 3: This year's withholding, Form ND-1 line 26 or Form ND-EZ line 3.
+  common.v1.Money tax_withheld = 10;
+
+  // Line 4: Line 1 minus line 3. Under $1,000, no estimated tax payment was
+  // required and the form is not filed.
+  common.v1.Money tax_less_withholding = 11;
+
+  // Line 5: Last year's net tax liability, Form ND-1 line 25 or Form ND-EZ
+  // line 2, or zero if no return was required. Under $1,000, no estimated
+  // tax payment was required and the form is not filed.
+  common.v1.Money prior_year_net_tax_liability = 12;
+
+  // Line 6: Required payment. The smaller of line 2 or line 5, or line 2 for
+  // a filer who moved into North Dakota during last year.
+  common.v1.Money required_payment = 13;
+
+  // Line 6: The circle filled for a filer who moved into North Dakota during
+  // last year.
+  bool moved_into_north_dakota = 14;
+
+  // Lines 7 to 16e, one entry per quarter.
+  repeated PaymentPeriod payment_periods = 15;
+
+  // Line 17: Total interest. Line 16e of all four columns added. Carries to
+  // Form ND-1 line 37.
+  common.v1.Money total_interest = 16;
+}

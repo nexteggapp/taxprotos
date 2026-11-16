@@ -135,6 +135,7 @@ import "taxprotos/us/state/nc/v1/form_d400/form_d400.proto";
 import "taxprotos/us/state/ok/v1/form_511/form_511.proto";
 import "taxprotos/us/state/nm/v1/form_pit1/form_pit1.proto";
 import "taxprotos/us/state/nd/v1/form_nd1/form_nd1.proto";
+import "taxprotos/us/state/nd/v1/form_nd_1ut/form_nd_1ut.proto";
 import "taxprotos/us/state/ne/v1/form_1040n/form_1040n.proto";
 import "taxprotos/us/state/ct/v1/form_ct1040/form_ct1040.proto";
 import "taxprotos/us/state/ct/v1/form_ct_2210/form_ct_2210.proto";
@@ -1044,6 +1045,9 @@ message NewMexicoReturn {
 message NorthDakotaReturn {
   // Form ND-1.
   us.state.nd.v1.FormND1 form_nd1 = 1;
+
+  // Schedule ND-1UT: underpayment or late payment of estimated income tax.
+  us.state.nd.v1.FormNd1ut form_nd_1ut = 2;
 }
 
 // A Nebraska resident return: Form 1040N.

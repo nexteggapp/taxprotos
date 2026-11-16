@@ -84,6 +84,7 @@ proto_library(
         "//us/state/ok/v1/form_511:form_511_proto",
         "//us/state/nm/v1/form_pit1:form_pit1_proto",
         "//us/state/nd/v1/form_nd1:form_nd1_proto",
+        "//us/state/nd/v1/form_nd_1ut:form_nd_1ut_proto",
         "//us/state/ne/v1/form_1040n:form_1040n_proto",
         "//us/state/ct/v1/form_ct1040:form_ct1040_proto",
         "//us/state/ct/v1/form_ct_2210:form_ct_2210_proto",
