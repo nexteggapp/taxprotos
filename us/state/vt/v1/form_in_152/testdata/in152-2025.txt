@@ -1,0 +1,63 @@
+     2025                 Underpayment of 2025 Estimated WORKSHEET                                                                                  Please PRINT
+  VERMONT                 Individual Income Tax          IN-152                                                                                      in BLUE or
+                                                                                                                                                     BLACK INK
+
+Taxpayer Information
+                      Taxpayer’s Last Name                                                     First Name                 MI                   Social Security Number
+
+
+               Spouse’s/CU Partner’s Last Name                                                 First Name                 MI                   Social Security Number
+
+
+Required Annual Payment
+  1. 90% of 2025 VERMONT TAX MINUS CREDITS:
+         (Form IN-111, Line 20 minus Line 26c, multiplied by 90% (0.90)). . . . . . . . . . . . . . . . . . . . . . . . . . 1. ___________________________ .00
+  2. 100% of 2024 VERMONT TAX MINUS CREDITS:
+         (Form IN-111, Line 20 minus Line 26c).. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2. ___________________________ .00
+
+  3. Enter the lesser of Line 1 or Line 2.. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3. ___________________________ .00
+
+Calculations                                                                                                   DUE DATES OF QUARTERLY PAYMENTS
+CALCULATION OF UNDERPAYMENT                                                                       April 15, 2025   June 15, 2025   Sept. 15, 2025     Jan. 15, 2026            Totals
+
+4. Tax payments required per quarter (Multiply Line 3 by .25). . 
+5a. From 2025 Form IN-111, add Lines 26a, 26d, and 26e,
+    then multiply by 25% (0.25) per quarter . . . . . . . . . . . . . . . . . 
+5b. Enter 2024 carryforward and 2025 quarterly estimated
+    payments made by the due date per quarter. . . . . . . . . . . . . . . 
+5c. Add Lines 5a and 5b. Each quarter should not equal
+    more than Line 4; apply any excess to the next quarter. . . . . . 
+6. Underpayment per quarter (Subtract Line 5c from Line 4).
+   This line cannot be less than zero.. . . . . . . . . . . . . . . . . . . . . . 
+7. Date FULL payment was made or April 15, 2026,
+   whichever date is earlier.. . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+CALCULATION OF INTEREST
+8a. Number of days AFTER the due date to the date reported on
+    Line 7 for each quarter, or Jan. 1, 2026, whichever date is earlier
+8b. Number of days FROM Jan. 1, 2026 to the date payment was
+    made on Line 7 for each quarter, or April 15, 2026, whichever date
+    is earlier. 4th quarter: Use number of days from Jan. 15, 2026.. . . 
+9a. Interest due for 2025 (Divide Line 8a by 365, multiply
+    by 8.50% (0.085), then multiply by Line 6). . . . . . . . . . . . . . . 
+9b. Interest due for 2026 (Divide Line 8b by 365, multiply
+    by 7.75% (0.0775), then multiply by Line 6). . . . . . . . . . . . . . 
+
+10. Interest due per quarter (Add Lines 9a and 9b). . . . . . . . . . . . 
+
+11. Total underpayment interest due (Add Line 10 columns). . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11.
+CALCULATION OF PENALTY
+12. Number of months FROM the due date of that quarter to
+    the date shown on Line 7 (a portion of a month counts
+    as a whole month) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+13. Penalty due per quarter (Multiply Line 12 by 1% (0.01)
+    then by Line 6). . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+14. Total underpayment penalty due (Add Line 13 columns). . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14.
+
+TOTAL INTEREST AND PENALTY
+
+15. Total underestimated interest and penalty due (Add Lines 11 and 14) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15.
+                                                                                                                                                        Worksheet IN-152
+                                                                                                                                                             Page 1 of 1
+                      5454                                                                                                                                    Rev. 10/25
+

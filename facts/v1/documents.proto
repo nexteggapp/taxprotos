@@ -157,12 +157,16 @@ import "taxprotos/us/state/or/v1/form_or40/schedule_or_asc.proto";
 import "taxprotos/us/state/ut/v1/form_tc40/form_tc40.proto";
 import "taxprotos/us/state/ut/v1/form_tc_546/form_tc_546.proto";
 import "taxprotos/us/state/wa/v1/capital_gains/capital_gains_return.proto";
+import "taxprotos/us/state/wa/v1/capital_gains_payment/capital_gains_payment.proto";
 import "taxprotos/us/state/va/v1/form_760/form_760.proto";
 import "taxprotos/us/state/va/v1/form_760c/form_760c.proto";
 import "taxprotos/us/state/sc/v1/form_sc1040/form_sc1040.proto";
 import "taxprotos/us/state/wv/v1/form_it140/form_it140.proto";
 import "taxprotos/us/state/vt/v1/form_in111/form_in111.proto";
+import "taxprotos/us/state/vt/v1/form_in_152/form_in_152.proto";
+import "taxprotos/us/state/vt/v1/form_in_152a/form_in_152a.proto";
 import "taxprotos/us/state/wi/v1/form_1/form_1.proto";
+import "taxprotos/us/state/wi/v1/schedule_u/schedule_u.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/facts/v1;factsv1";
 
@@ -1003,6 +1007,10 @@ message UtahReturn {
 message WashingtonReturn {
   // The capital gains excise tax return.
   us.state.wa.v1.CapitalGainsReturn capital_gains = 1;
+
+  // The payment of the capital gains tax, with its late payment penalty and
+  // interest.
+  us.state.wa.v1.CapitalGainsPayment capital_gains_payment = 2;
 }
 
 // A Kentucky resident return: Form 740.
@@ -1133,6 +1141,13 @@ message HawaiiReturn {
 message VermontReturn {
   // Form IN-111.
   us.state.vt.v1.FormIN111 form_in111 = 1;
+
+  // Worksheet IN-152: underpayment of estimated individual income tax.
+  us.state.vt.v1.FormIn152 form_in_152 = 2;
+
+  // Worksheet IN-152A: underpayment of estimated tax by the annualized
+  // income installment method.
+  us.state.vt.v1.FormIn152a form_in_152a = 3;
 }
 
 // A Rhode Island resident return: Form RI-1040.
@@ -1160,6 +1175,9 @@ message MinnesotaReturn {
 message WisconsinReturn {
   // Form 1.
   us.state.wi.v1.Form1 form_1 = 1;
+
+  // Schedule U: underpayment of estimated tax.
+  us.state.wi.v1.ScheduleU schedule_u = 2;
 }
 
 // A Massachusetts resident return: Form 1.

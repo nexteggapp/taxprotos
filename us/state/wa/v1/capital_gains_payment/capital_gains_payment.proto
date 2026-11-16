@@ -1,0 +1,142 @@
+// The payment of Washington's capital gains excise tax, and what paying it
+// late costs.
+//
+// Washington prints no form for this: the return is filed electronically
+// (RCW 82.87.110(1)(b)) and there are no quarterly estimated payments. The
+// whole tax is due in one payment on the federal return's due date, whatever
+// extension is granted (RCW 82.87.110(3)), and may be paid from six months
+// before it (RCW 82.87.115(1)). This message holds that computation step by
+// step, each field naming the statute that sets it:
+//
+//   - the tax, the due date, what was paid by it and what was left unpaid;
+//   - for a filer with an extension who paid an estimate by the due date, the
+//     5% penalty on an estimate under 80% of the tax (RCW 82.32.090(10));
+//   - otherwise the late payment penalty, 9% of the tax not received by the
+//     due date, 19% in total after the last day of the next month and 29%
+//     after the last day of the month after that, at least $5
+//     (RCW 82.32.090(1));
+//   - interest on the unpaid tax from the last day of the next April, at the
+//     department's rate for each calendar year (RCW 82.32.050(1)(c)(ii), (2)).
+//
+// The mapping beside this file cites the statute for each field, and
+// coverage_test.go checks every cited section is in the statute extracts in
+// testdata.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.wa.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/wa/v1/capital_gains_payment;capitalgainspayment";
+
+// CapitalGainsPayment is the payment of one year's capital gains tax and its
+// late payment penalty and interest.
+message CapitalGainsPayment {
+  // LatePaymentStep is one of the three steps of the late payment penalty of
+  // RCW 82.32.090(1).
+  message LatePaymentStep {
+    // The step: 1, 2 or 3.
+    int32 step = 1;
+
+    // The day by which the tax had to be received to avoid this step: the due
+    // date, the last day of the month after it, and the last day of the
+    // second month after it, each moved past a weekend or legal holiday
+    // (RCW 1.12.070(3)).
+    common.v1.Date deadline = 2;
+
+    // The total penalty the step reaches, as a fraction of the tax not
+    // received: 0.09, 0.19 or 0.29.
+    double total_rate = 3;
+
+    // The part of the total this step adds: 0.09, then 0.10 and 0.10.
+    double rate = 4;
+
+    // The tax still not received after the deadline.
+    common.v1.Money unpaid = 5;
+
+    // This step's penalty: the unpaid tax multiplied by the rate, raised in
+    // the first step so the penalty is not less than $5.
+    common.v1.Money penalty = 6;
+  }
+
+  // InterestPeriod is interest on one part of the unpaid tax for the days of
+  // one calendar year's rate (RCW 82.32.050(2)).
+  message InterestPeriod {
+    // The unpaid tax charged.
+    common.v1.Money principal = 1;
+
+    // The day before the first day charged.
+    common.v1.Date from = 2;
+
+    // The last day charged: the day the tax was paid, or the day the interest
+    // is figured to.
+    common.v1.Date to = 3;
+
+    // The days charged.
+    int32 days = 4;
+
+    // The department's yearly rate for the calendar year, as a fraction.
+    double annual_rate = 5;
+
+    // The interest: the principal times the rate times the days over the
+    // days in the year.
+    common.v1.Money interest = 6;
+  }
+
+  // The tax year the payment is for.
+  int32 tax_year = 1;
+
+  // The capital gains tax for the year (RCW 82.87.040).
+  common.v1.Money tax = 2;
+
+  // The day the whole tax is due: the federal return's due date, moved past
+  // a weekend or legal holiday, whatever filing extension is granted
+  // (RCW 82.87.110(1)(a), (3)).
+  common.v1.Date due_date = 3;
+
+  // The first day a payment for the year can be made, six months before the
+  // due date (RCW 82.87.115(1)).
+  common.v1.Date first_payment_date = 4;
+
+  // The payments received on or before the due date (RCW 82.87.110(3)).
+  common.v1.Money paid_by_due_date = 5;
+
+  // The tax not paid by the due date, the deficiency to which interest and
+  // penalties apply (RCW 82.87.110(3)).
+  common.v1.Money unpaid_at_due_date = 6;
+
+  // The filer had a federal extension and confirmed it with the department by
+  // the due date (RCW 82.87.110(5)). With it, a payment by the due date is an
+  // estimated payment.
+  bool extension = 7;
+
+  // The estimated payment was under 80% of the tax and the filer at least
+  // $1,000 short (RCW 82.32.090(10)).
+  bool low_estimate = 8;
+
+  // The penalty on a low estimate: 5% of the whole tax (RCW 82.32.090(10)).
+  common.v1.Money low_estimate_penalty = 9;
+
+  // The steps of the late payment penalty, for a filer without an estimated
+  // payment under an extension (RCW 82.32.090(1)).
+  repeated LatePaymentStep late_payment_steps = 10;
+
+  // The late payment penalty: the steps' penalties added (RCW 82.32.090(1)).
+  common.v1.Money late_payment_penalty = 11;
+
+  // The last day before interest runs: the last day of April after the due
+  // date (RCW 82.32.050(1)(c)(ii)).
+  common.v1.Date interest_from = 12;
+
+  // The interest, one entry per part of the unpaid tax and calendar year
+  // (RCW 82.32.050(2)).
+  repeated InterestPeriod interest_periods = 13;
+
+  // The interest: the periods' interest added (RCW 82.32.050(1)(c)(ii)).
+  common.v1.Money interest = 14;
+
+  // The penalties and interest added (RCW 82.32.090(1), (10);
+  // RCW 82.32.050).
+  common.v1.Money total_penalty_and_interest = 15;
+}

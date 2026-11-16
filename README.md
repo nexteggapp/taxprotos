@@ -254,6 +254,8 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [ND-1UT](https://www.tax.nd.gov/sites/www/files/documents/forms/individual/2025-iit/28704-schedule-nd-1ut-2025.pdf) | [`form_nd_1ut.proto`](us/state/nd/v1/form_nd_1ut/form_nd_1ut.proto) | North Dakota underpayment or late payment of estimated income tax |
 | [SC1040](https://dor.sc.gov/sites/dor/files/forms/SC1040_2025.pdf) | [`form_sc1040.proto`](us/state/sc/v1/form_sc1040/form_sc1040.proto) | The South Carolina resident return |
 | [IN-111](https://tax.vermont.gov/sites/tax/files/documents/IN-111-2025.pdf) | [`form_in111.proto`](us/state/vt/v1/form_in111/form_in111.proto) | The Vermont resident return |
+| [IN-152](https://tax.vermont.gov/sites/tax/files/documents/IN-152-2025.pdf) | [`form_in_152.proto`](us/state/vt/v1/form_in_152/form_in_152.proto) | Vermont underpayment of estimated individual income tax |
+| [IN-152A](https://tax.vermont.gov/sites/tax/files/documents/IN-152A-2025.pdf) | [`form_in_152a.proto`](us/state/vt/v1/form_in_152a/form_in_152a.proto) | Vermont annualized underpayment of estimated tax |
 | [IT 1040](https://dam.assets.ohio.gov/image/upload/tax.ohio.gov/forms/ohio_individual/individual/2025/1040-bundle.pdf) | [`form_it1040.proto`](us/state/oh/v1/form_it1040/form_it1040.proto) | The Ohio resident return |
 | [IT-201](https://www.tax.ny.gov/pdf/current_forms/it/it201_fill_in.pdf) | [`form_it201.proto`](us/state/ny/v1/form_it201/form_it201.proto) | The New York resident return |
 | [540](https://www.ftb.ca.gov/forms/2025/2025-540.pdf) | [`form_540.proto`](us/state/ca/v1/form_540/form_540.proto) | The California resident return |
@@ -268,7 +270,9 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [REV-1630](https://www.pa.gov/content/dam/copapwp-pagov/en/revenue/documents/formsandpublications/formsforindividuals/pit/documents/2025/2025_rev-1630.pdf) | [`form_rev_1630.proto`](us/state/pa/v1/form_rev_1630/form_rev_1630.proto) | Pennsylvania underpayment of estimated tax by individuals |
 | [RI-1040 instructions](https://tax.ri.gov/sites/g/files/xkgbur541/files/2025-12/2025%201040R%20Instructions%20122025.pdf) | [`form_ri1040.proto`](us/state/ri/v1/form_ri1040/form_ri1040.proto) | The Rhode Island resident return |
 | [Form 1](https://www.revenue.wi.gov/TaxForms2025/2025-Form1f.pdf) | [`form_1.proto`](us/state/wi/v1/form_1/form_1.proto) | The Wisconsin resident return |
+| [Schedule U](https://www.revenue.wi.gov/TaxForms2025/2025-ScheduleU.pdf) | [`schedule_u.proto`](us/state/wi/v1/schedule_u/schedule_u.proto) | Wisconsin underpayment of estimated tax |
 | [Capital gains](https://app.leg.wa.gov/rcw/default.aspx?cite=82.87) | [`capital_gains_return.proto`](us/state/wa/v1/capital_gains/capital_gains_return.proto) | Washington's excise tax on long-term gains |
+| [Capital gains payment](https://app.leg.wa.gov/rcw/default.aspx?cite=82.87.110) | [`capital_gains_payment.proto`](us/state/wa/v1/capital_gains_payment/capital_gains_payment.proto) | Paying Washington's capital gains tax, and the late payment penalty and interest |
 
 Washington levies no personal income tax, so `us/state/wa` has no income tax
 return. Its capital gains return is filed electronically and has no printed
