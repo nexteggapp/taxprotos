@@ -253,6 +253,8 @@ Each file's `go_package` is `github.com/nexteggapp/taxprotos/<directory>`.
 | [ND-1UT](https://www.tax.nd.gov/sites/www/files/documents/forms/individual/2025-iit/28704-schedule-nd-1ut-2025.pdf) | [`form_nd_1ut.proto`](us/state/nd/v1/form_nd_1ut/form_nd_1ut.proto) | North Dakota underpayment or late payment of estimated income tax |
 | [SC1040](https://dor.sc.gov/sites/dor/files/forms/SC1040_2025.pdf) | [`form_sc1040.proto`](us/state/sc/v1/form_sc1040/form_sc1040.proto) | The South Carolina resident return |
 | [IN-111](https://tax.vermont.gov/sites/tax/files/documents/IN-111-2025.pdf) | [`form_in111.proto`](us/state/vt/v1/form_in111/form_in111.proto) | The Vermont resident return |
+| [IN-152](https://tax.vermont.gov/sites/tax/files/documents/IN-152-2025.pdf) | [`form_in_152.proto`](us/state/vt/v1/form_in_152/form_in_152.proto) | Vermont underpayment of estimated individual income tax |
+| [IN-152A](https://tax.vermont.gov/sites/tax/files/documents/IN-152A-2025.pdf) | [`form_in_152a.proto`](us/state/vt/v1/form_in_152a/form_in_152a.proto) | Vermont annualized underpayment of estimated tax |
 | [IT 1040](https://dam.assets.ohio.gov/image/upload/tax.ohio.gov/forms/ohio_individual/individual/2025/1040-bundle.pdf) | [`form_it1040.proto`](us/state/oh/v1/form_it1040/form_it1040.proto) | The Ohio resident return |
 | [IT-201](https://www.tax.ny.gov/pdf/current_forms/it/it201_fill_in.pdf) | [`form_it201.proto`](us/state/ny/v1/form_it201/form_it201.proto) | The New York resident return |
 | [540](https://www.ftb.ca.gov/forms/2025/2025-540.pdf) | [`form_540.proto`](us/state/ca/v1/form_540/form_540.proto) | The California resident return |

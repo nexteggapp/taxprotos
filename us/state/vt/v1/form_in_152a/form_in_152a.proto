@@ -1,0 +1,152 @@
+// Worksheet IN-152A, Annualized Income Installment Method for Underpayment of
+// Estimated Tax by Individuals, Estates, and Trusts.
+//
+// A Vermont filer who used the annualized income installment method on
+// federal Form 2210 uses it in place of Worksheet IN-152, with a copy of the
+// federal form attached. Lines 1 to 3 set the required annual payment as
+// IN-152 does; line 4 is the federal required annual payment, and lines 5
+// and 6 scale each federal annualized installment by the Vermont required
+// annual payment over the federal one. Lines 7a to 17 then follow IN-152
+// lines 5a to 15.
+//
+// Line numbers are in the mapping files beside this file, keyed by tax year,
+// per docs/form-schemas.md. Verified against the 2025 worksheet (Rev. 10/25);
+// testdata holds the text extracted from the published PDF. The 25% of
+// withholding a quarter (line 7a), the 365-day year and the printed rates
+// (lines 11a and 11b) and the 1% a month (line 15) are preprinted and not
+// stored.
+//
+// # Where it departs from federal Form 2210
+//
+// Vermont has no annualising schedule of its own: each installment is the
+// federal Schedule AI installment in proportion (line 6). The charges are
+// IN-152's: interest on each quarter's whole underpayment until paid in
+// full, and 1% for each month or part of a month on top.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.vt.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/vt/v1/form_in_152a;formin152a";
+
+// FormIn152a is what a Worksheet IN-152A states.
+message FormIn152a {
+  // PaymentPeriod is one column of lines 5 to 15: one quarterly due date.
+  message PaymentPeriod {
+    // The column: 1 through 4, for the four due dates.
+    int32 period = 1;
+
+    // The column's due date, as the heading, Due Dates of Quarterly
+    // Payments, gives it.
+    common.v1.Date due_date = 2;
+
+    // Line 5: Tax payments required per quarter from federal Form 2210, page
+    // 3, line 27.
+    common.v1.Money federal_required_installment = 3;
+
+    // Line 6: Vermont payment due. Line 5 divided by line 4, then multiplied
+    // by line 3.
+    common.v1.Money required_installment = 4;
+
+    // Line 7a: Withholding, Form IN-111 lines 26a, 26d and 26e added, then
+    // multiplied by 25% for each quarter.
+    common.v1.Money withholding = 5;
+
+    // Line 7b: Last year's overpayment carried forward and this year's
+    // estimated payments made by the column's due date.
+    common.v1.Money estimated_payments = 6;
+
+    // Line 7c: Lines 7a and 7b added, no more than line 6, with any excess
+    // applied to the next quarter.
+    common.v1.Money total_payments = 7;
+
+    // Line 8: Underpayment per quarter. Line 6 less line 7c, and not less
+    // than zero.
+    common.v1.Money underpayment = 8;
+
+    // Line 9: The date full payment of the underpayment was made, or April 15
+    // of the next year, whichever is earlier.
+    common.v1.Date payment_date = 9;
+
+    // Line 10a: Number of days after the due date to the date on line 9, or
+    // to January 1 of the next year, whichever is earlier.
+    int32 days_in_tax_year = 10;
+
+    // Line 10b: Number of days from January 1 of the next year to the date
+    // on line 9, or to April 15, whichever is earlier; for the fourth
+    // quarter, the days from its January 15 due date.
+    int32 days_in_next_year = 11;
+
+    // Line 11a: Interest due for the tax year. Line 10a divided by 365,
+    // multiplied by the tax year's rate, then by line 8.
+    common.v1.Money interest_tax_year = 12;
+
+    // Line 11b: Interest due for the next year. Line 10b divided by 365,
+    // multiplied by the next year's rate, then by line 8.
+    common.v1.Money interest_next_year = 13;
+
+    // Line 12: Interest due per quarter. Lines 11a and 11b added.
+    common.v1.Money interest = 14;
+
+    // Line 14: Number of months from the due date to the date on line 9, a
+    // portion of a month counting as a whole month.
+    int32 months = 15;
+
+    // Line 15: Penalty due per quarter. Line 14 multiplied by 1%, then by
+    // line 8.
+    common.v1.Money penalty = 16;
+  }
+
+  // The tax year the worksheet applies to.
+  int32 tax_year = 1;
+
+  // Taxpayer Information: the taxpayer's name, last name first.
+  string taxpayer_name = 2;
+
+  // Taxpayer Information: the taxpayer's Social Security number.
+  string taxpayer_ssn = 3;
+
+  // Taxpayer Information: the spouse's or civil union partner's name, last
+  // name first.
+  string spouse_name = 4;
+
+  // Taxpayer Information: the spouse's or civil union partner's Social
+  // Security number.
+  string spouse_ssn = 5;
+
+  // Line 1: 90% of this year's Vermont tax minus credits, Form IN-111 line 20
+  // less line 26c, multiplied by 90%.
+  common.v1.Money current_year_safe_harbor_tax = 6;
+
+  // Line 2: 100% of last year's Vermont tax minus credits, last year's Form
+  // IN-111 line 20 less line 26c.
+  common.v1.Money prior_year_tax = 7;
+
+  // Line 3: The lesser of line 1 or line 2: the required annual payment.
+  common.v1.Money required_annual_payment = 8;
+
+  // Line 4: The federal required annual payment, federal Form 2210 page 1
+  // line 9.
+  common.v1.Money federal_required_annual_payment = 9;
+
+  // Lines 5 to 15, one entry per column.
+  repeated PaymentPeriod payment_periods = 10;
+
+  // Totals column of line 6: the four quarters' Vermont payments due added.
+  common.v1.Money total_required_installments = 11;
+
+  // Totals column of line 8: the four quarters' underpayments added.
+  common.v1.Money total_underpayment = 12;
+
+  // Line 13: Total underpayment interest due. Line 12 of every column added.
+  common.v1.Money total_interest = 13;
+
+  // Line 16: Total underpayment penalty due. Line 15 of every column added.
+  common.v1.Money total_penalty = 14;
+
+  // Line 17: Total underestimated interest and penalty due. Lines 13 and 16
+  // added.
+  common.v1.Money total_interest_and_penalty = 15;
+}

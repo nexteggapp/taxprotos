@@ -1,0 +1,68 @@
+                               Annualized Income Installment Method for                                                                                               Attach a copy
+    2025                        Underpayment of 2025 Estimated Tax by
+                                                                                                                            WORKSHEET                                 of your federal
+  VERMONT
+                                    Individual, Estates, and Trusts
+                                                                                                                        IN-152A                                         Form 2210,
+                                                                                                                                                                         pages 1-4
+Taxpayer Information                                                                                                                        Print in BLUE or BLACK ink
+
+                     Taxpayer’s Last Name                                                  First Name                  MI                      Social Security Number
+
+
+              Spouse’s/CU Partner’s Last Name                                              First Name                  MI                      Social Security Number
+
+
+Required Annual Payment
+ 1. 90% of 2025 VERMONT TAX MINUS CREDITS:
+        (Form IN-111, Line 20 minus Line 26c, multiplied by 90% (0.90)). . . . . . . . . . . . . . . . . . . . . . . . . . 1. ___________________________ .00
+ 2. 100% of 2024 VERMONT TAX MINUS CREDITS:
+        (Form IN-111, Line 20 minus Line 26c).. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2. ___________________________ .00
+
+ 3. Enter the lesser of Line 1 or Line 2.. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3. ___________________________ .00
+
+ 4. Enter the amount from federal Form 2210, Page 1, Line 9 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4. ______________________________.00
+
+Calculations                                                                                               DUE DATES OF QUARTERLY PAYMENTS
+CALCULATION OF UNDERPAYMENT                                                                    April 15, 2025 June 15, 2025 Sept. 15, 2025 Jan. 15, 2026                      Totals
+  5. Tax payments required per quarter from
+     federal Form 2210, Page 3, Line 27. . . . . . . . . . . . . . . . . . . . 
+  6. Vermont payment due. (Divide Line 5 by Line 4,
+     then multiply by Line 3.) . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+ 7a. From 2025 Form IN-111, add Lines 26a, 26d, and 26e,
+     then multiply by 25% (0.25) per quarter . . . . . . . . . . . . . . . . 
+ 7b. Enter 2024 carryforward and 2025 quarterly estimated
+     payments made by the due date per quarter.. . . . . . . . . . . . . . 
+ 7c. Add Lines 7a and 7b. Each quarter should not equal
+     more than Line 6; apply any excess to the next quarter. . . . . 
+  8. Underpayment per quarter (Subtract Line 7c from
+     Line 6). This line cannot be less than zero.. . . . . . . . . . . . . . 
+  9. Date FULL payment was made or April 15, 2026,
+     whichever date is earlier. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+CALCULATION OF INTEREST
+10a. Number of days AFTER the due date to the date reported on
+     Line 9 for each quarter, or Jan. 1, 2026, whichever date is earlier
+10b. Number of days FROM Jan. 1, 2026 to the date payment was
+     made on Line 9 for each quarter, or April 15, 2026, whichever date
+     is earlier. 4th quarter: Use number of days from Jan. 15, 2026. . . . 
+11a. Interest due for 2025 (Divide Line 10a by 365, multiply
+     by 8.50% (0.085), then multiply by Line 8). . . . . . . . . . . . . . 
+11b. Interest due for 2026 (Divide Line 10b by 365, multiply
+     by 7.75% (0.0775), then multiply by Line 8). . . . . . . . . . . . . 
+
+ 12. Interest due per quarter (Add Lines 11a and 11b) . . . . . . . . . 
+
+ 13. Total underpayment interest due (Add Line 12 columns) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13.
+CALCULATION OF PENALTY
+ 14. Number of months FROM the due date of that quarter to the date
+     shown on Line 9 (a portion of a month counts as a whole month)
+ 15. Penalty due per quarter (Multiply Line 14 by 1% (0.01)
+     then by Line 8). . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+
+ 16. Total underpayment penalty due (Add Line 15 columns) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16.
+
+TOTAL INTEREST AND PENALTY
+
+ 17. Total underestimated interest and penalty due (Add Lines 13 and 16) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17.
+                      5454                                                                                             Worksheet IN-152A, Page 1 of 1, Rev. 10/25
+

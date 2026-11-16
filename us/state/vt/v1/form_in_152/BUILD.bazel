@@ -1,0 +1,28 @@
+# gazelle:ignore
+
+load("@protobuf//bazel:proto_library.bzl", "proto_library")
+
+# Worksheet IN-152: underpayment of Vermont estimated individual income tax.
+proto_library(
+    name = "form_in_152_proto",
+    # Imported as taxprotos/..., so consumers import these files by that path.
+    import_prefix = "taxprotos",
+    srcs = [
+        "form_in_152.proto",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//common/v1:common_proto",
+    ],
+)
+
+# The mappings and the form extract they are checked against, for
+# //go/us/state/vt/v1/form_in_152.
+filegroup(
+    name = "test_oracles",
+    srcs = glob([
+        "mapping*.textproto",
+        "testdata/**",
+    ]),
+    visibility = ["//go/us/state/vt/v1/form_in_152:__pkg__"],
+)

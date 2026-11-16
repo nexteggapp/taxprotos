@@ -159,6 +159,8 @@ import "taxprotos/us/state/va/v1/form_760/form_760.proto";
 import "taxprotos/us/state/sc/v1/form_sc1040/form_sc1040.proto";
 import "taxprotos/us/state/wv/v1/form_it140/form_it140.proto";
 import "taxprotos/us/state/vt/v1/form_in111/form_in111.proto";
+import "taxprotos/us/state/vt/v1/form_in_152/form_in_152.proto";
+import "taxprotos/us/state/vt/v1/form_in_152a/form_in_152a.proto";
 import "taxprotos/us/state/wi/v1/form_1/form_1.proto";
 
 option go_package = "github.com/nexteggapp/taxprotos/facts/v1;factsv1";
@@ -1119,6 +1121,13 @@ message HawaiiReturn {
 message VermontReturn {
   // Form IN-111.
   us.state.vt.v1.FormIN111 form_in111 = 1;
+
+  // Worksheet IN-152: underpayment of estimated individual income tax.
+  us.state.vt.v1.FormIn152 form_in_152 = 2;
+
+  // Worksheet IN-152A: underpayment of estimated tax by the annualized
+  // income installment method.
+  us.state.vt.v1.FormIn152a form_in_152a = 3;
 }
 
 // A Rhode Island resident return: Form RI-1040.
