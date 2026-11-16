@@ -1,0 +1,73 @@
+# proto-message: nexteggapp.taxprotos.common.v1.FormMapping
+#
+# What Form REV-1630 calls each concept, per tax year.
+#
+# Lines come from the 2025 REV-1630 as the Pennsylvania Department of
+# Revenue publishes it, in testdata/. There are no amount codes: IRS
+# Publication 1220 covers the information returns the IRS receives
+# electronically, and a state form is not one of them.
+#
+# Field names on the message never carry a line number, per
+# docs/form-schemas.md. The columns of lines 5 to 15c are repeated messages
+# whose fields name their lines in their comments.
+
+form: "REV-1630"
+message_name: "nexteggapp.taxprotos.us.state.pa.v1.FormRev1630"
+tax_years: 2025
+
+concepts {
+  concept: "tax_liability"
+  years { tax_year: 2025 irs_box: "1a" }
+}
+
+concepts {
+  concept: "ninety_percent_of_tax"
+  years { tax_year: 2025 irs_box: "1b" }
+}
+
+concepts {
+  concept: "withholding_and_credits"
+  years { tax_year: 2025 irs_box: "2" }
+}
+
+concepts {
+  concept: "tax_less_withholding_and_credits"
+  years { tax_year: 2025 irs_box: "3" }
+}
+
+concepts {
+  concept: "required_after_withholding_and_credits"
+  years { tax_year: 2025 irs_box: "4" }
+}
+
+concepts {
+  concept: "payment_periods"
+  years {
+    tax_year: 2025
+    irs_box: "5"
+    note: "Lines 5 to 15c and the Exception 1 and 2 worksheets, one entry per column; each entry's fields name their own lines."
+  }
+}
+
+concepts {
+  concept: "total_interest"
+  years { tax_year: 2025 irs_box: "16" }
+}
+
+concepts {
+  concept: "prior_year_tax_less_credits"
+  years {
+    tax_year: 2025
+    irs_box: "A"
+    note: "Special exception information line A, not the Exception 1 or Exception 2 worksheet's line A."
+  }
+}
+
+concepts {
+  concept: "payments_began_when_known"
+  years {
+    tax_year: 2025
+    irs_box: "B"
+    note: "Special exception information line B, Yes or No."
+  }
+}

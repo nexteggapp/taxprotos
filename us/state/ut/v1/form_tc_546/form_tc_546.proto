@@ -1,0 +1,104 @@
+// The TC-546 Payment Worksheet, Utah's prepayment test for a return filed on
+// the automatic extension, with the extension penalty Publication 58 figures
+// on it.
+//
+// Utah has no estimated tax for individuals and no underpayment form. A
+// filer who uses the automatic six-month extension must have paid, by the
+// return's original due date, the lesser of 90% of this year's tax or 100%
+// of last year's liability (Utah Code § 59-10-516(2)(b)). The Tax
+// Commission prints that test as the Payment Worksheet on Form TC-546,
+// Individual Income Tax Prepayment Coupon, lines 1 to 8. A filer who misses
+// it is charged 2% a month of the tax unpaid on the due date, for the months
+// of the extension (§ 59-1-401(5)(b); TC-546, Penalties), which Publication
+// 58, Utah Interest and Penalties, figures as the underpayment times 24% a
+// year times the days outstanding over 365, at most 12%. The worksheet's
+// lines are fields named for them; the penalty's steps, which no form
+// numbers, are fields after them, each naming the passage it follows.
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year.
+// Verified against TC-546 (Rev. 10/26); testdata holds the text of its
+// Payment Worksheet extracted from the published PDF.
+//
+// # Where it departs from federal Form 2210
+//
+// One test on one date, for an extended return only, and a penalty of 2% a
+// month on the whole tax unpaid on that date, not interest on each
+// instalment's shortfall.
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.ut.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/ut/v1/form_tc_546;formtc546";
+
+// FormTc546 is the TC-546 Payment Worksheet, lines 1 to 8, and the extension
+// penalty on it.
+message FormTc546 {
+  // The tax year the worksheet applies to.
+  int32 tax_year = 1;
+
+  // Line 1: Tax you expect to owe this year.
+  common.v1.Money expected_tax = 2;
+
+  // Line 2: Minimum payment rate, printed as .90, in basis points: 9000.
+  int32 minimum_payment_rate_basis_points = 3;
+
+  // Line 3: Line 1 multiplied by the rate on line 2.
+  common.v1.Money minimum_of_this_year_tax = 4;
+
+  // Line 4: Last year's Utah tax liability, as filed, amended or audited.
+  common.v1.Money prior_year_liability = 5;
+
+  // Line 5: Minimum tax due by the original due date: the lesser of line 3
+  // or line 4.
+  common.v1.Money minimum_tax_due = 6;
+
+  // Line 6: This year's Utah income tax withheld, from Forms W-2, 1099 and
+  // the like.
+  common.v1.Money tax_withheld = 7;
+
+  // Line 7: Prepayments already made for this year, credit carryovers from
+  // prior years, and last year's refund applied to this year.
+  common.v1.Money prepayments = 8;
+
+  // Line 8: Minimum payment due: lines 6 and 7 subtracted from line 5, to be
+  // paid on or before the return's due date.
+  common.v1.Money minimum_payment_due = 9;
+
+  // The return will be filed after its original due date under the automatic
+  // extension, so the test applies (§ 59-10-516(2)). False when it is filed
+  // and paid by the due date, and then nothing below is charged.
+  bool files_on_extension = 10;
+
+  // The return's original due date, by which line 5 must be paid.
+  common.v1.Date original_due_date = 11;
+
+  // The last day of the automatic six-month extension.
+  common.v1.Date extension_ends = 12;
+
+  // Insufficient Prepayment (Extension Penalty): the whole tax unpaid on the
+  // original due date, which the penalty is charged on when line 5 was not
+  // paid by then (§ 59-10-516(3); TC-546, Penalties).
+  common.v1.Money unpaid_tax = 13;
+
+  // The day the penalty is figured to: the day the return is filed or the
+  // extension ends, whichever is earlier.
+  common.v1.Date penalty_through = 14;
+
+  // The number of days outstanding, after the original due date to the day
+  // the penalty is figured to.
+  int32 days_outstanding = 15;
+
+  // The unpaid tax times 24% a year times the days outstanding over 365,
+  // Publication 58's formula.
+  common.v1.Money penalty_by_the_day = 16;
+
+  // Six months of 2%, 12% of the unpaid tax: the most the penalty can be.
+  common.v1.Money penalty_cap = 17;
+
+  // The extension penalty: the lesser of the two above, or nothing when line
+  // 5 was paid by the original due date.
+  common.v1.Money extension_penalty = 18;
+}

@@ -1,0 +1,237 @@
+// Form 760C, Underpayment of Virginia Estimated Tax by Individuals, Estates
+// and Trusts.
+//
+// Attached to Form 760, 763, 760PY or 770 to figure the addition to tax for
+// underpaying Virginia estimated tax. Part I figures each installment's
+// underpayment (lines 1 to 14), Part II tests four exceptions that each void
+// the addition for an installment (lines 15 to 19), and Part III charges
+// what no exception voids by the day (lines 20 to 25).
+//
+// Line numbers are in mapping.textproto beside this file, keyed by tax year.
+// Verified against the 2025 Form 760C (Rev. 04/26); testdata holds the text
+// extracted from the published PDF.
+//
+// # Where it departs from federal Form 2210
+//
+// The installments are due May 1, June 15, September 15 and January 15. A
+// payment made on an installment date pays that installment before an
+// earlier shortfall (lines 11 and 12). Four exceptions each void the
+// addition for an installment without lowering its underpayment, the last
+// two not for the fourth (lines 16 to 19), and there is no addition when the
+// year's underpayments total the year's small amount or less (line 14). The
+// addition runs to May 1 of the next year, at a printed daily rate (lines 22
+// and 23).
+syntax = "proto3";
+
+package nexteggapp.taxprotos.us.state.va.v1;
+
+import "taxprotos/common/v1/date.proto";
+import "taxprotos/common/v1/money.proto";
+
+option go_package = "github.com/nexteggapp/taxprotos/us/state/va/v1/form_760c;form760c";
+
+// Form760c is what a Form 760C states: Parts I to III.
+message Form760c {
+  // InstallmentPeriod is one column, A to D, of lines 6 to 24: one
+  // installment due date.
+  message InstallmentPeriod {
+    // The column: 1 through 4, for columns A to D.
+    int32 period = 1;
+
+    // Line 6: Due date of the installment payment.
+    common.v1.Date due_date = 2;
+
+    // Line 7: Tax liability: line 4 divided by the number of installments on
+    // line 5, in the columns for which payments were required.
+    common.v1.Money tax_liability = 3;
+
+    // Line 8: Income tax withheld for the installment period.
+    common.v1.Money tax_withheld = 4;
+
+    // Line 9: Overpayment credit from last year's return.
+    common.v1.Money prior_year_overpayment_credit = 5;
+
+    // Line 10: Timely payments made for the installment period. Late
+    // payments are not entered.
+    common.v1.Money timely_payments = 6;
+
+    // Line 11: Underpayment or overpayment: lines 8, 9 and 10 subtracted
+    // from line 7. Positive for an underpayment, negative for an
+    // overpayment.
+    common.v1.Money underpayment_or_overpayment = 7;
+
+    // Line 12: Other payments, from the Late Payment/Overpayment Table,
+    // earliest first, no more than the underpayment in any column.
+    common.v1.Money other_payments = 8;
+
+    // Lines 12a to 12d: the first to fourth payments entered on line 12, with
+    // their dates.
+    repeated OtherPayment other_payment_entries = 9;
+
+    // Line 13: Total timely payments made as of the installment due date,
+    // from lines 8, 9, 10 and 12.
+    common.v1.Money total_timely_payments = 10;
+
+    // Line 14: Line 13 subtracted from line 7: the installment's
+    // underpayment.
+    common.v1.Money underpayment = 11;
+
+    // Line 15: Total amount paid and withheld from January 1 through the
+    // installment date.
+    common.v1.Money total_paid_to_date = 12;
+
+    // Line 16: Exception 1, last year's tax times 25%, 50%, 75% and 100%.
+    // Unset when the exception is not figured.
+    common.v1.Money exception_1 = 13;
+
+    // Line 17: Exception 2, the tax on last year's income at this year's
+    // rates and exemptions times 25%, 50%, 75% and 100%. Unset when the
+    // exception is not figured.
+    common.v1.Money exception_2 = 14;
+
+    // Line 18a: Annualized Virginia adjusted gross income for the period
+    // ending April 30, May 31 or August 31. None in column D.
+    common.v1.Money annualized_vagi = 15;
+
+    // Line 18b: Annualized itemized deductions, or the full standard
+    // deduction.
+    common.v1.Money annualized_deductions = 16;
+
+    // Line 18c: Annualized child and dependent care expenses and other
+    // deductions.
+    common.v1.Money annualized_other_deductions = 17;
+
+    // Line 18d: Total dollar amount of exemptions claimed on the return.
+    common.v1.Money annualized_exemptions = 18;
+
+    // Line 18e: Virginia taxable income: lines 18b, 18c and 18d subtracted
+    // from line 18a.
+    common.v1.Money annualized_taxable_income = 19;
+
+    // Line 18f: Virginia tax on line 18e.
+    common.v1.Money annualized_tax = 20;
+
+    // Line 18g: Exception 3, line 18f times 22.5%, 45% and 67.5%. Unset when
+    // the exception is not figured.
+    common.v1.Money exception_3 = 21;
+
+    // Line 19a: Virginia adjusted gross income from January 1 to April 30,
+    // May 31 or August 31. None in column D.
+    common.v1.Money income_to_date_vagi = 22;
+
+    // Line 19b: Itemized deductions for the period, or if greater the full
+    // standard deduction.
+    common.v1.Money income_to_date_deductions = 23;
+
+    // Line 19c: Child and dependent care expenses and other deductions for
+    // the period.
+    common.v1.Money income_to_date_other_deductions = 24;
+
+    // Line 19d: Total dollar amount of exemptions claimed on the return.
+    common.v1.Money income_to_date_exemptions = 25;
+
+    // Line 19e: Virginia taxable income: lines 19b, 19c and 19d subtracted
+    // from line 19a.
+    common.v1.Money income_to_date_taxable_income = 26;
+
+    // Line 19f: Virginia tax on line 19e.
+    common.v1.Money income_to_date_tax = 27;
+
+    // Line 19g: Exception 4, line 19f times 90%. Unset when the exception is
+    // not figured.
+    common.v1.Money exception_4 = 28;
+
+    // Line 20: "Exception" and its number, 1 to 4, written for a period an
+    // exception voids; 0 when none does.
+    int32 exception_met = 29;
+
+    // Line 20: Amount of underpayment from line 14, for a period no
+    // exception voids.
+    common.v1.Money underpayment_charged = 30;
+
+    // Lines 21 to 24: each computation of the addition on the column's
+    // underpayment, one for each part of it a payment satisfied and each
+    // rate that applies to it.
+    repeated AdditionComputation computations = 31;
+
+    // Line 24: The addition for the column: the computations added.
+    common.v1.Money addition = 32;
+  }
+
+  // OtherPayment is one payment of lines 12a to 12d.
+  message OtherPayment {
+    // The date of the payment.
+    common.v1.Date date = 1;
+
+    // The amount entered.
+    common.v1.Money amount = 2;
+  }
+
+  // AdditionComputation is one computation of lines 21 to 24.
+  message AdditionComputation {
+    // The part of line 20 this computation charges.
+    common.v1.Money underpayment = 1;
+
+    // The day the charge runs from: the installment's due date, or the end
+    // of an earlier rate's period.
+    common.v1.Date from = 2;
+
+    // Line 21: Date of payment, or May 1 of the next year, whichever is
+    // earlier, or the last day of the rate's period.
+    common.v1.Date payment_date = 3;
+
+    // Line 22: Number of days after from through the date on line 21.
+    int32 days = 4;
+
+    // Line 23: The daily rate the form prints, in millionths: .00025, for
+    // 9% a year, is 250. Zero for a rate the form prints none for, charged
+    // as the annual rate times the days over 365.
+    int32 daily_rate_millionths = 5;
+
+    // The annual rate for the days, in millionths: 9% is 90000.
+    int32 annual_rate_millionths = 6;
+
+    // Line 24: The underpayment times the days and the rate.
+    common.v1.Money addition = 7;
+  }
+
+  // The tax year the form applies to.
+  int32 tax_year = 1;
+
+  // The name, or of both if joint, or the estate or trust's name.
+  string taxpayer_name = 2;
+
+  // The Social Security Number or FEIN.
+  string ssn = 3;
+
+  // The spouse's Social Security Number.
+  string spouse_ssn = 4;
+
+  // Line 1: This year's income tax liability after the Spouse Tax
+  // Adjustment and tax credits.
+  common.v1.Money tax_liability = 5;
+
+  // Line 2: 90% of line 1.
+  common.v1.Money ninety_percent_of_tax = 6;
+
+  // Line 3: Last year's income tax liability after the Spouse Tax
+  // Adjustment and tax credits.
+  common.v1.Money prior_year_tax_liability = 7;
+
+  // Line 4: Line 2 or line 3, whichever is less.
+  common.v1.Money required_annual_payment = 8;
+
+  // Line 5: The number of installment periods for which payments were
+  // required: four, or fewer for a requirement first met later in the year.
+  int32 installments_required = 9;
+
+  // Lines 6 to 24, one entry per column.
+  repeated InstallmentPeriod installment_periods = 10;
+
+  // Line 14: The year's underpayments, without overpayments, total the
+  // year's small amount or less, so there is no addition to tax.
+  bool small_underpayment = 11;
+
+  // Line 25: Addition to tax: line 24 of every column added.
+  common.v1.Money addition_to_tax = 12;
+}
